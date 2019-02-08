@@ -16,19 +16,25 @@ namespace Phonebook.Source.PeopleSoft
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Env { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {            
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //TODO: here we must read the configuration later. Currently the DataService is more a mock then an implementation
-            services.AddSingleton<DataService>(d => new DataService(""));
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
+            if(Env.IsDevelopment()){
+                services.AddSingleton<IDataService, MockDataService>();
+            }else{
+                //TODO: here we must read the configuration later. Currently the DataService is more a mock then an implementation
+                services.AddSingleton<IDataService>(d => new DataService(""));
+            }            
             services.AddSingleton<PeopleService>();
         }
 

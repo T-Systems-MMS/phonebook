@@ -4,20 +4,15 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace Phonebook.Source.PeopleSoft.Services
 {
-    public class DataService : IDataService
+    public class MockDataService : IDataService
     {
         private readonly OracleConnection connection;
 
         public OracleConnection Connection => connection;
 
-        public DataService(OracleConnectionStringBuilder builder) : this(builder.ConnectionString)
+        public MockDataService()
         {
-
-        }
-
-        public DataService(string connectionString)
-        {
-            connection = new OracleConnection(connectionString);
+            connection = new OracleConnection();
         }
 
         public OracleCommand CreateEmptyCommand()
@@ -26,17 +21,8 @@ namespace Phonebook.Source.PeopleSoft.Services
         }
         public IEnumerable<IEnumerable<string>> runCommand(OracleCommand command)
         {
-            var reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                var allfields = reader.VisibleFieldCount;
-                var row = new List<string>();
-                for (int i = 0; i < allfields; i++)
-                {
-                    row.Add(reader.GetString(i));
-                }
-                yield return row;
-            }
+            Console.WriteLine($"try to send the command: {command.ToString()}; {command.CommandText}");
+            yield break;
         }
 
         public IEnumerable<IEnumerable<string>> runCommand(string textCommand)
@@ -47,7 +33,7 @@ namespace Phonebook.Source.PeopleSoft.Services
         }
 
         public void Dispose()
-        {
+        {            
             connection.Close();
             connection.Dispose();
         }

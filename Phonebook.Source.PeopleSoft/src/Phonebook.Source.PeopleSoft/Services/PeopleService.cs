@@ -9,7 +9,7 @@ namespace Phonebook.Source.PeopleSoft.Services
 {
     public class PeopleService
     {
-        private static readonly string selectString = $"Select {GetSelectFields().Select(f => f.Item1).Aggregate((a, b) => a + "," + b)}";
+        private static readonly string selectString = $"Select {GetSelectFields().Select(f => f.Item1).Aggregate((a, b) => a + "," + b)} From People";
         private Func<string, OracleCommand, OracleCommand> SearchPerson = (searchText, command) =>
         {
             var fields = GetSelectFields().Select(f => f.Item1).ToList();
@@ -29,12 +29,12 @@ namespace Phonebook.Source.PeopleSoft.Services
             return command;
         };
 
-        public PeopleService(DataService dataService)
+        public PeopleService(IDataService dataService)
         {
             DataService = dataService;
         }
 
-        public DataService DataService { get; }
+        public IDataService DataService { get; }
 
         public IEnumerable<People> GetPeoples(string searchText)
         {
