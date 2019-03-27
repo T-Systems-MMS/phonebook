@@ -1,0 +1,71 @@
+<mat-card class="pb-margin-20">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>
+        <span class="mat-display-1">
+          <ng-container i18n="@@ColumnTitleRoom">Room</ng-container>
+          {{room.Number}}
+        </span>
+      </mat-card-title>
+    </mat-card-title-group>
+    <!-- Actions -->
+    <div class="actions">
+      <button id="view_toggle" mat-icon-button [matMenuTriggerFor]="menu" matTooltip="" i18n-matTooltip="RoomDetailComponent|Tooltip for the Room sharing button@@RoomDetailComponentShareButtonTooltip"
+        i18n-aria-label="RoomDetailComponent|Aria Label for sharing the room@@RoomDetailComponentShareButtonAriaLabel"
+        matTooltip="Share this room." aria-label="Button for sharing this room.">
+        <mat-icon>share</mat-icon>
+      </button>
+      <mat-menu #menu>
+        <button mat-menu-item actionDrawer [copy]="getLink()">
+          <mat-icon>link</mat-icon>
+          <span i18n="RoomDetailComponent|Option for getting a Link to the Room@@RoomDetailComponentShareButtonLinkOption">Link</span>
+        </button>
+        <button mat-menu-item (click)="sendMail()">
+          <mat-icon>email</mat-icon>
+          <span i18n="RoomDetailComponent|Option for sharing the room by Mail@@RoomDetailComponentShareButtonMailOption">Share
+            by mail</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <div class="pb-expand pb-wrap">
+      <mat-list>
+        <h3 mat-subheader i18n="RoomDetailComponent|Title for the main information of the room@@RoomDetailComponentMainTitle">Information</h3>
+        <mat-list-item>
+          <mat-icon mat-list-icon>location_on</mat-icon>
+          <h4 mat-line i18n="RoomDetailComponent|Subtitle for the location information of the room@@RoomDetailComponentSubTitleLocation">Location
+          </h4>
+          <app-address mat-line [location]="{RoomCollection: [room]}"></app-address>
+        </mat-list-item>
+        <mat-list-item *ngIf="room.Phone">
+          <mat-icon mat-list-icon>phone</mat-icon>
+          <h4 mat-line i18n="RoomDetailComponent|Subtitle for the communication information of the room@@RoomDetailComponentSubTitleCommunication">Phone
+            Number</h4>
+          <p mat-line>
+            <button actionDrawer [tel]="room.Phone" [copy]="room.Phone">
+              {{room.Phone}}
+            </button>
+          </p>
+        </mat-list-item>
+      </mat-list>
+      <div class="pb-roomplan">
+        <ng-container>
+          <mat-divider></mat-divider>
+          <app-room-plan [floorplan]="room.FloorPlan" [room]="room.Number"></app-room-plan>
+        </ng-container>
+      </div>
+      <div>
+        <h3 mat-subheader i18n="RoomDetailComponent|Title for the subtitle about the people in this room@@RoomComponentSubTitleInThisRoom">In
+          this Room</h3>
+        <div class="pb-flex-row">
+          <app-user-tiny-card *ngFor="let person of persons" [person]="person" class="pb-card pb-margin-20"></app-user-tiny-card>
+          <div *ngIf="persons.length === 0" i18n="DashboardComponent|Message displayed if no people are in the room@@RoomComponentDescriptionNoPersons">
+            Nobody works in this room.
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,20 @@
+<div class="svg-container" [style.display]="displaySVG ? 'block': 'none'" #floorplanSVG></div>
+<!-- Use normal Floorplan picture if it is not yet converted -->
+<ng-container *ngIf="!displaySVG">
+    <img *ngIf="!floorPlanNotFound" [src]="runtimeEnvironment.assetsEndpoint + '/roomplan/' + floorplan + '.jpg' "
+        class="roomplan" alt="Roomplan" (error)="floorPlanNotFound = true">
+    <div *ngIf="floorPlanNotFound" class="pb-center-text pb-margin-20"
+        i18n="RoomPlanComponent|Message displayed if there is no room plan@@RoomPlanComponentNoPlan">
+        <p>
+            Unfortunately there is no plan for this floor.
+        </p>
+        <p>
+            Do you know who can make one or want to help us fix this?
+        </p>
+        <a mat-raised-button color="primary" target="_blank" rel="noopener"
+            href="https://github.com/T-Systems-MMS/phonebook">
+            <mat-icon>code</mat-icon>
+            Contribute
+        </a>
+    </div>
+</ng-container>

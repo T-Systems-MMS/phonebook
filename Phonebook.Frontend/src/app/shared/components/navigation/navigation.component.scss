@@ -1,0 +1,89 @@
+@import 'media-queries';
+@import '~@angular/material/theming';
+
+mat-sidenav-container {
+  width: 100%;
+
+  mat-sidenav {
+    #pb-nav-mobile {
+      display: flex;
+      flex-flow: column;
+    }
+  }
+
+  mat-sidenav-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+
+    #pb-greetings {
+      flex: 1;
+    }
+
+    .beta-tag {
+      vertical-align: top !important;
+      background-color: mat-color(mat-palette($mat-teal, 500));
+      text-transform: uppercase;
+      color: white;
+      padding: 2px 5px;
+      border-radius: 10px;
+    }
+
+    .version {
+      vertical-align: baseline;
+    }
+
+    .table-settings {
+      position: absolute;
+      right: 0;
+      margin-right: 16px;
+      vertical-align: middle;
+    }
+
+    .row-toolbar {
+      width: 100%;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    #search {
+      margin: auto;
+      height: 3rem;
+    }
+
+    @media (max-width: 599px) {
+      #search {
+        height: 2.5rem;
+      }
+    }
+  }
+}
+
+
+// Dynamic Search Bar Width
+
+@include smaller {
+  #search {
+    width: 100%;
+  }
+}
+
+@include small-med {
+  #search {
+    width: 85%;
+  }
+}
+
+@include med-big {
+  #search {
+    width: 70%;
+  }
+}
+
+@include bigger {
+  #search {
+    width: 63%;
+  }
+}

@@ -1,0 +1,45 @@
+@import '~@angular/material/theming';
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+
+  .pb-divider {
+    margin: 10px 10px 15px 10px;
+    position: static;
+  }
+  button {
+    width: 100%;
+    div {
+      display: flex;
+      mat-icon {
+        margin: auto 15px auto 0;
+      }
+    }
+  }
+}
+
+.centered {
+  text-align: center;
+}
+
+mat-card {
+  @include mat-elevation-transition;
+  @include mat-elevation(2);
+  width: 100%;
+  box-sizing: border-box;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @include mat-elevation(8);
+  }
+}
+
+.pb-self-centered {
+  margin: auto;
+}
+
+mat-card-header {
+  height: 10px;
+}

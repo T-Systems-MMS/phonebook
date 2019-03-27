@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+@mixin user-list-component-theme($theme) {
+  $background: map-get($theme, background);
+
+  .mat-header-row {
+    background-color: mat-color($background, card);
+  }
+}

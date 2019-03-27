@@ -1,0 +1,62 @@
+@import 'media-queries';
+
+mat-card-header {
+  mat-card-title-group {
+    flex-direction: row-reverse;
+
+    .user-picture {
+      margin: 0 20px 10px 0;
+      text-align: center;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+  }
+
+  .actions {
+    margin: 0 0 0 auto;
+    display: flex;
+  }
+}
+
+mat-card-content {
+  .pb-roomplan {
+    width: 100%;
+    margin-top: 15px;
+    img {
+      width: 60%;
+      margin: 20px auto;
+      display: block;
+    }
+  }
+
+  @include below-big {
+    .pb-roomplan {
+      img {
+        width: 90%;
+      }
+    }
+  }
+
+  .pb-wrap {
+    flex-flow: wrap;
+  }
+
+  .pb-skills {
+    height: 200px;
+    padding-top: 30px;
+    display: flex;
+    align-items: baseline;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  mat-list {
+    flex: 1;
+    min-width: 350px;
+    .mat-list-item {
+      height: inherit;
+      padding: 5px 0px 5px 0px;
+    }
+  }
+}

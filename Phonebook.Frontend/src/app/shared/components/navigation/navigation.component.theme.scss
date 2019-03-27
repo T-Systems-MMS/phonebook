@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+
+@mixin navigation-component-theme($theme) {
+  $background: map-get($theme, background);
+
+  #footer {
+    z-index: 100;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+    span {
+      background-color: mat-color($background, background);
+    }
+  }
+}

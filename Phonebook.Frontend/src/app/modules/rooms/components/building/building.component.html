@@ -1,0 +1,73 @@
+<mat-card class="pb-margin-20">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>
+        <span class="mat-display-1">{{node?.name}}</span>
+        <a mat-button propagationStop *ngIf=" building.LinkRoutingWebsite && building.LinkRoutingWebsite != undefined && building.LinkRoutingWebsite != ''"
+          [href]="building.LinkRoutingWebsite" target="_blank" rel="noopener" class="mat-small">
+          <mat-icon>open_in_new</mat-icon>
+          <span i18n="General|Button label for showing the location on google maps@@GeneralShowOnMapButton">Show on
+            Google-Maps</span>
+        </a>
+      </mat-card-title>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <div class="pb-expand pb-wrap">
+      <mat-list>
+        <h3 mat-subheader i18n="Datapoint|Label for address@@DataLocationAddress">Address</h3>
+        <mat-list-item>
+          <div>
+            <app-address mat-line [location]="building"></app-address>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <mat-list>
+        <h3 mat-subheader i18n="Datapoint|Label for contact information@@DataLocationContact">Contact</h3>
+        <mat-list-item *ngIf="building.ReceptionPhone != '' && building.ReceptionPhone != null">
+          <mat-icon mat-list-icon>call</mat-icon>
+          <h4 mat-line i18n="@@ColumnTitlePhone">Phone</h4>
+          <p mat-line>
+            <button mat-button actionDrawer color="primary" [copy]="building.ReceptionPhone" [tel]="building.ReceptionPhone">
+              {{building.ReceptionPhone}}
+            </button>
+          </p>
+        </mat-list-item>
+        <mat-list-item *ngIf="building.ReceptionFax != '' && building.ReceptionFax != null">
+          <mat-icon mat-list-icon>print</mat-icon>
+          <h4 mat-line i18n="@@DataPersonFax">Fax</h4>
+          <p mat-line>
+            <button mat-button actionDrawer [copy]="building.ReceptionFax">
+              {{building.ReceptionFax}}
+            </button>
+        </mat-list-item>
+        <mat-list-item *ngIf="building.ContactPerson != '' && building.ContactPerson != null">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <h4 mat-line i18n="Datapoint|Label for Location.ContactPerson@@DataLocationContactPerson">Contact
+            Person</h4>
+          <p mat-line>
+            <button mat-button stopPropagation [routerLink]="['/search/' + building.ContactPerson]">
+              {{building.ContactPerson}}
+            </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div>
+      <h3 mat-subheader i18n="Datapoint|Floor plural@@DataPersonFloorPlural">Floors</h3>
+      <div class="pb-flex-row">
+        <mat-card *ngFor="let floor of node.children" class="pb-card pb-normal-shadow pb-margin-20 building-card"
+          (click)="navigateToFloor(floor)" (keyup.enter)="navigateToFloor(floor)" tabindex="0">
+          <mat-card-header>
+            {{floor.name}}. <span i18n="@@DataPersonFloor">Floor</span>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="pb-expand pb-wrap">
+              <app-room-plan class="pb-roomplan" [floorplan]="floor.children[0].data.FloorPlan"></app-room-plan>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

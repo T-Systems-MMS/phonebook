@@ -1,0 +1,178 @@
+//Angular Material Theme
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(20px, 32px, 500),
+  $subheading-2: mat-typography-level(16px, 28px, 400),
+  $subheading-1: mat-typography-level(15px, 24px, 400),
+  $body-2: mat-typography-level(14px, 24px, 500),
+  $body-1: mat-typography-level(14px, 20px, 400),
+  $caption: mat-typography-level(12px, 20px, 400),
+  $button: mat-typography-level(14px, 14px, 500),
+  $input: mat-typography-level(inherit, 1.125, 400)
+);
+
+@include mat-core($custom-typography);
+@import 'themes';
+@import 'media-queries';
+
+html,
+body,
+app-root {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.pb-expand {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.square-img100 {
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+
+.square-img50 {
+  width: 50px;
+  height: 50px;
+}
+
+// Styles for Cards
+
+.pb-right-top-action {
+  position: absolute;
+  background: rgba(0, 0, 0, 0);
+  top: 10px;
+  right: 10px;
+}
+
+// This is for Drag and Drop, otherwise the Preview element would be unstyled.
+.mat-list-item-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 16px;
+  position: relative;
+  height: inherit;
+}
+
+.pb-spacer {
+  flex: 1;
+  flex-grow: 1;
+}
+
+.pb-margin-20 {
+  margin: 20px;
+}
+
+.pb-margin-top-20 {
+  margin-top: 20px;
+}
+
+.pb-pointer {
+  cursor: pointer;
+}
+
+.pb-flex-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.pb-flex-column {
+  display: flex;
+  flex-flow: column;
+}
+
+.pb-block {
+  display: block;
+}
+
+.pb-flex {
+  display: flex;
+}
+
+.pb-no-display {
+  display: none;
+}
+
+.pb-fill-parent {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.pb-overflow-auto {
+  overflow: auto;
+}
+
+.pb-w-100 {
+  width: 100%;
+}
+
+.pb-flex-1 {
+  flex: 1;
+}
+
+.pb-center-text {
+  display: flex;
+  align-items: baseline;
+  flex-flow: column;
+  align-items: center;
+}
+
+.pb-text-overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.pb-height-expand {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+//Media query classes
+@include on-med-and-up {
+  .pb-hide-on-med-and-up {
+    display: none;
+  }
+}
+
+@include below-small {
+  .pb-hide-below-small {
+    display: none;
+  }
+}
+
+@include below-med {
+  .pb-hide-below-med {
+    display: none;
+  }
+}
+
+@include below-big {
+  .pb-hide-below-big {
+    display: none;
+  }
+}
+
+input::-ms-clear {
+  display: none;
+}

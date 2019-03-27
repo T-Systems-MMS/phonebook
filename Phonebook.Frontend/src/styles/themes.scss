@@ -1,0 +1,58 @@
+// Define themes as described in this guide: https://material.angular.io/guide/theming
+@import 'src/app/shared/components/add-filter/add-filter.component.theme';
+@import 'src/app/shared/components/search/search.component.theme';
+@import 'src/app/shared/components/navigation/navigation.component.theme';
+@import 'src/app/modules/table/components/table/table.component.theme';
+@import 'src/app/modules/profile-picture/components/profile-picture/profile-picture.component.theme';
+@import 'src/styles/shadows.theme';
+
+//Global Color Theme Mixin
+@mixin global-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  a {
+    color: mat-color($primary);
+  }
+
+  .color-warn {
+    mat-dialog-container {
+      background-color: mat-color($default-warn);
+    }
+  }
+}
+
+@mixin custom-components-theme($theme) {
+  @include search-component-theme($theme);
+  @include add-filter-component-theme($theme);
+  @include user-list-component-theme($theme);
+  @include global-theme($theme);
+  @include navigation-component-theme($theme);
+  @include profile-picture-component-theme($theme);
+  @include shadow-theme($theme);
+}
+
+/**
+ * Default Theme
+ */
+$default-primary: mat-palette($mat-indigo);
+$default-accent: mat-palette($mat-teal, A200, A100, A400);
+$default-warn: mat-palette($mat-red);
+
+$default-theme: mat-light-theme($default-primary, $default-accent, $default-warn);
+.default-theme {
+  @include angular-material-theme($default-theme);
+  @include custom-components-theme($default-theme);
+}
+
+/**
+ * Dark Theme
+ */
+$dark-primary: mat-palette($mat-indigo);
+$dark-accent: mat-palette($mat-teal, A200, A100, A400);
+$dark-warn: mat-palette($mat-red);
+
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+  @include custom-components-theme($dark-theme);
+}

@@ -1,0 +1,25 @@
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 0.75rem;
+}
+
+.displayDialog {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-dialog-content {
+  max-height: 100vh;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.actions {
+  margin: 0 0 0 auto;
+}

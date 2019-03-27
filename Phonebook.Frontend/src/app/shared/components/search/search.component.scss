@@ -1,0 +1,42 @@
+input {
+  margin: 0;
+  flex: 1;
+  border-bottom: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  outline: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  font-size: 1rem;
+  box-shadow: none;
+  box-sizing: content-box;
+  transition: all 0.3s;
+
+  &:focus {
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+}
+
+button {
+  mat-icon {
+    font-size: 30px;
+    width: 30px;
+  }
+}
+
+.pb-chip-remove {
+  margin: 0;
+}
+
+@media (max-width: 599px) {
+  button {
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+    }
+  }
+}

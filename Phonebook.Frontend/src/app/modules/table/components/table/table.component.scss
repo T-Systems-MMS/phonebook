@@ -1,0 +1,77 @@
+.mat-row:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.mat-row {
+  padding: 10px 0px 10px 0;
+}
+
+.mat-cell.mat-column-picture {
+  max-width: 75px;
+}
+
+.mat-header-cell.mat-column-picture {
+  max-width: 75px;
+}
+
+.mat-cell.mat-column-id {
+  max-width: 65px;
+}
+
+.mat-header-cell.mat-column-id {
+  max-width: 65px;
+}
+
+.mat-cell.mat-column-email {
+  max-width: 55px;
+}
+
+.mat-header-cell.mat-column-email {
+  max-width: 55px;
+}
+
+.user-list-table {
+  width: 100%;
+}
+
+.floating-action-button {
+  position: fixed;
+  bottom: 10px;
+  right: 25px;
+}
+
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notfound-container {
+  position: relative;
+  box-shadow: none !important;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: transparent;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+// Workaround for IE11: https://github.com/angular/material2/issues/11470
+.mat-header-cell {
+  min-height: auto;
+}
+
+.mat-cell {
+  min-height: auto;
+}

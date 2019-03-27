@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>
+  <ng-container i18n="TableSettingsDialog|Title for Table Column Settings@@TableSettingsDialogTitle">
+    Configure Table Columns
+  </ng-container>
+  <button mat-button (click)="resetTableSettings()" i18n="GeneralResetButton|Button for resetting something@@GeneralResetButton">Reset</button>
+</h1>
+<mat-dialog-content>
+  <p i18n="TableSettingsDialog|Description of how to configure the table Settings@@TableSettingsDialogDescription">Drag
+    and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging
+    them
+    to the right.</p>
+  <div class="pb-container">
+    <div>
+      <h2 i18n="TableSettingsDialog|Title of displayed table columns@@TableSettingsDialogSubTitleDisplayedColumns">Displayed
+        Columns:</h2>
+      <div class="pb-columns-field" cdkDropList [cdkDropListData]="displayedColumns" (cdkDropListDropped)="drop($event)"
+        #visibleColumns="cdkDropList" [cdkDropListConnectedTo]="[invisibleColumns]">
+        <mat-card class="item" cdkDrag *ngFor="let column of displayedColumns">
+          <mat-card-title-group>
+            {{columnTranslate.getTranslation(column.id)}}
+            <mat-icon>drag_handle</mat-icon>
+          </mat-card-title-group>
+        </mat-card>
+      </div>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div>
+      <h2 i18n="TableSettingsDialog|Title of not displayed table columns@@TableSettingsDialogSubTitleNotDisplayedColumns">Not
+        displayed Columns:</h2>
+      <div class="pb-columns-field" cdkDropList [cdkDropListData]="notDisplayedColumns" (cdkDropListDropped)="drop($event)"
+        #invisibleColumns="cdkDropList" [cdkDropListConnectedTo]="[visibleColumns]">
+        <mat-card class="item" cdkDrag *ngFor="let column of notDisplayedColumns">
+          <mat-card-title-group>
+            {{columnTranslate.getTranslation(column.id)}}
+            <mat-icon>drag_handle</mat-icon>
+          </mat-card-title-group>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

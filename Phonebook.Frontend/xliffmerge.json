@@ -1,0 +1,8 @@
+{
+  "xliffmergeOptions": {
+    "srcDir": "src/i18n",
+    "genDir": "src/i18n",
+    "defaultLanguage": "en",
+    "languages": ["en", "de", "test"]
+  }
+}
