@@ -1,0 +1,41 @@
+@import 'media-queries';
+
+mat-card-header {
+  .actions {
+    margin: 0 0 0 auto;
+    display: flex;
+  }
+}
+
+mat-card-content {
+  .pb-roomplan {
+    width: 100%;
+    margin-top: 15px;
+    img {
+      width: 60%;
+      margin: 20px auto;
+      display: block;
+    }
+  }
+
+  @include below-big {
+    .pb-roomplan {
+      img {
+        width: 90%;
+      }
+    }
+  }
+
+  .pb-wrap {
+    flex-flow: wrap;
+  }
+
+  mat-list {
+    flex: 1;
+    min-width: 350px;
+    .mat-list-item {
+      height: inherit;
+      padding: 5px 0px 5px 0px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+**
+!e2e
+!src
+!angular.json
+!karma.conf.js
+!package-lock.json
+!package.json
+!protractor.conf.js
+!proxy.conf.json
+!tsconfig.json
+!tslint.json
+!nginx
+!substitute_variables.sh
+!globals.js

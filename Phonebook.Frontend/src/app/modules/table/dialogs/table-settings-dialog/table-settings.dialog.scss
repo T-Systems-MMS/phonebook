@@ -1,0 +1,43 @@
+.pb-columns-field {
+  min-height: 100px;
+  height: 80%;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  max-height: unset;
+}
+
+.pb-container {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  > div {
+    width: 48%;
+  }
+}
+
+.item {
+  margin: 3px;
+  height: 24px !important;
+  cursor: move;
+  cursor: -webkit-grab;
+  mat-icon {
+    margin-left: auto;
+  }
+}
+
+.item:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.cdk-drop-dragging .cdk-drag,
+.item:not(.cdk-drag-placeholder) {
+  transition: transform 150ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}

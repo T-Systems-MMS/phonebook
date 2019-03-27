@@ -1,0 +1,18 @@
+<div class="search" [class.mat-elevation-z2]="!focused" [class.mat-elevation-z5]="focused">
+  <button mat-icon-button [routerLink]="['/search']" (click)="input.focus()">
+    <mat-icon class="search-bar-icon">search</mat-icon>
+  </button>
+  <mat-chip-list>
+    <mat-chip *ngFor="let filter of searchFilters$ | async" [removable]="true" (removed)="removeFilter(filter)">
+      {{columnTranslate.getTranslation(filter.filterColumn.id)}}: {{filter.filterValue}}
+      <mat-icon matChipRemove class="pb-chip-remove">cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
+  <input id="search-input" [value]="searchTerm$ | async" type="text" i18n-placeholder="SearchComponent|Placholder for search@@SearchComponentPlaceholder"
+    placeholder="Search for names, shorthands, phone numbers and more..." #input (input)="updateFilterString(input.value)"
+    (focus)="focused = true" (blur)="focused = false" (keyup.backspace)="backspace()" (keydown.tab)="checkForNewFilter($event)"
+    (keydown.enter)="checkForNewFilter($event)" autofocus />
+  <button mat-icon-button *ngIf="(searchTerm$ | async)?.length > 0 || (searchFilters$ | async)?.length > 0" (click)="reset($event); input.focus();">
+    <mat-icon class="search-bar-icon">close</mat-icon>
+  </button>
+</div>

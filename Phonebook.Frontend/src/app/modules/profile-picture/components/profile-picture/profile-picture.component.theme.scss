@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+@mixin profile-picture-component-theme($theme) {
+  $secondary: map-get($theme, accent);
+
+  .image-placeholder {
+    background-color: mat-color($secondary, lighter);
+  }
+}

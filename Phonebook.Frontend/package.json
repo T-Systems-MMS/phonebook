@@ -1,0 +1,184 @@
+{
+  "name": "phonebook",
+  "version": "0.4.0",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --ssl --host=0.0.0.0 --poll 1000 --proxy-config proxy.conf.json",
+    "start:en": "npm run start -- --configuration en",
+    "start:de": "npm run start -- --configuration de",
+    "start:test": "npm run start -- --configuration test",
+    "start:debug": "ng serve --ssl --proxy-config=proxy.conf.json --configuration debug",
+    "start-compose": "npm run compose-build && docker-compose run --rm --service-ports angular npm run start:en",
+    "start-compose:debug": "npm run compose-build && docker-compose run --rm --service-ports angular npm run start:debug",
+    "test": "ng test",
+    "test:dev": "ng test --watch=true",
+    "test:dev-chrome": "ng test --watch=true --browsers Chrome",
+    "test-docker": "npm run docker-build && docker run --rm build_phonebook npm run test",
+    "test-compose:dev": "npm run compose-build && docker-compose run --rm --service-ports angular npm run test:dev",
+    "e2e": "ng e2e",
+    "e2e-docker": "npm run docker-build && docker run --rm build_phonebook npm run e2e",
+    "build:en": "ng build --configuration en",
+    "build:de": "ng build --configuration de",
+    "build:test": "ng build --configuration test",
+    "build:prod": "npm run build:de && npm run build:en",
+    "build-docker:prod": "docker build -t phonebook . && docker run --rm phonebook:latest",
+    "build-compose:dev": "npm run compose-build && docker-compose run --rm --service-ports nginx ",
+    "i18n": "ng-xi18n --i18nFormat xlf",
+    "extract-i18n": "ng xi18n --i18nFormat xlf --output-path i18n --i18n-locale en && ngx-extractor --input src/**/*.ts --format xlf --outFile src/i18n/messages.xlf && node src/i18n/remove-context.js src/i18n/messages.xlf && xliffmerge --profile xliffmerge.json && cd src/i18n && node ./generateTestTranslations.js",
+    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/stats.json",
+    "check-license": "license-checker",
+    "lint": "ng lint",
+    "compose:debug": "npm run compose-build && docker-compose run --rm --service-ports angular bash",
+    "compose-build": "docker-compose build",
+    "docker-build": "docker build -f dev.Dockerfile -t build_phonebook .",
+    "commit": "git-cz",
+    "release": "semantic-release"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "7.1.4",
+    "@angular/cdk": "7.2.0",
+    "@angular/common": "7.1.4",
+    "@angular/compiler": "7.1.4",
+    "@angular/core": "7.1.4",
+    "@angular/forms": "7.1.4",
+    "@angular/http": "7.1.4",
+    "@angular/material": "7.2.0",
+    "@angular/platform-browser": "7.1.4",
+    "@angular/platform-browser-dynamic": "7.1.4",
+    "@angular/pwa": "0.11.4",
+    "@angular/router": "7.1.4",
+    "@angular/service-worker": "7.1.4",
+    "@ngx-translate/i18n-polyfill": "^1.0.0",
+    "@ngxs/devtools-plugin": "^3.3.1",
+    "@ngxs/logger-plugin": "^3.3.1",
+    "@ngxs/router-plugin": "^3.3.1",
+    "@ngxs/storage-plugin": "^3.3.1",
+    "@ngxs/store": "^3.3.1",
+    "classlist.js": "^1.1.20150312",
+    "core-js": "^2.5.7",
+    "ng2-rx-componentdestroyed": "^3.0.1",
+    "ngx-clipboard": "^11.1.9",
+    "ngx-vcard": "^1.1.6",
+    "ngx-infinite-scroll": "^7.0.0",
+    "ngx-propagation-stop": "^1.0.6",
+    "raven-js": "^3.27.0",
+    "rxjs": "^6.3.3",
+    "uglify-es": "3.3.9",
+    "uglifyjs-webpack-plugin": "2.1.1",
+    "web-animations-js": "^2.3.1",
+    "zone.js": "~0.8.26"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.11.0",
+    "@angular/cli": "7.1.4",
+    "@angular/compiler-cli": "7.1.4",
+    "@angular/language-service": "7.1.4",
+    "@compodoc/compodoc": "^1.1.7",
+    "@iteratec/semantic-release-docker": "^1.0.2",
+    "@semantic-release/changelog": "^3.0.1",
+    "@semantic-release/exec": "^3.3.0",
+    "@types/jasmine": "^3.3.0",
+    "@types/jasminewd2": "^2.0.6",
+    "@types/node": "^10.12.10",
+    "codelyzer": "^4.5.0",
+    "commitizen": "^3.0.5",
+    "cz-customizable": "^5.3.0",
+    "jasmine-core": "^3.3.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~3.1.1",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-cli": "~2.0.0",
+    "karma-coverage-istanbul-reporter": "^2.0.4",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "license-checker": "^24.0.1",
+    "ng-mocks": "^7.1.2",
+    "ng2-mock-component": "^0.1.1",
+    "ngx-i18nsupport": "^0.17.1",
+    "pre-git": "^3.17.1",
+    "protractor": "^5.4.1",
+    "protractor-console-plugin": "^0.1.1",
+    "semantic-release": "^15.12.2",
+    "ts-node": "~7.0.1",
+    "tslint": "~5.12.0",
+    "typescript": "3.1.6",
+    "webdriver-manager": "^12.1.0",
+    "webpack-bundle-analyzer": "^3.0.3"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "conventional",
+      "allow-untracked-files": true
+    },
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "release": {
+    "branch": "master",
+    "verifyConditions": [],
+    "verifyConfig": [
+      "@iteratec/semantic-release-docker"
+    ],
+    "prepare": [
+      {
+        "path": "@semantic-release/changelog",
+        "changelogFile": "src/changelog.md"
+      },
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "node version.js ${nextRelease.version} ${commits[0].commit.short} ${commits[0].commit.long}"
+      },
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
+      },
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "docker build . -t phonebook"
+      },
+      {
+        "path": "@iteratec/semantic-release-docker",
+        "additionalTags": [
+          "latest"
+        ],
+        "imageName": "phonebook",
+        "registryUrl": "TODO",
+        "respositoryName": "phonebook"
+      }
+    ],
+    "publish": [
+      {
+        "path": "@iteratec/semantic-release-docker"
+      },
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
+      },
+      {
+        "path": "@semantic-release/exec",
+        "cmd": "echo ##vso[build.addbuildtag]release"
+      }
+    ],
+    "fail": [],
+    "success": [],
+    "analyzeCommits": "simple-commit-message",
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "type": "trans",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      "@semantic-release/release-notes-generator"
+    ]
+  }
+}

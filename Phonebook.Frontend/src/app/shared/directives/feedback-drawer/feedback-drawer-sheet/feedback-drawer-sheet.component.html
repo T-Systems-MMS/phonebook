@@ -1,0 +1,31 @@
+<mat-list>
+
+  <h3 mat-line i18n="FeedbackDrawerSheetComponent|Title of the Feedback Drawer@@FeedbackDrawerSheetComponentTitle">Leave
+    Feedback, report a Bug or submit a new Idea</h3>
+
+  <mat-list-item>
+    <a mat-button color="primary" target="_blank" rel="noopener" href="{{runtimeEnvironment.contactUrl}}"
+      (click)="closeBottomSheet()">
+      <span
+        i18n="FeedbackDrawerSheetComponent|Button for contacting the private Organization@@FeedbackDrawerSheetComponentButtonPrivateOrganization">Contact
+        your private Organization</span>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <a mat-button target="_blank" rel="noopener" href="https://github.com/T-Systems-MMS/phonebook/issues/new"
+      (click)="closeBottomSheet()">
+      <img class="github-icon" alt="github" src="assets/img/GitHub-Mark-32px.png" />
+      <span
+        i18n="FeedbackDrawerSheetComponent|Button for contacting the public Github@@FeedbackDrawerSheetComponentButtonPublicGithub">Contact
+        the
+        public Project</span>
+    </a>
+  </mat-list-item>
+
+  <mat-list-item>
+    <button mat-button (click)="closeBottomSheet()" cdkFocusInitial>
+      <span i18n="GeneralCancelButton|Button for cancelling something@@GeneralCancelButton">Cancel</span>
+    </button>
+  </mat-list-item>
+</mat-list>

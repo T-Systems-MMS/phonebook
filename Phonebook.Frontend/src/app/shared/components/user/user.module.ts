@@ -1,0 +1,52 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PropagationStopModule } from 'ngx-propagation-stop';
+import { UserDetailComponent } from 'src/app/shared/components/user/user-detail/user-detail.component';
+import { UserSmallCardComponent } from 'src/app/shared/components/user/user-small-card/user-small-card.component';
+import { UserTinyCardComponent } from 'src/app/shared/components/user/user-tiny-card/user-tiny-card.component';
+import {
+  MatCardModule,
+  MatListModule,
+  MatTabsModule,
+  MatIconModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatTooltipModule
+} from '@angular/material';
+import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.module';
+import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter.module';
+import { RouterModule } from '@angular/router';
+import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
+import { ClipboardModule } from 'ngx-clipboard';
+import { ProfilePictureModule } from 'src/app/modules/profile-picture/profile-picture.module';
+import { FeatureFlagModule } from 'src/app/modules/feature-flag/feature-flag.module';
+import { NgxVcardModule } from 'ngx-vcard';
+import { AddressModule } from 'src/app/shared/components/address/address.module';
+import { NotImplementedModule } from 'src/app/modules/not-implemented/not-implemented.module';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    PropagationStopModule,
+    RoomPlanModule,
+    AddFilterModule,
+    RouterModule,
+    ActionDrawerModule,
+    ClipboardModule,
+    ProfilePictureModule,
+    FeatureFlagModule,
+    AddressModule,
+    MatCardModule,
+    MatListModule,
+    MatTabsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    NgxVcardModule,
+    MatTooltipModule,
+    NotImplementedModule
+  ],
+  declarations: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent],
+  exports: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent]
+})
+export class UserModule {}

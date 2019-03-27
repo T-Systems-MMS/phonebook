@@ -1,0 +1,22 @@
+<div class="pb-address" *ngIf="location != null && ((location.RoomCollection[0] && location.RoomCollection[0].Description != null) || location.City.Building != ''); else noLocation">
+  <ng-container *ngIf="this.location.RoomCollection.length == 1">
+    <span>{{address[0]}}</span>
+    <span>{{address[1]}}</span>
+    <ng-container *ngIf="location.RoomCollection">
+      <span>{{location.RoomCollection[0].Floor}}. <ng-container i18n="Datapoint|Label for Person.Floor data@@DataPersonFloor">Floor</ng-container></span>
+      <span>
+        <app-add-filter [filterColumn]="columns.room" [filterValue]="location.RoomCollection[0].Number" [displayText]="location.RoomCollection[0].Number"
+          [resetSearchTerm]="true"></app-add-filter>
+      </span>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="this.location.RoomCollection.length != 1">
+    <span> {{location.City.Building}} </span>
+    <span>{{location.City.ZipCode}} {{location.City.Name}}</span>
+  </ng-container>
+</div>
+<ng-template #noLocation>
+  <div i18n="User-detailComponent|Message displayed if the location of the user could not be determined@@UserDetailComponentMessageNoLocation">
+    No Location provided.
+  </div>
+</ng-template>

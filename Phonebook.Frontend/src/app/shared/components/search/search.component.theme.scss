@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+@mixin search-component-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .search {
+    background-color: mat-color($background, card);
+    border-radius: 5px;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    @include mat-elevation-transition;
+
+    input {
+      color: mat-color($foreground, text);
+    }
+  }
+
+  .search-bar-icon {
+    color: mat-color($foreground, text);
+  }
+}

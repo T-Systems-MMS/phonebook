@@ -1,0 +1,148 @@
+<!-- Navigation -->
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [mode]="'push'">
+    <nav id="pb-nav-mobile">
+      <mat-list>
+        <mat-list-item>
+          <button mat-menu-item [routerLink]="['/']" (click)="sidenav.close()">
+            <mat-icon>dashboard</mat-icon>
+            <ng-container i18n="NavigationBar|Link to Dashboard@@navigationDashboard">
+              Dashboard
+            </ng-container>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-menu-item [routerLink]="['/organigram']" (click)="sidenav.close()">
+            <mat-icon>business</mat-icon>
+            <ng-container i18n="NavigationBar|Link to Organigram@@navigationOrganigram">
+              Organigram
+            </ng-container>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-menu-item [routerLink]="['/rooms']" (click)="sidenav.close()">
+            <mat-icon>meeting_room</mat-icon>
+            <ng-container i18n="NavigationBar|Link to Rooms@@navigationRooms">
+              Rooms
+            </ng-container>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-menu-item (click)="navigateToOwnProfile(); sidenav.close()">
+            <mat-icon>perm_identity</mat-icon>
+            <span i18n="NavigationComponent|Link to the users profile@@NavigationComponentMyProfile">My profile</span>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-menu-item focus [routerLink]="['/settings']" (click)="sidenav.close()">
+            <mat-icon>settings</mat-icon>
+            <span i18n="@@SettingsComponentTitle">Settings</span>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-menu-item [routerLink]="['/further-information']"
+            i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
+            matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click." (click)="sidenav.close()">
+            <mat-icon>info_outline</mat-icon>
+            <span i18n="NavigationComponent|Link to Information page@@NavigationComponentInformation">Information</span>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="navigation mat-elevation-z5">
+      <app-online-bar></app-online-bar>
+      <nav>
+        <mat-toolbar color="primary">
+          <mat-toolbar-row class="mat-elevation-z6">
+            <div class="left app-title">
+              <button mat-button [routerLink]="['/']">
+                <span class="mat-display-1" id="title"
+                  i18n="NavigationBar|Application Name@@navigationBarApplicationName">Phonebook</span>
+                <span class="beta-tag mat-headline pb-hide-below-small"
+                  *ngIf="environmentService.getEnvironment() == Environment.preview"
+                  i18n="NavigationBar|Tag on Application Name@@navigationBarApplicationNameTag">Preview</span>
+                <span class="beta-tag mat-headline pb-hide-below-small"
+                  *ngIf="environmentService.getEnvironment() == Environment.local">Dev</span>
+                <span class="version pb-hide-below-small"
+                  *ngIf="environmentService.getEnvironment() != Environment.local">
+                  v{{version}}</span>
+              </button>
+            </div>
+            <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null">
+              <ng-container i18n="NavigationBar|Greetings Message@@navigationBarGreetingsMessage">Have a nice day
+              </ng-container>
+              {{currentUser.Firstname}}!
+            </div>
+            <div class="pb-spacer"></div>
+            <div class="menu pb-hide-below-med">
+              <button mat-button [routerLink]="['/']" i18n="@@navigationDashboard">Dashboard</button>
+              <button mat-button [routerLink]="['/organigram']" i18n="@@navigationOrganigram">Organigram</button>
+              <button mat-button [routerLink]="['/rooms']" i18n="@@navigationRooms">Rooms</button>
+              <button mat-icon-button [matMenuTriggerFor]="personalmenu">
+                <mat-icon>person</mat-icon>
+              </button>
+              <mat-menu #personalmenu>
+                <button mat-menu-item (click)="navigateToOwnProfile()" *ngIf="currentUser != null">
+                  <mat-icon>perm_identity</mat-icon>
+                  <span i18n="@@NavigationComponentMyProfile">My profile</span>
+                </button>
+                <button mat-menu-item focus [routerLink]="['/settings']">
+                  <mat-icon>settings</mat-icon>
+                  <span i18n="@@SettingsComponentTitle">Settings</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/further-information']"
+                  i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
+                  matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click.">
+                  <mat-icon>info_outline</mat-icon>
+                  <span i18n="@@NavigationComponentInformation">Information</span>
+                </button>
+              </mat-menu>
+            </div>
+            <div class="pb-hide-on-med-and-up">
+              <button mat-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+              </button>
+            </div>
+          </mat-toolbar-row>
+          <mat-toolbar-row>
+            <div class="row-toolbar">
+              <app-search id="search"></app-search>
+              <div class="table-settings" *ngIf="displayTableSettings">
+                <span class="mat-h4" i18n="TableComponent|Result Count@@TableComponentResultCount">
+                  {{tableResultCount$ | async}} Results
+                </span>
+                <button mat-icon-button (click)="openSettings()">
+                  <mat-icon>settings</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </nav>
+    </div>
+
+    <ng-content>
+      <!-- Here goes the content -->
+    </ng-content>
+
+
+    <div id="footer">
+      <div>
+        <!-- Dummy for Layout -->
+      </div>
+      <div>
+        <span *ngIf="environmentService.getEnvironment() != Environment.local">
+          <span *ngIf="environment.production">Prod</span><span *ngIf="!environment.production">Dev</span> -
+          v{{version}}
+          - <a href="https://github.com/T-Systems-MMS/phonebook/commit/{{versionHashLong}}">{{versionHashShort}}</a>
+        </span>
+      </div>
+      <div>
+        <!-- Dummy for Layout-->
+      </div>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

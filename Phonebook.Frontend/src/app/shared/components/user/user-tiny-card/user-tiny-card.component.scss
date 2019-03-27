@@ -1,0 +1,52 @@
+@import '~@angular/material/theming';
+
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.information {
+  text-align: left;
+  margin: auto 0 auto 10px;
+  min-width: 0;
+  p {
+    margin: 2px 0 1px 0;
+  }
+}
+
+.action {
+  position: absolute;
+  background: rgba(0, 0, 0, 0);
+  top: 10px;
+  right: 0;
+}
+
+mat-card {
+  @include mat-elevation-transition;
+  @include mat-elevation(2);
+  width: 100%;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @include mat-elevation(8);
+  }
+}
+
+::ng-deep .mat-card-header .mat-card-header-text {
+  margin: 0;
+}
+
+.tiny-card {
+  display: flex;
+  width: 300px;
+  height: 100px;
+    
+  .tiny-card-name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 0;
+  }
+}
