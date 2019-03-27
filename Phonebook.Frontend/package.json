@@ -113,7 +113,7 @@
       "allow-untracked-files": true
     },
     "commitizen": {
-      "path": "node_modules/cz-customizable"
+      "path": "Phonebook.Frontend/node_modules/cz-customizable"
     }
   },
   "release": {
