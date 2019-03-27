@@ -97,7 +97,6 @@
     "ng-mocks": "^7.1.2",
     "ng2-mock-component": "^0.1.1",
     "ngx-i18nsupport": "^0.17.1",
-    "pre-git": "^3.17.1",
     "protractor": "^5.4.1",
     "protractor-console-plugin": "^0.1.1",
     "semantic-release": "^15.12.2",
