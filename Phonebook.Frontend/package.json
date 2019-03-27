@@ -145,8 +145,7 @@
           "latest"
         ],
         "imageName": "phonebook",
-        "registryUrl": "TODO",
-        "respositoryName": "phonebook"
+        "respositoryName": "danielhabenicht/phonebook"
       }
     ],
     "publish": [
