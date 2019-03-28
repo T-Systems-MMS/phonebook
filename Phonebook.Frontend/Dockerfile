@@ -11,6 +11,11 @@ COPY ./package.json /usr/local/app/package.json
 RUN npm ci 
 # Because: https://stackoverflow.com/questions/37715224/copy-multiple-directories-with-one-command
 COPY ./src/ ./src/
+
+ARG DOCKER_TAG
+ARG SOURCE_COMMIT
+
+RUN node version.js $DOCKER_TAG $SOURCE_BRANCH $SOURCE_COMMIT
 COPY ["angular.json", "tsconfig.json", "tslint.json", "./"]
 RUN npm run build:de
 RUN npm run build:en
