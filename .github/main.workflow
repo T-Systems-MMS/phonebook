@@ -5,6 +5,6 @@ workflow "PR Test" {
 }
 
 action "test" {
-  uses = "docker://danielhabenicht/github-actions:test"
+  uses = "docker://danielhabenicht/github-actions"
   secrets = ["GITHUB_TOKEN"]
 }
