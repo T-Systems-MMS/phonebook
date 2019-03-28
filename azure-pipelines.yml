@@ -22,4 +22,5 @@ steps:
 
 - script: |
     npm run e2e-docker
+  workingDir: 'Phonebook.Frontend/'
   displayName: 'E2E Tests'
