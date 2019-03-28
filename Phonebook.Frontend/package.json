@@ -136,15 +136,15 @@
       },
       {
         "path": "@semantic-release/exec",
-        "cmd": "docker build . -t phonebook"
+        "cmd": "docker build . -t danielhabenicht/phonebook"
       },
       {
         "path": "@iteratec/semantic-release-docker",
         "additionalTags": [
           "latest"
         ],
-        "imageName": "phonebook",
-        "respositoryName": "danielhabenicht/phonebook"
+        "imageName": "danielhabenicht/phonebook",
+        "respositoryName": "danielhabenicht"
       }
     ],
     "publish": [
