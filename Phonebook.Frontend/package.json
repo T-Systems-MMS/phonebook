@@ -153,10 +153,6 @@
       },
       {
         "path": "@semantic-release/exec",
-        "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
-      },
-      {
-        "path": "@semantic-release/exec",
         "cmd": "echo ##vso[build.addbuildtag]release"
       }
     ],
