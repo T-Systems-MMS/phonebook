@@ -1,9 +1,10 @@
-workflow "shaking finger action" {
+
+workflow "PR Test" {
   on = "pull_request"
-  resolves = ["post gif on fail"]
+  resolves = ["test"]
 }
 
-action "post gif on fail" {
-  uses = "jessfraz/shaking-finger-action@master"
+action "test" {
+  uses = "docker://danielhabenicht/github-actions:test"
   secrets = ["GITHUB_TOKEN"]
 }
