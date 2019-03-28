@@ -143,8 +143,7 @@
         "additionalTags": [
           "latest"
         ],
-        "imageName": "danielhabenicht/phonebook",
-        "respositoryName": "danielhabenicht"
+        "imageName": "danielhabenicht/phonebook"
       }
     ],
     "publish": [
