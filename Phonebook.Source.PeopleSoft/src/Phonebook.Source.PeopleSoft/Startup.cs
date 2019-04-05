@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Phonebook.Source.PeopleSoft.Services;
+using Phonebook.Source.PeopleSoft.Models;
 
 namespace Phonebook.Source.PeopleSoft
 {
@@ -27,15 +28,10 @@ namespace Phonebook.Source.PeopleSoft
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
-            if(Env.IsDevelopment()){
-                services.AddSingleton<IDataService, MockDataService>();
-            }else{
-                //TODO: here we must read the configuration later. Currently the DataService is more a mock then an implementation
-                services.AddSingleton<IDataService>(d => new DataService(""));
-            }            
-            services.AddSingleton<PeopleService>();
+        {
+            services.AddDbContext<ModelContext>(options =>
+                options.UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction => oracleOptionsAction.UseRelationalNulls(false)));
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
