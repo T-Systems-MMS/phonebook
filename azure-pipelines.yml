@@ -21,14 +21,14 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install semantic-release
-    npm install semantic-release-docker-test
-    npm install @semantic-release/changelog
-    npm install @semantic-release/exec
+    npm install -g semantic-release
+    npm install -g semantic-release-docker-test
+    npm install -g @semantic-release/changelog
+    npm install -g @semantic-release/exec
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'Semantic Release'
 
 - script: |
-    npm run semantic-release
+    npm run release
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'Semantic Release'
