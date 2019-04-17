@@ -21,6 +21,14 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm run e2e-docker
+    npm install semantic-release
+    npm install semantic-release-docker-test
+    npm install @semantic-release/changelog
+    npm install @semantic-release/exec
   workingDirectory: 'Phonebook.Frontend/'
-  displayName: 'E2E Tests'
+  displayName: 'Semantic Release'
+
+- script: |
+    npm run semantic-release
+  workingDirectory: 'Phonebook.Frontend/'
+  displayName: 'Semantic Release'
