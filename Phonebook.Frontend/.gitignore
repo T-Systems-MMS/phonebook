@@ -44,3 +44,5 @@ cert.pem
 # System Files
 .DS_Store
 Thumbs.db
+
+.env

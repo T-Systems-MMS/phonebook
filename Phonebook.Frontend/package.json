@@ -1,6 +1,6 @@
 {
   "name": "phonebook",
-  "version": "0.4.0",
+  "version": "1.0.3",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -60,9 +60,9 @@
     "core-js": "^2.5.7",
     "ng2-rx-componentdestroyed": "^3.0.1",
     "ngx-clipboard": "^11.1.9",
-    "ngx-vcard": "^1.1.6",
     "ngx-infinite-scroll": "^7.0.0",
     "ngx-propagation-stop": "^1.0.6",
+    "ngx-vcard": "^1.1.6",
     "raven-js": "^3.27.0",
     "rxjs": "^6.3.3",
     "uglify-es": "3.3.9",
@@ -99,6 +99,8 @@
     "protractor": "^5.4.1",
     "protractor-console-plugin": "^0.1.1",
     "semantic-release": "^15.12.2",
+    "semantic-release-docker-test": "^1.0.2",
+    "simple-commit-message": "^4.0.3",
     "ts-node": "~7.0.1",
     "tslint": "~5.12.0",
     "typescript": "3.1.6",
@@ -113,48 +115,5 @@
     "commitizen": {
       "path": "Phonebook.Frontend/node_modules/cz-customizable"
     }
-  },
-  "release": {
-    "branch": "master",
-    "verifyConditions": [],
-    "verifyConfig": [],
-    "prepare": [
-      {
-        "path": "@semantic-release/changelog",
-        "changelogFile": "src/changelog.md"
-      },
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "node version.js ${nextRelease.version} ${commits[0].commit.short} ${commits[0].commit.long}"
-      },
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
-      }
-    ],
-    "publish": [
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "echo ##vso[build.addbuildtag]release"
-      }
-    ],
-    "fail": [],
-    "success": [],
-    "analyzeCommits": "simple-commit-message",
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "releaseRules": [
-            {
-              "type": "trans",
-              "release": "patch"
-            }
-          ]
-        }
-      ],
-      "@semantic-release/release-notes-generator"
-    ]
   }
 }
