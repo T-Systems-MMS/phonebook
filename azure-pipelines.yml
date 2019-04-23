@@ -25,6 +25,11 @@ steps:
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'npm install'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)'
+    ArtifactName: 'drop'
+
 - script: |
     npm run release
   workingDirectory: 'Phonebook.Frontend/'
