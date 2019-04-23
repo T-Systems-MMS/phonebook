@@ -34,6 +34,11 @@ steps:
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'ls'
 
+- script: |
+    cat .releaserc.json
+  workingDirectory: 'Phonebook.Frontend/'
+  displayName: 'ls'
+
 - task: CopyFiles@2
   inputs:
     contents: |
