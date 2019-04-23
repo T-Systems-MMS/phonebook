@@ -31,7 +31,7 @@ steps:
   displayName: 'ls'
 
 - script: |
-    npm run release
+    npm run release -- --debug
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'Semantic Release'
   env:
