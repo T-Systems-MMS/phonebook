@@ -30,19 +30,6 @@ steps:
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'ls'
 
-- task: CopyFiles@2
-  inputs:
-    contents: |
-      **/*
-      !node_modules/
-      !.git/
-    targetFolder: $(Build.ArtifactStagingDirectory)
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: drop
-
 - script: |
     npm run release
   workingDirectory: 'Phonebook.Frontend/'
