@@ -31,6 +31,7 @@ steps:
 
 - script: |
     ls
+  workingDirectory: 'Phonebook.Frontend/'
   displayName: 'ls'
 
 - task: CopyFiles@2
