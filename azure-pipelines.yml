@@ -20,15 +20,10 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-# - script: |
-#     npx -p @semantic-release/changelog@3.0 -p @semantic-release/exec@3.3 -p semantic-release@15.12 semantic-release
-#   workingDirectory: 'Phonebook.Frontend/'
-#   displayName: 'npx run semantic release'
-
 - script: |
-    npm install --ignore-scripts
+    npx -p simple-commit-message@4.0 -p semantic-release-docker-test@1.0 -p @semantic-release/changelog@3.0 -p @semantic-release/exec@3.3 -p semantic-release@15.12 semantic-release
   workingDirectory: 'Phonebook.Frontend/'
-  displayName: 'npm install'
+  displayName: 'npx run semantic release'
 
 - script: |
     npm run release
