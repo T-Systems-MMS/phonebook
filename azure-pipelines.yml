@@ -29,3 +29,8 @@ steps:
     npm run release
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'Semantic Release'
+  env:
+    GH_TOKEN: $(GH_TOKEN)
+    DOCKER_REGISTRY_PASSWORD: $(DOCKER_REGISTRY_PASSWORD)
+    DOCKER_REGISTRY_USER: $(DOCKER_REGISTRY_USER)
+
