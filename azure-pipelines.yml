@@ -25,6 +25,14 @@ steps:
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'npm install'
 
+- script: |
+    ls
+  displayName: 'ls root'
+
+- script: |
+    ls
+  displayName: 'ls'
+
 - task: CopyFiles@2
   inputs:
     contents: |
