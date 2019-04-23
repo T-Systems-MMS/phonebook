@@ -12,11 +12,6 @@ RUN npm ci
 # Because: https://stackoverflow.com/questions/37715224/copy-multiple-directories-with-one-command
 COPY ./src/ ./src/
 
-COPY ./version.js ./version.js
-ARG DOCKER_TAG
-ARG SOURCE_COMMIT
-RUN node version.js $DOCKER_TAG $SOURCE_BRANCH $SOURCE_COMMIT
-
 COPY ["angular.json", "tsconfig.json", "tslint.json", "./"]
 RUN npm run build:de
 RUN npm run build:en
@@ -28,16 +23,7 @@ RUN npm run build:en
 ##################
 
 FROM nginx:1.15.8
-
-RUN rm /usr/share/nginx/html/index.html
-COPY --from=builder /usr/local/app/dist /usr/share/nginx/html
-
 WORKDIR /etc/nginx
-RUN rm ./conf.d/default.conf
-COPY ./nginx/nginx.conf ./nginx.conf
-COPY ./nginx/conf.d ./conf.d
-COPY ./substitute_variables.sh ./substitute_variables.sh
-RUN chmod +x ./substitute_variables.sh
 
 ARG BASE_URL
 ARG RAVEN_URL
@@ -46,6 +32,16 @@ ARG OLD_EMPLOYEE_PICTURE_ENDPOINT
 ARG ASSETS_ENDPOINT
 ARG CONTACT_EMAIL
 ARG CONTACT_URL
+
+RUN rm ./conf.d/default.conf
+COPY ./nginx/nginx.conf ./nginx.conf
+COPY ./nginx/conf.d ./conf.d
+
+COPY ./substitute_variables.sh ./substitute_variables.sh
+RUN chmod +x ./substitute_variables.sh
+
+RUN rm /usr/share/nginx/html/index.html
+COPY --from=builder /usr/local/app/dist /usr/share/nginx/html
 
 ENTRYPOINT ["./substitute_variables.sh", "/usr/share/nginx/html"]
 CMD ["nginx"]
