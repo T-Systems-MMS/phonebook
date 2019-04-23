@@ -14,28 +14,69 @@ pr:
 pool:
   vmImage: 'Ubuntu-16.04'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
 
-- script: |
-    npm install -g --ignore-scripts simple-commit-message@4.0 semantic-release-docker-test@1.0 @semantic-release/changelog@3.0 @semantic-release/exec@3.3 semantic-release@15.12
-  workingDirectory: 'Phonebook.Frontend/'
-  displayName: 'npx run semantic release'
+jobs:
+  - job: E2E
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
 
-# - script: |
-#     npm install --ignore-scripts
-#   workingDirectory: 'Phonebook.Frontend/'
-#   displayName: 'npm install'
+    - script: |
+        npm install
+      workingDirectory: 'Phonebook.Frontend/'
+      displayName: 'npm install'
 
-- script: |
-    npm run release
-  workingDirectory: 'Phonebook.Frontend/'
-  displayName: 'Semantic Release'
-  env:
-    GH_TOKEN: $(GH_TOKEN)
-    DOCKER_REGISTRY_PASSWORD: $(DOCKER_REGISTRY_PASSWORD)
-    DOCKER_REGISTRY_USER: $(DOCKER_REGISTRY_USER)
+    - script: |
+        npm run e2e
+      workingDirectory: 'Phonebook.Frontend/'
+      displayName: 'run e2e test'
+
+  - job: Unit
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install
+      workingDirectory: 'Phonebook.Frontend/'
+      displayName: 'npm install'
+
+    - script: |
+        npm run test
+      workingDirectory: 'Phonebook.Frontend/'
+      displayName: 'run unit test'
+
+  - job: Normal Build
+    dependsOn:
+      - E2E
+      - Unit
+    condition: and(succeeded('E2E'), succeeded('Unit'), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install -g --ignore-scripts simple-commit-message@4.0 semantic-release-docker-test@1.0 @semantic-release/changelog@3.0 @semantic-release/exec@3.3 semantic-release@15.12
+      workingDirectory: 'Phonebook.Frontend/'
+      displayName: 'npx run semantic release'
+
+    # - script: |
+    #     npm install --ignore-scripts
+    #   workingDirectory: 'Phonebook.Frontend/'
+    #   displayName: 'npm install'
+
+    - script: |
+        npm run release
+      workingDirectory: 'Phonebook.Frontend/'
+      displayName: 'Semantic Release'
+      env:
+        GH_TOKEN: $(GH_TOKEN)
+        DOCKER_REGISTRY_PASSWORD: $(DOCKER_REGISTRY_PASSWORD)
+        DOCKER_REGISTRY_USER: $(DOCKER_REGISTRY_USER)
 
