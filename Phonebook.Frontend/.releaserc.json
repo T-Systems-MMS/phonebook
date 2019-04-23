@@ -17,11 +17,11 @@
     },
     {
       "path": "@semantic-release/exec",
-      "cmd": "docker pull danielhabenicht/builder:latest"
+      "cmd": "docker pull danielhabenicht/builder:latest || true"
     },
     {
       "path": "@semantic-release/exec",
-      "cmd": "docker pull danielhabenicht/phonebook:latest"
+      "cmd": "docker pull danielhabenicht/phonebook:latest || true"
     },
     {
       "path": "@semantic-release/exec",
