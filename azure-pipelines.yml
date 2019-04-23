@@ -21,17 +21,12 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
+    npm install --ignore-scripts
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'npm install'
 
 - script: |
-    ls -ld .?*
-  workingDirectory: 'Phonebook.Frontend/'
-  displayName: 'ls'
-
-- script: |
-    npm run release -- --debug
+    npm run release
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'Semantic Release'
   env:
