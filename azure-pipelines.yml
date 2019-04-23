@@ -21,7 +21,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install -g simple-commit-message@4.0 semantic-release-docker-test@1.0 @semantic-release/changelog@3.0 @semantic-release/exec@3.3 semantic-release@15.12
+    npm install -g --ignore-scripts simple-commit-message@4.0 semantic-release-docker-test@1.0 @semantic-release/changelog@3.0 @semantic-release/exec@3.3 semantic-release@15.12
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'npx run semantic release'
 
