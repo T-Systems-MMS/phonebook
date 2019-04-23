@@ -51,7 +51,7 @@ jobs:
     workingDirectory: 'Phonebook.Frontend/'
     displayName: 'run unit test'
 
-- job: Normal Build
+- job: Normal_Build
   pool:
     vmImage: 'Ubuntu-16.04'
   dependsOn:
