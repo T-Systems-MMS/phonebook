@@ -25,10 +25,18 @@ steps:
   workingDirectory: 'Phonebook.Frontend/'
   displayName: 'npm install'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'Phonebook.Frontend/'
+    contents: |
+      '!node_modules/'
+      '**/*'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)'
-    ArtifactName: 'drop'
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: drop
 
 - script: |
     npm run release
