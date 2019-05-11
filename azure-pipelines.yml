@@ -20,7 +20,7 @@ jobs:
   - task: Docker@2
     inputs:
       containerRegistry: 'DanielHabenicht'
-      repository: 'DanielHabenicht/test'
+      repository: 'danielhabenicht/test'
       command: 'buildAndPush'
       Dockerfile: 'Phonebook.Frontend/dev.Dockerfile'
       tags: '$(Build.BuildId)'
