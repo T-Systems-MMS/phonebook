@@ -28,7 +28,7 @@ jobs:
     vmImage: 'Ubuntu-16.04'
   variables:
     myVarFromJobA: $[ dependencies.BuildBase.outputs['setvarStep.myOutputVar'] ]
-  container: $[variables['myVarFromJobA']]
+  container: $[variables['Build.BuildId']]
   steps:
   - script: echo $(myVarFromJobA)
     name: echovar
