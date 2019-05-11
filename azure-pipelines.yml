@@ -13,10 +13,25 @@ pr:
 
 
 jobs:
+- job: BuildBase
+  pool:
+    vmImage: 'ubuntu-16.04'
+  steps:
+  - powershell: echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]12"
+    name: setvarStep
+  - script: echo $(setvarStep.myOutputVar)
+    name: echovar  
+
 - job: E2E
+  dependsOn: BuildBase
   pool:
     vmImage: 'Ubuntu-16.04'
+  container: node:$[dependencies.BuildBase.outputs['setvarStep.myOutputVar']]
+  variables:
+    myVarFromJobA: $[ dependencies.BuildBase.outputs['setvarStep.myOutputVar'] ]
   steps:
+  - script: echo $(myVarFromJobA)
+    name: echovar
   - task: NodeTool@0
     inputs:
       versionSpec: '10.x'
