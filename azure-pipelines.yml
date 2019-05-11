@@ -20,11 +20,14 @@ jobs:
   - task: Docker@2
     inputs:
       containerRegistry: 'DanielHabenicht'
-      repository: 'test'
+      repository: 'DanielHabenicht/test'
       command: 'buildAndPush'
       Dockerfile: 'Phonebook.Frontend/dev.Dockerfile'
+      tags: '$(Build.BuildId)'
+
   - powershell: echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]$(Build.BuildId)"
     name: setvarStep
+
   - script: echo $(setvarStep.myOutputVar)
     name: echovar  
 
