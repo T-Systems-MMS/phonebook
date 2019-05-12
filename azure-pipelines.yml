@@ -21,13 +21,13 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: 'Phonebook.Frontend/utility/'
-      customCommand: 'install hash-files'
+      customCommand: 'install -g hash-files'
   - task: Bash@3
     name: checkBaseBuild
     inputs:
       targetType: 'inline'
       script: 'node checkBaseBuild.js'
-      workingDirectory: ''
+      workingDirectory: 'Phonebook.Frontend/utility/'
       failOnStderr: true
 
   - task: Docker@2
