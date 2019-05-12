@@ -27,10 +27,10 @@ jobs:
   - task: Bash@3
     inputs:
       targetType: 'inline'
-      script: 'docker build -t $(variables.dockerId)/$(variables.dockerRepo):$(checkBaseBuild.imageTag) -t $(variables.dockerId)/$(variables.dockerRepo):latest -f dev.Dockerfile .
-              docker login -u $(dockerId) -p $(pswd)
-              docker push $(dockerId)/$(dockerRepo):$(checkBaseBuild.imageTag)
-              docker push $(dockerId)/$(dockerRepo):latest'
+      script: 'docker build -t $env:dockerId/$env:dockerRepo:$(checkBaseBuild.imageTag) -t $env:dockerId/$env:dockerRepo:latest -f dev.Dockerfile .
+              docker login -u $env:dockerId -p $env:pswd
+              docker push $env:dockerId/$env:dockerRepo:$(checkBaseBuild.imageTag)
+              docker push $env:dockerId/$env:dockerRepo:latest'
       workingDirectory: 'Phonebook.Frontend/'
       failOnStderr: true
     env:
