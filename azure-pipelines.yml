@@ -31,7 +31,7 @@ jobs:
       script: 'docker build -t $dockerId/$dockerRepo:$(checkBaseBuild.imageTag) -t $dockerId/$dockerRepo:latest -f dev.Dockerfile .
               docker login -u $dockerId -p $pswd
               docker push $dockerId/$dockerRepo:$(checkBaseBuild.imageTag)
-              docker push $dockerId/$env:dockerRepo:latest'
+              docker push $dockerId/$dockerRepo:latest'
       workingDirectory: 'Phonebook.Frontend/'
       failOnStderr: true
     env:
