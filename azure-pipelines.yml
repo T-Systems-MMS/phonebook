@@ -39,18 +39,18 @@ jobs:
       tags: '$(Build.BuildId)'
     condition: eq(variables['checkBaseBuild.changes'], 'true')
 
-  - script: echo $(checkBaseBuild.myOutputVar)
-    name: echovar  
+  - script: echo "##vso[task.setvariable variable=imageName;isOutput=true]danielhabenicht/test:${imageTag}"
+    name: setvarStep  
 
 - job: E2E
   dependsOn: BuildBase
   pool:
     vmImage: 'Ubuntu-16.04'
   variables:
-    imageTag: $[ dependencies.BuildBase.outputs['setvarStep.myOutputVar'] ]
-  container: $[variables['imageTag']]
+    imageName: $[ dependencies.BuildBase.outputs['setvarStep.imageName'] ]
+  container: $[variables['imageName']]
   steps:
-  - script: echo $(imageTag)
+  - script: echo $(imageName)
     name: echovar
   - task: NodeTool@0
     inputs:
