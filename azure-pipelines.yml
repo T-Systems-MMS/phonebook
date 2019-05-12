@@ -24,16 +24,12 @@ jobs:
       workingDirectory: 'Phonebook.Frontend/utility/'
       failOnStderr: true
   
-  - task: Bash@3
-    condition: eq(variables['checkBaseBuild.changes'], 'true')
-    inputs:
-      targetType: 'inline'
-      script: 'docker build -t $(dockerId)/$dockerRepo:$(checkBaseBuild.imageTag) -t $dockerId/$dockerRepo:latest -f dev.Dockerfile .
-              docker login -u $dockerId -p $pswd
-              docker push $dockerId/$dockerRepo:$(checkBaseBuild.imageTag)
-              docker push $dockerId/$dockerRepo:latest'
-      workingDirectory: 'Phonebook.Frontend/'
-      failOnStderr: true
+  - bash: |
+      docker build -t $(dockerId)/$dockerRepo:$(checkBaseBuild.imageTag) -t $dockerId/$dockerRepo:latest -f dev.Dockerfile .
+      docker login -u $dockerId -p $pswd
+      docker push $dockerId/$dockerRepo:$(checkBaseBuild.imageTag)
+      docker push $dockerId/$dockerRepo:latest'
+    workingDirectory: 'Phonebook.Frontend/'
     env:
       pswd: $(DOCKER_REGISTRY_PASSWORD)
       dockerId: $(DOCKER_REGISTRY_USER)
