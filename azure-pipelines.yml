@@ -25,6 +25,7 @@ jobs:
       failOnStderr: true
   
   - task: Bash@3
+    condition: eq(variables['checkBaseBuild.changes'], 'true')
     inputs:
       targetType: 'inline'
       script: 'docker build -t $env:dockerId/$env:dockerRepo:$(checkBaseBuild.imageTag) -t $env:dockerId/$env:dockerRepo:latest -f dev.Dockerfile .
