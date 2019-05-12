@@ -17,10 +17,17 @@ function hashFiles(files) {
   return checksum(hashes);
 }
 
+files = ['../package.json', '../package-lock.json', '../dev.Dockerfile'];
+
 // options is optional
-const hash = hashFiles(['../package.json', '../package-lock.json', '../dev.Dockerfile']);
+const hash = hashFiles(files);
 
 console.log(`##vso[task.setvariable variable=imageTag;isOutput=true]${hash}`);
+console.log(`Hash of files:`);
+files.forEach(file => {
+  console.log(` - ${file}`);
+});
+console.log(`is ${hash}`);
 const req = https.get(
   {
     hostname: 'hub.docker.com',
@@ -29,11 +36,13 @@ const req = https.get(
     method: 'GET'
   },
   res => {
-    console.log(res.statusCode);
+    console.log(`Image exists at registry? ${res.statusCode}`);
 
     if (res.statusCode === 404) {
+      console.log(` => Building new Image`);
       console.log(`##vso[task.setvariable variable=changes;isOutput=true]true`);
     } else if (res.statusCode === 200) {
+      console.log(` => No need to build a new Image`);
       console.log(`##vso[task.setvariable variable=changes;isOutput=true]false`);
     }
   }
