@@ -17,11 +17,6 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
-  - task: Npm@1
-    inputs:
-      command: 'custom'
-      workingDir: 'Phonebook.Frontend/utility/'
-      customCommand: 'install hash-files'
   - task: Bash@3
     name: checkBaseBuild
     inputs:
@@ -52,15 +47,6 @@ jobs:
   steps:
   - script: echo $(imageName)
     name: echovar
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
-
-  - script: |
-      npm install
-    workingDirectory: 'Phonebook.Frontend/'
-    displayName: 'npm install'
 
   - script: |
       npm run e2e
@@ -68,19 +54,13 @@ jobs:
     displayName: 'run e2e test'
 
 - job: Unit
+  dependsOn: BuildBase
   pool:
     vmImage: 'Ubuntu-16.04'
+  variables:
+    imageName: $[ dependencies.BuildBase.outputs['setvarStep.imageName'] ]
+  container: $[variables['imageName']]
   steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
-
-  - script: |
-      npm install
-    workingDirectory: 'Phonebook.Frontend/'
-    displayName: 'npm install'
-
   - script: |
       npm run test
     workingDirectory: 'Phonebook.Frontend/'
