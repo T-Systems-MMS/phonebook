@@ -23,6 +23,7 @@ jobs:
       script: 'node checkBaseBuild.js'
       workingDirectory: 'Phonebook.Frontend/utility/'
       failOnStderr: true
+
   - script: |
       docker build -t $(dockerId)/$(dockerRepo):$(checkBaseBuild.imageTag) -t $(dockerId)/$(dockerRepo):latest -f dev.Dockerfile .
       docker login -u $(dockerId) -p $(pswd)
