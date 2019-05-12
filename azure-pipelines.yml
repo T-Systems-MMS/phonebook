@@ -21,7 +21,7 @@ jobs:
     inputs:
       command: 'custom'
       workingDir: 'Phonebook.Frontend/utility/'
-      customCommand: 'install -g hash-files'
+      customCommand: 'install hash-files'
   - task: Bash@3
     name: checkBaseBuild
     inputs:
