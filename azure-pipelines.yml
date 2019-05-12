@@ -17,6 +17,14 @@ jobs:
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
+  - task: Bash@3
+    name: checkBaseBuild
+    inputs:
+      targetType: 'inline'
+      script: 'node checkBaseBuild.js'
+      workingDirectory: 'Phonebook.Frontend/utility/'
+      failOnStderr: true
+
   - task: Docker@2
     inputs:
       containerRegistry: 'DanielHabenicht'
@@ -24,11 +32,9 @@ jobs:
       command: 'buildAndPush'
       Dockerfile: 'Phonebook.Frontend/dev.Dockerfile'
       tags: '$(Build.BuildId)'
+    condition: eq(variables['checkBaseBuild.changes'], 'true')
 
-  - powershell: echo "##vso[task.setvariable variable=myOutputVar;isOutput=true]danielhabenicht/test:$(Build.BuildId)"
-    name: setvarStep
-
-  - script: echo $(setvarStep.myOutputVar)
+  - script: echo $(checkBaseBuild.myOutputVar)
     name: echovar  
 
 - job: E2E
