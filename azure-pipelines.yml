@@ -11,7 +11,6 @@ pr:
     include:
     - Phonebook.Frontend/*
 
-
 jobs:
 - job: BuildBase
   pool:
@@ -24,15 +23,16 @@ jobs:
       script: 'node checkBaseBuild.js'
       workingDirectory: 'Phonebook.Frontend/utility/'
       failOnStderr: true
-
-  - task: Docker@2
-    inputs:
-      containerRegistry: 'DanielHabenicht'
-      repository: 'danielhabenicht/test'
-      command: 'buildAndPush'
-      Dockerfile: 'Phonebook.Frontend/dev.Dockerfile'
-      tags: '$(checkBaseBuild.imageTag)'
-    condition: eq(variables['checkBaseBuild.changes'], 'true')
+  - script: |
+      docker build -t $(dockerId)/$(dockerRepo):$(checkBaseBuild.imageTag) -t $(dockerId)/$(dockerRepo):latest -f dev.Dockerfile .
+      docker login -u $(dockerId) -p $(pswd)
+      docker push $(dockerId)/$(dockerRepo):$(checkBaseBuild.imageTag)
+      docker push $(dockerId)/$(dockerRepo):latest
+    workingDirectory: 'Phonebook.Frontend/'
+    env:
+      pswd: $(DOCKER_REGISTRY_PASSWORD)
+      dockerId: $(DOCKER_REGISTRY_USER)
+      dockerRepo: test
 
   - script: echo "##vso[task.setvariable variable=imageName;isOutput=true]danielhabenicht/test:$(checkBaseBuild.imageTag)"
     name: setvarStep  
