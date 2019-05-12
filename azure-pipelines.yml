@@ -31,10 +31,10 @@ jobs:
       repository: 'danielhabenicht/test'
       command: 'buildAndPush'
       Dockerfile: 'Phonebook.Frontend/dev.Dockerfile'
-      tags: '$(imageTag)'
+      tags: '$(checkBaseBuild.imageTag)'
     condition: eq(variables['checkBaseBuild.changes'], 'true')
 
-  - script: echo "##vso[task.setvariable variable=imageName;isOutput=true]danielhabenicht/test:$(imageTag)"
+  - script: echo "##vso[task.setvariable variable=imageName;isOutput=true]danielhabenicht/test:$(checkBaseBuild.imageTag)"
     name: setvarStep  
 
 - job: E2E
