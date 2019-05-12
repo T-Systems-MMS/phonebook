@@ -25,14 +25,14 @@ jobs:
       failOnStderr: true
   
   - bash: |
-      docker build -t $(dockerId)/$dockerRepo:$(checkBaseBuild.imageTag) -t $dockerId/$dockerRepo:latest -f dev.Dockerfile .
-      docker login -u $dockerId -p $pswd
-      docker push $dockerId/$dockerRepo:$(checkBaseBuild.imageTag)
-      docker push $dockerId/$dockerRepo:latest'
+      docker build -t $(DOCKER_REGISTRY_USER)/$dockerRepo:$(checkBaseBuild.imageTag) -t $DOCKER_REGISTRY_USER/$dockerRepo:latest -f dev.Dockerfile .
+      docker login -u $DOCKER_REGISTRY_USER -p $pswd
+      docker push $DOCKER_REGISTRY_USER/$dockerRepo:$(checkBaseBuild.imageTag)
+      docker push $DOCKER_REGISTRY_USER/$dockerRepo:latest'
     workingDirectory: 'Phonebook.Frontend/'
     env:
       pswd: $(DOCKER_REGISTRY_PASSWORD)
-      dockerId: $(DOCKER_REGISTRY_USER)
+      DOCKER_REGISTRY_USER: $(DOCKER_REGISTRY_USER)
       dockerRepo: test
 
   - script: echo "##vso[task.setvariable variable=imageName;isOutput=true]danielhabenicht/test:$(checkBaseBuild.imageTag)"
