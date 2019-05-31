@@ -1,7 +1,16 @@
-#change-profile-picture {
+#button {
   margin-top: 10px;
 }
 
 input[type='file'] {
   display: none;
+}
+
+#loading-spinner {
+  margin: auto;
+  margin-right: 10px;
+}
+
+mat-spinner {
+  display: inline-block;
 }

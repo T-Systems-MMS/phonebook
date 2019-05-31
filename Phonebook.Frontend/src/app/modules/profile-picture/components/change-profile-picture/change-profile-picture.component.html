@@ -1,14 +1,21 @@
-<div *ngIf="isVisible()">
+<div *ngIf="isVisible()" id="button" class="pb-flex">
+  <div id="loading-spinner">
+    <mat-spinner *ngIf="uploading" [diameter]="24"></mat-spinner>
+  </div>
   <label>
-    <button id="change-profile-picture" mat-raised-button (click)="fileInput.click()" i18n-aria-label="ChangeProfilePictureComponent|Aria Label for the 'Change Picture' Button@@ChangeProfilePictureComponentChangeButtonAriaLabel"
+    <button id="change-profile-picture" mat-raised-button (click)="fileInput.click()"
+      i18n-aria-label="ChangeProfilePictureComponent|Aria Label for the 'Change Picture' Button@@ChangeProfilePictureComponentChangeButtonAriaLabel"
       aria-label="This opens up a dialog to select a profile picture from you file system.">
       <mat-icon>edit</mat-icon>
-      <ng-container i18n="ChangeProfilePictureComponent|Button for changing the Profile Picture@@ChangeProfilePictureComponentChangeButton">Change
+      <ng-container
+        i18n="ChangeProfilePictureComponent|Button for changing the Profile Picture@@ChangeProfilePictureComponentChangeButton">
+        Change
         Picture</ng-container>
     </button>
     <input name="datei" type="file" size="50" accept="image/*" (change)="uploadFile($event)" #fileInput>
   </label>
-  <button id="delete-profile-picture" mat-icon-button color="warn" (click)="deleteProfilePicture()" i18n-matTooltip="ChangeProfilePictureComponent|Tooltip for deleting the Profile picture@@ChangeProfilePictureComponentDeleteButtonTooltip"
+  <button id="delete-profile-picture" mat-icon-button color="warn" (click)="deleteProfilePicture()"
+    i18n-matTooltip="ChangeProfilePictureComponent|Tooltip for deleting the Profile picture@@ChangeProfilePictureComponentDeleteButtonTooltip"
     i18n-aria-label="ChangeProfilePictureComponent|Aria Label for deleting the Profile Picture@@ChangeProfilePictureComponentDeleteButtonAriaLabel"
     matTooltip="Delete your Profile Picture" aria-label="Button for deleting your Profile Picture.">
     <mat-icon>delete</mat-icon>

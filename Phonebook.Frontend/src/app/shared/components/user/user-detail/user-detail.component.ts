@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, HostListener } from '@angular/core';
 import { Person, PersonType } from 'src/app/shared/models';
 import { MailService } from 'src/app/services/mail.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
@@ -25,6 +25,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   public columns: typeof ColumnDefinitions = ColumnDefinitions;
   @Select(BookmarksState)
   public bookmarks$: Observable<Person[]>;
+  public randomMoney: string;
   public vCardEncoding: typeof VCardEncoding = VCardEncoding;
   public get address(): string[] {
     return this.person.Location.RoomCollection[0].Description.split(',');
@@ -43,13 +44,14 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit() {
+    this.getRandomMoney();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
       const index = bookmarks.findIndex(p => p.Id === this.person.Id);
       if (index > -1) {
         this.bookmarked = Bookmarked.isBookmarked;
       } else {
         this.bookmarked = Bookmarked.isNotBookmarked;
-      }
+      }      
     });
     this.vCard = {
       name: { firstNames: this.person.Firstname, lastNames: this.person.Surname, namePrefix: this.person.Title },
@@ -87,6 +89,11 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {}
+
+  @HostListener('click')
+  public getRandomMoney(): void{
+    this.randomMoney = (Math.random() * 1000000).toFixed(2);
+  }
 }
 
 enum Bookmarked {

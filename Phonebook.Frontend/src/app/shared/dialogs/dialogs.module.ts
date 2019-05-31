@@ -4,11 +4,12 @@ import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-con
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from 'src/app/shared/material.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent],
-  imports: [BrowserModule, MaterialModule],
+  imports: [BrowserModule, RouterModule, MaterialModule],
   exports: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent],
   entryComponents: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent]
 })
-export class DialogsModule { }
+export class DialogsModule {}

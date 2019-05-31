@@ -4,13 +4,25 @@ import { ChangeProfilePictureComponent } from './components/change-profile-pictu
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { ProfilePictureEnlargeDialog } from './components/profile-picture/enlarge-dialog/profile-picture-enlarge.dialog';
 import { CommonModule } from '@angular/common';
-import { MatIconModule, MatSnackBarModule, MatButtonModule, MatDialogModule } from '@angular/material';
+import {
+  MatIconModule,
+  MatSnackBarModule,
+  MatButtonModule,
+  MatDialogModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
+import { ChangeProfilePictureDialogComponent } from './components/change-profile-picture-dialog/change-profile-picture-dialog.component';
 
 @NgModule({
-  imports: [CommonModule, MatIconModule, MatSnackBarModule, MatButtonModule, MatDialogModule],
-  declarations: [ChangeProfilePictureComponent, ProfilePictureComponent, ProfilePictureEnlargeDialog],
+  imports: [CommonModule, MatIconModule, MatSnackBarModule, MatButtonModule, MatDialogModule, MatProgressSpinnerModule],
+  declarations: [
+    ChangeProfilePictureComponent,
+    ProfilePictureComponent,
+    ProfilePictureEnlargeDialog,
+    ChangeProfilePictureDialogComponent
+  ],
   providers: [ProfilePictureService],
   exports: [ChangeProfilePictureComponent, ProfilePictureComponent, ProfilePictureEnlargeDialog],
-  entryComponents: [ProfilePictureEnlargeDialog]
+  entryComponents: [ProfilePictureEnlargeDialog, ChangeProfilePictureDialogComponent]
 })
-export class ProfilePictureModule { }
+export class ProfilePictureModule {}

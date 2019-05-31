@@ -1,57 +1,57 @@
 <div class="displayDialog">
-  <h2 mat-dialog-title>Hi! Toll, dass du dir das neue Phonebook anguckst.</h2>
+  <h2 mat-dialog-title>Willkommen beim neuen Phonebook!</h2>
   <mat-dialog-content>
-    <h3>Was gibt es zu sehen?</h3>
     <span>Das neue Phonebook bietet dir nicht nur ein neues Design sondern auch zahlreiche Funktionen, die es besser
       als
       seinen Vorgänger machen:
     </span>
     <mat-list>
       <mat-list-item>
-        Häufig kontaktierte Kollegen können als Favoriten gespeichert werden.
+        <h5 matLine>Das Profilbild kann von dir selbst ausgetauscht werden.</h5>
+        <p matLine>
+          Klicke dafür einfach oben rechts auf <mat-icon>person</mat-icon> Icon und dann auf "Mein
+          Profil".
+        </p>
       </mat-list-item>
       <mat-list-item>
-        Die Suche ist schneller und kann über Filter verfeinert werden.
+        <h5 matLine> Häufig kontaktierte Kollegen können als Favoriten gespeichert werden.</h5>
       </mat-list-item>
       <mat-list-item>
-        Die Tabellenspalten können nach persönlichen Präferenzen angepasst und sortiert werden.
+        <h5 matLine>Die Tabellenspalten können nach persönlichen Präferenzen angepasst und sortiert werden.</h5>
       </mat-list-item>
       <mat-list-item>
-        Personen können über Links geteilt werden.
+        <h5 matLine>Personen können über Links geteilt werden.</h5>
+      </mat-list-item>
+      <mat-list-item>
+        <h5 matLine>Das Phonebook steht dir in Deutsch und Englisch zur Verfügung.</h5>
+        <p matLine>Klicke einfach oben rechts auf das <mat-icon>person</mat-icon> Icon und dann auf
+          "Einstellungen".
+        </p>
+      </mat-list-item>
+      <mat-list-item>
+        <h5 matLine>Eine Raumübersicht</h5>
+        <p matLine>Damit kannst du ganz einfach nachgucken wer wo sitzt. </p>
       </mat-list-item>
     </mat-list>
-    <h3>In nächster Zeit geplant:</h3>
-    <span>Natürlich ist dies noch nicht die finale Version des Phonebooks, wenn du also
-      <a href="https://github.com/T-Systems-MMS/phonebook">Anmerkungen
-        oder Ideen </a>hast
-      lass es uns wissen.
-    </span>
-    <br>
-    <span> Hier ein Überblick an Features die bald verfügbar sind: </span>
-    <mat-list>
-      <mat-list-item>
-        Übersetzung ins Deutsche
-      </mat-list-item>
-      <mat-list-item>
-        Bilder Self-Service
-      </mat-list-item>
-      <mat-list-item>
-        Eine Raumübersicht
-      </mat-list-item>
-    </mat-list>
-    <h3>Mach selbst mit!</h3>
-    <span>Dies ist ein Community-Projekt, es lebt von Kollegen die aktiv mitgestalten.</span>
-    <br>
-    <span> Wenn du also Interesse, Zeit oder Ideen hast und mitmachen möchtest
+
+    <p> Da fehlt noch was oder dir ist direkt der erste Fehler ins Auge gesprungen (hoffentlich nicht)? Dann teile uns
+      deine <a href="https://github.com/T-Systems-MMS/phonebook">Anmerkungen
+        oder Ideen </a> mit. Bugs kannst du <a href="https://github.com/T-Systems-MMS/phonebook">hier</a>
+      melden oder jederzeit oben links.
+    </p>
+    <h3>Aufruf an dich!</h3>
+    <p>Dies ist ein OpenSource-Projekt, es lebt von Mitstreitern die aktiv mitgestalten.</p>
+    <p> Wenn du also Interesse, Zeit oder Ideen hast und mitmachen möchtest
       <a href="https://github.com/T-Systems-MMS/phonebook">melde dich bei uns, bzw. leg direkt
         los</a>.
-      Programmieren ist dafür nämlich keine Voraussetzung! </span>
+      Programmieren ist dafür nämlich keine Voraussetzung! </p>
+
   </mat-dialog-content>
   <div class="spacer"></div>
   <mat-dialog-actions>
-    <!-- <p>Wir nutzen Cookies um die Grundfunktionalitäten der App sicherzustellen.</p> -->
+    <p>Diese Seite nutzt Cookies um die Grundfunktionalität der App sicherzustellen.</p>
     <div class="actions">
-      <button mat-button mat-dialog-close>Cool!</button>
+      <button mat-button mat-dialog-close cdkFocusInitial>Cool!</button>
     </div>
   </mat-dialog-actions>
 </div>
