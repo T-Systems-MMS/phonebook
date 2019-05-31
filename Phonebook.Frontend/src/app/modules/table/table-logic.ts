@@ -1,8 +1,8 @@
-import { Person } from 'src/app/shared/models/classes/Person';
-import { TableSort } from 'src/app/shared/models/interfaces/TableSort';
-import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Column } from 'src/app/shared/models';
+import { Person } from 'src/app/shared/models/classes/Person';
+import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
+import { TableSort } from 'src/app/shared/models/interfaces/TableSort';
 
 /**
  * This Class Contains the Filter and Sort Logic of the User List.
@@ -18,7 +18,7 @@ export class TableLogic {
     if (filterString === '') {
       return persons;
     }
-    const searchString = new RegExp(TableLogic.escapeRegExp(filterString), 'i');
+    const searchString = TableLogic.prepareSearchString(filterString);
 
     return persons.filter(person => {
       for (let i = 0; i < searchColumns.length; i++) {
@@ -51,7 +51,7 @@ export class TableLogic {
       return new RankedListItem<Person>(person);
     });
 
-    const searchString = new RegExp(TableLogic.escapeRegExp(rankString), 'i');
+    const searchString = TableLogic.prepareSearchString(rankString);
 
     // Generate the Search Rank
     for (let i = 0; i < rankedList.length; i++) {
@@ -85,8 +85,18 @@ export class TableLogic {
    */
 
   // From here: https://github.com/sindresorhus/escape-string-regexp
-  public static escapeRegExp(str: string): string {
-    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+  public static escapeRegExp(str: string): RegExp {
+    return new RegExp(str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&'), 'i');
+  }
+
+  /**
+   * Prepares the Search String by
+   * 1. Removing Spaces and Commas
+   * 2. Escaping RegEx Characters
+   * @param str String to prepare
+   */
+  public static prepareSearchString(str: string): RegExp {
+    return TableLogic.escapeRegExp(str.replace(/[\s,]/g, ''));
   }
 }
 
