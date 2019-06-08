@@ -1,0 +1,24 @@
+<h2 mat-dialog-title i18n="ChangeProfilePictureDialogComponent|Title@@ChangeProfilePictureDialogComponentTitle">Change
+  Profile Picture</h2>
+<mat-dialog-content i18n="ChangeProfilePictureDialogComponent|Content@@ChangeProfilePictureDialogComponentContent">
+  <p>
+    You're changing your profile picture? Nice! But please notice:
+  </p>
+  <ul>
+    <li>
+      The picture is used only by the Phonebook Application.
+    </li>
+    <li>
+      To upload a profile picture is your free choice.
+    </li>
+    <li>
+      You can change or delete your picture at any time. (Just click the Button right next to the upload Button.)
+    </li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false" i18n="@@GeneralCancelButton">Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial
+    i18n="ChangeProfilePictureDialogComponent|Button to consent sending bug reports@@ChangeProfilePictureDialogComponentButtonChangePicture">Change
+    my Picture!</button>
+</mat-dialog-actions>

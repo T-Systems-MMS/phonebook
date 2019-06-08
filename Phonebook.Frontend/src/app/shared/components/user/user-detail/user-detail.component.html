@@ -6,7 +6,7 @@
           <app-profile-picture mat-card-md-image class="circle" [user]="person" [altText]="person.Id"
             [canEnlargeOnClick]="true">
           </app-profile-picture>
-          <app-change-profile-picture *featureFlag="'change-profile-picture'" [userId]="person.Id">
+          <app-change-profile-picture [userId]="person.Id">
           </app-change-profile-picture>
         </div>
         <mat-card-title>
@@ -109,6 +109,14 @@
               <button mat-button actionDrawer [copy]="person.Contacts.Fax">
                 {{person.Contacts.Fax}}
               </button>
+            </p>
+          </mat-list-item>
+          <mat-list-item *featureFlag="'firstApril'" matTooltip="Happy April Fools' Day." matTooltipPosition="below"
+            i18n-matTooltip="Datapoint|Tooltip for april fools' day information Information@@UserDetailComponentAprilFoolDayTooltip">
+            <mat-icon mat-list-icon>attach_money</mat-icon>
+            <h4 mat-line i18n="Datapoint|Label for Person.Money data@@DataPersonMoney">Salary</h4>
+            <p mat-line>
+              {{randomMoney}} €
             </p>
           </mat-list-item>
         </mat-list>

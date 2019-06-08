@@ -6,7 +6,7 @@ import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/Phoneb
 import { SearchFilter, Column, TableSort } from 'src/app/shared/models';
 
 export class PersonsDataSource extends MatTableDataSource<Person> {
-  private PAGE_SIZE: number = 20;
+  private PAGE_SIZE: number = 30;
   public set pageSize(pageSize: number) {
     this.PAGE_SIZE = pageSize;
     this.updateVisibleData();

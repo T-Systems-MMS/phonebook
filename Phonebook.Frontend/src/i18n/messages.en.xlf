@@ -93,8 +93,8 @@
         <note priority="1" from="meaning">Action-drawer-sheetComponent</note>
       </trans-unit><trans-unit id="GeneralCancelButton" datatype="html">
         <source>Cancel</source><target state="final">Cancel</target>
-        <note priority="1" from="description">Button for cancelling something</note>
-        <note priority="1" from="meaning">GeneralCancelButton</note>
+        
+        
       </trans-unit><trans-unit id="BugReportConsentComponentTitle" datatype="html">
         <source>We
     need your help!</source><target state="final">We
@@ -185,9 +185,11 @@
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentChangeButton" datatype="html">
-        <source>Change
+        <source>
+        Change
         Picture</source>
-        <target state="final">Change
+        <target state="final">
+        Change
         Picture</target>
         <note priority="1" from="description">Button for changing the Profile Picture</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
@@ -231,21 +233,37 @@
                     (beta)</target>
         <note priority="1" from="description">Color Theme SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeDefault" datatype="html">
+      </trans-unit><trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
         <source>
-                                    Default Theme
+                                    Blue Light Theme
                                 </source><target state="final">
-                                    Default Theme
+                                    Blue Light Theme
                                 </target>
         <note priority="1" from="description">Color Theme Option: Defaul</note>
         <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeDark" datatype="html">
+      </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
         <source>
-                                    Dark Theme
+                                    Blue Dark Theme
                                 </source><target state="final">
-                                    Dark Theme
+                                    Blue Dark Theme
                                 </target>
         <note priority="1" from="description">Color Theme Option: Dark</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
+        <source>
+                                    Magenta Dark Theme
+                                </source><target state="final">
+                                    Magenta Dark Theme
+                                </target>
+        <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
+        <source>
+                                    Magenta Light Theme
+                                </source><target state="final">
+                                    Magenta Light Theme
+                                </target>
+        <note priority="1" from="description">Color Theme Option: Magenta Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="navigationDashboard" datatype="html">
@@ -299,10 +317,8 @@
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit>
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
-        <source>Have a nice day
-              </source>
-        <target state="final">Have a nice day
-              </target>
+        <source>Have a nice day</source>
+        <target state="final">Have a nice day</target>
         <note priority="1" from="description">Greetings Message</note>
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit><trans-unit id="NavigationComponentViewModeList" datatype="html">
@@ -325,6 +341,52 @@
         <source>The red bar indicates that you are offline.</source><target state="final">The red bar indicates that you are offline.</target>
         <note priority="1" from="description">Tooltip for bar indicating the user is offline</note>
         <note priority="1" from="meaning">Online-barComponent</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">
+        <source>Change
+  Profile Picture</source><target state="final">Change
+  Profile Picture</target>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentContent" datatype="html">
+        <source>
+  <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+    You're changing your profile picture? Nice! But please notice:
+  <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+  <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul>"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
+      The picture is used only by the Phonebook Application.
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
+      To upload a profile picture is your free choice.
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
+      You can change or delete your picture at any time. (Just click the Button right next to the upload Button.)
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+  <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/>
+</source><target state="final">
+  <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+    You're changing your profile picture? Nice! But please notice:
+  <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+  <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul>"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
+      The picture is used only by the Phonebook Application.
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
+      To upload a profile picture is your free choice.
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
+      You can change or delete your picture at any time. (Just click the Button right next to the upload Button.)
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+  <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/>
+</target>
+        <note priority="1" from="description">Content</note>
+        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentButtonChangePicture" datatype="html">
+        <source>Change
+    my Picture!</source><target state="final">Change
+    my Picture!</target>
+        <note priority="1" from="description">Button to consent sending bug reports</note>
+        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit><trans-unit id="RoomPlanComponentNoPlan" datatype="html">
         <source>
         <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
@@ -353,9 +415,17 @@
         <note priority="1" from="meaning">RoomPlanComponent</note>
       </trans-unit>
       <trans-unit id="navigationBarInfoTooltip" datatype="html">
-        <source>Got Feedback? Found a Bug? Than that`s the right place to click.</source>
-        <target state="final">Got Feedback? Found a Bug? Than that`s the right place to click.</target>
+        <source>Got Feedback? Than that`s the right place to click.</source>
+        <target state="final">Got Feedback? Than that`s the right place to click.</target>
         <note priority="1" from="description">Info Button Tooltip</note>
+        <note priority="1" from="meaning">navigationBar</note>
+      </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
+        <source>Report a Bug</source><target state="final">Report a Bug</target>
+        <note priority="1" from="description">Link to Bug page</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
+      </trans-unit><trans-unit id="navigationBarBugTooltip" datatype="html">
+        <source>Found a Bug? Than that`s the right place to click.</source><target state="final">Found a Bug? Than that`s the right place to click.</target>
+        <note priority="1" from="description">Bug Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
       </trans-unit>
       <trans-unit id="navigationBarColorChangerTooltip" datatype="html">
@@ -746,6 +816,28 @@
     </target>
         <note priority="1" from="description">ContributeSection</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSubTitleCookies" datatype="html">
+        <source>
+        Cookies Notice
+      </source><target state="final">
+        Cookies Notice
+      </target>
+        <note priority="1" from="description">Subtitle for Cookies</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
+        <source>
+      <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item>"/>
+        This site uses cokies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
+        language you want to use.
+      <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item>"/>
+    </source><target state="final">
+      <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item>"/>
+        This site uses cokies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
+        language you want to use.
+      <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item>"/>
+    </target>
+        <note priority="1" from="description">CookiesSection</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleLicenses" datatype="html">
         <source>
         Licenses
@@ -770,9 +862,13 @@
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleAttributions" datatype="html">
         <source>
-          Icon of the Phonebook made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Gregor Cresnar<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> from <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+          Icon of the Phonebook made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Gregor Cresnar<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> from <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> is
+          licensed by <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a>"/>CC 3.0
+            BY<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
         </source><target state="final">
-          Icon of the Phonebook made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Gregor Cresnar<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> from <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+          Icon of the Phonebook made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Gregor Cresnar<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> from <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> is
+          licensed by <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a>"/>CC 3.0
+            BY<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
         </target>
         <note priority="1" from="description">Attributions SubTitle</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
@@ -865,6 +961,14 @@
       </trans-unit><trans-unit id="DataPersonFax" datatype="html">
         <source>Fax</source><target state="final">Fax</target>
         <note priority="1" from="description">Label for Person.Fax data</note>
+        <note priority="1" from="meaning">Datapoint</note>
+      </trans-unit><trans-unit id="DataPersonMoney" datatype="html">
+        <source>Salary</source><target state="final">Salary</target>
+        <note priority="1" from="description">Label for Person.Money data</note>
+        <note priority="1" from="meaning">Datapoint</note>
+      </trans-unit><trans-unit id="UserDetailComponentAprilFoolDayTooltip" datatype="html">
+        <source>Happy April Fools' Day.</source><target state="final">Happy April Fools' Day.</target>
+        <note priority="1" from="description">Tooltip for april fools' day information Information</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="UserDetailComponentSubTitleFurtherInformation" datatype="html">
         <source>
@@ -1033,11 +1137,11 @@
       </trans-unit>
       <trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source>
-      Your search returned no results.
-    </source>
+    Your search returned no results.
+  </source>
         <target state="final">
-      Your search returned no results.
-    </target>
+    Your search returned no results.
+  </target>
         <note priority="1" from="description">Sentence displayed if search did not return any results</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="AppComponentServiceWorkerSuccessMessage" datatype="html">
@@ -1082,8 +1186,8 @@
         <note priority="1" from="meaning">GeneralErrorMessageCopy</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentErrorWrongFileType" datatype="html">
-        <source>Currently only JPEG images are supported.</source>
-        <target state="final">Currently only JPEG images are supported.</target>
+        <source>The File Type is not supported.</source>
+        <target state="final">The File Type is not supported.</target>
         <note priority="1" from="description">Error Message if wrong File Type is supplied</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
@@ -1106,8 +1210,8 @@
         <note priority="1" from="meaning">GeneralErrorMessage</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentErrorFileSize" datatype="html">
-        <source>File should be smaller than</source>
-        <target state="final">File should be smaller than</target>
+        <source>Your file is too big! It should be smaller than</source>
+        <target state="final">Your file is too big! It should be smaller than</target>
         <note priority="1" from="description">Error Message if supplied file size is to big (without size and unit)</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
@@ -1162,6 +1266,10 @@
         <source>Fixed what?</source><target state="final">Fixed what?</target>
         <note priority="1" from="description">Snack Bar display Action Button for a feature update</note>
         <note priority="1" from="meaning">ReleaseInfoService</note>
+      </trans-unit><trans-unit id="navigationBarGreetingsMessageFirstApril" datatype="html">
+        <source>Happy April Fools' Day</source><target state="final">Happy April Fools' Day</target>
+        <note priority="1" from="description">Greetings Message on first April</note>
+        <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit>
     </body>
   </file>

@@ -8,7 +8,9 @@ import { EnvironmentService, Environment } from 'src/app/services/environment.se
 @Injectable()
 export class FeatureFlagService {
   private CACHED_FLAGS: Observable<{ [flag: string]: number }>;
-  private flagOverwrites: { [flag: string]: boolean } = {};
+  private flagOverwrites: { [flag: string]: boolean } = {
+    firstApril: FeatureFlagService.isFirstApril(new Date())
+  };
   private flagOverwriteEmitter: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
@@ -111,4 +113,8 @@ export class FeatureFlagService {
   private randomBoolean(percentage: number): boolean {
     return Math.random() >= percentage / 100;
   }
+
+ public static isFirstApril(date: Date): boolean {
+  const firstApril = new Date('2019-04-01T00:00:00')
+  return date.getDate() == firstApril.getDate() &&  date.getMonth() == firstApril.getMonth()}
 }
