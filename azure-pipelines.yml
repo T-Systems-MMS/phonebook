@@ -6,96 +6,62 @@
 pr:
   branches:
     include:
-    - master
+      - master
   paths:
     include:
-    - Phonebook.Frontend/*
+      - Phonebook.Frontend/*
 
 jobs:
-- job: BuildBase
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
-  - task: Bash@3
-    name: checkBaseBuild
-    inputs:
-      targetType: 'inline'
-      script: 'node checkBaseBuild.js'
-      workingDirectory: 'Phonebook.Frontend/utility/'
-      failOnStderr: true
-  
-  - bash: |
-      docker build -t $(DOCKER_REGISTRY_USER)/$dockerRepo:$(checkBaseBuild.imageTag) -t $DOCKER_REGISTRY_USER/$dockerRepo:latest -f dev.Dockerfile .
-      docker login -u $DOCKER_REGISTRY_USER -p $(DOCKER_REGISTRY_PASSWORD)
-      docker push $DOCKER_REGISTRY_USER/$dockerRepo:$(checkBaseBuild.imageTag)
-      docker push $DOCKER_REGISTRY_USER/$dockerRepo:latest
-    workingDirectory: 'Phonebook.Frontend/'
-    env:
-      DOCKER_REGISTRY_PASSWORD: $(DOCKER_REGISTRY_PASSWORD)
-      DOCKER_REGISTRY_USER: $(DOCKER_REGISTRY_USER)
-      dockerRepo: test
+  - job: E2E
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+      - task: Npm@1
+        inputs:
+          command: 'install'
+          workingDir: 'Phonebook.Frontend'
 
-  - script: echo "##vso[task.setvariable variable=imageName;isOutput=true]danielhabenicht/test:$(checkBaseBuild.imageTag)"
-    name: setvarStep  
+      - script: |
+          npm run e2e
+        workingDirectory: 'Phonebook.Frontend/'
+        displayName: 'run e2e test'
 
-- job: E2E
-  dependsOn: BuildBase
-  pool:
-    vmImage: 'Ubuntu-16.04'
-  variables:
-    imageName: $[ dependencies.BuildBase.outputs['setvarStep.imageName'] ]
-  container: $[variables['imageName']]
-  steps:
-  - script: ls
-    name: echovar
+  - job: Unit
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+      - task: Npm@1
+        inputs:
+          command: 'install'
+          workingDir: 'Phonebook.Frontend'
+      - script: |
+          npm run test
+        workingDirectory: 'Phonebook.Frontend/'
+        displayName: 'run unit test'
 
-  - script: |
-      npm run e2e
-    workingDirectory: 'Phonebook.Frontend/'
-    displayName: 'run e2e test'
+  - job: Normal_Build
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    dependsOn:
+      - E2E
+      - Unit
+    condition: and(succeeded('E2E'), succeeded('Unit'), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
+        displayName: 'Install Node.js'
 
-- job: Unit
-  dependsOn: BuildBase
-  pool:
-    vmImage: 'Ubuntu-16.04'
-  variables:
-    imageName: $[ dependencies.BuildBase.outputs['setvarStep.imageName'] ]
-  container: $[variables['imageName']]
-  steps:
-  - script: |
-      npm run test
-    workingDirectory: 'Phonebook.Frontend/'
-    displayName: 'run unit test'
+      - script: |
+          npm install -g --ignore-scripts simple-commit-message@4.0 semantic-release-docker-test@1.0 @semantic-release/changelog@3.0 @semantic-release/exec@3.3 semantic-release@15.12
+        workingDirectory: 'Phonebook.Frontend/'
+        displayName: 'npx run semantic release'
 
-- job: Normal_Build
-  pool:
-    vmImage: 'Ubuntu-16.04'
-  dependsOn:
-    - E2E
-    - Unit
-  condition: and(succeeded('E2E'), succeeded('Unit'), eq(variables['build.sourceBranch'], 'refs/heads/master'))
-  steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
-
-  - script: |
-      npm install -g --ignore-scripts simple-commit-message@4.0 semantic-release-docker-test@1.0 @semantic-release/changelog@3.0 @semantic-release/exec@3.3 semantic-release@15.12
-    workingDirectory: 'Phonebook.Frontend/'
-    displayName: 'npx run semantic release'
-
-  # - script: |
-  #     npm install --ignore-scripts
-  #   workingDirectory: 'Phonebook.Frontend/'
-  #   displayName: 'npm install'
-
-  - script: |
-      npm run release
-    workingDirectory: 'Phonebook.Frontend/'
-    displayName: 'Semantic Release'
-    env:
-      GH_TOKEN: $(GH_TOKEN)
-      DOCKER_REGISTRY_PASSWORD: $(DOCKER_REGISTRY_PASSWORD)
-      DOCKER_REGISTRY_USER: $(DOCKER_REGISTRY_USER)
-
+      - script: |
+          npm run release
+        workingDirectory: 'Phonebook.Frontend/'
+        displayName: 'Semantic Release'
+        env:
+          GH_TOKEN: $(GH_TOKEN)
+          DOCKER_REGISTRY_PASSWORD: $(DOCKER_REGISTRY_PASSWORD)
+          DOCKER_REGISTRY_USER: $(DOCKER_REGISTRY_USER)
