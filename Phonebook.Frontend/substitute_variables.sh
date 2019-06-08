@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # State all variables which should be included here
-variables=( BASE_URL SERVER_NAME RAVEN_URL EMPLOYEE_PICTURES_ENDPOINT ASSETS_ENDPOINT CONTACT_EMAIL CONTACT_URL)
+variables=( BASE_URL SERVER_NAME RAVEN_URL EMPLOYEE_PICTURES_ENDPOINT ASSETS_ENDPOINT CONTACT_EMAIL CONTACT_URL ROOMPLANNINGTOOL_URL)
 
-# BASE_URL - used througout the whoe app (e.g. opensearch.xml) - example: https://example.com/
+# BASE_URL - used througout the whole app (e.g. opensearch.xml) - example: https://example.com/
 
 
 # The first parameter has to be the path to the directory or file which should be used for the substitution
