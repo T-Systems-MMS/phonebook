@@ -66,7 +66,7 @@ describe('Column Filter Functions: ', () => {
   });
 
   it('Organization Unit', () => {
-    expect(ColumnDefinitions.orgUnit.filterFunction(/PF OS/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.orgUnit.filterFunction(/AB CD/i, mockPerson)).toBe(true);
   });
 });
 
