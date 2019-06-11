@@ -1,16 +1,6 @@
-import { mockPerson } from 'src/app/shared/mocks/person';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import {
-  Person,
-  PersonType,
-  Contacts,
-  Messenger,
-  Location,
-  City,
-  Room,
-  Business,
-  PhonebookSortDirection
-} from 'src/app/shared/models';
+import { mockPerson } from 'src/app/shared/mocks/person';
+import { Business, City, Contacts, Location, Messenger, Person, PersonType, PhonebookSortDirection, Room } from 'src/app/shared/models';
 
 const personA = new Person(
   PersonType.Interner_Lernender,
