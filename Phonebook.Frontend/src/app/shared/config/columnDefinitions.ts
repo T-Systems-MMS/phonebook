@@ -58,7 +58,10 @@ export const ColumnDefinitions: {
     sortable: true,
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
-      return filterString.test(person.Firstname + ' ' + person.Surname);
+      return (
+        filterString.test(person.Title + person.Firstname + person.Surname) ||
+        filterString.test(person.Surname + person.Firstname)
+      );
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       const x = Helpers.stringCompare(a.Surname, b.Surname) * Helpers.sortDirection(sortDirection);
@@ -89,7 +92,7 @@ export const ColumnDefinitions: {
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
       if (filterString.source.length >= 4) {
-        if (filterString.test(person.Contacts.Phone)) {
+        if (filterString.test(person.Contacts.Phone.replace(/\s/, ''))) {
           return true;
         }
       }
@@ -107,7 +110,7 @@ export const ColumnDefinitions: {
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
       if (filterString.source.length >= 4) {
-        if (filterString.test(person.Contacts.Mobile)) {
+        if (filterString.test(person.Contacts.Mobile.replace(/\s/, ''))) {
           return true;
         }
       }

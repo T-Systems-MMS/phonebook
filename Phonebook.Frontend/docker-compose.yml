@@ -1,26 +1,28 @@
 version: '3'
 services:
-  angular:
-    build:
-      context: ./
-      dockerfile: dev.Dockerfile
-    command: npm run start
-    volumes:
-      - ./:/usr/local/app
-      - /usr/local/app/node_modules
-    ports:
-      - '4200:4200'
-      - '9222:9222'
-    stdin_open: true
-    tty: true
+  # angular:
+  #   build:
+  #     context: ./
+  #     dockerfile: dev.Dockerfile
+  #   command: npm run start
+  #   volumes:
+  #     - ./:/usr/local/app
+  #     - /usr/local/app/node_modules
+  #   ports:
+  #     - '4200:4200'
+  #     - '9222:9222'
+  #   stdin_open: true
+  #   tty: true
   nginx:
     build:
       context: ./
       dockerfile: Dockerfile
     environment:
+      DEBUG: 'true'
+      BASE_URL: 'http://localhost:8080/'
+      SERVER_NAME: 'phonebook.example.com'
       CONTACT_URL: 'https://example.com'
       CONTACT_EMAIL: 'user@example.com'
-      BASE_URL: 'http://localhost:8080/'
       RAVEN_URL: 'https://sdfdsf9876987sdf987sdfs876sdf9@sentry.example.de/1'
       EMPLOYEE_PICTURES_ENDPOINT: 'https://pictures.example.com/'
       OLD_EMPLOYEE_PICTURE_ENDPOINT: 'https://old-pictures.example.com/'

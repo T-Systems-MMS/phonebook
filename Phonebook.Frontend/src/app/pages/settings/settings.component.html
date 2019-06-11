@@ -34,13 +34,21 @@
                             i18n-matTooltip="navigationBar|Color Change Button Tooltip@@navigationBarColorChangerTooltip"
                             matTooltip="Here you can change the color theme of the app.">
                             <mat-select [(ngModel)]="themeValue" (ngModelChange)="changeTheme(themeValue)">
-                                <mat-option [value]="'default-theme'"
-                                    i18n="SettingsComponent|Color Theme Option: Defaul@@SettingsComponentColorThemeDefault">
-                                    Default Theme
+                                <mat-option [value]="'blue-light-theme'"
+                                    i18n="SettingsComponent|Color Theme Option: Defaul@@SettingsComponentColorThemeBlueLight">
+                                    Blue Light Theme
                                 </mat-option>
-                                <mat-option [value]="'dark-theme'"
-                                    i18n="SettingsComponent|Color Theme Option: Dark@@SettingsComponentColorThemeDark">
-                                    Dark Theme
+                                <mat-option [value]="'blue-dark-theme'"
+                                    i18n="SettingsComponent|Color Theme Option: Dark@@SettingsComponentColorThemeBlueDark">
+                                    Blue Dark Theme
+                                </mat-option>
+                                <mat-option [value]="'magenta-dark-theme'"
+                                    i18n="SettingsComponent|Color Theme Option: Magenta Dark@@SettingsComponentColorThemeMagentaDark">
+                                    Magenta Dark Theme
+                                </mat-option>
+                                <mat-option [value]="'magenta-light-theme'"
+                                    i18n="SettingsComponent|Color Theme Option: Magenta Light@@SettingsComponentColorThemeMagentaLight">
+                                    Magenta Light Theme
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

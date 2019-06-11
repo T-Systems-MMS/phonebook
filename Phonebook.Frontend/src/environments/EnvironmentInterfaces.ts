@@ -27,10 +27,6 @@ export interface RuntimeEnvironmentInterface {
    */
   readonly assetsEndpoint: string;
   /**
-   * The old URL for the employee Picture endpoint witout ending '/'
-   */
-  oldEmployeePictureEndpoint: string;
-  /**
    * Your Companies Contact Email, that users can use to ask questions about the Phonebook.
    */
   contactEmail: string | null;

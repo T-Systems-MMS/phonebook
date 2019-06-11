@@ -1,6 +1,6 @@
 {
-  "name": "phonebook",
-  "short_name": "phonebook",
+  "name": "Phonebook",
+  "short_name": "Phonebook",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

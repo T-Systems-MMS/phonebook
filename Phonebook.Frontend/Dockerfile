@@ -27,19 +27,17 @@ RUN rm /usr/share/nginx/html/index.html
 COPY --from=builder /usr/local/app/dist /usr/share/nginx/html
 
 WORKDIR /etc/nginx
-RUN rm ./conf.d/default.conf
-COPY ./nginx/nginx.conf ./nginx.conf
-COPY ./nginx/conf.d ./conf.d
+RUN rm -r ./*
+COPY ./nginx/ ./
 COPY ./substitute_variables.sh ./substitute_variables.sh
 RUN chmod +x ./substitute_variables.sh
 
 ARG BASE_URL
 ARG RAVEN_URL
 ARG EMPLOYEE_PICTURES_ENDPOINT
-ARG OLD_EMPLOYEE_PICTURE_ENDPOINT
 ARG ASSETS_ENDPOINT
 ARG CONTACT_EMAIL
 ARG CONTACT_URL
 
-ENTRYPOINT ["./substitute_variables.sh", "/usr/share/nginx/html"]
+ENTRYPOINT ["./substitute_variables.sh", "/usr/share/nginx/html", "./substitute_variables.sh", "/etc/nginx"]
 CMD ["nginx"]

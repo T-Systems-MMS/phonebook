@@ -42,9 +42,17 @@
         <mat-list-item>
           <button mat-menu-item [routerLink]="['/further-information']"
             i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
-            matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click." (click)="sidenav.close()">
+            matTooltip="Got Feedback? Than that`s the right place to click." (click)="sidenav.close()">
             <mat-icon>info_outline</mat-icon>
             <span i18n="NavigationComponent|Link to Information page@@NavigationComponentInformation">Information</span>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-menu-item feedbackDrawer
+            i18n-matTooltip="navigationBar|Bug Button Tooltip@@navigationBarBugTooltip"
+            matTooltip="Found a Bug? Than that`s the right place to click." (click)="sidenav.close()">
+            <mat-icon>bug_report</mat-icon>
+            <span i18n="NavigationComponent|Link to Bug page@@NavigationComponentBug">Report a Bug</span>
           </button>
         </mat-list-item>
       </mat-list>
@@ -71,9 +79,7 @@
               </button>
             </div>
             <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null">
-              <ng-container i18n="NavigationBar|Greetings Message@@navigationBarGreetingsMessage">Have a nice day
-              </ng-container>
-              {{currentUser.Firstname}}!
+              {{(getGreetingMessage() | async) + ' ' + currentUser.Firstname}}!
             </div>
             <div class="pb-spacer"></div>
             <div class="menu pb-hide-below-med">
@@ -97,6 +103,10 @@
                   matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click.">
                   <mat-icon>info_outline</mat-icon>
                   <span i18n="@@NavigationComponentInformation">Information</span>
+                </button>
+                <button mat-menu-item feedbackDrawer>
+                  <mat-icon>bug_report</mat-icon>
+                  <span i18n="@@NavigationComponentBug">Report a Bug</span>
                 </button>
               </mat-menu>
             </div>

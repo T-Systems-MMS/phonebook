@@ -6,6 +6,7 @@ import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.se
 import { Person } from 'src/app/shared/models';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-picture',
@@ -13,7 +14,6 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
   styleUrls: ['./profile-picture.component.scss']
 })
 export class ProfilePictureComponent implements OnInit, OnDestroy {
-  private baseUrl: string = runtimeEnvironment.oldEmployeePictureEndpoint;
   @Input()
   public set user(person: Person) {
     this.USER = person;
@@ -30,42 +30,61 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
   public canEnlargeOnHover: boolean = false;
   @Input()
   public canEnlargeOnClick: boolean = false;
+  @Input()
+  public imageSize: number = 100;
   private USER: Person = Person.empty();
   private RANDOM: string;
   public imageUrl: string = '';
+  public useAprilEndpoint: boolean = false;
   public imageLoaded: boolean = false;
   public dialogRef: MatDialogRef<ProfilePictureEnlargeDialog, any> | null;
 
   constructor(
     public dialog: MatDialog,
     private profilePictureService: ProfilePictureService,
-    private featureFlagService: FeatureFlagService
+    private featureFlagService: FeatureFlagService,
+    private httpClient: HttpClient
   ) {}
 
   public ngOnInit() {
     this.featureFlagService
-      .get('change-profile-picture')
+      .get('firstApril')
       .pipe(untilComponentDestroyed(this))
       .subscribe(flag => {
-        if (flag) {
-          this.baseUrl = runtimeEnvironment.employeePicturesEndpoint;
+        this.useAprilEndpoint = flag;
+        if (!flag) {
+          this.profilePictureService.reload.pipe(untilComponentDestroyed(this)).subscribe(id => {
+            this.imageLoaded = false;
+            if (this.USER.Id.toLowerCase() === id.toLowerCase()) {
+              this.RANDOM = Math.random().toString();
+              this.updateImageUrl();
+            }
+          });
+        } else {
           this.updateImageUrl();
         }
       });
-    this.profilePictureService.reload.pipe(untilComponentDestroyed(this)).subscribe(id => {
-      this.imageLoaded = false;
-      if (this.USER.Id.toLowerCase() === id.toLowerCase()) {
-        this.RANDOM = Math.random().toString();
-        this.updateImageUrl();
-      }
-    });
   }
 
   public updateImageUrl() {
-    if (this.RANDOM) {
-      this.imageUrl = this.baseUrl + this.user.Id + '.jpg?random=' + this.RANDOM;
+    if (!this.useAprilEndpoint) {
+      if (this.RANDOM) {
+        this.imageUrl = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/${
+          this.imageSize
+        }.jpg?random=${this.RANDOM}`;
+      } else {
+        this.imageUrl = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/${
+          this.imageSize
+        }.jpg`;
+      }
     } else {
-      this.imageUrl = this.baseUrl + this.user.Id + '.jpg';
+      this.httpClient
+        .get('/api/april/pictures/' + this.user.Id, {
+          responseType: 'text'
+        })
+        .subscribe(text => {
+          this.imageUrl = text;
+        });
     }
   }
 
@@ -95,9 +114,16 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
   }
 
   public openEnlarge(backdrop: boolean = false) {
+    let url = this.imageUrl;
+    if (!this.useAprilEndpoint) {
+      url = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/900.jpg`;
+    }
     this.dialogRef = this.dialog.open(ProfilePictureEnlargeDialog, {
       hasBackdrop: backdrop,
-      data: { imageUrl: this.imageUrl, text: this.altText }
+      data: {
+        imageUrl: url,
+        text: this.altText
+      }
     });
     this.dialogRef.afterClosed().subscribe(closed => {
       this.dialogRef = null;
