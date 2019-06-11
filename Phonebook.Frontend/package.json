@@ -1,6 +1,6 @@
 {
   "name": "phonebook",
-  "version": "1.0.3",
+  "version": "x",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
