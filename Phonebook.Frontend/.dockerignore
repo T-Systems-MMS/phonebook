@@ -12,3 +12,4 @@
 !nginx
 !substitute_variables.sh
 !globals.js
+!version.js

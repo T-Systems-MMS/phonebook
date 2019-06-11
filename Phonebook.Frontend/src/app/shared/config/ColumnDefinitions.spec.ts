@@ -1,16 +1,6 @@
-import { mockPerson } from 'src/app/shared/mocks/person';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import {
-  Person,
-  PersonType,
-  Contacts,
-  Messenger,
-  Location,
-  City,
-  Room,
-  Business,
-  PhonebookSortDirection
-} from 'src/app/shared/models';
+import { mockPerson } from 'src/app/shared/mocks/person';
+import { Business, City, Contacts, Location, Messenger, Person, PersonType, PhonebookSortDirection, Room } from 'src/app/shared/models';
 
 const personA = new Person(
   PersonType.Interner_Lernender,
@@ -66,7 +56,7 @@ describe('Column Filter Functions: ', () => {
   });
 
   it('Organization Unit', () => {
-    expect(ColumnDefinitions.orgUnit.filterFunction(/PF OS/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.orgUnit.filterFunction(/AB CD/i, mockPerson)).toBe(true);
   });
 });
 

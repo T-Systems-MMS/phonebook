@@ -1,0 +1,78 @@
+{
+  "branch": "master",
+  "verifyConditions": [],
+  "verifyConfig": ["semantic-release-docker-test"],
+  "prepare": [
+    {
+      "path": "@semantic-release/changelog",
+      "changelogFile": "src/changelog.md"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "node version.js ${nextRelease.version} ${commits[0].commit.short} ${commits[0].commit.long}"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "docker pull danielhabenicht/builder:latest || true"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "docker pull danielhabenicht/phonebook:latest || true"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "docker build --target builder --cache-from danielhabenicht/builder:latest -t danielhabenicht/builder:latest ."
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "docker build --cache-from danielhabenicht/builder:latest --cache-from danielhabenicht/phonebook:latest -t phonebook ."
+    },
+    {
+      "path": "semantic-release-docker-test",
+      "additionalTags": ["latest"],
+      "imageName": "phonebook",
+      "repositoryName": "danielhabenicht"
+    },
+    {
+      "path": "semantic-release-docker-test",
+      "additionalTags": ["latest"],
+      "imageName": "danielhabenicht/builder",
+      "pushVersionTag": false
+    }
+  ],
+  "publish": [
+    {
+      "path": "semantic-release-docker-test"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "echo ##vso[build.addbuildtag]release"
+    }
+  ],
+  "fail": [],
+  "success": [],
+  "analyzeCommits": "simple-commit-message",
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "trans",
+            "release": "patch"
+          }
+        ]
+      }
+    ],
+    "@semantic-release/release-notes-generator"
+  ]
+}
