@@ -5,7 +5,7 @@
  */
 
 const { resolve, relative } = require('path');
-const { writeFileSync } = require('fs-extra');
+const { writeFileSync } = require('fs');
 
 version = process.argv[2];
 hash_short = process.argv[3];

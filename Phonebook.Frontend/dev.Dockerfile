@@ -14,9 +14,9 @@ RUN npm install -g --unsafe-perm @angular/cli@6.1.4
 
 # Build node_modules folder as this speeds up the build time 
 # (npm install is only executed if package.json changes)
-COPY ./package-lock.json /usr/local/app/package-lock.json
-COPY package.json /usr/local/app/package.json
-RUN npm install
+COPY ./package-lock.json /usr/local/app/Phonebook.Frontend/package-lock.json
+COPY package.json /usr/local/app/Phonebook.Frontend/package.json
+RUN cd ./Phonebook.Frontend/ && npm install
 
 # This is only for the build and not needed if running locally
 COPY . /usr/local/app

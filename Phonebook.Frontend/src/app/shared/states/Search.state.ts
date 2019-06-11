@@ -167,7 +167,13 @@ export class SearchState {
   private updateURL(ctx: StateContext<SearchStateModel>, action: UpdateUrl) {
     const update = action.update;
     const params: { [key: string]: string | null } = {};
-    const routeSnapshot: ActivatedRouteSnapshot = this.store.selectSnapshot(RouterState).state.root;
+    const routeState = this.store.selectSnapshot(RouterState.state);
+    // For Unit Testing
+    // Maybe this is a solution to not modify production code: https://github.com/ngxs/store/blob/master/packages/router-plugin/tests/router.plugin.spec.ts
+    if (routeState == undefined) {
+      return;
+    }
+    const routeSnapshot: ActivatedRouteSnapshot = routeState.root;
     if (update.searchFilter != null) {
       update.searchFilter.forEach(filter => {
         params[filter.filterColumn.id] = filter.filterValue;

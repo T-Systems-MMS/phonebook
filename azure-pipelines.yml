@@ -1,0 +1,67 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+pr:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - Phonebook.Frontend/*
+
+jobs:
+  - job: E2E
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+      - task: Npm@1
+        inputs:
+          command: 'install'
+          workingDir: 'Phonebook.Frontend'
+
+      - script: |
+          npm run e2e
+        workingDirectory: 'Phonebook.Frontend/'
+        displayName: 'run e2e test'
+
+  - job: Unit
+    pool:
+      vmImage: 'ubuntu-16.04'
+    steps:
+      - task: Npm@1
+        inputs:
+          command: 'install'
+          workingDir: 'Phonebook.Frontend'
+      - script: |
+          npm run test
+        workingDirectory: 'Phonebook.Frontend/'
+        displayName: 'run unit test'
+
+  - job: Normal_Build
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    dependsOn:
+      - E2E
+      - Unit
+    condition: and(succeeded('E2E'), succeeded('Unit'), eq(variables['build.sourceBranch'], 'refs/heads/master'))
+    steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
+        displayName: 'Install Node.js'
+
+      - script: |
+          npm install -g --ignore-scripts simple-commit-message@4.0 semantic-release-docker-test@1.0 @semantic-release/changelog@3.0 @semantic-release/exec@3.3 semantic-release@15.12
+        workingDirectory: 'Phonebook.Frontend/'
+        displayName: 'npx run semantic release'
+
+      - script: |
+          npm run release
+        workingDirectory: 'Phonebook.Frontend/'
+        displayName: 'Semantic Release'
+        env:
+          GH_TOKEN: $(GH_TOKEN)
+          DOCKER_REGISTRY_PASSWORD: $(DOCKER_REGISTRY_PASSWORD)
+          DOCKER_REGISTRY_USER: $(DOCKER_REGISTRY_USER)

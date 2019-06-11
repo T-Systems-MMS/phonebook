@@ -1,6 +1,6 @@
 {
   "name": "phonebook",
-  "version": "0.4.0",
+  "version": "1.0.3",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -60,9 +60,9 @@
     "core-js": "^2.5.7",
     "ng2-rx-componentdestroyed": "^3.0.1",
     "ngx-clipboard": "^11.1.9",
-    "ngx-vcard": "^1.1.6",
     "ngx-infinite-scroll": "^7.0.0",
     "ngx-propagation-stop": "^1.0.6",
+    "ngx-vcard": "^1.1.6",
     "raven-js": "^3.27.0",
     "rxjs": "^6.3.3",
     "uglify-es": "3.3.9",
@@ -76,7 +76,6 @@
     "@angular/compiler-cli": "7.1.4",
     "@angular/language-service": "7.1.4",
     "@compodoc/compodoc": "^1.1.7",
-    "@iteratec/semantic-release-docker": "^1.0.2",
     "@semantic-release/changelog": "^3.0.1",
     "@semantic-release/exec": "^3.3.0",
     "@types/jasmine": "^3.3.0",
@@ -97,10 +96,11 @@
     "ng-mocks": "^7.1.2",
     "ng2-mock-component": "^0.1.1",
     "ngx-i18nsupport": "^0.17.1",
-    "pre-git": "^3.17.1",
     "protractor": "^5.4.1",
     "protractor-console-plugin": "^0.1.1",
     "semantic-release": "^15.12.2",
+    "semantic-release-docker-test": "^1.0.2",
+    "simple-commit-message": "^4.0.3",
     "ts-node": "~7.0.1",
     "tslint": "~5.12.0",
     "typescript": "3.1.6",
@@ -115,70 +115,5 @@
     "commitizen": {
       "path": "Phonebook.Frontend/node_modules/cz-customizable"
     }
-  },
-  "release": {
-    "branch": "master",
-    "verifyConditions": [],
-    "verifyConfig": [
-      "@iteratec/semantic-release-docker"
-    ],
-    "prepare": [
-      {
-        "path": "@semantic-release/changelog",
-        "changelogFile": "src/changelog.md"
-      },
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "node version.js ${nextRelease.version} ${commits[0].commit.short} ${commits[0].commit.long}"
-      },
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
-      },
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "docker build . -t phonebook"
-      },
-      {
-        "path": "@iteratec/semantic-release-docker",
-        "additionalTags": [
-          "latest"
-        ],
-        "imageName": "phonebook",
-        "registryUrl": "TODO",
-        "respositoryName": "phonebook"
-      }
-    ],
-    "publish": [
-      {
-        "path": "@iteratec/semantic-release-docker"
-      },
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
-      },
-      {
-        "path": "@semantic-release/exec",
-        "cmd": "echo ##vso[build.addbuildtag]release"
-      }
-    ],
-    "fail": [],
-    "success": [],
-    "analyzeCommits": "simple-commit-message",
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "releaseRules": [
-            {
-              "type": "trans",
-              "release": "patch"
-            }
-          ]
-        }
-      ],
-      "@semantic-release/release-notes-generator"
-    ]
   }
 }
