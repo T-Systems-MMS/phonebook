@@ -48,5 +48,18 @@
         "Costcenter": "8040"
       }
     }
+  ],
+  "rooms": [
+    {
+      "Building": "Riesaer Straße 5",
+      "BuildingId": 1,
+      "Description": "Dresden, Riesaer Straße 5 Bauteil 2, Raum 323a",
+      "Floor": "1",
+      "FloorPlan": "SampleFloorPlan",
+      "Id": 1234,
+      "Number": "123A",
+      "Phone": "",
+      "Place": "Dresden"
+    }
   ]
 }

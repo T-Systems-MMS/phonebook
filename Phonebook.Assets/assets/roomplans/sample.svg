@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <style>
+        .building {
+            opacity: 1;
+            fill: #000000;
+            fill-opacity: 1;
+        }
+        .floor {
+           opacity: 1;
+           fill: #abb0ba;
+           fill-opacity: 1;
+        }
+        .room {
+           opacity: 1;
+           fill: #abb0ba;
+           fill-opacity: 1;
+        }
+        .with-text text{
+            font-size: 77px;
+            font-family: "Open Sans";
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: 0;
+            alignment-baseline: before-edge;
+            line-height: 100%;
+        }
+        .with-text text tspan {
+            alignment-baseline: before-edge;
+            dominant-baseline: text-before-edge;
+            text-anchor: start;
+        }
+    </style>
+    <g>
+        <g>
+            <g id="building">
+                <path class="building" d="M1862.19 58.53C1879.49 58.53 1893.52 72.56 1893.52 89.87C1893.52 273.01 1893.52 791.1 1893.52 974.24C1893.52 991.55 1879.49 1005.58 1862.19 1005.58C1492.84 1005.58 416.13 1005.58 46.78 1005.58C29.47 1005.58 15.44 991.55 15.44 974.24C15.44 791.1 15.44 273.01 15.44 89.87C15.44 72.56 29.47 58.53 46.78 58.53C416.13 58.53 1492.84 58.53 1862.19 58.53Z"></path>
+            </g>
+            <g id="floor" class="with-text">
+                <path class="floor" d="M15.44 482.75L38.47 482.75L38.47 584.27L15.44 584.27L15.44 482.75Z"></path>
+                <path class="floor" d="M38.47 427.56L1867.66 427.56L1867.66 638.34L38.47 638.34L38.47 427.56Z"></path>
+                <text x="787.79" y="482.81">
+                    <tspan>Floor</tspan>
+                </text>
+            </g>
+            <g id="1A" class="with-text">
+                <path class="room" d="M38.47 87.3L327.86 87.3L327.86 400.93L38.47 400.93L38.47 87.3Z"></path>
+                <text y="203">
+                    <tspan x="89" dy="0em">1A</tspan>
+                </text>
+            </g>
+            <g id="2A" class="with-text">
+                <path class="room" d="M340.29 87.3L629.68 87.3L629.68 400.93L340.29 400.93L340.29 87.3Z"></path>
+                <text y="203">
+                    <tspan x="420" dy="0em">2A</tspan>
+                </text>
+            </g>
+            <g id="3A" class="with-text">
+                <path class="room" d="M645.44 87.3L934.83 87.3L934.83 400.93L645.44 400.93L645.44 87.3Z"></path>
+                <text y="203">
+                    <tspan x="730" dy="0em">3A</tspan>
+                </text>
+            </g>
+            <g id="4A" class="with-text">
+                <path class="room" d="M953.06 87.3L1242.46 87.3L1242.46 400.93L953.06 400.93L953.06 87.3Z"></path>
+                <text y="203">
+                    <tspan x="1040" dy="0em">4A</tspan>
+                </text>
+            </g>
+            <g id="5A" class="with-text">
+                <path class="room" d="M1266.04 87.3L1555.44 87.3L1555.44 400.93L1266.04 400.93L1266.04 87.3Z"></path>
+                <text y="203">
+                    <tspan x="1350" dy="0em">5A</tspan>
+                </text>
+            </g>
+            <g id="6A" class="with-text">
+                <path class="room" d="M1578.26 87.3L1867.66 87.3L1867.66 400.93L1578.26 400.93L1578.26 87.3Z"></path>
+                <text y="203">
+                    <tspan x="1650" dy="0em">6A</tspan>
+                </text>
+            </g>
+
+            <g id="1B" class="with-text">
+                <path class="room" d="M38.47 664.78L327.86 664.78L327.86 978.41L38.47 978.41L38.47 664.78Z"></path>
+                <text y="770">
+                    <tspan x="89" dy="0em">1B</tspan>
+                </text>
+            </g>
+            <g id="2B" class="with-text">
+                <path class="room" d="M340.29 664.78L629.68 664.78L629.68 978.41L340.29 978.41L340.29 664.78Z"></path>
+                <text y="770">
+                    <tspan x="420" dy="0em">2B</tspan>
+                </text>
+            </g>
+            <g id="3B" class="with-text">
+                <path class="room" d="M645.44 664.78L934.83 664.78L934.83 978.41L645.44 978.41L645.44 664.78Z"></path>
+                <text y="770">
+                    <tspan x="730" dy="0em">3B</tspan>
+                </text>
+            </g>
+            <g id="4B" class="with-text">
+                <path class="room" d="M953.06 664.78L1242.46 664.78L1242.46 978.41L953.06 978.41L953.06 664.78Z"></path>
+                <text y="770">
+                    <tspan x="1040" dy="0em">4B</tspan>
+                </text>
+            </g>
+            <g id="5B" class="with-text">
+                <path class="room" d="M1266.04 664.78L1555.44 664.78L1555.44 978.41L1266.04 978.41L1266.04 664.78Z"></path>
+                <text y="770">
+                    <tspan x="1350" dy="0em">5B</tspan>
+                </text>
+            </g>
+            <g id="6B" class="with-text">
+                <path class="room" d="M1578.26 664.78L1867.66 664.78L1867.66 978.41L1578.26 978.41L1578.26 664.78Z"></path>
+                <text y="770">
+                    <tspan x="1650" dy="0em">6B</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
