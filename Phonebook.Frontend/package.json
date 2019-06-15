@@ -18,6 +18,7 @@
     "test-compose:dev": "npm run compose-build && docker-compose run --rm --service-ports angular npm run test:dev",
     "e2e": "ng e2e",
     "e2e-docker": "npm run docker-build && docker run --rm build_phonebook npm run e2e",
+    "build": "npm run build:en && npm run build:de",
     "build:en": "ng build --configuration en",
     "build:de": "ng build --configuration de",
     "build:test": "ng build --configuration test",
