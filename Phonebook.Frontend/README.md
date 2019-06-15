@@ -18,4 +18,4 @@ This is project is leveraging [Angular](https://angular.io/) and [Angular Materi
 | Safari  | ✔ Working | ✖ Not Supported yet                                                                   | Service Worker are not available yet: https://bugs.webkit.org/show_bug.cgi?id=174541 |
 | Edge    | ✔ Working | ✖ Not Supported (available from Edge Version 17 upwards)                              |                                                                                      |
 
-> We do not support Internet Explorer!
+> We do not support Internet Explorer.
