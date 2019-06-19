@@ -29,12 +29,12 @@
     },
     {
       "path": "@semantic-release/exec",
-      "cmd": "docker build --cache-from tsystemsmms/phonebook-build:latest --cache-from tsystemsmms/phonebook-frontend:latest -t phonebook ."
+      "cmd": "docker build --cache-from tsystemsmms/phonebook-build:latest --cache-from tsystemsmms/phonebook-frontend:latest -t phonebook-frontend ."
     },
     {
       "path": "semantic-release-docker-test",
       "additionalTags": ["latest"],
-      "imageName": "phonebook",
+      "imageName": "phonebook-frontend",
       "repositoryName": "tsystemsmms"
     },
     {
