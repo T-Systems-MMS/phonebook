@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phonebook-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: phonebook-frontend
+  template:
+    metadata:
+      labels:
+        app: phonebook-frontend
+    spec:
+      nodeSelector:
+        'beta.kubernetes.io/os': linux
+      containers:
+        - name: phonebook-frontend
+          image: tsystemsmms/phonebook-frontend:1.18.2
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          ports:
+            - containerPort: 80
+          env:
+            - name: BASE_URL
+              value: 'demo-phonebook.me'
+            - name: ROOMPLANNINGTOOL_URL
+              value: 'undefined'
+            - name: CONTACT_URL
+              value: 'https://github.com/T-Systems-MMS/phonebook/issues'
+            - name: SERVER_NAME
+              value: 'demo-phonebook.me'
+            - name: CONTACT_EMAIL
+              value: 'daniel-habenicht@outlook.de'
+            - name: RAVEN_URL
+              value: 'undefined'
+            - name: EMPLOYEE_PICTURES_ENDPOINT
+              value: 'undefined'
+            - name: ASSETS_ENDPOINT
+              value: 'https://assets.demo-phonebook.me'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phonebook-frontend-service
+spec:
+  ports:
+    - name: http
+      targetPort: 80
+      port: 80
+  selector:
+    app: phonebook-frontend
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: phonebook-frontend-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: demo-phonebook.me
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: phonebook-frontend-service
+              servicePort: http
