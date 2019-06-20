@@ -1,4 +1,4 @@
-FROM nginx:1.15.8
+FROM nginx:1.17.0-alpine
 WORKDIR /etc/nginx
 
 RUN rm -r ./*
