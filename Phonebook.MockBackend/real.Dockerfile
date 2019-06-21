@@ -6,6 +6,6 @@ COPY ./nginx/ ./
 
 
 RUN rm -r /usr/share/nginx/html/*
-COPY ./mocks /usr/share/nginx/html
+COPY ./mocks/real /usr/share/nginx/html
 
 CMD ["nginx"]
