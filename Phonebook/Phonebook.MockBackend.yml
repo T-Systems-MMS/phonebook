@@ -17,6 +17,7 @@ spec:
       containers:
         - name: phonebook-mock-backend
           image: tsystemsmms/phonebook-build:mock-backend
+          imagePullPolicy: 'Always'
           resources:
             requests:
               cpu: 100m

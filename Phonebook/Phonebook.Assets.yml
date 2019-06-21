@@ -17,6 +17,7 @@ spec:
       containers:
         - name: phonebook-assets
           image: tsystemsmms/phonebook-build:assets-89
+          imagePullPolicy: 'Always'
           resources:
             requests:
               cpu: 100m
