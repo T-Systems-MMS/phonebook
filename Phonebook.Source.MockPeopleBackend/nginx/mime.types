@@ -1,4 +1,4 @@
 
 types {
-    application/json                                 json;
+    application/json json;
 }
