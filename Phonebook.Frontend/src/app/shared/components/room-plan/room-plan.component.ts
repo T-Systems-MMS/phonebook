@@ -12,7 +12,7 @@ export class RoomPlanComponent implements OnInit, OnChanges {
   public floorplan: string | null;
   @Input()
   public room: string;
-  @ViewChild('floorplanSVG')
+  @ViewChild('floorplanSVG', { static: true })
   public element: ElementRef;
   public displaySVG: boolean = false;
   public floorPlanNotFound: boolean = false;

@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   private containsFilterMarker: RegExp = new RegExp(':');
   private previousSearchTerm: string = '';
 
-  @ViewChild('input')
+  @ViewChild('input', { static: true })
   public input: ElementRef;
   constructor(private snackBar: MatSnackBar, private store: Store, public columnTranslate: ColumnTranslate) {}
 

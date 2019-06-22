@@ -17,7 +17,7 @@ export class OrganigramNodeComponent implements OnInit {
   public node: UnitTreeNode;
   public expand: Expanded = Expanded.isNotExpanded;
   public expanded: typeof Expanded = Expanded;
-  @ViewChild('thisNode')
+  @ViewChild('thisNode', { static: true })
   public thisNode: ElementRef;
 
   constructor(private snackBar: MatSnackBar, private windowRef: WindowRef, private store: Store, private i18n: I18n) { }

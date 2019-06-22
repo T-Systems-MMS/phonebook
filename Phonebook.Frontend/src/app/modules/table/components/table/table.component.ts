@@ -32,7 +32,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
   private readonly initialPageSize = 30;
 
-  @ViewChild(MatSort)
+  @ViewChild(MatSort, { static: true })
   public sort: MatSort;
   public table: Element;
   public get tableSort(): TableSort {
