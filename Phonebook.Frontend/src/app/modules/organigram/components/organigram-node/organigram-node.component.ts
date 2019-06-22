@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { UnitTreeNode } from 'src/app/services/api/organigram.service';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { WindowRef } from 'src/app/services/windowRef.service';
-import { Store } from '@ngxs/store';
-import { Navigate, RouterState } from '@ngxs/router-plugin';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import { Navigate, RouterState } from '@ngxs/router-plugin';
+import { Store } from '@ngxs/store';
+import { UnitTreeNode } from 'src/app/services/api/organigram.service';
+import { WindowRef } from 'src/app/services/windowRef.service';
 
 @Component({
   selector: 'app-organigram-node',
@@ -20,7 +20,7 @@ export class OrganigramNodeComponent implements OnInit {
   @ViewChild('thisNode', { static: true })
   public thisNode: ElementRef;
 
-  constructor(private snackBar: MatSnackBar, private windowRef: WindowRef, private store: Store, private i18n: I18n) { }
+  constructor(private snackBar: MatSnackBar, private windowRef: WindowRef, private store: Store, private i18n: I18n) {}
 
   public ngOnInit() {
     const nodePath = this.getCurrentRouteAsArray();
@@ -67,15 +67,15 @@ export class OrganigramNodeComponent implements OnInit {
         id: 'OrganigramNodeComponentCopiedFirstPart',
         value: 'Link to'
       }) +
-      ' "' +
-      this.node.name +
-      '" ' +
-      this.i18n({
-        meaning: 'OrganigramNodeComponent',
-        description: 'Second part of the message displayed when copying a link to the node',
-        id: 'OrganigramNodeComponentCopiedSecondPart',
-        value: 'copied to clipboard!'
-      }),
+        ' "' +
+        this.node.name +
+        '" ' +
+        this.i18n({
+          meaning: 'OrganigramNodeComponent',
+          description: 'Second part of the message displayed when copying a link to the node',
+          id: 'OrganigramNodeComponentCopiedSecondPart',
+          value: 'copied to clipboard!'
+        }),
       '',
       { duration: 2000 }
     );
@@ -97,8 +97,8 @@ export class OrganigramNodeComponent implements OnInit {
   public getCurrentRouteAsArray(): string[] {
     const navState = this.store.selectSnapshot(RouterState.state);
     return [
-      navState.root.firstChild.url[0].path,
-      ...navState.root.firstChild.firstChild.url.map(obj => {
+      navState!.root.firstChild!.url[0].path,
+      ...navState!.root.firstChild!.firstChild!.url.map(obj => {
         return obj.path;
       })
     ];
