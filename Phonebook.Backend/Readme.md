@@ -9,3 +9,4 @@ This is the Phonebook Backend. It is designed as a middleware to have a unified 
 - Use Prisma as Database provider (for user settings)
 - write an OpenAPI schema for the peopleSource Backend
 - remove faker dependency
+- https://graphql-inspector.com/docs/
