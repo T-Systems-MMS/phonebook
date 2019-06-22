@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { SearchFilter } from 'src/app/shared/models';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store, Select } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import {

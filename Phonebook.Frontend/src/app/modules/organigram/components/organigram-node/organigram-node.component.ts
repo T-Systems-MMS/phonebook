@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { UnitTreeNode } from 'src/app/services/api/organigram.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { Store } from '@ngxs/store';
 import { Navigate, RouterState } from '@ngxs/router-plugin';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatBottomSheetRef } from '@angular/material';
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 

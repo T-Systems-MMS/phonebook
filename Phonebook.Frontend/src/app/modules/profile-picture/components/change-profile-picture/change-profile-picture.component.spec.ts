@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed, getTestBed } from '@angular/core/testing';
 
 import { MockComponent } from 'ng2-mock-component';
-import { MatSnackBarModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Observable, of } from 'rxjs';
 import { Component } from '@angular/core';
 import { ProfilePictureService } from 'src/app/modules/profile-picture/profile-picture.service';

@@ -1,7 +1,7 @@
 import { Person } from 'src/app/shared/models/classes';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TableLogic } from 'src/app/modules/table/table-logic';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
 import { SearchFilter, Column, TableSort } from 'src/app/shared/models';
 
