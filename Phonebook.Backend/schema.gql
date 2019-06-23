@@ -37,8 +37,9 @@ type Picture {
 
 type Query {
   buildings: [Building!]!
+  building(id: ID!): Building!
   getPersons(searchString: String, filter: String): [Person!]!
-  getPerson(id: String!): Person!
+  getPerson(id: ID!): Person!
   rooms: [Room!]!
 }
 

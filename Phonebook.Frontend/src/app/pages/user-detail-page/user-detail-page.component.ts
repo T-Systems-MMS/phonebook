@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { PersonService } from 'src/app/services/api/person.service';
-import { Store } from '@ngxs/store';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { IncrementCommonPerson, AddToLastPersons } from 'src/app/shared/states';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { UserDetailGQL } from 'src/app/generated/graphql';
+import { PersonService } from 'src/app/services/api/person.service';
 import { Person } from 'src/app/shared/models';
+import { AddToLastPersons, IncrementCommonPerson } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-user-detail-page',
@@ -20,7 +21,8 @@ export class UserDetailPageComponent implements OnInit, OnDestroy {
     private router: Router,
     private personSearchService: PersonService,
     private store: Store,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private userDetail: UserDetailGQL
   ) {}
 
   public ngOnInit() {
@@ -40,6 +42,10 @@ export class UserDetailPageComponent implements OnInit, OnDestroy {
       } else {
         this.router.navigate(['/']);
       }
+    });
+    this.userDetail.watch({ id: 'test' }).valueChanges.subscribe(result => {
+      debugger;
+      console.log(result.data);
     });
   }
 

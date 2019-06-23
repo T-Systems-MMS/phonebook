@@ -1,0 +1,8 @@
+query UserDetail($id: ID!) {
+  getPerson(id: $id) {
+    id
+    costCenter
+    firstName
+    lastName
+  }
+}
