@@ -3,7 +3,7 @@ import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
 import { I18n } from '@ngx-translate/i18n-polyfill';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BuildingService } from 'src/app/services/api/building.service';
 import { Location } from 'src/app/shared/models';
 import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';

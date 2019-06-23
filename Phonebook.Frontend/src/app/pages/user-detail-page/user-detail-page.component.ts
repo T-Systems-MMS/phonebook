@@ -3,7 +3,7 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { PersonService } from 'src/app/services/api/person.service';
 import { Store } from '@ngxs/store';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { IncrementCommonPerson, AddToLastPersons } from 'src/app/shared/states';
 import { Person } from 'src/app/shared/models';
 

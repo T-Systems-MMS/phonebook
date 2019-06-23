@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddFilterComponent } from 'src/app/shared/components/add-filter/add-filter.component';
-import { MatTooltipModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { PropagationStopModule } from 'ngx-propagation-stop';
 
 @NgModule({

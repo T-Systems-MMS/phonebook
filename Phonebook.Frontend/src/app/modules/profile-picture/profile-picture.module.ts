@@ -4,13 +4,11 @@ import { ChangeProfilePictureComponent } from './components/change-profile-pictu
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { ProfilePictureEnlargeDialog } from './components/profile-picture/enlarge-dialog/profile-picture-enlarge.dialog';
 import { CommonModule } from '@angular/common';
-import {
-  MatIconModule,
-  MatSnackBarModule,
-  MatButtonModule,
-  MatDialogModule,
-  MatProgressSpinnerModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChangeProfilePictureDialogComponent } from './components/change-profile-picture-dialog/change-profile-picture-dialog.component';
 
 @NgModule({

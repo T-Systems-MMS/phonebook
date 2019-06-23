@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatDialogModule, MatCheckboxModule, MatDialog, MatDialogRef } from '@angular/material';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MockComponent } from 'ng2-mock-component';
 import { DisplayNotificationDialog } from './display-notification.dialog';
 
