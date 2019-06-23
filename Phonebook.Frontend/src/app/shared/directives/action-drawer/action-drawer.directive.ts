@@ -1,5 +1,6 @@
 import { Directive, Input, HostListener, ElementRef } from '@angular/core';
-import { MatSnackBar, MatBottomSheet } from '@angular/material';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClipboardService } from 'ngx-clipboard';
 import { ActionDrawerSheetComponent } from 'src/app/shared/directives/action-drawer/action-drawer-sheet/action-drawer-sheet.component';
 import { I18n } from '@ngx-translate/i18n-polyfill';

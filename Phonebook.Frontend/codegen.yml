@@ -1,0 +1,11 @@
+overwrite: true
+schema: ../Phonebook.Backend/schema.gql
+documents: src/app/**/*.gql
+generates:
+  ./src/app/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-apollo-angular
+      - time:
+        format: DD.MM.YY

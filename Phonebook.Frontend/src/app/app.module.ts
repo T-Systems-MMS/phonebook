@@ -90,6 +90,7 @@ import { FeedbackDrawerModule } from 'src/app/shared/directives/feedback-drawer/
 import { IeWarningModule } from 'src/app/shared/dialogs/ie-warning/ie-warning.module';
 import { PlatformModule } from '@angular/cdk/platform';
 import { UserDetailPageModule } from 'src/app/pages/user-detail-page/user-detail-page.module';
+import { GraphQLModule } from './graphql.module';
 declare const require;
 
 @NgModule({
@@ -127,7 +128,8 @@ declare const require;
     IeWarningModule,
     PlatformModule,
     // Pages
-    UserDetailPageModule
+    UserDetailPageModule,
+    GraphQLModule
   ],
   providers: [
     {

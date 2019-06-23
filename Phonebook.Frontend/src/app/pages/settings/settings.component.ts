@@ -5,7 +5,7 @@ import { Language } from 'src/app/shared/models/enumerables/Language';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { NotImplementedService } from 'src/app/modules/not-implemented/not-implemented.service';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
-import { MatSlideToggleChange } from '@angular/material';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Observable } from 'rxjs';
 
 @Component({

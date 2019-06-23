@@ -7,7 +7,7 @@ import { EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { EnvironmentService, Environment } from 'src/app/services/environment.service';
 import { Router, NavigationEnd } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 import { of, Observable } from 'rxjs';
 import { Select } from '@ngxs/store';

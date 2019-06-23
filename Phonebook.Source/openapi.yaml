@@ -1,0 +1,277 @@
+openapi: 3.0.1
+info:
+  title: Swagger API
+  version: 0.0.1
+servers:
+  - url: /
+paths:
+  /person/{id}:
+    get:
+      description: Get one `Person` with given id.
+      parameters:
+        - name: id
+          in: path
+          description: ID of a `Person`
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+  /persons:
+    get:
+      description: Get all `Person`.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+  /rooms/{id}:
+    get:
+      description: Get one `Room` with given id.
+      parameters:
+        - name: id
+          in: path
+          description: ID of a `Room`
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+  /rooms:
+    get:
+      description: Get all `Room`.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Room'
+  /branches/{id}:
+    get:
+      description: Get one `Branch` with given id.
+      parameters:
+        - name: id
+          in: path
+          description: ID of a `Branch`
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Branch'
+  /branches:
+    get:
+      description: Get all `Branch`.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Branch'
+components:
+  schemas:
+    Branch:
+      type: object
+      properties:
+        ContactPerson:
+          type: string
+        LinkRoutingWebsite:
+          type: string
+        ReceptionFax:
+          type: string
+        Description:
+          type: string
+        ReceptionPhone:
+          type: string
+        LinkPicture:
+          type: string
+        LinkRoutingInfo:
+          type: string
+        City:
+          type: object
+          properties:
+            Building:
+              type: string
+            ZipCode:
+              type: string
+            Name:
+              type: string
+        RoomCollection:
+          type: array
+          items:
+            type: object
+            properties:
+              Building:
+                type: string
+              Floor:
+                type: string
+              Description:
+                type: string
+              Number:
+                type: string
+              Phone:
+                type: string
+              FloorPlan:
+                type: string
+              Id:
+                type: integer
+              BuildingId:
+                type: integer
+              Place:
+                type: string
+    Room:
+      type: object
+      properties:
+        Building:
+          type: string
+        BuildingId:
+          type: integer
+        Description:
+          type: string
+        Floor:
+          type: string
+        FloorPlan:
+          type: string
+        Id:
+          type: integer
+        Number:
+          type: string
+        Phone:
+          type: string
+        Place:
+          type: string
+    Person:
+      type: object
+      properties:
+        Type:
+          type: string
+        Id:
+          type: string
+        Firstname:
+          type: string
+        Surname:
+          type: string
+        Title:
+          type: string
+        Role:
+          type: string
+        Picture:
+          type: boolean
+        Contacts:
+          type: object
+          properties:
+            Email:
+              type: string
+            Phone:
+              type: string
+            Messenger:
+              type: object
+              properties:
+                State:
+                  type: integer
+                Text:
+                  type: string
+            Fax:
+              type: string
+            Mobile:
+              type: string
+        Location:
+          type: object
+          properties:
+            RoomCollection:
+              type: array
+              items:
+                type: object
+                properties:
+                  Building:
+                    type: string
+                  Floor:
+                    type: integer
+                  Description:
+                    type: string
+                  Number:
+                    type: string
+                  Phone:
+                    type: string
+                  FloorPlan:
+                    type: string
+                  Id:
+                    type: string
+                  BuildingId:
+                    type: string
+                  Place:
+                    type: string
+            LinkRoutingWebsite:
+              type: string
+            Description:
+              type: string
+            ReceptionFax:
+              type: string
+            ReceptionPhone:
+              type: string
+            LinkPicture:
+              type: string
+            LinkRoutingInfo:
+              type: string
+            City:
+              type: object
+              properties:
+                Building:
+                  type: string
+                Name:
+                  type: string
+            ContactPerson:
+              type: string
+        Business:
+          type: object
+          properties:
+            OrgUnit:
+              type: array
+              items:
+                type: string
+            Supervisor:
+              type: array
+              items:
+                type: string
+            Costcenter:
+              type: string
+            ShortSupervisor:
+              type: array
+              items:
+                type: string
+            BusinessunitTeamassistent:
+              type: array
+              items:
+                type: string
+            ShortBusinessunitTeamassistent:
+              type: array
+              items:
+                type: string
+            ShortOrgUnit:
+              type: array
+              items:
+                type: string

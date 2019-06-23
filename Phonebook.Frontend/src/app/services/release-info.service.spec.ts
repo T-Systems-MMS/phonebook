@@ -1,7 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ReleaseInfoService } from './release-info.service';
-import { MatDialogModule, MatSnackBarModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxsModule, Store } from '@ngxs/store';
 import { AppState } from 'src/app/shared/states';
 import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';

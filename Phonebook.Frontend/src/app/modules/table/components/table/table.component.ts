@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatSort, SortDirection } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSort, SortDirection } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
@@ -32,7 +33,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
   private readonly initialPageSize = 30;
 
-  @ViewChild(MatSort)
+  @ViewChild(MatSort, { static: true })
   public sort: MatSort;
   public table: Element;
   public get tableSort(): TableSort {
