@@ -50,8 +50,7 @@ npm install -g @angular/cli
 npm install
 
 # Run the backend mock before
-npm install json-server -g
-json-server ./mock/mock-db.json --routes ./mock/mock-routes.json --port 8080
+docker run -p 8080:80 tsystemsmms/build:mock-backend
 
 # Run the project
 npm run start -- --open
