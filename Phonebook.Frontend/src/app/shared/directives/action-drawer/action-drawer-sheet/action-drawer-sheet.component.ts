@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatBottomSheetRef, MatSnackBar } from '@angular/material';
-import { MAT_BOTTOM_SHEET_DATA } from '@angular/material';
+import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { ActionButtonInterface } from 'src/app/shared/directives/action-drawer/action-drawer.directive';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 

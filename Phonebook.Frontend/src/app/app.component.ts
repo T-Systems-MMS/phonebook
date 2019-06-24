@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReleaseInfoService } from './services/release-info.service';
 import { Store } from '@ngxs/store';
 import { ServiceWorkerNotificationDisplayed, AppState, SetSendFeedback } from 'src/app/shared/states/App.state';

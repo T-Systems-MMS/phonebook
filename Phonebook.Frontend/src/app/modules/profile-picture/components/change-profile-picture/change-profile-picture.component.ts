@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { ChangeProfilePictureDialogComponent } from 'src/app/modules/profile-picture/components/change-profile-picture-dialog/change-profile-picture-dialog.component';
 import { ProfilePictureService } from 'src/app/modules/profile-picture/profile-picture.service';

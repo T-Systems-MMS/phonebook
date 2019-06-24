@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Language } from 'src/app/shared/models/enumerables/Language';
-import { DefaultUrlHandlingStrategy } from '@angular/router/src/url_handling_strategy';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import { Language } from 'src/app/shared/models/enumerables/Language';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
-
-  constructor(
-    private i18n: I18n
-  ) { }
+  constructor(private i18n: I18n) {}
 
   public getLanguage(): Language {
     switch (this.getLangCookie()) {
@@ -24,18 +20,28 @@ export class LanguageService {
   }
 
   public setLanguage(lang: Language) {
-    document.cookie = `lang=${ lang };path=/;max-age=31536000;domain=.${ location.host }`;
-    location.href = `${ location.protocol }//${ location.host }/${ lang }/settings`;
+    document.cookie = `lang=${lang};path=/;max-age=31536000;domain=.${location.host}`;
+    location.href = `${location.protocol}//${location.host}/${lang}/settings`;
   }
 
   public getLanguageTranslation(lang: Language): string {
     switch (lang) {
       case Language.de:
-        return this.i18n({ value: 'German', description: 'GeneralLanguageGerman', id: 'GeneralLanguageGerman', meaning: 'GeneralLanguageGerman' });
+        return this.i18n({
+          value: 'German',
+          description: 'GeneralLanguageGerman',
+          id: 'GeneralLanguageGerman',
+          meaning: 'GeneralLanguageGerman'
+        });
       case Language.en:
-        return this.i18n({ value: 'English', description: 'GeneralLanguageEnglish', id: 'GeneralLanguageEnglish', meaning: 'GeneralLanguageEnglish' });
+        return this.i18n({
+          value: 'English',
+          description: 'GeneralLanguageEnglish',
+          id: 'GeneralLanguageEnglish',
+          meaning: 'GeneralLanguageEnglish'
+        });
       default:
-        throw new Error(`No Language Translation specified for '${ lang }'!`);
+        throw new Error(`No Language Translation specified for '${lang}'!`);
     }
   }
 

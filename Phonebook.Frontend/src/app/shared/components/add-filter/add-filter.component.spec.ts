@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed, TestComponentRenderer } from '@angular/core/testing';
-
-import { AddFilterComponent } from './add-filter.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { NgxsModule, Store } from '@ngxs/store';
-import { SearchState } from 'src/app/shared/states';
 import { Component, ViewChild } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import { NgxsModule, Store } from '@ngxs/store';
 import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter.module';
+import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import { SearchState } from 'src/app/shared/states';
+import { AddFilterComponent } from './add-filter.component';
+
 
 describe('AddFilterComponent', () => {
   let cWrapperWithoutDisplayText: TestComponentWrapperWithoutDisplayText;
@@ -63,7 +63,7 @@ describe('AddFilterComponent', () => {
   template: '<app-add-filter [filterColumn]="column" [filterValue]="filterValue"></app-add-filter>'
 })
 class TestComponentWrapperWithoutDisplayText {
-  @ViewChild(AddFilterComponent)
+  @ViewChild(AddFilterComponent, { static: false })
   public componentUnderTest: AddFilterComponent;
   public column = ColumnDefinitions.orgUnit;
   public filterValue = 'filter';
@@ -75,7 +75,7 @@ class TestComponentWrapperWithoutDisplayText {
     '<app-add-filter [filterColumn]="column" [filterValue]="filterValue" [displayText]="displayText"></app-add-filter>'
 })
 class TestComponentWrapperFullIO {
-  @ViewChild(AddFilterComponent)
+  @ViewChild(AddFilterComponent, { static: false })
   public componentUnderTest: AddFilterComponent;
   public column = ColumnDefinitions.orgUnit;
 

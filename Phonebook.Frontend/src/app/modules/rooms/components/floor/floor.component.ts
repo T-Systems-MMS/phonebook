@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Room } from 'src/app/shared/models';
 
