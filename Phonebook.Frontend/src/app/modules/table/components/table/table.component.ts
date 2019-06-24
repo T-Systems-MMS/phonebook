@@ -1,17 +1,17 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { Person } from 'src/app/shared/models';
-import { PersonService } from 'src/app/services/api/person.service';
-import { MatSort, MatDialog, SortDirection, MatTableDataSource } from '@angular/material';
-import { PhonebookSortDirection, TableSort } from 'src/app/shared/models';
-import { PersonsDataSource } from 'src/app/modules/table/PersonsDataSource';
-import { Subscription, merge } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSort, SortDirection } from '@angular/material/sort';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { TableState, SearchState, ResetSearch, UpdateUrl, SetTableResultCount } from 'src/app/shared/states';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { merge, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { PersonsDataSource } from 'src/app/modules/table/PersonsDataSource';
+import { PersonService } from 'src/app/services/api/person.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
+import { Person, PhonebookSortDirection, TableSort } from 'src/app/shared/models';
+import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-table',
@@ -31,7 +31,9 @@ export class TableComponent implements OnInit, OnDestroy {
 
   public refreshTableSubscription: Subscription;
 
-  @ViewChild(MatSort)
+  private readonly initialPageSize = 30;
+
+  @ViewChild(MatSort, { static: true })
   public sort: MatSort;
   public table: Element;
   public get tableSort(): TableSort {
@@ -64,7 +66,7 @@ export class TableComponent implements OnInit, OnDestroy {
       )
       .subscribe(val => {
         this.refreshTable();
-        this.dataSource.pageSize = 20;
+        this.dataSource.pageSize = this.initialPageSize;
       });
   }
 
@@ -130,9 +132,6 @@ export class TableComponent implements OnInit, OnDestroy {
 
   public routeToUser(id: string) {
     this.router.navigate(['/user', id]);
-    if (this.dataSource.data.length > 1) {
-      this.store.dispatch(new ResetSearch(false));
-    }
   }
 
   public trackById(index: any, item: Person) {
@@ -157,6 +156,6 @@ export class TableComponent implements OnInit, OnDestroy {
 
   public scrollToTop(t: any) {
     this.table.scrollTop = 0;
-    this.dataSource.pageSize = 20;
+    this.dataSource.pageSize = this.initialPageSize;
   }
 }

@@ -4,15 +4,13 @@ import { PropagationStopModule } from 'ngx-propagation-stop';
 import { UserDetailComponent } from 'src/app/shared/components/user/user-detail/user-detail.component';
 import { UserSmallCardComponent } from 'src/app/shared/components/user/user-small-card/user-small-card.component';
 import { UserTinyCardComponent } from 'src/app/shared/components/user/user-tiny-card/user-tiny-card.component';
-import {
-  MatCardModule,
-  MatListModule,
-  MatTabsModule,
-  MatIconModule,
-  MatButtonModule,
-  MatMenuModule,
-  MatTooltipModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.module';
 import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter.module';
 import { RouterModule } from '@angular/router';

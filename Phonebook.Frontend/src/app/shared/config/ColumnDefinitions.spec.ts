@@ -1,16 +1,6 @@
-import { mockPerson } from 'src/app/shared/mocks/person';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import {
-  Person,
-  PersonType,
-  Contacts,
-  Messenger,
-  Location,
-  City,
-  Room,
-  Business,
-  PhonebookSortDirection
-} from 'src/app/shared/models';
+import { mockPerson } from 'src/app/shared/mocks/person';
+import { Business, City, Contacts, Location, Messenger, Person, PersonType, PhonebookSortDirection, Room } from 'src/app/shared/models';
 
 const personA = new Person(
   PersonType.Interner_Lernender,
@@ -38,11 +28,39 @@ const personB = new Person(
   new Business([], [], [], [], [], [], '')
 );
 
-describe('Column Search and Filter Functions: ', () => {
-  it('Organization Unit', () => {
-    expect(ColumnDefinitions.orgUnit.filterFunction(new RegExp('PF OS'), mockPerson)).toBe(true);
+describe('Column Filter Functions: ', () => {
+  it('Picture', () => {
+    expect(ColumnDefinitions.picture.filterFunction(/PF OS/i, mockPerson)).toBe(false);
   });
 
+  it('id', () => {
+    expect(ColumnDefinitions.id.filterFunction(/MXMS/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.id.filterFunction(/AAAA/i, mockPerson)).toBe(false);
+  });
+
+  it('fullname', () => {
+    expect(ColumnDefinitions.fullname.filterFunction(/Dr\.MaxMustermann/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/MaxMustermann/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/MustermannMax/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/Max/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/Mustermann/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/Nichtswaspasst/i, mockPerson)).toBe(false);
+  });
+
+  it('email', () => {
+    expect(ColumnDefinitions.email.filterFunction(/Max.Mustermann@example.com/i, mockPerson)).toBe(true);
+  });
+
+  it('phone', () => {
+    expect(ColumnDefinitions.phone.filterFunction(/\+4935128200000/i, mockPerson)).toBe(true);
+  });
+
+  it('Organization Unit', () => {
+    expect(ColumnDefinitions.orgUnit.filterFunction(/AB CD/i, mockPerson)).toBe(true);
+  });
+});
+
+describe('Column Sort Functions: ', () => {
   it('fullname', () => {
     expect(ColumnDefinitions.fullname.sortFunction(personA, personB, PhonebookSortDirection.asc)).toBeLessThan(0);
   });

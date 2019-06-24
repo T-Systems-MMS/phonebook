@@ -26,18 +26,20 @@ Hint: In order to have Language support it is recommended to also follow the [St
 
 ### Standard
 
-1.  Install [Node LTS](https://nodejs.org/en/)
-2.  Setup Environment:
+1.  Install [Node LTS](https://nodejs.org/en/) and [GIT](https://git-scm.com/downloads)
+2.  Optional setup Proxies:
 
 ```bash
-# Eventually set a Proxy Server
 npm config set proxy http://proxy.example.de:8080
 npm config set https-proxy http://proxy.example.de:8080
+git config --global http.proxy http://proxy.example.de:8080
+git config --global https.proxy http://proxy.example.de:8080
 ```
 
 3.  Setup Project:
 
 ```bash
+cd /the/place/you/want/to/clone/to
 git clone https://github.com/T-Systems-MMS/phonebook
 cd phonebook
 
@@ -47,11 +49,16 @@ npm install -g @angular/cli
 # Install the project dependencies
 npm install
 
+# Run the backend mock before
+docker run -p 8080:80 tsystemsmms/build:mock-backend
+
 # Run the project
-npm run start:en -- --open
+npm run start -- --open
 ```
 
-You're ready to develop the Phonebook App!
+> Point the Angular Proxy in the [proxy.conf.json](../../../proxy.conf.json) to your backend Server.
+
+You're ready to develop the Phonebook App! Read [here](./general-guide.md) on how to develop.
 
 > In order to circumvent Bugs coming from unsecured Websites please add the certificate used on the localhost page to your 'Trusted Root Certification Authorities'. (For Windows: In Chrome just click at the top 'Not secure' then click on Certificate, Details, Copy to File, save it anywhere and add the certificate to your 'Trusted Root Certification Authorities'. )
 

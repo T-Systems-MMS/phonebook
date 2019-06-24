@@ -1,0 +1,78 @@
+{
+  "branch": "master",
+  "verifyConditions": [],
+  "verifyConfig": ["semantic-release-docker-test"],
+  "prepare": [
+    {
+      "path": "@semantic-release/changelog",
+      "changelogFile": "src/changelog.md"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "node version.js ${nextRelease.version} ${commits[0].commit.short} ${commits[0].commit.long}"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "docker pull tsystemsmms/phonebook-build:latest || true"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "docker pull tsystemsmms/phonebook-frontend:latest || true"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "docker build --target builder --cache-from tsystemsmms/phonebook-build:latest -t tsystemsmms/phonebook-build:latest ."
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "docker build --cache-from tsystemsmms/phonebook-build:latest --cache-from tsystemsmms/phonebook-frontend:latest -t phonebook-frontend ."
+    },
+    {
+      "path": "semantic-release-docker-test",
+      "additionalTags": ["latest"],
+      "imageName": "phonebook-frontend",
+      "repositoryName": "tsystemsmms"
+    },
+    {
+      "path": "semantic-release-docker-test",
+      "additionalTags": ["latest"],
+      "imageName": "tsystemsmms/phonebook-build",
+      "pushVersionTag": false
+    }
+  ],
+  "publish": [
+    {
+      "path": "semantic-release-docker-test"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "echo ##vso[build.addbuildtag]release"
+    }
+  ],
+  "fail": [],
+  "success": [],
+  "analyzeCommits": "simple-commit-message",
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "trans",
+            "release": "patch"
+          }
+        ]
+      }
+    ],
+    "@semantic-release/release-notes-generator"
+  ]
+}

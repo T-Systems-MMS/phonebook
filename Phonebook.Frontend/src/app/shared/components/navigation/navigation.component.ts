@@ -7,12 +7,14 @@ import { EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { EnvironmentService, Environment } from 'src/app/services/environment.service';
 import { Router, NavigationEnd } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
-import { Observable } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
 import { TableState } from 'src/app/shared/states';
-import { filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
+import { I18n } from '@ngx-translate/i18n-polyfill';
+import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
 
 @Component({
   selector: 'app-navigation',
@@ -36,7 +38,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     private currentUserService: CurrentUserService,
     public environmentService: EnvironmentService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public i18n: I18n,
+    public featureFlagService: FeatureFlagService
   ) { }
 
   public ngOnInit() {
@@ -63,6 +67,27 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() { }
+
+  public getGreetingMessage(): Observable<string> {
+    return this.featureFlagService.get('firstApril').pipe(
+      untilComponentDestroyed(this), 
+    map(enabled => {
+      if(enabled){
+        return this.i18n({
+          value: `Happy April Fools' Day`,
+          description: 'Greetings Message on first April',
+          id: 'navigationBarGreetingsMessageFirstApril',
+          meaning: 'NavigationBar'
+        })  
+      }
+      return this.i18n({
+        value: 'Have a nice day',
+        description: 'Greetings Message',
+        id: 'navigationBarGreetingsMessage',
+        meaning: 'NavigationBar'
+      })
+    }));
+  }
 
   public navigateToOwnProfile() {
     if (this.currentUser != null) {

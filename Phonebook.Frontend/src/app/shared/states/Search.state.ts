@@ -1,8 +1,8 @@
-import { State, Action, StateContext, Selector, Store, Actions, ofActionSuccessful } from '@ngxs/store';
-import { TableSort, PhonebookSortDirection, SearchFilter } from 'src/app/shared/models';
-import { Navigate, RouterNavigation, RouterState } from '@ngxs/router-plugin';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { Navigate, RouterNavigation, RouterState } from '@ngxs/router-plugin';
+import { Action, Actions, ofActionSuccessful, Selector, State, StateContext, Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import { PhonebookSortDirection, SearchFilter, TableSort } from 'src/app/shared/models';
 
 export class AddSearchFilter {
   public static readonly type: string = '[Search State] Add Search Filter';
@@ -52,7 +52,7 @@ export class SearchState {
       if (
         routeSnapshot.firstChild == null ||
         routeSnapshot.firstChild.url.length === 0 ||
-        routeSnapshot.firstChild.url[0].path !== 'search'
+        !(routeSnapshot.firstChild.url[0].path === 'search' || routeSnapshot.firstChild.url[0].path === 'user')
       ) {
         this.store.dispatch(new ResetSearch(false));
         return;
@@ -167,7 +167,13 @@ export class SearchState {
   private updateURL(ctx: StateContext<SearchStateModel>, action: UpdateUrl) {
     const update = action.update;
     const params: { [key: string]: string | null } = {};
-    const routeSnapshot: ActivatedRouteSnapshot = this.store.selectSnapshot(RouterState).state.root;
+    const routeState = this.store.selectSnapshot(RouterState.state);
+    // For Unit Testing
+    // Maybe this is a solution to not modify production code: https://github.com/ngxs/store/blob/master/packages/router-plugin/tests/router.plugin.spec.ts
+    if (routeState == undefined) {
+      return;
+    }
+    const routeSnapshot: ActivatedRouteSnapshot = routeState.root;
     if (update.searchFilter != null) {
       update.searchFilter.forEach(filter => {
         params[filter.filterColumn.id] = filter.filterValue;

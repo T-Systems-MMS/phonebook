@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RoomService, BuildingTreeNode, getNodeFromTreeSync } from 'src/app/services/api/room.service';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeNestedDataSource } from '@angular/material';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
 import { filter, switchMap } from 'rxjs/operators';

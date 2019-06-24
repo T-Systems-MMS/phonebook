@@ -5,5 +5,9 @@
 
   .image-placeholder {
     background-color: mat-color($secondary, lighter);
+
+    text {
+      fill: mat-color($secondary, 'lighter-contrast');
+    }
   }
 }

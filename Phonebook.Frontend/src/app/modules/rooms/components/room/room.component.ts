@@ -4,7 +4,7 @@ import { Room, Person } from 'src/app/shared/models';
 import { MailService } from 'src/app/services/mail.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { RoomService, BuildingTreeNode } from 'src/app/services/api/room.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
 import { I18n } from '@ngx-translate/i18n-polyfill';

@@ -76,6 +76,26 @@ describe('FeatureFlagService', () => {
     const featureFlagRequest = httpMock.expectOne(url);
     featureFlagRequest.error(new ErrorEvent(''));
   });
+
+  it(' - is First April Func - Noon', () => {
+    const firstAprilNoon = new Date('2011-04-01T00:00:00')
+    expect(FeatureFlagService.isFirstApril(firstAprilNoon)).toBeTruthy()
+  });
+
+  it(' - is First April Func - Night', () => {
+    const firstAprilNight = new Date('2011-04-01T23:59:59')
+    expect(FeatureFlagService.isFirstApril(firstAprilNight)).toBeTruthy()
+  });
+
+  it(' - is First April Func - Not 1', () => {
+    const notfirstApril1 = new Date('2011-04-02T00:00:00')
+    expect(FeatureFlagService.isFirstApril(notfirstApril1)).toBeFalsy()
+  });
+
+  it(' - is First April Func - Not 2', () => {
+    const notfirstApril2 = new Date('2011-03-31T00:00:00')
+    expect(FeatureFlagService.isFirstApril(notfirstApril2)).toBeFalsy()
+  });
 });
 
 class LocationMock {

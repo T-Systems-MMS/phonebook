@@ -1,12 +1,13 @@
-img{
-  height: 350px;
+img {
+  max-height: 60vh;
   width: auto;
 }
 
-.mat-dialog-content{
+.mat-dialog-content {
   display: flex;
   flex-flow: column;
+  overflow: hidden;
 }
-span{
+span {
   text-align: center;
 }
