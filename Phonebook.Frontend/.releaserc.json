@@ -1,7 +1,9 @@
 {
   "branch": "master",
   "verifyConditions": [],
-  "verifyConfig": ["semantic-release-docker-test"],
+  "verifyConfig": [
+    "semantic-release-docker-test"
+  ],
   "prepare": [
     {
       "path": "@semantic-release/changelog",
@@ -33,13 +35,17 @@
     },
     {
       "path": "semantic-release-docker-test",
-      "additionalTags": ["latest"],
+      "additionalTags": [
+        "latest"
+      ],
       "imageName": "phonebook-frontend",
       "repositoryName": "tsystemsmms"
     },
     {
       "path": "semantic-release-docker-test",
-      "additionalTags": ["latest"],
+      "additionalTags": [
+        "latest"
+      ],
       "imageName": "tsystemsmms/phonebook-build",
       "pushVersionTag": false
     }
@@ -73,6 +79,7 @@
         ]
       }
     ],
-    "@semantic-release/release-notes-generator"
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github"
   ]
 }
