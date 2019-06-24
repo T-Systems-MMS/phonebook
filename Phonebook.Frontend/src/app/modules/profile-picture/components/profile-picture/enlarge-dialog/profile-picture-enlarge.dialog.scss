@@ -1,11 +1,12 @@
 img {
-  max-height: 75vh;
+  max-height: 60vh;
   width: auto;
 }
 
 .mat-dialog-content {
   display: flex;
   flex-flow: column;
+  overflow: hidden;
 }
 span {
   text-align: center;
