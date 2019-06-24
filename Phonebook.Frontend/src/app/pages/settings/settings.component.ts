@@ -1,12 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { I18n } from '@ngx-translate/i18n-polyfill';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { NotImplementedService } from 'src/app/modules/not-implemented/not-implemented.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { Language } from 'src/app/shared/models/enumerables/Language';
-import { I18n } from '@ngx-translate/i18n-polyfill';
-import { NotImplementedService } from 'src/app/modules/not-implemented/not-implemented.service';
-import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { Observable } from 'rxjs';
+import { AppState, SetTheme } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-settings',
@@ -22,7 +23,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public featureFlags: Observable<{ name: string; value: boolean }[]> = this.featureFlagService.getAllDefaultDisabled();
 
   constructor(
-    private themeService: ThemeService,
+    private store: Store,
     public languageService: LanguageService,
     private notImplementedService: NotImplementedService,
     public featureFlagService: FeatureFlagService,
@@ -30,12 +31,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit() {
-    this.themeValue = this.themeService.getTheme();
+    this.themeValue = this.store.selectSnapshot(AppState.theme);
     this.languageValue = this.languageService.getLanguage();
   }
 
   public changeTheme(themeClass: string) {
-    this.themeService.setTheme(themeClass);
+    this.store.dispatch(new SetTheme(themeClass));
   }
 
   public changeLanguage(lang: Language) {

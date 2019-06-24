@@ -1,5 +1,5 @@
-import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { environment } from 'src/environments/environment';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { ThemeService } from 'src/app/services/theme.service';
 
 export class ServiceWorkerNotificationDisplayed {
   public static readonly type: string = '[App State] Service Worker Notification displayed';
@@ -19,6 +19,15 @@ export class SetSendFeedback {
   constructor(public sendFeedback: boolean) {}
 }
 
+export class SetTheme {
+  public static readonly type: string = '[App State] Set Theme';
+  constructor(public theme: string) {}
+}
+
+export class InitTheme {
+  public static readonly type: string = '[App State] Init Theme';
+}
+
 export interface AppStateModel {
   serviceWorkerNotificationDisplayed: boolean;
   version: string;
@@ -28,6 +37,7 @@ export interface AppStateModel {
    * If you want to edit this Property please also change it in app.modules.ts
    */
   sendFeedback: boolean | null;
+  activeTheme: string;
 }
 
 @State<AppStateModel>({
@@ -36,10 +46,14 @@ export interface AppStateModel {
     serviceWorkerNotificationDisplayed: false,
     version: '0.0.0',
     displayedNotificationVersion: 0,
-    sendFeedback: null
+    sendFeedback: null,
+    activeTheme: 'magenta-light-theme'
   }
 })
 export class AppState {
+  constructor(
+    private themeService: ThemeService
+  ){ }
   @Selector()
   public static serviceWorkerNotificationDisplayed(state: AppStateModel): boolean {
     return state.serviceWorkerNotificationDisplayed;
@@ -48,6 +62,10 @@ export class AppState {
   @Selector()
   public static version(state: AppStateModel): string {
     return state.version;
+  }
+  @Selector()
+  public static theme(state: AppStateModel): string {
+    return state.activeTheme;
   }
 
   @Selector()
@@ -92,5 +110,21 @@ export class AppState {
       ...state,
       sendFeedback: action.sendFeedback
     });
+  }
+
+  @Action(SetTheme)
+  public setTheme(ctx: StateContext<AppStateModel>, action: SetTheme) {
+    const state = ctx.getState();
+    this.themeService.setTheme(action.theme)
+    ctx.setState({
+      ...state,
+      activeTheme: action.theme
+    });
+  }
+
+  @Action(InitTheme)
+  public initTheme(ctx: StateContext<AppStateModel>) {
+    const state = ctx.getState();
+    this.themeService.setTheme(state.activeTheme)
   }
 }
