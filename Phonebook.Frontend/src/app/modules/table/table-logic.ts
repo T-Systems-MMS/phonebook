@@ -91,12 +91,13 @@ export class TableLogic {
 
   /**
    * Prepares the Search String by
-   * 1. Removing Spaces and Commas
-   * 2. Escaping RegEx Characters
+   * 1. Removing Commas
+   * 2. Trimming whitespace
+   * 3. Escaping RegEx Characters
    * @param str String to prepare
    */
   public static prepareSearchString(str: string): RegExp {
-    return TableLogic.escapeRegExp(str.replace(/[\s,]/g, ''));
+    return TableLogic.escapeRegExp(str.replace(/,/g, '').trim());
   }
 }
 
