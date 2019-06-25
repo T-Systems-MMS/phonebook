@@ -2,8 +2,7 @@
   "branch": "master",
   "verifyConditions": [
     "@semantic-release/changelog",
-    "@semantic-release/github",
-    "semantic-release-docker-test"
+    "@semantic-release/github"
   ],
   "verifyConfig": [
     "@semantic-release/github",
