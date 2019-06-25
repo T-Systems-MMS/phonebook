@@ -6,6 +6,8 @@ labels: ''
 assignees: ''
 
 ---
+### This is a public issue tracker. Be sure that your description not contain any personal or company info.
+
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
