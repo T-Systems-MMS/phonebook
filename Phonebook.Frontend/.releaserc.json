@@ -1,7 +1,12 @@
 {
   "branch": "master",
-  "verifyConditions": [],
+  "verifyConditions": [
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "semantic-release-docker-test"
+  ],
   "verifyConfig": [
+    "@semantic-release/github",
     "semantic-release-docker-test"
   ],
   "prepare": [
@@ -61,10 +66,15 @@
     {
       "path": "@semantic-release/exec",
       "cmd": "echo ##vso[build.addbuildtag]release"
-    }
+    },
+    "@semantic-release/github"
   ],
-  "fail": [],
-  "success": [],
+  "fail": [
+    "@semantic-release/github"
+  ],
+  "success": [
+    "@semantic-release/github"
+  ],
   "analyzeCommits": "simple-commit-message",
   "plugins": [
     [
@@ -80,6 +90,16 @@
       }
     ],
     "@semantic-release/release-notes-generator",
-    "@semantic-release/github"
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "src/changelog.md",
+            "label": "Changelog"
+          }
+        ]
+      }
+    ]
   ]
 }
