@@ -66,17 +66,7 @@
       "path": "@semantic-release/exec",
       "cmd": "echo ##vso[build.addbuildtag]release"
     },
-    [
-      "@semantic-release/github",
-      {
-        "assets": [
-          {
-            "path": "src/changelog.md",
-            "label": "Changelog"
-          }
-        ]
-      }
-    ]
+    "@semantic-release/github"
   ],
   "fail": [
     "@semantic-release/github"
@@ -98,6 +88,17 @@
         ]
       }
     ],
-    "@semantic-release/release-notes-generator"
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "src/changelog.md",
+            "label": "Changelog"
+          }
+        ]
+      }
+    ]
   ]
 }
