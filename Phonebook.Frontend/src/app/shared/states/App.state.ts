@@ -1,5 +1,6 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
+import { Theme } from 'src/app/shared/models/enumerables/Theme'
 
 export class ServiceWorkerNotificationDisplayed {
   public static readonly type: string = '[App State] Service Worker Notification displayed';
@@ -20,12 +21,12 @@ export class SetSendFeedback {
 }
 
 export class SetTheme {
-  public static readonly type: string = '[App State] Set Theme';
-  constructor(public theme: string) {}
+  public static readonly type: string = '[App State] Set activeTheme';
+  constructor(public activeTheme: Theme) {}
 }
 
 export class InitTheme {
-  public static readonly type: string = '[App State] Init Theme';
+  public static readonly type: string = '[App State] Init activeTheme';
 }
 
 export interface AppStateModel {
@@ -37,7 +38,7 @@ export interface AppStateModel {
    * If you want to edit this Property please also change it in app.modules.ts
    */
   sendFeedback: boolean | null;
-  activeTheme: string;
+  activeTheme: Theme;
 }
 
 @State<AppStateModel>({
@@ -47,7 +48,7 @@ export interface AppStateModel {
     version: '0.0.0',
     displayedNotificationVersion: 0,
     sendFeedback: null,
-    activeTheme: 'magenta-light-theme'
+    activeTheme: Theme.magenta_light_theme
   }
 })
 export class AppState {
@@ -64,7 +65,7 @@ export class AppState {
     return state.version;
   }
   @Selector()
-  public static theme(state: AppStateModel): string {
+  public static activeTheme(state: AppStateModel): Theme {
     return state.activeTheme;
   }
 
@@ -115,10 +116,10 @@ export class AppState {
   @Action(SetTheme)
   public setTheme(ctx: StateContext<AppStateModel>, action: SetTheme) {
     const state = ctx.getState();
-    this.themeService.setTheme(action.theme)
+    this.themeService.setTheme(action.activeTheme)
     ctx.setState({
       ...state,
-      activeTheme: action.theme
+      activeTheme: action.activeTheme
     });
   }
 

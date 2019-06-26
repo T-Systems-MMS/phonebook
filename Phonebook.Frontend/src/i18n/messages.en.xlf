@@ -228,41 +228,23 @@
         <note priority="1" from="description">Language SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleColorTheme" datatype="html">
-        <source>Color Theme
-                    (beta)</source><target state="final">Color Theme
-                    (beta)</target>
+        <source>Color Theme</source><target state="final">Color Theme</target>
         <note priority="1" from="description">Color Theme SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
-        <source>
-                                    Blue Light Theme
-                                </source><target state="final">
-                                    Blue Light Theme
-                                </target>
-        <note priority="1" from="description">Color Theme Option: Defaul</note>
+        <source>Blue Light Theme</source><target state="final">Blue Light Theme</target>
+        <note priority="1" from="description">Color Theme Option: Blue Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
-        <source>
-                                    Blue Dark Theme
-                                </source><target state="final">
-                                    Blue Dark Theme
-                                </target>
-        <note priority="1" from="description">Color Theme Option: Dark</note>
+        <source>Blue Dark Theme</source><target state="final">Blue Dark Theme</target>
+        <note priority="1" from="description">Color Theme Option: Blue Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
-        <source>
-                                    Magenta Dark Theme
-                                </source><target state="final">
-                                    Magenta Dark Theme
-                                </target>
+        <source>Magenta Dark Theme</source><target state="final">Magenta Dark Theme</target>
         <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
-        <source>
-                                    Magenta Light Theme
-                                </source><target state="final">
-                                    Magenta Light Theme
-                                </target>
+        <source>Magenta Light Theme</source><target state="final">Magenta Light Theme</target>
         <note priority="1" from="description">Color Theme Option: Magenta Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>

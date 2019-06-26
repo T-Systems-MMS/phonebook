@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class ThemeService {
   constructor(private overlayContainer: OverlayContainer) {}
   private activeTheme: string =
-    Array.from(document.body.classList).find(item => item.includes('-theme')) || 'blue-light-theme';
+    Array.from(document.body.classList).find(item => item.includes('_theme')) || 'magenta_light_theme';
 
   public setTheme(themeClass: string) {
     const bodyClassList = document.body.classList;
@@ -29,7 +29,7 @@ export class ThemeService {
 
   private getThemeClassesFromClassList(classList: DOMTokenList): string[] {
     return Array.from(classList).filter(item => {
-      return item.includes('-theme');
+      return item.includes('_theme');
     });
   }
 }

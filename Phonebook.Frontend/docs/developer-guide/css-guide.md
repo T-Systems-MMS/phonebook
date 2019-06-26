@@ -4,7 +4,7 @@ We are using Angular Material 2 as Main Theme
 
 To use mixins from the themes use this as a reference:
 https://github.com/angular/material2/blob/877de5691b8dd755af4a2f77b4cf57f2d374e107/src/lib/core/theming/_palette.scss
-Use this Guide: https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1
+Use this Guide: https://medium.com/@tomastrajan/the-complete-guide-to-angular-material_themes-4d165a9d24d1
 
 ## Typography
 

@@ -120,33 +120,8 @@
         <note priority="1" from="description">Language SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleColorTheme" datatype="html">
-        <source>Color Theme
-                    (beta)</source>
+        <source>Color Theme</source>
         <note priority="1" from="description">Color Theme SubTitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
-        <source>
-                                    Blue Light Theme
-                                </source>
-        <note priority="1" from="description">Color Theme Option: Defaul</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
-        <source>
-                                    Blue Dark Theme
-                                </source>
-        <note priority="1" from="description">Color Theme Option: Dark</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
-        <source>
-                                    Magenta Dark Theme
-                                </source>
-        <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
-        <source>
-                                    Magenta Light Theme
-                                </source>
-        <note priority="1" from="description">Color Theme Option: Magenta Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="navigationBarColorChangerTooltip" datatype="html">
         <source>Here you can change the color theme of the app.</source>
@@ -469,21 +444,6 @@
         <source>The red bar indicates that you are offline.</source>
         <note priority="1" from="description">Tooltip for bar indicating the user is offline</note>
         <note priority="1" from="meaning">Online-barComponent</note>
-      </trans-unit><trans-unit id="RoomPlanComponentNoPlan" datatype="html">
-        <source>
-        <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>
-            Unfortunately there is no plan for this floor.
-        <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/>
-        <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>
-            Do you know who can make one or want to help us fix this?
-        <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/>
-        <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
-            <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>code<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
-            Contribute
-        <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
-    </source>
-        <note priority="1" from="description">Message displayed if there is no room plan</note>
-        <note priority="1" from="meaning">RoomPlanComponent</note>
       </trans-unit><trans-unit id="ActionDrawerSheetComponentButtonCopy" datatype="html">
         <source>Copy to
         clipboard</source>
@@ -498,16 +458,6 @@
         Number</source>
         <note priority="1" from="description">call Number button</note>
         <note priority="1" from="meaning">Action-drawer-sheetComponent</note>
-      </trans-unit><trans-unit id="DataPersonFloor" datatype="html">
-        <source>Floor</source>
-        <note priority="1" from="description">Label for Person.Floor data</note>
-        <note priority="1" from="meaning">Datapoint</note>
-      </trans-unit><trans-unit id="UserDetailComponentMessageNoLocation" datatype="html">
-        <source>
-    No Location provided.
-  </source>
-        <note priority="1" from="description">Message displayed if the location of the user could not be determined</note>
-        <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="TableComponentColumnIdLabel" datatype="html">
         <source>Change sorting for column Id</source>
         <note priority="1" from="description">Label for sorting the column &apos;Id&apos;</note>
@@ -554,33 +504,31 @@
   </source>
         <note priority="1" from="description">Sentence displayed if search did not return any results</note>
         <note priority="1" from="meaning">TableComponent</note>
-      </trans-unit><trans-unit id="OrganigramNodeComponentExpandAriaLabel" datatype="html">
-        <source>Button expanding or collapsing this node. </source>
-        <note priority="1" from="description">Aria Label for expand Button on Organigram Node</note>
-        <note priority="1" from="meaning">OrganigramNodeComponent</note>
-      </trans-unit><trans-unit id="OrganigramNodeComponentExpandTooltip" datatype="html">
-        <source>Expand or Collapse this node.</source>
-        <note priority="1" from="description">Tooltip for expanding a Organigram Node</note>
-        <note priority="1" from="meaning">OrganigramNodeComponent</note>
-      </trans-unit><trans-unit id="OrganigramNodeComponentPropertySupervisor" datatype="html">
-        <source><x id="ICU" equiv-text="{node.supervisors.length, plural, =0 {...} =1 {...} other {...}}"/>
-          </source>
-        <note priority="1" from="description">Supervisor Property</note>
-        <note priority="1" from="meaning">OrganigramNodeComponent</note>
-      </trans-unit><trans-unit id="ff11102cbae639cf613a0681877b985135e18e9d" datatype="html">
-        <source>{VAR_PLURAL, plural, =0 {No Supervisor } =1 {Supervisor: } other {Supervisors: } }</source>
-      </trans-unit><trans-unit id="OrganigramNodeComponentPropertyAssistant" datatype="html">
-        <source>{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants: } }</source>
-        <note priority="1" from="description">Assistant Property</note>
-        <note priority="1" from="meaning">OrganigramNodeComponent</note>
-      </trans-unit><trans-unit id="OrganigramNodeComponentPropertyEmployee" datatype="html">
-        <source>{VAR_PLURAL, plural, =0 {No Employees } =1 {Employee: } other {Employees: } }</source>
-        <note priority="1" from="description">Employee Property</note>
-        <note priority="1" from="meaning">OrganigramNodeComponent</note>
-      </trans-unit><trans-unit id="OrganigramNodeComponentPropertyLearner" datatype="html">
-        <source>{VAR_PLURAL, plural, =0 {No Learners } =1 {Learner: } other {Learners: } }</source>
-        <note priority="1" from="description">Learners Property</note>
-        <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="RoomPlanComponentNoPlan" datatype="html">
+        <source>
+        <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>
+            Unfortunately there is no plan for this floor.
+        <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/>
+        <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>
+            Do you know who can make one or want to help us fix this?
+        <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/>
+        <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+            <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>code<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
+            Contribute
+        <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+    </source>
+        <note priority="1" from="description">Message displayed if there is no room plan</note>
+        <note priority="1" from="meaning">RoomPlanComponent</note>
+      </trans-unit><trans-unit id="DataPersonFloor" datatype="html">
+        <source>Floor</source>
+        <note priority="1" from="description">Label for Person.Floor data</note>
+        <note priority="1" from="meaning">Datapoint</note>
+      </trans-unit><trans-unit id="UserDetailComponentMessageNoLocation" datatype="html">
+        <source>
+    No Location provided.
+  </source>
+        <note priority="1" from="description">Message displayed if the location of the user could not be determined</note>
+        <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="RoomDetailComponentShareButtonTooltip" datatype="html">
         <source>Share this room.</source>
         <note priority="1" from="description">Tooltip for the Room sharing button</note>
@@ -663,14 +611,41 @@
         <source>Floors</source>
         <note priority="1" from="description">Floor plural</note>
         <note priority="1" from="meaning">Datapoint</note>
-      </trans-unit><trans-unit id="CityComponentSubHeaderLocation" datatype="html">
-        <source>Buildings</source>
-        <note priority="1" from="description">Subheader for all building locations in the city</note>
-        <note priority="1" from="meaning">CityComponent</note>
       </trans-unit><trans-unit id="FloorComponentSubHeaderRooms" datatype="html">
         <source>Rooms</source>
         <note priority="1" from="description">SubHeader for all Rooms in the floor</note>
         <note priority="1" from="meaning">FloorComponent</note>
+      </trans-unit><trans-unit id="CityComponentSubHeaderLocation" datatype="html">
+        <source>Buildings</source>
+        <note priority="1" from="description">Subheader for all building locations in the city</note>
+        <note priority="1" from="meaning">CityComponent</note>
+      </trans-unit><trans-unit id="OrganigramNodeComponentExpandAriaLabel" datatype="html">
+        <source>Button expanding or collapsing this node. </source>
+        <note priority="1" from="description">Aria Label for expand Button on Organigram Node</note>
+        <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="OrganigramNodeComponentExpandTooltip" datatype="html">
+        <source>Expand or Collapse this node.</source>
+        <note priority="1" from="description">Tooltip for expanding a Organigram Node</note>
+        <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="OrganigramNodeComponentPropertySupervisor" datatype="html">
+        <source><x id="ICU" equiv-text="{node.supervisors.length, plural, =0 {...} =1 {...} other {...}}"/>
+          </source>
+        <note priority="1" from="description">Supervisor Property</note>
+        <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="ff11102cbae639cf613a0681877b985135e18e9d" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Supervisor } =1 {Supervisor: } other {Supervisors: } }</source>
+      </trans-unit><trans-unit id="OrganigramNodeComponentPropertyAssistant" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants: } }</source>
+        <note priority="1" from="description">Assistant Property</note>
+        <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="OrganigramNodeComponentPropertyEmployee" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Employees } =1 {Employee: } other {Employees: } }</source>
+        <note priority="1" from="description">Employee Property</note>
+        <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="OrganigramNodeComponentPropertyLearner" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Learners } =1 {Learner: } other {Learners: } }</source>
+        <note priority="1" from="description">Learners Property</note>
+        <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentTitle" datatype="html">
         <source>
         The Phonebook
@@ -862,6 +837,26 @@
         <source>Here is the Link: </source>
         <note priority="1" from="description">the body of the email that is preset when clicking &quot;Share by mail&quot;. The link to the room is applied after this sentence.</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
+        <source>Blue Light Theme</source>
+        <note priority="1" from="description">Color Theme Option: Blue Light</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
+        <source>Blue Dark Theme</source>
+        <note priority="1" from="description">Color Theme Option: Blue Dark</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
+        <source>Magenta Light Theme</source>
+        <note priority="1" from="description">Color Theme Option: Magenta Light</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
+        <source>Magenta Dark Theme</source>
+        <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="NavigationComponentViewModeList" datatype="html">
         <source>List View</source>

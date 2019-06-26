@@ -16,7 +16,7 @@ You can write your `scss`by hand or you can produce it via this [tool](https://m
 Place here theme under the path `src/styles/themes/{themename}.scss`.
 Now add your theme to the `src/styles/themes/themes.sccs`.
 
-> Important: You class name in the `themes.sccs` file must end with `-theme`.
+> Important: You class name in the `themes.sccs` file must end with `_theme`.
 
 If you are done with your theme and you have test it like it is describted in the [development guide](todo).
 
