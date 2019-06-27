@@ -1,19 +1,19 @@
-import { TestBed, inject } from '@angular/core/testing';
-
-import { ReleaseInfoService } from './release-info.service';
+import { HttpClientModule } from '@angular/common/http';
+import { inject, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NgxsModule, Store } from '@ngxs/store';
-import { AppState } from 'src/app/shared/states';
-import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import { NgxsModule, Store } from '@ngxs/store';
+import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
+import { AppState } from 'src/app/shared/states';
+import { ReleaseInfoService } from './release-info.service';
 
 describe('ReleaseInfoService', () => {
   let store: Store;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MatDialogModule, MatSnackBarModule, NgxsModule.forRoot([AppState])],
+      imports: [MatDialogModule, MatSnackBarModule, NgxsModule.forRoot([AppState]), HttpClientModule],
       providers: [ReleaseInfoService, { provide: I18n, useClass: MockI18nService }]
     });
   });

@@ -1,5 +1,5 @@
-import { MatDialogRef } from '@angular/material/dialog';
-import { Component } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
 
 /**
  * Release Notification Dialog
@@ -11,5 +11,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./release-notification.dialog.scss']
 })
 export class ReleaseNotificationDialog {
-  constructor(public dialogRef: MatDialogRef<ReleaseNotificationDialog>) {}
+  constructor(
+    public dialogRef: MatDialogRef<ReleaseNotificationDialog>,
+    @Inject(MAT_DIALOG_DATA) public text: string
+  ) {}
 }

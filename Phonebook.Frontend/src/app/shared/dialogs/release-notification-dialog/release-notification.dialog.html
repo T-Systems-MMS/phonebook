@@ -1,29 +1,13 @@
 <div class="releaseDialog">
   <h1 mat-dialog-title>We've updated to a newer Version!</h1>
   <mat-dialog-content>
-    <mat-list class="pb-link-list">
-      <h2>New Feature</h2>
-      <h3 matLine>Color Theme Switcher</h3>
-      <mat-list-item>
-        <p matLine>
-          You can choose between different themes to give the phonebook your
-          personal look. This will also work beyound sessions.
-        </p>
-        <p matLine>
-          Try out the new Feature in your
-          <a routerLink="/settings">Settings <mat-icon>settings</mat-icon></a>.
-        </p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-    </mat-list>
+    <div [innerHTML]="text"></div>
   </mat-dialog-content>
   <div class="pb-spacer"></div>
   <mat-dialog-actions>
     <p>
       Curious whats coming up next? Take a look at our
-      <a href="https://github.com/T-Systems-MMS/phonebook/projects/1"
-        >current Sprint </a
-      >.
+      <a href="https://github.com/T-Systems-MMS/phonebook/projects/1">current Sprint </a>.
     </p>
     <div class="actions">
       <button mat-button mat-dialog-close cdkFocusInitial>Cool!</button>
