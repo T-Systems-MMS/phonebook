@@ -31,7 +31,7 @@
                         <mat-form-field
                             i18n-matTooltip="navigationBar|Color Change Button Tooltip@@navigationBarColorChangerTooltip"
                             matTooltip="Here you can change the color theme of the app.">
-                            <mat-select [value]="themeValueObservable | async" (valueChange)="changeTheme($event)">
+                            <mat-select [value]="themeValue$ | async" (valueChange)="changeTheme($event)">
                                 <mat-option *ngFor="let theme of themes" [value]="theme">
                                     <span>{{getThemeName(theme)}}</span>
                                 </mat-option>
@@ -56,9 +56,6 @@
                     </mat-form-field>
                 </mat-list-item>
             </mat-list>
-            <!-- featureFlag-Container for future features -->
-            <ng-container *featureFlag=""> 
-            </ng-container>
         </div>
         <div *ngIf=""> <!-- TODO: Check-if there are featureFlags -> add a function in .component.ts -->
             <h2>

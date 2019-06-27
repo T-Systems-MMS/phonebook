@@ -7,6 +7,11 @@
 	"settings": {
 		"cSpell.words": [
 			"Phonebook"
-		]
+		],
+		"prettier.jsxSingleQuote": true,
+		"prettier.singleQuote": true,
+		"prettier.tslintIntegration": true,
+		"javascript.preferences.quoteStyle": "single",
+		"typescript.preferences.quoteStyle": "single"
 	}
 }
