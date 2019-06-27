@@ -1,5 +1,4 @@
 import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
-import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
 
 /**
  * Helper Function

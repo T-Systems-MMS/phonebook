@@ -1,6 +1,4 @@
 import { Helpers } from './helpers';
-import { PhonebookSortDirection } from 'src/app/shared/models';
-import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
 
 // FYI: How Compare Functions Work:
 // https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
