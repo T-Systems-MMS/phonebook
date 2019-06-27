@@ -3,9 +3,9 @@
  * major.minor.patch
  */
 export enum VersionIncrement {
-  major = 0,
-  minor = 1,
-  patch = 2,
+  breaking = 0,
+  feature = 1,
+  bugfix = 2,
   none = 3,
   malformatted = 4
 }
