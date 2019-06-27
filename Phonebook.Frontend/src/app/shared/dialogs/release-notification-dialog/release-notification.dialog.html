@@ -1,12 +1,7 @@
 <div class="releaseDialog">
   <h1 mat-dialog-title>We've updated to a newer Version!</h1>
   <mat-dialog-content>
-    <!-- <h2>Bugfixes:</h2> -->
-    <mat-list class="pb-link-list">
-      <mat-list-item>
-        But there were to many things to track. We will update this dialog as we provide future versions.
-      </mat-list-item>
-    </mat-list>
+    <div [innerHTML]="text"></div>
   </mat-dialog-content>
   <div class="pb-spacer"></div>
   <mat-dialog-actions>

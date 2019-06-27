@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.debug';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReleaseNotificationDialog } from 'src/app/shared/dialogs/release-notification-dialog/release-notification.dialog';
@@ -8,12 +7,19 @@ import { Store } from '@ngxs/store';
 import { AppState, SetVersion } from 'src/app/shared/states';
 import { VERSION } from 'src/environments/version';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReleaseInfoService {
-  constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private store: Store, private i18n: I18n) {}
+  constructor(
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private store: Store,
+    private i18n: I18n,
+    private httpClient: HttpClient
+  ) {}
 
   public checkForUpdate() {
     const versionIncrement = ReleaseInfoService.whatVersionIncrement(
@@ -38,10 +44,21 @@ export class ReleaseInfoService {
   }
 
   private displayReleaseDialog() {
-    this.dialog.open(ReleaseNotificationDialog, {
-      height: '90vh',
-      width: '90vw'
-    });
+    let text = 'Changelog could not be loaded.';
+    this.httpClient
+      .get('changelog.md', {
+        responseType: 'text'
+      })
+      .subscribe(success => {
+        import('marked').then(marked => {
+          text = marked.parse(success);
+          this.dialog.open(ReleaseNotificationDialog, {
+            data: text,
+            height: '90vh',
+            width: '90vw'
+          });
+        });
+      });
   }
 
   private displayReleaseNotification() {
