@@ -87,7 +87,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
         });
       }
       default: 
-        throw Error('Translation for theme ${theme} does not exists.');
+        throw Error(`Translation for theme ${theme} does not exists.`);
     }
   }
 
