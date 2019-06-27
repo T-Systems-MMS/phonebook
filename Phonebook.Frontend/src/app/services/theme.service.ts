@@ -1,11 +1,12 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Injectable } from '@angular/core';
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
 
 @Injectable()
 export class ThemeService {
   constructor(private overlayContainer: OverlayContainer) {}
   private activeTheme: string =
-    Array.from(document.body.classList).find(item => item.includes('_theme')) || 'magenta_light_theme';
+    Array.from(document.body.classList).find(item => item.includes('_theme')) || Theme.magenta_light_theme;
 
   public setTheme(themeClass: string) {
     const bodyClassList = document.body.classList;
