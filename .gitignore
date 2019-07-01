@@ -342,3 +342,9 @@ healthchecksdb
 
 # Local Variables
 .env
+
+# Jekyll ignore
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
