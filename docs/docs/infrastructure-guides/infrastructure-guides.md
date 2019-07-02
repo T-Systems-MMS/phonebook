@@ -8,4 +8,4 @@ permalink: /docs/infrastructure-guides
 
 # :gear: Infrastructure Guide
 
-> Coming soon.. 
+{{site.coming_soon}}
