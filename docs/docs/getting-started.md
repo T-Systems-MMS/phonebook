@@ -23,17 +23,17 @@ We recommmend using [VSCode](https://code.visualstudio.com/) as IDE, however you
 <br>
 At this time only the frontend is full Open Source. In the following steps do you learn how to setup the frontend of the Phonebook. 
 
-> Steps how you can contribute to the backend can you find on your organization page.
+> To contribute to the backend please contact one of the {{site.contributors}}.
 
 
 
 <details>
   <summary>If you have not many experience about the named techniques you can click to find more resources.</summary>
-<i>This part will be regurlarly expanded. If you have other project related resources. Edit this file and start a pull request.</i>
+<i>This part will be regurlarly expanded. If you have other project related resources edit this file and start a pull request.</i>
 <ul>
-    <li>Angular Tutorial: <a href="https://angular.io/tutorial" target="_blank">click</a></li>
-    <li>Git Tutorial: <a href="https://dev.to/dhruv/essential-git-commands-every-developer-should-know-2fl" target="_blank">click</a></li>
-    <li>NGXS Tutorial: <a href="https://ngxs.gitbook.io/ngxs/" target="_blank">click</a></li>
+    <li><a href="https://angular.io/tutorial" target="_blank">Angular Tutorial</a></li>
+    <li><a href="https://dev.to/dhruv/essential-git-commands-every-developer-should-know-2fl" target="_blank">Essential Git Commands</a></li>
+    <li><a href="https://ngxs.gitbook.io/ngxs/" target="_blank">NGXS Documentation</a></li>
 </ul>
 </details>
 

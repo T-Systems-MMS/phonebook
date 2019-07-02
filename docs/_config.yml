@@ -35,6 +35,12 @@ plugins:
   - jekyll-feed
   - jemoji
 
+sass:
+    sass_dir: _sass
+
+contributors: "[contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors)"
+current_issues: "[current Issues](https://github.com/T-Systems-MMS/phonebook/issues)"
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

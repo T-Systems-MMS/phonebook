@@ -13,29 +13,27 @@ nav_order: 1
 ## **:question: What is the Phonebook?**
 
 The Phonebook is a community project for us, from us and everybody is welcome to participate.
-This Single-Page-Application is able to display People, Rooms and the organization structure. It is also perfect to search for people in a company, get information where they sit in your building and how to contact them.
+This Single-Page-Application is able to display People, Rooms and the organization structure. It is perfect to search for people in a company, get information where they sit in your building and how to contact them.
 
 ## **:wave: New to the Phonebook?**
-We are always searching for new contributors who want's to be a part of a growing community. The contributions beneftis are huge. You can learn many about the above technologies, bring new ideas into the project and learn how it is to be an OpenSource-Developer.
+We are always searching for new contributors who want's to be a part of a growing community. The contribution beneftis are huge. You can learn many about the below technologies, bring new ideas into the project, link up with new people from different departments and learn how it is to be an OpenSource-Developer.
 
-If you're just getting started with the Phonebook, it's recommend you to take a look on our [getting-started](/docs/getting-started) page or take a look at our [Board](https://github.com/T-Systems-MMS/phonebook/projects/1).
-
-We search people for many things. If you want to know how you can be a part of this community take a look at...
+If you're just getting started with the Phonebook, we recommend you to take a look on our [getting-started](/docs/getting-started) page or take a look at our [Project Board](https://github.com/T-Systems-MMS/phonebook/projects/1).
 
 > *If you're a part of T-Systems you can also take a look at the internal get-started page.*
 
 ## **:mag: What are we searching?**
-In this project can you contribute if you have different skills or if you want to evolve different techniques.
+In this project can you contribute with different skills or if you want to evolve different techniques.
 
-First it's recommend to check our [current Issues](https://github.com/T-Systems-MMS/phonebook/issues).
+First it's recommend to check our {{site.current_issues}}.
 
 You want to contribute, but don't know how or can't find the right issue? Just contact us. We will find the right thing for you.
 <details>
-  <summary>Possible other things to help could be:</summary>
+  <summary>Possible things to participate could be:</summary>
 <ul>
     <li>Develop new Features</li>
+    <li>Review Pull Requests</li>
     <li>Test the Application and suggest new enhancements or report new bugs</li>
-    <li>Document different things around the software</li>
     <li>Design a cool Phonebook-Logo</li>
     <li>Develop a new User-Centered Design</li>
     <li>Provide Accessibility</li>
@@ -64,7 +62,7 @@ The project makes use of the following noteworthy frameworks:
 </details>
 
 ## **:sparkles: Need Help?**
-> coming soon
+If you still have questions feel free to contact one of the {{site.contributors}}.
 
 ## **:computer: Supported Browsers**
 
