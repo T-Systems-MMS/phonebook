@@ -5,10 +5,7 @@ import { Theme } from 'src/app/shared/models/enumerables/Theme';
 @Injectable()
 export class ThemeService {
   constructor(private overlayContainer: OverlayContainer) {}
-  private activeTheme: string =
-    Array.from(document.body.classList).find(item => item.includes('_theme')) || Theme.magenta_light_theme;
-
-  public setTheme(themeClass: string) {
+  public setTheme(themeClass: Theme) {
     const bodyClassList = document.body.classList;
     this.removeThemesFromClassList(bodyClassList);
     bodyClassList.add(themeClass);
@@ -16,11 +13,6 @@ export class ThemeService {
     const overlayClassList = this.overlayContainer.getContainerElement().classList;
     this.removeThemesFromClassList(overlayClassList);
     overlayClassList.add(themeClass);
-    this.activeTheme = themeClass;
-  }
-
-  public getTheme(): string {
-    return this.activeTheme;
   }
 
   private removeThemesFromClassList(classList: DOMTokenList) {

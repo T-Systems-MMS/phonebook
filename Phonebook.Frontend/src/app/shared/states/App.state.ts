@@ -1,6 +1,6 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
-import { Theme } from 'src/app/shared/models/enumerables/Theme'
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
 
 export class ServiceWorkerNotificationDisplayed {
   public static readonly type: string = '[App State] Service Worker Notification displayed';
@@ -52,9 +52,7 @@ export interface AppStateModel {
   }
 })
 export class AppState {
-  constructor(
-    private themeService: ThemeService
-  ){ }
+  constructor(private themeService: ThemeService) {}
   @Selector()
   public static serviceWorkerNotificationDisplayed(state: AppStateModel): boolean {
     return state.serviceWorkerNotificationDisplayed;
@@ -116,7 +114,7 @@ export class AppState {
   @Action(SetTheme)
   public setTheme(ctx: StateContext<AppStateModel>, action: SetTheme) {
     const state = ctx.getState();
-    this.themeService.setTheme(action.activeTheme)
+    this.themeService.setTheme(action.activeTheme);
     ctx.setState({
       ...state,
       activeTheme: action.activeTheme
@@ -126,6 +124,6 @@ export class AppState {
   @Action(InitTheme)
   public initTheme(ctx: StateContext<AppStateModel>) {
     const state = ctx.getState();
-    this.themeService.setTheme(state.activeTheme)
+    this.themeService.setTheme(state.activeTheme);
   }
 }
