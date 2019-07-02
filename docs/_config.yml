@@ -32,11 +32,8 @@ aux_links:
 markdown: kramdown
 remote_theme: pmarsceill/just-the-docs
 plugins:
-  - jekyll-feed
   - jemoji
-
-sass:
-    sass_dir: _sass
+  - jekyll-remote-theme
 
 contributors: "[contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors)"
 current_issues: "[current Issues](https://github.com/T-Systems-MMS/phonebook/issues)"
