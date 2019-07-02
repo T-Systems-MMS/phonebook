@@ -2,7 +2,6 @@
 layout: default
 title: Changelog
 nav_order: 6
-permalink: 
 ---
+[Go to the Release Notes](https://github.com/T-Systems-MMS/phonebook/releases){: .btn .btn-purple }
 
-Here should be link to the Changelog-File on Github (we haven't one yet)

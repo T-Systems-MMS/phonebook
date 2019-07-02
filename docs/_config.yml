@@ -35,11 +35,14 @@ plugins:
   - jemoji
   - jekyll-remote-theme
 
-# Variables
+# Other Variables
 contributors: "[contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors)"
 current_issues: "[current Issues](https://github.com/T-Systems-MMS/phonebook/issues)"
 coming_soon: "> :gear: Coming soon.."
 
+Navigation:
+  - title: Changelog  
+url: https://github.com/T-Systems-MMS/phonebook/releases
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
