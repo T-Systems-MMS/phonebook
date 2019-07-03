@@ -1,18 +1,17 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Enhancement Idea
+about: Suggest enhancements to existing features
 title: ''
-labels: 'feature'
+labels: 'enhancement'
 assignees: ''
 
 ---
-<!-- This warning can delete before Submit-->
+<!-- This warning can deleted before Submit-->
 > #### This is a public issue tracker. 
 > #### Be sure that your description and screenshots not contain any personal or company info.
 
-
-**Is your feature request related to a problem? Please describe.**
-<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->
+**Is your enhancement proposal related to a problem? Please describe.**
+<!-- A clear and concise description of what the problem is. -->
 
 **Describe the solution you'd like**
 <!-- A clear and concise description of what you want to happen. -->
@@ -21,4 +20,4 @@ assignees: ''
 <!-- A clear and concise description of any alternative solutions or features you've considered. -->
 
 **Additional context**
-<!-- Add any other context or screenshots about the feature request here. -->
+<!-- Add any other context or graphics (drag-and-drop an image) about the enhancement request here. -->
