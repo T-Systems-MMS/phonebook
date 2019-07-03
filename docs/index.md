@@ -18,14 +18,14 @@ This Single-Page-Application is able to display People, Rooms and the organizati
 ## **:wave: New to the Phonebook?**
 We are always searching for new contributors who want's to be a part of a growing community. The contribution beneftis are huge. You can learn many about the below technologies, bring new ideas into the project, link up with new people from different departments and learn how it is to be an OpenSource-Developer.
 
-If you're just getting started with the Phonebook, we recommend you to take a look on our [getting-started](/docs/getting-started) page or take a look at our [Project Board](https://github.com/T-Systems-MMS/phonebook/projects/1).
+If you're just getting started with the Phonebook, we recommend you to take a look on our [getting-started](/pages/getting-started) page or take a look at our [Project Board](https://github.com/T-Systems-MMS/phonebook/projects/1).
 
-> *If you're a part of T-Systems you can also take a look at the internal get-started page.*
+> If you're a part of T-Systems you can also take a look at the internal get-started page.
 
-## **:mag: What are we searching?**
-In this project can you contribute with different skills or if you want to evolve different techniques.
+## **:mag: You want to be a part of this community?**
+You can contribute with any skill or use this project to evolve your techniques.
 
-First it's recommend to check our {{site.current_issues}}.
+First we recommend to check our {{site.current_issues}}.
 
 You want to contribute, but don't know how or can't find the right issue? Just contact us. We will find the right thing for you.
 <details>

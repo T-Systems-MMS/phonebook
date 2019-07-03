@@ -31,7 +31,7 @@ In order to run them without docker use the companion command `npm run test:dev`
 npm run e2e-compose
 ```
 
-In order to install the webdriver begind a corporate proxy run 
+In order to install the webdriver behind a corporate proxy run 
 
 `npx webdriver-manager update --proxy 'http://proxy.company.de:8080/' --ignore_ssl` 
 
@@ -73,5 +73,5 @@ If you get an `[object ErrorEvent] thrown` use `npm run test:dev-debug` as there
 
 ### **Useful to know**
 
-Have a look at the [general guide](/docs/development-guides/general-guide) in order to get to know npm packages and workflows we are using to develop the Phonebook.
+Have a look at the [general guide](/pages/development-guides/general-guide) in order to get to know npm packages and workflows we are using to develop the Phonebook.
 
