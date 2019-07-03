@@ -16,9 +16,11 @@ The Phonebook is a community project for us, from us and everybody is welcome to
 This Single-Page-Application is able to display People, Rooms and the organization structure. It is perfect to search for people in a company, get information where they sit in your building and how to contact them.
 
 ## **:wave: New to the Phonebook?**
-We are always searching for new contributors who want's to be a part of a growing community. The contribution beneftis are huge. You can learn many about the below technologies, bring new ideas into the project, link up with new people from different departments and learn how it is to be an OpenSource-Developer.
+We are always searching for new contributors who want to be a part of a growing community. The contribution benefits are huge. You can learn a lot about the technologies displayed below, bring new ideas into the project, connect with new people from different departments and learn how it is to be an OpenSource-Developer.
 
-If you're just getting started with the Phonebook, we recommend you to take a look on our [getting-started](/pages/getting-started) page or take a look at our [Project Board](https://github.com/T-Systems-MMS/phonebook/projects/1).
+If you're just getting started with the Phonebook, we recommend to take a look on our [getting-started](/docs/getting-started) page or take a look at our [Project Board](https://github.com/T-Systems-MMS/phonebook/projects/1). 
+
+You can also keep an eye on our <a class="d-inline-block v-align-text-top" style="background-color: #7057ff; color: #ffffff" title="Good for newcomers" href="https://github.com/T-Systems-MMS/phonebook/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22" target="_blank">good first issue</a>-Badge. This Label shows that the issue can be perfect to dive into the project.
 
 > If you're a part of T-Systems you can also take a look at the internal get-started page.
 

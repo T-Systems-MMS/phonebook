@@ -28,7 +28,7 @@ At this time only the frontend is full Open Source. In the following steps do yo
 
 
 <details>
-  <summary>If you have not many experience about the named techniques you can click to find more resources.</summary>
+  <summary>If you do not have much experience about the named techniques you can find more resources here:</summary>
 <i>This part will be regurlarly expanded. If you have other project related resources edit this file and start a pull request.</i>
 <ul>
     <li><a href="https://angular.io/tutorial" target="_blank">Angular Tutorial</a></li>
@@ -43,7 +43,7 @@ At this time only the frontend is full Open Source. In the following steps do yo
  1. Install the current Version of 
 	 - [Node LTS](https://nodejs.org/en/download/) and
 	 - [GIT](https://git-scm.com/downloads)
-2.  **Optional:** If you need to setup Proxies click follow the steps below. 
+2.  **Optional:** If you need to setup Proxies follow the steps below. 
 		*(You only need to setup proxies if you're behind a corporate proxy.)*
 ```bash
 npm config set proxy http://proxy.example.de:8080
@@ -66,16 +66,17 @@ npm install -g @angular/cli
 # Install the project dependencies
 npm install
 
-# Run the backend mock before (only possible if you're a part of MMS)
+# Pull the docker image for backend mock
+docker pull tsystemsmms/phonebook-build:mock-backend
+
+# Run the backend mock before
 docker run -p 8080:80 tsystemsmms/build:mock-backend
 
 # Run the project
 npm run start -- --open
 ```
-> Point the Angular Proxy in the [proxy.conf.json](../../../proxy.conf.json) to your backend Server.
+> If you want to use a different backend server edit the Angular Proxy in the [proxy.conf.json](../../../proxy.conf.json).
 
-:star: You're ready to develop the Phonebook Application! Start by reading the general Guide to get an overview.
-
-[General Guide](./development-guides/general-guide.md){: .btn .btn-purple }
+:star: You're ready to develop the Phonebook Application! Start by reading the [General Guide](./development-guides/general-guide.md) to get an overview.
 
 > In order to circumvent Bugs coming from unsecured Websites please add the certificate used on the localhost page to your 'Trusted Root Certification Authorities'. (For Windows: In Chrome just click at the top 'Not secure' then click on Certificate, Details, Copy to File, save it anywhere and add the certificate to your 'Trusted Root Certification Authorities'. )

@@ -7,8 +7,6 @@ nav_order: 3
 
 # :tada: Release Guide
 
-> Note: At the beginning you don't really care about releases.
-
 ## **How to release**
 
 ```bash

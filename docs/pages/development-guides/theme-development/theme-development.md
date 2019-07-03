@@ -11,7 +11,7 @@ permalink: /pages/development-guides/theme-development
 
 > This documentation refers to theme developers.
 
-A good Guide about Material Theming can you find [here](https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1).
+A good Guide about Material Theming can be found [here](https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1).
 
 ## **About Typography**
 
@@ -31,8 +31,8 @@ Media Queries are defined in [media-queries.scss](../src/styles/media-queries.sc
 
 ## **Get the sample themes**
 
-The source code for the prebuild themes you can find [here](https://github.com/angular/components/tree/877de5691b8dd755af4a2f77b4cf57f2d374e107/src/lib/core/theming/prebuilt).
-This can you use to get started with your own themes. For colors you can take view this [file](https://github.com/angular/components/blob/877de5691b8dd755af4a2f77b4cf57f2d374e107/src/lib/core/theming/_palette.scss)
+The source code for the prebuild themes can be found [here](https://github.com/angular/components/tree/877de5691b8dd755af4a2f77b4cf57f2d374e107/src/lib/core/theming/prebuilt).
+ou can use them to get started with your own themes. For colors, you can take a look at this [file](https://github.com/angular/components/blob/877de5691b8dd755af4a2f77b4cf57f2d374e107/src/lib/core/theming/_palette.scss)
 
 ## **Develop your themes**
 

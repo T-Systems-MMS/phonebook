@@ -65,7 +65,7 @@ There are several states:
 100 - Enabled
 ```
 
-At the following link can you edit the Feature Flags for [Production](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/assets/defaultFeatureFlags.json) Environment.
+[Here you can edit](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/assets/defaultFeatureFlags.json) the Feature Flags of the Phonebook. 
 
 To use them InCode you can either subscribe to the [feature-flag.service](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/app/modules/feature-flag/feature-flag.service.ts):
 

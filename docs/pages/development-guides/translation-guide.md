@@ -9,7 +9,7 @@ nav_order: 2
 
 The App should be available in different languages. This is the reason why we use [Internationalization of Angular](https://angular.io/guide/i18n). Read the Guide to get more Information about it.
 
-For every English sentence or word is a translation saved under a specific ID. If you call the ID the app will check which language is set and return the right language.
+For every English sentence or word the translation string is saved under a specific ID. If you call the ID the app will check which language is set and return the right language.
 
 ## **:hammer: How to use**
 
@@ -17,7 +17,7 @@ For every English sentence or word is a translation saved under a specific ID. I
 2. Use the Angular translation polyfill inside `.ts` Files as described [here](https://github.com/ngx-translate/i18n-polyfill)
 3. When you are finished working run `npm run extract-i18n`. This will update the translation files located under `src\i18n`.
 4. Translate the files.
-5. Test if everything ok by running `npm run start:$lang`, for example: `npm run start:en` or `npm run start:de`.
+5. Test if everything is ok by running `npm run start:$lang`, for example: `npm run start:en` or `npm run start:de`.
 
 ## **Predefined Message-ID's :triangular_flag_on_post:**
 

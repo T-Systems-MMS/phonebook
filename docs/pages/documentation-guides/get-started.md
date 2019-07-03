@@ -7,7 +7,7 @@ permalink: /pages/documentation-guides/get-started
 
 # :book: Documentation Guide
 
-This guide should give all information you need to maintain the documentation of the project.
+This guide should give all the information needed to maintain the documentation of the project.
 
 
 If you only want to change some text files you just need to follow the steps from [here](/pages/development-guides/contribution), change the files you like and make a pull request.
@@ -28,6 +28,6 @@ e.g.:
 coming_soon: "> :gear: Coming soon.."
 ```
 
-- You can call her like `{ {site.coming_soon} }` WITHOUT the blanks.
+- You can call the variable like this `{% raw %}{{site.coming_soon}}{% endraw %}`.
 
 - The Output will be {{site.coming_soon}}
