@@ -57,21 +57,5 @@
                 </mat-list-item>
             </mat-list>
         </div>
-        <div *ngIf=""> <!-- TODO: Check-if there are featureFlags -> add a function in .component.ts -->
-            <h2>
-                <mat-icon>flag</mat-icon>
-                <span i18n="SettingsComponent|Feature Flag Subtitle@@SettingsComponentSubTitleFeatureFlag">
-                    Feature Flags
-                </span>
-            </h2>
-            <mat-list>
-                <mat-list-item *ngFor="let flag of (featureFlags | async)">
-                    <mat-slide-toggle [checked]="flag.value" color="primary"
-                        (change)="changeFeatureFlag($event, flag.name)">
-                        {{flag.name}}
-                    </mat-slide-toggle>
-                </mat-list-item>
-            </mat-list>
-        </div>
     </mat-card-content>
 </mat-card>
