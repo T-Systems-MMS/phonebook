@@ -6,7 +6,7 @@ labels: 'feature'
 assignees: ''
 
 ---
-<!-- This warning can delete before Submit-->
+<!-- This warning can be deleted before Submit-->
 > #### This is a public issue tracker. 
 > #### Be sure that your description and screenshots not contain any personal or company info.
 
