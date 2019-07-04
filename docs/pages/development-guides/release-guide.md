@@ -9,6 +9,8 @@ nav_order: 3
 
 ## **How to release**
 
+The Phonebook is automatically released. The steps below are executed each time you use the following command.
+
 ```bash
 npm run release
 ```
