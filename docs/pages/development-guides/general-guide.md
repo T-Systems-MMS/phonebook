@@ -9,29 +9,46 @@ nav_order: 1
 
 ## **:open_file_folder: Project Structure**
 
-Here can you find the structure of the application. The different parts are described later in the documentation.
-It is possible that the structure is not up to date.
+Here you can find the structure of `Phonebook.Frontend`.
 
 ```bash
- * Phonebook (Root)
- |-- ci: Some CI specific stuff
+ * Phonebook.Frontend (Root)
  |-- docs: The documentation directory for Jekyll
  |   |-- pages: The documentation pages for the Project
  |-- e2e: End to End Tests
+ |-- nginx:
+ |-- node_modules: Contains libraries downloaded from npm. Is created automatically based on package.json
  |-- src: The complete Angular app
  |   |-- app: The Angular sources
- |   |   |-- shared
+ |   |   |-- pages: Main Views of the Application
+ |   |   |   |-- dashboard
+ |   |   |   |-- page-information
+ |   |   |   |-- settings
+ |   |   |   |-- user-detail-page
+ |   |   |-- modules: Modular features which can be used on different pages
+ |   |   |   |-- feature-flag 
+ |   |   |   |-- not-implemented
+ |   |   |   |-- organigram
+ |   |   |   |-- profile-picture
+ |   |   |   |-- rooms
+ |   |   |   |-- table
+ |   |   |-- shared: 
+ |   |   |   |-- config
  |   |   |   |-- models
- |   |   |   |   |-- classes
- |   |   |   |   |-- enumerables
+ |   |   |   |-- directives
+ |   |   |   |-- providers
+ |   |   |   |-- states
  |   |   |   |-- mocks
  |   |   |   |-- components
  |   |   |   |-- dialogs
- |   |   |-- modules
- |   |   |-- pages
+ |   |   |-- services: Directory for all services
+ |   |   |   |-- api
  |   |-- assets: Assets of the app
  |   |-- environments: The Environments the app can be build for
  |   |-- styles: Some global Styles for the app, as well as scss partials
+ |   |-- fonts: Different font stlyes for the app
+ |   |-- i18n: Internationalized Messages
+ |   |-- migration
 ```
 
 ## **:triangular_ruler: Code scaffolding**
