@@ -1,9 +1,8 @@
-import { Column } from 'src/app/shared/models/interfaces';
 import { Helpers } from 'src/app/modules/table/helpers';
-import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { Person } from 'src/app/shared/models/classes/Person';
 import { PhonebookSortDirection } from 'src/app/shared/models/enumerables';
-import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
+import { Column } from 'src/app/shared/models/interfaces';
 
 export const ColumnDefinitions: {
   picture: Readonly<Column>;
@@ -59,8 +58,8 @@ export const ColumnDefinitions: {
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
       return (
-        filterString.test(person.Title + person.Firstname + person.Surname) ||
-        filterString.test(person.Surname + person.Firstname)
+        filterString.test(person.Title + ' ' + person.Firstname + ' ' + person.Surname) ||
+        filterString.test(person.Surname + ' ' + person.Firstname)
       );
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
