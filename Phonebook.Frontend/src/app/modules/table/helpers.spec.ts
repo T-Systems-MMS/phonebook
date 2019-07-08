@@ -145,3 +145,11 @@ describe('Helpers - stripNonNumericalCharacters()', () => {
     ).toEqual('1234567890');
   });
 });
+
+describe('Helpers - removeAccents', () => {
+  it('remove Accents', () => {
+    expect(Helpers.removeAccents('ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž')).toEqual(
+      'AAAAAAaaaaaaOOOOOOoooooEEEEeeeeCcIIIIiiiiUUUUuuuuNnSsYyyZz'
+    );
+  });
+});
