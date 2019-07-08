@@ -13,42 +13,21 @@ Here you can find the structure of `Phonebook.Frontend`.
 
 ```bash
  * Phonebook.Frontend (Root)
- |-- docs: The documentation directory for Jekyll
- |   |-- pages: The documentation pages for the Project
  |-- e2e: End to End Tests
- |-- nginx:
- |-- node_modules: Contains libraries downloaded from npm. Is created automatically based on package.json
+ |-- nginx: Configurations for the Nginx Docker Container 
+ |-- node_modules: Contains libraries downloaded from npm; is created automatically based on package.json
  |-- src: The complete Angular app
  |   |-- app: The Angular sources
  |   |   |-- pages: Main Views of the Application
- |   |   |   |-- dashboard
- |   |   |   |-- page-information
- |   |   |   |-- settings
- |   |   |   |-- user-detail-page
  |   |   |-- modules: Modular features which can be used on different pages
- |   |   |   |-- feature-flag 
- |   |   |   |-- not-implemented
- |   |   |   |-- organigram
- |   |   |   |-- profile-picture
- |   |   |   |-- rooms
- |   |   |   |-- table
- |   |   |-- shared: 
- |   |   |   |-- config
- |   |   |   |-- models
- |   |   |   |-- directives
- |   |   |   |-- providers
- |   |   |   |-- states
- |   |   |   |-- mocks
- |   |   |   |-- components
- |   |   |   |-- dialogs
+ |   |   |-- shared: Contains Code that will be used across the app, as well states
  |   |   |-- services: Directory for all services
- |   |   |   |-- api
  |   |-- assets: Assets of the app
  |   |-- environments: The Environments the app can be build for
  |   |-- styles: Some global Styles for the app, as well as scss partials
  |   |-- fonts: Different font stlyes for the app
- |   |-- i18n: Internationalized Messages
- |   |-- migration
+ |   |-- i18n: Internationalized messages
+ |   |-- migration: Frontend Migration-Scripts
 ```
 
 ## **:triangular_ruler: Code scaffolding**
