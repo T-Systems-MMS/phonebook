@@ -51,26 +51,28 @@ export class TableComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public store: Store,
     public columnTranslate: ColumnTranslate
-  ) {
-    this.personService.getAll().subscribe(persons => {
-      this.dataSource = new PersonsDataSource(persons);
-    });
-    this.refreshTableSubscription = merge(
-      this.store.select(SearchState.searchTerm),
-      this.store.select(SearchState.searchFilters)
-    )
-      .pipe(
-        // Debounce Time is this low, as it just aims to bundle all Observables above, especially at first page load,
-        // where all three fire as they are initialized.
-        debounceTime(50)
-      )
-      .subscribe(val => {
-        this.refreshTable();
-        this.dataSource.pageSize = this.initialPageSize;
-      });
-  }
+  ) {}
 
   public ngOnInit() {
+    this.personService.getAll().subscribe(persons => {
+      this.dataSource = new PersonsDataSource(persons);
+
+      // Defer until Data is loaded.
+      this.refreshTableSubscription = merge(
+        this.store.select(SearchState.searchTerm),
+        this.store.select(SearchState.searchFilters)
+      )
+        .pipe(
+          // Debounce Time is this low, as it just aims to bundle all Observables above, especially at first page load,
+          // where all three fire as they are initialized.
+          debounceTime(50)
+        )
+        .subscribe(val => {
+          this.refreshTable();
+          this.dataSource.pageSize = this.initialPageSize;
+        });
+    });
+
     this.route.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParams => {
       // Table Sort
       const sortDirection = queryParams.get('sortDirection');
