@@ -58,8 +58,9 @@ export const ColumnDefinitions: {
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
       return (
-        filterString.test(person.Title + ' ' + person.Firstname + ' ' + person.Surname) ||
-        filterString.test(person.Surname + ' ' + person.Firstname)
+        filterString.test(
+          person.Title + ' ' + Helpers.removeAccents(person.Firstname) + ' ' + Helpers.removeAccents(person.Surname)
+        ) || filterString.test(Helpers.removeAccents(person.Surname) + ' ' + Helpers.removeAccents(person.Firstname))
       );
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {

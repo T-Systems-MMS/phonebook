@@ -1,15 +1,15 @@
-import { TableLogic } from './table-logic';
+import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import {
-  PhonebookSortDirection,
-  PersonType,
+  Business,
+  City,
   Contacts,
   Location,
-  City,
-  Business,
-  Messenger
+  Messenger,
+  Person,
+  PersonType,
+  PhonebookSortDirection
 } from 'src/app/shared/models';
-import { Person } from 'src/app/shared/models';
-import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import { TableLogic } from './table-logic';
 
 describe('Table Logic - Sort', () => {
   it('"Axel" before "Zarathustra"', () => {
@@ -122,6 +122,92 @@ describe('Table Logic - Sort', () => {
         '',
         'Axel',
         '',
+        '',
+        '',
+        false,
+        new Contacts('', '', '', '', new Messenger('', 0)),
+        new Location(new City('', ''), []),
+        new Business([], [], [], [], [], [], '')
+      )
+    ]);
+  });
+});
+
+describe('Table Logic - Filter', () => {
+  it('Find "Mustermann"', () => {
+    const unsortedPersonsArray: Person[] = [
+      new Person(
+        PersonType.Interner_Mitarbeiter,
+        '',
+        'Mustermann',
+        'Max',
+        '',
+        '',
+        false,
+        new Contacts('', '', '', '', new Messenger('', 0)),
+        new Location(new City('', ''), []),
+        new Business([], [], [], [], [], [], '')
+      )
+    ];
+    expect(TableLogic.filter(unsortedPersonsArray, 'Mustermann', [ColumnDefinitions.fullname])).toEqual([
+      new Person(
+        PersonType.Interner_Mitarbeiter,
+        '',
+        'Mustermann',
+        'Max',
+        '',
+        '',
+        false,
+        new Contacts('', '', '', '', new Messenger('', 0)),
+        new Location(new City('', ''), []),
+        new Business([], [], [], [], [], [], '')
+      )
+    ]);
+  });
+
+  it('NOT find "Otherman"', () => {
+    const unsortedPersonsArray: Person[] = [
+      new Person(
+        PersonType.Interner_Mitarbeiter,
+        '',
+        'Mustermann',
+        'Max',
+        '',
+        '',
+        false,
+        new Contacts('', '', '', '', new Messenger('', 0)),
+        new Location(new City('', ''), []),
+        new Business([], [], [], [], [], [], '')
+      )
+    ];
+    expect(TableLogic.filter(unsortedPersonsArray, 'Otherman', [ColumnDefinitions.fullname])).toEqual([]);
+  });
+
+  it('Find Person with Diarectics', () => {
+    const unsortedPersonsArray: Person[] = [
+      new Person(
+        PersonType.Interner_Mitarbeiter,
+        '',
+        'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',
+        'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',
+        '',
+        '',
+        false,
+        new Contacts('', '', '', '', new Messenger('', 0)),
+        new Location(new City('', ''), []),
+        new Business([], [], [], [], [], [], '')
+      )
+    ];
+    expect(
+      TableLogic.filter(unsortedPersonsArray, 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž', [
+        ColumnDefinitions.fullname
+      ])
+    ).toEqual([
+      new Person(
+        PersonType.Interner_Mitarbeiter,
+        '',
+        'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',
+        'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',
         '',
         '',
         false,
