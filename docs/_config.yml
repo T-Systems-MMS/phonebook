@@ -36,6 +36,11 @@ plugins:
   - jekyll-remote-theme
   - jekyll-readme-index
 
+readme_index:
+  enabled:          true
+  remove_originals: true
+  with_frontmatter: false
+
 # Other Variables
 contributors: "[contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors)"
 current_issues: "[current Issues](https://github.com/T-Systems-MMS/phonebook/issues)"
