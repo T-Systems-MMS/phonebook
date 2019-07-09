@@ -1,10 +1,3 @@
----
-layout: default
-title: Introduction
-nav_order: 000
-permalink: index
----
-
 # **Phonebook**
 by [T-Systems Multimedia Solutions GmbH](https://www.t-systems-mms.com/)
 
