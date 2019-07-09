@@ -5,7 +5,7 @@ nav_order: 000
 permalink: index
 ---
 
-# :telephone: **Phonebook** :telephone:
+# **Phonebook**
 by [T-Systems Multimedia Solutions GmbH](https://www.t-systems-mms.com/)
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![GitHub issues](https://img.shields.io/github/issues/T-Systems-MMS/phonebook.svg?style=popout)](https://github.com/T-Systems-MMS/phonebook/issues) [![GitHub](https://img.shields.io/github/license/T-Systems-MMS/phonebook.svg)](https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE) [![GitHub](https://img.shields.io/badge/Documentation-GitHub--Pages-blueviolet.svg)](hhttps://t-systems-mms.github.io/phonebook/)
@@ -28,7 +28,7 @@ You can contribute with any skill or use this project to evolve your techniques.
 If you're **not interested in developing** but want to help you can [submit new issues](https://github.com/T-Systems-MMS/phonebook/issues/new/choose) or contact one of the {{site.contributors}}.
 
 If you're **interested in developing** check out the following links.
-  * {{site.current_issues}}
+  * [Current Issues](https://github.com/T-Systems-MMS/phonebook/issues/)
   * [Milestones](https://github.com/T-Systems-MMS/phonebook/milestones) 
   * [Development Guides](/phonebook/pages/development-guides)
 
