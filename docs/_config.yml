@@ -34,6 +34,7 @@ remote_theme: pmarsceill/just-the-docs
 plugins:
   - jemoji
   - jekyll-remote-theme
+  - jekyll-readme-index
 
 # Other Variables
 contributors: "[contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors)"
