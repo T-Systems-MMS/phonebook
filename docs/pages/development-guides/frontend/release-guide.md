@@ -1,11 +1,13 @@
 ---
 layout: default
 title: Release Guide
-parent: Development Guides
-nav_order: 3
+has_parent: true
+parent: Frontend
+grand_parent: Development Guides
+nav_order: 600
 ---
 
-# :tada: Release Guide
+# :tada: **Release Guide**
 
 ## **How to release**
 

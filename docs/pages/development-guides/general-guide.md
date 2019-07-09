@@ -1,114 +1,51 @@
 ---
 layout: default
 title: General Guide
+nav_order: 000
 parent: Development Guides
-nav_order: 1
+permalink: /pages/development-guides/
+has_toc: false
 ---
 
-# :small_red_triangle: General Guide :small_red_triangle:
+# :diamond_shape_with_a_dot_inside: **Development Guides** :diamond_shape_with_a_dot_inside:
 
-## **:open_file_folder: Project Structure**
+## :white_check_mark: **General Guide for developing the Phonebook**
 
-Here you can find the structure of `Phonebook.Frontend`.
+### :open_file_folder: **Project Structure**
 
-```bash
- * Phonebook.Frontend (Root)
- |-- e2e: End to End Tests
- |-- nginx: Configurations for the Nginx Docker Container 
- |-- node_modules: Contains libraries downloaded from npm; is created automatically based on package.json
- |-- src: The complete Angular app
- |   |-- app: The Angular sources
- |   |   |-- pages: Main Views of the Application
- |   |   |-- modules: Modular features which can be used on different pages
- |   |   |-- shared: Contains Code that will be used across the app, as well states
- |   |   |-- services: Directory for all services
- |   |-- assets: Assets of the app
- |   |-- environments: The Environments the app can be build for
- |   |-- styles: Some global Styles for the app, as well as scss partials
- |   |-- fonts: Different font stlyes for the app
- |   |-- i18n: Internationalized messages
- |   |-- migration: Frontend Migration-Scripts
-```
+The project is splitted in different parts for better clarity and maintenance.
 
-## **:triangular_ruler: Code scaffolding**
+This is the current project structure.
 
-To generate a new component run:
-```bash
-ng generate component component-name
-```
-You can also use:
-```bash
-ng generate directive|pipe|service|class|guard|interface|enum|module
-```
+ * **Phonebook (Root)**
+   * **[docs:](/phonebook/pages/doc-guides/)** Documents for the whole project hosted with Jekyll on GitHub-Pages
+   * **Phonebook.Assets:** Example implementation for serving assets like roomplans or static images
+   * **[Phonebook.Frontend:](frontend/general-guide)** Frontend project with all related sources
+   * **Phonebook.Source.MockPeopleBackend:** Mock data source 
+   * **Phonebook.Source.PeopleSoft:** One of the future data sources for the PeopleSoft application
 
-## **:floppy_disk: State Management**
+---
 
-We are using [NGXS](https://github.com/ngxs/store) for transferring states. To get more information how NGXS works and how we use it check out [this link](https://ngxs.gitbook.io/ngxs/).
+### :hammer: **Workflow to contribute**
 
-> Examples about how we use NGXS in the application are in work.
+1. Create a new Branch.
+2. Make some changes and develop a cool new feature or fix a Bug.
+3. In order to commit run `npm run commit` to run the interactive Commit utility.
+![npm run commit image]({{site.baseurl}}pages/development-guides/media/images/git-cz.png)
+4. Create a Pull Request from your Branch.
+5. Wait for approval from one of the maintainers.
 
-### **How to use Feature Flags**
+> If you need a tutorial about important git commands look [here](https://dev.to/dhruv/essential-git-commands-every-developer-should-know-2fl).
 
-We are using Feature Flags for faster Development Cycles and easier Code Integration.
-If you don't really know what Feature Flags mean take a look at [wikipedia](https://en.wikipedia.org/wiki/Feature_toggle).
+---
 
-There are several states:
+We splitted the development documentation in two different parts.
 
-```
--1 - Disabled
-0 - Disabled by default, but can be enabled by the user
-1-99 - A/B Testing (% of the users enabled)
-100 - Enabled
-```
+**What do you want to start with?**
 
-[Here you can edit](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/assets/defaultFeatureFlags.json) the Feature Flags of the Phonebook. 
-
-To use them InCode you can either subscribe to the [feature-flag.service](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/app/modules/feature-flag/feature-flag.service.ts):
-
-```typescript
-// We are using first() in order to automatically cancel the subscription after receiving the first value.
-featureFlagService
-  .get('flagname')
-  .pipe(first())
-  .subscribe(isFlagActivated => {
-    if (isFlagActivated) {
-      // Code that will be executed if the Feature Flag 'flagname' is enabled.
-    }
-  });
-```
-
-or use the [feature-flag.directive](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/app/modules/feature-flag/feature-flag.directive.ts):
-
-```html
-<div *featureFlag="'flagname'">
-  <!-- This will only be rendered if Feature Flag 'flagname' is enabled. -->
-</div>
-```
-
-### **Observables**
-
-You should unsubscribe from observables if your component gets destroyed. This can be quite some work. In order to make it easier we have used [a little helper function](https://www.npmjs.com/package/ng2-rx-componentdestroyed):
-
-```typescript
-// OnDestroy has to be implemented.
-import { Component, OnDestroy, OnInit } from '@angular/core';
-// Import the Function to unsubscribe if the Component gets destroyed.
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
-@Component({
-  selector: 'app-example',
-  templateUrl: './example.component.html',
-  styleUrls: ['./example.component.scss']
-})
-export class SearchComponent implements OnInit, OnDestroy {
-  public ngOnInit() {
-    Observable.interval(1000)
-      .pipe(
-        untilComponentDestroyed(this) // <--- magic is here!
-      )
-      .subscribe(console.log);
-  }
-  public ngOnDestroy() {
-    // this function has to be in the component, although it can be empty.
-  }
-}
-```
+<span class="fs-6">
+[Frontend](frontend){: .btn .btn-purple }
+</span>
+<span class="fs-6">
+[Backend](backend){: .btn .btn-purple }
+</span>

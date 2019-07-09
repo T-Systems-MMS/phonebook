@@ -1,15 +1,14 @@
 ---
 layout: default
 title: Theme Development
-parent: Development Guides
-nav_order: 2
-has_children: true
-permalink: /pages/development-guides/theme-development
+parent: Frontend
+grand_parent: Development Guides
+nav_order: 500
 ---
 
-# :rainbow: Theme development
+# :bar_chart: **Theme development**
 
-> This documentation refers to theme developers.
+> This page refers to poeple who want to develope and design themes.
 
 A good Guide about Material Theming can be found [here](https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1).
 
@@ -45,7 +44,7 @@ Now add your theme to the `src/styles/themes/themes.sccs`.
 
 > Important: You class name in the `themes.sccs` file must end with `_theme`.
 
-If you are done with your theme and have to test it set up the project as described in [getting started](/pages/getting-started) or just contact a contributer of the project. There will be someone who can test it for you.
+If you are done with your theme and have to test it set up the project as described in [getting started](/phonebook/pages/development-guides/frontend/getting-started) or just contact a contributer of the project. There will be someone who can test it for you.
 
 Now you must insert your new Theme in `\src\app\shared\models\enumerables\Theme.ts` like the other ones.
 You also must edit the `src/app/pages/settings/settings.component.ts`.
@@ -62,9 +61,9 @@ There you need to add your theme like the code here:
       }
 ```
 
-Don't forget to run `npm run extract-i18n` for the internationalization. More information about you can find [here](/pages/development-guides/translation-guide).
+Don't forget to run `npm run extract-i18n` for the internationalization. More information about you can find [here](/phonebook/pages/development-guides/frontend/translation-guide).
 
 ## **:tada: Finish with Pull Request :tada:**
 
 If you finished and everything works you can open a pull request and wait for feedback from the maintainers.
-To set up a pull request follow the described steps [here](/pages/development-guides/contribution.html).
+To set up a pull request follow the described steps [here](/phonebook/pages/development-guides/).

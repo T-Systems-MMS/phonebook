@@ -1,11 +1,12 @@
 ---
 layout: default
 title: Translation Guide
-parent: Development Guides
-nav_order: 2
+parent: Frontend
+grand_parent: Development Guides
+nav_order: 500
 ---
 
-# :currency_exchange: Translation Guide
+# :currency_exchange: **Translation Guide**
 
 The App should be available in different languages. This is the reason why we use [Internationalization of Angular](https://angular.io/guide/i18n). Read the Guide to get more Information about it.
 
@@ -19,7 +20,7 @@ For every English sentence or word the translation string is saved under a speci
 4. Translate the files.
 5. Test if everything is ok by running `npm run start:$lang`, for example: `npm run start:en` or `npm run start:de`.
 
-## **Predefined Message-ID's :triangular_flag_on_post:**
+## :triangular_flag_on_post: **Predefined Message-ID's**
 
 Apart from all custom Translations, some strings are reoccurring. Please note them down here, or use them:
 

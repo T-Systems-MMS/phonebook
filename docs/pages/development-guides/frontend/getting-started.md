@@ -1,22 +1,31 @@
 ---
 layout: default
 title: Getting Started
-nav_order: 2
+has_parent: true
+parent: Frontend
+grand_parent: Development Guides
+permalink: /pages/development-guides/frontend/getting-started
+nav_order: 100
 ---  
 
-# :small_red_triangle: Getting Started :small_red_triangle:
+# :small_red_triangle: **Getting Started with *frontend***
 
 We recommmend using [VSCode](https://code.visualstudio.com/) as IDE, however you can also use your favorite IDE.
-
 <details>
-<summary>Here can you find cool VS Code Plugins which we use</summary>
+<summary>Mandatory Plugins for VSCode</summary>
+This plugins are part of the <a href="https://github.com/T-Systems-MMS/phonebook/blob/master/phonebook.code-workspace" target="_blank">phonebook.code-workspace</a>-File
+<ul>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank">Prettier</a></li>
+</ul>
+</details>
+<details>
+<summary>Recommend Plugins for VSCode</summary>
 <ul>
     <li><a href="https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek" target="_blank">CSS Peak</a></li>
     <li><a href="https://marketplace.visualstudio.com/items?itemName=Mikael.Angular-BeastCode" target="_blank">Angular 8 Snippets</a></li>
     <li><a href="https://marketplace.visualstudio.com/items?itemName=Angular.ng-template" target="_blank">Angular Language Service</a></li>
     <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin" target="_blank">TSLint</a></li>
     <li><a href="https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script" target="_blank">NPM</a></li>
-    <li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank">Prettier</a></li>
     <li><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens" target="_blank">Git Lens</a></li>
 </ul>
 </details>
@@ -77,6 +86,6 @@ npm run start -- --open
 ```
 > If you want to use a different backend server edit the Angular Proxy in the [proxy.conf.json](../../../proxy.conf.json).
 
-:star: You're ready to develop the Phonebook Application! Start by reading the [General Guide](./development-guides/general-guide.md) to get an overview.
+:star: You're ready to develop the Phonebook-Frontend application! Start by reading the [General Guide](./development-guides/general-guide.md) to get an overview.
 
 > In order to circumvent Bugs coming from unsecured Websites please add the certificate used on the localhost page to your 'Trusted Root Certification Authorities'. (For Windows: In Chrome just click at the top 'Not secure' then click on Certificate, Details, Copy to File, save it anywhere and add the certificate to your 'Trusted Root Certification Authorities'. )

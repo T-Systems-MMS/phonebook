@@ -1,15 +1,16 @@
 ---
 layout: default
 title: General Commands
-parent: Development Guides
-nav_order: 3
+parent: Frontend
+grand_parent: Development Guides
+nav_order: 300
 ---
 
-# :pencil: General Commands
+# :pencil: **General Commands**
 
 The commands used are mostly wrapped standard angular commands. You will find a docker command for each standard command.
 
-You can find all possible commands in the [package.json](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/package.json`).
+You can find all possible commands in the [package.json](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/package.json).
 
 Here is a quick overview:
 
@@ -70,8 +71,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 Run `npm run test:dev` and write your Tests.
 You can use [NgMocks](https://www.npmjs.com/package/ng-mocks) for better modularity. Please note that `ng2-mock-component` should not be used anymore.
 If you get an `[object ErrorEvent] thrown` use `npm run test:dev-debug` as there is an error with Angular/cli ([Issue](https://github.com/angular/angular-cli/issues/7296)).
-
-### **Useful to know**
-
-Have a look at the [general guide](/pages/development-guides/general-guide) in order to get to know npm packages and workflows we are using to develop the Phonebook.
 

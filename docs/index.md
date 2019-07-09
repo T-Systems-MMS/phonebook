@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Introduction
-nav_order: 1
+nav_order: 000
 ---
 
-# :small_red_triangle: T-Systems MMS Phonebook :small_red_triangle:
+# :telephone: **Phonebook** :telephone:
+by [T-Systems Multimedia Solutions GmbH](https://www.t-systems-mms.com/)
 
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![GitHub issues](https://img.shields.io/github/issues/T-Systems-MMS/phonebook.svg?style=popout)](https://github.com/T-Systems-MMS/phonebook/issues) [![GitHub](https://img.shields.io/github/license/T-Systems-MMS/phonebook.svg)](https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE)
-
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![GitHub issues](https://img.shields.io/github/issues/T-Systems-MMS/phonebook.svg?style=popout)](https://github.com/T-Systems-MMS/phonebook/issues) [![GitHub](https://img.shields.io/github/license/T-Systems-MMS/phonebook.svg)](https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE) [![GitHub](https://img.shields.io/badge/Documentation-GitHub--Pages-blueviolet.svg)](hhttps://t-systems-mms.github.io/phonebook/)
   
 
 ## **:question: What is the Phonebook?**
@@ -18,22 +18,22 @@ This Single-Page-Application is able to display People, Rooms and the organizati
 ## **:wave: New to the Phonebook?**
 We are always searching for new contributors who want to be a part of a growing community. The contribution benefits are huge. You can learn a lot about the technologies displayed below, bring new ideas into the project, connect with new people from different departments and learn how it is to be an OpenSource-Developer.
 
-If you're just getting started with the Phonebook, we recommend to take a look on our [getting-started](/docs/getting-started) page or take a look at our [Project Board](https://github.com/T-Systems-MMS/phonebook/projects/1). 
-
-You can also keep an eye on our <a class="d-inline-block v-align-text-top" style="background-color: #7057ff; color: #ffffff" title="Good for newcomers" href="https://github.com/T-Systems-MMS/phonebook/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22" target="_blank">good first issue</a>-Badge. This Label shows that the issue can be perfect to dive into the project.
-
-> If you're a part of T-Systems you can also take a look at the internal get-started page.
+You're not interested in developing and just want to know more about how to use the software? [:beginner: Right this way](/phonebook/pages/user-docs)
 
 ## **:mag: You want to be a part of this community?**
+
 You can contribute with any skill or use this project to evolve your techniques.
 
-First we recommend to check our {{site.current_issues}}.
+If you're **not interested in developing** but want to help you can [submit new issues](https://github.com/T-Systems-MMS/phonebook/issues/new/choose) or contact one of the {{site.contributors}}.
 
-You want to contribute, but don't know how or can't find the right issue? Just contact us. We will find the right thing for you.
+If you're **interested in developing** check out the following links.
+  * {{site.current_issues}}
+  * [Milestones](https://github.com/T-Systems-MMS/phonebook/milestones) 
+  * [Development Guides](/phonebook/pages/development-guides)
+
 <details>
-  <summary>Possible things to participate could be:</summary>
+  <summary><b>View some other examples to contribute</b></summary>
 <ul>
-    <li>Develop new Features</li>
     <li>Review Pull Requests</li>
     <li>Test the Application and suggest new enhancements or report new bugs</li>
     <li>Design a cool Phonebook-Logo</li>
@@ -41,7 +41,11 @@ You want to contribute, but don't know how or can't find the right issue? Just c
     <li>Provide Accessibility</li>
     <li>Write a User-Guide</li>
 </ul>
-</details>
+</details><br>
+
+Note that you also can keep an eye on our <a class="d-inline-block v-align-text-top" style="background-color: #7057ff; color: #ffffff" title="Good for newcomers" href="https://github.com/T-Systems-MMS/phonebook/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22" target="_blank">good first issue</a>-Badge. This Label shows that the issue can be perfect to dive into the project.
+
+> If you're a part of T-Systems MMS you can also take a look at the internal get-started page.
 
 ## **:electric_plug: Technologie overview**
 The project makes use of the following noteworthy frameworks:

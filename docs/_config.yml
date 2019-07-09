@@ -38,7 +38,8 @@ plugins:
 # Other Variables
 contributors: "[contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors)"
 current_issues: "[current Issues](https://github.com/T-Systems-MMS/phonebook/issues)"
-coming_soon: "> :gear: Coming soon.."
+coming_soon: "> :gear: Coming soon.. Want to help? Contact us or take look on our current Issues"
+maintenance: "> :gear: In maintenance"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
