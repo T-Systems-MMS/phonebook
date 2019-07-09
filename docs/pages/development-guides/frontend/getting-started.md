@@ -86,6 +86,6 @@ npm run start -- --open
 ```
 > If you want to use a different backend server edit the Angular Proxy in the [proxy.conf.json](../../../proxy.conf.json).
 
-:star: You're ready to develop the Phonebook-Frontend application! Start by reading the [General Guide](./development-guides/general-guide.md) to get an overview.
+:star: You're ready to develop the Phonebook-Frontend application! Start by reading the [General Guide](general-guide) to get an overview.
 
 > In order to circumvent Bugs coming from unsecured Websites please add the certificate used on the localhost page to your 'Trusted Root Certification Authorities'. (For Windows: In Chrome just click at the top 'Not secure' then click on Certificate, Details, Copy to File, save it anywhere and add the certificate to your 'Trusted Root Certification Authorities'. )
