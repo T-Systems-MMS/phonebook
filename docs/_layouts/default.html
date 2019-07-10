@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="{{ site.lang | default: "en-US" }}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 {% include head.html %}
 <body>
 
@@ -12,7 +12,7 @@
         {% include nav.html %}
       </div>
       <footer role="contentinfo" class="site-footer">
-	      <p>Found a mistake or want to contribute? You can make changes <a target="_blank" href="https://github.com/mschwrdtnr/phonebook/blob/master/docs/{{page.dir}}{{page.name}}">here!</a></p>
+	      <h3>Found a mistake? Edit on <a target="_blank" href="https://github.com/mschwrdtnr/phonebook/blob/master/docs/{{page.dir}}{{page.name}}">Github <i class="fa fa-github"></i></a></i></h3>
         <p class="text-small text-grey-dk-000 mb-0">This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</p>
       </footer>
     </div>
@@ -31,8 +31,8 @@
           {% if site.aux_links != nil %}
             <ul class="list-style-none text-small mt-md-1 mb-md-1 pb-4 pb-md-0 js-aux-nav aux-nav">
               {% for link in site.aux_links %}
-                <li class="d-inline-block my-0{% unless forloop.last %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
-              {% endfor %}
+                <li class="d-inline-block my-0{% unless forloop.last %} mr-2{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a> | <a target="_blank" href="https://github.com/T-Systems-MMS/phonebook/graphs/contributors">Contact</a></li>
+                {% endfor %}
             </ul>
           {% endif %}
         </div>
