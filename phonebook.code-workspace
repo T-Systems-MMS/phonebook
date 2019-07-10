@@ -1,6 +1,31 @@
 {
 	"folders": [
 		{
+			"name": "Documentation",
+			"path": "./docs"
+		},
+		{
+			"name": "Deployment",
+			"path": "./Phonebook"
+		},
+		{
+			"name": "Frontend",
+			"path": "./Phonebook.Frontend"
+		},
+		{
+			"name": "Assets",
+			"path": "./Phonebook.Assets"
+		},
+		{
+			"name": "Source.Mock",
+			"path": "./Phonebook.Source.MockPeopleBackend"
+		},
+		{
+			"name": "Source.PeopleSoft",
+			"path": "./Phonebook.Source.PeopleSoft"
+		},
+		{
+			"name": "root",
 			"path": "."
 		}
 	],
@@ -13,5 +38,11 @@
 		"prettier.tslintIntegration": true,
 		"javascript.preferences.quoteStyle": "single",
 		"typescript.preferences.quoteStyle": "single"
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"esbenp.prettier-vscode"
+		]
 	}
 }

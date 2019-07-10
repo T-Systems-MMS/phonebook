@@ -1,6 +1,4 @@
 import { Helpers } from './helpers';
-import { PhonebookSortDirection } from 'src/app/shared/models';
-import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
 
 // FYI: How Compare Functions Work:
 // https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
@@ -145,5 +143,13 @@ describe('Helpers - stripNonNumericalCharacters()', () => {
     expect(
       Helpers.stripNonNumericalCharacters('ab1cdef2ghijk3lmn4opqrst5uv6w7xyz8!"§%9&/()=?\\*+~#-.0,;:_><|`´')
     ).toEqual('1234567890');
+  });
+});
+
+describe('Helpers - removeAccents', () => {
+  it('remove Accents', () => {
+    expect(Helpers.removeAccents('ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž')).toEqual(
+      'AAAAAAaaaaaaOOOOOOoooooEEEEeeeeCcIIIIiiiiUUUUuuuuNnSsYyyZz'
+    );
   });
 });

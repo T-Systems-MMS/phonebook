@@ -203,7 +203,7 @@
         <note priority="1" from="description">Label for Person.TeamAssistant </note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="ColumnTitleCostcenter" datatype="html">
-        <source>Costcenter</source>
+        <source>Profitcenter</source>
       </trans-unit><trans-unit id="DataPersonType" datatype="html">
         <source>Type</source>
         <note priority="1" from="description">Label for Person.Type data</note>
@@ -495,8 +495,8 @@
         <note priority="1" from="description">Label for sorting the column &apos;Building&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="TableComponentColumnCostcenterLabel" datatype="html">
-        <source>Change sorting for column Costcenter</source>
-        <note priority="1" from="description">Label for sorting the column &apos;Costcenter&apos;</note>
+        <source>Change sorting for column Profitcenter</source>
+        <note priority="1" from="description">Label for sorting the column &apos;Profitcenter&apos; once Costcenter</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source>
