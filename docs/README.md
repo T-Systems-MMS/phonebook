@@ -1,7 +1,7 @@
 # **Phonebook**
 by [T-Systems Multimedia Solutions GmbH](https://www.t-systems-mms.com/)
 
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![GitHub issues](https://img.shields.io/github/issues/T-Systems-MMS/phonebook.svg?style=popout)](https://github.com/T-Systems-MMS/phonebook/issues) [![GitHub](https://img.shields.io/github/license/T-Systems-MMS/phonebook.svg)](https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE) [![GitHub](https://img.shields.io/badge/Documentation-GitHub--Pages-blueviolet.svg)](hhttps://t-systems-mms.github.io/phonebook/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![GitHub issues](https://img.shields.io/github/issues/T-Systems-MMS/phonebook.svg?style=popout)](https://github.com/T-Systems-MMS/phonebook/issues) [![GitHub](https://img.shields.io/github/license/T-Systems-MMS/phonebook.svg)](https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE) [![GitHub](https://img.shields.io/badge/Documentation-GitHub--Pages-blueviolet.svg)](https://t-systems-mms.github.io/phonebook/)
   
 
 ## **:question: What is the Phonebook?**
@@ -62,7 +62,7 @@ The project makes use of the following noteworthy frameworks:
 </details>
 
 ## **:sparkles: Need Help?**
-If you still have questions feel free to contact one of the {{site.contributors}}.
+If you still have questions feel free to contact one of the [contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors).
 
 ## **:computer: Supported Browsers**
 
