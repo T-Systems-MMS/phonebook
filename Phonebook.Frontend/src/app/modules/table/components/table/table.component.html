@@ -118,8 +118,8 @@
     </ng-container>
 
     <ng-container [matColumnDef]="columns.costcenter.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Costcenter"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Costcenter'@@TableComponentColumnCostcenterLabel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Profitcenter"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Profitcenter' once Costcenter@@TableComponentColumnCostcenterLabel">
         {{columnTranslate.getTranslation(columns.costcenter.id)}}</mat-header-cell>
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.costcenter" [filterValue]="person.Business.Costcenter"></app-add-filter>

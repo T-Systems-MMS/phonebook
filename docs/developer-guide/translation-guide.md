@@ -12,49 +12,48 @@ Apart from all custom Translations, some strings are reoccurring. Please note th
 
 For General Messages (with Action) use following IDs:
 
-| @@ID                      |                     value                     |
-| ------------------------- | :-------------------------------------------: |
-| GeneralErrorMessage       |    Something went wrong. Please try again.    |
+| @@ID                      |                              value                               |
+| ------------------------- | :--------------------------------------------------------------: |
+| GeneralErrorMessage       |             Something went wrong. Please try again.              |
 | GeneralErrorMessageCopy   | Couldn't copy to the clipboard, something went wrong. Try again. |
-| GeneralSuccessMessageCopy |             Copied to clipboard!              |
-| GeneralResetButton        |                     Reset                     |
-| GeneralNotYetImplemented  |           Sry, not yet implemented!           |
-| GeneralCancelButton       |                   Cancel                      |
-| GeneralShowOnMapButton    |             Show on Google-Maps               |
-| GeneralUndoButton         |                     Undo                      |
+| GeneralSuccessMessageCopy |                       Copied to clipboard!                       |
+| GeneralResetButton        |                              Reset                               |
+| GeneralNotYetImplemented  |                    Sry, not yet implemented!                     |
+| GeneralCancelButton       |                              Cancel                              |
+| GeneralShowOnMapButton    |                       Show on Google-Maps                        |
+| GeneralUndoButton         |                               Undo                               |
 
 For Language:
-| @@ID                      |                     value                     |
-| ------------------------- | :-------------------------------------------: |
-| GeneralLanguageEnglish   | English |
-| GeneralLanguageGerman       |    German    |
+| @@ID                   |  value  |
+| ---------------------- | :-----: |
+| GeneralLanguageEnglish | English |
+| GeneralLanguageGerman  | German  |
 
 For Columns:
-| @@ID                      |                     value                     |
-| ------------------------- | :-------------------------------------------: |
-| ColumnTitlePicture        |                    Picture                    |
-| ColumnTitleId             |                      Id                       |
-| ColumnTitleName           |                     Name                      |
-| ColumnTitleEmail          |                     Email                     |
-| ColumnTitlePhone          |                     Phone                     |
-| ColumnTitleMobile         |                    Mobile                     |
-| ColumnTitleRole           |                     Role                      |
-| ColumnTitleCity           |                     City                      |
-| ColumnTitleOrgUnit        |               Organization Unit               |
-| ColumnTitleRoom           |                     Room                      |
-| ColumnTitleBuilding       |                   Building                    |
-| ColumnTitleCostcenter     |                  Costcenter                   |
-
+| @@ID                  |       value       |
+| --------------------- | :---------------: |
+| ColumnTitlePicture    |      Picture      |
+| ColumnTitleId         |        Id         |
+| ColumnTitleName       |       Name        |
+| ColumnTitleEmail      |       Email       |
+| ColumnTitlePhone      |       Phone       |
+| ColumnTitleMobile     |      Mobile       |
+| ColumnTitleRole       |       Role        |
+| ColumnTitleCity       |       City        |
+| ColumnTitleOrgUnit    | Organization Unit |
+| ColumnTitleRoom       |       Room        |
+| ColumnTitleBuilding   |     Building      |
+| ColumnTitleCostcenter |   Profitcenter    |
 
 For Datapoints (Labels):
-| @@ID                      |                     value                     |
-| ------------------------- | :-------------------------------------------: |
-| DataPersonFax             |                    Fax                    |
-| DataPersonType            |                    Type                    |
-| DataPersonDirectSupervisor      |           Direct Supervisor         | 
-| DataPersonTeamAssistant   | Team Assistants |
-| DataPersonFloor | Floor | 
-| DataPersonFloorPlural | Floors |
-| DataLocationContactPerson | Contact Person | 
-| DataLocationAddress | Address |
-| DataLocationContact | Contact |
+| @@ID                       |       value       |
+| -------------------------- | :---------------: |
+| DataPersonFax              |        Fax        |
+| DataPersonType             |       Type        |
+| DataPersonDirectSupervisor | Direct Supervisor |
+| DataPersonTeamAssistant    |  Team Assistants  |
+| DataPersonFloor            |       Floor       |
+| DataPersonFloorPlural      |      Floors       |
+| DataLocationContactPerson  |  Contact Person   |
+| DataLocationAddress        |      Address      |
+| DataLocationContact        |      Contact      |
