@@ -127,7 +127,7 @@ declare const require;
     IeWarningModule,
     PlatformModule,
     // Pages
-    UserDetailPageModule
+    UserDetailPageModule,
   ],
   providers: [
     {

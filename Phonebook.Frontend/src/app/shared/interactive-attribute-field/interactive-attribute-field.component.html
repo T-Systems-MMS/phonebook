@@ -1,0 +1,32 @@
+<p mat-line>
+  <a
+    *ngIf="mailto"
+    mat-button
+    href="mailto:{{ value }}"
+    i18n-matTooltip="Action-drawer-sheetComponent|Send Mail button@@ActionDrawerSheetComponentButtonEmail"
+    matTooltip="Send an Email"
+  >
+    {{ value }}
+  </a>
+  <a
+    *ngIf="tel"
+    mat-button
+    href="tel:{{ value }}"
+    i18n-matTooltip="Action-drawer-sheetComponent|call Number button@@ActionDrawerSheetComponentButtonCall"
+    matTooltip="Call the Number"
+  >
+    {{ value }}
+  </a>
+  <a *ngIf="!tel && !mailto" mat-button>
+    {{ value }}
+  </a>
+  <button
+    mat-icon-button
+    actionDrawer
+    [copy]="value"
+    i18n-matTooltip="Action-drawer-sheetComponent|Copy to Clipboard button@@ActionDrawerSheetComponentButtonCopy"
+    matTooltip="Copy to clipboard"
+  >
+    <mat-icon class="pb-icon-small">file_copy</mat-icon>
+  </button>
+</p>
