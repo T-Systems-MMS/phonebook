@@ -37,7 +37,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public vCard: VCard = {};
-  public showButtons: boolean;
 
   @Input()
   public previewView: boolean = false;
