@@ -9,9 +9,14 @@
 //Global Color Theme Mixin
 @mixin global-theme($theme) {
   $primary: map-get($theme, primary);
+  $background: map-get($theme, foreground);
 
   a {
     color: mat-color($primary);
+  }
+
+  .pb-color-primary {
+    color: mat-color($background, text) !important;
   }
 
   .color-warn {

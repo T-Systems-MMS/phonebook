@@ -69,20 +69,6 @@
     want to use Internet Explorer!</source><target state="translated">Ich möchte trotzdem den Internet Explorer nutzen!</target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">IeWarningComponent</note>
-      </trans-unit><trans-unit id="ActionDrawerSheetComponentButtonCopy" datatype="html">
-        <source>Copy to
-        clipboard</source><target state="translated">In Zwischenablage kopieren</target>
-        <note priority="1" from="description">Copy to Clipboard button</note>
-        <note priority="1" from="meaning">Action-drawer-sheetComponent</note>
-      </trans-unit><trans-unit id="ActionDrawerSheetComponentButtonEmail" datatype="html">
-        <source>Send an Email</source><target state="translated">Eine E-mail senden</target>
-        <note priority="1" from="description">Send Mail button</note>
-        <note priority="1" from="meaning">Action-drawer-sheetComponent</note>
-      </trans-unit><trans-unit id="ActionDrawerSheetComponentButtonCall" datatype="html">
-        <source>Call the
-        Number</source><target state="translated">Nummer anrufen</target>
-        <note priority="1" from="description">call Number button</note>
-        <note priority="1" from="meaning">Action-drawer-sheetComponent</note>
       </trans-unit><trans-unit id="GeneralCancelButton" datatype="html">
         <source>Cancel</source><target state="translated">Abbrechen</target>
         
@@ -311,6 +297,18 @@
         <source>The red bar indicates that you are offline.</source><target state="translated">Die rote Statusleiste zeigt an das du offline bist.</target>
         <note priority="1" from="description">Tooltip for bar indicating the user is offline</note>
         <note priority="1" from="meaning">Online-barComponent</note>
+      </trans-unit><trans-unit id="GeneralCopyButton" datatype="html">
+        <source>Copy to clipboard</source><target state="translated">In Zwischenablage kopieren</target>
+        <note priority="1" from="description">Copy to Clipboard button</note>
+        <note priority="1" from="meaning">GeneralCopyButton</note>
+      </trans-unit><trans-unit id="GeneralMailButton" datatype="html">
+        <source>Send an Email</source><target state="translated">Eine E-mail senden</target>
+        <note priority="1" from="description">Send Mail button</note>
+        <note priority="1" from="meaning">GeneralMailButton</note>
+      </trans-unit><trans-unit id="GeneralCallButton" datatype="html">
+        <source>Call the Number</source><target state="translated">Nummer anrufen</target>
+        <note priority="1" from="description">call Number button</note>
+        <note priority="1" from="meaning">GeneralCallButton</note>
       </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">
         <source>Change
   Profile Picture</source><target state="new">Profil Bild ändern</target>
@@ -426,13 +424,11 @@
         <note priority="1" from="description">Tooltip for opening the share menu</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentShareDownloadContact" datatype="html">
-        <source>Download
-              Contact</source><target state="translated">Kontakt herunterladen</target>
+        <source>Download Contact</source><target state="translated">Kontakt herunterladen</target>
         <note priority="1" from="description">Share Menu: Donwload Contact Option</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentShareRocketChat" datatype="html">
-        <source>Rocket
-              Chat</source><target state="translated">Rocket
+        <source>Rocket Chat</source><target state="translated">Rocket
               Chat</target>
         <note priority="1" from="description">Share Menu: Rocket Chat Option</note>
         <note priority="1" from="meaning">User-detailComponent</note>
@@ -445,8 +441,9 @@
         <note priority="1" from="description">Share Menu: Mail Option</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentSubTitleContactDetails" datatype="html">
-        <source>Contact
-            Details</source><target state="translated">Kontakt Details</target>
+        <source>
+            Contact Details
+          </source><target state="translated">Kontakt Details</target>
         <note priority="1" from="description">Subtitle for Contact Details</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="ColumnTitleEmail" datatype="html">
@@ -904,11 +901,15 @@
         <source>Mobile</source>
         <target state="translated">Mobilnummer</target>
       </trans-unit><trans-unit id="DataPersonFax" datatype="html">
-        <source>Fax</source><target state="translated">Fax</target>
+        <source>
+              Fax
+            </source><target state="translated">Fax</target>
         <note priority="1" from="description">Label for Person.Fax data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="DataPersonMoney" datatype="html">
-        <source>Salary</source><target state="translated">Gehalt</target>
+        <source>
+              Salary
+            </source><target state="translated">Gehalt</target>
         <note priority="1" from="description">Label for Person.Money data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="UserDetailComponentAprilFoolDayTooltip" datatype="html">
@@ -917,18 +918,20 @@
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="UserDetailComponentSubTitleFurtherInformation" datatype="html">
         <source>
-            Further
-            Information</source><target state="translated">Weitere Informationen</target>
+            Further Information
+          </source><target state="translated">Weitere Informationen</target>
         <note priority="1" from="description">Subtitle for Further Information</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="DataPersonDirectSupervisor" datatype="html">
         <source>
-              Direct
-              Supervisor</source><target state="translated">Vorgesetzter</target>
+              Direct Supervisor
+            </source><target state="translated">Vorgesetzter</target>
         <note priority="1" from="description">Label for Person.Supervisor (direct supervisor) </note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="DataPersonTeamAssistant" datatype="html">
-        <source>Team Assistants</source><target state="translated">Teamassistenz</target>
+        <source>
+              Team Assistants
+            </source><target state="translated">Teamassistenz</target>
         <note priority="1" from="description">Label for Person.TeamAssistant </note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
@@ -968,8 +971,7 @@
               </source>
         <target state="translated">Organisationseinheit</target>
       </trans-unit><trans-unit id="UserDetailComponentButtonShowInOrganigram" datatype="html">
-        <source>Show
-                  in Organigram</source><target state="translated">In Organigramm anzeigen</target>
+        <source>Show in Organigram</source><target state="translated">In Organigramm anzeigen</target>
         <note priority="1" from="description">Button to show the persons position in the organigram</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentLabelLocation" datatype="html">
@@ -981,8 +983,7 @@
         <note priority="1" from="description">Combined location of the person (city, building, floor, room)</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentButtonShowRoom" datatype="html">
-        <source>Show
-                  Room</source><target state="translated">Raum anzeigen</target>
+        <source>Show Room</source><target state="translated">Raum anzeigen</target>
         <note priority="1" from="description">Button to show the persons room</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="DataPersonFloor" datatype="html">
@@ -1003,9 +1004,8 @@
         <note priority="1" from="meaning">UserDetailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponenMessageContributeSkills" datatype="html">
         <source>
-              This is where a coworkers skills would be shown. But this is still work in Progress, you can make it
-              happen
-              faster!
+              This is where a coworkers skills would be shown. But this is still
+              work in Progress, you can make it happen faster!
               <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>
                 <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>code<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
                 Contribute
@@ -1058,7 +1058,9 @@
         <source>Costcenter</source>
         <target state="translated">Costcenter</target>
       </trans-unit><trans-unit id="DataPersonType" datatype="html">
-        <source>Type</source><target state="translated">Typ</target>
+        <source>
+              Type
+            </source><target state="translated">Typ</target>
         <note priority="1" from="description">Label for Person.Type data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>

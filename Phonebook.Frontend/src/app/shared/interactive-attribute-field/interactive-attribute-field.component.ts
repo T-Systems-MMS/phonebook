@@ -16,7 +16,7 @@ export class InteractiveAttributeFieldComponent implements OnInit {
   @Input()
   public mailto: boolean = false;
 
-  constructor(private i18n: I18n) {}
+  constructor() {}
 
   public ngOnInit() {}
 }
