@@ -19,16 +19,16 @@ services:
       dockerfile: Dockerfile
     environment:
       DEBUG: 'true'
-      BASE_URL: 'http://localhost:8080/'
-      SERVER_NAME: 'phonebook.example.com'
+      BASE_URL: 'http://localhost/'
+      SERVER_NAME: 'localhost'
       CONTACT_URL: 'https://example.com'
       CONTACT_EMAIL: 'user@example.com'
       RAVEN_URL: 'https://sdfdsf9876987sdf987sdfs876sdf9@sentry.example.de/1'
       EMPLOYEE_PICTURES_ENDPOINT: 'https://pictures.example.com/'
-      OLD_EMPLOYEE_PICTURE_ENDPOINT: 'https://old-pictures.example.com/'
       ASSETS_ENDPOINT: 'https://localhost:8081/api/assets'
+      ROOMPLANNINGTOOL_URL: 'http://example.com'
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - ./nginx.conf /etc/nginx/nginx.conf
       - ./conf.d /etc/nginx/conf.d

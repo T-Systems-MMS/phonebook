@@ -1,27 +1,37 @@
-# Deployment
+# Phonebook Application
 
 The Deployment Guide for the Phonebook.
+We use [traefik](https://traefik.io/) under the hood. 
 
-### 1. Create and set up your Kubernetes Cluster
+## Deployment
 
-#### Azure:
+### Installation
 
-1. `az group create --subscription <id> --name phonebook-kubernetes --location northeurope`
-2. `az aks create --subscription <id> --resource-group phonebook-kubernetes --name phonebook-cluster --node-count 1 --enable-addons monitoring --generate-ssh-keys`
-3. `az aks get-credentials --subscription <id> --resource-group phonebook-kubernetes --name phonebook-cluster`
+> Currenty we don't have a Chart package so please clone the repo. 
 
-> More Information here:
->
-> 1. https://docs.microsoft.com/de-de/azure/aks/kubernetes-walkthrough
+> Please make sure you have a running Kubernetes Cluster, with Tiller and Helm installed.
 
-### 2. Install Helm and Traefik
+1. Create your `values.yml`. For settings look [here](#Settings).
+2. Install your Phonebook application by running `helm install --values ./path/to/your/values.yml ./phonebook`
 
-> Install Tiller on you Kubernetes Cluster first: https://docs.microsoft.com/de-de/azure/aks/kubernetes-helm
+#### Settings
 
-1. `helm install --name phonebook --values traefik.values.yml stable/traefik`
-2. `kubectl apply -f Phonebook.Frontend.yml`
-3. `kubectl apply -f Phonebook.Assets.yml`
+> You can overwrite traefik's configuration by setting the parameters under the `traefik` parameter. You can find them [here](https://github.com/helm/charts/tree/master/stable/traefik).
 
-### 3. Update with Changes
+| Parameter | Description                       | Default Value |
+| --------- | --------------------------------- | ------------- |
+| host      | The host used by the installation | localhost     |
 
-`helm upgrade phonebook --values traefik.values.yml stable/traefik`
+### Upgrade
+
+`helm upgrade phonebook --values ./path/to/your/values.yml ./phonebook`
+
+### Uninstalling the Chart
+
+```bash
+helm delete <deployment-name>
+```
+
+## Development
+
+Execute `helm install --dry-run --debug`
