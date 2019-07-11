@@ -79,11 +79,13 @@ npm install
 docker pull tsystemsmms/phonebook-build:mock-backend
 
 # Run the backend mock before
-docker run -p 8080:80 tsystemsmms/build:mock-backend
+docker run -p 8080:80 tsystemsmms/phonebook-build:mock-backend
 
 # Run the project
 npm run start -- --open
 ```
+> If you are behind a corporate proxy you also need to set the proxy in your docker settings to pull the mock-backend. A tutorial can be found on the internal page.
+
 > If you want to use a different backend server edit the Angular Proxy in the [proxy.conf.json](../../../proxy.conf.json).
 
 :star: You're ready to develop the Phonebook-Frontend application! Start by reading the [General Guide](general-guide) to get an overview.
