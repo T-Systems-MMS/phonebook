@@ -15,7 +15,7 @@ describe('Migration: 3', () => {
   });
 
   it('shoud do no harm if data is already migrated', () => {
-    const alreadyMigratedString = `{"serviceWorkerNotificationDisplayed":false,"version":"1.0.0","displayedNotificationVersion":1,"sendFeedback":false,"activeTheme":"magenta_light_theme"}`;
+    const alreadyMigratedString = `{"serviceWorkerNotificationDisplayed":false,"version":"1.0.0","displayedNotificationVersion":1,"sendFeedback":false,"activeTheme":"blue_dark_theme"}`;
     localStorage.setItem(APPSTATE_KEY, alreadyMigratedString);
     migration3.script();
     expect(localStorage.getItem(APPSTATE_KEY)).toEqual(alreadyMigratedString);
