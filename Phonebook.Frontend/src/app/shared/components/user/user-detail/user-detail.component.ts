@@ -31,7 +31,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public vCard: VCard = {};
-  public showButtons: boolean;
 
   @Input()
   public previewView: boolean = false;
@@ -44,8 +43,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit() {
-    // let actionDrawerSheetComponent = new actionDrawerSheetComponent();
-    // this.showButtons = false;
     this.getRandomMoney();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
       const index = bookmarks.findIndex(p => p.Id === this.person.Id);
