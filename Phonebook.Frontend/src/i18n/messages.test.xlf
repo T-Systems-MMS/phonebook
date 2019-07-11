@@ -73,7 +73,7 @@
         <note priority="1" from="meaning">Online-barComponent</note>
       </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">
         <source>Change
-  Profile Picture</source><target state="final">TEST</target>
+  Profile Picture</source><target state="translated">TEST</target>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentContent" datatype="html">
@@ -97,7 +97,7 @@
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentButtonChangePicture" datatype="html">
         <source>Change
-    my Picture!</source><target state="final">TEST</target>
+    my Picture!</source><target state="translated">TEST</target>
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit><trans-unit id="RoomPlanComponentNoPlan" datatype="html">
@@ -389,32 +389,23 @@
         <note priority="1" from="description">Language SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleColorTheme" datatype="html">
-        <source>Color Theme
-                    (beta)</source><target state="translated">TEST</target>
+        <source>Color Theme</source><target state="translated">TEST</target>
         <note priority="1" from="description">Color Theme SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
-        <source>
-                                    Blue Light Theme
-                                </source><target state="final">TEST</target>
-        <note priority="1" from="description">Color Theme Option: Defaul</note>
+        <source>Blue Light Theme</source><target state="translated">TEST</target>
+        <note priority="1" from="description">Color Theme Option: Blue Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
-        <source>
-                                    Blue Dark Theme
-                                </source><target state="final">TEST</target>
-        <note priority="1" from="description">Color Theme Option: Dark</note>
+        <source>Blue Dark Theme</source><target state="translated">TEST</target>
+        <note priority="1" from="description">Color Theme Option: Blue Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
-        <source>
-                                    Magenta Dark Theme
-                                </source><target state="final">TEST</target>
+        <source>Magenta Dark Theme</source><target state="translated">TEST</target>
         <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
-        <source>
-                                    Magenta Light Theme
-                                </source><target state="final">TEST</target>
+        <source>Magenta Light Theme</source><target state="translated">TEST</target>
         <note priority="1" from="description">Color Theme Option: Magenta Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
@@ -745,7 +736,7 @@
       </trans-unit><trans-unit id="PageInformationComponentSubTitleCookies" datatype="html">
         <source>
         Cookies Notice
-      </source><target state="final">TEST</target>
+      </source><target state="translated">TEST</target>
         <note priority="1" from="description">Subtitle for Cookies</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
@@ -754,7 +745,7 @@
         This site uses cokies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
         language you want to use.
       <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item>"/>
-    </source><target state="final">TEST</target>
+    </source><target state="translated">TEST</target>
         <note priority="1" from="description">CookiesSection</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleLicenses" datatype="html">
