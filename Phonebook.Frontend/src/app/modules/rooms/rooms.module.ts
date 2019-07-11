@@ -2,20 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RoomDetailComponent } from 'src/app/modules/rooms/components/room/room.component';
 import { RoomTreeComponent } from 'src/app/modules/rooms/components/room-tree/room-tree.component';
-import {
-  MatCardModule,
-  MatListModule,
-  MatIconModule,
-  MatDividerModule,
-  MatMenuModule,
-  MatButtonModule,
-  MatTreeModule,
-  MatGridListModule,
-  MatRippleModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatTooltipModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatRippleModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTreeModule } from '@angular/material/tree';
 import { RoomsRoutingModule } from 'src/app/modules/rooms/rooms-routing.module';
 import { BuildingComponent } from './components/building/building.component';
 import { CityComponent } from './components/city/city.component';

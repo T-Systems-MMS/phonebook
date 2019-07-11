@@ -7,13 +7,13 @@ import { UserDetailPageComponent } from 'src/app/pages/user-detail-page/user-det
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, pathMatch: 'full' },
-  { path: 'search', loadChildren: 'src/app/modules/table/table.module#TableModule' },
+  { path: 'search', loadChildren: () => import('src/app/modules/table/table.module').then(m => m.TableModule) },
   { path: 'user/:id', component: UserDetailPageComponent },
-  { path: 'rooms', loadChildren: 'src/app/modules/rooms/rooms.module#RoomsModule' },
-  { path: 'organigram', loadChildren: 'src/app/modules/organigram/organigram.module#OrganigramModule' },
+  { path: 'rooms', loadChildren: () => import('src/app/modules/rooms/rooms.module').then(m => m.RoomsModule) },
+  { path: 'organigram', loadChildren: () => import('src/app/modules/organigram/organigram.module').then(m => m.OrganigramModule) },
   {
     path: 'further-information',
-    loadChildren: 'src/app/pages/page-information/page-information.module#PageInformationModule'
+    loadChildren: () => import('src/app/pages/page-information/page-information.module').then(m => m.PageInformationModule)
   },
   { path: 'settings', component: SettingsComponent }
 ];

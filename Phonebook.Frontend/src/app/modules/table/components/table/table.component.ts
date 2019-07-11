@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatSort, SortDirection } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSort, SortDirection } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
@@ -32,7 +33,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
   private readonly initialPageSize = 30;
 
-  @ViewChild(MatSort)
+  @ViewChild(MatSort, { static: true })
   public sort: MatSort;
   public table: Element;
   public get tableSort(): TableSort {
@@ -50,26 +51,28 @@ export class TableComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public store: Store,
     public columnTranslate: ColumnTranslate
-  ) {
-    this.personService.getAll().subscribe(persons => {
-      this.dataSource = new PersonsDataSource(persons);
-    });
-    this.refreshTableSubscription = merge(
-      this.store.select(SearchState.searchTerm),
-      this.store.select(SearchState.searchFilters)
-    )
-      .pipe(
-        // Debounce Time is this low, as it just aims to bundle all Observables above, especially at first page load,
-        // where all three fire as they are initialized.
-        debounceTime(50)
-      )
-      .subscribe(val => {
-        this.refreshTable();
-        this.dataSource.pageSize = this.initialPageSize;
-      });
-  }
+  ) {}
 
   public ngOnInit() {
+    this.personService.getAll().subscribe(persons => {
+      this.dataSource = new PersonsDataSource(persons);
+
+      // Defer until Data is loaded.
+      this.refreshTableSubscription = merge(
+        this.store.select(SearchState.searchTerm),
+        this.store.select(SearchState.searchFilters)
+      )
+        .pipe(
+          // Debounce Time is this low, as it just aims to bundle all Observables above, especially at first page load,
+          // where all three fire as they are initialized.
+          debounceTime(50)
+        )
+        .subscribe(val => {
+          this.refreshTable();
+          this.dataSource.pageSize = this.initialPageSize;
+        });
+    });
+
     this.route.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParams => {
       // Table Sort
       const sortDirection = queryParams.get('sortDirection');

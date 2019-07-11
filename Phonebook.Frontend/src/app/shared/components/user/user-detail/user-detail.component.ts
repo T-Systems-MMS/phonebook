@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Input, HostListener } from '@angular/core
 import { Person, PersonType } from 'src/app/shared/models';
 import { MailService } from 'src/app/services/mail.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';

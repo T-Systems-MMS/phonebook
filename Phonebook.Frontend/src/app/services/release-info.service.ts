@@ -1,18 +1,24 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.debug';
 import { MatDialog, MatSnackBar } from '@angular/material';
+import { I18n } from '@ngx-translate/i18n-polyfill';
+import { Store } from '@ngxs/store';
 import { ReleaseNotificationDialog } from 'src/app/shared/dialogs/release-notification-dialog/release-notification.dialog';
 import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
-import { Store } from '@ngxs/store';
 import { AppState, SetVersion } from 'src/app/shared/states';
 import { VERSION } from 'src/environments/version';
-import { I18n } from '@ngx-translate/i18n-polyfill';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReleaseInfoService {
-  constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private store: Store, private i18n: I18n) {}
+  constructor(
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private store: Store,
+    private i18n: I18n,
+    private httpClient: HttpClient
+  ) {}
 
   public checkForUpdate() {
     const versionIncrement = ReleaseInfoService.whatVersionIncrement(
@@ -20,15 +26,16 @@ export class ReleaseInfoService {
       VERSION
     );
     switch (versionIncrement) {
-      case VersionIncrement.major:
+      case VersionIncrement.breaking:
         this.displayReleaseDialog();
         this.store.dispatch(new SetVersion(VERSION));
         break;
-      case VersionIncrement.minor:
+      case VersionIncrement.feature:
+        this.displayReleaseDialog();
         this.store.dispatch(new SetVersion(VERSION));
-        this.displayReleaseNotification();
         break;
-      case VersionIncrement.patch:
+      case VersionIncrement.bugfix:
+        this.displayReleaseNotification();
         this.store.dispatch(new SetVersion(VERSION));
         break;
       default:
@@ -37,10 +44,21 @@ export class ReleaseInfoService {
   }
 
   private displayReleaseDialog() {
-    this.dialog.open(ReleaseNotificationDialog, {
-      height: '90vh',
-      width: '90vw'
-    });
+    let text = 'Changelog could not be loaded.';
+    this.httpClient
+      .get('changelog.md', {
+        responseType: 'text'
+      })
+      .subscribe(success => {
+        import('marked').then(marked => {
+          text = marked.parse(success);
+          this.dialog.open(ReleaseNotificationDialog, {
+            data: text,
+            height: '90vh',
+            width: '90vw'
+          });
+        });
+      });
   }
 
   private displayReleaseNotification() {
@@ -85,15 +103,15 @@ export class ReleaseInfoService {
     const [pMajor, pMinor, pPatch] = matchedPreviousVersion.slice(1, 4);
     const [nMajor, nMinor, nPatch] = matchedNextVersion.slice(1, 4);
     if (Number(pMajor) < Number(nMajor)) {
-      return VersionIncrement.major;
+      return VersionIncrement.breaking;
     }
     if (Number(pMajor) === Number(nMajor)) {
       if (Number(pMinor) < Number(nMinor)) {
-        return VersionIncrement.minor;
+        return VersionIncrement.feature;
       }
       if (Number(pMinor) === Number(nMinor)) {
         if (Number(pPatch) < Number(nPatch)) {
-          return VersionIncrement.patch;
+          return VersionIncrement.bugfix;
         }
       }
     }

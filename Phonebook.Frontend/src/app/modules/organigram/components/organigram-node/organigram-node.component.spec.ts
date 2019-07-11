@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OrganigramNodeComponent } from './organigram-node.component';
-import { MatTooltipModule, MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { UnitTreeNode } from 'src/app/services/api/organigram.service';

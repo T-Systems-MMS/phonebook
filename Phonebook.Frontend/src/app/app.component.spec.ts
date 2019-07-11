@@ -1,23 +1,26 @@
-import { TestBed, async } from '@angular/core/testing';
-import { FeatureFlagDirective } from 'src/app/modules/feature-flag/feature-flag.directive';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ServiceWorkerService } from 'src/app/services/service-worker.service';
-import { PersonService } from 'src/app/services/api/person.service';
+import { async, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwUpdate } from '@angular/service-worker';
-import { MailService } from 'src/app/services/mail.service';
-import { NgxsModule } from '@ngxs/store';
-import { AppState } from 'src/app/shared/states';
-import { MatSnackBar, MatDialog } from '@angular/material';
-import { FeatureFlagService } from './modules/feature-flag/feature-flag.service';
-import { AppComponent } from './app.component';
-import { MockDirective } from 'ng-mocks';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import { NgxsModule } from '@ngxs/store';
+import { MockDirective } from 'ng-mocks';
+import { FeatureFlagDirective } from 'src/app/modules/feature-flag/feature-flag.directive';
+import { PersonService } from 'src/app/services/api/person.service';
+import { MailService } from 'src/app/services/mail.service';
+import { ServiceWorkerService } from 'src/app/services/service-worker.service';
+import { ThemeService } from 'src/app/services/theme.service';
+import { AppState } from 'src/app/shared/states';
+import { AppComponent } from './app.component';
+import { FeatureFlagService } from './modules/feature-flag/feature-flag.service';
 
 // Deactivated because there is currently no way to mock environment.ts Version
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([AppState])],
+      imports: [NgxsModule.forRoot([AppState]), HttpClientTestingModule],
       declarations: [AppComponent, MockDirective(FeatureFlagDirective)],
       providers: [
         { provide: PersonService, useValue: null },
@@ -27,7 +30,8 @@ describe('AppComponent', () => {
         { provide: ServiceWorkerService, useValue: null },
         { provide: FeatureFlagService, useValue: null },
         { provide: MatDialog, useValue: null },
-        { provide: I18n, useClass: MockI18nService }
+        { provide: I18n, useClass: MockI18nService },
+        { provide: ThemeService, useValue: null }
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
@@ -40,6 +44,4 @@ describe('AppComponent', () => {
   }));
 });
 
-class MockI18nService {
-
-}
+class MockI18nService {}

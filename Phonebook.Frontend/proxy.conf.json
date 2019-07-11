@@ -3,6 +3,15 @@
     "target": "http://localhost:8080",
     "secure": false,
     "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "logLevel": "debug"
+  },
+  "/changelog.md": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true,
     "logLevel": "debug"
   }
 }

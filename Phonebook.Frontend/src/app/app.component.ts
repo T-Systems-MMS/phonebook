@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar, MatDialog } from '@angular/material';
-import { ReleaseInfoService } from './services/release-info.service';
-import { Store } from '@ngxs/store';
-import { ServiceWorkerNotificationDisplayed, AppState, SetSendFeedback } from 'src/app/shared/states/App.state';
-import { SwUpdate } from '@angular/service-worker';
-import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
-import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
-import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Platform } from '@angular/cdk/platform';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SwUpdate } from '@angular/service-worker';
+import { I18n } from '@ngx-translate/i18n-polyfill';
+import { Store } from '@ngxs/store';
+import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
+import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
+import {
+  AppState,
+  InitTheme,
+  ServiceWorkerNotificationDisplayed,
+  SetSendFeedback
+} from 'src/app/shared/states/App.state';
+import { ReleaseInfoService } from './services/release-info.service';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +33,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
+    this.store.dispatch(new InitTheme());
     // Checking if the Service Worker was installed correctly.
     if (!this.store.selectSnapshot(AppState.serviceWorkerNotificationDisplayed)) {
       if ('serviceWorker' in navigator) {

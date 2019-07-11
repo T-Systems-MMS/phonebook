@@ -1,3 +1,4 @@
+import { Helpers } from 'src/app/modules/table/helpers';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Column } from 'src/app/shared/models';
 import { Person } from 'src/app/shared/models/classes/Person';
@@ -91,12 +92,13 @@ export class TableLogic {
 
   /**
    * Prepares the Search String by
-   * 1. Removing Spaces and Commas
-   * 2. Escaping RegEx Characters
+   * 1. Removing Commas and accents
+   * 2. Trimming whitespace
+   * 3. Escaping RegEx Characters
    * @param str String to prepare
    */
   public static prepareSearchString(str: string): RegExp {
-    return TableLogic.escapeRegExp(str.replace(/[\s,]/g, ''));
+    return TableLogic.escapeRegExp(Helpers.removeAccents(str.trim().replace(/,/g, '')));
   }
 }
 
