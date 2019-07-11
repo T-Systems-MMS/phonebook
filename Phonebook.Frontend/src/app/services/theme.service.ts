@@ -1,13 +1,11 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Injectable } from '@angular/core';
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
 
 @Injectable()
 export class ThemeService {
   constructor(private overlayContainer: OverlayContainer) {}
-  private activeTheme: string =
-    Array.from(document.body.classList).find(item => item.includes('-theme')) || 'blue-light-theme';
-
-  public setTheme(themeClass: string) {
+  public setTheme(themeClass: Theme) {
     const bodyClassList = document.body.classList;
     this.removeThemesFromClassList(bodyClassList);
     bodyClassList.add(themeClass);
@@ -15,11 +13,6 @@ export class ThemeService {
     const overlayClassList = this.overlayContainer.getContainerElement().classList;
     this.removeThemesFromClassList(overlayClassList);
     overlayClassList.add(themeClass);
-    this.activeTheme = themeClass;
-  }
-
-  public getTheme(): string {
-    return this.activeTheme;
   }
 
   private removeThemesFromClassList(classList: DOMTokenList) {
@@ -29,7 +22,7 @@ export class ThemeService {
 
   private getThemeClassesFromClassList(classList: DOMTokenList): string[] {
     return Array.from(classList).filter(item => {
-      return item.includes('-theme');
+      return item.includes('_theme');
     });
   }
 }

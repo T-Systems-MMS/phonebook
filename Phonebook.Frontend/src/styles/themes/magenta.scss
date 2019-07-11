@@ -116,5 +116,5 @@ $default-primary: mat-palette($magenta);
 $default-accent: mat-palette($black, A200, A100, A400);
 $default-warn: mat-palette($red);
 
-$magenta-light-theme: mat-light-theme($default-primary, $default-accent, $default-warn);
-$magenta-dark-theme: mat-dark-theme($default-primary, $default-accent, $default-warn);
+$magenta_light_theme: mat-light-theme($default-primary, $default-accent, $default-warn);
+$magenta_dark_theme: mat-dark-theme($default-primary, $default-accent, $default-warn);
