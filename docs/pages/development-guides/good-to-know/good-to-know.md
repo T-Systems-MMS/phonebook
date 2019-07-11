@@ -1,6 +1,16 @@
-# Current Bugs and Workarounds in this Projects
+---
+layout: default
+title: Good to know
+nav_order: 5
+has_children: true
+nav_exclude: true
+---
 
-## Starting the app
+# :small_red_triangle: Good to know :small_red_triangle:
+
+## Current Bugs and Workarounds in this Projects
+
+### Starting the app
 
 ### undefined is not a function
 
