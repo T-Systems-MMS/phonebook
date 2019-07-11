@@ -16,7 +16,7 @@ spec:
         'beta.kubernetes.io/os': linux
       containers:
         - name: phonebook-assets
-          image: tsystemsmms/phonebook-build:assets-89
+          image: tsystemsmms/phonebook-build:assets-200
           imagePullPolicy: 'Always'
           resources:
             requests:
@@ -46,12 +46,13 @@ metadata:
   name: phonebook-assets-ingress
   annotations:
     kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
 spec:
   rules:
-    - host: assets.demo-phonebook.me
+    - host: demo-phonebook.me
       http:
         paths:
-          - path: /
+          - path: /assets
             backend:
               serviceName: phonebook-assets-service
               servicePort: http

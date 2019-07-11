@@ -9,7 +9,7 @@ roomPlanningToolUrl: 'undefined'
 contactEmail: &contactEmail 'daniel-habenicht@outlook.de'
 ravenUrl: 'undefined'
 employeePictureEndpoint: 'undefined'
-assetsEndpoint: 'https://assets.demo-phonebook.me'
+assetsEndpoint: 'https://demo-phonebook.me/assets'
 
 # Frontend Variables
 frontend:
@@ -17,8 +17,8 @@ frontend:
   image:
     repository: tsystemsmms
     name: phonebook-frontend
-    tag: 1.20.1
-    pullPolicy: IfNotPresent
+    tag: 1.21.2
+    pullPolicy: Always
   replicaCount: 3
 
 
