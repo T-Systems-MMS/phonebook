@@ -1,4 +1,17 @@
-# How to Release
+---
+layout: default
+title: Release Guide
+has_parent: true
+parent: Frontend
+grand_parent: Development Guides
+nav_order: 600
+---
+
+# :tada: **Release Guide**
+
+## **How to release**
+
+The Phonebook is automatically released. The steps below are executed each time you use the following command.
 
 ```bash
 npm run release
