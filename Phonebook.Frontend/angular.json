@@ -20,7 +20,6 @@
               "src/assets",
               "src/favicon.ico",
               "src/services",
-              "src/manifest.json",
               "src/changelog.md"
             ],
             "styles": [
@@ -43,8 +42,7 @@
             "aot": true,
             "extractLicenses": true,
             "vendorChunk": false,
-            "buildOptimizer": false,
-            "serviceWorker": true
+            "buildOptimizer": false
           },
           "configurations": {
             "en": {
@@ -88,7 +86,6 @@
               "src/assets",
               "src/favicon.ico",
               "src/services",
-              "src/manifest.json",
               "src/changelog.md"
             ],
             "styles": [
@@ -112,7 +109,6 @@
             "extractLicenses": true,
             "vendorChunk": false,
             "buildOptimizer": true,
-            "serviceWorker": true,
             "fileReplacements": [
               {
                 "replace": "src/environments/environment.ts",
@@ -144,8 +140,7 @@
               "i18nFormat": "xlf",
               "i18nLocale": "de",
               "i18nMissingTranslation": "error",
-              "outputPath": "dist/",
-              "serviceWorker": false
+              "outputPath": "dist/"
             }
           }
         },
@@ -192,8 +187,7 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/services",
-              "src/manifest.json"
+              "src/services"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
