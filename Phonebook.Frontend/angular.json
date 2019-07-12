@@ -19,7 +19,6 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/services",
               "src/changelog.md"
             ],
             "styles": [
@@ -85,7 +84,6 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/services",
               "src/changelog.md"
             ],
             "styles": [
@@ -186,8 +184,7 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico",
-              "src/services"
+              "src/favicon.ico"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
