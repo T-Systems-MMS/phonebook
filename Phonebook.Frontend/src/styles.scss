@@ -62,17 +62,6 @@ app-root {
   right: 10px;
 }
 
-// This is for Drag and Drop, otherwise the Preview element would be unstyled.
-.mat-list-item-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
-  padding: 0 16px;
-  position: relative;
-  height: inherit;
-}
-
 .pb-spacer {
   flex: 1;
   flex-grow: 1;
@@ -176,3 +165,5 @@ app-root {
 input::-ms-clear {
   display: none;
 }
+
+@import 'overrides'

@@ -21,6 +21,7 @@ import { FeatureFlagModule } from 'src/app/modules/feature-flag/feature-flag.mod
 import { NgxVcardModule } from 'ngx-vcard';
 import { AddressModule } from 'src/app/shared/components/address/address.module';
 import { NotImplementedModule } from 'src/app/modules/not-implemented/not-implemented.module';
+import { InteractiveAttributeFieldModule } from 'src/app/shared/interactive-attribute-field/interactive-attribute-field.module';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { NotImplementedModule } from 'src/app/modules/not-implemented/not-implem
     MatMenuModule,
     NgxVcardModule,
     MatTooltipModule,
-    NotImplementedModule
+    NotImplementedModule,
+    InteractiveAttributeFieldModule
   ],
   declarations: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent],
   exports: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent]
