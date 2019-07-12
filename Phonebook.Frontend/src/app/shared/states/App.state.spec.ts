@@ -1,12 +1,19 @@
-import { Store, NgxsModule } from '@ngxs/store';
 import { async, TestBed } from '@angular/core/testing';
-import { AppState, SetVersion, ServiceWorkerNotificationDisplayed } from 'src/app/shared/states/App.state';
+import { NgxsModule, Store } from '@ngxs/store';
+import { ThemeService } from 'src/app/services/theme.service';
+import { AppState, ServiceWorkerNotificationDisplayed, SetVersion } from 'src/app/shared/states/App.state';
 
 describe('[States] App', () => {
   let store: Store;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([AppState])]
+      imports: [NgxsModule.forRoot([AppState])],
+      providers: [
+        {
+          provide: ThemeService,
+          useClass: MockThemeService
+        }
+      ]
     }).compileComponents();
     store = TestBed.get(Store);
     store.reset({
@@ -30,3 +37,5 @@ describe('[States] App', () => {
     expect(store.selectSnapshot(storeSnapshot => storeSnapshot.appstate.serviceWorkerNotificationDisplayed)).toBe(true);
   });
 });
+
+class MockThemeService {}

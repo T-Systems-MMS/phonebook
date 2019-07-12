@@ -88,8 +88,8 @@ export class ColumnTranslate {
         });
       case ColumnId.costcenter:
         return this.i18n({
-          value: 'Costcenter',
-          description: 'Title of Table Column "Costcenter"',
+          value: 'Profitcenter',
+          description: 'Title of Table Column "Profitcenter" once Costcenter',
           id: 'ColumnTitleCostcenter',
           meaning: 'TableComponent'
         });

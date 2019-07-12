@@ -1,6 +1,6 @@
-import { migration1, migration2 } from 'src/migration/migrations/';
+import { migration1, migration2, migration3 } from 'src/migration/migrations/';
 
-const MIGRATIONS: Migration[] = [migration1, migration2];
+const MIGRATIONS: Migration[] = [migration1, migration2, migration3];
 const MIGRATION_KEY: string = 'PhonebookMigrationLevel';
 
 export function migrate(): number | undefined {

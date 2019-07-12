@@ -120,33 +120,8 @@
         <note priority="1" from="description">Language SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleColorTheme" datatype="html">
-        <source>Color Theme
-                    (beta)</source>
+        <source>Color Theme</source>
         <note priority="1" from="description">Color Theme SubTitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
-        <source>
-                                    Blue Light Theme
-                                </source>
-        <note priority="1" from="description">Color Theme Option: Defaul</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
-        <source>
-                                    Blue Dark Theme
-                                </source>
-        <note priority="1" from="description">Color Theme Option: Dark</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
-        <source>
-                                    Magenta Dark Theme
-                                </source>
-        <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
-        <source>
-                                    Magenta Light Theme
-                                </source>
-        <note priority="1" from="description">Color Theme Option: Magenta Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="navigationBarColorChangerTooltip" datatype="html">
         <source>Here you can change the color theme of the app.</source>
@@ -233,7 +208,7 @@
         <note priority="1" from="description">Label for Person.TeamAssistant </note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="ColumnTitleCostcenter" datatype="html">
-        <source>Costcenter</source>
+        <source>Profitcenter</source>
       </trans-unit><trans-unit id="DataPersonType" datatype="html">
         <source>
               Type
@@ -522,8 +497,8 @@
         <note priority="1" from="description">Label for sorting the column &apos;Building&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="TableComponentColumnCostcenterLabel" datatype="html">
-        <source>Change sorting for column Costcenter</source>
-        <note priority="1" from="description">Label for sorting the column &apos;Costcenter&apos;</note>
+        <source>Change sorting for column Profitcenter</source>
+        <note priority="1" from="description">Label for sorting the column &apos;Profitcenter&apos; once Costcenter</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source>
@@ -864,6 +839,26 @@
         <source>Here is the Link: </source>
         <note priority="1" from="description">the body of the email that is preset when clicking &quot;Share by mail&quot;. The link to the room is applied after this sentence.</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
+        <source>Blue Light Theme</source>
+        <note priority="1" from="description">Color Theme Option: Blue Light</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
+        <source>Blue Dark Theme</source>
+        <note priority="1" from="description">Color Theme Option: Blue Dark</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
+        <source>Magenta Light Theme</source>
+        <note priority="1" from="description">Color Theme Option: Magenta Light</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
+        <source>Magenta Dark Theme</source>
+        <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="NavigationComponentViewModeList" datatype="html">
         <source>List View</source>

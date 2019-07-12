@@ -1,6 +1,6 @@
-<div class="svg-container" [style.display]="displaySVG ? 'block': 'none'" #floorplanSVG></div>
+<div class="svg-container" [style.display]="floorPlanSVG ? 'block': 'none'" #floorplanSVG></div>
 <!-- Use normal Floorplan picture if it is not yet converted -->
-<ng-container *ngIf="!displaySVG">
+<ng-container *ngIf="!floorPlanSVG">
     <img *ngIf="!floorPlanNotFound" [src]="runtimeEnvironment.assetsEndpoint + '/roomplan/' + floorplan + '.jpg' "
         class="roomplan" alt="Roomplan" (error)="floorPlanNotFound = true">
     <div *ngIf="floorPlanNotFound" class="pb-center-text pb-margin-20"

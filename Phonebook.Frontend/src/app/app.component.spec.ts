@@ -11,6 +11,7 @@ import { FeatureFlagDirective } from 'src/app/modules/feature-flag/feature-flag.
 import { PersonService } from 'src/app/services/api/person.service';
 import { MailService } from 'src/app/services/mail.service';
 import { ServiceWorkerService } from 'src/app/services/service-worker.service';
+import { ThemeService } from 'src/app/services/theme.service';
 import { AppState } from 'src/app/shared/states';
 import { AppComponent } from './app.component';
 import { FeatureFlagService } from './modules/feature-flag/feature-flag.service';
@@ -29,7 +30,8 @@ describe('AppComponent', () => {
         { provide: ServiceWorkerService, useValue: null },
         { provide: FeatureFlagService, useValue: null },
         { provide: MatDialog, useValue: null },
-        { provide: I18n, useClass: MockI18nService }
+        { provide: I18n, useClass: MockI18nService },
+        { provide: ThemeService, useValue: null }
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
