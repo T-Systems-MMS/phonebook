@@ -28,7 +28,6 @@
               "src/fonts/materialicons/material-icons.css"
             ],
             "scripts": [],
-            "ngswConfigPath": "src/ngsw-config.json",
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/styles"
@@ -99,7 +98,6 @@
                 "src/styles"
               ]
             },
-            "ngswConfigPath": "src/ngsw-config.json",
             "optimization": true,
             "outputHashing": "all",
             "sourceMap": false,
@@ -123,8 +121,7 @@
               "i18nLocale": "en",
               "i18nMissingTranslation": "error",
               "outputPath": "dist/en",
-              "baseHref": "/en/",
-              "ngswConfigPath": "src/ngsw-config.en.json"
+              "baseHref": "/en/"
             },
             "de": {
               "i18nFile": "src/i18n/messages.de.xlf",
@@ -132,8 +129,7 @@
               "i18nLocale": "de",
               "i18nMissingTranslation": "error",
               "outputPath": "dist/de",
-              "baseHref": "/de/",
-              "ngswConfigPath": "src/ngsw-config.de.json"
+              "baseHref": "/de/"
             },
             "preview": {
               "i18nFile": "src/i18n/messages.de.xlf",
