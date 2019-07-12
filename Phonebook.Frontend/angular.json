@@ -107,12 +107,8 @@
             "extractLicenses": true,
             "vendorChunk": false,
             "buildOptimizer": true,
-            "fileReplacements": [
-              {
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }
-            ]
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "en": {
@@ -121,7 +117,17 @@
               "i18nLocale": "en",
               "i18nMissingTranslation": "error",
               "outputPath": "dist/en",
-              "baseHref": "/en/"
+              "baseHref": "/en/",
+              "fileReplacements": [
+                {
+                  "replace": "src/manifest.webmanifest",
+                  "with": "src/manifest.en.webmanifest"
+                },
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "de": {
               "i18nFile": "src/i18n/messages.de.xlf",
@@ -129,7 +135,17 @@
               "i18nLocale": "de",
               "i18nMissingTranslation": "error",
               "outputPath": "dist/de",
-              "baseHref": "/de/"
+              "baseHref": "/de/",
+              "fileReplacements": [
+                {
+                  "replace": "src/manifest.webmanifest",
+                  "with": "src/manifest.de.webmanifest"
+                },
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "preview": {
               "i18nFile": "src/i18n/messages.de.xlf",
