@@ -17,7 +17,7 @@ frontend:
   image:
     repository: tsystemsmms
     name: phonebook-frontend
-    tag: 1.21.2
+    tag: 1.22.0
     pullPolicy: Always
   replicaCount: 3
 
@@ -79,5 +79,4 @@ traefik:
     enabled: true
   kubernetes:
     namespaces:
-      - default
-      - kube-system
+      - kube-public
