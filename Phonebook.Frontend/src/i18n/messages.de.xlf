@@ -280,6 +280,14 @@
         <source>Stream View</source><target state="translated">Stream Ansicht</target>
         <note priority="1" from="description">View Mode: Stream</note>
         <note priority="1" from="meaning">NavigationComponent</note>
+      </trans-unit><trans-unit id="UserDetailPageResolverNotFoundFirstPart" datatype="html">
+        <source>User with Id</source><target state="new">Nutzer mit der Id</target>
+        <note priority="1" from="description">First part of the message displayed when a user is not found</note>
+        <note priority="1" from="meaning">UserDetailPageResolver</note>
+      </trans-unit><trans-unit id="UserDetailPageResolverNotFoundSecondPart" datatype="html">
+        <source>not found.</source><target state="new">wurde nicht gefunden.</target>
+        <note priority="1" from="description">Second part of the message displayed when a user is not found</note>
+        <note priority="1" from="meaning">UserDetailPageResolver</note>
       </trans-unit><trans-unit id="OnlineBarComponentOnline" datatype="html">
         <source>The green bar indicates that you are online.</source><target state="translated">Die grüne Statusleiste zeigt an das du online bist.</target>
         <note priority="1" from="description">Tooltip for bar indicating the user is online</note>
@@ -393,14 +401,6 @@
       </trans-unit><trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
         <source>Layout</source><target state="translated">Ansicht</target>
         <note priority="1" from="description">Layout Subtitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentSubTitleFeatureFlag" datatype="html">
-        <source>
-                    Feature Flags
-                </source><target state="translated">
-                    Feature Flags
-                </target>
-        <note priority="1" from="description">Feature Flag Subtitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SearchComponentPlaceholder" datatype="html">
         <source>Search for names, shorthands, phone numbers and more...</source><target state="translated">Suche nach Namen, Kürzeln, Telefonnummern und mehr...</target>
@@ -1068,22 +1068,6 @@
         <target state="translated">Die Suche ergab keine Treffer.</target>
         <note priority="1" from="description">Sentence displayed if search did not return any results</note>
         <note priority="1" from="meaning">TableComponent</note>
-      </trans-unit><trans-unit id="AppComponentServiceWorkerSuccessMessage" datatype="html">
-        <source>Hurray! You can use this Website offline.</source><target state="translated">Hurra! Du kannst diese Website nun offline nutzen.</target>
-        <note priority="1" from="description">Message indicating the service worker was successfully installed</note>
-        <note priority="1" from="meaning">AppComponent</note>
-      </trans-unit><trans-unit id="AppComponentServiceWorkerErrorMessage" datatype="html">
-        <source>Your Browser does not support Offline Apps!</source><target state="translated">Your Browser does not support Offline Apps!</target>
-        <note priority="1" from="description">Message indicating the service worker was not installed</note>
-        <note priority="1" from="meaning">AppComponent</note>
-      </trans-unit><trans-unit id="AppComponentServiceWorkerUpdateMessage" datatype="html">
-        <source>A newer version is available. Do you want to update straight away?</source><target state="translated">Eine neue Version ist verfügbar. Möchtest du direkt die neue Version nutzen?</target>
-        <note priority="1" from="description">Message indicating the app can be updated and question if it should be updated</note>
-        <note priority="1" from="meaning">AppComponent</note>
-      </trans-unit><trans-unit id="AppComponentServiceWorkerUpdateButtonMessage" datatype="html">
-        <source>Update!</source><target state="translated">Update!</target>
-        <note priority="1" from="description">Button Text for updating the app</note>
-        <note priority="1" from="meaning">AppComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentCopiedFirstPart" datatype="html">
         <source>Link to</source>
