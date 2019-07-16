@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl --host=0.0.0.0 --poll 1000 --proxy-config proxy.conf.json",
+    "start": "concurrently -n mock-backend,angular \"docker stop phonebook-backend-mock || docker run --rm -p 8080:80 --name phonebook-backend-mock tsystemsmms/phonebook-build:mock-backend\" \"ng serve --ssl --proxy-config proxy.conf.json\"",
     "start:en": "npm run start -- --configuration en",
     "start:de": "npm run start -- --configuration de",
     "start:test": "npm run start -- --configuration test",
@@ -57,6 +57,7 @@
     "@ngxs/storage-plugin": "^3.4.3",
     "@ngxs/store": "^3.4.3",
     "classlist.js": "^1.1.20150312",
+    "concurrently": "^4.1.1",
     "marked": "^0.6.2",
     "ng2-rx-componentdestroyed": "^3.0.1",
     "ngx-clipboard": "^12.1.2",
