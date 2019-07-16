@@ -3,6 +3,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouterTestingModule } from '@angular/router/testing';
 import { SwUpdate } from '@angular/service-worker';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { NgxsModule } from '@ngxs/store';
@@ -20,7 +21,7 @@ import { FeatureFlagService } from './modules/feature-flag/feature-flag.service'
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([AppState]), HttpClientTestingModule],
+      imports: [NgxsModule.forRoot([AppState]), HttpClientTestingModule, RouterTestingModule],
       declarations: [AppComponent, MockDirective(FeatureFlagDirective)],
       providers: [
         { provide: PersonService, useValue: null },
