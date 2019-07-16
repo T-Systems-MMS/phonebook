@@ -131,12 +131,6 @@
         <source>Layout</source>
         <note priority="1" from="description">Layout Subtitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentSubTitleFeatureFlag" datatype="html">
-        <source>
-                    Feature Flags
-                </source>
-        <note priority="1" from="description">Feature Flag Subtitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentTooltipBookmark" datatype="html">
         <source>Bookmark this person</source>
         <note priority="1" from="description">Tooltip for saving a person as favourite</note>
@@ -745,26 +739,6 @@
         <note priority="1" from="description">Attributions SubTitle</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
-      <trans-unit id="AppComponentServiceWorkerSuccessMessage" datatype="html">
-        <source>Hurray! You can use this Website offline.</source>
-        <note priority="1" from="description">Message indicating the service worker was successfully installed</note>
-        <note priority="1" from="meaning">AppComponent</note>
-      </trans-unit>
-      <trans-unit id="AppComponentServiceWorkerErrorMessage" datatype="html">
-        <source>Your Browser does not support Offline Apps!</source>
-        <note priority="1" from="description">Message indicating the service worker was not installed</note>
-        <note priority="1" from="meaning">AppComponent</note>
-      </trans-unit>
-      <trans-unit id="AppComponentServiceWorkerUpdateMessage" datatype="html">
-        <source>A newer version is available. Do you want to update straight away?</source>
-        <note priority="1" from="description">Message indicating the app can be updated and question if it should be updated</note>
-        <note priority="1" from="meaning">AppComponent</note>
-      </trans-unit>
-      <trans-unit id="AppComponentServiceWorkerUpdateButtonMessage" datatype="html">
-        <source>Update!</source>
-        <note priority="1" from="description">Button Text for updating the app</note>
-        <note priority="1" from="meaning">AppComponent</note>
-      </trans-unit>
       <trans-unit id="OrganigramNodeComponentCopiedFirstPart" datatype="html">
         <source>Link to</source>
         <note priority="1" from="description">First part of the message displayed when copying a link to the node</note>
@@ -874,6 +848,16 @@
         <source>Stream View</source>
         <note priority="1" from="description">View Mode: Stream</note>
         <note priority="1" from="meaning">NavigationComponent</note>
+      </trans-unit>
+      <trans-unit id="UserDetailPageResolverNotFoundFirstPart" datatype="html">
+        <source>User with Id</source>
+        <note priority="1" from="description">First part of the message displayed when a user is not found</note>
+        <note priority="1" from="meaning">UserDetailPageResolver</note>
+      </trans-unit>
+      <trans-unit id="UserDetailPageResolverNotFoundSecondPart" datatype="html">
+        <source>not found.</source>
+        <note priority="1" from="description">Second part of the message displayed when a user is not found</note>
+        <note priority="1" from="meaning">UserDetailPageResolver</note>
       </trans-unit>
       <trans-unit id="GeneralLanguageGerman" datatype="html">
         <source>German</source>

@@ -2,18 +2,14 @@ import { Platform } from '@angular/cdk/platform';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SwUpdate } from '@angular/service-worker';
+import { NavigationError, Router } from '@angular/router';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Store } from '@ngxs/store';
+import { filter } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
-import {
-  AppState,
-  InitTheme,
-  ServiceWorkerNotificationDisplayed,
-  SetSendFeedback
-} from 'src/app/shared/states/App.state';
+import { AppState, InitTheme, SetSendFeedback } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 
 @Component({
@@ -31,7 +27,8 @@ export class AppComponent implements OnInit {
     // private swUpdates: SwUpdate,
     private matDialog: MatDialog,
     private i18n: I18n,
-    private platform: Platform
+    private platform: Platform,
+    private router: Router
   ) {}
 
   public ngOnInit() {
@@ -126,5 +123,10 @@ export class AppComponent implements OnInit {
         panelClass: 'color-warn'
       });
     }
+
+    // Route Routes with failing Resolvers to the Main Page
+    this.router.events.pipe(filter(e => e instanceof NavigationError)).subscribe(e => {
+      this.router.navigateByUrl('/');
+    });
   }
 }
