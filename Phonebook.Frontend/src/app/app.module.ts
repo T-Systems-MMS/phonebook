@@ -1,7 +1,6 @@
 //Angular Imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler, TRANSLATIONS, LOCALE_ID } from '@angular/core';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -107,9 +106,6 @@ declare const require;
     FeatureFlagModule,
     NotImplementedModule,
     FeedbackDrawerModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', {
-      enabled: environment.production
-    }),
     NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState]),
     NgxsStoragePluginModule.forRoot({
       key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
