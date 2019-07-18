@@ -4,7 +4,7 @@ This Folder does contain utility programs and dockerfile to mock the backend.
 
 ## Quickstart
 
-Run `docker run -rm -p 8080:80 tsystemsmms/phonebook-build:mock-backend` in order to run the mock backend with the current data. Visit [http://localhost:8080/persons](http://localhost:8080/persons)
+Run `docker run --rm -p 8080:80 -it tsystemsmms/phonebook-build:mock-backend` in order to run the mock backend with the current data. Visit [http://localhost:8080/persons](http://localhost:8080/persons)
 
 ## Development
 

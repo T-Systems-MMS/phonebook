@@ -1,16 +1,21 @@
-import { Component, OnInit, OnDestroy, Input, HostListener } from '@angular/core';
-import { Person, PersonType } from 'src/app/shared/models';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { I18n } from '@ngx-translate/i18n-polyfill';
+import { Select, Store } from '@ngxs/store';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { VCard, VCardEncoding } from 'ngx-vcard';
+import { Observable } from 'rxjs';
 import { MailService } from 'src/app/services/mail.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
-import { VCard } from 'ngx-vcard';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { I18n } from '@ngx-translate/i18n-polyfill';
-import { VCardEncoding } from 'ngx-vcard';
+import { Person, PersonType } from 'src/app/shared/models';
+import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-user-detail',
@@ -51,10 +56,14 @@ export class UserDetailComponent implements OnInit, OnDestroy {
         this.bookmarked = Bookmarked.isBookmarked;
       } else {
         this.bookmarked = Bookmarked.isNotBookmarked;
-      }      
+      }
     });
     this.vCard = {
-      name: { firstNames: this.person.Firstname, lastNames: this.person.Surname, namePrefix: this.person.Title },
+      name: {
+        firstNames: this.person.Firstname,
+        lastNames: this.person.Surname,
+        namePrefix: this.person.Title
+      },
       kind: 'individual',
       uid: this.person.Id,
       title: this.person.Role,
@@ -67,8 +76,14 @@ export class UserDetailComponent implements OnInit, OnDestroy {
         { value: this.person.Contacts.Mobile, param: { type: 'cell' } },
         { value: this.person.Contacts.Phone, param: { type: 'work' } }
       ],
-      organization: { value: 'T-Systems Multimedia Solutions', param: { type: ['work'] } },
-      categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
+      organization: {
+        value: 'T-Systems Multimedia Solutions',
+        param: { type: ['work'] }
+      },
+      categories: [
+        ...this.person.Business.OrgUnit,
+        ...this.person.Business.ShortOrgUnit
+      ],
       nickname: this.person.Id
     };
   }
@@ -91,7 +106,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   public ngOnDestroy() {}
 
   @HostListener('click')
-  public getRandomMoney(): void{
+  public getRandomMoney(): void {
     this.randomMoney = (Math.random() * 1000000).toFixed(2);
   }
 }

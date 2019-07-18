@@ -1,31 +1,54 @@
 <mat-list>
-
-  <h3 mat-line>{{data.copy}}</h3>
+  <h3 mat-line>{{ data.copy }}</h3>
 
   <mat-list-item *ngIf="data.copy">
-    <button mat-button propagationStop ngxClipboard [cbContent]="data.copy" (cbOnSuccess)="copySuccessToast()"
-      (cbOnError)="copyErrorToast()" (click)="closeBottomSheet()">
-      <span i18n="Action-drawer-sheetComponent|Copy to Clipboard button@@ActionDrawerSheetComponentButtonCopy">Copy to
-        clipboard</span>
+    <button
+      mat-button
+      propagationStop
+      ngxClipboard
+      [cbContent]="data.copy"
+      (cbOnSuccess)="copySuccessToast()"
+      (cbOnError)="copyErrorToast()"
+      (click)="closeBottomSheet()"
+    >
+      <span i18n="GeneralCopyButton|Copy to Clipboard button@@GeneralCopyButton"
+        >Copy to clipboard</span
+      >
     </button>
   </mat-list-item>
 
   <mat-list-item *ngIf="data.mailto">
-    <a mat-button propagationStop href="mailto:{{data.mailto}}" (click)="closeBottomSheet()">
-      <span i18n="Action-drawer-sheetComponent|Send Mail button@@ActionDrawerSheetComponentButtonEmail">Send an Email</span>
+    <a
+      mat-button
+      propagationStop
+      href="mailto:{{ data.mailto }}"
+      (click)="closeBottomSheet()"
+    >
+      <span i18n="GeneralMailButton|Send Mail button@@GeneralMailButton"
+        >Send an Email</span
+      >
     </a>
   </mat-list-item>
 
   <mat-list-item *ngIf="data.tel">
-    <a mat-button propagationStop href="tel:{{data.tel}}" (click)="closeBottomSheet()">
-      <span i18n="Action-drawer-sheetComponent|call Number button@@ActionDrawerSheetComponentButtonCall">Call the
-        Number</span>
+    <a
+      mat-button
+      propagationStop
+      href="tel:{{ data.tel }}"
+      (click)="closeBottomSheet()"
+    >
+      <span i18n="GeneralCallButton|call Number button@@GeneralCallButton"
+        >Call the Number</span
+      >
     </a>
   </mat-list-item>
 
   <mat-list-item>
     <button mat-button propagationStop (click)="closeBottomSheet()">
-      <span i18n="GeneralCancelButton|Button for cancelling something@@GeneralCancelButton">Cancel</span>
+      <span
+        i18n="GeneralCancelButton|Button for cancelling button@@GeneralCancelButton"
+        >Cancel</span
+      >
     </button>
   </mat-list-item>
 </mat-list>

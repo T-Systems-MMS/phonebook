@@ -50,7 +50,7 @@ export class RoomPlanComponent implements OnInit, OnChanges {
       roomElement = svgContainer.querySelector('[id=\'' + this.room + '\']');
       if (roomElement != null && roomElement.firstElementChild != null) {
         Array.from(roomElement.childNodes).forEach(element => {
-          if (element.nodeName === 'rect' || element.nodeName === 'path') {
+          if (element.nodeName === 'rect' || element.nodeName === 'path' || element.nodeName === 'polygon') {
             (element as HTMLElement).setAttribute('style', 'fill: #E20074;');
           }
         });
