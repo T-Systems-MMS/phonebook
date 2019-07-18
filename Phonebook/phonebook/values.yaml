@@ -1,15 +1,8 @@
 # Default values for phonebook.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
 
 # General Variables
-host: &host 'demo-phonebook.me'
+host: &host 'localhost'
 contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
-roomPlanningToolUrl: 'undefined'
-contactEmail: &contactEmail 'daniel-habenicht@outlook.de'
-ravenUrl: 'undefined'
-employeePictureEndpoint: 'undefined'
-assetsEndpoint: 'https://demo-phonebook.me/assets'
 
 # Frontend Variables
 frontend:
@@ -17,64 +10,26 @@ frontend:
   image:
     repository: tsystemsmms
     name: phonebook-frontend
-    tag: 1.22.0
+    tag: 1.22.3
     pullPolicy: Always
   replicaCount: 3
-
-
-nameOverride: ''
-fullnameOverride: ''
-
-service:
-  type: ClusterIP
-  port: 80
+  service:
+    type: ClusterIP
+    port: 80
 
 ingress:
   enabled: true
   annotations:
     {}
 
-resources:
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits:
-   cpu: 100m
-   memory: 128Mi
-  requests:
-   cpu: 100m
-   memory: 128Mi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
 
 # Traefik Configuration 
 traefik:
   startupArguments:
     - ''
-  dashboard:
-    enabled: true
-    domain: board.demo-phonebook.me
   ssl:
     enabled: true
     enforced: true
-  acme:
-    staging: false
-    enabled: true
-    email: *contactEmail
-    onHostRule: true
-    challengeType: 'http-01'
-    domains:
-      enabled: true
-      domainsList:
-        - main: *host
-        - sans:
-            - 'board.demo-phonebook.me'
-            - 'assets.demo-phonebook.me'
   rbac:
     enabled: true
   kubernetes:

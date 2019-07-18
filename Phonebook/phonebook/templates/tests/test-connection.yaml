@@ -14,5 +14,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args:  ['{{ include "phonebook.fullname" . }}:{{ .Values.service.port }}']
+      args:  ['{{ include "phonebook.fullname" . }}:{{ .Values.frontend.service.port }}']
   restartPolicy: Never
