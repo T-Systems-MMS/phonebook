@@ -29,7 +29,6 @@ let longOrgUnits3 = longOrgUnits.slice(31, 50);
 let cities = generateArray(15, faker.address.city);
 
 let addresses = generateArray(30, faker.address.streetAddress);
-let roomNumbers = ['1A', '2A', '3A', '4A', '5A', '6A', '1B', '2B', '3B', '4B', '5B', '6B'];
 
 let ids = new Array();
 
@@ -68,12 +67,10 @@ function generatePerson() {
           Building: faker.random.arrayElement(addresses),
           BuildingId: `${faker.random.number()}`,
           Floor: faker.random.number(6),
-          Description: `${city}, ${faker.random.arrayElement(addresses)}, Raum ${faker.random.arrayElement(
-            roomNumbers
-          )}`,
+          Description: `${city}, ${faker.random.arrayElement(addresses)}, Raum ${faker.random.number(200)}`,
           Phone: '',
-          Number: `${faker.random.arrayElement(roomNumbers)}`,
-          Id: `${faker.random.arrayElement(roomNumbers)}`,
+          Number: `${faker.random.number(200)}`,
+          Id: `${faker.random.number(200)}`,
           Place: city,
           FloorPlan: 'sample'
         }
@@ -105,11 +102,11 @@ function generateRoom() {
   return {
     Building: faker.random.arrayElement(addresses),
     BuildingId: faker.random.number(100),
-    Description: `${city}, ${faker.random.arrayElement(addresses)}, Raum ${faker.random.arrayElement(roomNumbers)}`,
+    Description: `${city}, ${faker.random.arrayElement(addresses)}, Raum ${faker.random.number(200)}`,
     Floor: `${faker.random.number(6)}`,
     FloorPlan: 'sample',
-    Id: faker.random.arrayElement(roomNumbers),
-    Number: `${faker.random.arrayElement(roomNumbers)}`,
+    Id: faker.random.number(200),
+    Number: `${faker.random.number(200)}`,
     Phone: '',
     Place: city
   };
