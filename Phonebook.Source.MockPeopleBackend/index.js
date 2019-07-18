@@ -72,7 +72,7 @@ function generatePerson() {
           Number: `${faker.random.number(200)}`,
           Id: `${faker.random.number(200)}`,
           Place: city,
-          FloorPlan: 'sample'
+          FloorPlan: faker.random.arrayElement(['sample_highlight', 'sample_static'])
         }
       ]
     },
@@ -104,7 +104,7 @@ function generateRoom() {
     BuildingId: faker.random.number(100),
     Description: `${city}, ${faker.random.arrayElement(addresses)}, Raum ${faker.random.number(200)}`,
     Floor: `${faker.random.number(6)}`,
-    FloorPlan: 'sample',
+    FloorPlan: faker.random.arrayElement(['sample_highlight', 'sample_static']),
     Id: faker.random.number(200),
     Number: `${faker.random.number(200)}`,
     Phone: '',
