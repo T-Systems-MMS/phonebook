@@ -6,6 +6,8 @@
 
 #### Setup in Azure
 
+> Note: To get the subscription id run `az account list`
+
 1. `az group create --subscription <id> --name phonebook-kubernetes --location northeurope`
 2. `az provider register --subscription <id> --namespace Microsoft.ContainerService`
 3. `az aks create --subscription <id> --resource-group phonebook-kubernetes --name phonebook-cluster --node-count 1 --enable-addons monitoring --generate-ssh-keys`
