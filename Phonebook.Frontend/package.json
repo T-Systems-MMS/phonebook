@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently -n mock-backend,angular \"docker run --rm -p 8080:80 --name phonebook-backend-mock tsystemsmms/phonebook-build:mock-backend\" \"ng serve --ssl --proxy-config proxy.conf.json\"",
+    "start": "concurrently -n mock-backend,assets,angular \"docker run --rm -p 8080:80 --name phonebook-backend-mock tsystemsmms/phonebook-build:mock-backend\" \"docker run --rm -p 8081:80 --name phonebook-assets tsystemsmms/phonebook-build:assets\" \"ng serve --ssl --proxy-config proxy.conf.json\"",
     "start:en": "npm run start -- --configuration en",
     "start:de": "npm run start -- --configuration de",
     "start:test": "npm run start -- --configuration test",
