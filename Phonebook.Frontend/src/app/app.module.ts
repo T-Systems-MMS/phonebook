@@ -2,7 +2,7 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlatformModule } from '@angular/cdk/platform';
 import { HttpClientModule } from '@angular/common/http';
-import { ErrorHandler, LOCALE_ID, NgModule, TRANSLATIONS } from '@angular/core';
+import { LOCALE_ID, NgModule, TRANSLATIONS } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { I18n } from '@ngx-translate/i18n-polyfill';
@@ -12,8 +12,6 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 // NGXS States
 import { NgxsModule } from '@ngxs/store';
-// Sentry Configuration
-import * as Raven from 'raven-js';
 //Custom Imports
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
@@ -39,6 +37,7 @@ import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
 import { DialogsModule } from 'src/app/shared/dialogs/dialogs.module';
 import { IeWarningModule } from 'src/app/shared/dialogs/ie-warning/ie-warning.module';
 import { FeedbackDrawerModule } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.module';
+import { ErrorHandlerModule } from 'src/app/shared/error/error.module';
 // Modules
 import { MaterialModule } from 'src/app/shared/material.module';
 import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
@@ -51,39 +50,9 @@ import {
   TableState
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
-import { runtimeEnvironment } from 'src/environments/runtime-environment';
-import { VERSION } from 'src/environments/version';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
-
-try {
-  Raven.config(runtimeEnvironment.ravenURL, {
-    autoBreadcrumbs: true,
-    environment: environment.production ? 'production' : 'preview',
-    release: VERSION,
-    sanitizeKeys: ['currentUserName', 'userName', 'someHidiousKey'],
-    shouldSendCallback: function(data) {
-      return JSON.parse(localStorage.getItem('appstate') || '').sendFeedback || false;
-    },
-    ignoreUrls: ['localhost:4200']
-  }).install();
-} catch (err) {
-  console.error(err);
-}
-
-export class RavenErrorHandler implements ErrorHandler {
-  public handleError(err: any): void {
-    if (environment.production) {
-      Raven.captureException(err);
-      if (JSON.parse(localStorage.getItem('appstate') || '').sendFeedback || false) {
-        Raven.showReportDialog();
-      }
-    } else {
-      console.error(err);
-    }
-  }
-}
 
 declare const require;
 
@@ -94,6 +63,7 @@ declare const require;
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ErrorHandlerModule.forRoot(),
     MaterialModule,
     DialogsModule,
     ProfilePictureModule,
@@ -139,7 +109,6 @@ declare const require;
     ReleaseInfoService,
     ThemeService,
     I18n,
-    { provide: ErrorHandler, useClass: RavenErrorHandler },
     ColumnTranslate,
     EnvironmentService
   ],

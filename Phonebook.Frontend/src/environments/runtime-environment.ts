@@ -2,7 +2,7 @@ import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfa
 
 declare const ENV: RuntimeEnvironmentInterface;
 export const runtimeEnvironment: RuntimeEnvironmentInterface = {
-  ravenURL: ENV.ravenURL !== '${RAVEN_URL}' ? ENV.ravenURL : 'TODO',
+  ravenURL: ENV.ravenURL !== '${RAVEN_URL}' ? ENV.ravenURL : null,
   employeePicturesEndpoint:
     ENV.employeePicturesEndpoint !== '${EMPLOYEE_PICTURES_ENDPOINT}' ? ENV.employeePicturesEndpoint : 'TODO',
   assetsEndpoint: ENV.assetsEndpoint !== '${ASSETS_ENDPOINT}' ? ENV.assetsEndpoint : '/external_assets',

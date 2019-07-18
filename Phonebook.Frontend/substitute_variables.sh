@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# State all variables which should be included here
-variables=( BASE_URL SERVER_NAME RAVEN_URL EMPLOYEE_PICTURES_ENDPOINT ASSETS_ENDPOINT CONTACT_EMAIL CONTACT_URL ROOMPLANNINGTOOL_URL)
+# State all variables which are required here
+variables=( BASE_URL SERVER_NAME EMPLOYEE_PICTURES_ENDPOINT ASSETS_ENDPOINT CONTACT_EMAIL CONTACT_URL ROOMPLANNINGTOOL_URL)
 
 # BASE_URL - used througout the whole app (e.g. opensearch.xml) - example: https://example.com/
 
