@@ -72,7 +72,9 @@ declare const require;
     FeatureFlagModule.forRoot(),
     NotImplementedModule,
     FeedbackDrawerModule,
-    NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState]),
+    NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState], {
+      developmentMode: !environment.production
+    }),
     NgxsStoragePluginModule.forRoot({
       key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
     }),
