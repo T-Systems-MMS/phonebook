@@ -15,9 +15,10 @@ export interface EnvironmentInterface {
 
 export interface RuntimeEnvironmentInterface {
   /**
-   * The URL to the Raven Instance, in order to report Bugs
+   * The URL to the Raven Instance, in order to report Bugs.
+   * If set to null Raven does not get activated.
    */
-  ravenURL: string;
+  ravenURL: string | null;
   /**
    * Get the URL of the employee Pictures endpoint without a ending '/'
    */
