@@ -99,7 +99,7 @@ declare const require;
     ProfilePictureModule,
     SettingsModule,
     UserModule,
-    FeatureFlagModule,
+    FeatureFlagModule.forRoot(),
     NotImplementedModule,
     FeedbackDrawerModule,
     NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState]),
