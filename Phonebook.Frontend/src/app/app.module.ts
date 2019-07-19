@@ -73,7 +73,8 @@ declare const require;
     NotImplementedModule,
     FeedbackDrawerModule,
     NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState], {
-      developmentMode: !environment.production
+      // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
+      // developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({
       key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
