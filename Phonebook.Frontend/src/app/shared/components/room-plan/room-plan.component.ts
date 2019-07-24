@@ -27,6 +27,7 @@ export class RoomPlanComponent implements OnInit, OnChanges {
 
   public ngOnChanges() {
     this.refreshRoomPlan();
+    this.loadSVG();
   }
 
   private refreshRoomPlan() {
