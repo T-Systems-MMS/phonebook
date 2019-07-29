@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "phonebook.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "phonebook.name" . }}
+    helm.sh/chart: {{ include "phonebook.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "phonebook.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "phonebook.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      nodeSelector:
+        'beta.kubernetes.io/os': linux
+      containers:
+        - name: {{ .Chart.Name }}-{{ .Values.frontend.name }}
+          image: "{{ .Values.frontend.image.repository }}/{{ .Values.frontend.image.name}}:{{ .Values.frontend.image.tag }}"
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 6
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 6
+          env: 
+            - name: BASE_URL
+              value: "https://{{ .Values.host }}"
+            - name: ROOMPLANNINGTOOL_URL
+              value: "{{ .Values.roomPlanningToolUrl }}"
+            - name: CONTACT_URL
+              value: "{{ .Values.contactUrl }}"
+            - name: SERVER_NAME
+              value: "{{ .Values.host }}"
+            - name: CONTACT_EMAIL
+              value: "{{ .Values.contactEmail }}"
+            - name: RAVEN_URL
+              value: "{{ .Values.ravenUrl }}"
+            - name: EMPLOYEE_PICTURES_ENDPOINT
+              value: "{{ .Values.employeePictureEndpoint }}"
+            - name: ASSETS_ENDPOINT
+              value: "{{ .Values.assetsEndpoint }}"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
