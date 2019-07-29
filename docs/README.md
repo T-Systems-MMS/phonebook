@@ -63,6 +63,23 @@ The project makes use of the following noteworthy frameworks:
 </ul>
 </details>
 
+## :earth_americas: **The Community**
+:pencil2: Contributors: [@DanielHabenicht](https://github.com/DanielHabenicht) [@mschwrdtnr](https://github.com/mschwrdtnr) [@paule96](https://github.com/paule96) [@marcuskrahl](https://github.com/marcuskrahl)
+
+> - Anyone who participates in any way to the community
+> - This can be: develop new features, fix bugs, write documentation or review pull requests.
+
+
+:gear: Maintainer: [@DanielHabenicht](https://github.com/DanielHabenicht) [@mschwrdtnr](https://github.com/mschwrdtnr) [@paule96](https://github.com/paule96)
+
+> - Voluntarily takes over the coordination of a work package, a milestone or a topic
+> - Controls the contributors and supports the onboarding
+> - Is responsible for the quality of the respective work package
+> - Becomes visible as a expert
+
+
+And a big thanks to all other contributors of [T-Systems MMS](https://github.com/T-Systems-MMS).
+
 ## **:sparkles: Need Help?**
 If you still have questions feel free to contact one of the [contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors).
 
