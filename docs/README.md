@@ -63,11 +63,11 @@ The project makes use of the following noteworthy frameworks:
 </ul>
 </details>
 
-## :person_frowning: **The Community**
+## :earth_americas: **The Community**
 :pencil2: Contributors: [@DanielHabenicht](https://github.com/DanielHabenicht) [@mschwrdtnr](https://github.com/mschwrdtnr) [@paule96](https://github.com/paule96) [@marcuskrahl](https://github.com/marcuskrahl)
 
 > - Anyone who participates in any way to the community
-> - This can be: develope new features, fix bugs, write documentation or review pull requests.
+> - This can be: develop new features, fix bugs, write documentation or review pull requests.
 
 
 :gear: Maintainer: [@DanielHabenicht](https://github.com/DanielHabenicht) [@mschwrdtnr](https://github.com/mschwrdtnr) [@paule96](https://github.com/paule96)
