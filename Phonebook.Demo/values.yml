@@ -6,7 +6,7 @@
 host: &host 'demo-phonebook.me'
 contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
 roomPlanningToolUrl: 'undefined'
-contactEmail: &contactEmail 'daniel-habenicht@outlook.de'
+contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
 ravenUrl: 'undefined'
 employeePictureEndpoint: 'undefined'
 assetsEndpoint: 'https://demo-phonebook.me/assets'
