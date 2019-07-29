@@ -4,7 +4,7 @@ by [T-Systems Multimedia Solutions GmbH](https://www.t-systems-mms.com/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![GitHub issues](https://img.shields.io/github/issues/T-Systems-MMS/phonebook.svg?style=popout)](https://github.com/T-Systems-MMS/phonebook/issues) [![GitHub](https://img.shields.io/github/license/T-Systems-MMS/phonebook.svg)](https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE) [![GitHub](https://img.shields.io/badge/Documentation-GitHub--Pages-blueviolet.svg)](https://t-systems-mms.github.io/phonebook/)
   
 
-## **:question: What is the Phonebook?** 
+## **:question: What is the Phonebook?**
 
 The Phonebook is a community project for us, from us and everybody is welcome to participate.
 This Single-Page-Application is able to display People, Rooms and the organization structure. It is perfect to search for people in a company, get information where they sit in your building and how to contact them.
