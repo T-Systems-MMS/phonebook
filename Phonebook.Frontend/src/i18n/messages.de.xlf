@@ -262,6 +262,12 @@
         <target state="translated">Vorschau</target>
         <note priority="1" from="description">Tag on Application Name</note>
         <note priority="1" from="meaning">NavigationBar</note>
+      </trans-unit><trans-unit id="MissingUserImage" datatype="html">
+        <source>
+                You haven't uploaded a picture yet. Click here to upload one!
+              </source><target state="translated">
+                Du hast bisher kein Bild hochgeladen. Klicke hier um eins hochzuladen!
+              </target>
       </trans-unit>
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
         <source>Have a nice day</source>
@@ -835,7 +841,7 @@
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source>
-                  <x id="INTERPOLATION" equiv-text="{{tableResultCount$ | async}}"/> Results
+                  <x id="INTERPOLATION" equiv-text="{{ tableResultCount$ | async }}"/> Results
                 </source><target state="translated">
       <x id="INTERPOLATION" equiv-text="{{dataSource.allData.length}}"/> Ergebnisse
     </target>

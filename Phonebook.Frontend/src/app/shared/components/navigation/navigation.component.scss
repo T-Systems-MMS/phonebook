@@ -1,5 +1,6 @@
 @import 'media-queries';
 @import '~@angular/material/theming';
+@import 'src/styles.scss';
 
 mat-sidenav-container {
   width: 100%;
@@ -53,6 +54,11 @@ mat-sidenav-container {
       height: 3rem;
     }
 
+    .pb-missing-userimage-info {
+      flex: 2;
+      margin: 0 auto;
+    }
+
     @media (max-width: 599px) {
       #search {
         height: 2.5rem;
@@ -60,7 +66,6 @@ mat-sidenav-container {
     }
   }
 }
-
 
 // Dynamic Search Bar Width
 

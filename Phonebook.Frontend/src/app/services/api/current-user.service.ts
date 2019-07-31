@@ -10,53 +10,69 @@ import { PersonService } from 'src/app/services/api/person.service';
   providedIn: 'root'
 })
 export class CurrentUserService {
+  private readonly currentUserApiUrl =
+    runtimeEnvironment.employeePicturesEndpoint + '/user/whoami?version=2';
 
-  private readonly currentUserApiUrl = runtimeEnvironment.employeePicturesEndpoint + '/user/whoami';
-
-  private currentUserNameObservable: Observable<string> | null = null;
+  private currentUserObjectObservable: Observable<WhoAmIResponse> | null = null;
   private currentUserObservable: Observable<Person | null> | null = null;
 
   constructor(
     private httpClient: HttpClient,
     private personService: PersonService
-  ) { }
+  ) {}
 
-  public getCurrentUserId(): Observable<string> {
-    if (this.currentUserNameObservable != null) {
-      return this.currentUserNameObservable;
+  private getCurrentUserObject(): Observable<WhoAmIResponse> {
+    if (this.currentUserObjectObservable != null) {
+      return this.currentUserObjectObservable;
     }
 
     const observable = this.httpClient
-      .get<string>(this.currentUserApiUrl, {
+      .get<WhoAmIResponse>(this.currentUserApiUrl, {
         withCredentials: true
       })
-      .pipe(
-        map(str => {
-          // Userstring Layout is "Domain\\user"
-          // This returns just the "user"
-          return str.toLowerCase().split('\\')[1];
-        }), publishReplay()
-      ) as ConnectableObservable<string>; // this is a workaround for this github issue: https://github.com/ReactiveX/rxjs/issues/2972. The good solution is to upgrade to typescript >2.8 but angular only supports < 2.8.
+      // this is a workaround for this github issue: https://github.com/ReactiveX/rxjs/issues/2972.
+      // The good solution is to upgrade to typescript >2.8 but angular only supports < 2.8.
+      .pipe(publishReplay()) as ConnectableObservable<WhoAmIResponse>;
     observable.connect();
-    this.currentUserNameObservable = observable;
-    return this.currentUserNameObservable;
+    this.currentUserObjectObservable = observable;
+    return this.currentUserObjectObservable;
+  }
 
+  public getCurrentUserId(): Observable<string> {
+    return this.getCurrentUserObject().pipe(
+      map(str => {
+        // Userstring Layout is "Domain\\user"
+        // This returns just the "user"
+        return str.user.toLowerCase().split('\\')[1];
+      })
+    );
   }
   public getCurrentUser(): Observable<Person | null> {
-
     if (this.currentUserObservable != null) {
       return this.currentUserObservable;
     }
 
-    const observable = this.getCurrentUserId()
-      .pipe(
-        mergeMap((userId) => {
-          return this.personService.getById(userId);
-        }),
-        publishReplay()
-      );
+    const observable = this.getCurrentUserId().pipe(
+      mergeMap(userId => {
+        return this.personService.getById(userId);
+      }),
+      publishReplay()
+    );
     (observable as ConnectableObservable<Person>).connect();
     this.currentUserObservable = observable;
     return this.currentUserObservable;
   }
+
+  public doesUserHasImage(): Observable<boolean> {
+    return this.getCurrentUserObject().pipe(
+      map(whoAmIResponse => {
+        return whoAmIResponse.hasPicture;
+      })
+    );
+  }
+}
+
+class WhoAmIResponse {
+  public user: string;
+  public hasPicture: boolean;
 }

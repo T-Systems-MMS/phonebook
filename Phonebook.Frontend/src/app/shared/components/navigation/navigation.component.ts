@@ -5,7 +5,10 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { VERSION, HASH_SHORT, HASH_LONG } from 'src/environments/version';
 import { EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
-import { EnvironmentService, Environment } from 'src/app/services/environment.service';
+import {
+  EnvironmentService,
+  Environment
+} from 'src/app/services/environment.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
@@ -32,6 +35,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   @Select(TableState.resultCount)
   public tableResultCount$: Observable<number>;
   public displayTableSettings: boolean = false;
+  public hasImage: boolean = false;
 
   public currentUser: Person | null = null;
   constructor(
@@ -41,22 +45,33 @@ export class NavigationComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public i18n: I18n,
     public featureFlagService: FeatureFlagService
-  ) { }
+  ) {}
 
   public ngOnInit() {
     this.currentUserService
       .getCurrentUser()
       .pipe(untilComponentDestroyed(this))
-      .subscribe(user => {
-        if (user != null) {
-          this.currentUser = user;
+      .subscribe(
+        user => {
+          if (user != null) {
+            this.currentUser = user;
+          }
+        },
+        error => {
+          this.currentUser = null;
         }
-      }, error => {
-        this.currentUser = null;
+      );
+    this.currentUserService
+      .doesUserHasImage()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(hasImage => {
+        this.hasImage = hasImage;
       });
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(route => {
-      this.displayTableSettings = this.router.url.includes('search');
-    });
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(route => {
+        this.displayTableSettings = this.router.url.includes('search');
+      });
   }
 
   public openSettings() {
@@ -66,32 +81,33 @@ export class NavigationComponent implements OnInit, OnDestroy {
     });
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 
   public getGreetingMessage(): Observable<string> {
     return this.featureFlagService.get('firstApril').pipe(
-      untilComponentDestroyed(this), 
-    map(enabled => {
-      if(enabled){
+      untilComponentDestroyed(this),
+      map(enabled => {
+        if (enabled) {
+          return this.i18n({
+            value: `Happy April Fools' Day`,
+            description: 'Greetings Message on first April',
+            id: 'navigationBarGreetingsMessageFirstApril',
+            meaning: 'NavigationBar'
+          });
+        }
         return this.i18n({
-          value: `Happy April Fools' Day`,
-          description: 'Greetings Message on first April',
-          id: 'navigationBarGreetingsMessageFirstApril',
+          value: 'Have a nice day',
+          description: 'Greetings Message',
+          id: 'navigationBarGreetingsMessage',
           meaning: 'NavigationBar'
-        })  
-      }
-      return this.i18n({
-        value: 'Have a nice day',
-        description: 'Greetings Message',
-        id: 'navigationBarGreetingsMessage',
-        meaning: 'NavigationBar'
+        });
       })
-    }));
+    );
   }
 
   public navigateToOwnProfile() {
     if (this.currentUser != null) {
-      this.router.navigateByUrl(`/user/${ this.currentUser.Id }`);
+      this.router.navigateByUrl(`/user/${this.currentUser.Id}`);
     }
   }
 }

@@ -137,6 +137,10 @@ app-root {
   min-height: 100%;
 }
 
+.pb-opacity-background {
+  background: rgba(0, 0, 0, 0.15);
+}
+
 //Media query classes
 @include on-med-and-up {
   .pb-hide-on-med-and-up {
@@ -166,4 +170,4 @@ input::-ms-clear {
   display: none;
 }
 
-@import 'overrides'
+@import 'overrides';
