@@ -38,7 +38,9 @@
 		"prettier.singleQuote": true,
 		"prettier.tslintIntegration": true,
 		"javascript.preferences.quoteStyle": "single",
-		"typescript.preferences.quoteStyle": "single"
+		"typescript.preferences.quoteStyle": "single",
+		"javascript.referencesCodeLens.enabled": true,
+		"typescript.referencesCodeLens.enabled": true
 		]
 	},
 	"extensions": {
