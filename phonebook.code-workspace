@@ -41,7 +41,7 @@
     "typescript.preferences.quoteStyle": "single",
     "javascript.referencesCodeLens.enabled": true,
     "typescript.referencesCodeLens.enabled": true,
-    "prettier.printWidth": 20
+    "prettier.printWidth": 120
   },
   "extensions": {
     "recommendations": [
