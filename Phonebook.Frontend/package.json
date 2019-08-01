@@ -116,8 +116,5 @@
     "commitizen": {
       "path": "Phonebook.Frontend/node_modules/cz-customizable"
     }
-  },
-  "release": {
-    "analyzeCommits": "simple-commit-message"
   }
 }
