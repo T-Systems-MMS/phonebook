@@ -1,51 +1,61 @@
 {
-  "folders": [
-    {
-      "name": "Documentation",
-      "path": "./docs"
-    },
-    {
-      "name": "Deployment",
-      "path": "./Phonebook"
-    },
-    {
-      "name": "Frontend",
-      "path": "./Phonebook.Frontend"
-    },
-    {
-      "name": "Assets",
-      "path": "./Phonebook.Assets"
-    },
-    {
-      "name": "Source.Mock",
-      "path": "./Phonebook.Source.MockPeopleBackend"
-    },
-    {
-      "name": "Source.PeopleSoft",
-      "path": "./Phonebook.Source.PeopleSoft"
-    },
-    {
-      "name": "root",
-      "path": "."
-    }
-  ],
-  "settings": {
-    "cSpell.words": [
-      "Kubernetes",
-      "Phonebook"
-    ],
-    "prettier.jsxSingleQuote": true,
-    "prettier.singleQuote": true,
-    "prettier.tslintIntegration": true,
-    "javascript.preferences.quoteStyle": "single",
-    "typescript.preferences.quoteStyle": "single",
-    "javascript.referencesCodeLens.enabled": true,
-    "typescript.referencesCodeLens.enabled": true,
-    "prettier.printWidth": 120
-  },
-  "extensions": {
-    "recommendations": [
-      "esbenp.prettier-vscode"
-    ]
-  }
+	"folders": [
+		{
+			"name": "Documentation",
+			"path": "./docs"
+		},
+		{
+			"name": "Deployment",
+			"path": "./Phonebook"
+		},
+		{
+			"name": "Frontend",
+			"path": "./Phonebook.Frontend"
+		},
+		{
+			"name": "Assets",
+			"path": "./Phonebook.Assets"
+		},
+		{
+			"name": "Source.Mock",
+			"path": "./Phonebook.Source.MockPeopleBackend"
+		},
+		{
+			"name": "Source.PeopleSoft",
+			"path": "./Phonebook.Source.PeopleSoft"
+		},
+		{
+			"name": "root",
+			"path": "."
+		}
+	],
+	"settings": {
+		"cSpell.words": [
+			"Kubernetes",
+			"Phonebook"
+		],
+		"javascript.preferences.quoteStyle": "single",
+		"typescript.preferences.quoteStyle": "single",
+		"javascript.referencesCodeLens.enabled": true,
+		"typescript.referencesCodeLens.enabled": true,
+		"prettier.jsxSingleQuote": true,
+		"prettier.singleQuote": true,
+		"prettier.tslintIntegration": true,
+		"prettier.printWidth": 120,
+		"prettier.jsxBracketSameLine": false,
+		"[html]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"[javascript]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"[typescript]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+	},
+	"extensions": {
+		"recommendations": [
+			"esbenp.prettier-vscode"
+		]
+	}
 }
