@@ -16,7 +16,7 @@ spec:
         'beta.kubernetes.io/os': linux
       containers:
         - name: phonebook-assets
-          image: tsystemsmms/phonebook-build:assets-200
+          image: tsystemsmms/phonebook-build:assets-210
           imagePullPolicy: 'Always'
           resources:
             requests:
