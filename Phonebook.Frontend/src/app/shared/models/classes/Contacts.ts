@@ -8,13 +8,7 @@ export class Contacts {
   public Phone: string;
   public Messenger: Messenger;
 
-  constructor(
-    mobile: string,
-    fax: string,
-    email: string,
-    phone: string,
-    messenger: Messenger
-  ) {
+  constructor(mobile: string, fax: string, email: string, phone: string, messenger: Messenger) {
     this.Mobile = mobile;
     this.Fax = fax;
     this.Email = email;

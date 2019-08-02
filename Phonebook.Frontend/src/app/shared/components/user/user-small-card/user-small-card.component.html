@@ -2,7 +2,7 @@
   <mat-card-header>
     <div class="pb-right-top-action">
       <button propagationStop mat-icon-button [ngClass]="actionButtonClasses" (click)="buttonClicked()">
-        <mat-icon>{{actionButtonIcon}}</mat-icon>
+        <mat-icon>{{ actionButtonIcon }}</mat-icon>
       </button>
     </div>
   </mat-card-header>
@@ -16,31 +16,43 @@
     <div>
       <div class="centered">
         <span class="mat-title">
-          {{displayedUsername()}}
+          {{ displayedUsername() }}
         </span>
       </div>
     </div>
     <mat-divider class="pb-divider"></mat-divider>
     <div>
-      <button *ngIf="person.Contacts.Phone != null && person.Contacts.Phone != ''" mat-button actionDrawer
-        color="primary" [copy]="person.Contacts.Phone" [tel]="person.Contacts.Phone">
+      <button
+        *ngIf="person.Contacts.Phone != null && person.Contacts.Phone != ''"
+        mat-button
+        actionDrawer
+        color="primary"
+        [copy]="person.Contacts.Phone"
+        [tel]="person.Contacts.Phone"
+      >
         <div>
           <mat-icon>call</mat-icon>
-          {{person.Contacts.Phone}}
+          {{ person.Contacts.Phone }}
         </div>
       </button>
-      <button *ngIf="person.Contacts.Phone == null || person.Contacts.Phone == ''" mat-button actionDrawer
-        color="primary" [copy]="person.Contacts.Mobile" [tel]="person.Contacts.Mobile">
+      <button
+        *ngIf="person.Contacts.Phone == null || person.Contacts.Phone == ''"
+        mat-button
+        actionDrawer
+        color="primary"
+        [copy]="person.Contacts.Mobile"
+        [tel]="person.Contacts.Mobile"
+      >
         <div>
           <mat-icon>call</mat-icon>
-          {{person.Contacts.Mobile}}
+          {{ person.Contacts.Mobile }}
         </div>
       </button>
       <button mat-button actionDrawer color="primary" [copy]="person.Contacts.Email" [mailto]="person.Contacts.Email">
         <div>
           <mat-icon>mail</mat-icon>
           <span class="pb-text-overflow">
-            {{person.Contacts.Email}}
+            {{ person.Contacts.Email }}
           </span>
         </div>
       </button>

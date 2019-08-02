@@ -60,7 +60,8 @@ namespace Phonebook.Source.PeopleSoft.Services
             return ConvertOracleResultToPeople(DataService.runCommand(peopleCommand), GetSelectFields());
         }
 
-        private static IEnumerable<People> ConvertOracleResultToPeople(IEnumerable<IEnumerable<string>> oracleResult, IEnumerable<Tuple<string, PropertyInfo>> fields){
+        private static IEnumerable<People> ConvertOracleResultToPeople(IEnumerable<IEnumerable<string>> oracleResult, IEnumerable<Tuple<string, PropertyInfo>> fields)
+        {
             var fieldPropertyInfos = fields.Select(d => d.Item2);
             return oracleResult.Select(row =>
             {

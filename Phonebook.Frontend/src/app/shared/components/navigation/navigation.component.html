@@ -6,33 +6,21 @@
         <mat-list-item>
           <button mat-menu-item [routerLink]="['/']" (click)="sidenav.close()">
             <mat-icon>dashboard</mat-icon>
-            <ng-container
-              i18n="NavigationBar|Link to Dashboard@@navigationDashboard"
-            >
+            <ng-container i18n="NavigationBar|Link to Dashboard@@navigationDashboard">
               Dashboard
             </ng-container>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button
-            mat-menu-item
-            [routerLink]="['/organigram']"
-            (click)="sidenav.close()"
-          >
+          <button mat-menu-item [routerLink]="['/organigram']" (click)="sidenav.close()">
             <mat-icon>business</mat-icon>
-            <ng-container
-              i18n="NavigationBar|Link to Organigram@@navigationOrganigram"
-            >
+            <ng-container i18n="NavigationBar|Link to Organigram@@navigationOrganigram">
               Organigram
             </ng-container>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button
-            mat-menu-item
-            [routerLink]="['/rooms']"
-            (click)="sidenav.close()"
-          >
+          <button mat-menu-item [routerLink]="['/rooms']" (click)="sidenav.close()">
             <mat-icon>meeting_room</mat-icon>
             <ng-container i18n="NavigationBar|Link to Rooms@@navigationRooms">
               Rooms
@@ -40,24 +28,13 @@
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button
-            mat-menu-item
-            (click)="navigateToOwnProfile(); sidenav.close()"
-          >
+          <button mat-menu-item (click)="navigateToOwnProfile(); sidenav.close()">
             <mat-icon>perm_identity</mat-icon>
-            <span
-              i18n="NavigationComponent|Link to the users profile@@NavigationComponentMyProfile"
-              >My profile</span
-            >
+            <span i18n="NavigationComponent|Link to the users profile@@NavigationComponentMyProfile">My profile</span>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button
-            mat-menu-item
-            focus
-            [routerLink]="['/settings']"
-            (click)="sidenav.close()"
-          >
+          <button mat-menu-item focus [routerLink]="['/settings']" (click)="sidenav.close()">
             <mat-icon>settings</mat-icon>
             <span i18n="@@SettingsComponentTitle">Settings</span>
           </button>
@@ -71,10 +48,7 @@
             (click)="sidenav.close()"
           >
             <mat-icon>info_outline</mat-icon>
-            <span
-              i18n="NavigationComponent|Link to Information page@@NavigationComponentInformation"
-              >Information</span
-            >
+            <span i18n="NavigationComponent|Link to Information page@@NavigationComponentInformation">Information</span>
           </button>
         </mat-list-item>
         <mat-list-item>
@@ -86,10 +60,7 @@
             (click)="sidenav.close()"
           >
             <mat-icon>bug_report</mat-icon>
-            <span
-              i18n="NavigationComponent|Link to Bug page@@NavigationComponentBug"
-              >Report a Bug</span
-            >
+            <span i18n="NavigationComponent|Link to Bug page@@NavigationComponentBug">Report a Bug</span>
           </button>
         </mat-list-item>
       </mat-list>
@@ -111,70 +82,42 @@
                 >
                 <span
                   class="beta-tag mat-headline pb-hide-below-small"
-                  *ngIf="
-                    environmentService.getEnvironment() == Environment.preview
-                  "
+                  *ngIf="environmentService.getEnvironment() == Environment.preview"
                   i18n="NavigationBar|Tag on Application Name@@navigationBarApplicationNameTag"
                   >Preview</span
                 >
                 <span
                   class="beta-tag mat-headline pb-hide-below-small"
-                  *ngIf="
-                    environmentService.getEnvironment() == Environment.local
-                  "
+                  *ngIf="environmentService.getEnvironment() == Environment.local"
                   >Dev</span
                 >
                 <span
                   class="version pb-hide-below-small"
-                  *ngIf="
-                    environmentService.getEnvironment() != Environment.local
-                  "
+                  *ngIf="environmentService.getEnvironment() != Environment.local"
                 >
                   v{{ version }}</span
                 >
               </button>
             </div>
-            <div
-              id="pb-greetings"
-              class="pb-hide-below-big"
-              *ngIf="currentUser != null"
-            >
-              {{
-                (getGreetingMessage() | async) + ' ' + currentUser.Firstname
-              }}!
+            <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null">
+              {{ (getGreetingMessage() | async) + ' ' + currentUser.Firstname }}!
             </div>
             <div class="pb-spacer"></div>
             <div class="menu pb-hide-below-med">
-              <button
-                mat-button
-                [routerLink]="['/']"
-                i18n="@@navigationDashboard"
-              >
+              <button mat-button [routerLink]="['/']" i18n="@@navigationDashboard">
                 Dashboard
               </button>
-              <button
-                mat-button
-                [routerLink]="['/organigram']"
-                i18n="@@navigationOrganigram"
-              >
+              <button mat-button [routerLink]="['/organigram']" i18n="@@navigationOrganigram">
                 Organigram
               </button>
-              <button
-                mat-button
-                [routerLink]="['/rooms']"
-                i18n="@@navigationRooms"
-              >
+              <button mat-button [routerLink]="['/rooms']" i18n="@@navigationRooms">
                 Rooms
               </button>
               <button mat-icon-button [matMenuTriggerFor]="personalmenu">
                 <mat-icon>person</mat-icon>
               </button>
               <mat-menu #personalmenu>
-                <button
-                  mat-menu-item
-                  (click)="navigateToOwnProfile()"
-                  *ngIf="currentUser != null"
-                >
+                <button mat-menu-item (click)="navigateToOwnProfile()" *ngIf="currentUser != null">
                   <mat-icon>perm_identity</mat-icon>
                   <span i18n="@@NavigationComponentMyProfile">My profile</span>
                 </button>
@@ -189,9 +132,7 @@
                   matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click."
                 >
                   <mat-icon>info_outline</mat-icon>
-                  <span i18n="@@NavigationComponentInformation"
-                    >Information</span
-                  >
+                  <span i18n="@@NavigationComponentInformation">Information</span>
                 </button>
                 <button mat-menu-item feedbackDrawer>
                   <mat-icon>bug_report</mat-icon>
@@ -209,10 +150,7 @@
             <div class="row-toolbar">
               <app-search id="search"></app-search>
               <div class="table-settings" *ngIf="displayTableSettings">
-                <span
-                  class="mat-h4"
-                  i18n="TableComponent|Result Count@@TableComponentResultCount"
-                >
+                <span class="mat-h4" i18n="TableComponent|Result Count@@TableComponentResultCount">
                   {{ tableResultCount$ | async }} Results
                 </span>
                 <button mat-icon-button (click)="openSettings()">
@@ -235,14 +173,11 @@
       </div>
       <div>
         <span *ngIf="environmentService.getEnvironment() != Environment.local">
-          <span *ngIf="environment.production">Prod</span
-          ><span *ngIf="!environment.production">Dev</span> - v{{ version }} -
-          <a
-            href="https://github.com/T-Systems-MMS/phonebook/commit/{{
-              versionHashLong
-            }}"
-            >{{ versionHashShort }}</a
-          >
+          <span *ngIf="environment.production">Prod</span><span *ngIf="!environment.production">Dev</span> - v{{
+            version
+          }}
+          -
+          <a href="https://github.com/T-Systems-MMS/phonebook/commit/{{ versionHashLong }}">{{ versionHashShort }}</a>
         </span>
       </div>
       <div>

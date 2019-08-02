@@ -9,13 +9,7 @@ import { ActionDrawerDirective } from 'src/app/shared/directives/action-drawer/a
 
 @NgModule({
   declarations: [ActionDrawerDirective, ActionDrawerSheetComponent],
-  imports: [
-    CommonModule,
-    ClipboardModule,
-    PropagationStopModule,
-    MatButtonModule,
-    MatListModule
-  ],
+  imports: [CommonModule, ClipboardModule, PropagationStopModule, MatButtonModule, MatListModule],
   entryComponents: [ActionDrawerSheetComponent],
   exports: [ActionDrawerDirective]
 })

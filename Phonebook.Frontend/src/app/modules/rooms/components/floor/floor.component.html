@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>
-        <span class="mat-display-1">{{node?.name}}. <span i18n="@@DataPersonFloor">Floor</span></span>
+        <span class="mat-display-1">{{ node?.name }}. <span i18n="@@DataPersonFloor">Floor</span></span>
       </mat-card-title>
     </mat-card-title-group>
   </mat-card-header>
@@ -12,11 +12,18 @@
       <app-room-plan class="pb-roomplan" [floorplan]="getFloorplan()"></app-room-plan>
     </div>
     <div>
-      <h3 mat-subheader i18n="FloorComponent|SubHeader for all Rooms in the floor@@FloorComponentSubHeaderRooms">Rooms</h3>
+      <h3 mat-subheader i18n="FloorComponent|SubHeader for all Rooms in the floor@@FloorComponentSubHeaderRooms">
+        Rooms
+      </h3>
       <div class="pb-flex-row">
-        <mat-card *ngFor="let room of node.children" class="pb-card pb-normal-shadow pb-margin-20" (click)="navigateToRoom(room)"
-          (keyup.enter)="navigateToRoom(room)" tabindex="0">
-          {{room.name}}
+        <mat-card
+          *ngFor="let room of node.children"
+          class="pb-card pb-normal-shadow pb-margin-20"
+          (click)="navigateToRoom(room)"
+          (keyup.enter)="navigateToRoom(room)"
+          tabindex="0"
+        >
+          {{ room.name }}
         </mat-card>
       </div>
     </div>

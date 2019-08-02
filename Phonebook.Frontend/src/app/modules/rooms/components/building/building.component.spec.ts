@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { BuildingComponent } from './building.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BuildingComponent } from './building.component';
+
 
 xdescribe('BuildingComponent', () => {
   let component: BuildingComponent;
@@ -11,8 +11,7 @@ xdescribe('BuildingComponent', () => {
     TestBed.configureTestingModule({
       declarations: [BuildingComponent],
       imports: [RouterTestingModule]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

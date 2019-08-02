@@ -1,7 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AddressComponent } from './address.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AddressComponent } from './address.component';
+
 
 describe('AddressComponent', () => {
   let component: AddressComponent;
@@ -11,8 +11,7 @@ describe('AddressComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AddressComponent],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

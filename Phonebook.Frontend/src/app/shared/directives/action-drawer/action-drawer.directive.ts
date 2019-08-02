@@ -1,9 +1,9 @@
-import { Directive, Input, HostListener, ElementRef } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { I18n } from '@ngx-translate/i18n-polyfill';
 import { ClipboardService } from 'ngx-clipboard';
 import { ActionDrawerSheetComponent } from 'src/app/shared/directives/action-drawer/action-drawer-sheet/action-drawer-sheet.component';
-import { I18n } from '@ngx-translate/i18n-polyfill';
 
 @Directive({ selector: '[actionDrawer]' })
 export class ActionDrawerDirective {
@@ -13,10 +13,14 @@ export class ActionDrawerDirective {
     // Checks if only one of the actions is true
     if (this.copy && !this.tel && !this.mailto) {
       this.clipboardService.copyFromContent(this.copy);
-      this.snackBar.open(this.i18n({
-        id: 'GeneralSuccessMessageCopy',
-        value: 'Copied to clipboard!'
-      }), '', { duration: 2000 });
+      this.snackBar.open(
+        this.i18n({
+          id: 'GeneralSuccessMessageCopy',
+          value: 'Copied to clipboard!'
+        }),
+        '',
+        { duration: 2000 }
+      );
     } else if (!this.copy && !this.tel && this.mailto) {
       window.open('mailto:${this.tel}', '_blank');
     } else if (!this.copy && this.tel && !this.mailto) {
@@ -31,7 +35,7 @@ export class ActionDrawerDirective {
     private clipboardService: ClipboardService,
     private snackBar: MatSnackBar,
     private i18n: I18n
-  ) { }
+  ) {}
 
   @Input()
   public copy: string | null = null;
