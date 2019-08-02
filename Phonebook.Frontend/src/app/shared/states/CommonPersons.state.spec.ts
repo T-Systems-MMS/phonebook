@@ -1,13 +1,7 @@
-import { Store, NgxsModule } from '@ngxs/store';
 import { async, TestBed } from '@angular/core/testing';
+import { NgxsModule, Store } from '@ngxs/store';
 import { Person } from 'src/app/shared/models';
-import {
-  IncrementCommonPerson,
-  ClicksPerPerson,
-  CommonPersonsState,
-  ResetCommonPersons,
-  RemoveCommonPerson
-} from 'src/app/shared/states/CommonPersons.state';
+import { ClicksPerPerson, CommonPersonsState, IncrementCommonPerson, RemoveCommonPerson, ResetCommonPersons } from 'src/app/shared/states/CommonPersons.state';
 
 describe('[States] Common Persons', () => {
   let store: Store;

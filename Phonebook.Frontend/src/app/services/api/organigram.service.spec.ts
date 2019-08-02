@@ -1,8 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { OrganigramService } from './organigram.service';
-import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
-import { mockPerson } from 'src/app/shared/mocks/person';
 
 describe('OrganigramService', () => {
   beforeEach(() => {

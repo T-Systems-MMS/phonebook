@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CityComponent } from './city.component';
+
 
 xdescribe('CityComponent', () => {
   let component: CityComponent;
@@ -9,8 +9,7 @@ xdescribe('CityComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [CityComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

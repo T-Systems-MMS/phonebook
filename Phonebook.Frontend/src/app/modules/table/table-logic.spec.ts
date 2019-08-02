@@ -1,14 +1,5 @@
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import {
-  Business,
-  City,
-  Contacts,
-  Location,
-  Messenger,
-  Person,
-  PersonType,
-  PhonebookSortDirection
-} from 'src/app/shared/models';
+import { Business, City, Contacts, Location, Messenger, Person, PersonType, PhonebookSortDirection } from 'src/app/shared/models';
 import { TableLogic } from './table-logic';
 
 describe('Table Logic - Sort', () => {

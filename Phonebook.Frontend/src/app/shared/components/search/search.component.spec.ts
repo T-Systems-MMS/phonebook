@@ -1,17 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-
-import { SearchComponent } from './search.component';
-import { Person } from 'src/app/shared/models';
-import { mockPerson } from 'src/app/shared/mocks/person';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { BehaviorSubject } from 'rxjs';
-import { MockComponent } from 'ng2-mock-component';
-import { NgxsModule, Store } from '@ngxs/store';
-import { SearchState } from 'src/app/shared/states';
+import { RouterTestingModule } from '@angular/router/testing';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import { NgxsModule, Store } from '@ngxs/store';
+import { MockComponent } from 'ng2-mock-component';
+import { BehaviorSubject } from 'rxjs';
+import { mockPerson } from 'src/app/shared/mocks/person';
+import { Person } from 'src/app/shared/models';
+import { SearchState } from 'src/app/shared/states';
+import { SearchComponent } from './search.component';
+
 
 class MockSearchService {
   public keyword: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -53,6 +53,4 @@ describe('SearchComponent', () => {
   });
 });
 
-class MockI18nService {
-
-}
+class MockI18nService {}

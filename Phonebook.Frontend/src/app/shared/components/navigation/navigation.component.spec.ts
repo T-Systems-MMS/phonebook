@@ -1,12 +1,12 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { MailService } from 'src/app/services/mail.service';
+import { HttpClientModule } from '@angular/common/http';
+import { async, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponent } from 'ng2-mock-component';
-import { HttpClientModule } from '@angular/common/http';
+import { MailService } from 'src/app/services/mail.service';
 import { NavigationComponent } from 'src/app/shared/components/navigation/navigation.component';
 
 // Deactivated because there is currently no way to mock environment.ts Version

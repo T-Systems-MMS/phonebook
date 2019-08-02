@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [mode]="'push'">
+  <mat-sidenav #sidenav [mode]="'push'" [position]="'end'">
     <nav id="pb-nav-mobile">
       <mat-list>
         <mat-list-item>
@@ -40,17 +40,25 @@
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item [routerLink]="['/further-information']"
+          <button
+            mat-menu-item
+            [routerLink]="['/further-information']"
             i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
-            matTooltip="Got Feedback? Than that`s the right place to click." (click)="sidenav.close()">
+            matTooltip="Got Feedback? Than that`s the right place to click."
+            (click)="sidenav.close()"
+          >
             <mat-icon>info_outline</mat-icon>
             <span i18n="NavigationComponent|Link to Information page@@NavigationComponentInformation">Information</span>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item feedbackDrawer
+          <button
+            mat-menu-item
+            feedbackDrawer
             i18n-matTooltip="navigationBar|Bug Button Tooltip@@navigationBarBugTooltip"
-            matTooltip="Found a Bug? Than that`s the right place to click." (click)="sidenav.close()">
+            matTooltip="Found a Bug? Than that`s the right place to click."
+            (click)="sidenav.close()"
+          >
             <mat-icon>bug_report</mat-icon>
             <span i18n="NavigationComponent|Link to Bug page@@NavigationComponentBug">Report a Bug</span>
           </button>
@@ -66,26 +74,45 @@
           <mat-toolbar-row class="mat-elevation-z6">
             <div class="left app-title">
               <button mat-button [routerLink]="['/']">
-                <span class="mat-display-1" id="title"
-                  i18n="NavigationBar|Application Name@@navigationBarApplicationName">Phonebook</span>
-                <span class="beta-tag mat-headline pb-hide-below-small"
+                <span
+                  class="mat-display-1"
+                  id="title"
+                  i18n="NavigationBar|Application Name@@navigationBarApplicationName"
+                  >Phonebook</span
+                >
+                <span
+                  class="beta-tag mat-headline pb-hide-below-small"
                   *ngIf="environmentService.getEnvironment() == Environment.preview"
-                  i18n="NavigationBar|Tag on Application Name@@navigationBarApplicationNameTag">Preview</span>
-                <span class="beta-tag mat-headline pb-hide-below-small"
-                  *ngIf="environmentService.getEnvironment() == Environment.local">Dev</span>
-                <span class="version pb-hide-below-small"
-                  *ngIf="environmentService.getEnvironment() != Environment.local">
-                  v{{version}}</span>
+                  i18n="NavigationBar|Tag on Application Name@@navigationBarApplicationNameTag"
+                  >Preview</span
+                >
+                <span
+                  class="beta-tag mat-headline pb-hide-below-small"
+                  *ngIf="environmentService.getEnvironment() == Environment.local"
+                  >Dev</span
+                >
+                <span
+                  class="version pb-hide-below-small"
+                  *ngIf="environmentService.getEnvironment() != Environment.local"
+                >
+                  v{{ version }}</span
+                >
               </button>
             </div>
             <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null">
-              {{(getGreetingMessage() | async) + ' ' + currentUser.Firstname}}!
+              {{ (getGreetingMessage() | async) + ' ' + currentUser.Firstname }}!
             </div>
             <div class="pb-spacer"></div>
             <div class="menu pb-hide-below-med">
-              <button mat-button [routerLink]="['/']" i18n="@@navigationDashboard">Dashboard</button>
-              <button mat-button [routerLink]="['/organigram']" i18n="@@navigationOrganigram">Organigram</button>
-              <button mat-button [routerLink]="['/rooms']" i18n="@@navigationRooms">Rooms</button>
+              <button mat-button [routerLink]="['/']" i18n="@@navigationDashboard">
+                Dashboard
+              </button>
+              <button mat-button [routerLink]="['/organigram']" i18n="@@navigationOrganigram">
+                Organigram
+              </button>
+              <button mat-button [routerLink]="['/rooms']" i18n="@@navigationRooms">
+                Rooms
+              </button>
               <button mat-icon-button [matMenuTriggerFor]="personalmenu">
                 <mat-icon>person</mat-icon>
               </button>
@@ -98,9 +125,12 @@
                   <mat-icon>settings</mat-icon>
                   <span i18n="@@SettingsComponentTitle">Settings</span>
                 </button>
-                <button mat-menu-item [routerLink]="['/further-information']"
+                <button
+                  mat-menu-item
+                  [routerLink]="['/further-information']"
                   i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
-                  matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click.">
+                  matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click."
+                >
                   <mat-icon>info_outline</mat-icon>
                   <span i18n="@@NavigationComponentInformation">Information</span>
                 </button>
@@ -121,7 +151,7 @@
               <app-search id="search"></app-search>
               <div class="table-settings" *ngIf="displayTableSettings">
                 <span class="mat-h4" i18n="TableComponent|Result Count@@TableComponentResultCount">
-                  {{tableResultCount$ | async}} Results
+                  {{ tableResultCount$ | async }} Results
                 </span>
                 <button mat-icon-button (click)="openSettings()">
                   <mat-icon>settings</mat-icon>
@@ -137,22 +167,22 @@
       <!-- Here goes the content -->
     </ng-content>
 
-
     <div id="footer">
       <div>
         <!-- Dummy for Layout -->
       </div>
       <div>
         <span *ngIf="environmentService.getEnvironment() != Environment.local">
-          <span *ngIf="environment.production">Prod</span><span *ngIf="!environment.production">Dev</span> -
-          v{{version}}
-          - <a href="https://github.com/T-Systems-MMS/phonebook/commit/{{versionHashLong}}">{{versionHashShort}}</a>
+          <span *ngIf="environment.production">Prod</span><span *ngIf="!environment.production">Dev</span> - v{{
+            version
+          }}
+          -
+          <a href="https://github.com/T-Systems-MMS/phonebook/commit/{{ versionHashLong }}">{{ versionHashShort }}</a>
         </span>
       </div>
       <div>
         <!-- Dummy for Layout-->
       </div>
     </div>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -8,13 +8,7 @@ import { InteractiveAttributeFieldComponent } from './interactive-attribute-fiel
 
 @NgModule({
   declarations: [InteractiveAttributeFieldComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    ActionDrawerModule,
-    MatTooltipModule
-  ],
+  imports: [CommonModule, MatButtonModule, MatIconModule, ActionDrawerModule, MatTooltipModule],
   exports: [InteractiveAttributeFieldComponent]
 })
 export class InteractiveAttributeFieldModule {}
