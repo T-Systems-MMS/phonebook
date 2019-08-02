@@ -23,7 +23,6 @@ import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component'
 import { SettingsModule } from 'src/app/pages/settings/settings.module';
 import { UserPagesModule } from 'src/app/pages/users/user-pages.module';
 import { ApiModule } from 'src/app/services/api/api.module';
-import { EnvironmentService } from 'src/app/services/environment.service';
 import { MailService } from 'src/app/services/mail.service';
 import { ReleaseInfoService } from 'src/app/services/release-info.service';
 import { ServiceWorkerService } from 'src/app/services/service-worker.service';
@@ -41,8 +40,16 @@ import { ErrorHandlerModule } from 'src/app/shared/error/error.module';
 // Modules
 import { MaterialModule } from 'src/app/shared/material.module';
 import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
-import { AppState, BookmarksState, CommonPersonsState, LastPersonsState, SearchState, TableState } from 'src/app/shared/states';
-import { environment } from 'src/environments/environment';
+import {
+  AppState,
+  BookmarksState,
+  CommonPersonsState,
+  LastPersonsState,
+  SearchState,
+  TableState
+} from 'src/app/shared/states';
+import { Environment } from 'src/environments/EnvironmentInterfaces';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
@@ -73,8 +80,8 @@ declare const require;
       key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
     }),
     NgxsRouterPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
-    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
+    NgxsLoggerPluginModule.forRoot({ disabled: runtimeEnvironment.environment !== Environment.development }),
+    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: runtimeEnvironment.environment !== Environment.development }),
     AddFilterModule,
     TableModule,
     ApiModule,
@@ -105,8 +112,7 @@ declare const require;
     ReleaseInfoService,
     ThemeService,
     I18n,
-    ColumnTranslate,
-    EnvironmentService
+    ColumnTranslate
   ],
   bootstrap: [AppComponent]
 })

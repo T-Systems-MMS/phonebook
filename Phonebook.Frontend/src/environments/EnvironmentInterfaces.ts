@@ -1,9 +1,5 @@
 export interface EnvironmentInterface {
   /**
-   * Switch for defining the current Environment
-   */
-  production: boolean;
-  /**
    * Switch for activating Angular Route Tracing
    */
   routeTracing: boolean;
@@ -14,6 +10,14 @@ export interface EnvironmentInterface {
 }
 
 export interface RuntimeEnvironmentInterface {
+  /**
+   * The Environment Tag is displayed right next to the title of the page, e.g. "preview", "dev"
+   */
+  readonly environmentTag: string;
+  /**
+   * The Environment the app is living in, by default it is development
+   */
+  readonly environment: Environment;
   /**
    * The URL to the Raven Instance, in order to report Bugs.
    * If set to null Raven does not get activated.
@@ -40,4 +44,21 @@ export interface RuntimeEnvironmentInterface {
    * Your Companies Room Planning Tool Url, that users can use to book rooms for meetings etc.
    **/
   roomPlanningToolUrl: string | null;
+}
+
+export enum Environment {
+  /**
+   * Local or pr-preview environment - unstable.
+   */
+  development = 'development',
+  /**
+   * An Environment that might have Bugs and has Preview Features enabled by default
+   * e.g. Early adopters or Staging Environment
+   */
+  preview = 'preview',
+  /**
+   * An Environment that is stable.
+   * Preview features can be enabled by the user himself.
+   */
+  production = 'production'
 }

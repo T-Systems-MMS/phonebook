@@ -42,6 +42,10 @@ spec:
           env: 
             - name: BASE_URL
               value: "https://{{ .Values.host }}"
+            - name: ENVIRONMENT
+              value: "{{ .Values.environment }}"
+            - name: ENVIRONMENT_TAG
+              value: "{{ .Values.environmentTag }}"
             - name: ROOMPLANNINGTOOL_URL
               value: "{{ .Values.roomPlanningToolUrl }}"
             - name: CONTACT_URL

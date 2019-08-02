@@ -10,6 +10,8 @@ contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
 ravenUrl: 'undefined'
 employeePictureEndpoint: 'undefined'
 assetsEndpoint: 'https://demo-phonebook.me/assets'
+environment: 'preview'
+environmentTag: 'demo'
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious

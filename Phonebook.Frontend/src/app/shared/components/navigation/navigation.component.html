@@ -82,19 +82,10 @@
                 >
                 <span
                   class="beta-tag mat-headline pb-hide-below-small"
-                  *ngIf="environmentService.getEnvironment() == Environment.preview"
-                  i18n="NavigationBar|Tag on Application Name@@navigationBarApplicationNameTag"
-                  >Preview</span
+                  *ngIf="currentEnvironment != Environment.production"
+                  >{{ getEnvironmentTag() }}</span
                 >
-                <span
-                  class="beta-tag mat-headline pb-hide-below-small"
-                  *ngIf="environmentService.getEnvironment() == Environment.local"
-                  >Dev</span
-                >
-                <span
-                  class="version pb-hide-below-small"
-                  *ngIf="environmentService.getEnvironment() != Environment.local"
-                >
+                <span class="version pb-hide-below-small" *ngIf="currentEnvironment != Environment.development">
                   v{{ version }}</span
                 >
               </button>
@@ -172,10 +163,8 @@
         <!-- Dummy for Layout -->
       </div>
       <div>
-        <span *ngIf="environmentService.getEnvironment() != Environment.local">
-          <span *ngIf="environment.production">Prod</span><span *ngIf="!environment.production">Dev</span> - v{{
-            version
-          }}
+        <span *ngIf="currentEnvironment != Environment.development">
+          <span>{{ getEnvironmentTag() }}</span> - v{{ version }}
           -
           <a href="https://github.com/T-Systems-MMS/phonebook/commit/{{ versionHashLong }}">{{ versionHashShort }}</a>
         </span>
