@@ -34,15 +34,16 @@ p {
 }
 
 mat-card {
-  width: 25%;
+  flex: 1;
+  min-width: 25%;
   margin: 1%;
   border: 1px solid;
 
   @include below-big {
-    width: 40%;
+    min-width: 40%;
   }
   @include below-med {
-    width: 70%;
+    min-width: 80%;
   }
 
   mat-card-header {
@@ -55,5 +56,6 @@ mat-card {
 }
 
 .pb-card-call {
-  width: 70%;
+  flex: 1;
+  min-width: 80%;
 }
