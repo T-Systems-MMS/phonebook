@@ -1,57 +1,133 @@
 <div class="displayDialog">
-  <h2 mat-dialog-title>Willkommen beim neuen Phonebook!</h2>
+  <h3 mat-dialog-title>
+    Willkommen beim neuen Phonebook!
+  </h3>
   <mat-dialog-content>
-    <span>Das neue Phonebook bietet dir nicht nur ein neues Design sondern auch zahlreiche Funktionen, die es besser
-      als
-      seinen Vorgänger machen:
+    <span
+      >Das neue Phonebook bietet dir nicht nur ein neues Design sondern auch zahlreiche Funktionen, die es besser als
+      seinen Vorgänger machen.
     </span>
-    <mat-list>
-      <mat-list-item>
-        <h5 matLine>Das Profilbild kann von dir selbst ausgetauscht werden.</h5>
-        <p matLine>
-          Klicke dafür einfach oben rechts auf <mat-icon>person</mat-icon> Icon und dann auf "Mein
-          Profil".
-        </p>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine> Häufig kontaktierte Kollegen können als Favoriten gespeichert werden.</h5>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine>Die Tabellenspalten können nach persönlichen Präferenzen angepasst und sortiert werden.</h5>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine>Personen können über Links geteilt werden.</h5>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine>Das Phonebook steht dir in Deutsch und Englisch zur Verfügung.</h5>
-        <p matLine>Klicke einfach oben rechts auf das <mat-icon>person</mat-icon> Icon und dann auf
-          "Einstellungen".
-        </p>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine>Eine Raumübersicht</h5>
-        <p matLine>Damit kannst du ganz einfach nachgucken wer wo sitzt. </p>
-      </mat-list-item>
-    </mat-list>
-
-    <p> Da fehlt noch was oder dir ist direkt der erste Fehler ins Auge gesprungen (hoffentlich nicht)? Dann teile uns
-      deine <a href="https://github.com/T-Systems-MMS/phonebook">Anmerkungen
-        oder Ideen </a> mit. Bugs kannst du <a href="https://github.com/T-Systems-MMS/phonebook">hier</a>
-      melden oder jederzeit oben links.
-    </p>
-    <h3>Aufruf an dich!</h3>
-    <p>Dies ist ein OpenSource-Projekt, es lebt von Mitstreitern die aktiv mitgestalten.</p>
-    <p> Wenn du also Interesse, Zeit oder Ideen hast und mitmachen möchtest
-      <a href="https://github.com/T-Systems-MMS/phonebook">melde dich bei uns, bzw. leg direkt
-        los</a>.
-      Programmieren ist dafür nämlich keine Voraussetzung! </p>
-
+    <div class="pb-flex-row pb-card-container">
+      <!-- Profilbild -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><mat-icon class="big-icon" [color]="'primary'">person</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title class="pb-color-primary">
+          Das Profilbild kann nun von dir selbst ausgetauscht werden.
+        </mat-card-title>
+        <mat-card-content>
+          Klicke dafür einfach oben rechts auf das
+          <mat-icon [color]="'primary'">person</mat-icon>
+          Icon und dann auf "Mein Profil".
+        </mat-card-content>
+      </mat-card>
+      <!-- Bookmark -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">bookmark_border</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title>
+          Häufig kontaktierte Kollegen können als Favorit gespeichert werden
+        </mat-card-title>
+        <mat-card-content>
+          Klicke dafür auf das
+          <mat-icon [color]="'primary'">bookmark_border</mat-icon>
+          Icon bei einem deiner Kollegen.
+        </mat-card-content>
+      </mat-card>
+      <!-- table settings -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">settings</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title>
+          Die Tabellenspalten können nach persönlichen Präferenzen angepasst und sortiert werden.
+        </mat-card-title>
+        <mat-card-content>
+          Die Einstellungen
+          <mat-icon [color]="'primary'">settings</mat-icon>
+          findest du bei der Suchseite rechts oben.
+        </mat-card-content>
+      </mat-card>
+      <!-- share -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">share</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title>
+          Personen können nun über Links geteilt werden.
+        </mat-card-title>
+        <mat-card-content>
+          Die verschiedenen Möglichkeiten zum Teilen eines Profils findest du mit einem Klick auf das
+          <mat-icon [color]="'primary'">share</mat-icon>
+          Symbol.
+        </mat-card-content>
+      </mat-card>
+      <!-- language -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">language</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title>
+          Das Phonebook steht dir in Deutsch und Englisch zur Verfügung.
+        </mat-card-title>
+        <mat-card-content>
+          Klicke dafür einfach oben rechts auf das
+          <mat-icon [color]="'primary'">person</mat-icon>
+          Icon und wechsle zu den Einstellungen.
+        </mat-card-content>
+      </mat-card>
+      <!-- roomplan -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">room</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title>
+          Du kannst dir für jeden Mitarbeiter einen Raumplan anzeigen lassen.
+        </mat-card-title>
+        <mat-card-content>
+          Gehe dafür einfach auf das Profil eines Kollegen und scroll nach unten.
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- call for contributors -->
+    <div class="pb-flex pb-card-container">
+      <mat-card class="pb-card-call">
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">error_outline</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title>Aufruf an dich!</mat-card-title>
+        <mat-card-content>
+          <span>
+            Dies ist ein Open Source Projekt und lebt von seinen aktiven Mitgestaltern. Dabei gibt es verschiedene
+            Themen die du übernehmen kannst. Du könntest uns z.B. helfen indem du ein
+            <a href="https://github.com/T-Systems-MMS/phonebook/issues" target="_blank">Issue</a> bearbeitest, einen
+            User-Guide schreibst oder einfach nur beim Verbessern der Software hilfst, indem du neue Bugs einstellst und
+            beschreibst. Dies kannst du
+            <a href="https://github.com/T-Systems-MMS/phonebook/issues/new/choose" target="_blank">hier</a> tun.
+          </span>
+          <span>
+            Melde dich bei Interesse gern
+            <a href="https://github.com/T-Systems-MMS/phonebook/" target="_blank">im offiziellen Repo</a> oder starte
+            mit einem Blick auf unsere
+            <a href="https://t-systems-mms.github.io/phonebook/" target="_blank">Dokumentation</a>.
+            <b>Programmieren ist keine Voraussetzung um ein Teil der Community zu werden! Du wirst es nicht bereuen!</b>
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </mat-dialog-content>
   <div class="spacer"></div>
   <mat-dialog-actions>
-    <p>Diese Seite nutzt Cookies um die Grundfunktionalität der App sicherzustellen.</p>
+    <p>
+      Diese Seite nutzt Cookies um die Grundfunktionalität der App sicherzustellen.
+    </p>
     <div class="actions">
-      <button mat-button mat-dialog-close cdkFocusInitial>Cool!</button>
+      <button mat-button mat-dialog-close cdkFocusInitial>
+        Cool!
+      </button>
     </div>
   </mat-dialog-actions>
 </div>
