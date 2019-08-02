@@ -60,6 +60,9 @@
 		"[typescript]": {
 			"editor.defaultFormatter": "esbenp.prettier-vscode"
 		},
+		"files.associations": {
+			"**/assets/js/search-data.json": "plaintext"
+		}
 	},
 	"extensions": {
 		"recommendations": [
