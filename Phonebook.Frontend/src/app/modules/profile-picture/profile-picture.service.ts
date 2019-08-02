@@ -1,8 +1,8 @@
-import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { runtimeEnvironment } from 'src/environments/runtime-environment';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,7 @@ export class ProfilePictureService {
   private readonly endpoint: string = runtimeEnvironment.employeePicturesEndpoint;
   public reload: EventEmitter<string> = new EventEmitter();
 
-  constructor(
-    private httpClient: HttpClient,
-    private currentUserService: CurrentUserService
-  ) { }
+  constructor(private httpClient: HttpClient, private currentUserService: CurrentUserService) {}
 
   /**
    * Upload the file as new User Picture of the currently authenticated User
@@ -27,27 +24,26 @@ export class ProfilePictureService {
     formData.append('file', file);
 
     return new Observable<any>(observer => {
-      this.currentUserService.getCurrentUserId()
-        .subscribe(
-          userName => {
-            this.httpClient
-              .post(this.endpoint + '/' + userName, formData, {
-                withCredentials: true
-              })
-              .subscribe(
-                success => {
-                  observer.next();
-                  observer.complete();
-                },
-                error => {
-                  observer.error(error);
-                }
-              );
-          },
-          error => {
-            observer.error(error);
-          }
-        );
+      this.currentUserService.getCurrentUserId().subscribe(
+        userName => {
+          this.httpClient
+            .post(this.endpoint + '/' + userName, formData, {
+              withCredentials: true
+            })
+            .subscribe(
+              success => {
+                observer.next();
+                observer.complete();
+              },
+              error => {
+                observer.error(error);
+              }
+            );
+        },
+        error => {
+          observer.error(error);
+        }
+      );
     });
   }
 

@@ -1,14 +1,14 @@
-import { State, Action, StateContext } from '@ngxs/store';
+import { Action, State, StateContext } from '@ngxs/store';
 import { Person } from 'src/app/shared/models';
 
 export class AddToLastPersons {
   public static readonly type: string = '[Last Persons] Add Person';
-  constructor(public person: Person) { }
+  constructor(public person: Person) {}
 }
 
 export class SetLastPersons {
   public static readonly type: string = '[Last Persons] Set Persons';
-  constructor(public persons: Person[]) { }
+  constructor(public persons: Person[]) {}
 }
 
 export class ResetLastPersons {
@@ -17,7 +17,7 @@ export class ResetLastPersons {
 
 export class RemoveFromLastPersons {
   public static readonly type: string = '[Last Persons] Remove Person';
-  constructor(public person: Person) { }
+  constructor(public person: Person) {}
 }
 
 @State<Person[]>({

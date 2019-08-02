@@ -1,10 +1,10 @@
-import { Contacts } from './Contacts';
-import { Business } from './Business';
-import { PersonType } from 'src/app/shared/models/enumerables/PersonType';
-import { Messenger } from './Messenger';
-import { City } from './City';
-import { Location } from './Location';
 import { Room } from 'src/app/shared/models/classes/Room';
+import { PersonType } from 'src/app/shared/models/enumerables/PersonType';
+import { Business } from './Business';
+import { City } from './City';
+import { Contacts } from './Contacts';
+import { Location } from './Location';
+import { Messenger } from './Messenger';
 /* tslint:disable:variable-name */
 
 export class Person {

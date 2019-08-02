@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BuildingService } from 'src/app/services/api/building.service';
-import { Location } from 'src/app/shared/models';
-import { RoomService, BuildingTreeNode } from 'src/app/services/api/room.service';
 import { Router } from '@angular/router';
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
+import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
 
 @Component({
   selector: 'app-overview',
@@ -13,8 +11,7 @@ import { RoomHelpers } from 'src/app/modules/rooms/helpers';
 export class OverviewComponent implements OnInit {
   public cities: BuildingTreeNode[] = [];
 
-  constructor(private roomService: RoomService,
-    private router: Router) { }
+  constructor(private roomService: RoomService, private router: Router) {}
 
   public ngOnInit() {
     this.roomService.getRoomTree().subscribe(rooms => {

@@ -2,12 +2,22 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>
-        <span class="mat-display-1">{{node?.name}}</span>
-        <a mat-button propagationStop *ngIf=" building.LinkRoutingWebsite && building.LinkRoutingWebsite != undefined && building.LinkRoutingWebsite != ''"
-          [href]="building.LinkRoutingWebsite" target="_blank" rel="noopener" class="mat-small">
+        <span class="mat-display-1">{{ node?.name }}</span>
+        <a
+          mat-button
+          propagationStop
+          *ngIf="
+            building.LinkRoutingWebsite && building.LinkRoutingWebsite != undefined && building.LinkRoutingWebsite != ''
+          "
+          [href]="building.LinkRoutingWebsite"
+          target="_blank"
+          rel="noopener"
+          class="mat-small"
+        >
           <mat-icon>open_in_new</mat-icon>
-          <span i18n="General|Button label for showing the location on google maps@@GeneralShowOnMapButton">Show on
-            Google-Maps</span>
+          <span i18n="General|Button label for showing the location on google maps@@GeneralShowOnMapButton"
+            >Show on Google-Maps</span
+          >
         </a>
       </mat-card-title>
     </mat-card-title-group>
@@ -29,8 +39,14 @@
           <mat-icon mat-list-icon>call</mat-icon>
           <h4 mat-line i18n="@@ColumnTitlePhone">Phone</h4>
           <p mat-line>
-            <button mat-button actionDrawer color="primary" [copy]="building.ReceptionPhone" [tel]="building.ReceptionPhone">
-              {{building.ReceptionPhone}}
+            <button
+              mat-button
+              actionDrawer
+              color="primary"
+              [copy]="building.ReceptionPhone"
+              [tel]="building.ReceptionPhone"
+            >
+              {{ building.ReceptionPhone }}
             </button>
           </p>
         </mat-list-item>
@@ -39,28 +55,33 @@
           <h4 mat-line i18n="@@DataPersonFax">Fax</h4>
           <p mat-line>
             <button mat-button actionDrawer [copy]="building.ReceptionFax">
-              {{building.ReceptionFax}}
+              {{ building.ReceptionFax }}
             </button>
-        </mat-list-item>
+          </p></mat-list-item
+        >
+
         <mat-list-item *ngIf="building.ContactPerson != '' && building.ContactPerson != null">
           <mat-icon mat-list-icon>person</mat-icon>
-          <h4 mat-line i18n="Datapoint|Label for Location.ContactPerson@@DataLocationContactPerson">Contact
-            Person</h4>
+          <h4 mat-line i18n="Datapoint|Label for Location.ContactPerson@@DataLocationContactPerson">Contact Person</h4>
           <p mat-line>
             <button mat-button stopPropagation [routerLink]="['/search/' + building.ContactPerson]">
-              {{building.ContactPerson}}
+              {{ building.ContactPerson }}
             </button>
-        </mat-list-item>
+          </p></mat-list-item
+        >
       </mat-list>
     </div>
     <div>
       <h3 mat-subheader i18n="Datapoint|Floor plural@@DataPersonFloorPlural">Floors</h3>
       <div class="pb-flex-row">
-        <mat-card *ngFor="let floor of node.children" class="pb-card pb-normal-shadow pb-margin-20 building-card"
-          (click)="navigateToFloor(floor)" (keyup.enter)="navigateToFloor(floor)" tabindex="0">
-          <mat-card-header>
-            {{floor.name}}. <span i18n="@@DataPersonFloor">Floor</span>
-          </mat-card-header>
+        <mat-card
+          *ngFor="let floor of node.children"
+          class="pb-card pb-normal-shadow pb-margin-20 building-card"
+          (click)="navigateToFloor(floor)"
+          (keyup.enter)="navigateToFloor(floor)"
+          tabindex="0"
+        >
+          <mat-card-header> {{ floor.name }}. <span i18n="@@DataPersonFloor">Floor</span> </mat-card-header>
           <mat-card-content>
             <div class="pb-expand pb-wrap">
               <app-room-plan class="pb-roomplan" [floorplan]="floor.children[0].data.FloorPlan"></app-room-plan>

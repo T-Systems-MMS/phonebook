@@ -1,14 +1,18 @@
 <div class="pb-margin-20">
   <div class="pb-flex-row pb-expand">
-    <mat-card *ngFor="let city of cities" class="pb-card pb-normal-shadow pb-margin-20" (click)="navigateToCity(city)"
-      (keyup.enter)="navigateToCity(city)" tabindex="0">
+    <mat-card
+      *ngFor="let city of cities"
+      class="pb-card pb-normal-shadow pb-margin-20"
+      (click)="navigateToCity(city)"
+      (keyup.enter)="navigateToCity(city)"
+      tabindex="0"
+    >
       <mat-card-header>
         <mat-card-title>
-          {{city.name}}
+          {{ city.name }}
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-      </mat-card-content>
+      <mat-card-content> </mat-card-content>
     </mat-card>
   </div>
 </div>

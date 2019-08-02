@@ -1,12 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ProfilePictureEnlargeDialog } from './enlarge-dialog/profile-picture-enlarge.dialog';
-import { ProfilePictureService } from '../../profile-picture.service';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
 import { Person } from 'src/app/shared/models';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
-import { HttpClient } from '@angular/common/http';
+import { ProfilePictureService } from '../../profile-picture.service';
+import { ProfilePictureEnlargeDialog } from './enlarge-dialog/profile-picture-enlarge.dialog';
 
 @Component({
   selector: 'app-profile-picture',

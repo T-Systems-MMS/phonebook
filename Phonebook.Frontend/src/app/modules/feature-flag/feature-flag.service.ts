@@ -1,9 +1,9 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of, ConnectableObservable, combineLatest } from 'rxjs';
-import { map, publishReplay, catchError, startWith } from 'rxjs/operators';
 import { Location } from '@angular/common';
-import { EnvironmentService, Environment } from 'src/app/services/environment.service';
+import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
+import { combineLatest, ConnectableObservable, Observable, of } from 'rxjs';
+import { catchError, map, publishReplay, startWith } from 'rxjs/operators';
+import { Environment, EnvironmentService } from 'src/app/services/environment.service';
 
 @Injectable()
 export class FeatureFlagService {
@@ -114,7 +114,8 @@ export class FeatureFlagService {
     return Math.random() >= percentage / 100;
   }
 
- public static isFirstApril(date: Date): boolean {
-  const firstApril = new Date('2019-04-01T00:00:00')
-  return date.getDate() == firstApril.getDate() &&  date.getMonth() == firstApril.getMonth()}
+  public static isFirstApril(date: Date): boolean {
+    const firstApril = new Date('2019-04-01T00:00:00');
+    return date.getDate() == firstApril.getDate() && date.getMonth() == firstApril.getMonth();
+  }
 }

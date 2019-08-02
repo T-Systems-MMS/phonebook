@@ -33,7 +33,7 @@ namespace Phonebook.Source.PeopleSoft.Services
         }
 
         public void Dispose()
-        {            
+        {
             connection.Close();
             connection.Dispose();
         }

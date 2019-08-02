@@ -1,9 +1,9 @@
-import { FeatureFlagService } from './feature-flag.service';
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Location } from '@angular/common';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { EnvironmentService, Environment } from 'src/app/services/environment.service';
+import { TestBed } from '@angular/core/testing';
+import { Environment, EnvironmentService } from 'src/app/services/environment.service';
+import { FeatureFlagService } from './feature-flag.service';
 
 describe('FeatureFlagService', () => {
   let featureFlagServiceTest: FeatureFlagService;
@@ -78,23 +78,23 @@ describe('FeatureFlagService', () => {
   });
 
   it(' - is First April Func - Noon', () => {
-    const firstAprilNoon = new Date('2011-04-01T00:00:00')
-    expect(FeatureFlagService.isFirstApril(firstAprilNoon)).toBeTruthy()
+    const firstAprilNoon = new Date('2011-04-01T00:00:00');
+    expect(FeatureFlagService.isFirstApril(firstAprilNoon)).toBeTruthy();
   });
 
   it(' - is First April Func - Night', () => {
-    const firstAprilNight = new Date('2011-04-01T23:59:59')
-    expect(FeatureFlagService.isFirstApril(firstAprilNight)).toBeTruthy()
+    const firstAprilNight = new Date('2011-04-01T23:59:59');
+    expect(FeatureFlagService.isFirstApril(firstAprilNight)).toBeTruthy();
   });
 
   it(' - is First April Func - Not 1', () => {
-    const notfirstApril1 = new Date('2011-04-02T00:00:00')
-    expect(FeatureFlagService.isFirstApril(notfirstApril1)).toBeFalsy()
+    const notfirstApril1 = new Date('2011-04-02T00:00:00');
+    expect(FeatureFlagService.isFirstApril(notfirstApril1)).toBeFalsy();
   });
 
   it(' - is First April Func - Not 2', () => {
-    const notfirstApril2 = new Date('2011-03-31T00:00:00')
-    expect(FeatureFlagService.isFirstApril(notfirstApril2)).toBeFalsy()
+    const notfirstApril2 = new Date('2011-03-31T00:00:00');
+    expect(FeatureFlagService.isFirstApril(notfirstApril2)).toBeFalsy();
   });
 });
 

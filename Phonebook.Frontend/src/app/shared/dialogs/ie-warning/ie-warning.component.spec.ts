@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IeWarningComponent } from './ie-warning.component';
+
 
 xdescribe('IeWarningComponent', () => {
   let component: IeWarningComponent;
@@ -8,9 +8,8 @@ xdescribe('IeWarningComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IeWarningComponent ]
-    })
-    .compileComponents();
+      declarations: [IeWarningComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

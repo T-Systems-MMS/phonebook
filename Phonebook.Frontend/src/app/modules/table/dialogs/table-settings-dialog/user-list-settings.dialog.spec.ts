@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TableSettingsDialog } from './table-settings.dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MockComponent } from 'ng2-mock-component';
+import { TableSettingsDialog } from './table-settings.dialog';
+
 
 // Deactivated, because MatDialogRef is not easily testable.
 xdescribe('TableSettingsDialog', () => {
