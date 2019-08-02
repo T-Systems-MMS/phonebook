@@ -2,11 +2,8 @@
 @import 'media-queries';
 @import '~@angular/material/theming';
 
-$magenta: #e20074;
-
 h3 {
   font-size: 2rem;
-  color: $magenta;
 }
 
 p {
@@ -39,7 +36,7 @@ p {
 mat-card {
   width: 25%;
   margin: 1%;
-  border: 1px solid $magenta;
+  border: 1px solid;
 
   @include below-big {
     width: 40%;
@@ -54,10 +51,6 @@ mat-card {
     mat-icon {
       @include mat-icon-size(60px);
     }
-  }
-
-  &:hover {
-    background-color: rgba(226, 0, 116, 0.1);
   }
 }
 
