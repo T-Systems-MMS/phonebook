@@ -5,10 +5,7 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { VERSION, HASH_SHORT, HASH_LONG } from 'src/environments/version';
 import { EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
-import {
-  EnvironmentService,
-  Environment
-} from 'src/app/services/environment.service';
+import { EnvironmentService, Environment } from 'src/app/services/environment.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
@@ -67,11 +64,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
       .subscribe(hasImage => {
         this.hasImage = hasImage;
       });
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(route => {
-        this.displayTableSettings = this.router.url.includes('search');
-      });
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(route => {
+      this.displayTableSettings = this.router.url.includes('search');
+    });
   }
 
   public openSettings() {

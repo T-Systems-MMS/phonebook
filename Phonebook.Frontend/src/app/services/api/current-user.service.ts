@@ -10,16 +10,12 @@ import { PersonService } from 'src/app/services/api/person.service';
   providedIn: 'root'
 })
 export class CurrentUserService {
-  private readonly currentUserApiUrl =
-    runtimeEnvironment.employeePicturesEndpoint + '/user/whoami?version=2';
+  private readonly currentUserApiUrl = runtimeEnvironment.employeePicturesEndpoint + '/user/whoami?version=2';
 
   private currentUserObjectObservable: Observable<WhoAmIResponse> | null = null;
   private currentUserObservable: Observable<Person | null> | null = null;
 
-  constructor(
-    private httpClient: HttpClient,
-    private personService: PersonService
-  ) {}
+  constructor(private httpClient: HttpClient, private personService: PersonService) {}
 
   private getCurrentUserObject(): Observable<WhoAmIResponse> {
     if (this.currentUserObjectObservable != null) {
