@@ -8,6 +8,7 @@ import { EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 // This is the Standard Environment it is called "Dev"
 
 export const environment: EnvironmentInterface = {
+  production: false,
   routeTracing: false,
   migrationLevel: undefined
 };
