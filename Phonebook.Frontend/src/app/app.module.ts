@@ -10,6 +10,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { MatBadgeModule } from '@angular/material';
 // NGXS States
 import { NgxsModule } from '@ngxs/store';
 //Custom Imports
@@ -41,7 +42,14 @@ import { ErrorHandlerModule } from 'src/app/shared/error/error.module';
 // Modules
 import { MaterialModule } from 'src/app/shared/material.module';
 import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
-import { AppState, BookmarksState, CommonPersonsState, LastPersonsState, SearchState, TableState } from 'src/app/shared/states';
+import {
+  AppState,
+  BookmarksState,
+  CommonPersonsState,
+  LastPersonsState,
+  SearchState,
+  TableState
+} from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
@@ -65,6 +73,7 @@ declare const require;
     FeatureFlagModule.forRoot(),
     NotImplementedModule,
     FeedbackDrawerModule,
+    MatBadgeModule,
     NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState], {
       // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
       // developmentMode: !environment.production

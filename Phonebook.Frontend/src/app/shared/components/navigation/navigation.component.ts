@@ -15,6 +15,8 @@ import { TableState } from 'src/app/shared/states';
 import { filter, map } from 'rxjs/operators';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ReleaseInfoService } from 'src/app/services/release-info.service';
 
 @Component({
   selector: 'app-navigation',
@@ -40,7 +42,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     private router: Router,
     public dialog: MatDialog,
     public i18n: I18n,
-    public featureFlagService: FeatureFlagService
+    public featureFlagService: FeatureFlagService,
+    public badge: MatBadgeModule,
+    public releaseInfoService: ReleaseInfoService
   ) {}
 
   public ngOnInit() {

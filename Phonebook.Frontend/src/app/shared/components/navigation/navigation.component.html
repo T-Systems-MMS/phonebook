@@ -114,7 +114,13 @@
                 Rooms
               </button>
               <button mat-icon-button [matMenuTriggerFor]="personalmenu">
-                <mat-icon>person</mat-icon>
+                <mat-icon
+                  matBadge="!"
+                  matBadgeColor="accent"
+                  matBadgeSize="small"
+                  [matBadgeHidden]="!releaseInfoService.newUpdate"
+                  >person</mat-icon
+                >
               </button>
               <mat-menu #personalmenu>
                 <button mat-menu-item (click)="navigateToOwnProfile()" *ngIf="currentUser != null">
@@ -133,6 +139,17 @@
                 >
                   <mat-icon>info_outline</mat-icon>
                   <span i18n="@@NavigationComponentInformation">Information</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>new_releases</mat-icon>
+                  <span
+                    matBadge="!"
+                    matBadgeColor="accent"
+                    matBadgeSize="small"
+                    [matBadgeHidden]="!releaseInfoService.newUpdate"
+                    (click)="releaseInfoService.displayReleaseDialog()"
+                    >Changelog</span
+                  >
                 </button>
                 <button mat-menu-item feedbackDrawer>
                   <mat-icon>bug_report</mat-icon>
