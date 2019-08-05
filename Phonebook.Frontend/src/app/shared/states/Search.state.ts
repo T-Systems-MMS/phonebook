@@ -52,9 +52,12 @@ export class SearchState {
       if (
         routeSnapshot.firstChild == null ||
         routeSnapshot.firstChild.url.length === 0 ||
-        !(routeSnapshot.firstChild.url[0].path === 'search' || routeSnapshot.firstChild.url[0].path === 'user')
+        !(routeSnapshot.firstChild.url[0].path === 'search')
       ) {
-        this.store.dispatch(new ResetSearch(false));
+        // Do not reset search if navigated to user
+        if (!(routeSnapshot.firstChild && routeSnapshot.firstChild.url[0].path === 'user')) {
+          this.store.dispatch(new ResetSearch(false));
+        }
         return;
       }
       const pathSegment = routeSnapshot.firstChild.firstChild;
