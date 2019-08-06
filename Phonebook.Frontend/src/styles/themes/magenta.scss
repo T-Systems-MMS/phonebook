@@ -46,21 +46,21 @@ $magenta: (
   )
 );
 
-$black: (
-  50: #262626,
-  100: #262626,
-  200: #262626,
-  300: #262626,
-  400: #262626,
-  500: #262626,
-  600: #262626,
-  700: #262626,
-  800: #262626,
-  900: #262626,
-  A100: #262626,
-  A200: #262626,
-  A400: #262626,
-  A700: #262626,
+$lightblue: (
+  50: #31c3f7,
+  100: #31c3f7,
+  200: #31c3f7,
+  300: #31c3f7,
+  400: #31c3f7,
+  500: #31c3f7,
+  600: #31c3f7,
+  700: #31c3f7,
+  800: #31c3f7,
+  900: #31c3f7,
+  A100: #31c3f7,
+  A200: #31c3f7,
+  A400: #31c3f7,
+  A700: #31c3f7,
   contrast: (
     50: $light-primary-text,
     100: $light-primary-text,
@@ -114,9 +114,10 @@ $red: (
 
 // Specifies the color that should be used as mat-palette($color-palette, normal, light, dark)
 $default-primary: mat-palette($magenta);
-$default-accent: mat-palette($black, A200, A100, A400);
+$light-accent: mat-palette($lightblue, A200, A100, A400);
+$dark-accent: mat-palette($magenta, A200, A100, A400);
 $default-warn: mat-palette($red);
 
 // $magenta_dark_theme: mat-dark-theme($default-primary, $default-accent, $default-warn);
-$magenta_light_theme: mat-light-theme($default-primary, $default-accent, $default-warn);
-$magenta_dark_theme: mat-dark-theme($default-primary, $default-accent, $default-warn);
+$magenta_light_theme: mat-light-theme($default-primary, $light-accent, $default-warn);
+$magenta_dark_theme: mat-dark-theme($default-primary, $dark-accent, $default-warn);
