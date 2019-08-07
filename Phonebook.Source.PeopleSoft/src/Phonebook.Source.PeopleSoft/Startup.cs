@@ -27,14 +27,17 @@ namespace Phonebook.Source.PeopleSoft
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
-            if(Env.IsDevelopment()){
+        {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            if (Env.IsDevelopment())
+            {
                 services.AddSingleton<IDataService, MockDataService>();
-            }else{
+            }
+            else
+            {
                 //TODO: here we must read the configuration later. Currently the DataService is more a mock then an implementation
                 services.AddSingleton<IDataService>(d => new DataService(""));
-            }            
+            }
             services.AddSingleton<PeopleService>();
         }
 

@@ -1,13 +1,13 @@
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { OrganigramNodeComponent } from './organigram-node.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { WindowRef } from 'src/app/services/windowRef.service';
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
-import { UnitTreeNode } from 'src/app/services/api/organigram.service';
-import { Store, NgxsModule } from '@ngxs/store';
-import { AppState } from 'src/app/shared/states';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsModule, Store } from '@ngxs/store';
+import { UnitTreeNode } from 'src/app/services/api/organigram.service';
+import { WindowRef } from 'src/app/services/windowRef.service';
+import { AppState } from 'src/app/shared/states';
+import { OrganigramNodeComponent } from './organigram-node.component';
 
 // Still have to figure out how to use Mock NGXS RouterPlugin
 xdescribe('OrganigramNodeComponent', () => {

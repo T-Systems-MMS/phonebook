@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RoomTreeComponent } from './room-tree.component';
+import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
 import { BuildingPart, Room } from 'src/app/shared/models';
-import { RoomService, BuildingTreeNode } from 'src/app/services/api/room.service';
+import { RoomTreeComponent } from './room-tree.component';
 
 xdescribe('RoomTreeComponent', () => {
   let component: RoomTreeComponent;

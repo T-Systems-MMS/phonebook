@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Location } from 'src/app/shared/models';
-import { Observable, ConnectableObservable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { ConnectableObservable, Observable } from 'rxjs';
 import { map, publishReplay } from 'rxjs/operators';
+import { Location } from 'src/app/shared/models';
 
 /**
  * Building Service
@@ -10,9 +10,7 @@ import { map, publishReplay } from 'rxjs/operators';
 @Injectable()
 export class BuildingService {
   private allBuildingsObservable: Observable<Location[]> | null = null;
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   public getByCity(city: string): Observable<Location[]> {
     return this.getAll().pipe(
@@ -40,10 +38,7 @@ export class BuildingService {
       return this.allBuildingsObservable;
     }
 
-    const observable = this.http.get<Location[]>('/api/branches')
-      .pipe(
-        publishReplay()
-      );
+    const observable = this.http.get<Location[]>('/api/branches').pipe(publishReplay());
     (observable as ConnectableObservable<Location[]>).connect();
     this.allBuildingsObservable = observable;
     return this.allBuildingsObservable;

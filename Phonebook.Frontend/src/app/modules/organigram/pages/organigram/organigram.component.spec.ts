@@ -1,10 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { OrganigramComponent } from './organigram.component';
-import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
 import { Location } from '@angular/common';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of, Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
+import { OrganigramComponent } from './organigram.component';
 
 describe('OrganigramComponent', () => {
   let component: OrganigramComponent;

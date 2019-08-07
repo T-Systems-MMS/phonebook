@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { OrganigramComponent } from 'src/app/modules/organigram/pages/organigram/organigram.component';
 
 const routes: Routes = [

@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { RoomPlanComponent } from './room-plan.component';
+import { Observable, of } from 'rxjs';
 import { FloorplanService } from 'src/app/services/floorplan.service';
-import { of, Observable } from 'rxjs';
 import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.module';
+import { RoomPlanComponent } from './room-plan.component';
+
 
 describe('RoomPlanComponent', () => {
   let component: RoomPlanComponent;

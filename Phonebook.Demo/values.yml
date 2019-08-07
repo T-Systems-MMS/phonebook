@@ -32,7 +32,7 @@ tolerations: []
 
 affinity: {}
 
-# Traefik Configuration 
+# Traefik Configuration
 traefik:
   startupArguments:
     - ''

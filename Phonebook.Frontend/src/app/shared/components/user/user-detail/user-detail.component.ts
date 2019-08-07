@@ -1,10 +1,4 @@
-import {
-  Component,
-  HostListener,
-  Input,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Select, Store } from '@ngxs/store';
@@ -80,10 +74,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
         value: 'T-Systems Multimedia Solutions',
         param: { type: ['work'] }
       },
-      categories: [
-        ...this.person.Business.OrgUnit,
-        ...this.person.Business.ShortOrgUnit
-      ],
+      categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
       nickname: this.person.Id
     };
   }

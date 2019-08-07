@@ -13,7 +13,6 @@ roleRef:
   kind: ClusterRole
   name: cluster-admin
 subjects:
-- kind: ServiceAccount
-  name: tiller
-  namespace: kube-public
-  
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-public

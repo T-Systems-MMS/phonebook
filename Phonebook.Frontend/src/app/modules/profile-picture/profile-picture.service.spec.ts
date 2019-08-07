@@ -1,5 +1,5 @@
-import { TestBed, inject, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { getTestBed, inject, TestBed } from '@angular/core/testing';
 import { ProfilePictureService } from 'src/app/modules/profile-picture/profile-picture.service';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { PersonService } from 'src/app/services/api/person.service';
@@ -26,6 +26,4 @@ describe('ProfilePictureService', () => {
   });
 });
 
-export class mockPersonService {
-
-}
+export class mockPersonService {}

@@ -1,71 +1,88 @@
 <mat-toolbar>
-    <button mat-icon-button [routerLink]="['/rooms']" *ngIf="params.length != 0">
-        <mat-icon>location_on</mat-icon>
-    </button>
-    <button mat-button [routerLink]="['/rooms']" *ngIf="params.length == 0">
-        <mat-icon>location_on</mat-icon>
-        <span
-            i18n="Room-treeComponent|Root of the Navigation Tree@@RoomTreeComponentRootNavigationTitle">Overview</span>
-    </button>
-    <button mat-button *ngFor="let param of params; let i = index" (click)="navigateToNodePath(params.slice(0, i+1))">
-        <mat-icon>chevron_right</mat-icon>
-        {{param}}
-        <ng-container *ngIf="i === 2" i18n="@@DataPersonFloor">Floor</ng-container>
-    </button>
-    <a mat-button *ngIf="roomPlanningToolUrl" class="btn-booking" target="_blank" rel="noopener"
-        [href]="roomPlanningToolUrl">
-        <mat-icon>meeting_room</mat-icon>
-        <span i18n="RoomTreeComponent|Button for changing to the booking tool@@RoomTreeComponentButtonBookingTool">
-            Booking Tool
-        </span>
-    </a>
+  <button mat-icon-button [routerLink]="['/rooms']" *ngIf="params.length != 0">
+    <mat-icon>location_on</mat-icon>
+  </button>
+  <button mat-button [routerLink]="['/rooms']" *ngIf="params.length == 0">
+    <mat-icon>location_on</mat-icon>
+    <span i18n="Room-treeComponent|Root of the Navigation Tree@@RoomTreeComponentRootNavigationTitle">Overview</span>
+  </button>
+  <button mat-button *ngFor="let param of params; let i = index" (click)="navigateToNodePath(params.slice(0, i + 1))">
+    <mat-icon>chevron_right</mat-icon>
+    {{ param }}
+    <ng-container *ngIf="i === 2" i18n="@@DataPersonFloor">Floor</ng-container>
+  </button>
+  <a
+    mat-button
+    *ngIf="roomPlanningToolUrl"
+    class="btn-booking"
+    target="_blank"
+    rel="noopener"
+    [href]="roomPlanningToolUrl"
+  >
+    <mat-icon>meeting_room</mat-icon>
+    <span i18n="RoomTreeComponent|Button for changing to the booking tool@@RoomTreeComponentButtonBookingTool">
+      Booking Tool
+    </span>
+  </a>
 </mat-toolbar>
 <mat-drawer-container hasBackdrop="false" class="pb-flex-1">
-    <mat-drawer #drawer mode="side" class="tree-drawer" [opened]="drawerOpenByDefault">
-        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="location-tree">
-            <mat-tree-node *matTreeNodeDef="let node">
-                <li class="mat-tree-node" matRipple tabindex=0 (click)="navigateToNodePath(node.path)"
-                    (keyup.enter)="navigateToNodePath(node.path)">
-                    <button mat-icon-button disabled matTreeNodeToggle>
-                        <mat-icon>meeting_room</mat-icon>
-                    </button>
-                    <div>
-                        {{node.name}}
-                    </div>
-                </li>
-            </mat-tree-node>
-            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-                <li>
-                    <div class="mat-tree-node" matRipple (click)="navigateToNodePath(node.path)">
-                        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name"
-                            (click)="navigateToNodePath(node.path)">
-                            <mat-icon>
-                                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                            </mat-icon>
-                        </button>
-                        <div>
-                            {{node.name}}
-                        </div>
-                    </div>
-                    <ul *ngIf="treeControl.isExpanded(node)">
-                        <ng-container matTreeNodeOutlet></ng-container>
-                    </ul>
-                </li>
-            </mat-nested-tree-node>
-        </mat-tree>
-    </mat-drawer>
-    <mat-drawer-content>
-        <div class="toggle-drawer">
-            <button mat-icon-button (click)="drawer.toggle()"
-                i18n-matTooltip="RoomTreeComponent|Tooltip for expanding the tree view@@RoomTreeComponentButtonExpandTooltip"
-                i18n-aria-label="RoomTreeComponent|Aria Label for expanding the tree view@@RoomTreeComponentButtonExpandAriaLabel"
-                aria-label="Button expanding or collapsing the tree view on the left."
-                matTooltip="Expand or Collapse the tree view.">
-                <mat-icon>{{drawer.opened ? 'chevron_left' : 'chevron_right'}} </mat-icon>
+  <mat-drawer #drawer mode="side" class="tree-drawer" [opened]="drawerOpenByDefault">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="location-tree">
+      <mat-tree-node *matTreeNodeDef="let node">
+        <li
+          class="mat-tree-node"
+          matRipple
+          tabindex="0"
+          (click)="navigateToNodePath(node.path)"
+          (keyup.enter)="navigateToNodePath(node.path)"
+        >
+          <button mat-icon-button disabled matTreeNodeToggle>
+            <mat-icon>meeting_room</mat-icon>
+          </button>
+          <div>
+            {{ node.name }}
+          </div>
+        </li>
+      </mat-tree-node>
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <li>
+          <div class="mat-tree-node" matRipple (click)="navigateToNodePath(node.path)">
+            <button
+              mat-icon-button
+              matTreeNodeToggle
+              [attr.aria-label]="'toggle ' + node.name"
+              (click)="navigateToNodePath(node.path)"
+            >
+              <mat-icon>
+                {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+              </mat-icon>
             </button>
-        </div>
-        <div class="pb-expand pb-overflow-auto">
-            <router-outlet></router-outlet>
-        </div>
-    </mat-drawer-content>
+            <div>
+              {{ node.name }}
+            </div>
+          </div>
+          <ul *ngIf="treeControl.isExpanded(node)">
+            <ng-container matTreeNodeOutlet></ng-container>
+          </ul>
+        </li>
+      </mat-nested-tree-node>
+    </mat-tree>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="toggle-drawer">
+      <button
+        mat-icon-button
+        (click)="drawer.toggle()"
+        i18n-matTooltip="RoomTreeComponent|Tooltip for expanding the tree view@@RoomTreeComponentButtonExpandTooltip"
+        i18n-aria-label="RoomTreeComponent|Aria Label for expanding the tree view@@RoomTreeComponentButtonExpandAriaLabel"
+        aria-label="Button expanding or collapsing the tree view on the left."
+        matTooltip="Expand or Collapse the tree view."
+      >
+        <mat-icon>{{ drawer.opened ? 'chevron_left' : 'chevron_right' }} </mat-icon>
+      </button>
+    </div>
+    <div class="pb-expand pb-overflow-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
 </mat-drawer-container>

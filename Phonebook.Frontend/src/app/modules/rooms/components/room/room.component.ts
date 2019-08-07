@@ -1,14 +1,14 @@
-import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Room, Person } from 'src/app/shared/models';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { I18n } from '@ngx-translate/i18n-polyfill';
+import { RoomHelpers } from 'src/app/modules/rooms/helpers';
+import { PersonService } from 'src/app/services/api/person.service';
+import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
 import { MailService } from 'src/app/services/mail.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
-import { RoomService, BuildingTreeNode } from 'src/app/services/api/room.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { RoomHelpers } from 'src/app/modules/rooms/helpers';
-import { I18n } from '@ngx-translate/i18n-polyfill';
-import { PersonService } from 'src/app/services/api/person.service';
+import { Person, Room } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-room',
@@ -33,32 +33,38 @@ export class RoomDetailComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private personService: PersonService
-  ) { }
+  ) {}
 
   public node: BuildingTreeNode | undefined;
 
   public ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.roomService.getNodeByPath(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId'])).subscribe(node => {
-        if (node == null) {
-          this.snackBar.open(this.i18n({
-            meaning: 'RoomComponent',
-            description: 'Error Message if Room does not exist.',
-            id: 'RoomComponentErrorNoRoom',
-            value: 'Room does not exist.'
-          }), '', { duration: 5000 });
-          this.router.navigate(['/rooms']);
-        }
-        if (node != null && node.data != null) {
-          this.node = node;
-          this.room = this.node.data as Room;
-        }
-        this.personService.getPersonsByRoom(
-          RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId'])
-        ).subscribe(person => {
-          this.persons = person;
+      this.roomService
+        .getNodeByPath(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
+        .subscribe(node => {
+          if (node == null) {
+            this.snackBar.open(
+              this.i18n({
+                meaning: 'RoomComponent',
+                description: 'Error Message if Room does not exist.',
+                id: 'RoomComponentErrorNoRoom',
+                value: 'Room does not exist.'
+              }),
+              '',
+              { duration: 5000 }
+            );
+            this.router.navigate(['/rooms']);
+          }
+          if (node != null && node.data != null) {
+            this.node = node;
+            this.room = this.node.data as Room;
+          }
+          this.personService
+            .getPersonsByRoom(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
+            .subscribe(person => {
+              this.persons = person;
+            });
         });
-      });
     });
   }
 

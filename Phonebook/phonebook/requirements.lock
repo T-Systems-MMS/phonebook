@@ -1,6 +1,6 @@
 dependencies:
-- name: traefik
-  repository: https://kubernetes-charts.storage.googleapis.com
-  version: 1.70.2
+  - name: traefik
+    repository: https://kubernetes-charts.storage.googleapis.com
+    version: 1.70.2
 digest: sha256:e925157b4a17f2e4a6389c3608bb83d97eb0ae7b3ea1c287ff84ea16827d258b
 generated: 2019-07-10T13:10:30.1452981+02:00

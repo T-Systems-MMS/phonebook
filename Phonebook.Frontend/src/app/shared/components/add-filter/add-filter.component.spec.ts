@@ -8,7 +8,6 @@ import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { SearchState } from 'src/app/shared/states';
 import { AddFilterComponent } from './add-filter.component';
 
-
 describe('AddFilterComponent', () => {
   let cWrapperWithoutDisplayText: TestComponentWrapperWithoutDisplayText;
   let cWrapperAllIO: TestComponentWrapperFullIO;
@@ -19,7 +18,12 @@ describe('AddFilterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponentWrapperWithoutDisplayText, TestComponentWrapperFullIO],
-      imports: [AddFilterModule, RouterTestingModule, NgxsModule.forRoot([SearchState]), NgxsRouterPluginModule.forRoot()]
+      imports: [
+        AddFilterModule,
+        RouterTestingModule,
+        NgxsModule.forRoot([SearchState]),
+        NgxsRouterPluginModule.forRoot()
+      ]
     }).compileComponents();
   }));
 

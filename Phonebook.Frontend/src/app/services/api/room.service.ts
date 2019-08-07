@@ -1,24 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Room, BuildingPart } from 'src/app/shared/models';
-import { Observable, of, ConnectableObservable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map, flatMap, publishReplay } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { ConnectableObservable, Observable, of } from 'rxjs';
+import { flatMap, map, publishReplay } from 'rxjs/operators';
+import { BuildingPart, Room } from 'src/app/shared/models';
 
 @Injectable()
 export class RoomService {
   private roomTreeCache: BuildingTreeNode[] | null = null;
   private allRoomsObservable: Observable<Room[]> | null = null;
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   public getById(buildingId: string, number: String | null): Observable<Room | null> {
     return this.getAll().pipe(
       map(rooms => {
-        return rooms.find(x => {
-          return x.Number === number && x.BuildingId.toString() === buildingId;
-        }) || null;
+        return (
+          rooms.find(x => {
+            return x.Number === number && x.BuildingId.toString() === buildingId;
+          }) || null
+        );
       })
     );
   }
@@ -28,10 +28,7 @@ export class RoomService {
       return this.allRoomsObservable;
     }
 
-    const observable = this.http.get<Room[]>('/api/rooms')
-      .pipe(
-        publishReplay()
-      );
+    const observable = this.http.get<Room[]>('/api/rooms').pipe(publishReplay());
     (observable as ConnectableObservable<Room[]>).connect();
     this.allRoomsObservable = observable;
     return this.allRoomsObservable;
@@ -61,21 +58,71 @@ export class RoomService {
               });
               if (floorNode !== undefined) {
                 // If Floor does exist, room gets pushed to Floor
-                floorNode.children.push({ id: room.Id, name: room.Number, type: BuildingPart.room, data: room, children: [], path: [locationNode.id, buildingNode.id, floorNode.id, room.Number] });
+                floorNode.children.push({
+                  id: room.Id,
+                  name: room.Number,
+                  type: BuildingPart.room,
+                  data: room,
+                  children: [],
+                  path: [locationNode.id, buildingNode.id, floorNode.id, room.Number]
+                });
               } else {
                 // Floor does not exist, gets created underneath the Building, with Room inside
-                buildingNode.children.push(
+                buildingNode.children.push({
+                  id: room.Floor.toString(),
+                  name: room.Floor.toString(),
+                  type: BuildingPart.floor,
+                  children: [
+                    {
+                      id: room.Id,
+                      name: room.Number,
+                      type: BuildingPart.room,
+                      children: [],
+                      data: room,
+                      path: [locationNode.id, buildingNode.id, room.Floor.toString(), room.Number]
+                    }
+                  ],
+                  data: null,
+                  path: [locationNode.id, buildingNode.id, room.Floor.toString()]
+                });
+              }
+            } else {
+              //Building does not exist, gets created underneath the Location, with Floor and Room inside
+              locationNode.children.push({
+                id: room.Building,
+                name: room.Building,
+                type: BuildingPart.building,
+                data: null,
+                children: [
                   {
                     id: room.Floor.toString(),
                     name: room.Floor.toString(),
                     type: BuildingPart.floor,
-                    children: [{ id: room.Id, name: room.Number, type: BuildingPart.room, children: [], data: room, path: [locationNode.id, buildingNode.id, room.Floor.toString(), room.Number] }],
-                    data: null, path: [locationNode.id, buildingNode.id, room.Floor.toString()]
-                  });
-              }
-            } else {
-              //Building does not exist, gets created underneath the Location, with Floor and Room inside
-              locationNode.children.push(
+                    data: null,
+                    children: [
+                      {
+                        id: room.Id,
+                        name: room.Number,
+                        type: BuildingPart.room,
+                        data: room,
+                        children: [],
+                        path: [locationNode.id, room.Building, room.Floor.toString(), room.Number]
+                      }
+                    ],
+                    path: [locationNode.id, room.Building, room.Floor.toString()]
+                  }
+                ],
+                path: [locationNode.id, room.Building]
+              });
+            }
+          } else {
+            // Location does not exist, gets created in root, with Building, Floor and Room inside
+            roomTree.push({
+              id: room.Place,
+              name: room.Place,
+              type: BuildingPart.location,
+              data: null,
+              children: [
                 {
                   id: room.Building,
                   name: room.Building,
@@ -87,41 +134,24 @@ export class RoomService {
                       name: room.Floor.toString(),
                       type: BuildingPart.floor,
                       data: null,
-                      children: [{ id: room.Id, name: room.Number, type: BuildingPart.room, data: room, children: [], path: [locationNode.id, room.Building, room.Floor.toString(), room.Number] }],
-                      path: [locationNode.id, room.Building, room.Floor.toString()]
-                    }],
-                  path: [locationNode.id, room.Building]
+                      children: [
+                        {
+                          id: room.Id,
+                          name: room.Number,
+                          type: BuildingPart.room,
+                          data: room,
+                          children: [],
+                          path: [room.Place, room.Building, room.Floor.toString(), room.Number]
+                        }
+                      ],
+                      path: [room.Place, room.Building, room.Floor.toString()]
+                    }
+                  ],
+                  path: [room.Place, room.Building]
                 }
-              );
-            }
-          } else {
-            // Location does not exist, gets created in root, with Building, Floor and Room inside
-            roomTree.push(
-              {
-                id: room.Place,
-                name: room.Place,
-                type: BuildingPart.location,
-                data: null,
-                children: [
-                  {
-                    id: room.Building,
-                    name: room.Building,
-                    type: BuildingPart.building,
-                    data: null,
-                    children: [
-                      {
-                        id: room.Floor.toString(),
-                        name: room.Floor.toString(),
-                        type: BuildingPart.floor,
-                        data: null,
-                        children: [{ id: room.Id, name: room.Number, type: BuildingPart.room, data: room, children: [], path: [room.Place, room.Building, room.Floor.toString(), room.Number] }],
-                        path: [room.Place, room.Building, room.Floor.toString()]
-                      }],
-                    path: [room.Place, room.Building]
-                  }
-                ],
-                path: [room.Place]
-              });
+              ],
+              path: [room.Place]
+            });
           }
         });
         // Sort Floors from low to high
@@ -147,11 +177,17 @@ export class RoomService {
   }
 }
 
-export function getNodeFromTreeSync(paramArray: string[], tree: BuildingTreeNode[], level: number = 0): BuildingTreeNode | null {
+export function getNodeFromTreeSync(
+  paramArray: string[],
+  tree: BuildingTreeNode[],
+  level: number = 0
+): BuildingTreeNode | null {
   if (paramArray.length === 1) {
-    return tree.find(node => {
-      return node.path[level].toString() === paramArray[0];
-    }) || null;
+    return (
+      tree.find(node => {
+        return node.path[level].toString() === paramArray[0];
+      }) || null
+    );
   } else {
     const nextNode = tree.find(node => {
       return node.path[level].toString() === paramArray[0];
@@ -159,10 +195,7 @@ export function getNodeFromTreeSync(paramArray: string[], tree: BuildingTreeNode
     if (nextNode == null || nextNode.children.length === 0) {
       return null;
     }
-    return getNodeFromTreeSync(
-      paramArray.slice(1, paramArray.length),
-      nextNode.children,
-      level + 1);
+    return getNodeFromTreeSync(paramArray.slice(1, paramArray.length), nextNode.children, level + 1);
   }
 }
 
@@ -173,5 +206,4 @@ export interface BuildingTreeNode {
   data: Room | Location | null;
   children: BuildingTreeNode[];
   path: string[];
-
 }

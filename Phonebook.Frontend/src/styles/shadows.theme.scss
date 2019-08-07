@@ -1,16 +1,14 @@
 @import '~@angular/material/theming';
 
-
 @mixin shadow-theme($theme) {
-  
-    .pb-normal-shadow {
-        @include mat-elevation-transition;
-        @include mat-elevation(2);
-    
-        &:active, &:hover, &:focus {
-        @include mat-elevation(8);
-        }
+  .pb-normal-shadow {
+    @include mat-elevation-transition;
+    @include mat-elevation(2);
+
+    &:active,
+    &:hover,
+    &:focus {
+      @include mat-elevation(8);
     }
   }
-
-
+}

@@ -1,7 +1,7 @@
-import { Store, NgxsModule } from '@ngxs/store';
 import { async, TestBed } from '@angular/core/testing';
-import { BookmarksState, ToggleBookmark } from 'src/app/shared/states/Bookmarks.state';
+import { NgxsModule, Store } from '@ngxs/store';
 import { Person } from 'src/app/shared/models';
+import { BookmarksState, ToggleBookmark } from 'src/app/shared/states/Bookmarks.state';
 
 describe('[States] Bookmarks', () => {
   let store: Store;

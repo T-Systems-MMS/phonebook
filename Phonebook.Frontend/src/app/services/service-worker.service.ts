@@ -1,8 +1,7 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
 export class ServiceWorkerService {
-
   /**
    * Emits on online Status change.
    * True - if online
@@ -12,7 +11,6 @@ export class ServiceWorkerService {
 
   public onlineStatus: Boolean = false;
   constructor() {
-
     window.addEventListener('load', (event: any) => {
       this.updateOnlineStatus(event);
     });

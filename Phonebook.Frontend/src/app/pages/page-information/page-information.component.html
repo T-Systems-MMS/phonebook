@@ -5,8 +5,10 @@
         The Phonebook
       </h1>
     </mat-card-title>
-    <mat-card-subtitle *ngIf="isPreview"
-      i18n="Page-informationComponent|Disclaimer beneath title@@PageInformationComponentDisclaimer">
+    <mat-card-subtitle
+      *ngIf="isPreview"
+      i18n="Page-informationComponent|Disclaimer beneath title@@PageInformationComponentDisclaimer"
+    >
       This is a Preview application. We are doing our best not to break anything, but we can't guarantee. Thats why all
       Features are still subject to change without further notice and your data may get lost.
     </mat-card-subtitle>
@@ -22,7 +24,7 @@
           This is an Installation of the Open Source Phonebook.
           <ng-container *ngIf="runtimeEnvironment.contactEmail != null">
             You can contact your own support at
-            <a [href]="'mailto:' + runtimeEnvironment.contactEmail">{{runtimeEnvironment.contactEmail}}</a>
+            <a [href]="'mailto:' + runtimeEnvironment.contactEmail">{{ runtimeEnvironment.contactEmail }}</a>
             regarding this installation.
           </ng-container>
         </p>
@@ -33,8 +35,7 @@
         </p>
       </mat-list-item>
       <mat-list-item>
-        <a mat-button feedbackDrawer>Report
-          a Bug or request a new Feature</a>
+        <a mat-button feedbackDrawer>Report a Bug or request a new Feature</a>
       </mat-list-item>
     </mat-list>
     <h2 id="contribute">
@@ -70,20 +71,31 @@
       <mat-list-item>
         <p i18n="Page-informationComponent|Text for Licenses SubTitle@@PageInformationComponentSubTitleLicensesText">
           This Project is licensed under the
-          <a href="https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE">MIT
-            License</a>.
-          Other licenses from modules and packets may apply.
+          <a href="https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE">MIT License</a>. Other licenses from
+          modules and packets may apply.
         </p>
       </mat-list-item>
 
       <mat-list-item>
         <p i18n="Page-informationComponent|Attributions SubTitle@@PageInformationComponentSubTitleAttributions">
-          Icon of the Phonebook made by <a target="_blank" rel="noopener"
-            href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a
-            target="_blank" rel="noopener" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
-          licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0"
-            rel="noopener" target="_blank">CC 3.0
-            BY</a>
+          Icon of the Phonebook made by
+          <a
+            target="_blank"
+            rel="noopener"
+            href="https://www.flaticon.com/authors/gregor-cresnar"
+            title="Gregor Cresnar"
+            >Gregor Cresnar</a
+          >
+          from
+          <a target="_blank" rel="noopener" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
+          licensed by
+          <a
+            href="http://creativecommons.org/licenses/by/3.0/"
+            title="Creative Commons BY 3.0"
+            rel="noopener"
+            target="_blank"
+            >CC 3.0 BY</a
+          >
         </p>
       </mat-list-item>
     </mat-list>
