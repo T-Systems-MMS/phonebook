@@ -55,7 +55,13 @@ export class SearchState {
         !(routeSnapshot.firstChild.url[0].path === 'search')
       ) {
         // Do not reset search if navigated to user
-        if (!(routeSnapshot.firstChild && routeSnapshot.firstChild.url[0].path === 'user')) {
+        if (
+          !(
+            routeSnapshot.firstChild &&
+            routeSnapshot.firstChild.url.length !== 0 &&
+            routeSnapshot.firstChild.url[0].path === 'user'
+          )
+        ) {
           this.store.dispatch(new ResetSearch(false));
         }
         return;
