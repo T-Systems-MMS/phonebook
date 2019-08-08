@@ -94,12 +94,17 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   public getEnvironmentTag(): string {
-    if (runtimeEnvironment.environmentTag === '' && this.currentEnvironment === Environment.development) {
-      return 'dev';
-    } else if (runtimeEnvironment.environmentTag === '' && this.currentEnvironment === Environment.preview) {
-      return 'preview';
-    } else if (runtimeEnvironment.environmentTag === '' && this.currentEnvironment === Environment.production) {
-      return 'prod';
+    if (runtimeEnvironment.environmentTag === '') {
+      switch (this.currentEnvironment) {
+        case Environment.development:
+          return 'dev';
+        case Environment.preview:
+          return 'preview';
+        case Environment.production:
+          return 'prod';
+        default:
+          'not set';
+      }
     } else {
       return runtimeEnvironment.environmentTag;
     }
