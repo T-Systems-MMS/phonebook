@@ -30,33 +30,39 @@ export class BuildingComponent implements OnInit {
     private router: Router,
     private i18n: I18n,
     private snackBar: MatSnackBar,
-    private buildingService: BuildingService) { }
+    private buildingService: BuildingService
+  ) {}
 
   public ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.roomService.getNodeByPath(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId'])).subscribe(node => {
-        if (node == null) {
-          this.snackBar.open(this.i18n({
-            meaning: 'BuildingComponent',
-            description: 'Error Message if Building does not exist.',
-            id: 'BuildingComponentErrorNoBuilding',
-            value: 'Building does not exist.'
-          }), '', { duration: 5000 });
-          this.router.navigate(['/rooms']);
-        } else {
-          this.node = node;
-          this.buildingService.getByBuilding(this.node.name).subscribe(building => {
-            if (building != null) {
-              this.building = building;
-            }
-          });
-        }
-      });
+      this.roomService
+        .getNodeByPath(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
+        .subscribe(node => {
+          if (node == null) {
+            this.snackBar.open(
+              this.i18n({
+                meaning: 'BuildingComponent',
+                description: 'Error Message if Building does not exist.',
+                id: 'BuildingComponentErrorNoBuilding',
+                value: 'Building does not exist.'
+              }),
+              '',
+              { duration: 5000 }
+            );
+            this.router.navigate(['/rooms']);
+          } else {
+            this.node = node;
+            this.buildingService.getByBuilding(this.node.name).subscribe(building => {
+              if (building != null) {
+                this.building = building;
+              }
+            });
+          }
+        });
     });
   }
 
   public navigateToFloor(floor: BuildingTreeNode) {
     this.router.navigateByUrl(RoomHelpers.generateUrlStringFromParamArray([...this.node!.path, floor.name]));
   }
-
 }

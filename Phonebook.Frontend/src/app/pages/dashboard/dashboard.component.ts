@@ -1,16 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
-import { ToggleBookmark, BookmarksState, UpdateBookmarkOrder } from 'src/app/shared/states';
+import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
-import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { map } from 'rxjs/operators';
-import { moveItemInArray, CdkDragEnter, CdkDragEnd } from '@angular/cdk/drag-drop';
-import {
-  LastPersonsState,
-  ResetLastPersons,
-  RemoveFromLastPersons,
-  SetLastPersons
-} from 'src/app/shared/states/LastPersons.state';
+import { Person, PhonebookSortDirection } from 'src/app/shared/models';
+import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
+import { LastPersonsState, RemoveFromLastPersons, ResetLastPersons, SetLastPersons } from 'src/app/shared/states/LastPersons.state';
 
 @Component({
   selector: 'app-dashboard',

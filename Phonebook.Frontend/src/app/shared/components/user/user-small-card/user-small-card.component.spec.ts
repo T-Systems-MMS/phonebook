@@ -1,9 +1,8 @@
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { UserSmallCardComponent } from 'src/app/shared/components/user/user-small-card/user-small-card.component';
-import { NO_ERRORS_SCHEMA, Component } from '@angular/core';
 import { Person } from 'src/app/shared/models';
-import { prependOnceListener } from 'cluster';
+
 
 describe('UserSmallCardComponent', () => {
   let component: UserSmallCardComponent;

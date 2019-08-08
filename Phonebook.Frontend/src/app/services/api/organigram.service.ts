@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class OrganigramService {
-
-  constructor(
-    private personService: PersonService
-  ) { }
+  constructor(private personService: PersonService) {}
 
   public getOrganigram(): Observable<UnitTreeNode[]> {
     return this.personService.getAll().pipe(
@@ -24,7 +21,6 @@ export class OrganigramService {
         return tree;
       })
     );
-
   }
 
   /**

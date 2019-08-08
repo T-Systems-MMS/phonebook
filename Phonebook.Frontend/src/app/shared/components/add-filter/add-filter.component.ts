@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { AddSearchFilter, UpdateUrl } from 'src/app/shared/states';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Column } from 'src/app/shared/models';
+import { AddSearchFilter, UpdateUrl } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-add-filter',
@@ -10,7 +10,7 @@ import { Column } from 'src/app/shared/models';
   styleUrls: ['./add-filter.component.scss']
 })
 export class AddFilterComponent {
-  constructor(private store: Store) { }
+  constructor(private store: Store) {}
 
   @Input()
   public filterColumn: Column;

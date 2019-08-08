@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Person } from 'src/app/shared/models';
 import { HttpClient } from '@angular/common/http';
-import { map, publishReplay, mergeMap } from 'rxjs/operators';
-import { Observable, ConnectableObservable } from 'rxjs';
-import { runtimeEnvironment } from 'src/environments/runtime-environment';
+import { Injectable } from '@angular/core';
+import { ConnectableObservable, Observable } from 'rxjs';
+import { map, mergeMap, publishReplay } from 'rxjs/operators';
 import { PersonService } from 'src/app/services/api/person.service';
+import { Person } from 'src/app/shared/models';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class CurrentUserService {
   private readonly currentUserApiUrl = runtimeEnvironment.employeePicturesEndpoint + '/user/whoami?version=2';
 
   private currentUserObjectObservable: Observable<WhoAmIResponse> | null = null;
+
   private currentUserObservable: Observable<Person | null> | null = null;
 
   constructor(private httpClient: HttpClient, private personService: PersonService) {}
@@ -43,6 +44,7 @@ export class CurrentUserService {
       })
     );
   }
+  
   public getCurrentUser(): Observable<Person | null> {
     if (this.currentUserObservable != null) {
       return this.currentUserObservable;

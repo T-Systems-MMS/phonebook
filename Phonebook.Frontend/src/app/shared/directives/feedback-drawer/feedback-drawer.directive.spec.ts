@@ -1,4 +1,3 @@
-import { FeedbackDrawerDirective } from './feedback-drawer.directive';
 
 xdescribe('FeedbackDrawerDirective', () => {
   it('should create an instance', () => {

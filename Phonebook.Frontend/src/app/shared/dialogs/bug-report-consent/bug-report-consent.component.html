@@ -1,14 +1,19 @@
 <div>
-  <h1 mat-dialog-title i18n="Bug-report-consentComponent|Title of Bug Report Consent Dialog@@BugReportConsentComponentTitle">We
-    need your help!</h1>
+  <h1
+    mat-dialog-title
+    i18n="Bug-report-consentComponent|Title of Bug Report Consent Dialog@@BugReportConsentComponentTitle"
+  >
+    We need your help!
+  </h1>
   <mat-dialog-content>
-    <h2 i18n="Bug-report-consentComponent|Sub title of bug report consent dialog@@BugReportConsentComponentSubTitle">Sending
-      automatic Bug reports</h2>
+    <h2 i18n="Bug-report-consentComponent|Sub title of bug report consent dialog@@BugReportConsentComponentSubTitle">
+      Sending automatic Bug reports
+    </h2>
     <ng-container i18n="Bug-report-consentComponent|Text of Bug Report consent dialog@@BugReportConsentComponentText">
       <p>
         If an error occurs while the application is running, an anonymous error report is automatically generated. In
-        exceptional
-        cases - since this is a preview - the following personal data can still be found in one of the reports:
+        exceptional cases - since this is a preview - the following personal data can still be found in one of the
+        reports:
       </p>
       <mat-list>
         <mat-list-item>
@@ -23,26 +28,34 @@
       </mat-list>
       <p>
         The data from the error report is used exclusively for the purpose of analysis and correction of the error by
-        our
-        core development
-        team. The data will not be passed on to third parties.
+        our core development team. The data will not be passed on to third parties.
       </p>
-      <p><strong>TL;DR With your permission, you agree that bug reports that may contain your personal data can be sent
-          to our core development team and be
-          used
-          for
-          error
-          analysis
-          and resolution. </strong>
+      <p>
+        <strong
+          >TL;DR With your permission, you agree that bug reports that may contain your personal data can be sent to our
+          core development team and be used for error analysis and resolution.
+        </strong>
       </p>
     </ng-container>
   </mat-dialog-content>
   <div class="spacer"></div>
   <mat-dialog-actions>
     <div class="actions">
-      <button mat-button [mat-dialog-close]="false" i18n="Bug-report-consentComponent|Button to decline sending bug reports@@BugReportConsentComponentButtonDecline">Do
-        not send Bug Reports</button>
-      <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial i18n="Bug-report-consentComponent|Button to consent sending bug reports@@BugReportConsentComponentButtonConsent">Consent</button>
+      <button
+        mat-button
+        [mat-dialog-close]="false"
+        i18n="Bug-report-consentComponent|Button to decline sending bug reports@@BugReportConsentComponentButtonDecline"
+      >
+        Do not send Bug Reports
+      </button>
+      <button
+        mat-raised-button
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        i18n="Bug-report-consentComponent|Button to consent sending bug reports@@BugReportConsentComponentButtonConsent"
+      >
+        Consent
+      </button>
     </div>
   </mat-dialog-actions>
 </div>

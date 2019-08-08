@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ServiceWorkerService } from 'src/app/services/service-worker.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { ServiceWorkerService } from 'src/app/services/service-worker.service';
 
 @Component({
   selector: 'app-online-bar',

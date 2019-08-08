@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Location } from 'src/app/shared/models';
+import { Component, Input, OnInit } from '@angular/core';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import { Location } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-address',
@@ -15,9 +15,7 @@ export class AddressComponent implements OnInit {
     return this.location.RoomCollection[0].Description.split(',');
   }
 
-  constructor() { }
+  constructor() {}
 
-  public ngOnInit() {
-  }
-
+  public ngOnInit() {}
 }

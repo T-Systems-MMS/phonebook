@@ -1,16 +1,9 @@
-import { Store, NgxsModule } from '@ngxs/store';
 import { TestBed } from '@angular/core/testing';
-import {
-  SearchState,
-  AddSearchFilter,
-  RemoveSearchFilter,
-  RemoveLastSearchFilter,
-  ResetSearch,
-  SetSearchFiltersAndSearchTerm
-} from 'src/app/shared/states/Search.state';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsModule, Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import { AddSearchFilter, RemoveLastSearchFilter, RemoveSearchFilter, ResetSearch, SearchState, SetSearchFiltersAndSearchTerm } from 'src/app/shared/states/Search.state';
 
 const ROUTER_STATE = {
   state: {

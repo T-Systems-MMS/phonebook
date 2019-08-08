@@ -1,13 +1,18 @@
-<div id="image-container" (mouseenter)="onMouseenter()" (mouseleave)="onMouseleave()" (click)="onClick()"
-  [class.no-hover]="!canEnlargeOnClick || !imageLoaded">
-  <img [src]="imageUrl" [alt]="altText" (load)="useImage($event)" [style.display]="imageLoaded ? 'block': 'none'">
+<div
+  id="image-container"
+  (mouseenter)="onMouseenter()"
+  (mouseleave)="onMouseleave()"
+  (click)="onClick()"
+  [class.no-hover]="!canEnlargeOnClick || !imageLoaded"
+>
+  <img [src]="imageUrl" [alt]="altText" (load)="useImage($event)" [style.display]="imageLoaded ? 'block' : 'none'" />
   <div id="enlarge" *ngIf="canEnlargeOnClick">
     <mat-icon>zoom_in</mat-icon>
   </div>
   <div *ngIf="!imageLoaded" class="image-placeholder" #placeholder>
     <svg height="30" width="100" viewBox="0 0 100 30">
       <text x="50" y="15" fill="black" font-size="30" text-anchor="middle" dominant-baseline="central">
-        {{user.Id}}
+        {{ user.Id }}
       </text>
     </svg>
   </div>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FloorplanService } from 'src/app/services/floorplan.service';
 import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
@@ -26,7 +26,7 @@ export class RoomPlanComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges) {
-    if(changes.hasOwnProperty('floorplan')){
+    if (changes.hasOwnProperty('floorplan')) {
       this.loadSVG();
     }
     this.refreshRoomPlan();

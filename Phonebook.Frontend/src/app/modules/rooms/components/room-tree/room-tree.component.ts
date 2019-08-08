@@ -1,13 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RoomService, BuildingTreeNode, getNodeFromTreeSync } from 'src/app/services/api/room.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { NestedTreeControl } from '@angular/cdk/tree';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
-import { RoomHelpers } from 'src/app/modules/rooms/helpers';
-import { filter, switchMap } from 'rxjs/operators';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { of } from 'rxjs';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { filter, switchMap } from 'rxjs/operators';
+import { RoomHelpers } from 'src/app/modules/rooms/helpers';
+import { BuildingTreeNode, getNodeFromTreeSync, RoomService } from 'src/app/services/api/room.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Component({

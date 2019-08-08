@@ -1,8 +1,8 @@
-import { TestBed, inject, getTestBed } from '@angular/core/testing';
-
-import { CurrentUserService } from './current-user.service';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { getTestBed, inject, TestBed } from '@angular/core/testing';
 import { PersonService } from 'src/app/services/api/person.service';
+import { CurrentUserService } from './current-user.service';
+
 
 describe('CurrentUserService', () => {
   let injector: TestBed;
@@ -38,6 +38,4 @@ describe('CurrentUserService', () => {
   });
 });
 
-export class MockPersonService {
-
-}
+export class MockPersonService {}

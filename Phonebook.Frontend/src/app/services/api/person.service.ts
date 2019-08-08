@@ -1,18 +1,14 @@
-import { Injectable } from '@angular/core';
-import { Person, Contacts, Location, Business, Messenger, Room } from 'src/app/shared/models';
-import { TableLogic } from 'src/app/modules/table/table-logic';
-import { PhonebookSortDirection } from 'src/app/shared/models';
-import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { HttpClient } from '@angular/common/http';
-import { map, tap, publishReplay } from 'rxjs/operators';
-import { Observable, of, ConnectableObservable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { ConnectableObservable, Observable } from 'rxjs';
+import { map, publishReplay } from 'rxjs/operators';
+import { TableLogic } from 'src/app/modules/table/table-logic';
+import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import { Business, Contacts, Location, Messenger, Person, PhonebookSortDirection, Room } from 'src/app/shared/models';
 
 @Injectable()
 export class PersonService {
-
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   private allPersonObservable: Observable<Person[]> | null = null;
 
@@ -78,16 +74,15 @@ export class PersonService {
       return this.allPersonObservable;
     }
 
-    const observable = this.http.get<Person[]>('/api/persons')
-      .pipe(
-        map(personArray => {
-          return TableLogic.sort(this.generateRealPersonArray(personArray), {
-            column: ColumnDefinitions.fullname,
-            direction: PhonebookSortDirection.asc
-          });
-        }),
-        publishReplay()
-      );
+    const observable = this.http.get<Person[]>('/api/persons').pipe(
+      map(personArray => {
+        return TableLogic.sort(this.generateRealPersonArray(personArray), {
+          column: ColumnDefinitions.fullname,
+          direction: PhonebookSortDirection.asc
+        });
+      }),
+      publishReplay()
+    );
     (observable as ConnectableObservable<Person[]>).connect();
     this.allPersonObservable = observable;
     return this.allPersonObservable;
@@ -111,10 +106,12 @@ export class PersonService {
     return this.getAll().pipe(
       map(personArray => {
         return personArray.filter(x => {
-          return x.Location.RoomCollection[0].Place === positionArray[0] &&
+          return (
+            x.Location.RoomCollection[0].Place === positionArray[0] &&
             x.Location.RoomCollection[0].Building === positionArray[1] &&
             x.Location.RoomCollection[0].Floor.toString() === positionArray[2] &&
-            x.Location.RoomCollection[0].Number === positionArray[3];
+            x.Location.RoomCollection[0].Number === positionArray[3]
+          );
         });
       })
     );
