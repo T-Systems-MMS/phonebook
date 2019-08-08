@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: phonebook-mock-backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: phonebook-mock-backend
@@ -49,8 +49,7 @@ metadata:
     traefik.frontend.rule.type: PathPrefixStrip
 spec:
   rules:
-    - host: demo-phonebook.me
-      http:
+    - http:
         paths:
           - path: /api
             backend:

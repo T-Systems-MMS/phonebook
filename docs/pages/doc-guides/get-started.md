@@ -13,9 +13,10 @@ If you only want to change some text files you just need to follow the steps fro
 
 If you want to setup the project locally, to view the changes and do other stuff you need to follow the Getting Started Guide below.
 
-## **Getting Started**
+## :small_red_triangle: **Getting Started**
 
-Just launch `docker-compose up` and visit [http://localhost:4200](http://localhost:4000).
+Just launch `docker-compose up` in the directory `docs` and visit [http://localhost:4000](http://localhost:4000).
+> If you are behind a corporate proxy you will need to start the docker antiproxy.
 
 ## :open_file_folder: **Structure**
 

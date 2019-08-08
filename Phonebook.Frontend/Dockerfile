@@ -40,6 +40,7 @@ RUN chmod +x ./substitute_variables.sh
 
 RUN rm /usr/share/nginx/html/index.html
 COPY --from=builder /usr/local/app/dist /usr/share/nginx/html
+COPY ./opensearch.xml /usr/share/nginx/html/opensearch.xml
 
 ENTRYPOINT ["./substitute_variables.sh", "/usr/share/nginx/html", "./substitute_variables.sh", "/etc/nginx"]
 CMD ["nginx"]

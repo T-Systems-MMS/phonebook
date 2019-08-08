@@ -15,8 +15,7 @@ metadata:
   {{- end }}
 spec:
   rules:
-    - host: {{ .Values.host | quote }}
-      http:
+    - http:
         paths:
           - path: /
             backend:
