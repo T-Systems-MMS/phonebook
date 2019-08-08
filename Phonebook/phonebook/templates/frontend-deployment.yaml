@@ -41,7 +41,7 @@ spec:
             initialDelaySeconds: 6
           env: 
             - name: BASE_URL
-              value: "https://{{ .Values.host }}"
+              value: "https://{{ .Values.host }}/"
             - name: ROOMPLANNINGTOOL_URL
               value: "{{ .Values.roomPlanningToolUrl }}"
             - name: CONTACT_URL
