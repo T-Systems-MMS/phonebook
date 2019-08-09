@@ -103,7 +103,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
         case Environment.production:
           return 'prod';
         default:
-          'not set';
+          return 'not set';
       }
     } else {
       return runtimeEnvironment.environmentTag;
