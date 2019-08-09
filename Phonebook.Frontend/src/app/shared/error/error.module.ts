@@ -1,6 +1,6 @@
 import { ErrorHandler, ModuleWithProviders, NgModule } from '@angular/core';
 import * as Raven from 'raven-js';
-import { environment } from 'src/environments/environment.debug';
+import { Environment } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { VERSION } from 'src/environments/version';
 
@@ -8,7 +8,7 @@ if (runtimeEnvironment.ravenURL) {
   try {
     Raven.config(runtimeEnvironment.ravenURL, {
       autoBreadcrumbs: true,
-      environment: environment.production ? 'production' : 'preview',
+      environment: runtimeEnvironment.environment.toString(),
       release: VERSION,
       sanitizeKeys: ['currentUserName', 'userName'],
       shouldSendCallback: function(data) {
@@ -27,7 +27,7 @@ export class GlobalErrorHandler implements ErrorHandler {
       return;
     }
 
-    if (environment.production) {
+    if (runtimeEnvironment.environment !== Environment.development) {
       // App is in Production
       if (runtimeEnvironment.ravenURL) {
         // Raven enabled

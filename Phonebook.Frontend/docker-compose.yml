@@ -19,6 +19,8 @@ services:
       dockerfile: Dockerfile
     environment:
       DEBUG: 'true'
+      ENVIRONMENT: 'development'
+      ENVIRONMENT_TAG: 'docker'
       BASE_URL: 'http://localhost/'
       SERVER_NAME: 'localhost'
       CONTACT_URL: 'https://example.com'

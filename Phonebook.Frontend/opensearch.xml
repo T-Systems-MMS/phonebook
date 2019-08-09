@@ -6,6 +6,7 @@
 The Phonebook. Search for any employee.
   </Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">${BASE_URL}/favicon.ico</Image>
-  <Url type="text/html" template="${BASE_URL}/search/{searchTerms}"/>
+  <Image width="16" height="16" type="image/x-icon">${BASE_URL}favicon.ico</Image>
+  <Url type="text/html" template="${BASE_URL}search/{searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="${BASE_URL}opensearch.xml" />
 </OpenSearchDescription>

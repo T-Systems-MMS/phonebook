@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { PageInformationComponent } from 'src/app/pages/page-information/page-information.component';
-import { EnvironmentService } from 'src/app/services/environment.service';
 import { FeedbackDrawerModule } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.module';
 
 const routes: Routes = [
@@ -25,6 +24,6 @@ const routes: Routes = [
     MatListModule,
     FeedbackDrawerModule
   ],
-  providers: [EnvironmentService]
+  providers: []
 })
 export class PageInformationModule {}
