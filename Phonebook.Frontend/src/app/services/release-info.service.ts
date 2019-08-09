@@ -32,7 +32,12 @@ export class ReleaseInfoService {
         this.newUpdate = true;
         this.store.dispatch(new SetVersion(VERSION));
         break;
-      case VersionIncrement.feature || VersionIncrement.bugfix:
+      case VersionIncrement.feature:
+        this.displayReleaseNotification();
+        this.newUpdate = true;
+        this.store.dispatch(new SetVersion(VERSION));
+        break;
+      case VersionIncrement.bugfix:
         this.displayReleaseNotification();
         this.newUpdate = true;
         this.store.dispatch(new SetVersion(VERSION));
@@ -81,7 +86,7 @@ export class ReleaseInfoService {
       )
       .onAction()
       .subscribe(clicked => {
-        window.open('changelog.md', '_blank');
+        this.displayReleaseDialog();
       });
   }
 
