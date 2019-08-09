@@ -1,20 +1,20 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { Person } from 'src/app/shared/models';
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
-import { VERSION, HASH_SHORT, HASH_LONG } from 'src/environments/version';
-import { EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
-import { CurrentUserService } from 'src/app/services/api/current-user.service';
-import { EnvironmentService, Environment } from 'src/app/services/environment.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
-import { of, Observable } from 'rxjs';
-import { Select } from '@ngxs/store';
-import { TableState } from 'src/app/shared/states';
-import { filter, map } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import { Select } from '@ngxs/store';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
+import { CurrentUserService } from 'src/app/services/api/current-user.service';
+import { Person } from 'src/app/shared/models';
+import { TableState } from 'src/app/shared/states';
+import { environment } from 'src/environments/environment';
+import { Environment, EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
+import { HASH_LONG, HASH_SHORT, VERSION } from 'src/environments/version';
 
 @Component({
   selector: 'app-navigation',
@@ -28,6 +28,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public versionHashLong: typeof HASH_LONG = HASH_LONG;
   public environment: EnvironmentInterface = environment;
   public Environment: typeof Environment = Environment;
+  public currentEnvironment: Environment = runtimeEnvironment.environment;
 
   @Select(TableState.resultCount)
   public tableResultCount$: Observable<number>;
@@ -36,7 +37,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public currentUser: Person | null = null;
   constructor(
     private currentUserService: CurrentUserService,
-    public environmentService: EnvironmentService,
     private router: Router,
     public dialog: MatDialog,
     public i18n: I18n,
@@ -91,6 +91,23 @@ export class NavigationComponent implements OnInit, OnDestroy {
         });
       })
     );
+  }
+
+  public getEnvironmentTag(): string {
+    if (runtimeEnvironment.environmentTag === '') {
+      switch (this.currentEnvironment) {
+        case Environment.development:
+          return 'dev';
+        case Environment.preview:
+          return 'preview';
+        case Environment.production:
+          return 'prod';
+        default:
+          return 'not set';
+      }
+    } else {
+      return runtimeEnvironment.environmentTag;
+    }
   }
 
   public navigateToOwnProfile() {

@@ -23,7 +23,6 @@ import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component'
 import { SettingsModule } from 'src/app/pages/settings/settings.module';
 import { UserPagesModule } from 'src/app/pages/users/user-pages.module';
 import { ApiModule } from 'src/app/services/api/api.module';
-import { EnvironmentService } from 'src/app/services/environment.service';
 import { MailService } from 'src/app/services/mail.service';
 import { ReleaseInfoService } from 'src/app/services/release-info.service';
 import { ServiceWorkerService } from 'src/app/services/service-worker.service';
@@ -105,8 +104,7 @@ declare const require;
     ReleaseInfoService,
     ThemeService,
     I18n,
-    ColumnTranslate,
-    EnvironmentService
+    ColumnTranslate
   ],
   bootstrap: [AppComponent]
 })
