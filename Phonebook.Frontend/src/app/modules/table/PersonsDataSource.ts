@@ -1,9 +1,11 @@
 import { MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { TableLogic } from 'src/app/modules/table/table-logic';
-import { Column, SearchFilter, TableSort } from 'src/app/shared/models';
+import { performSearch, SearchParams } from 'src/app/modules/table/SearchParams';
+import { SearchFilter, TableSort } from 'src/app/shared/models';
 import { Person } from 'src/app/shared/models/classes';
-import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
+import { Environment } from 'src/environments/EnvironmentInterfaces';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 export class PersonsDataSource extends MatTableDataSource<Person> {
   private PAGE_SIZE: number = 30;
@@ -33,6 +35,7 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
   public dataChanged: BehaviorSubject<Person[]> = new BehaviorSubject<Person[]>(this.data);
 
   private lastFilterKeyword: string = '';
+  private worker: Worker | null = null;
 
   constructor(private dataSource: Person[]) {
     super();
@@ -50,38 +53,41 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
   public refresh(
     filterKeyword: string,
     searchFilters: SearchFilter[],
-    searchableColumns: Column[],
+    searchableColumns: ColumnId[],
     sort: TableSort
   ): Observable<Person[]> {
     this.loadingSubject.next(true);
     return new Observable<Person[]>(observer => {
-      let preResult = this.dataSource;
+      const searchParams: SearchParams = {
+        filterKeyword: filterKeyword,
+        searchFilters: searchFilters,
+        searchableColumns: searchableColumns,
+        sort: sort,
+        data: this.dataSource
+      };
 
-      // Filtering
-      searchFilters.forEach(searchFilter => {
-        preResult = TableLogic.filter(preResult, searchFilter.filterValue, [searchFilter.filterColumn]);
-      });
-
-      // Searching
-      let searchResult: Person[] = TableLogic.filter(preResult, filterKeyword, searchableColumns);
-
-      // Sorting
-      switch (sort.direction) {
-        case PhonebookSortDirection.none: {
-          searchResult = TableLogic.rankedSort(searchResult, filterKeyword, searchableColumns);
-          break;
+      if (typeof Worker !== 'undefined' && runtimeEnvironment.environment != Environment.development) {
+        if(this.worker == null){
+          this.worker = new Worker('./table.worker', { type: 'module' });
         }
-        default: {
-          searchResult = TableLogic.sort(searchResult, sort);
-          break;
-        }
+        this.worker.onmessage = ({ data }) => {
+          this.allData = data;
+          this.lastFilterKeyword = filterKeyword;
+
+          this.loadingSubject.next(false);
+          observer.next(data);
+          observer.complete();
+        };
+        this.worker.postMessage(searchParams);
+      } else {
+        let searchResult = performSearch(searchParams);
+        this.allData = searchResult;
+        this.lastFilterKeyword = filterKeyword;
+
+        this.loadingSubject.next(false);
+        observer.next(searchResult);
+        observer.complete();
       }
-      this.allData = searchResult;
-      this.lastFilterKeyword = filterKeyword;
-
-      this.loadingSubject.next(false);
-      observer.next(searchResult);
-      observer.complete();
     });
   }
 

@@ -80,7 +80,7 @@ export class SearchState {
           const col = ColumnDefinitions.getColumnById(key);
           if (col != null) {
             searchFilter.push({
-              filterColumn: col,
+              filterColumn: col.id,
               filterValue: pathSegment.queryParamMap.get(key) || ''
             });
           }
@@ -108,12 +108,12 @@ export class SearchState {
   public static searchFilters(state: SearchStateModel): SearchFilter[] {
     return state.searchFilters.map(filter => {
       const tmp = ColumnDefinitions.getAll().find(c => {
-        return c.id === filter.filterColumn.id;
+        return c.id === filter.filterColumn;
       });
       if (tmp == null) {
         throw Error('Filter Column not found.');
       }
-      filter.filterColumn = tmp;
+      filter.filterColumn = tmp.id;
       return filter;
     });
   }
@@ -121,7 +121,7 @@ export class SearchState {
   @Action(AddSearchFilter)
   public addSearchFilter(ctx: StateContext<SearchStateModel>, action: AddSearchFilter) {
     const state = ctx.getState();
-    const index = state.searchFilters.findIndex(f => f.filterColumn.id === action.searchFilter.filterColumn.id);
+    const index = state.searchFilters.findIndex(f => f.filterColumn === action.searchFilter.filterColumn);
     if (index >= 0) {
       state.searchFilters[index] = action.searchFilter;
     } else {
@@ -185,7 +185,7 @@ export class SearchState {
     const routeSnapshot: ActivatedRouteSnapshot = routeState.root;
     if (update.searchFilter != null) {
       update.searchFilter.forEach(filter => {
-        params[filter.filterColumn.id] = filter.filterValue;
+        params[filter.filterColumn] = filter.filterValue;
       });
       // Remove Query Params that are not used anymore by setting them 'null' explicitly
       if (routeSnapshot.firstChild != null && routeSnapshot.firstChild.firstChild != null) {

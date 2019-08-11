@@ -5,7 +5,7 @@ import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 
 export class SetVisibleTableColumns {
   public static readonly type: string = '[Table State] Set visible Table Columns';
-  constructor(public columns: Column[]) {}
+  constructor(public columns: ColumnId[]) {}
 }
 
 export class ResetTableSettings {
@@ -31,16 +31,17 @@ export interface TableStateModel {
 })
 export class TableState {
   @Selector()
-  public static visibleColumns(state: TableStateModel): Column[] {
-    return state.visibleColumns.map(col => {
-      const tmp = ColumnDefinitions.getAll().find(c => {
-        return c.id === col;
-      });
-      if (tmp == null) {
-        throw Error('TableState: Column with ID:' + col + ') not found.');
-      }
-      return tmp;
-    });
+  public static visibleColumns(state: TableStateModel): ColumnId[] {
+    return state.visibleColumns;
+    // .map(col => {
+    //   const tmp = ColumnDefinitions.getAll().find(c => {
+    //     return c.id === col;
+    //   });
+    //   if (tmp == null) {
+    //     throw Error('TableState: Column with ID:' + col + ') not found.');
+    //   }
+    //   return tmp;
+    // });
   }
 
   @Selector()
@@ -51,7 +52,7 @@ export class TableState {
   @Action(SetVisibleTableColumns)
   public setVisibleTableColumns(ctx: StateContext<TableStateModel>, action: SetVisibleTableColumns) {
     const state = ctx.getState();
-    ctx.setState({ ...state, visibleColumns: action.columns.map(col => col.id) });
+    ctx.setState({ ...state, visibleColumns: action.columns });
   }
 
   @Action(ResetTableSettings)

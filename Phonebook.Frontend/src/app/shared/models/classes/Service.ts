@@ -1,3 +1,5 @@
+import { Location } from 'src/app/shared/models/classes/Location';
+
 /* tslint:disable:variable-name */
 export class Service {
   public Location: Location;

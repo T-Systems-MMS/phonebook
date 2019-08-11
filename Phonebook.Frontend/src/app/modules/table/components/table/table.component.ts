@@ -21,7 +21,7 @@ import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app
 })
 export class TableComponent implements OnInit, OnDestroy {
   public get displayedColumns(): string[] {
-    return this.store.selectSnapshot(TableState.visibleColumns).map(col => col.id);
+    return this.store.selectSnapshot(TableState.visibleColumns);
   }
 
   public dataSource: PersonsDataSource = new PersonsDataSource([]);
