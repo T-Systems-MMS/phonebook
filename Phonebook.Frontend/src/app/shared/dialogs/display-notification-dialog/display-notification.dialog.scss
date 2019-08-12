@@ -38,6 +38,7 @@ mat-card {
   min-width: 25%;
   margin: 1%;
   border: 1px solid;
+  line-height: 1;
 
   @include below-big {
     min-width: 40%;
@@ -52,10 +53,6 @@ mat-card {
     mat-icon {
       @include mat-icon-size(60px);
     }
-  }
-
-  mat-card-title {
-    line-height: 1;
   }
 }
 
