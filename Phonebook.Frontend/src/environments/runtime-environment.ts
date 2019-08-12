@@ -1,7 +1,9 @@
-import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
+import { Environment, RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 
 declare const ENV: RuntimeEnvironmentInterface;
 export const runtimeEnvironment: RuntimeEnvironmentInterface = {
+  environment: ENV.environment.toString() !== '${ENVIRONMENT}' ? ENV.environment : Environment.development,
+  environmentTag: ENV.environmentTag !== '${ENVIRONMENT_TAG}' ? ENV.environmentTag : '',
   ravenURL: ENV.ravenURL !== '${RAVEN_URL}' ? ENV.ravenURL : null,
   employeePicturesEndpoint:
     ENV.employeePicturesEndpoint !== '${EMPLOYEE_PICTURES_ENDPOINT}' ? ENV.employeePicturesEndpoint : 'TODO',

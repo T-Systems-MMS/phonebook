@@ -46,7 +46,7 @@ We splitted the development documentation in two different parts.
 **What do you want to start with?**
 
 <span class="fs-6">
-[Frontend](frontend){: .btn .btn-purple }
+[Frontend](frontend/getting-started){: .btn .btn-purple }
 </span>
 <span class="fs-6">
 [Backend](backend){: .btn .btn-purple }

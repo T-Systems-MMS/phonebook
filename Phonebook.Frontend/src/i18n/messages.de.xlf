@@ -14,31 +14,31 @@
         <note priority="1" from="description">Aria Label for adding a filter to the search</note>
         <note priority="1" from="meaning">AddFilterComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
-        <source>Leave
-    Feedback, report a Bug or submit a new Idea</source><target state="translated">Sage deine Meinung, melde einen Fehler oder erzähle von deiner Idee</target>
+        <source>
+    Leave Feedback, report a Bug or submit a new Idea
+  </source><target state="translated">Sage deine Meinung, melde einen Fehler oder erzähle von deiner Idee</target>
         <note priority="1" from="description">Title of the Feedback Drawer</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganization" datatype="html">
-        <source>Contact
-        your private Organization</source><target state="translated">Kontaktiere deine private Organisation</target>
+        <source>Contact your private Organization</source><target state="translated">Kontaktiere deine private Organisation</target>
         <note priority="1" from="description">Button for contacting the private Organization</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithub" datatype="html">
-        <source>Contact
-        the
-        public Project</source><target state="translated">Kontaktiere unser öffentliches Projekt</target>
+        <source>Contact the public Project</source><target state="translated">Kontaktiere unser öffentliches Projekt</target>
         <note priority="1" from="description">Button for contacting the public Github</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="IeWarningComponentTitle" datatype="html">
-        <source>This Website may not function properly in
-  Internet Explorer</source><target state="translated">Diese Website funktioniert eventuell nicht richtig im Internet Explorer</target>
+        <source>
+  This Website may not function properly in Internet Explorer
+</source><target state="translated">Diese Website funktioniert eventuell nicht richtig im Internet Explorer</target>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">IeWarningComponent</note>
       </trans-unit><trans-unit id="IeWarningComponentContent" datatype="html">
         <source>
   <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
-    The support for older versions of Internet Explorer <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>ended in 2016<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.
-    It is not actively developed anymore and as such lags modern features.
+    The support for older versions of Internet Explorer
+    <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>ended in 2016<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>. It is not actively
+    developed anymore and as such lags modern features.
   <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
   <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
     Making a feature work in Internet Explorer takes up as much time as building the feature itself for all other
@@ -46,7 +46,9 @@
   <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
   <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
     Please change to a more modern browser: <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>Chrome<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>,
-    <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a>"/>Firefox<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>, <x id="START_LINK_3" ctype="x-a" equiv-text="&lt;a>"/>Edge<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>, <x id="START_LINK_4" ctype="x-a" equiv-text="&lt;a>"/>Safari<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.
+    <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a>"/>Firefox<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>,
+    <x id="START_LINK_3" ctype="x-a" equiv-text="&lt;a>"/>Edge<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>,
+    <x id="START_LINK_4" ctype="x-a" equiv-text="&lt;a>"/>Safari<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.
   <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
 </source><target state="translated">
   <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
@@ -65,8 +67,9 @@
         <note priority="1" from="description">Content</note>
         <note priority="1" from="meaning">IeWarningComponent</note>
       </trans-unit><trans-unit id="IeWarningComponentButton" datatype="html">
-        <source>I still
-    want to use Internet Explorer!</source><target state="translated">Ich möchte trotzdem den Internet Explorer nutzen!</target>
+        <source>
+    I still want to use Internet Explorer!
+  </source><target state="translated">Ich möchte trotzdem den Internet Explorer nutzen!</target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">IeWarningComponent</note>
       </trans-unit><trans-unit id="GeneralCancelButton" datatype="html">
@@ -74,21 +77,23 @@
         
         
       </trans-unit><trans-unit id="BugReportConsentComponentTitle" datatype="html">
-        <source>We
-    need your help!</source><target state="translated">Wir brauchen deine Hilfe!</target>
+        <source>
+    We need your help!
+  </source><target state="translated">Wir brauchen deine Hilfe!</target>
         <note priority="1" from="description">Title of Bug Report Consent Dialog</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit><trans-unit id="BugReportConsentComponentSubTitle" datatype="html">
-        <source>Sending
-      automatic Bug reports</source><target state="translated">Automatische Fehlerprotokolle senden</target>
+        <source>
+      Sending automatic Bug reports
+    </source><target state="translated">Automatische Fehlerprotokolle senden</target>
         <note priority="1" from="description">Sub title of bug report consent dialog</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit><trans-unit id="BugReportConsentComponentText" datatype="html">
         <source>
       <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
         If an error occurs while the application is running, an anonymous error report is automatically generated. In
-        exceptional
-        cases - since this is a preview - the following personal data can still be found in one of the reports:
+        exceptional cases - since this is a preview - the following personal data can still be found in one of the
+        reports:
       <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
       <x id="START_TAG_MAT-LIST" ctype="x-mat-list" equiv-text="&lt;mat-list>"/>
         <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item>"/>
@@ -103,17 +108,12 @@
       <x id="CLOSE_TAG_MAT-LIST" ctype="x-mat-list" equiv-text="&lt;/mat-list>"/>
       <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
         The data from the error report is used exclusively for the purpose of analysis and correction of the error by
-        our
-        core development
-        team. The data will not be passed on to third parties.
+        our core development team. The data will not be passed on to third parties.
       <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
-      <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>TL;DR With your permission, you agree that bug reports that may contain your personal data can be sent
-          to our core development team and be
-          used
-          for
-          error
-          analysis
-          and resolution. <x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/>
+      <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+        <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong>"/>TL;DR With your permission, you agree that bug reports that may contain your personal data can be sent to our
+          core development team and be used for error analysis and resolution.
+        <x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong>"/>
       <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
     </source><target state="translated">
       <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
@@ -140,19 +140,21 @@
         <note priority="1" from="description">Text of Bug Report consent dialog</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit><trans-unit id="BugReportConsentComponentButtonDecline" datatype="html">
-        <source>Do
-        not send Bug Reports</source><target state="translated">Keine Fehlerprotokolle senden</target>
+        <source>
+        Do not send Bug Reports
+      </source><target state="translated">Keine Fehlerprotokolle senden</target>
         <note priority="1" from="description">Button to decline sending bug reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit><trans-unit id="BugReportConsentComponentButtonConsent" datatype="html">
-        <source>Consent</source><target state="translated">Zustimmen</target>
+        <source>
+        Consent
+      </source><target state="translated">Zustimmen</target>
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentChangeButton" datatype="html">
         <source>
-        Change
-        Picture</source>
+        Change Picture</source>
         <target state="translated">Profilbild ändern</target>
         <note priority="1" from="description">Button for changing the Profile Picture</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
@@ -180,8 +182,8 @@
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentTitleDescription" datatype="html">
         <source>
-            Change the theme or language of this application.
-        </source><target state="translated">
+      Change the theme or language of this application.
+    </source><target state="translated">
             Verändere das Farbschema oder die Sprache der Applikation.
         </target>
         <note priority="1" from="description">Title description of the settings page</note>
@@ -315,8 +317,9 @@
         <note priority="1" from="description">call Number button</note>
         <note priority="1" from="meaning">GeneralCallButton</note>
       </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">
-        <source>Change
-  Profile Picture</source><target state="new">Profil Bild ändern</target>
+        <source>
+  Change Profile Picture
+</source><target state="new">Profil Bild ändern</target>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentContent" datatype="html">
@@ -334,6 +337,9 @@
     <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
       You can change or delete your picture at any time. (Just click the Button right next to the upload Button.)
     <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
+      Your profile picture will deleted if you choose to leave the company.
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
   <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/>
 </source><target state="new">
   <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
@@ -349,28 +355,32 @@
     <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
       Du kannst das Bilder jederzeit ändern oder löschen. (Klicke einfach auf den Knopf neben der 'Bearbeiten' Schaltfläche.)
     <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
+      Dein Profilbild wird automatisch gelöscht, wenn du das Unternehmen verlässt. 
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
   <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/>
 </target>
         <note priority="1" from="description">Content</note>
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentButtonChangePicture" datatype="html">
-        <source>Change
-    my Picture!</source><target state="new">Profilbild ändern!</target>
+        <source>
+    Change my Picture!
+  </source><target state="new">Profilbild ändern!</target>
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit><trans-unit id="RoomPlanComponentNoPlan" datatype="html">
         <source>
-        <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
-            Unfortunately there is no plan for this floor.
-        <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
-        <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
-            Do you know who can make one or want to help us fix this?
-        <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
-        <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>
-            <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>code<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
-            Contribute
-        <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
-    </source><target state="translated">
+    <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+      Unfortunately there is no plan for this floor.
+    <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+    <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
+      Do you know who can make one or want to help us fix this?
+    <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
+    <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>
+      <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>code<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
+      Contribute
+    <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+  </source><target state="translated">
         <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p>"/>
             Anscheinend gibt es für diesen Raum keinen Plan.
         <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
@@ -455,24 +465,21 @@
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentOrderNone" datatype="html">
         <source>
-            Custom
-            Order</source><target state="translated">
+            Custom Order</source><target state="translated">
             Eigene Reihenfolge
             </target>
         <note priority="1" from="description">The standard (customizable) order of the favorite cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentOrderAsc" datatype="html">
         <source>
-            Alphabetical
-            asc</source><target state="translated">
+            Alphabetical asc</source><target state="translated">
             Alphabetisch aufsteigend
             </target>
         <note priority="1" from="description">The alphabetical asc order of the favorite cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentOrderDesc" datatype="html">
         <source>
-            Alphabetical
-            desc</source><target state="translated">
+            Alphabetical desc</source><target state="translated">
             Alphabetisch absteigend
             </target>
         <note priority="1" from="description">The alphabetical desc order of the favorite cards</note>
@@ -482,7 +489,8 @@
       You haven't bookmarked anybody yet, look for the button
       <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button>"/>
         <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>bookmark_border<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
-      <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button>"/> on a workmates page.
+      <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button>"/>
+      on a workmates page.
     </source><target state="translated">
           Du hast noch niemanden als Favorit gespeichert, du kannst jemanden als Favoriten speichern indem du auf diesen Knopf 
           <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button>"/>
@@ -563,34 +571,38 @@
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentShareButtonMailOption" datatype="html">
-        <source>Share
-            by mail</source>
+        <source>Share by mail</source>
         <target state="translated">Per E-Mail teilen</target>
         <note priority="1" from="description">Option for sharing the room by Mail</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentMainTitle" datatype="html">
-        <source>Information</source>
+        <source>
+          Information
+        </source>
         <target state="translated">Information</target>
         <note priority="1" from="description">Title for the main information of the room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentSubTitleLocation" datatype="html">
-        <source>Location
+        <source>
+            Location
           </source>
         <target state="translated">Standort</target>
         <note priority="1" from="description">Subtitle for the location information of the room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentSubTitleCommunication" datatype="html">
-        <source>Phone
-            Number</source>
+        <source>
+            Phone Number
+          </source>
         <target state="translated">Telefonnummern:</target>
         <note priority="1" from="description">Subtitle for the communication information of the room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit><trans-unit id="RoomComponentSubTitleInThisRoom" datatype="html">
-        <source>In
-          this Room</source><target state="translated">In diesem Raum</target>
+        <source>
+          In this Room
+        </source><target state="translated">In diesem Raum</target>
         <note priority="1" from="description">Title for the subtitle about the people in this room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit><trans-unit id="RoomComponentDescriptionNoPersons" datatype="html">
@@ -607,8 +619,8 @@
         <note priority="1" from="meaning">Room-treeComponent</note>
       </trans-unit><trans-unit id="RoomTreeComponentButtonBookingTool" datatype="html">
         <source>
-            Booking Tool
-        </source><target state="new">
+      Booking Tool
+    </source><target state="new">
             Raumplanungstool
         </target>
         <note priority="1" from="description">Button for changing to the booking tool</note>
@@ -622,8 +634,7 @@
         <note priority="1" from="description">Tooltip for expanding the tree view</note>
         <note priority="1" from="meaning">RoomTreeComponent</note>
       </trans-unit><trans-unit id="GeneralShowOnMapButton" datatype="html">
-        <source>Show on
-            Google-Maps</source><target state="translated">Auf Google-Maps anzeigen</target>
+        <source>Show on Google-Maps</source><target state="translated">Auf Google-Maps anzeigen</target>
         <note priority="1" from="description">Button label for showing the location on google maps</note>
         <note priority="1" from="meaning">General</note>
       </trans-unit><trans-unit id="DataLocationAddress" datatype="html">
@@ -635,8 +646,7 @@
         <note priority="1" from="description">Label for contact information</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="DataLocationContactPerson" datatype="html">
-        <source>Contact
-            Person</source><target state="translated">Kontaktperson</target>
+        <source>Contact Person</source><target state="translated">Kontaktperson</target>
         <note priority="1" from="description">Label for Location.ContactPerson</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="DataPersonFloorPlural" datatype="html">
@@ -644,11 +654,15 @@
         <note priority="1" from="description">Floor plural</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="CityComponentSubHeaderLocation" datatype="html">
-        <source>Buildings</source><target state="translated">Gebäude</target>
+        <source>
+        Buildings
+      </source><target state="translated">Gebäude</target>
         <note priority="1" from="description">Subheader for all building locations in the city</note>
         <note priority="1" from="meaning">CityComponent</note>
       </trans-unit><trans-unit id="FloorComponentSubHeaderRooms" datatype="html">
-        <source>Rooms</source><target state="translated">Räume</target>
+        <source>
+        Rooms
+      </source><target state="translated">Räume</target>
         <note priority="1" from="description">SubHeader for all Rooms in the floor</note>
         <note priority="1" from="meaning">FloorComponent</note>
       </trans-unit>
@@ -662,7 +676,8 @@
       </trans-unit>
       <trans-unit id="GeneralResetButton" datatype="html">
         <source>
-        Reset </source>
+        Reset
+      </source>
         <target state="translated">Zurücksetzen</target>
       </trans-unit><trans-unit id="GeneralUndoButton" datatype="html">
         <source> Undo </source><target state="translated"> Rückgängig </target>
@@ -670,9 +685,8 @@
         <note priority="1" from="meaning">GeneralUndoButton</note>
       </trans-unit><trans-unit id="DashboardComponentDescriptionRecent" datatype="html">
         <source>
-        Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most
-        recent ones will
-        be displayed here.
+        Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most recent
+        ones will be displayed here.
       </source><target state="translated">Du hast noch nicht nach Personen gesucht, deshalb werden hier noch keine Kollegen angezeigt. Such einfach nach jemanden, dann werden die letzten Suchergbenisse hier angezeigt.</target>
         <note priority="1" from="description">Message displayed if no people have been visited recently</note>
         <note priority="1" from="meaning">DashboardComponent</note>
@@ -704,7 +718,7 @@
           This is an Installation of the Open Source Phonebook.
           <x id="START_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;ng-container>"/>
             You can contact your own support at
-            <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/><x id="INTERPOLATION" equiv-text="{{runtimeEnvironment.contactEmail}}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+            <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/><x id="INTERPOLATION" equiv-text="{{ runtimeEnvironment.contactEmail }}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
             regarding this installation.
           <x id="CLOSE_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;/ng-container>"/>
         <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
@@ -715,8 +729,7 @@
         <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p>"/>
       <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item>"/>
       <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item>"/>
-        <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>Report
-          a Bug or request a new Feature<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+        <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>Report a Bug or request a new Feature<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
       <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item>"/>
     </source><target state="translated">
       <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item>"/>
@@ -793,9 +806,8 @@
       </trans-unit><trans-unit id="PageInformationComponentSubTitleLicensesText" datatype="html">
         <source>
           This Project is licensed under the
-          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>MIT
-            License<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.
-          Other licenses from modules and packets may apply.
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>MIT License<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>. Other licenses from
+          modules and packets may apply.
         </source><target state="translated">
           Dieses Projekt ist unter der
           <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>MIT
@@ -806,9 +818,12 @@
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleAttributions" datatype="html">
         <source>
-          Icon of the Phonebook made by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Gregor Cresnar<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> from <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> is
-          licensed by <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a>"/>CC 3.0
-            BY<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+          Icon of the Phonebook made by
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Gregor Cresnar<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+          from
+          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> is
+          licensed by
+          <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a>"/>CC 3.0 BY<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
         </source><target state="new">
         Icon des Phonebooks gefertigt von <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>Gregor Cresnar<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> veröffentlicht auf <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> unter
           der Lizenz <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a>"/>CC 3.0
@@ -818,24 +833,26 @@
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogDescription" datatype="html">
-        <source>Drag
-    and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging
-    them
-    to the right.</source>
+        <source>
+    Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them
+    to the right.
+  </source>
         <target state="translated">Ziehe und lege die Spalten in der Reihenfolge ab die dir gefällt. Du kannst sie auch ausblenden indem du sie auf die rechte Seite ziehst.</target>
         <note priority="1" from="description">Description of how to configure the table Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogSubTitleDisplayedColumns" datatype="html">
-        <source>Displayed
-        Columns:</source>
+        <source>
+        Displayed Columns:
+      </source>
         <target state="translated">Sichtbare Spalten:</target>
         <note priority="1" from="description">Title of displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogSubTitleNotDisplayedColumns" datatype="html">
-        <source>Not
-        displayed Columns:</source>
+        <source>
+        Not displayed Columns:
+      </source>
         <target state="translated">Ausgeblendete Spalten:</target>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
@@ -980,7 +997,9 @@
         <note priority="1" from="description">Combined location of the person (city, building, floor, room)</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentButtonShowRoom" datatype="html">
-        <source>Show Room</source><target state="translated">Raum anzeigen</target>
+        <source>
+                  Show Room
+                </source><target state="translated">Raum anzeigen</target>
         <note priority="1" from="description">Button to show the persons room</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="DataPersonFloor" datatype="html">
@@ -1001,12 +1020,13 @@
         <note priority="1" from="meaning">UserDetailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponenMessageContributeSkills" datatype="html">
         <source>
-              This is where a coworkers skills would be shown. But this is still
-              work in Progress, you can make it happen faster!
+              This is where a coworkers skills would be shown. But this is still work in Progress, you can make it
+              happen faster!
               <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>
                 <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>code<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
                 Contribute
               <x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
+              <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/> <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
             </source><target state="translated">
             Hier würden die Fähigkeiten deiner Arbeitskollegen angezeigt werden. Diese Funktionalität ist aber noch in Arbeit, du kannst uns allerdings bei der Umsetzung helfen:
             <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>
