@@ -16,6 +16,13 @@
   }
 
   .pb-color-primary {
+    color: mat-color($primary) !important;
+  }
+
+  .pb-border-color-primary {
+    border-color: mat-color($primary) !important;
+  }
+  .pb-color-background {
     color: mat-color($background, text) !important;
   }
 
