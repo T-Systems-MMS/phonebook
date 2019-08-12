@@ -29,7 +29,7 @@ export class CurrentUserService {
       })
       // this is a workaround for this github issue: https://github.com/ReactiveX/rxjs/issues/2972.
       // The good solution is to upgrade to typescript >2.8 but angular only supports < 2.8.
-      .pipe(publishReplay());
+      .pipe(publishReplay()) as ConnectableObservable<WhoAmIResponse>;
     observable.connect();
     this.currentUserObjectObservable = observable;
     return this.currentUserObjectObservable;
