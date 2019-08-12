@@ -3,8 +3,8 @@
     "windowsAuthentication": true,
     "anonymousAuthentication": false,
     "iisExpress": {
-      "applicationUrl": "http://localhost:61992",
-      "sslPort": 44313
+      "applicationUrl": "http://localhost:5000",
+      "sslPort": 5001
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -19,7 +19,7 @@
     "Phonebook.Backend.PictureService": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

@@ -17,6 +17,7 @@
     <PackageReference Include="KK.AspNetCore.BackgroundTasks.Scheduled" Version="1.0.0" />
     <PackageReference Include="KK.AspNetCore.Images.Processing" Version="0.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="NetEscapades.Configuration.Validation" Version="1.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
