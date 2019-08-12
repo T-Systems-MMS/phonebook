@@ -15,7 +15,7 @@
   // 	],
   // 	"description": "Log output to console"
   // }
-  "I18n-normal": {
+  "i18n-html": {
     "scope": "html",
     "prefix": "i18n",
     "body": [
@@ -23,7 +23,7 @@
     ],
     "description": "Create i18n description"
   },
-  "I18n-normal": {
+  "i18n-typescript": {
     "scope": "typescript",
     "prefix": "i18n",
     "body": [
