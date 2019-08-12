@@ -53,6 +53,10 @@ mat-card {
       @include mat-icon-size(60px);
     }
   }
+
+  mat-card-title {
+    line-height: 1;
+  }
 }
 
 .pb-card-call {
