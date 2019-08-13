@@ -279,13 +279,12 @@
         <target state="final">Phonebook</target>
         <note priority="1" from="description">Application Name</note>
         <note priority="1" from="meaning">NavigationBar</note>
+      </trans-unit><trans-unit id="NavigationComponentReleaseNotes" datatype="html">
+        <source>Release Notes</source><target state="final">Release Notes</target>
+        <note priority="1" from="description">Release Notes Menu Item</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
-      <trans-unit id="navigationBarApplicationNameTag" datatype="html">
-        <source>Preview</source>
-        <target state="final">Preview</target>
-        <note priority="1" from="description">Tag on Application Name</note>
-        <note priority="1" from="meaning">NavigationBar</note>
-      </trans-unit>
+      
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
         <source>Have a nice day</source>
         <target state="final">Have a nice day</target>

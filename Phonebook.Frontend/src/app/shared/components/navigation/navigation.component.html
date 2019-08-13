@@ -139,7 +139,8 @@
                     matBadgeSize="small"
                     [matBadgeHidden]="!releaseInfoService.newUpdate"
                     (click)="releaseInfoService.displayReleaseDialog()"
-                    >Changelog</span
+                    i18n="NavigationComponent|Release Notes Menu Item@@NavigationComponentReleaseNotes"
+                    >Release Notes</span
                   >
                 </button>
                 <button mat-menu-item feedbackDrawer>

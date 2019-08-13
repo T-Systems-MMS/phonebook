@@ -65,7 +65,7 @@ export class ReleaseInfoService {
       });
   }
 
-  public displayReleaseNotification() {
+  private displayReleaseNotification() {
     this.snackBar
       .open(
         this.i18n({
