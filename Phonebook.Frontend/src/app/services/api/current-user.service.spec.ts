@@ -28,7 +28,7 @@ describe('CurrentUserService', () => {
       expect(user).toBe('username');
     });
 
-    const req = httpMock.expectOne(`https://employee-pictures.example.com/user/whoami`);
+    const req = httpMock.expectOne(`https://employee-pictures.example.com/user/whoami?version=2`);
     expect(req.request.method).toBe('GET');
     req.flush(response);
   }));
