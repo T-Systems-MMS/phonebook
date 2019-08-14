@@ -112,7 +112,6 @@ export class AppComponent implements OnInit {
         height: '90vh',
         width: '90vw'
       });
-      this.releaseMigrationService.newUpdate = true;
     } else {
       // Display the Release Dialog only if no notification Dialog is shown, in order to not overwhelm the user with dialogs.
       this.releaseMigrationService.checkForUpdate();
