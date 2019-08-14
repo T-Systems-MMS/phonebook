@@ -12,6 +12,7 @@ import { VERSION } from 'src/environments/version';
   providedIn: 'root'
 })
 export class ReleaseInfoService {
+  public newUpdate: boolean = false; //shows that the application was updated
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
@@ -28,14 +29,17 @@ export class ReleaseInfoService {
     switch (versionIncrement) {
       case VersionIncrement.breaking:
         this.displayReleaseDialog();
+        this.newUpdate = true;
         this.store.dispatch(new SetVersion(VERSION));
         break;
       case VersionIncrement.feature:
-        this.displayReleaseDialog();
+        this.displayReleaseNotification();
+        this.newUpdate = true;
         this.store.dispatch(new SetVersion(VERSION));
         break;
       case VersionIncrement.bugfix:
         this.displayReleaseNotification();
+        this.newUpdate = true;
         this.store.dispatch(new SetVersion(VERSION));
         break;
       default:
@@ -43,7 +47,7 @@ export class ReleaseInfoService {
     }
   }
 
-  private displayReleaseDialog() {
+  public displayReleaseDialog() {
     let text = 'Changelog could not be loaded.';
     this.httpClient
       .get('changelog.md', {
@@ -82,7 +86,7 @@ export class ReleaseInfoService {
       )
       .onAction()
       .subscribe(clicked => {
-        window.open('changelog.md', '_blank');
+        this.displayReleaseDialog();
       });
   }
 
