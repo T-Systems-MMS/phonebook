@@ -33,6 +33,7 @@
             <span i18n="NavigationComponent|Link to the users profile@@NavigationComponentMyProfile">My profile</span>
           </button>
         </mat-list-item>
+        <mat-divider></mat-divider>
         <mat-list-item>
           <button mat-menu-item focus [routerLink]="['/settings']" (click)="sidenav.close()">
             <mat-icon>settings</mat-icon>
@@ -49,6 +50,20 @@
           >
             <mat-icon>info_outline</mat-icon>
             <span i18n="NavigationComponent|Link to Information page@@NavigationComponentInformation">Information</span>
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-menu-item>
+            <mat-icon>new_releases</mat-icon>
+            <span
+              matBadge="!"
+              matBadgeColor="accent"
+              matBadgeSize="small"
+              [matBadgeHidden]="!releaseInfoService.newUpdate"
+              (click)="sidenav.close(); releaseInfoService.displayReleaseDialog()"
+              i18n="NavigationComponent|Release Notes Menu Item@@NavigationComponentReleaseNotes"
+              >Release Notes</span
+            >
           </button>
         </mat-list-item>
         <mat-list-item>
@@ -150,8 +165,14 @@
               </mat-menu>
             </div>
             <div class="pb-hide-on-med-and-up">
-              <button mat-button (click)="sidenav.toggle()">
-                <mat-icon>menu</mat-icon>
+              <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon
+                  matBadge="!"
+                  matBadgeColor="accent"
+                  matBadgeSize="small"
+                  [matBadgeHidden]="!releaseInfoService.newUpdate"
+                  >menu</mat-icon
+                >
               </button>
             </div>
           </mat-toolbar-row>
