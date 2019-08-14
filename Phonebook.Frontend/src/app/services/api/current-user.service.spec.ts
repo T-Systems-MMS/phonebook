@@ -3,7 +3,6 @@ import { getTestBed, inject, TestBed } from '@angular/core/testing';
 import { PersonService } from 'src/app/services/api/person.service';
 import { CurrentUserService } from './current-user.service';
 
-
 describe('CurrentUserService', () => {
   let injector: TestBed;
   let httpMock: HttpTestingController;
@@ -22,10 +21,28 @@ describe('CurrentUserService', () => {
   }));
 
   it('should return Username', inject([CurrentUserService], (service: CurrentUserService) => {
-    const response = 'domain\\username';
+    const response = {
+      user: 'DOMAIN\\username',
+      hasPicture: true
+    };
 
     service.getCurrentUserId().subscribe(user => {
       expect(user).toBe('username');
+    });
+
+    const req = httpMock.expectOne(`https://employee-pictures.example.com/user/whoami?version=2`);
+    expect(req.request.method).toBe('GET');
+    req.flush(response);
+  }));
+
+  it('should return hasPicture', inject([CurrentUserService], (service: CurrentUserService) => {
+    const response = {
+      user: 'DOMAIN\\username',
+      hasPicture: true
+    };
+
+    service.doesUserHasImage().subscribe(hasImage => {
+      expect(hasImage).toBe(true);
     });
 
     const req = httpMock.expectOne(`https://employee-pictures.example.com/user/whoami?version=2`);
