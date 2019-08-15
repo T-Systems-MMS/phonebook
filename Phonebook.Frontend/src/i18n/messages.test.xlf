@@ -46,7 +46,7 @@
       </trans-unit><trans-unit id="MissingUserImageMessage" datatype="html">
         <source>you haven't uploaded a picture yet. Want to upload one?</source><target state="final">TEST</target>
         <note priority="1" from="description">Message</note>
-        <note priority="1" from="meaning">MissingUserImageMessage</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="MissingUserImageTooltip" datatype="html">
         <source>If you upload a picture it will be easier for your colleagues to find and contact you!</source><target state="final">TEST</target>
         <note priority="1" from="description">Tooltip for MissingUserImage</note>
