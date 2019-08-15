@@ -1,6 +1,5 @@
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
-import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { SetVisibleTableColumns, TableState } from 'src/app/shared/states';
 import { SetTableResultCount } from 'src/app/shared/states/Table.state';
@@ -28,7 +27,7 @@ describe('[States] Table', () => {
         visibleColumns: [ColumnId.building],
         resultCount: 0
       })
-    ).toEqual([ColumnDefinitions.building]);
+    ).toEqual([ColumnId.building]);
   });
 
   it('it should return search Table Result Count', () => {
@@ -60,9 +59,9 @@ describe('[States] Table', () => {
       ColumnId.city,
       ColumnId.role
     ]);
-    store.dispatch(new SetVisibleTableColumns([ColumnDefinitions.building]));
+    store.dispatch(new SetVisibleTableColumns([ColumnId.building]));
     expect(store.selectSnapshot(storeSnapshot => storeSnapshot.tablestate.visibleColumns)).toEqual([ColumnId.building]);
-    store.dispatch(new SetVisibleTableColumns([ColumnDefinitions.role, ColumnDefinitions.picture]));
+    store.dispatch(new SetVisibleTableColumns([ColumnId.role, ColumnId.picture]));
     expect(store.selectSnapshot(storeSnapshot => storeSnapshot.tablestate.visibleColumns)).toEqual([
       ColumnId.role,
       ColumnId.picture

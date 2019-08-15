@@ -3,7 +3,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { NgxsModule, Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { AddSearchFilter, RemoveLastSearchFilter, RemoveSearchFilter, ResetSearch, SearchState, SetSearchFiltersAndSearchTerm } from 'src/app/shared/states/Search.state';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
+import {
+  AddSearchFilter,
+  RemoveLastSearchFilter,
+  RemoveSearchFilter,
+  ResetSearch,
+  SearchState,
+  SetSearchFiltersAndSearchTerm
+} from 'src/app/shared/states/Search.state';
 
 const ROUTER_STATE = {
   state: {
@@ -89,19 +97,19 @@ describe('[States] Search', () => {
       SearchState.searchFilters({
         searchTerm: '',
         searchFilters: [
-          { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' },
-          { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' }
+          { filterColumn: ColumnId.city, filterValue: 'testValueCity' },
+          { filterColumn: ColumnId.email, filterValue: 'testValueEmail' }
         ]
       })
     ).toEqual([
-      { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' },
-      { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' }
+      { filterColumn: ColumnId.city, filterValue: 'testValueCity' },
+      { filterColumn: ColumnId.email, filterValue: 'testValueEmail' }
     ]);
   });
 
   it('it adds Search Filter', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
-    const filter2 = { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
+    const filter2 = { filterColumn: ColumnId.email, filterValue: 'testValueEmail' };
     expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([]);
     store.dispatch(new AddSearchFilter(filter1));
     expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1]);
@@ -112,8 +120,8 @@ describe('[States] Search', () => {
   });
 
   it('it adds Search Filter - update if different', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
-    const filter1derivate = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCityDerivate' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
+    const filter1derivate = { filterColumn: ColumnId.city, filterValue: 'testValueCityDerivate' };
     store.dispatch(new AddSearchFilter(filter1));
     expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1]);
     store.dispatch(new AddSearchFilter(filter1derivate));
@@ -121,7 +129,7 @@ describe('[States] Search', () => {
   });
 
   it('it removes Search Filter', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
     store.reset({
       searchstate: {
         searchTerm: '',
@@ -134,8 +142,8 @@ describe('[States] Search', () => {
   });
 
   it('it removes Search Filter - independently', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
-    const filter2 = { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
+    const filter2 = { filterColumn: ColumnId.email, filterValue: 'testValueEmail' };
     const filter3 = { filterColumn: ColumnDefinitions.costcenter, filterValue: 'testValueCostcenter' };
     store.reset({
       searchstate: {
@@ -149,7 +157,7 @@ describe('[States] Search', () => {
   });
 
   it('it removes Search Filter - no Filter existing', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
     store.reset({
       searchstate: {
         searchTerm: '',
@@ -162,8 +170,8 @@ describe('[States] Search', () => {
   });
 
   it('it removes Search Filter - Filter not existing', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
-    const filter2 = { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
+    const filter2 = { filterColumn: ColumnId.email, filterValue: 'testValueEmail' };
     const filter3 = { filterColumn: ColumnDefinitions.costcenter, filterValue: 'testValueCostcenter' };
     store.reset({
       searchstate: {
@@ -177,8 +185,8 @@ describe('[States] Search', () => {
   });
 
   it('it remove last Search Filter', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
-    const filter2 = { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
+    const filter2 = { filterColumn: ColumnId.email, filterValue: 'testValueEmail' };
     const filter3 = { filterColumn: ColumnDefinitions.costcenter, filterValue: 'testValueCostcenter' };
     store.reset({
       searchstate: {
@@ -192,7 +200,7 @@ describe('[States] Search', () => {
   });
 
   it('it resets Search', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
     store.reset({
       searchstate: {
         searchTerm: 'helloTest',
@@ -208,7 +216,7 @@ describe('[States] Search', () => {
   });
 
   it('it sets SearchFilters and SearchTerm', () => {
-    const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
+    const filter1 = { filterColumn: ColumnId.city, filterValue: 'testValueCity' };
     store.dispatch(new SetSearchFiltersAndSearchTerm([filter1], 'helloTest'));
     expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate)).toEqual({
       searchTerm: 'helloTest',

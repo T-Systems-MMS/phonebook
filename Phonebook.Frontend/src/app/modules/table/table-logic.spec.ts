@@ -1,5 +1,14 @@
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { Business, City, Contacts, Location, Messenger, Person, PersonType, PhonebookSortDirection } from 'src/app/shared/models';
+import {
+  Business,
+  City,
+  Contacts,
+  Location,
+  Messenger,
+  Person,
+  PersonType,
+  PhonebookSortDirection
+} from 'src/app/shared/models';
 import { TableLogic } from './table-logic';
 
 describe('Table Logic - Sort', () => {
@@ -140,7 +149,7 @@ describe('Table Logic - Filter', () => {
         new Business([], [], [], [], [], [], '')
       )
     ];
-    expect(TableLogic.filter(unsortedPersonsArray, 'Mustermann', [ColumnDefinitions.fullname])).toEqual([
+    expect(TableLogic.filter(unsortedPersonsArray, 'Mustermann', [ColumnDefinitions.fullname.id])).toEqual([
       new Person(
         PersonType.Interner_Mitarbeiter,
         '',
@@ -171,7 +180,7 @@ describe('Table Logic - Filter', () => {
         new Business([], [], [], [], [], [], '')
       )
     ];
-    expect(TableLogic.filter(unsortedPersonsArray, 'Otherman', [ColumnDefinitions.fullname])).toEqual([]);
+    expect(TableLogic.filter(unsortedPersonsArray, 'Otherman', [ColumnDefinitions.fullname.id])).toEqual([]);
   });
 
   it('Find Person with Diarectics', () => {
@@ -191,7 +200,7 @@ describe('Table Logic - Filter', () => {
     ];
     expect(
       TableLogic.filter(unsortedPersonsArray, 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž', [
-        ColumnDefinitions.fullname
+        ColumnDefinitions.fullname.id
       ])
     ).toEqual([
       new Person(
