@@ -107,9 +107,7 @@ export class SearchState {
   @Selector()
   public static searchFilters(state: SearchStateModel): SearchFilter[] {
     return state.searchFilters.map(filter => {
-      const tmp = ColumnDefinitions.getAll().find(c => {
-        return c.id === filter.filterColumn;
-      });
+      const tmp = ColumnDefinitions.getColumnById(filter.filterColumn);
       if (tmp == null) {
         throw Error('Filter Column not found.');
       }

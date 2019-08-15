@@ -17,6 +17,9 @@ export const ColumnDefinitions: {
   room: Readonly<Column>;
   building: Readonly<Column>;
   costcenter: Readonly<Column>;
+  /**
+   * Use as a last resort, there is function for finding a Column by Id
+   */
   getAll(): Readonly<Column>[];
   getDefault(): Readonly<Column>[];
   getAllFilterableColumns(): Readonly<Column>[];

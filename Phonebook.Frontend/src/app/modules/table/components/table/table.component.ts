@@ -38,9 +38,7 @@ export class TableComponent implements OnInit, OnDestroy {
   public sort: MatSort;
   public table: Element;
   public get tableSort(): TableSort | null {
-    const col = ColumnDefinitions.getAll().find(column => {
-      return this.sort.active === column.id;
-    });
+    const col = ColumnDefinitions.getColumnById(this.sort.active);
     if (col == null) {
       return null;
     }
