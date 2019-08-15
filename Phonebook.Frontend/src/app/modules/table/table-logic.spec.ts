@@ -9,6 +9,7 @@ import {
   PersonType,
   PhonebookSortDirection
 } from 'src/app/shared/models';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { TableLogic } from './table-logic';
 
 describe('Table Logic - Sort', () => {
@@ -41,7 +42,7 @@ describe('Table Logic - Sort', () => {
     ];
     expect(
       TableLogic.sort(unsortedPersonsArray, {
-        column: ColumnDefinitions.fullname,
+        column: ColumnId.fullname,
         direction: PhonebookSortDirection.asc
       })
     ).toEqual([
@@ -101,7 +102,7 @@ describe('Table Logic - Sort', () => {
 
     expect(
       TableLogic.sort(unsortedPersonsArray, {
-        column: ColumnDefinitions.fullname,
+        column: ColumnId.fullname,
         direction: PhonebookSortDirection.desc
       })
     ).toEqual([
