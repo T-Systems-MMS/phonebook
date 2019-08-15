@@ -82,7 +82,6 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
                 this.worker.onerror = (error: ErrorEvent) => {
                   const searchResult = performSearch(searchParams);
                   this.resolveObserver(searchResult, observer);
-                  Error.captureStackTrace(this, Error);
                   throw new Error('Service Worker crashed.');
                 };
                 this.worker.postMessage(searchParams);
