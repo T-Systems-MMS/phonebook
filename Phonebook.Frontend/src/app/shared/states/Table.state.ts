@@ -1,6 +1,5 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ColumnDefinitions, getColumnsAsStringArray } from 'src/app/shared/config/columnDefinitions';
-import { Column } from 'src/app/shared/models';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 
 export class SetVisibleTableColumns {
@@ -33,15 +32,6 @@ export class TableState {
   @Selector()
   public static visibleColumns(state: TableStateModel): ColumnId[] {
     return state.visibleColumns;
-    // .map(col => {
-    //   const tmp = ColumnDefinitions.getAll().find(c => {
-    //     return c.id === col;
-    //   });
-    //   if (tmp == null) {
-    //     throw Error('TableState: Column with ID:' + col + ') not found.');
-    //   }
-    //   return tmp;
-    // });
   }
 
   @Selector()
