@@ -8,6 +8,9 @@
 !protractor.conf.js
 !proxy.conf.json
 !tsconfig.json
+!tsconfig.app.json
+!tsconfig.spec.json
+!tsconfig.worker.json
 !tslint.json
 !nginx
 !substitute_variables.sh
