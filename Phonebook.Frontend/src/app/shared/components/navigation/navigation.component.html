@@ -108,12 +108,11 @@
             <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null && hasImage">
               {{ (getGreetingMessage() | async) + ' ' + currentUser.Firstname }}
             </div>
-            <div class="pb-missing-userimage-info pb-hide-below-big" *ngIf="!hasImage">
+            <div class="pb-missing-userimage-info pb-hide-below-big" *ngIf="currentUser != null && !hasImage">
               <button
                 mat-stroked-button
                 class="pb-opacity-background mat-body-2"
                 (click)="navigateToOwnProfile()"
-                *ngIf="currentUser != null"
                 i18n-matTooltip="NavigationComponent|Tooltip for MissingUserImage@@MissingUserImageTooltip"
                 i18n-aria-label="NavigationComponent|Aria label for MissingUserImage@@MissingUserImageAriaLabel"
                 matTooltip="If you upload a picture it will be easier for your colleagues to find and contact you!"
