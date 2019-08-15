@@ -1,11 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 import { performSearch, SearchParams } from 'src/app/modules/table/SearchParams';
 import { SearchFilter, TableSort } from 'src/app/shared/models';
 import { Person } from 'src/app/shared/models/classes';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
-import { Environment } from 'src/environments/EnvironmentInterfaces';
-import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 export class PersonsDataSource extends MatTableDataSource<Person> {
   private PAGE_SIZE: number = 30;
@@ -34,10 +33,9 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
 
   public dataChanged: BehaviorSubject<Person[]> = new BehaviorSubject<Person[]>(this.data);
 
-  private lastFilterKeyword: string = '';
   private worker: Worker | null = null;
 
-  constructor(private dataSource: Person[]) {
+  constructor(private dataSource: Person[], private httpClient: HttpClient) {
     super();
   }
 
@@ -66,29 +64,49 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
         data: this.dataSource
       };
 
-      if (typeof Worker !== 'undefined' && runtimeEnvironment.environment != Environment.development) {
+      if (typeof Worker !== 'undefined') {
+        // Reuse the Worker if it already exists.
         if (this.worker == null) {
-          this.worker = new Worker('./table.worker', { type: 'module' });
+          // Loading external Workers does not error if it could not be found...
+          this.httpClient
+            .get('table.worker', {
+              responseType: 'text'
+            })
+            .subscribe(
+              req => {
+                const blob = new Blob([req]);
+                this.worker = new Worker(window.URL.createObjectURL(blob), { type: 'module' });
+                this.worker.onmessage = ({ data }) => {
+                  this.resolveObserver(data, observer);
+                };
+                this.worker.onerror = (error: ErrorEvent) => {
+                  const searchResult = performSearch(searchParams);
+                  this.resolveObserver(searchResult, observer);
+                  Error.captureStackTrace(this, Error);
+                  throw new Error('Service Worker crashed.');
+                };
+                this.worker.postMessage(searchParams);
+              },
+              () => {
+                const searchResult = performSearch(searchParams);
+                this.resolveObserver(searchResult, observer);
+                throw new Error('Service Worker could not be loaded.');
+              }
+            );
         }
-        this.worker.onmessage = ({ data }) => {
-          this.allData = data;
-          this.lastFilterKeyword = filterKeyword;
-
-          this.loadingSubject.next(false);
-          observer.next(data);
-          observer.complete();
-        };
-        this.worker.postMessage(searchParams);
       } else {
         const searchResult = performSearch(searchParams);
-        this.allData = searchResult;
-        this.lastFilterKeyword = filterKeyword;
-
-        this.loadingSubject.next(false);
-        observer.next(searchResult);
-        observer.complete();
+        this.resolveObserver(searchResult, observer);
       }
     });
+  }
+
+  private resolveObserver(searchResult: Person[], observer: Subscriber<Person[]>): void {
+    this.allData = searchResult;
+
+    this.loadingSubject.next(false);
+    observer.next(searchResult);
+    observer.complete();
   }
 
   private updateVisibleData() {

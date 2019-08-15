@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort, SortDirection } from '@angular/material/sort';
@@ -24,7 +25,7 @@ export class TableComponent implements OnInit, OnDestroy {
     return this.store.selectSnapshot(TableState.visibleColumns);
   }
 
-  public dataSource: PersonsDataSource = new PersonsDataSource([]);
+  public dataSource: PersonsDataSource = new PersonsDataSource([], this.httpClient);
   public onTop: boolean = true;
   public columns: typeof ColumnDefinitions = ColumnDefinitions;
   public previewPerson: Person | null = null;
@@ -53,12 +54,13 @@ export class TableComponent implements OnInit, OnDestroy {
     private personService: PersonService,
     public dialog: MatDialog,
     public store: Store,
-    public columnTranslate: ColumnTranslate
+    public columnTranslate: ColumnTranslate,
+    private httpClient: HttpClient
   ) {}
 
   public ngOnInit() {
     this.personService.getAll().subscribe(persons => {
-      this.dataSource = new PersonsDataSource(persons);
+      this.dataSource = new PersonsDataSource(persons, this.httpClient);
 
       // Defer until Data is loaded.
       this.refreshTableSubscription = merge(
