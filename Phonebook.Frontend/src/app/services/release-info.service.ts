@@ -49,6 +49,7 @@ export class ReleaseInfoService {
 
   public displayReleaseDialog() {
     let text = 'Changelog could not be loaded.';
+    this.newUpdate = false;
     this.httpClient
       .get('changelog.md', {
         responseType: 'text'
