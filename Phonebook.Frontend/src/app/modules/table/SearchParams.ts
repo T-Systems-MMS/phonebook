@@ -6,7 +6,7 @@ export class SearchParams {
   public filterKeyword: string;
   public searchFilters: SearchFilter[];
   public searchableColumns: ColumnId[];
-  public sort: TableSort;
+  public sort: TableSort | null;
   public data: Person[];
 }
 
@@ -22,15 +22,10 @@ export function performSearch(searchParams: SearchParams): Person[] {
   let searchResult: Person[] = TableLogic.filter(preResult, searchParams.filterKeyword, searchParams.searchableColumns);
 
   // Sorting
-  switch (searchParams.sort.direction) {
-    case PhonebookSortDirection.none: {
-      searchResult = TableLogic.rankedSort(searchResult, searchParams.filterKeyword, searchParams.searchableColumns);
-      break;
-    }
-    default: {
-      searchResult = TableLogic.sort(searchResult, searchParams.sort);
-      break;
-    }
+  if (searchParams.sort == null || searchParams.sort.direction === PhonebookSortDirection.none) {
+    searchResult = TableLogic.rankedSort(searchResult, searchParams.filterKeyword, searchParams.searchableColumns);
+  } else {
+    searchResult = TableLogic.sort(searchResult, searchParams.sort);
   }
   return searchResult;
 }

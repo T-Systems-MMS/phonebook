@@ -201,7 +201,7 @@ export class SearchState {
     }
     if (update.tableSort != null) {
       if (update.tableSort.direction !== PhonebookSortDirection.none) {
-        params.sortColumn = update.tableSort.column ? update.tableSort.column.id : null;
+        params.sortColumn = update.tableSort.column ? update.tableSort.column : null;
         params.sortDirection = update.tableSort.direction;
       } else {
         params.sortColumn = null;

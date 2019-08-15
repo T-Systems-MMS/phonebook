@@ -54,7 +54,7 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
     filterKeyword: string,
     searchFilters: SearchFilter[],
     searchableColumns: ColumnId[],
-    sort: TableSort
+    sort: TableSort | null
   ): Observable<Person[]> {
     this.loadingSubject.next(true);
     return new Observable<Person[]>(observer => {
@@ -67,7 +67,7 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
       };
 
       if (typeof Worker !== 'undefined' && runtimeEnvironment.environment != Environment.development) {
-        if(this.worker == null){
+        if (this.worker == null) {
           this.worker = new Worker('./table.worker', { type: 'module' });
         }
         this.worker.onmessage = ({ data }) => {
@@ -80,7 +80,7 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
         };
         this.worker.postMessage(searchParams);
       } else {
-        let searchResult = performSearch(searchParams);
+        const searchResult = performSearch(searchParams);
         this.allData = searchResult;
         this.lastFilterKeyword = filterKeyword;
 

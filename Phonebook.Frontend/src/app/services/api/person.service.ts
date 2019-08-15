@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { ConnectableObservable, Observable } from 'rxjs';
 import { map, publishReplay } from 'rxjs/operators';
 import { TableLogic } from 'src/app/modules/table/table-logic';
-import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Business, Contacts, Location, Messenger, Person, PhonebookSortDirection, Room } from 'src/app/shared/models';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 
 @Injectable()
 export class PersonService {
@@ -77,7 +77,7 @@ export class PersonService {
     const observable = this.http.get<Person[]>('/api/persons').pipe(
       map(personArray => {
         return TableLogic.sort(this.generateRealPersonArray(personArray), {
-          column: ColumnDefinitions.fullname,
+          column: ColumnId.fullname,
           direction: PhonebookSortDirection.asc
         });
       }),

@@ -36,11 +36,14 @@ export class TableComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort, { static: true })
   public sort: MatSort;
   public table: Element;
-  public get tableSort(): TableSort {
+  public get tableSort(): TableSort | null {
     const col = ColumnDefinitions.getAll().find(column => {
       return this.sort.active === column.id;
     });
-    return { column: col || null, direction: this.sort.direction as PhonebookSortDirection };
+    if (col == null) {
+      return null;
+    }
+    return { column: col.id, direction: this.sort.direction as PhonebookSortDirection };
   }
   public sortDirection: SortDirection = '';
   public sortActive: string = '';
@@ -87,7 +90,7 @@ export class TableComponent implements OnInit, OnDestroy {
     this.sort.sortChange.subscribe((ev: { active: string; direction: string }) => {
       this.store.dispatch(
         new UpdateUrl({
-          tableSort: this.tableSort
+          tableSort: this.tableSort || undefined
         })
       );
       this.refreshTable();

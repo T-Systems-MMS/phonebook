@@ -1,9 +1,9 @@
 import { Helpers } from 'src/app/modules/table/helpers';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person } from 'src/app/shared/models/classes/Person';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
 import { TableSort } from 'src/app/shared/models/interfaces/TableSort';
-import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 
 /**
  * This Class Contains the Filter and Sort Logic of the User List.
@@ -33,7 +33,7 @@ export class TableLogic {
 
   public static sort(list: Person[], sort: TableSort): Person[] {
     const sortedArray = list.slice();
-    const col = sort.column;
+    const col = ColumnDefinitions[sort.column];
     if (col != null) {
       return sortedArray.sort((a, b) => {
         return col.sortFunction(a, b, sort.direction);
