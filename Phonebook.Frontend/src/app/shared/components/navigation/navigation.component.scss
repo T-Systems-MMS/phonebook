@@ -53,6 +53,15 @@ mat-sidenav-container {
       height: 3rem;
     }
 
+    .pb-missing-userimage-info {
+      flex: 2;
+      margin: 0 auto;
+    }
+
+    .pb-opacity-background {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
     @media (max-width: 599px) {
       #search {
         height: 2.5rem;
