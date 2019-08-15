@@ -7,6 +7,8 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ReleaseInfoService } from 'src/app/services/release-info.service';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { Person } from 'src/app/shared/models';
@@ -41,7 +43,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     private router: Router,
     public dialog: MatDialog,
     public i18n: I18n,
-    public featureFlagService: FeatureFlagService
+    public featureFlagService: FeatureFlagService,
+    public badge: MatBadgeModule,
+    public releaseInfoService: ReleaseInfoService
   ) {}
 
   public ngOnInit() {
