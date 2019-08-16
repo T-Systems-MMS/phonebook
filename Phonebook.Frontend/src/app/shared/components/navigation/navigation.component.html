@@ -106,7 +106,7 @@
               </button>
             </div>
             <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null && hasImage">
-              {{ (getGreetingMessage() | async) + ' ' + currentUser.Firstname }}
+              {{ (getGreetingMessage() | async) + ' ' + currentUser.Firstname }}!
             </div>
             <div class="pb-missing-userimage-info pb-hide-below-big" *ngIf="currentUser != null && !hasImage">
               <button
