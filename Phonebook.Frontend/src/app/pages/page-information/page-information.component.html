@@ -13,91 +13,136 @@
       Features are still subject to change without further notice and your data may get lost.
     </mat-card-subtitle>
   </mat-card-header>
-
   <mat-card-content>
-    <h2 i18n="Page-informationComponent|Subtitle for Contact and Feedback@@PageInformationComponentSubTitleFeedback">
-      Contact & Feedback
-    </h2>
-    <mat-list i18n="Page-informationComponent|Feedback Section@@PageInformationComponentSectionFeedback">
-      <mat-list-item>
-        <p>
-          This is an Installation of the Open Source Phonebook.
-          <ng-container *ngIf="runtimeEnvironment.contactEmail != null">
-            You can contact your own support at
-            <a [href]="'mailto:' + runtimeEnvironment.contactEmail">{{ runtimeEnvironment.contactEmail }}</a>
-            regarding this installation.
-          </ng-container>
-        </p>
-      </mat-list-item>
-      <mat-list-item>
-        <p>
-          If you want to give Feedback or want to report a Bug or a Feature Request click below:
-        </p>
-      </mat-list-item>
-      <mat-list-item>
-        <a mat-button feedbackDrawer>Report a Bug or request a new Feature</a>
-      </mat-list-item>
-    </mat-list>
-    <h2 id="contribute">
-      <img alt="github" src="assets/img/GitHub-Mark-32px.png" />
-      <span i18n="Page-informationComponent|Subtitle for Contribute@@PageInformationComponentSubTitleContribute">
-        Contribute
-      </span>
-    </h2>
-    <mat-list i18n="Page-informationComponent|ContributeSection@@PageInformationComponentSectionContribute">
-      <mat-list-item>
-        You can contribute to this project at
-        <a mat-button target="_blank" rel="noopener" href="https://github.com/T-Systems-MMS/phonebook">GitHub</a>.
-      </mat-list-item>
-    </mat-list>
-    <h2>
-      <span i18n="Page-informationComponent|Subtitle for Cookies@@PageInformationComponentSubTitleCookies">
-        Cookies Notice
-      </span>
-    </h2>
-    <mat-list i18n="Page-informationComponent|CookiesSection@@PageInformationComponentSectionCookies">
-      <mat-list-item>
-        This site uses cokies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
-        language you want to use.
-      </mat-list-item>
-    </mat-list>
-
-    <h2 id="licenses">
-      <span i18n="Page-informationComponent|Subtitle for Licenses@@PageInformationComponentSubTitleLicenses">
-        Licenses
-      </span>
-    </h2>
-    <mat-list>
-      <mat-list-item>
-        <p i18n="Page-informationComponent|Text for Licenses SubTitle@@PageInformationComponentSubTitleLicensesText">
-          This Project is licensed under the
-          <a href="https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE">MIT License</a>. Other licenses from
-          modules and packets may apply.
-        </p>
-      </mat-list-item>
-
-      <mat-list-item>
-        <p i18n="Page-informationComponent|Attributions SubTitle@@PageInformationComponentSubTitleAttributions">
-          Icon of the Phonebook made by
-          <a
-            target="_blank"
-            rel="noopener"
-            href="https://www.flaticon.com/authors/gregor-cresnar"
-            title="Gregor Cresnar"
-            >Gregor Cresnar</a
+    <div class="pb-flex-row pb-card-container">
+      <!-- call for contributors -->
+      <mat-card class="pb-info-card pb-border-color-primary">
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">error_outline</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title>Call for Contributors!</mat-card-title>
+        <mat-card-content>
+          <span>
+            This is an Open Source Project and lives from his active contributors. There are many different topics where
+            you can work on. You can help with solving an
+            <a href="https://github.com/T-Systems-MMS/phonebook/issues" target="_blank">Issue</a>, work out an
+            User-Guide or document new
+            <a href="https://github.com/T-Systems-MMS/phonebook/issues/new/choose" target="_blank">Bugs</a>.
+          </span>
+          <span>
+            You can get i touch with us
+            <a href="https://github.com/T-Systems-MMS/phonebook/" target="_blank">im offiziellen Repo</a> or you take a
+            look at our <a href="https://t-systems-mms.github.io/phonebook/" target="_blank">Dokumentation</a>.
+            <div><b>To be a part of this community it is not required to have programming skills.</b></div>
+          </span>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="pb-info-card pb-border-color-primary">
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">people_outlined</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title>Our Contributors</mat-card-title>
+        <mat-card-content>
+          <div [innerHTML]="contributorsHTML"></div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="pb-flex-row pb-card-container">
+      <!-- contact and feedback -->
+      <mat-card class="pb-info-card pb-border-color-primary">
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">sentiment_satisfied_alt</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title
+          i18n="Page-informationComponent|Subtitle for Contact and Feedback@@PageInformationComponentSubTitleFeedback"
+        >
+          Contact & Feedback</mat-card-title
+        >
+        <mat-card-content>
+          <mat-list>
+            <span>
+              This is an Installation of the Open Source Phonebook.
+            </span>
+            <span *ngIf="runtimeEnvironment.contactEmail != null">
+              You can contact your own support at
+              <a [href]="'mailto:' + runtimeEnvironment.contactEmail">{{ runtimeEnvironment.contactEmail }}</a>
+              regarding this installation.
+            </span>
+            <span>
+              You've found a bug or have an idea for a new feature?
+            </span>
+          </mat-list>
+          <mat-list-item>
+            <a mat-stroked-button color="primary" feedbackDrawer
+              >Report a Bug or request a new Feature</a
+            ></mat-list-item
           >
-          from
-          <a target="_blank" rel="noopener" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
-          licensed by
-          <a
-            href="http://creativecommons.org/licenses/by/3.0/"
-            title="Creative Commons BY 3.0"
-            rel="noopener"
-            target="_blank"
-            >CC 3.0 BY</a
-          >
-        </p>
-      </mat-list-item>
-    </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <!-- cookies notice -->
+      <mat-card class="pb-info-card pb-border-color-primary">
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">info_outline</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title i18n="Page-informationComponent|Subtitle for Cookies@@PageInformationComponentSubTitleCookies">
+          Cookies Notice</mat-card-title
+        >
+        <mat-card-content>
+          <span i18n="todo">
+            This site uses cookies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving
+            the language you want to use.
+          </span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- licences -->
+    <div class="pb-flex-row pb-card-container">
+      <mat-card class="pb-info-card pb-border-color-primary">
+        <mat-card-header>
+          <mat-card-title><mat-icon [color]="'primary'">attachment_outlined</mat-icon></mat-card-title>
+        </mat-card-header>
+        <mat-card-title
+          i18n="Page-informationComponent|Subtitle for Licenses@@PageInformationComponentSubTitleLicenses"
+        >
+          Licenses</mat-card-title
+        >
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <p
+                i18n="Page-informationComponent|Text for Licenses SubTitle@@PageInformationComponentSubTitleLicensesText"
+              >
+                This Project is licensed under the
+                <a href="https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE">MIT License</a>. Other licenses
+                from modules and packets may apply.
+              </p>
+            </mat-list-item>
+
+            <mat-list-item>
+              <p i18n="Page-informationComponent|Attributions SubTitle@@PageInformationComponentSubTitleAttributions">
+                Icon of the Phonebook made by
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.flaticon.com/authors/gregor-cresnar"
+                  title="Gregor Cresnar"
+                  >Gregor Cresnar</a
+                >
+                from
+                <a target="_blank" rel="noopener" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                is licensed by
+                <a
+                  href="http://creativecommons.org/licenses/by/3.0/"
+                  title="Creative Commons BY 3.0"
+                  rel="noopener"
+                  target="_blank"
+                  >CC 3.0 BY</a
+                >
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </mat-card-content>
 </mat-card>

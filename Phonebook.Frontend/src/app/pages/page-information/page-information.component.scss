@@ -1,14 +1,39 @@
-mat-card-content {
-  margin: 0 16px;
+@import 'mixins';
+@import 'media-queries';
+@import '~@angular/material/theming';
 
-  h2 {
-    margin: 16px 0 0 0;
+.pb-card-container {
+  justify-content: center;
+}
+
+mat-card {
+  text-align: center;
+  margin: 0.5%;
+}
+
+.pb-info-card {
+  width: 45%;
+  border: 1px solid;
+
+  mat-card-header {
+    //place for the icon
+    justify-content: center;
+    mat-icon {
+      @include mat-icon-size(60px);
+    }
   }
 
-  #contribute {
+  mat-card-title {
+    line-height: 1;
+  }
+
+  mat-list-item {
+    //to also center the buttons
     display: flex;
-    span {
-      margin-left: 10px;
-    }
+    justify-content: center;
+  }
+
+  @include below-big {
+    width: 85%;
   }
 }
