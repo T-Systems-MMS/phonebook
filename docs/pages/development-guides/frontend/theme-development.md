@@ -26,7 +26,7 @@ If you need the files you can get them from [here](https://google-webfonts-helpe
 
 ## **Media Queries**
 
-Media Queries are defined in [media-queries.scss](../src/styles/media-queries.scss) as Mixins, they are also defined as classes. You can feel free to use either of them. There is no other framework for managing media queries.
+Media Queries are defined in [media-queries.scss](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/styles/media-queries.scss) as Mixins, they are also defined as classes. You can feel free to use either of them. There is no other framework for managing media queries.
 
 ## **Get the sample themes**
 
