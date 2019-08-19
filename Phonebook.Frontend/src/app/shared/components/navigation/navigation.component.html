@@ -163,14 +163,13 @@
                   <mat-icon>info_outline</mat-icon>
                   <span i18n="@@NavigationComponentInformation">Information</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="releaseInfoService.displayReleaseDialog()">
                   <mat-icon>new_releases</mat-icon>
                   <span
                     matBadge="!"
                     matBadgeColor="accent"
                     matBadgeSize="small"
                     [matBadgeHidden]="!releaseInfoService.newUpdate"
-                    (click)="releaseInfoService.displayReleaseDialog()"
                     i18n="@@NavigationComponentReleaseNotes"
                     >Release Notes</span
                   >
