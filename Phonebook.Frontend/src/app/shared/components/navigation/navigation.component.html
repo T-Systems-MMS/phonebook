@@ -53,14 +53,13 @@
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="sidenav.close(); releaseInfoService.displayReleaseDialog()">
             <mat-icon>new_releases</mat-icon>
             <span
               matBadge="!"
               matBadgeColor="accent"
               matBadgeSize="small"
               [matBadgeHidden]="!releaseInfoService.newUpdate"
-              (click)="sidenav.close(); releaseInfoService.displayReleaseDialog()"
               i18n="NavigationComponent|Release Notes Menu Item@@NavigationComponentReleaseNotes"
               >Release Notes</span
             >
