@@ -13,6 +13,11 @@ using Phonebook.Backend.PictureService.Configuration;
 using Phonebook.Backend.PictureService.Controllers;
 using Swashbuckle.AspNetCore.Swagger;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.Reflection;
 
 namespace Phonebook.Backend.PictureService
 {
@@ -38,10 +43,30 @@ namespace Phonebook.Backend.PictureService
         public void ConfigureServices(IServiceCollection services)
         {
             // Validation of the appsettings on Startup
+            services.AddSingleton<PictureServiceConfiguration>(AppSettings);
             services.UseConfigurationValidation();
             services.ConfigureValidatableSetting<PictureServiceConfiguration>(Configuration);
             services.ConfigureValidatableSetting<ContactInformation>(Configuration.GetSection("ContactInformation"));
             services.AddSingleton<PictureServiceConfiguration>(AppSettings);
+
+            // Add Api Versioning Logic
+            services.AddApiVersioning(o =>
+            {
+                o.ReportApiVersions = true;
+                o.AssumeDefaultVersionWhenUnspecified = true;
+                o.DefaultApiVersion = new ApiVersion(1, 0);
+
+            });
+
+            services.AddVersionedApiExplorer(options =>
+            {
+                // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
+                // note: the specified format code will format the version as "'v'major[.minor][-status]"
+                options.GroupNameFormat = "'v'VVV";
+                // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
+                // can also be used to control the format of the API version in route templates
+                options.SubstituteApiVersionInUrl = true;
+            });
 
             //Enable IIS Integration            
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
@@ -66,7 +91,7 @@ namespace Phonebook.Backend.PictureService
                 new ScheduledTaskOptions<PurgeTask>
                 {
                     // Once every day at startup -> May be exectuted multiple times a day depending on recycling
-                    Schedule = AppSettings.PurgeSchedule,
+                    Schedule = AppSettings.PurgeSchedule
                 }
             );
             services.AddScheduledTask<PurgeTask>();
@@ -74,25 +99,26 @@ namespace Phonebook.Backend.PictureService
 
 
             // Add Swagger 
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info
-                {
-                    Version = "v1",
-                    Title = "Picture Service API",
-                    Description = "API for management of Phonebook Pictures",
-                    TermsOfService = "None",
-                    Contact = new Swashbuckle.AspNetCore.Swagger.Contact() { Name = AppSettings.ContactInformation.Name, Email = AppSettings.ContactInformation.Email }
-                });
-                var basePath = AppContext.BaseDirectory;
-                var assemblyName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
-                var fileName = System.IO.Path.GetFileName(assemblyName + ".xml");
-                c.IncludeXmlComments(System.IO.Path.Combine(basePath, fileName));
+                // add a custom operation filter which sets default values
+                c.OperationFilter<SwaggerDefaultValues>();
+                
+                //c.SwaggerDoc("v1", new Info
+                //{
+                //    Version = "v1",
+                //    Title = "Picture Service API",
+                //    Description = "API for management of Phonebook Pictures",
+                //    TermsOfService = "None",
+                //    Contact = new Swashbuckle.AspNetCore.Swagger.Contact() { Name = AppSettings.ContactInformation.Name, Email = AppSettings.ContactInformation.Email }
+                //});
+                c.IncludeXmlComments(XmlCommentsFilePath);
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
         {
             // Should stay on Top
             app.UseCors(CorsPolicy);
@@ -121,7 +147,10 @@ namespace Phonebook.Backend.PictureService
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Picture Service API V1");
+                foreach (var description in provider.ApiVersionDescriptions)
+                {
+                    c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                }
             });
 
             // Image Processing Stuff
@@ -130,6 +159,16 @@ namespace Phonebook.Backend.PictureService
 
             app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+        static string XmlCommentsFilePath
+        {
+            get
+            {
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var fileName = typeof(Startup).GetTypeInfo().Assembly.GetName().Name + ".xml";
+                return Path.Combine(basePath, fileName);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using Phonebook.Backend.PictureService.Helpers;
+using Microsoft.Extensions.Logging;
 
 namespace Phonebook.Backend.PictureService.Controllers
 {
@@ -15,8 +16,17 @@ namespace Phonebook.Backend.PictureService.Controllers
     [Authorize]
     [EnableCors("AllowDomainList")]
     [Route("/")]
-    public class EmployeePictureController : Controller
+    [ApiVersion("2.0")]
+    [ApiVersion("1.0")]
+    [ApiController]
+    public class EmployeePictureController : ControllerBase
     {
+        private readonly ILogger<EmployeePictureController> logger;
+
+        public EmployeePictureController(ILogger<EmployeePictureController> logger)
+        {
+            this.logger = logger;
+        }
         /// <summary>
         /// Upload an employee picture.
         /// </summary>
@@ -87,19 +97,15 @@ namespace Phonebook.Backend.PictureService.Controllers
                 try
                 {
                     // Delete old File before writing the new one.
-                    try
-                    {
-                        HelpersThing.DeleteFilesForUser(id);
-                    }
-                    catch (Exception err)
-                    {
-
-                    }
+                    HelpersThing.DeleteFilesForUser(id);
 
                     var path = Path.Combine(
                                 Directory.GetCurrentDirectory(), "images",
                                 id + Path.GetExtension(file.FileName));
-
+                    if(!Directory.Exists(Path.GetDirectoryName(path)))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(path));
+                    }
                     using (var stream = new FileStream(path, FileMode.OpenOrCreate))
                     {
                         await file.CopyToAsync(stream);
@@ -108,6 +114,7 @@ namespace Phonebook.Backend.PictureService.Controllers
                 }
                 catch (Exception err)
                 {
+                    this.logger.LogError(err, err.Message);
                     return StatusCode(500, "Internal Server Error");
                 };
 
@@ -115,6 +122,7 @@ namespace Phonebook.Backend.PictureService.Controllers
             }
             else
             {
+                // TODO: that is wrong! Maybe we should send a a list of supported mime types.
                 return BadRequest("Content malformated. Server does only accept image/jpeg");
             }
             
@@ -142,6 +150,7 @@ namespace Phonebook.Backend.PictureService.Controllers
                 return StatusCode(HelpersThing.DeleteFilesForUser(id));
             }catch (Exception err)
             {
+                this.logger.LogError(err, err.Message);
                 return StatusCode(500, "Internal Server Error");
             }
         }

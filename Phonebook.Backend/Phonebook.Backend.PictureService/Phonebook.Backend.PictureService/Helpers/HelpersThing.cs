@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Phonebook.Backend.PictureService.Helpers
 {
-    public class HelpersThing
+    public static class HelpersThing
     {
         /// <exception cref="Exception">Why it's thrown.</exception>
         public static int DeleteFilesForUser(string id)
@@ -22,9 +22,9 @@ namespace Phonebook.Backend.PictureService.Helpers
             try
             {
                 // Delete the generated Images Folder
-                if (System.IO.Directory.Exists(generatedPath))
+                if (Directory.Exists(generatedPath))
                 {
-                    System.IO.Directory.Delete(generatedPath, true);
+                    Directory.Delete(generatedPath, true);
                 };
 
                 // Delete the uploaded file, ignoring the file ending
@@ -36,7 +36,7 @@ namespace Phonebook.Backend.PictureService.Helpers
 
                 foreach (string file in files)
                 {
-                    System.IO.File.Delete(file);
+                    File.Delete(file);
                 };
 
                 return 200;
