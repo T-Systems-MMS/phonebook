@@ -5,6 +5,10 @@
 			"path": "./Phonebook.Frontend"
 		},
 		{
+			"name": "Backend",
+			"path": "./Phonebook.Backend"
+		},
+		{
 			"name": "Source.PeopleSoft",
 			"path": "./Phonebook.Source.PeopleSoft"
 		},
@@ -31,7 +35,7 @@
 		{
 			"name": "Azure Pipelines",
 			"path": "./.azure/pipelines"
-		}
+		},
 		{
 			"name": "root",
 			"path": "."
@@ -66,7 +70,8 @@
 	},
 	"extensions": {
 		"recommendations": [
-			"esbenp.prettier-vscode"
+			"esbenp.prettier-vscode",
+			"streetsidesoftware.code-spell-checker"
 		]
 	}
 }
