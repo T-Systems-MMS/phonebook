@@ -377,6 +377,7 @@
         <source>
     Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them
     to the right.
+    <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Note: You can only search for visible columns.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>
   </source>
         <note priority="1" from="description">Description of how to configure the table Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
@@ -422,6 +423,10 @@
         <source>Got Feedback? Than that`s the right place to click.</source>
         <note priority="1" from="description">Info Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
+      </trans-unit><trans-unit id="NavigationComponentReleaseNotes" datatype="html">
+        <source>Release Notes</source>
+        <note priority="1" from="description">Release Notes Menu Item</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
         <source>Report a Bug</source>
         <note priority="1" from="description">Link to Bug page</note>
@@ -449,10 +454,6 @@
       </trans-unit><trans-unit id="MissingUserImageAriaLabel" datatype="html">
         <source>Button which greets and asks for picture uploading.</source>
         <note priority="1" from="description">Aria label for MissingUserImage</note>
-        <note priority="1" from="meaning">NavigationComponent</note>
-      </trans-unit><trans-unit id="NavigationComponentReleaseNotes" datatype="html">
-        <source>Release Notes</source>
-        <note priority="1" from="description">Release Notes Menu Item</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source>

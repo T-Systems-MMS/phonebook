@@ -801,6 +801,7 @@
         <source>
     Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them
     to the right.
+    <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Note: You can only search for visible columns.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/>
   </source><target state="translated">TEST</target>
         <note priority="1" from="description">Description of how to configure the table Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
