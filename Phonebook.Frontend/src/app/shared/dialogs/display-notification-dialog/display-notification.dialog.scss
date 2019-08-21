@@ -1,5 +1,9 @@
+@import 'mixins';
+@import 'media-queries';
+@import '~@angular/material/theming';
+
 h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 p {
@@ -10,6 +14,7 @@ p {
   height: 100%;
   display: flex;
   flex-direction: column;
+  text-align: center; //center whole text in dialog
 }
 
 .mat-dialog-content {
@@ -22,4 +27,39 @@ p {
 
 .actions {
   margin: 0 0 0 auto;
+}
+
+.pb-card-container {
+  justify-content: center;
+}
+
+mat-card {
+  flex: 1;
+  min-width: 25%;
+  margin: 1%;
+  border: 1px solid;
+
+  @include below-big {
+    min-width: 40%;
+  }
+  @include below-med {
+    min-width: 80%;
+  }
+
+  mat-card-header {
+    //place for the icon
+    justify-content: center;
+    mat-icon {
+      @include mat-icon-size(60px);
+    }
+  }
+
+  mat-card-title {
+    line-height: 1;
+  }
+}
+
+.pb-card-call {
+  flex: 1;
+  min-width: 80%;
 }

@@ -7,6 +7,8 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ReleaseInfoService } from 'src/app/services/release-info.service';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { Person } from 'src/app/shared/models';
@@ -33,6 +35,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   @Select(TableState.resultCount)
   public tableResultCount$: Observable<number>;
   public displayTableSettings: boolean = false;
+  public hasImage: boolean = false;
 
   public currentUser: Person | null = null;
   constructor(
@@ -40,7 +43,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
     private router: Router,
     public dialog: MatDialog,
     public i18n: I18n,
-    public featureFlagService: FeatureFlagService
+    public featureFlagService: FeatureFlagService,
+    public badge: MatBadgeModule,
+    public releaseInfoService: ReleaseInfoService
   ) {}
 
   public ngOnInit() {
@@ -57,6 +62,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
           this.currentUser = null;
         }
       );
+    this.currentUserService
+      .doesUserHasImage()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(hasImage => {
+        this.hasImage = hasImage;
+      });
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(route => {
       this.displayTableSettings = this.router.url.includes('search');
     });
