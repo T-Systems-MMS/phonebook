@@ -8,6 +8,7 @@ jobs:
     steps:
     - name: Merge pull requests
       uses: pascalgn/automerge-action@v0.2.4
-      with: 
+      env: 
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         MERGE_METHOD: "squash"
         LABELS: "!wip,!work in progress"
