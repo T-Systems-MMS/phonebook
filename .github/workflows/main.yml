@@ -4,6 +4,7 @@ on: [pull_request,pull_request_review,status]
 
 jobs:
   automerge:
+    runs-on: ubuntu-18.04
     steps:
     - name: Merge pull requests
       uses: pascalgn/automerge-action@v0.2.4
