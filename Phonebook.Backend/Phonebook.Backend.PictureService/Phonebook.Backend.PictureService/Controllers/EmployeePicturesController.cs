@@ -125,7 +125,8 @@ namespace Phonebook.Backend.PictureService.Controllers
             else
             {
                 // TODO: that is wrong! Maybe we should send a a list of supported mime types.
-                return BadRequest("Content malformated. Server does only accept image/jpeg");
+                var AcceptableContentTypes = String.Join(",", validContentTypes);
+                return BadRequest($"Content malformated. Server does only accept {AcceptableContentTypes}");
             }
         }
 
