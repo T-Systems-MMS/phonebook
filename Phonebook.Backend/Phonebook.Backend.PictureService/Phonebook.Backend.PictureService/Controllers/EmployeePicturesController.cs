@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
 using Phonebook.Backend.PictureService.Helpers;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Phonebook.Backend.PictureService.Controllers
 {
@@ -21,6 +23,42 @@ namespace Phonebook.Backend.PictureService.Controllers
     [ApiController]
     public class EmployeePictureController : ControllerBase
     {
+        private static readonly string[] validContentTypes = new string[]
+            {
+                // BMP
+                "image/bmp",
+                "image/x-ms-bmp",
+                "image/x-bmp",
+                // SVG
+                "image/svg+xml",
+                // WebP
+                "image/webp",
+                // GIF
+                "image/gif",
+                // JPEG 2000
+                "image/jp2",
+                "image/jpx",
+                "image/jpm",
+                // JPEG
+                "image/jpeg",
+                // PNG
+                "image/png",
+                // PSD
+                "image/vnd.adobe.photoshop",
+                "application/x-photoshop",
+                "application/photoshop",
+                "application/psd",
+                "image/psd",
+                // SGI
+                "image/sgi",
+                // TGA
+                "image/x-targa",
+                "image/x-tga",
+                // TIFF
+                "image/tiff",
+                "image/tiff-fx"
+            };
+
         private readonly ILogger<EmployeePictureController> logger;
 
         public EmployeePictureController(ILogger<EmployeePictureController> logger)
@@ -47,52 +85,16 @@ namespace Phonebook.Backend.PictureService.Controllers
         [RequestSizeLimit(2147483648)]
         public async Task<IActionResult> UploadPicture(string id, IFormFile file)
         {
-            if (file == null || file.Length == 0)
+            if(file == null || file.Length == 0)
             {
                 return BadRequest("No Payload.");
             }
             var user = HttpContext.User;
-            if (user.Identity.Name.Split("\\")[1] != id)
+            if(user.Identity.Name.Split("\\")[1] != id)
             {
                 return StatusCode(401, "User not authorized.");
             }
-            if (
-                // BMP
-                file.ContentType == "image/bmp" ||
-                file.ContentType == "image/x-ms-bmp" ||
-                file.ContentType == "image/x-bmp" ||
-                // SVG
-                file.ContentType == "image/svg+xml" ||
-                // WebP
-                file.ContentType == "image/webp" ||
-                // GIF
-                file.ContentType == "image/gif" ||
-                // JPEG 2000
-                file.ContentType == "image/jp2" ||
-                file.ContentType == "image/jpx" ||
-                file.ContentType == "image/jpm" ||
-                // JPEG
-                file.ContentType == "image/jpeg" ||
-                // PNG
-                file.ContentType == "image/png" ||
-                // PSD
-                file.ContentType == "image/vnd.adobe.photoshop" ||
-                file.ContentType == "application/x-photoshop" ||
-                file.ContentType == "application/photoshop" ||
-                file.ContentType == "application/psd" ||
-                file.ContentType == "image/psd" ||
-                // SGI
-                file.ContentType == "image/sgi" ||
-                // TGA
-                file.ContentType == "image/x-targa" ||
-                file.ContentType == "image/x-tga" ||
-                // TIFF
-                file.ContentType == "image/tiff" ||
-                file.ContentType == "image/tiff-fx"
-                //// Last Resort
-                //file.ContentType == "application/octet-stream"
-
-                )
+            if(IsAValidContentType(file.ContentType))
             {
                 try
                 {
@@ -106,13 +108,13 @@ namespace Phonebook.Backend.PictureService.Controllers
                     {
                         Directory.CreateDirectory(Path.GetDirectoryName(path));
                     }
-                    using (var stream = new FileStream(path, FileMode.OpenOrCreate))
+                    using(var stream = new FileStream(path, FileMode.OpenOrCreate))
                     {
                         await file.CopyToAsync(stream);
                     }
 
                 }
-                catch (Exception err)
+                catch(Exception err)
                 {
                     this.logger.LogError(err, err.Message);
                     return StatusCode(500, "Internal Server Error");
@@ -125,7 +127,6 @@ namespace Phonebook.Backend.PictureService.Controllers
                 // TODO: that is wrong! Maybe we should send a a list of supported mime types.
                 return BadRequest("Content malformated. Server does only accept image/jpeg");
             }
-            
         }
 
         /// <summary>
@@ -141,18 +142,23 @@ namespace Phonebook.Backend.PictureService.Controllers
         public IActionResult DeletePicture(string id)
         {
             var user = HttpContext.User;
-            if (user.Identity.Name.Split("\\")[1] != id)
+            if(user.Identity.Name.Split("\\")[1] != id)
             {
                 return StatusCode(401, "User not authorized.");
             }
             try
             {
                 return StatusCode(HelpersThing.DeleteFilesForUser(id));
-            }catch (Exception err)
+            }
+            catch(Exception err)
             {
                 this.logger.LogError(err, err.Message);
                 return StatusCode(500, "Internal Server Error");
             }
+        }
+        private bool IsAValidContentType(string ContentType)
+        {
+            return validContentTypes.Any(d => d == ContentType);
         }
     }
 }
