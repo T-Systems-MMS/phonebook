@@ -17,4 +17,4 @@ View the types of contributions here: https://allcontributors.org/docs/en/emoji-
 
 @all-contributors please add **@username** for **contributions**
 
-<!-- The Bot will open a new PR for you. This PR will need to check by another contributor and can be merged after that. -->
+<!-- The Bot will open a new PR for you. This PR will need to be checked by another contributor and can be merged after that. -->
