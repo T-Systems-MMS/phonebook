@@ -20,57 +20,100 @@ namespace Phonebook.Source.PeopleSoft.Models
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:DefaultSchema", "PHONEBOOK2");
+
+            // TODO: Yes I know all this "Tables" are views. But this is the solution for the ef core provider for oracle to join over views.
+
+            //Location
             modelBuilder
-                .Query<Location>()
-                .ToView("V_STANDORT");
+                .Entity<Location>()
+                .ToTable("V_STANDORT")
+                    .HasMany<Building>(l => l.Buildings)
+                    .WithOne(b => b.Location);
+
+            // Building
             modelBuilder
-                .Query<Building>()
-                .ToView("V_GEBAEUDE");
-            // This isn't working currently...
-            //.HasOne(b => b.Location)
-            //.WithMany(l => l.Buildings)
-            //.HasForeignKey(d => d.LocationId);
+                .Entity<Building>()
+                .ToTable("V_GEBAEUDE")
+                    .HasOne(b => b.Location)
+                        .WithMany(l => l.Buildings)
+                        .HasForeignKey(d => d.LocationId);
             modelBuilder
-                .Query<Floor>()
-                .ToView("V_ETAGE");
-                    //.HasOne<Building>()
-                    //.WithMany()
-                    //.HasForeignKey(d => d.BuildingId);
+                .Entity<Building>()
+                .ToTable("V_GEBAEUDE")
+                    .HasMany(b => b.Floors)
+                        .WithOne(f => f.Building);
             modelBuilder
-                .Query<BuildingPart>()
-                .ToView("V_GEBAEUDETEIL");
-                    //.HasOne<Building>()
-                    //.WithMany()
-                    //.HasForeignKey(d => d.BuildingId);
+                .Entity<Building>()
+                .ToTable("V_GEBAEUDE")
+                    .HasMany(b => b.BuildingParts)
+                        .WithOne(p => p.Building);
+            // Floor
             modelBuilder
-                .Query<Room>()
-                .ToView("V_RAUM");
-                    //.HasOne<BuildingPart>()
-                    //.WithMany()
-                    //.HasForeignKey(d => d.BuildingPartId);
+                .Entity<Floor>()
+                .ToTable("V_ETAGE")
+                    .HasOne<Building>(f => f.Building)
+                        .WithMany(b => b.Floors)
+                        .HasForeignKey(f => f.BuildingId);
+
+            // BuildingPart
             modelBuilder
-                .Query<OrgUnit>()
-                .ToView("V_ORGEINHEIT");
-                    //.HasOne<OrgUnit>()
-                    //.WithMany()
-                    //.HasForeignKey(d => d.ParentId);
+                .Entity<BuildingPart>()
+                .ToTable("V_GEBAEUDETEIL")
+                    .HasOne<Building>(p => p.Building)
+                        .WithMany(b => b.BuildingParts)
+                        .HasForeignKey(p => p.BuildingId);
             modelBuilder
-                .Query<Person>()
-                .ToView("V_PERSON");
-                    //.HasOne<OrgUnit>()
-                    //    .WithMany()
-                    //    .HasForeignKey(d => d.OrgUnitId)
-                    //.HasOne<Room>()
-                    //    .WithMany()
-                    //    .HasForeignKey(d => d.RoomId);
+                .Entity<BuildingPart>()
+                .ToTable("V_GEBAEUDETEIL")
+                    .HasMany<Room>()
+                        .WithOne(r => r.BuildingPart);
+            // Room
+            modelBuilder
+                .Entity<Room>()
+                .ToTable("V_RAUM")
+                    .HasOne<BuildingPart>(r => r.BuildingPart)
+                        .WithMany(p => p.Rooms)
+                        .HasForeignKey(p => p.BuildingPartId);
+            modelBuilder
+                .Entity<Room>()
+                .ToTable("V_RAUM")
+                    .HasMany<Person>(r => r.Members)
+                        .WithOne(p => p.Room);
+
+            // OrgUnit
+            modelBuilder
+                .Entity<OrgUnit>()
+                .ToTable("V_ORGEINHEIT")
+                    .HasOne<OrgUnit>(p => p.Parent)
+                        .WithMany()
+                        .HasForeignKey(d => d.ParentId);
+            modelBuilder
+                .Entity<OrgUnit>()
+                .ToTable("V_ORGEINHEIT")
+                    .HasMany<Person>(o => o.Members)
+                        .WithOne(p => p.OrgUnit);
+
+            // Persons
+            modelBuilder
+                .Entity<Person>()
+                .ToTable("V_PERSON")
+                    .HasOne<OrgUnit>(p => p.OrgUnit)
+                        .WithMany(o => o.Members)
+                        .HasForeignKey(p => p.OrgUnitId);
+            modelBuilder
+                .Entity<Person>()
+                .ToTable("V_PERSON")
+                    .HasOne<Room>(p => p.Room)
+                        .WithMany(r => r.Members)
+                        .HasForeignKey(p => p.RoomId);
         }
 
-        public DbQuery<Location> Locations { get; set; }
-        public DbQuery<Building> Buildings { get; set; }
-        public DbQuery<Floor> Floors { get; set; }
-        public DbQuery<BuildingPart> BuildingParts { get; set; }
-        public DbQuery<Room> Rooms { get; set; }
-        public DbQuery<OrgUnit> OrgUnits { get; set; }
-        public DbQuery<Person> Peoples { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Building> Buildings { get; set; }
+        public DbSet<Floor> Floors { get; set; }
+        public DbSet<BuildingPart> BuildingParts { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<OrgUnit> OrgUnits { get; set; }
+        public DbSet<Person> Peoples { get; set; }
     }
 }

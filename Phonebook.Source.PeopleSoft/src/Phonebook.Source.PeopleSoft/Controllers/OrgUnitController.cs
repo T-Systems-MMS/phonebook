@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Phonebook.Source.PeopleSoft.Models;
 
 namespace Phonebook.Source.PeopleSoft.Controllers
@@ -22,7 +23,13 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet]
         public IEnumerable<OrgUnit> Get()
         {
-            return Context.OrgUnits;
+            return Context
+                .OrgUnits
+                // Distinct groups because our data source is currently not so good.
+                .GroupBy(d => d.CostCenter)    
+                .AsNoTracking()
+                .AsEnumerable()
+                .Select(d => d.First());
         }
 
         // GET: api/OrgUnit/5

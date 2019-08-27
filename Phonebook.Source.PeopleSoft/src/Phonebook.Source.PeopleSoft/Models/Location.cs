@@ -15,8 +15,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name: "NAME")]
         public string Name { get; set; }
         [Column(name: "KURZBEZEICHNUNG")]
-        public string ShortName { get; set; }
-        // Currently not working
-        // public IEnumerable<Building> Buildings { get; set; }
+        public string ShortName { get; set; }        
+        public virtual IEnumerable<Building> Buildings { get; set; }
     }
 }

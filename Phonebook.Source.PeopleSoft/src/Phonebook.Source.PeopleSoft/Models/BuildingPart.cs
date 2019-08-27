@@ -14,9 +14,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         public string Description { get; set; }
         [Column(name: "G_ID")]
         public int BuildingId { get; set; }
-        // Currently not working
-        // public Building Building { get; set; }
-        // Currently not working
-        // public IEnumerable<Room> Rooms { get; set; }
+        public virtual Building Building { get; set; }        
+        public virtual IEnumerable<Room> Rooms { get; set; }
     }
 }

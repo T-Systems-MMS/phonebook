@@ -15,12 +15,10 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name: "KURZBEZEICHNUNG")]
         public string ShortName { get; set; }
         [Column(name:"VATER")]
-        public int ParentId { get; set; }
-        // Currently not working
-        // public OrgUnit Parent { get; set; }
+        public int ParentId { get; set; }        
+        public virtual OrgUnit Parent { get; set; }
         [Column(name:"KST")]
-        public string CostCenter { get; set; }
-        // Currently not working
-        // public IEnumerable<Person> Members { get; set; }
+        public string CostCenter { get; set; }        
+        public virtual IEnumerable<Person> Members { get; set; }
     }
 }

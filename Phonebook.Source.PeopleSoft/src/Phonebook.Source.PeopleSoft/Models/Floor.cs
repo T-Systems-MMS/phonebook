@@ -13,8 +13,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name: "BESCHREIBUNG")]
         public string Describtion { get; set; }
         [Column(name: "G_ID")]
-        public int BuildingId { get; set; }
-        // Currently not working
-        // public Building Building { get; set; }
+        public int BuildingId { get; set; }        
+        public virtual Building Building { get; set; }
     }
 }

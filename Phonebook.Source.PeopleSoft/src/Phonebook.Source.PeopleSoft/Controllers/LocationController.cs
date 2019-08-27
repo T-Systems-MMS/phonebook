@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Phonebook.Source.PeopleSoft.Models;
 
 namespace Phonebook.Source.PeopleSoft.Controllers
@@ -21,7 +22,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet]
         public IEnumerable<Location> Get()
         {
-            return Context.Locations;
+            return Context.Locations.Include(d => d.Buildings).AsNoTracking();
         }
 
         // GET: api/Location/5

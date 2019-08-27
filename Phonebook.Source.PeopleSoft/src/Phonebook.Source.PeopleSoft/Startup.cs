@@ -22,9 +22,16 @@ namespace Phonebook.Source.PeopleSoft
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                // TODO: remove this after the following issue is solved: https://github.com/dotnet/corefx/issues/38579
+                .AddNewtonsoftJson(d =>
+                {
+                    // we have self referenzing models, so we must ignor them in the json serialisation.
+                    d.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
             services.AddDbContext<ModelContext>(options =>
-                options.UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction => oracleOptionsAction.UseRelationalNulls(false)));            
+                options
+                    .UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction => oracleOptionsAction.UseRelationalNulls(false)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,9 +52,9 @@ namespace Phonebook.Source.PeopleSoft
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+             {
+                 endpoints.MapControllers();
+             });
         }
     }
 }

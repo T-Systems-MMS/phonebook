@@ -32,17 +32,14 @@ namespace Phonebook.Source.PeopleSoft.Models
         // Currently not working
         // public Status Status { get; set; }
         [Column(name: "ORG_ID")]
-        public int OrgUnitId { get; set; }
-        // Currently not working
-        // public OrgUnit OrgUnit { get; set; }
+        public int OrgUnitId { get; set; }        
+        public virtual OrgUnit OrgUnit { get; set; }
         [Column(name: "F_ID")]
         public int? FunctionId { get; set; }
         // TODO: missing view in database!
         // Currently not working
-        // public Function Function { get; set; }
         [Column(name: "RAUM_ID")]
-        public int? RoomId { get; set; }
-        // Currently not working
-        // public Room Room { get; set; }
+        public int? RoomId { get; set; }        
+        public virtual Room Room { get; set; }
     }
 }
