@@ -8,6 +8,6 @@ jobs:
      - name: Check for Licenses
        uses: docker://cdssnc/node-license-checker-github-action
        args: 
-        - --direct 
-        - --onlyAllow 'MIT'
+        --direct 
+        --onlyAllow 'MIT'
  
