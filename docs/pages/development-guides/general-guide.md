@@ -36,7 +36,7 @@ This is the current project structure.
 ![npm run commit image]({{site.baseurl}}pages/development-guides/media/images/git-cz.png)
 4. Create a Pull Request from your Branch.
 5. Wait for approval from one of the maintainers.
-6. **Extra:** If you're not listed for the type of contribution you can add yourself as a contributor with the [@all-contributors-Bot](https://allcontributors.org/docs/en/overview) by writing `@all-contributors please add @username for` [specification](https://allcontributors.org/docs/en/emoji-key) in your PR.
+6. **Extra:** If you're not listed for the type of contribution you can add yourself as a contributor with the [@all-contributors-Bot](https://allcontributors.org/docs/en/overview) by writing `@all-contributors please add @username for` [specification](https://allcontributors.org/docs/en/emoji-key) in your PR as a comment.
 
 > If you need a tutorial about important git commands look [here](https://dev.to/dhruv/essential-git-commands-every-developer-should-know-2fl).
 
