@@ -4,9 +4,8 @@ on: [pull_request,push]
 
 jobs:
   check-licenses:
-    runs-on: ubuntu-18.04
      steps:
      - name: Check for Licenses
-       uses: docker://cdssnc/node-license-checker-github-action
      - args: --direct --onlyAllow 'MIT'
+       uses: docker://cdssnc/node-license-checker-github-action
  
