@@ -1,4 +1,4 @@
-<mat-card class="pb-margin-20">
+<mat-card class="pb-margin-20 border-none">
   <mat-card-header>
     <mat-card-title>
       <h1 i18n="PageInformationComponent|Title of the page information page@@PageInformationComponentTitle">
@@ -13,10 +13,10 @@
       Features are still subject to change without further notice and your data may get lost.
     </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <div class="pb-flex-row pb-card-container">
+  <mat-card-content class="pb-margin-left-right">
+    <div class="pb-flex pb-card-container">
       <!-- call for contributors -->
-      <mat-card class="pb-info-card pb-border-color-primary">
+      <mat-card class="pb-w-100 pb-border-color-primary">
         <mat-card-header>
           <mat-card-title><mat-icon [color]="'primary'">error_outline</mat-icon></mat-card-title>
         </mat-card-header>
@@ -30,14 +30,19 @@
             <a href="https://github.com/T-Systems-MMS/phonebook/issues/new/choose" target="_blank">Bugs</a>.
           </span>
           <span>
-            You can get i touch with us
+            You can get in touch with us
             <a href="https://github.com/T-Systems-MMS/phonebook/" target="_blank">im offiziellen Repo</a> or you take a
             look at our <a href="https://t-systems-mms.github.io/phonebook/" target="_blank">Dokumentation</a>.
             <div><b>To be a part of this community it is not required to have programming skills.</b></div>
           </span>
+          <div class="pb-margin-top-20">
+            <h2>Thanks to our Contributors!</h2>
+            <div [innerHTML]="contributorsHTML"></div>
+          </div>
         </mat-card-content>
       </mat-card>
-      <mat-card class="pb-info-card pb-border-color-primary">
+      <!-- Our Contributors -->
+      <!-- <mat-card class="pb-small-card pb-border-color-primary">
         <mat-card-header>
           <mat-card-title><mat-icon [color]="'primary'">people_outlined</mat-icon></mat-card-title>
         </mat-card-header>
@@ -45,11 +50,11 @@
         <mat-card-content>
           <div [innerHTML]="contributorsHTML"></div>
         </mat-card-content>
-      </mat-card>
+      </mat-card> -->
     </div>
-    <div class="pb-flex-row pb-card-container">
+    <div class="pb-flex pb-card-container">
       <!-- contact and feedback -->
-      <mat-card class="pb-info-card pb-border-color-primary">
+      <mat-card class="small-card pb-border-color-primary">
         <mat-card-header>
           <mat-card-title><mat-icon [color]="'primary'">sentiment_satisfied_alt</mat-icon></mat-card-title>
         </mat-card-header>
@@ -59,28 +64,24 @@
           Contact & Feedback</mat-card-title
         >
         <mat-card-content>
-          <mat-list>
-            <span>
-              This is an Installation of the Open Source Phonebook.
-            </span>
-            <span *ngIf="runtimeEnvironment.contactEmail != null">
-              You can contact your own support at
-              <a [href]="'mailto:' + runtimeEnvironment.contactEmail">{{ runtimeEnvironment.contactEmail }}</a>
-              regarding this installation.
-            </span>
-            <span>
-              You've found a bug or have an idea for a new feature?
-            </span>
-          </mat-list>
-          <mat-list-item>
-            <a mat-stroked-button color="primary" feedbackDrawer
-              >Report a Bug or request a new Feature</a
-            ></mat-list-item
-          >
+          <span>
+            This is an Installation of the Open Source Phonebook.
+          </span>
+          <span *ngIf="runtimeEnvironment.contactEmail != null">
+            You can contact your own support at
+            <a [href]="'mailto:' + runtimeEnvironment.contactEmail">{{ runtimeEnvironment.contactEmail }}</a>
+            regarding this installation.
+          </span>
+          <span>
+            You've found a bug or have an idea for a new feature?
+          </span>
+          <span class="pb-center-element">
+            <a mat-stroked-button color="primary" feedbackDrawer>Report a Bug or request a new Feature</a>
+          </span>
         </mat-card-content>
       </mat-card>
       <!-- cookies notice -->
-      <mat-card class="pb-info-card pb-border-color-primary">
+      <mat-card class="small-card pb-border-color-primary">
         <mat-card-header>
           <mat-card-title><mat-icon [color]="'primary'">info_outline</mat-icon></mat-card-title>
         </mat-card-header>
@@ -96,8 +97,8 @@
       </mat-card>
     </div>
     <!-- licences -->
-    <div class="pb-flex-row pb-card-container">
-      <mat-card class="pb-info-card pb-border-color-primary">
+    <div class="pb-flex pb-card-container">
+      <mat-card class="pb-w-100 pb-border-color-primary">
         <mat-card-header>
           <mat-card-title><mat-icon [color]="'primary'">attachment_outlined</mat-icon></mat-card-title>
         </mat-card-header>

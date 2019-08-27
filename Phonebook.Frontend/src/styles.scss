@@ -126,6 +126,11 @@ app-root {
   align-items: center;
 }
 
+.pb-center-element {
+  display: flex;
+  justify-content: center;
+}
+
 .pb-text-overflow {
   text-overflow: ellipsis;
   overflow: hidden;

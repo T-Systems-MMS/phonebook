@@ -9,10 +9,6 @@
 mat-card {
   text-align: center;
   margin: 0.5%;
-}
-
-.pb-info-card {
-  width: 45%;
   border: 1px solid;
 
   mat-card-header {
@@ -26,14 +22,22 @@ mat-card {
   mat-card-title {
     line-height: 1;
   }
+}
 
-  mat-list-item {
-    //to also center the buttons
-    display: flex;
-    justify-content: center;
-  }
+.border-none {
+  border: none;
+}
+
+.pb-margin-left-right {
+  margin: 0 15%;
 
   @include below-big {
-    width: 85%;
+    margin: 0 10%;
+  }
+  @include below-med {
+    margin: 0 5%;
+  }
+  @include below-small {
+    margin: 0 1%;
   }
 }
