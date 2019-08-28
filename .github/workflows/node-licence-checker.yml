@@ -1,6 +1,7 @@
+# https://github.com/cds-snc/github-actions/tree/master/node-license-checker
 name: Check for Licences
 
-on: [pull_request,push]
+on: [push]
 
 jobs:
   check-licenses:
