@@ -52,7 +52,7 @@ namespace Phonebook.Backend.PictureService
                 Description = "API for management of Phonebook Pictures",
                 Contact = new Contact() { Name = configuration.ContactInformation.Name, Email = configuration.ContactInformation.Email },
                 TermsOfService = "None",
-                License = new License() { Name = "MIT", Url = "https://opensource.org/licenses/MIT" }
+                License = new License() { Name = "MIT", Url = "https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE" }
             };
 
             if (description.IsDeprecated)

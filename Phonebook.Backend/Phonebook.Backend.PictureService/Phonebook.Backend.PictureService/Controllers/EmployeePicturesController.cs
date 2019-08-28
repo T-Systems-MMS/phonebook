@@ -25,6 +25,10 @@ namespace Phonebook.Backend.PictureService.Controllers
     {
         private static readonly string[] validContentTypes = new string[]
             {
+                // JPEG
+                "image/jpeg",
+                // PNG
+                "image/png",
                 // BMP
                 "image/bmp",
                 "image/x-ms-bmp",
@@ -38,11 +42,7 @@ namespace Phonebook.Backend.PictureService.Controllers
                 // JPEG 2000
                 "image/jp2",
                 "image/jpx",
-                "image/jpm",
-                // JPEG
-                "image/jpeg",
-                // PNG
-                "image/png",
+                "image/jpm",                    
                 // PSD
                 "image/vnd.adobe.photoshop",
                 "application/x-photoshop",

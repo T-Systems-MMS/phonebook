@@ -105,14 +105,7 @@ namespace Phonebook.Backend.PictureService
                 // add a custom operation filter which sets default values
                 c.OperationFilter<SwaggerDefaultValues>();
                 
-                //c.SwaggerDoc("v1", new Info
-                //{
-                //    Version = "v1",
-                //    Title = "Picture Service API",
-                //    Description = "API for management of Phonebook Pictures",
-                //    TermsOfService = "None",
-                //    Contact = new Swashbuckle.AspNetCore.Swagger.Contact() { Name = AppSettings.ContactInformation.Name, Email = AppSettings.ContactInformation.Email }
-                //});
+
                 c.IncludeXmlComments(XmlCommentsFilePath);
             });
         }
