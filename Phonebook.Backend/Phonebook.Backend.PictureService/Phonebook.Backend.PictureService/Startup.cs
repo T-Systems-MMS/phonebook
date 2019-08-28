@@ -89,8 +89,7 @@ namespace Phonebook.Backend.PictureService
             // Scheduled Tasks
             services.AddSingleton<IScheduledTaskOptions<PurgeTask>>(
                 new ScheduledTaskOptions<PurgeTask>
-                {
-                    // Once every day at startup -> May be exectuted multiple times a day depending on recycling
+                {                    
                     Schedule = AppSettings.PurgeSchedule
                 }
             );
