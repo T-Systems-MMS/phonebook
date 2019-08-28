@@ -258,6 +258,22 @@
         <target state="translated">Phonebook</target>
         <note priority="1" from="description">Application Name</note>
         <note priority="1" from="meaning">NavigationBar</note>
+      </trans-unit><trans-unit id="MissingUserImageGreeting" datatype="html">
+        <source>Hey</source><target state="translated">Hallo</target>
+        <note priority="1" from="description">Greeting</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
+      </trans-unit><trans-unit id="MissingUserImageMessage" datatype="html">
+        <source>you haven't uploaded a picture yet. Want to upload one?</source><target state="translated">du hast noch kein Bild. Möchtest du eins hochladen?</target>
+        <note priority="1" from="description">Message</note>
+        <note priority="1" from="meaning">MissingUserImageMessage</note>
+      </trans-unit><trans-unit id="MissingUserImageTooltip" datatype="html">
+        <source>If you upload a picture it will be easier for your colleagues to find and contact you!</source><target state="translated">Wenn du ein Bild hochlädst wird es für deine Kollegen einfacher sein dich zu finden und zu kontaktieren.</target>
+        <note priority="1" from="description">Tooltip for MissingUserImage</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
+      </trans-unit><trans-unit id="MissingUserImageAriaLabel" datatype="html">
+        <source>Button which greets and asks for picture uploading.</source><target state="translated">Button der grüßt und nach einem Bildupload fragt.</target>
+        <note priority="1" from="description">Aria label for MissingUserImage</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="NavigationComponentReleaseNotes" datatype="html">
         <source>Release Notes</source><target state="translated">Release Notes</target>
         <note priority="1" from="description">Release Notes Menu Item</note>

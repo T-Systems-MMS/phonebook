@@ -35,6 +35,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   @Select(TableState.resultCount)
   public tableResultCount$: Observable<number>;
   public displayTableSettings: boolean = false;
+  public hasImage: boolean = false;
 
   public currentUser: Person | null = null;
   constructor(
@@ -61,6 +62,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
           this.currentUser = null;
         }
       );
+    this.currentUserService
+      .doesUserHasImage()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(hasImage => {
+        this.hasImage = hasImage;
+      });
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(route => {
       this.displayTableSettings = this.router.url.includes('search');
     });

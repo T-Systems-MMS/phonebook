@@ -16,15 +16,15 @@ spec:
         'beta.kubernetes.io/os': linux
       containers:
         - name: phonebook-assets
-          image: tsystemsmms/phonebook-build:assets-210
+          image: tsystemsmms/phonebook-build:assets
           imagePullPolicy: 'Always'
-          resources:
-            requests:
-              cpu: 100m
-              memory: 128Mi
-            limits:
-              cpu: 250m
-              memory: 256Mi
+          # resources:
+          #   requests:
+          #     cpu: 100m
+          #     memory: 128Mi
+          #   limits:
+          #     cpu: 250m
+          #     memory: 256Mi
           ports:
             - containerPort: 80
 ---
