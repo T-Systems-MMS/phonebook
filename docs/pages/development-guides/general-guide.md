@@ -42,7 +42,7 @@ This is the current project structure.
 
 ---
 
-We have splitted the development documentation in two different parts.
+We split the development documentation in two different parts.
 
 **What do you want to start with?**
 
