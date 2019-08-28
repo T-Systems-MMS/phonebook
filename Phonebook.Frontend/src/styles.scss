@@ -142,6 +142,25 @@ app-root {
   min-height: 100%;
 }
 
+.pb-justify-center {
+  justify-content: center;
+}
+
+//Responsible center element
+.pb-margin-left-right {
+  margin: auto 15%;
+
+  @include below-big {
+    margin: auto 10%;
+  }
+  @include below-med {
+    margin: auto 5%;
+  }
+  @include below-small {
+    margin: auto 1%;
+  }
+}
+
 //Media query classes
 @include on-med-and-up {
   .pb-hide-on-med-and-up {

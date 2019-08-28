@@ -22,7 +22,7 @@ export class PageInformationComponent implements OnInit {
   public loadContributors(): void {
     const text = 'Contributors could not be loaded.';
     this.httpClient
-      .get('https://raw.githubusercontent.com/mschwrdtnr/phonebook/master/docs/CONTRIBUTORS.md', {
+      .get('https://raw.githubusercontent.com/T-Systems-MMS/phonebook/master/docs/CONTRIBUTORS.md', {
         responseType: 'text'
       })
       .subscribe(

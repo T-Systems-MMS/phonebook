@@ -2,14 +2,14 @@
 @import 'media-queries';
 @import '~@angular/material/theming';
 
-.pb-card-container {
-  justify-content: center;
+//center all text
+* {
+  text-align: center;
 }
 
 mat-card {
-  text-align: center;
   margin: 0.5%;
-  border: 1px solid;
+  border: 1.5px solid;
 
   mat-card-header {
     //place for the icon
@@ -24,20 +24,6 @@ mat-card {
   }
 }
 
-.border-none {
-  border: none;
-}
-
-.pb-margin-left-right {
-  margin: 0 15%;
-
-  @include below-big {
-    margin: 0 10%;
-  }
-  @include below-med {
-    margin: 0 5%;
-  }
-  @include below-small {
-    margin: 0 1%;
-  }
+.small-card {
+  width: 50%;
 }
