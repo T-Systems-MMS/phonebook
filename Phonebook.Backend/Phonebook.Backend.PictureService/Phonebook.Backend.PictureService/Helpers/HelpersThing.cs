@@ -25,7 +25,7 @@ namespace Phonebook.Backend.PictureService.Helpers
                 if (Directory.Exists(generatedPath))
                 {
                     Directory.Delete(generatedPath, true);
-                };
+                };  
 
                 // Delete the uploaded file, ignoring the file ending
                 IEnumerable<string> files = Directory.EnumerateFiles(uploadPath, id + ".*");
