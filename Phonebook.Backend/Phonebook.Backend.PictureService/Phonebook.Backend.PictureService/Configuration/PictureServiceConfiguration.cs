@@ -16,7 +16,6 @@ namespace Phonebook.Backend.PictureService.Configuration
 
         /// <summary>
         /// The Schedule in which Pictures will get deleted if no user could be found. 
-        /// Once every day at startup -> May be exectuted multiple times a day depending on recycling
         /// </summary>
         /// <value>Default: Once every day at startup -> May be executed multiple times a day depending on recycling</value>
         public string PurgeSchedule { get; set; } = "0 0 * * *";
