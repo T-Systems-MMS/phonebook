@@ -21,20 +21,3 @@ $config: mat-typography-config();
   position: relative;
   height: inherit;
 }
-
-//style for the contributors table
-table {
-  display: flex;
-  flex-flow: column wrap;
-}
-tr {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-td {
-  width: 110px;
-  a[title] {
-    display: none;
-  }
-}

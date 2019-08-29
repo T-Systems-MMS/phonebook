@@ -2,17 +2,17 @@
 @import 'media-queries';
 @import '~@angular/material/theming';
 
-//center all text
-* {
+.header {
   text-align: center;
 }
 
 mat-card {
+  text-align: center;
   margin: 0.5%;
   border: 1.5px solid;
 
   mat-card-header {
-    //place for the icon
+    //place of the icon
     justify-content: center;
     mat-icon {
       @include mat-icon-size(60px);
@@ -26,4 +26,21 @@ mat-card {
 
 .small-card {
   width: 50%;
+}
+
+//style for the contributors table
+:host ::ng-deep table {
+  display: flex;
+  flex-flow: column wrap;
+}
+:host ::ng-deep tr {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+:host ::ng-deep td {
+  width: 110px;
+  a[title] {
+    display: none;
+  }
 }

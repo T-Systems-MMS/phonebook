@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Environment, RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { HttpClient } from '@angular/common/http';
@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-page-information',
   templateUrl: './page-information.component.html',
-  styleUrls: ['./page-information.component.scss']
+  styleUrls: ['./page-information.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class PageInformationComponent implements OnInit {
   public isPreview: boolean = true;
