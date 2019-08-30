@@ -146,8 +146,7 @@ app-root {
   justify-content: center;
 }
 
-//responsively center an element
-.pb-margin-left-right {
+.pb-margin-left-right-resposive {
   margin: auto 15%;
 
   @include below-big {

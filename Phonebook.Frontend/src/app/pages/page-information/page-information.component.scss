@@ -12,7 +12,6 @@ mat-card {
   border: 1.5px solid;
 
   mat-card-header {
-    //place of the icon
     justify-content: center;
     mat-icon {
       @include mat-icon-size(60px);
@@ -29,18 +28,20 @@ mat-card {
 }
 
 //style for the contributors table
-:host ::ng-deep table {
-  display: flex;
-  flex-flow: column wrap;
-}
-:host ::ng-deep tr {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-:host ::ng-deep td {
-  width: 110px;
-  a[title] {
-    display: none;
+.contributors-table {
+  ::ng-deep table {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  ::ng-deep tr {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  ::ng-deep td {
+    width: 110px;
+    a[title] {
+      display: none;
+    }
   }
 }
