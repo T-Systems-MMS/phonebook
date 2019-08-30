@@ -40,6 +40,8 @@ This is the current project structure.
 
 > If you need a tutorial about important git commands look [here](https://dev.to/dhruv/essential-git-commands-every-developer-should-know-2fl).
 
+> If you want to see the CI status of your PR you can take a look at [our Azure DevOps Page](https://dev.azure.com/T-Systems-MMS/phonebook/_build). There are all running builds. To take a look at the current release you can [view this page](https://dev.azure.com/T-Systems-MMS/phonebook/_release) (this are only docker hub releases).
+
 ---
 
 We split the development documentation in two different parts.
