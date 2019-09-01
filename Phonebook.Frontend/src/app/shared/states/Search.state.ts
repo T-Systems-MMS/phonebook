@@ -80,7 +80,7 @@ export class SearchState {
           const col = ColumnDefinitions.getColumnById(key);
           if (col != null) {
             searchFilter.push({
-              filterColumn: col,
+              filterColumn: col.id,
               filterValue: pathSegment.queryParamMap.get(key) || ''
             });
           }
@@ -107,13 +107,11 @@ export class SearchState {
   @Selector()
   public static searchFilters(state: SearchStateModel): SearchFilter[] {
     return state.searchFilters.map(filter => {
-      const tmp = ColumnDefinitions.getAll().find(c => {
-        return c.id === filter.filterColumn.id;
-      });
+      const tmp = ColumnDefinitions.getColumnById(filter.filterColumn);
       if (tmp == null) {
         throw Error('Filter Column not found.');
       }
-      filter.filterColumn = tmp;
+      filter.filterColumn = tmp.id;
       return filter;
     });
   }
@@ -121,7 +119,7 @@ export class SearchState {
   @Action(AddSearchFilter)
   public addSearchFilter(ctx: StateContext<SearchStateModel>, action: AddSearchFilter) {
     const state = ctx.getState();
-    const index = state.searchFilters.findIndex(f => f.filterColumn.id === action.searchFilter.filterColumn.id);
+    const index = state.searchFilters.findIndex(f => f.filterColumn === action.searchFilter.filterColumn);
     if (index >= 0) {
       state.searchFilters[index] = action.searchFilter;
     } else {
@@ -185,7 +183,7 @@ export class SearchState {
     const routeSnapshot: ActivatedRouteSnapshot = routeState.root;
     if (update.searchFilter != null) {
       update.searchFilter.forEach(filter => {
-        params[filter.filterColumn.id] = filter.filterValue;
+        params[filter.filterColumn] = filter.filterValue;
       });
       // Remove Query Params that are not used anymore by setting them 'null' explicitly
       if (routeSnapshot.firstChild != null && routeSnapshot.firstChild.firstChild != null) {
@@ -201,7 +199,7 @@ export class SearchState {
     }
     if (update.tableSort != null) {
       if (update.tableSort.direction !== PhonebookSortDirection.none) {
-        params.sortColumn = update.tableSort.column ? update.tableSort.column.id : null;
+        params.sortColumn = update.tableSort.column ? update.tableSort.column : null;
         params.sortDirection = update.tableSort.direction;
       } else {
         params.sortColumn = null;

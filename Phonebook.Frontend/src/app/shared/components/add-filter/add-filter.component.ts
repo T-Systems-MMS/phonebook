@@ -38,6 +38,6 @@ export class AddFilterComponent {
     if (this.resetSearchTerm) {
       this.store.dispatch(new UpdateUrl({ searchTerm: '' }));
     }
-    this.store.dispatch(new AddSearchFilter({ filterColumn: this.filterColumn, filterValue: this.filterValue }));
+    this.store.dispatch(new AddSearchFilter({ filterColumn: this.filterColumn.id, filterValue: this.filterValue }));
   }
 }

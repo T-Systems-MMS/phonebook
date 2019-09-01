@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
-import { Column } from 'src/app/shared/models';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { ResetTableSettings, SetVisibleTableColumns, TableState } from 'src/app/shared/states';
 
 @Component({
@@ -12,8 +12,8 @@ import { ResetTableSettings, SetVisibleTableColumns, TableState } from 'src/app/
   styleUrls: ['./table-settings.dialog.scss']
 })
 export class TableSettingsDialog implements OnInit {
-  public notDisplayedColumns: Column[] = [];
-  public displayedColumns: Column[] = this.store.selectSnapshot(TableState.visibleColumns);
+  public notDisplayedColumns: ColumnId[] = [];
+  public displayedColumns: ColumnId[] = this.store.selectSnapshot(TableState.visibleColumns);
 
   constructor(public store: Store, public columnTranslate: ColumnTranslate) {}
 
@@ -22,11 +22,13 @@ export class TableSettingsDialog implements OnInit {
   }
 
   private updateNotDisplayedColumns() {
-    this.notDisplayedColumns = ColumnDefinitions.getAll().filter(col => {
-      return !this.displayedColumns.some(column => {
-        return col.id === column.id;
-      });
-    });
+    this.notDisplayedColumns = ColumnDefinitions.getAll()
+      .filter(col => {
+        return !this.displayedColumns.some(columnId => {
+          return col.id === columnId;
+        });
+      })
+      .map(col => col.id);
   }
 
   public resetTableSettings() {

@@ -1,7 +1,7 @@
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
-import { Column } from './Column';
 
 export interface TableSort {
-  column: Column | null;
+  column: ColumnId;
   direction: PhonebookSortDirection;
 }

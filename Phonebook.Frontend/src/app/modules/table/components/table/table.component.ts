@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort, SortDirection } from '@angular/material/sort';
@@ -21,10 +22,10 @@ import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app
 })
 export class TableComponent implements OnInit, OnDestroy {
   public get displayedColumns(): string[] {
-    return this.store.selectSnapshot(TableState.visibleColumns).map(col => col.id);
+    return this.store.selectSnapshot(TableState.visibleColumns);
   }
 
-  public dataSource: PersonsDataSource = new PersonsDataSource([]);
+  public dataSource: PersonsDataSource = new PersonsDataSource([], this.httpClient);
   public onTop: boolean = true;
   public columns: typeof ColumnDefinitions = ColumnDefinitions;
   public previewPerson: Person | null = null;
@@ -36,11 +37,12 @@ export class TableComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort, { static: true })
   public sort: MatSort;
   public table: Element;
-  public get tableSort(): TableSort {
-    const col = ColumnDefinitions.getAll().find(column => {
-      return this.sort.active === column.id;
-    });
-    return { column: col || null, direction: this.sort.direction as PhonebookSortDirection };
+  public get tableSort(): TableSort | null {
+    const col = ColumnDefinitions.getColumnById(this.sort.active);
+    if (col == null) {
+      return null;
+    }
+    return { column: col.id, direction: this.sort.direction as PhonebookSortDirection };
   }
   public sortDirection: SortDirection = '';
   public sortActive: string = '';
@@ -50,12 +52,13 @@ export class TableComponent implements OnInit, OnDestroy {
     private personService: PersonService,
     public dialog: MatDialog,
     public store: Store,
-    public columnTranslate: ColumnTranslate
+    public columnTranslate: ColumnTranslate,
+    private httpClient: HttpClient
   ) {}
 
   public ngOnInit() {
     this.personService.getAll().subscribe(persons => {
-      this.dataSource = new PersonsDataSource(persons);
+      this.dataSource = new PersonsDataSource(persons, this.httpClient);
 
       // Defer until Data is loaded.
       this.refreshTableSubscription = merge(
@@ -87,7 +90,7 @@ export class TableComponent implements OnInit, OnDestroy {
     this.sort.sortChange.subscribe((ev: { active: string; direction: string }) => {
       this.store.dispatch(
         new UpdateUrl({
-          tableSort: this.tableSort
+          tableSort: this.tableSort || undefined
         })
       );
       this.refreshTable();

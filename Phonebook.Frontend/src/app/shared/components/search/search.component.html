@@ -4,7 +4,7 @@
   </button>
   <mat-chip-list>
     <mat-chip *ngFor="let filter of searchFilters$ | async" [removable]="true" (removed)="removeFilter(filter)">
-      {{ columnTranslate.getTranslation(filter.filterColumn.id) }}: {{ filter.filterValue }}
+      {{ columnTranslate.getTranslation(filter.filterColumn) }}: {{ filter.filterValue }}
       <mat-icon matChipRemove class="pb-chip-remove">cancel</mat-icon>
     </mat-chip>
   </mat-chip-list>

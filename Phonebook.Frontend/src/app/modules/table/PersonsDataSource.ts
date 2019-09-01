@@ -1,9 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material/table';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { TableLogic } from 'src/app/modules/table/table-logic';
-import { Column, SearchFilter, TableSort } from 'src/app/shared/models';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
+import { performSearch, SearchParams } from 'src/app/modules/table/SearchParams';
+import { SearchFilter, TableSort } from 'src/app/shared/models';
 import { Person } from 'src/app/shared/models/classes';
-import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 
 export class PersonsDataSource extends MatTableDataSource<Person> {
   private PAGE_SIZE: number = 30;
@@ -32,9 +33,9 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
 
   public dataChanged: BehaviorSubject<Person[]> = new BehaviorSubject<Person[]>(this.data);
 
-  private lastFilterKeyword: string = '';
+  private worker: Worker | null = null;
 
-  constructor(private dataSource: Person[]) {
+  constructor(private dataSource: Person[], private httpClient: HttpClient) {
     super();
   }
 
@@ -50,39 +51,61 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
   public refresh(
     filterKeyword: string,
     searchFilters: SearchFilter[],
-    searchableColumns: Column[],
-    sort: TableSort
+    searchableColumns: ColumnId[],
+    sort: TableSort | null
   ): Observable<Person[]> {
     this.loadingSubject.next(true);
     return new Observable<Person[]>(observer => {
-      let preResult = this.dataSource;
+      const searchParams: SearchParams = {
+        filterKeyword: filterKeyword,
+        searchFilters: searchFilters,
+        searchableColumns: searchableColumns,
+        sort: sort,
+        data: this.dataSource
+      };
 
-      // Filtering
-      searchFilters.forEach(searchFilter => {
-        preResult = TableLogic.filter(preResult, searchFilter.filterValue, [searchFilter.filterColumn]);
-      });
-
-      // Searching
-      let searchResult: Person[] = TableLogic.filter(preResult, filterKeyword, searchableColumns);
-
-      // Sorting
-      switch (sort.direction) {
-        case PhonebookSortDirection.none: {
-          searchResult = TableLogic.rankedSort(searchResult, filterKeyword, searchableColumns);
-          break;
+      if (typeof Worker !== 'undefined') {
+        // Reuse the Worker if it already exists.
+        if (this.worker == null) {
+          // Loading external Workers does not error if it could not be found...
+          this.httpClient
+            .get('table.worker', {
+              responseType: 'text'
+            })
+            .subscribe(
+              req => {
+                const blob = new Blob([req]);
+                this.worker = new Worker(window.URL.createObjectURL(blob), { type: 'module' });
+                this.worker.onmessage = ({ data }) => {
+                  this.resolveObserver(data, observer);
+                };
+                this.worker.onerror = (error: ErrorEvent) => {
+                  const searchResult = performSearch(searchParams);
+                  this.resolveObserver(searchResult, observer);
+                  throw new Error('Service Worker crashed.');
+                };
+                this.worker.postMessage(searchParams);
+              },
+              () => {
+                const searchResult = performSearch(searchParams);
+                this.resolveObserver(searchResult, observer);
+                throw new Error('Service Worker could not be loaded.');
+              }
+            );
         }
-        default: {
-          searchResult = TableLogic.sort(searchResult, sort);
-          break;
-        }
+      } else {
+        const searchResult = performSearch(searchParams);
+        this.resolveObserver(searchResult, observer);
       }
-      this.allData = searchResult;
-      this.lastFilterKeyword = filterKeyword;
-
-      this.loadingSubject.next(false);
-      observer.next(searchResult);
-      observer.complete();
     });
+  }
+
+  private resolveObserver(searchResult: Person[], observer: Subscriber<Person[]>): void {
+    this.allData = searchResult;
+
+    this.loadingSubject.next(false);
+    observer.next(searchResult);
+    observer.complete();
   }
 
   private updateVisibleData() {

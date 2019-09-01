@@ -1,6 +1,6 @@
-import { Column } from './Column';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 
 export interface SearchFilter {
-  filterColumn: Column;
+  filterColumn: ColumnId;
   filterValue: string;
 }
