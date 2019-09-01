@@ -99,7 +99,7 @@ namespace Phonebook.Backend.PictureService.Controllers
                 try
                 {
                     // Delete old File before writing the new one.
-                    HelpersThing.DeleteFilesForUser(id);
+                    ImageHelperFunctions.DeleteFilesForUser(id);
 
                     var path = Path.Combine(
                                 Directory.GetCurrentDirectory(), "images",
@@ -149,7 +149,7 @@ namespace Phonebook.Backend.PictureService.Controllers
             }
             try
             {
-                return StatusCode(HelpersThing.DeleteFilesForUser(id));
+                return StatusCode((int)ImageHelperFunctions.DeleteFilesForUser(id));
             }
             catch(Exception err)
             {

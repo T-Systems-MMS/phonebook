@@ -36,7 +36,7 @@ namespace Phonebook.Backend.PictureService.Controllers.V2
         {
             var user = HttpContext.User;
             logger.LogInformation($"Log user {user.Identity.Name}");
-            var returnValue = new Identity(user.Identity.Name, Helpers.HelpersThing.DoesFileExist(user.Identity.Name.Split("\\")[1]));
+            var returnValue = new Identity(user.Identity.Name, Helpers.ImageHelperFunctions.DoesFileExist(user.Identity.Name.Split("\\")[1]));
             return returnValue;
         }
     }
