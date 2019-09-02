@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Phonebook.Source.PeopleSoft.Models
 {
-    public partial class ModelContext : DbContext
+    public class ModelContext : DbContext
     {
         public ModelContext()
         {
