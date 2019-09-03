@@ -422,6 +422,10 @@
         <source>Got Feedback? Than that`s the right place to click.</source>
         <note priority="1" from="description">Info Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
+      </trans-unit><trans-unit id="NavigationComponentReleaseNotes" datatype="html">
+        <source>Release Notes</source>
+        <note priority="1" from="description">Release Notes Menu Item</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
         <source>Report a Bug</source>
         <note priority="1" from="description">Link to Bug page</note>
@@ -449,10 +453,6 @@
       </trans-unit><trans-unit id="MissingUserImageAriaLabel" datatype="html">
         <source>Button which greets and asks for picture uploading.</source>
         <note priority="1" from="description">Aria label for MissingUserImage</note>
-        <note priority="1" from="meaning">NavigationComponent</note>
-      </trans-unit><trans-unit id="NavigationComponentReleaseNotes" datatype="html">
-        <source>Release Notes</source>
-        <note priority="1" from="description">Release Notes Menu Item</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source>
@@ -519,6 +519,10 @@
       </trans-unit><trans-unit id="TableComponentColumnCostcenterLabel" datatype="html">
         <source>Change sorting for column Profitcenter</source>
         <note priority="1" from="description">Label for sorting the column &apos;Profitcenter&apos; once Costcenter</note>
+        <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="TableComponentColumnTypeLabel" datatype="html">
+        <source>Change sorting for column Type</source>
+        <note priority="1" from="description">Label for sorting the column &apos;Type&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source>

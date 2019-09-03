@@ -36,7 +36,9 @@
           <p *ngIf="!person.isOfType(type.Fremdkraft)">
             <app-add-filter [filterColumn]="columns.role" [filterValue]="person.Role" [resetSearchTerm]="true">
             </app-add-filter>
-            | {{ person.Type }}
+            |
+            <app-add-filter [filterColumn]="columns.type" [filterValue]="person.Type" [resetSearchTerm]="true">
+            </app-add-filter>
           </p>
         </mat-card-subtitle>
       </mat-card-title-group>

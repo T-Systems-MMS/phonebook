@@ -211,6 +211,20 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container [matColumnDef]="columns.type.id">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Type"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Type'@@TableComponentColumnTypeLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.type.id) }}</mat-header-cell
+      >
+      <mat-cell *matCellDef="let person">
+        <app-add-filter [filterColumn]="columns.type" [filterValue]="person.Type"></app-add-filter>
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" [class.mat-elevation-z5]="!onTop">
     </mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns" (click)="routeToUser(row.Id)" mat-ripple></mat-row>

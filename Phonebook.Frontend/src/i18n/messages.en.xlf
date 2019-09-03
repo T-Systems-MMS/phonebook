@@ -1169,6 +1169,10 @@
         <target state="final">Change sorting for column Profitcenter</target>
         <note priority="1" from="description">Label for sorting the column 'Profitcenter' once Costcenter</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="TableComponentColumnTypeLabel" datatype="html">
+        <source>Change sorting for column Type</source><target state="final">Change sorting for column Type</target>
+        <note priority="1" from="description">Label for sorting the column 'Type'</note>
+        <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source>
