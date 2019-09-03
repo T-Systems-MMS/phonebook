@@ -11,7 +11,7 @@
   <a
     *ngIf="tel"
     mat-button
-    href="tel:{{ value }}"
+    href="tel:{{ value | telephone }}"
     i18n-matTooltip="GeneralCallButton|call Number button@@GeneralCallButton"
     matTooltip="Call the Number"
   >

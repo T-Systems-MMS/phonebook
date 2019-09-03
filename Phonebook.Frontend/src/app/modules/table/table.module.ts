@@ -1,3 +1,4 @@
+import { PipesModule } from './../../shared/pipes/pipes.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -19,7 +20,8 @@ import { MaterialModule } from 'src/app/shared/material.module';
     ActionDrawerModule,
     ProfilePictureModule,
     InfiniteScrollModule,
-    UserModule
+    UserModule,
+    PipesModule
   ],
   declarations: [TableComponent, TableSettingsDialog],
   entryComponents: [TableSettingsDialog]

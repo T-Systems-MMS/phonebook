@@ -68,7 +68,7 @@
             Phone Number
           </h4>
           <p mat-line>
-            <button actionDrawer [tel]="room.Phone" [copy]="room.Phone">
+            <button actionDrawer [tel]="room.Phone | telephone" [copy]="room.Phone">
               {{ room.Phone }}
             </button>
           </p>

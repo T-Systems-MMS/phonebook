@@ -1,3 +1,4 @@
+import { PipesModule } from './../../shared/pipes/pipes.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -49,7 +50,8 @@ import { OverviewComponent } from './components/overview/overview.component';
     MatToolbarModule,
     MatTooltipModule,
     MatSidenavModule,
-    UserModule
+    UserModule,
+    PipesModule
   ],
   declarations: [
     RoomDetailComponent,

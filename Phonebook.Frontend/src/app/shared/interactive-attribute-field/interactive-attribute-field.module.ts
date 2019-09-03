@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatTooltipModule } from '@angular/material';
@@ -8,7 +9,7 @@ import { InteractiveAttributeFieldComponent } from './interactive-attribute-fiel
 
 @NgModule({
   declarations: [InteractiveAttributeFieldComponent],
-  imports: [CommonModule, MatButtonModule, MatIconModule, ActionDrawerModule, MatTooltipModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, ActionDrawerModule, MatTooltipModule, PipesModule],
   exports: [InteractiveAttributeFieldComponent]
 })
 export class InteractiveAttributeFieldModule {}

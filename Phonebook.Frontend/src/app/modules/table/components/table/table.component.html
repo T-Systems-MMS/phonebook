@@ -29,7 +29,9 @@
     track-by="trackById"
   >
     <ng-container [matColumnDef]="columns.picture.id">
-      <mat-header-cell *matHeaderCellDef> {{ columnTranslate.getTranslation(columns.picture.id) }} </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+        {{ columnTranslate.getTranslation(columns.picture.id) }}
+      </mat-header-cell>
       <mat-cell *matCellDef="let person">
         <app-profile-picture
           class="circle square-img50"
@@ -67,7 +69,9 @@
     </ng-container>
 
     <ng-container [matColumnDef]="columns.email.id">
-      <mat-header-cell *matHeaderCellDef> {{ columnTranslate.getTranslation(columns.email.id) }} </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+        {{ columnTranslate.getTranslation(columns.email.id) }}
+      </mat-header-cell>
       <mat-cell *matCellDef="let person">
         <button mat-icon-button actionDrawer [copy]="person.Contacts.Email" [mailto]="person.Contacts.Email">
           <mat-icon>email</mat-icon>
@@ -90,7 +94,7 @@
           mat-button
           actionDrawer
           [copy]="person.Contacts.Phone"
-          [tel]="person.Contacts.Phone"
+          [tel]="person.Contacts.Phone | telephone"
           *ngIf="person.Contacts.Phone != ''"
         >
           {{ person.Contacts.Phone }}
@@ -111,8 +115,8 @@
         <button
           mat-button
           actionDrawer
-          [copy]="person.Contacts.Mobile"
-          [tel]="person.Contacts.Mobile"
+          [copy]="person.Contacts.Mobile | telephone"
+          [tel]="person.Contacts.Mobile | telephone"
           *ngIf="person.Contacts.Mobile != ''"
         >
           {{ person.Contacts.Mobile }}
