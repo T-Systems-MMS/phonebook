@@ -19,7 +19,7 @@ export class Person {
   public Location: Location;
   public Business: Business;
   constructor(
-    status: PersonStatus,
+    type: PersonStatus,
     id: string,
     firstname: string,
     surname: string,
