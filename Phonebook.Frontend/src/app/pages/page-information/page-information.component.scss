@@ -9,17 +9,15 @@
 mat-card {
   text-align: center;
   margin: 0.5%;
-  border: 1.5px solid;
 
   mat-card-header {
     justify-content: center;
+    mat-card-title {
+      line-height: 1;
+    }
     mat-icon {
       @include mat-icon-size(60px);
     }
-  }
-
-  mat-card-title {
-    line-height: 1;
   }
 }
 
@@ -27,7 +25,6 @@ mat-card {
   width: 50%;
 }
 
-//style for the contributors table
 .contributors-table {
   ::ng-deep table {
     display: flex;

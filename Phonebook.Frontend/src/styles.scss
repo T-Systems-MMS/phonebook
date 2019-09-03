@@ -142,11 +142,7 @@ app-root {
   min-height: 100%;
 }
 
-.pb-justify-center {
-  justify-content: center;
-}
-
-.pb-margin-left-right-resposive {
+.pb-margin-left-right-responsive {
   margin: auto 15%;
 
   @include below-big {

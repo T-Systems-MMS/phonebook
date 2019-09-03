@@ -1,4 +1,4 @@
-<div class="pb-margin-left-right-resposive">
+<div class="pb-margin-left-right-responsive">
   <div class="header pb-margin-top-20">
     <h1 i18n="PageInformationComponent|Title of the page information@@PageInformationComponentTitle">
       Phonebook
@@ -8,17 +8,19 @@
       Features are still subject to change without further notice and your data may get lost.
     </p>
   </div>
-  <div class="pb-flex pb-justify-center">
+  <div class="pb-flex pb-center-element">
     <!-- contact and feedback -->
-    <mat-card class="small-card pb-border-color-primary">
+    <mat-card class="small-card">
       <mat-card-header>
-        <mat-card-title><mat-icon [color]="'primary'">sentiment_satisfied_alt</mat-icon></mat-card-title>
+        <mat-card-title
+          ><mat-icon color="primary">sentiment_satisfied_alt</mat-icon>
+          <p
+            i18n="Page-informationComponent|Subtitle for Contact and Feedback@@PageInformationComponentSubTitleFeedback"
+          >
+            Contact & Feedback
+          </p></mat-card-title
+        >
       </mat-card-header>
-      <mat-card-title
-        i18n="Page-informationComponent|Subtitle for Contact and Feedback@@PageInformationComponentSubTitleFeedback"
-      >
-        Contact & Feedback</mat-card-title
-      >
       <mat-card-content i18n="Page-informationComponent|Feedback Section@@PageInformationComponentSectionFeedback">
         <span>
           This is an Installation of the Open Source Phonebook.
@@ -37,13 +39,15 @@
       </mat-card-content>
     </mat-card>
     <!-- cookie notice -->
-    <mat-card class="small-card pb-border-color-primary">
+    <mat-card class="small-card">
       <mat-card-header>
-        <mat-card-title><mat-icon [color]="'primary'">info_outline</mat-icon></mat-card-title>
+        <mat-card-title
+          ><mat-icon color="primary">info_outline</mat-icon>
+          <p i18n="Page-informationComponent|Subtitle for Cookie@@PageInformationComponentSubTitleCookie">
+            Cookie Notice
+          </p></mat-card-title
+        >
       </mat-card-header>
-      <mat-card-title i18n="Page-informationComponent|Subtitle for Cookie@@PageInformationComponentSubTitleCookie">
-        Cookie Notice</mat-card-title
-      >
       <mat-card-content>
         <span i18n="Page-informationComponent|CookiesSection@@PageInformationComponentSectionCookies">
           This site uses cookies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
@@ -52,15 +56,18 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="pb-flex pb-justify-center">
+  <div class="pb-flex pb-center-element">
     <!-- call for contributors -->
-    <mat-card class="pb-w-100 pb-border-color-primary">
+    <mat-card class="pb-w-100">
       <mat-card-header>
-        <mat-card-title><mat-icon [color]="'primary'">error_outline</mat-icon></mat-card-title>
+        <mat-card-title
+          ><mat-icon color="primary">error_outline</mat-icon>
+          <p i18n="Page-informationComponent|Subtitle Contributes@@PageInformationComponentSubTitleContribute">
+            Call for Contributors!
+          </p></mat-card-title
+        >
       </mat-card-header>
-      <mat-card-title i18n="Page-informationComponent|Subtitle Contributes@@PageInformationComponentSubTitleContribute"
-        >Call for Contributors!</mat-card-title
-      >
+
       <mat-card-content i18n="Page-informationComponent|Text for Contribute@@PageInformationComponentSectionContribute">
         <span>
           The Phonebook is an Open Source Project and lives from his active contributors. There are many different
@@ -83,14 +90,16 @@
     </mat-card>
   </div>
   <!-- licences -->
-  <div class="pb-flex pb-justify-center">
-    <mat-card class="pb-w-100 pb-border-color-primary">
+  <div class="pb-flex pb-center-element">
+    <mat-card class="pb-w-100">
       <mat-card-header>
-        <mat-card-title><mat-icon [color]="'primary'">attachment_outlined</mat-icon></mat-card-title>
+        <mat-card-title
+          ><mat-icon color="primary">attachment_outlined</mat-icon>
+          <p i18n="Page-informationComponent|Subtitle for Licenses@@PageInformationComponentSubTitleLicenses">
+            Licenses
+          </p></mat-card-title
+        >
       </mat-card-header>
-      <mat-card-title i18n="Page-informationComponent|Subtitle for Licenses@@PageInformationComponentSubTitleLicenses">
-        Licenses</mat-card-title
-      >
       <mat-card-content>
         <p i18n="Page-informationComponent|Text for Licenses SubTitle@@PageInformationComponentSubTitleLicensesText">
           This Project is licensed under the
