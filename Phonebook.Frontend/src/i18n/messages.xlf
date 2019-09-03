@@ -369,17 +369,22 @@
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="TableSettingsDialogTitle" datatype="html">
         <source>
-    Configure Table Columns
-  </source>
+      Configure Table Columns
+    </source>
         <note priority="1" from="description">Title for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit><trans-unit id="TableSettingsDialogDescription" datatype="html">
         <source>
     Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them
     to the right.
-    <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Note: You can only search for visible columns.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>
   </source>
-        <note priority="1" from="description">Description of how to configure the table Settings</note>
+        <note priority="1" from="description">Description for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="TableSettingsDialogNote" datatype="html">
+        <source>
+    Note: You can only search for displayed columns.
+  </source>
+        <note priority="1" from="description">Note for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit><trans-unit id="TableSettingsDialogSubTitleDisplayedColumns" datatype="html">
         <source>

@@ -9,6 +9,10 @@ mat-dialog-content {
   max-height: unset;
 }
 
+.close {
+  float: right;
+}
+
 .pb-container {
   display: flex;
   justify-content: space-between;
