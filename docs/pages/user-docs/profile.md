@@ -1,5 +1,5 @@
 # Profile menu
-![open menu option at the very right, listing subpages "my profile", "settings", "information", "release notes" and "report a bug"](media/profilemenu2.PNG)
+![open menu option at the very right, listing subpages "my profile", "settings", "information", "release notes" and "report a bug"](media/profilemenu.PNG)
 
 
 When you open the profile menu you can navigate to further subpages. 
