@@ -30,7 +30,7 @@ export class Person {
     _Location: Location,
     _Business: Business
   ) {
-    this.Type = status;
+    this.Type = type;
     this.Id = id;
     this.Firstname = firstname;
     this.Surname = surname;
