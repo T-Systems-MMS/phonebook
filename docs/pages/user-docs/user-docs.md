@@ -9,3 +9,6 @@ permalink: /pages/user-docs/
 # :gear: **User Guide**
 
 {{site.coming_soon}}
+
+
+![hello](media/weitere-information.png)
