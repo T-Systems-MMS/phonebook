@@ -15,7 +15,7 @@
         </div>
         <mat-card-title>
           <div class="pb-block">
-            <ng-container *ngIf="!person.isOfType(type.Fremdkraft)">
+            <ng-container *ngIf="!person.isOfStatus(status.Fremdkraft)">
               <app-add-filter
                 [filterColumn]="columns.orgUnit"
                 [filterValue]="person.Business.ShortOrgUnit[0]"
@@ -33,11 +33,11 @@
           >
         </mat-card-title>
         <mat-card-subtitle>
-          <p *ngIf="!person.isOfType(type.Fremdkraft)">
+          <p *ngIf="!person.isOfStatus(status.Fremdkraft)">
             <app-add-filter [filterColumn]="columns.role" [filterValue]="person.Role" [resetSearchTerm]="true">
             </app-add-filter>
             |
-            <app-add-filter [filterColumn]="columns.type" [filterValue]="person.Type" [resetSearchTerm]="true">
+            <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type" [resetSearchTerm]="true">
             </app-add-filter>
           </p>
         </mat-card-subtitle>
@@ -145,7 +145,7 @@
             <p mat-line>{{ randomMoney }} €</p>
           </mat-list-item>
         </mat-list>
-        <mat-list *ngIf="!person.isOfType(type.Fremdkraft)">
+        <mat-list *ngIf="!person.isOfStatus(status.Fremdkraft)">
           <h3
             mat-subheader
             i18n="User-detailComponent|Subtitle for Further Information@@UserDetailComponentSubTitleFurtherInformation"
@@ -191,15 +191,15 @@
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>category</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.Type data@@DataPersonType">
-              Type
+            <h4 mat-line i18n="Datapoint|Label for Person.Status data@@DataPersonStatus">
+              Status
             </h4>
             <p mat-line>
               {{ person.Type }}
             </p>
           </mat-list-item>
         </mat-list>
-        <mat-list *ngIf="!person.isOfType(type.Fremdkraft)">
+        <mat-list *ngIf="!person.isOfStatus(status.Fremdkraft)">
           <h3 mat-subheader i18n="@@UserDetailComponentSubTitleFurtherInformation">
             Further Information
           </h3>
@@ -279,7 +279,7 @@
             i18n-label="UserDetailComponent|Tab Headline for Roomplan@@UserDetailComponentTabHeadlineRoomplan"
           >
             <div class="pb-roomplan" *ngIf="person.Location.RoomCollection[0].Description != null">
-              <ng-container *ngIf="!person.isOfType(type.Fremdkraft)">
+              <ng-container *ngIf="!person.isOfStatus(status.Fremdkraft)">
                 <app-room-plan
                   [floorplan]="person.Location.RoomCollection[0].FloorPlan"
                   [room]="person.Location.RoomCollection[0].Number"

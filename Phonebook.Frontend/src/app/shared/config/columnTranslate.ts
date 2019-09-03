@@ -93,11 +93,11 @@ export class ColumnTranslate {
           id: 'ColumnTitleCostcenter',
           meaning: 'TableComponent'
         });
-      case ColumnId.type:
+      case ColumnId.status:
         return this.i18n({
-          value: 'Type',
-          description: 'Title of Table Column "Type"',
-          id: 'DataPersonType',
+          value: 'Status',
+          description: 'Title of Table Column "Status"',
+          id: 'DataPersonStatus',
           meaning: 'TableComponent'
         });
       default:

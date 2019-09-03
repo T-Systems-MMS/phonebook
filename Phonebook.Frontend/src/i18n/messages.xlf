@@ -207,11 +207,11 @@
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="ColumnTitleCostcenter" datatype="html">
         <source>Profitcenter</source>
-      </trans-unit><trans-unit id="DataPersonType" datatype="html">
+      </trans-unit><trans-unit id="DataPersonStatus" datatype="html">
         <source>
-              Type
+              Status
             </source>
-        <note priority="1" from="description">Label for Person.Type data</note>
+        <note priority="1" from="description">Label for Person.Status data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="ColumnTitleOrgUnit" datatype="html">
         <source>
@@ -520,9 +520,9 @@
         <source>Change sorting for column Profitcenter</source>
         <note priority="1" from="description">Label for sorting the column &apos;Profitcenter&apos; once Costcenter</note>
         <note priority="1" from="meaning">TableComponent</note>
-      </trans-unit><trans-unit id="TableComponentColumnTypeLabel" datatype="html">
-        <source>Change sorting for column Type</source>
-        <note priority="1" from="description">Label for sorting the column &apos;Type&apos;</note>
+      </trans-unit><trans-unit id="TableComponentColumnStatusLabel" datatype="html">
+        <source>Change sorting for column status</source>
+        <note priority="1" from="description">Label for sorting the column &apos;Status&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source>

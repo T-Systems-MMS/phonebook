@@ -211,17 +211,17 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container [matColumnDef]="columns.type.id">
+    <ng-container [matColumnDef]="columns.status.id">
       <mat-header-cell
         *matHeaderCellDef
         mat-sort-header
-        sortButtonLabel="Change sorting for column Type"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Type'@@TableComponentColumnTypeLabel"
+        sortButtonLabel="Change sorting for column status"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Status'@@TableComponentColumnStatusLabel"
       >
-        {{ columnTranslate.getTranslation(columns.type.id) }}</mat-header-cell
+        {{ columnTranslate.getTranslation(columns.status.id) }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.type" [filterValue]="person.Type"></app-add-filter>
+        <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type"></app-add-filter>
       </mat-cell>
     </ng-container>
 

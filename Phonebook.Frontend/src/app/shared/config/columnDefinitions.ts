@@ -17,7 +17,7 @@ export const ColumnDefinitions: {
   room: Readonly<Column>;
   building: Readonly<Column>;
   costcenter: Readonly<Column>;
-  type: Readonly<Column>;
+  status: Readonly<Column>;
   getAll(): Readonly<Column>[];
   getDefault(): Readonly<Column>[];
   getAllFilterableColumns(): Readonly<Column>[];
@@ -223,8 +223,8 @@ export const ColumnDefinitions: {
       return Helpers.stringCompare(a.Business.Costcenter, b.Business.Costcenter) * Helpers.sortDirection(sortDirection);
     }
   },
-  type: {
-    id: ColumnId.type,
+  status: {
+    id: ColumnId.status,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -250,7 +250,7 @@ export const ColumnDefinitions: {
       ColumnDefinitions.room,
       ColumnDefinitions.building,
       ColumnDefinitions.costcenter,
-      ColumnDefinitions.type
+      ColumnDefinitions.status
     ];
   },
   getDefault: () => {
