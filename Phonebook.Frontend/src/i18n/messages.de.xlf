@@ -265,7 +265,7 @@
       </trans-unit><trans-unit id="MissingUserImageMessage" datatype="html">
         <source>you haven't uploaded a picture yet. Want to upload one?</source><target state="translated">du hast noch kein Bild. Möchtest du eins hochladen?</target>
         <note priority="1" from="description">Message</note>
-        <note priority="1" from="meaning">MissingUserImageMessage</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="MissingUserImageTooltip" datatype="html">
         <source>If you upload a picture it will be easier for your colleagues to find and contact you!</source><target state="translated">Wenn du ein Bild hochlädst wird es für deine Kollegen einfacher sein dich zu finden und zu kontaktieren.</target>
         <note priority="1" from="description">Tooltip for MissingUserImage</note>
@@ -1077,6 +1077,12 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <target state="translated">Gebäude</target>
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="DataPersonStatus" datatype="html">
+        <source>
+              Status
+            </source><target state="translated">Status</target>
+        <note priority="1" from="description">Label for Person.Status data</note>
+        <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnBuildingLabel" datatype="html">
         <source>Change sorting for column Building</source>
@@ -1087,17 +1093,15 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
       <trans-unit id="ColumnTitleCostcenter" datatype="html">
         <source>Profitcenter</source>
         <target state="translated">Profitcenter</target>
-      </trans-unit><trans-unit id="DataPersonType" datatype="html">
-        <source>
-              Type
-            </source><target state="translated">Typ</target>
-        <note priority="1" from="description">Label for Person.Type data</note>
-        <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnCostcenterLabel" datatype="html">
         <source>Change sorting for column Profitcenter</source>
         <target state="translated">Sortierreihenfolge der Spalte Profitcenter ändern</target>
         <note priority="1" from="description">Label for sorting the column 'Profitcenter' once Costcenter</note>
+        <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="TableComponentColumnStatusLabel" datatype="html">
+        <source>Change sorting for column status</source><target state="translated">Sortierreihenfolge der Spalte Status ändern</target>
+        <note priority="1" from="description">Label for sorting the column 'Status'</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentSearchNoResult" datatype="html">

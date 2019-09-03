@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { MailService } from 'src/app/services/mail.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { Person, PersonType } from 'src/app/shared/models';
+import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 
 @Component({
@@ -20,7 +20,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   @Input()
   public person: Person;
   public bookmarked: Bookmarked = Bookmarked.isNotBookmarked;
-  public type: typeof PersonType = PersonType;
+  public status: typeof PersonStatus = PersonStatus;
   public columns: typeof ColumnDefinitions = ColumnDefinitions;
   @Select(BookmarksState)
   public bookmarks$: Observable<Person[]>;

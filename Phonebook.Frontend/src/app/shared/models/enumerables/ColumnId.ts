@@ -10,5 +10,6 @@ export enum ColumnId {
   orgUnit = 'orgUnit',
   room = 'room',
   building = 'building',
-  costcenter = 'costcenter'
+  costcenter = 'costcenter',
+  status = 'status'
 }
