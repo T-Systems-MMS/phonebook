@@ -1,7 +1,7 @@
 {
   "files": [
     "docs/README.md",
-    "docs/CONTRIBUTORS.md"
+    "Phonebook.Frontend/src/assets/CONTRIBUTORS.md"
   ],
   "imageSize": 100,
   "commit": false,
