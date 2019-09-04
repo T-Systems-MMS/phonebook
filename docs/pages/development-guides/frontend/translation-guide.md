@@ -36,6 +36,7 @@ For **General Messages** (with Action) use following IDs:
 | GeneralCancelButton       |                              Cancel                              |
 | GeneralShowOnMapButton    |                       Show on Google-Maps                        |
 | GeneralUndoButton         |                               Undo                               |
+| GeneralCloseButton        |                              Close                               |
 
 For **Language** use:
 

@@ -398,6 +398,12 @@
       </source>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="GeneralCloseButton" datatype="html">
+        <source>
+    Close
+  </source>
+        <note priority="1" from="description">Button for closing something</note>
+        <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit><trans-unit id="navigationDashboard" datatype="html">
         <source>
               Dashboard

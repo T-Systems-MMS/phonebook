@@ -874,6 +874,14 @@
         <target state="translated">Ausgeblendete Spalten:</target>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="GeneralCloseButton" datatype="html">
+        <source>
+    Close
+  </source><target state="translated">
+    Schließen
+  </target>
+        <note priority="1" from="description">Button for closing something</note>
+        <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source>
                   <x id="INTERPOLATION" equiv-text="{{ tableResultCount$ | async }}"/> Results
