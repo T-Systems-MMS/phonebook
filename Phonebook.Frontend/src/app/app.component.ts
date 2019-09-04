@@ -97,11 +97,7 @@ export class AppComponent implements OnInit {
     // Ask for Permission to send Bug reports
     const test = this.store.selectSnapshot(AppState.sendFeedback);
     if (this.store.selectSnapshot(AppState.sendFeedback) == null) {
-      const matDialogRef = this.matDialog.open(BugReportConsentComponent, {
-        maxWidth: '50vw',
-        maxHeight: '80vh',
-        hasBackdrop: true
-      });
+      const matDialogRef = this.matDialog.open(BugReportConsentComponent);
       matDialogRef.afterClosed().subscribe(consent => {
         this.store.dispatch(new SetSendFeedback(consent));
       });
