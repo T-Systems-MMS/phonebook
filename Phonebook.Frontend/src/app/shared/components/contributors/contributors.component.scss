@@ -1,0 +1,17 @@
+.contributors-table {
+  ::ng-deep table {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  ::ng-deep tr {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  ::ng-deep td {
+    width: 110px;
+    a[title] {
+      display: none;
+    }
+  }
+}
