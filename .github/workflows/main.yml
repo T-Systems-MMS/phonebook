@@ -1,15 +1,15 @@
-name: Auto Merge Pull Requests
-
-on: [pull_request,pull_request_review,status]
-
-jobs:
-  automerge:
-    runs-on: ubuntu-18.04
-    steps:
-    - name: Merge pull requests
-      uses: pascalgn/automerge-action@v0.2.4
-      continue-on-error: true
-      env: 
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        MERGE_METHOD: "squash"
-        LABELS: "!wip,!work in progress"
+#name: Auto Merge Pull Requests
+#
+#on: [pull_request,pull_request_review,status]
+#
+#jobs:
+#  automerge:
+#    runs-on: ubuntu-18.04
+#    steps:
+#    - name: Merge pull requests
+#      uses: pascalgn/automerge-action@v0.2.4
+#      continue-on-error: true
+#      env: 
+#        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+#        MERGE_METHOD: "squash"
+#        LABELS: "!wip,!work in progress"
