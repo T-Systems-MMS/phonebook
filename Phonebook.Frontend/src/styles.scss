@@ -137,6 +137,10 @@ app-root {
   min-height: 100%;
 }
 
+.pb-float-right {
+  float: right;
+}
+
 //Media query classes
 @include on-med-and-up {
   .pb-hide-on-med-and-up {
