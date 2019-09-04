@@ -17,6 +17,7 @@ export const ColumnDefinitions: {
   room: Readonly<Column>;
   building: Readonly<Column>;
   costcenter: Readonly<Column>;
+  status: Readonly<Column>;
   getAll(): Readonly<Column>[];
   getDefault(): Readonly<Column>[];
   getAllFilterableColumns(): Readonly<Column>[];
@@ -222,6 +223,19 @@ export const ColumnDefinitions: {
       return Helpers.stringCompare(a.Business.Costcenter, b.Business.Costcenter) * Helpers.sortDirection(sortDirection);
     }
   },
+  status: {
+    id: ColumnId.status,
+    rank: 10,
+    filterable: true,
+    sortable: true,
+    fullMatchFilter: false,
+    filterFunction: (filterString: RegExp, person: Person) => {
+      return filterString.test(person.Type);
+    },
+    sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
+      return Helpers.stringCompare(a.Type, b.Type) * Helpers.sortDirection(sortDirection);
+    }
+  },
   getAll: () => {
     return [
       ColumnDefinitions.picture,
@@ -235,7 +249,8 @@ export const ColumnDefinitions: {
       ColumnDefinitions.orgUnit,
       ColumnDefinitions.room,
       ColumnDefinitions.building,
-      ColumnDefinitions.costcenter
+      ColumnDefinitions.costcenter,
+      ColumnDefinitions.status
     ];
   },
   getDefault: () => {

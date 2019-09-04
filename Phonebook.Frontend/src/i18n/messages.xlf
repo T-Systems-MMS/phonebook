@@ -207,11 +207,11 @@
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="ColumnTitleCostcenter" datatype="html">
         <source>Profitcenter</source>
-      </trans-unit><trans-unit id="DataPersonType" datatype="html">
+      </trans-unit><trans-unit id="DataPersonStatus" datatype="html">
         <source>
-              Type
+              Status
             </source>
-        <note priority="1" from="description">Label for Person.Type data</note>
+        <note priority="1" from="description">Label for Person.Status data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="ColumnTitleOrgUnit" datatype="html">
         <source>
@@ -532,6 +532,10 @@
         <source>Change sorting for column Profitcenter</source>
         <note priority="1" from="description">Label for sorting the column &apos;Profitcenter&apos; once Costcenter</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="TableComponentColumnStatusLabel" datatype="html">
+        <source>Change sorting for column status</source>
+        <note priority="1" from="description">Label for sorting the column &apos;Status&apos;</note>
+        <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source>
     Your search returned no results.
@@ -688,9 +692,9 @@
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentTitle" datatype="html">
         <source>
-        The Phonebook
-      </source>
-        <note priority="1" from="description">Title of the page information page</note>
+      Phonebook
+    </source>
+        <note priority="1" from="description">Title of the page information</note>
         <note priority="1" from="meaning">PageInformationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentDisclaimer" datatype="html">
         <source>
@@ -701,67 +705,69 @@
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleFeedback" datatype="html">
         <source>
-      Contact &amp; Feedback
-    </source>
+        Contact &amp; Feedback</source>
         <note priority="1" from="description">Subtitle for Contact and Feedback</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionFeedback" datatype="html">
         <source>
-      <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item&gt;"/>
-        <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>
+        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
           This is an Installation of the Open Source Phonebook.
-          <x id="START_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;ng-container&gt;"/>
-            You can contact your own support at
-            <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/><x id="INTERPOLATION" equiv-text="{{ runtimeEnvironment.contactEmail }}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
-            regarding this installation.
-          <x id="CLOSE_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;/ng-container&gt;"/>
-        <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/>
-      <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item&gt;"/>
-      <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item&gt;"/>
-        <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>
-          If you want to give Feedback or want to report a Bug or a Feature Request click below:
-        <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/>
-      <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item&gt;"/>
-      <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item&gt;"/>
-        <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Report a Bug or request a new Feature<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
-      <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item&gt;"/>
-    </source>
+        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+        <x id="START_TAG_SPAN_1" ctype="x-span" equiv-text="&lt;span&gt;"/>
+          You can contact your own support at
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/><x id="INTERPOLATION" equiv-text="{{ runtimeEnvironment.contactEmail }}"/><x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+          regarding this installation.
+        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+          You&apos;ve found a bug or have an idea for a new feature?
+        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+        <x id="START_TAG_SPAN_2" ctype="x-span" equiv-text="&lt;span&gt;"/>
+          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Click here<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+      </source>
         <note priority="1" from="description">Feedback Section</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
-      </trans-unit><trans-unit id="PageInformationComponentSubTitleContribute" datatype="html">
+      </trans-unit><trans-unit id="PageInformationComponentSubTitleCookie" datatype="html">
         <source>
-        Contribute
-      </source>
-        <note priority="1" from="description">Subtitle for Contribute</note>
-        <note priority="1" from="meaning">Page-informationComponent</note>
-      </trans-unit><trans-unit id="PageInformationComponentSectionContribute" datatype="html">
-        <source>
-      <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item&gt;"/>
-        You can contribute to this project at
-        <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>GitHub<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
-      <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item&gt;"/>
-    </source>
-        <note priority="1" from="description">ContributeSection</note>
-        <note priority="1" from="meaning">Page-informationComponent</note>
-      </trans-unit><trans-unit id="PageInformationComponentSubTitleCookies" datatype="html">
-        <source>
-        Cookies Notice
-      </source>
-        <note priority="1" from="description">Subtitle for Cookies</note>
+        Cookie Notice</source>
+        <note priority="1" from="description">Subtitle for Cookie</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
         <source>
-      <x id="START_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;mat-list-item&gt;"/>
-        This site uses cokies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
-        language you want to use.
-      <x id="CLOSE_TAG_MAT-LIST-ITEM" ctype="x-mat-list-item" equiv-text="&lt;/mat-list-item&gt;"/>
-    </source>
+          This site uses cookies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
+          language you want to use.
+        </source>
         <note priority="1" from="description">CookiesSection</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSubTitleContribute" datatype="html">
+        <source>Call for Contributors!</source>
+        <note priority="1" from="description">Subtitle Contributes</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSectionContribute" datatype="html">
+        <source>
+        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+          The Phonebook is an Open Source Project and lives from his active contributors. There are many different
+          topics where you can work on. You can help with solving an
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Issue<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>, work out an User-Guide
+          or document new
+          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Bugs<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
+        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+          You can get in touch with us
+          <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/>in our official Repository<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> or you
+          take a look at our <x id="START_LINK_3" ctype="x-a" equiv-text="&lt;a&gt;"/>Documentation<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
+          <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>To be a part of this community it is not required to have programming skills.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+        <x id="START_TAG_DIV_2" ctype="x-div" equiv-text="&lt;div&gt;"/>
+          <x id="START_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;h2&gt;"/>Thanks to our Contributors!<x id="CLOSE_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;/h2&gt;"/>
+          <x id="START_TAG_DIV_1" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+        <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+      </source>
+        <note priority="1" from="description">Text for Contribute</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleLicenses" datatype="html">
         <source>
-        Licenses
-      </source>
+        Licenses</source>
         <note priority="1" from="description">Subtitle for Licenses</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleLicensesText" datatype="html">
@@ -777,8 +783,8 @@
           Icon of the Phonebook made by
           <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Gregor Cresnar<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
           from
-          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> is
-          licensed by
+          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>www.flaticon.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+          is licensed by
           <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/>CC 3.0 BY<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
         </source>
         <note priority="1" from="description">Attributions SubTitle</note>

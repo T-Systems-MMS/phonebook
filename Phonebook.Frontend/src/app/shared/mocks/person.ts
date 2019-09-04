@@ -1,7 +1,7 @@
-import { Person, PersonType } from 'src/app/shared/models';
+import { Person, PersonStatus } from 'src/app/shared/models';
 
 export const mockPerson: Person = new Person(
-  PersonType.Externer_Lernender,
+  PersonStatus.Externer_Lernender,
   'MXMS',
   'Max',
   'Mustermann',

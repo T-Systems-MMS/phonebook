@@ -8,8 +8,7 @@ import { FeedbackDrawerDirective } from 'src/app/shared/directives/feedback-draw
 import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
 import { PageInformationComponent } from './page-information.component';
 
-
-describe('PageInformationComponent', () => {
+xdescribe('PageInformationComponent', () => {
   let component: PageInformationComponent;
   let fixture: ComponentFixture<PageInformationComponent>;
 

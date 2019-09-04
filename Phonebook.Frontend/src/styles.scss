@@ -126,6 +126,11 @@ app-root {
   align-items: center;
 }
 
+.pb-center-element {
+  display: flex;
+  justify-content: center;
+}
+
 .pb-text-overflow {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -137,8 +142,23 @@ app-root {
   min-height: 100%;
 }
 
+
 .pb-float-right {
   float: right;
+}
+
+.pb-margin-left-right-responsive {
+  margin: auto 15%;
+
+  @include below-big {
+    margin: auto 10%;
+  }
+  @include below-med {
+    margin: auto 5%;
+  }
+  @include below-small {
+    margin: auto 1%;
+  }
 }
 
 //Media query classes

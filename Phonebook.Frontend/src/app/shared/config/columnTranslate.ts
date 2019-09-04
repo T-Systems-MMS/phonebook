@@ -93,6 +93,13 @@ export class ColumnTranslate {
           id: 'ColumnTitleCostcenter',
           meaning: 'TableComponent'
         });
+      case ColumnId.status:
+        return this.i18n({
+          value: 'Status',
+          description: 'Title of Table Column "Status"',
+          id: 'DataPersonStatus',
+          meaning: 'TableComponent'
+        });
       default:
         throw Error('Column not found.');
     }

@@ -1,14 +1,44 @@
-mat-card-content {
-  margin: 0 16px;
+@import 'mixins';
+@import 'media-queries';
+@import '~@angular/material/theming';
 
-  h2 {
-    margin: 16px 0 0 0;
+.header {
+  text-align: center;
+}
+
+mat-card {
+  text-align: center;
+  margin: 0.5%;
+
+  mat-card-header {
+    justify-content: center;
+    mat-card-title {
+      line-height: 1;
+    }
+    mat-icon {
+      @include mat-icon-size(60px);
+    }
   }
+}
 
-  #contribute {
+.small-card {
+  width: 50%;
+}
+
+.contributors-table {
+  ::ng-deep table {
     display: flex;
-    span {
-      margin-left: 10px;
+    flex-flow: column wrap;
+  }
+  ::ng-deep tr {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  ::ng-deep td {
+    width: 110px;
+    a[title] {
+      display: none;
     }
   }
 }
