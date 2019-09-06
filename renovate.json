@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "config:base",
+    "schedule:nonOfficeHours",
+    ":semanticCommits"
+  ],
+  "automerge": false,
+  "major": {
+    "automerge": false
+  }
+}
