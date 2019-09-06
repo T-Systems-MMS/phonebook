@@ -11,6 +11,7 @@ import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notifi
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
 import { AppState, InitTheme, SetSendFeedback } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Component({
   selector: 'app-root',
@@ -96,7 +97,7 @@ export class AppComponent implements OnInit {
 
     // Ask for Permission to send Bug reports
     const test = this.store.selectSnapshot(AppState.sendFeedback);
-    if (this.store.selectSnapshot(AppState.sendFeedback) == null) {
+    if (this.store.selectSnapshot(AppState.sendFeedback) == null && runtimeEnvironment.ravenURL != null) {
       const matDialogRef = this.matDialog.open(BugReportConsentComponent);
       matDialogRef.afterClosed().subscribe(consent => {
         this.store.dispatch(new SetSendFeedback(consent));
