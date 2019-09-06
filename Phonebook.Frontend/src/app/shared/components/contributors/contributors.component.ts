@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -15,7 +15,6 @@ export class ContributorsComponent implements OnInit {
   }
 
   public loadContributors(): void {
-    const text = 'Contributors could not be loaded.';
     this.httpClient
       .get('assets/CONTRIBUTORS.md', {
         responseType: 'text'
