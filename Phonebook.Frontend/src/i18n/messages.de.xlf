@@ -677,8 +677,8 @@
       </trans-unit>
       <trans-unit id="TableSettingsDialogTitle" datatype="html">
         <source>
-    Configure Table Columns
-  </source>
+      Configure Table Columns
+    </source>
         <target state="translated">Tabellenspalten konfigurieren</target>
         <note priority="1" from="description">Title for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
@@ -850,8 +850,17 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
     Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them
     to the right.
   </source>
-        <target state="translated">Ziehe und lege die Spalten in der Reihenfolge ab die dir gefällt. Du kannst sie auch ausblenden indem du sie auf die rechte Seite ziehst.</target>
-        <note priority="1" from="description">Description of how to configure the table Settings</note>
+        <target state="translated">Ziehe und lege die Spalten in der Reihenfolge ab die dir gefällt. Du kannst sie auch ausblenden indem du sie auf die rechte Seite ziehst.
+        </target>
+        <note priority="1" from="description">Description for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="TableSettingsDialogNote" datatype="html">
+        <source>
+    Note: You can only search for displayed columns.
+  </source><target state="translated">
+    Notiz: Du kannst nur nach sichtbaren Spalten suchen.
+  </target>
+        <note priority="1" from="description">Note for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogSubTitleDisplayedColumns" datatype="html">
@@ -869,6 +878,14 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <target state="translated">Ausgeblendete Spalten:</target>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="GeneralCloseButton" datatype="html">
+        <source>
+    Close
+  </source><target state="translated">
+    Schließen
+  </target>
+        <note priority="1" from="description">Button for closing something</note>
+        <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source>
                   <x id="INTERPOLATION" equiv-text="{{ tableResultCount$ | async }}"/> Results

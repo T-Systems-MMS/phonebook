@@ -21,3 +21,17 @@ $config: mat-typography-config();
   position: relative;
   height: inherit;
 }
+
+// This fixes https://github.com/angular/components/issues/4609
+.mat-dialog-override {
+  mat-dialog-container {
+    > :first-child {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    mat-dialog-content {
+      flex-grow: 1;
+    }
+  }
+}

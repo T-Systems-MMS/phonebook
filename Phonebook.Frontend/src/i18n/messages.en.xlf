@@ -712,11 +712,11 @@
       </trans-unit>
       <trans-unit id="TableSettingsDialogTitle" datatype="html">
         <source>
-    Configure Table Columns
-  </source>
+      Configure Table Columns
+    </source>
         <target state="final">
-    Configure Table Columns
-  </target>
+      Configure Table Columns
+    </target>
         <note priority="1" from="description">Title for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit><trans-unit id="GeneralResetButton" datatype="html">
@@ -901,7 +901,15 @@
     Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them
     to the right.
   </target>
-        <note priority="1" from="description">Description of how to configure the table Settings</note>
+        <note priority="1" from="description">Description for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="TableSettingsDialogNote" datatype="html">
+        <source>
+    Note: You can only search for displayed columns.
+  </source><target state="final">
+    Note: You can only search for displayed columns.
+  </target>
+        <note priority="1" from="description">Note for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogSubTitleDisplayedColumns" datatype="html">
@@ -923,6 +931,14 @@
       </target>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="GeneralCloseButton" datatype="html">
+        <source>
+    Close
+  </source><target state="final">
+    Close
+  </target>
+        <note priority="1" from="description">Button for closing something</note>
+        <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source>
                   <x id="INTERPOLATION" equiv-text="{{ tableResultCount$ | async }}"/> Results
