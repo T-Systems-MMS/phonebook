@@ -101,7 +101,6 @@
     "puppeteer": "^1.18.0",
     "semantic-release": "^15.13.16",
     "semantic-release-docker-test": "^1.0.2",
-    "simple-commit-message": "^4.0.3",
     "ts-node": "~7.0.1",
     "tslint": "~5.18.0",
     "typescript": "3.4.5",
