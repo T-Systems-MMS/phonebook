@@ -1,13 +1,7 @@
-@import 'mixins';
 @import 'media-queries';
-@import '~@angular/material/theming';
 
 h3 {
   font-size: 2rem;
-}
-
-p {
-  font-size: 0.75rem;
 }
 
 .displayDialog {
@@ -30,9 +24,7 @@ p {
 }
 
 mat-card {
-  flex: 1;
   min-width: 25%;
-  margin: 1%;
   border: 1px solid;
 
   @include below-big {
@@ -41,21 +33,8 @@ mat-card {
   @include below-med {
     min-width: 80%;
   }
-
-  mat-card-header {
-    //place for the icon
-    justify-content: center;
-    mat-icon {
-      @include mat-icon-size(60px);
-    }
-  }
-
-  mat-card-title {
-    line-height: 1;
-  }
 }
 
-.pb-card-call {
-  flex: 1;
-  min-width: 80%;
+.border-1 {
+  border: 1px solid;
 }

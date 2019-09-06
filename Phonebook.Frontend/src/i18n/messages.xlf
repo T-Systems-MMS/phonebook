@@ -2,7 +2,134 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="BugReportConsentComponentTitle" datatype="html">
+      <trans-unit id="PageInformationComponentSubTitleContribute" datatype="html">
+        <source>
+        Call for Contributors!
+      </source>
+        <note priority="1" from="description">Subtitle Contributes</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSectionContribute" datatype="html">
+        <source>
+    <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+      The Phonebook is an Open Source Project and lives from his active contributors. There are many different topics
+      where you can work on. You can help with solving an
+      <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Issue<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>, work out an User-Guide or
+      document new <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Bugs<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
+    <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+    <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+      You can get in touch with us
+      <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/>in our official Repository<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> or you take a
+      look at our <x id="START_LINK_3" ctype="x-a" equiv-text="&lt;a&gt;"/>Documentation<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
+      <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>To be a part of this community it is not required to have programming skills.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+    <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+    <x id="START_TAG_DIV_2" ctype="x-div" equiv-text="&lt;div&gt;"/>
+      <x id="START_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;h2&gt;"/>Thanks to our Contributors!<x id="CLOSE_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;/h2&gt;"/>
+      <x id="START_TAG_DIV_1" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+    <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+  </source>
+        <note priority="1" from="description">Text for Contribute</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="WelcomeHeadline" datatype="html">
+        <source>
+    Welcome to the new Phonebook!
+  </source>
+        <note priority="1" from="description">Welcome Headline</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeIntroduction" datatype="html">
+        <source>The new Phonebook not only offers you a new design, but also numerous features that make it better than its
+      predecessor.
+    </source>
+        <note priority="1" from="description">Welcome Introduction</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureProfilePictureHeadline" datatype="html">
+        <source>
+              You can set a profile picture by yourself
+            </source>
+        <note priority="1" from="description">Profile Image Feature Headline</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureProfilePictureDescription" datatype="html">
+        <source>
+          Simply click on the
+          <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>person<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/><x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/>
+          icon in the upper right corner and then on &quot;My Profile&quot;.
+        </source>
+        <note priority="1" from="description">Profile Image Feature Description</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureBookmarkHeadline" datatype="html">
+        <source>
+              Colleagues can be saved as a favorite
+            </source>
+        <note priority="1" from="description">Bookmark Feature Headline</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureBookmarkDescription" datatype="html">
+        <source>
+          Just click on the
+          <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>bookmark_border<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/><x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/>
+          icon at one of your colleagues.
+        </source>
+        <note priority="1" from="description">Bookmark Feature Description</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureTableSettingsHeadline" datatype="html">
+        <source>
+              Table columns can be sorted and customized
+            </source>
+        <note priority="1" from="description">Table Settings Headlin</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureTableSettingsDescription" datatype="html">
+        <source>
+          The settings
+          <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>settings<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/><x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/>
+          can be found at the search page in the upper right corner.
+        </source>
+        <note priority="1" from="description">Table Settings Description</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureShareHeadline" datatype="html">
+        <source>
+              People can be shared via links
+            </source>
+        <note priority="1" from="description">Share Headline</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureShareDescription" datatype="html">
+        <source>
+          The different ways to share a profile can be found by clicking on the
+          <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>share<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/><x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/>
+          icon.
+        </source>
+        <note priority="1" from="description">Share description</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureLanguageHeadline" datatype="html">
+        <source>
+              The Phonebook is available in German and English
+            </source>
+        <note priority="1" from="description">Language Headline</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureLanguageDescription" datatype="html">
+        <source>
+          Simply click on the
+          <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>person<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/><x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/>
+          icon in the top right corner and go to the settings.
+        </source>
+        <note priority="1" from="description">Language description</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureRoomplanHeadline" datatype="html">
+        <source>
+              You can view a roomplan for each employee
+            </source>
+        <note priority="1" from="description">Room Plan Headline</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeFeatureRoomplanDescription" datatype="html">
+        <source>
+          Just go to the profile of a colleague and scroll down.
+        </source>
+        <note priority="1" from="description">Room Plan description</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="WelcomeCookieNotice" datatype="html">
+        <source>
+      This site uses cookies to ensure the basic functionality of the app.
+    </source>
+        <note priority="1" from="description">Cookie notice</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="BugReportConsentComponentTitle" datatype="html">
         <source>
     We need your help!
   </source>
@@ -693,7 +820,8 @@
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleFeedback" datatype="html">
         <source>
-        Contact &amp; Feedback</source>
+            Contact &amp; Feedback
+          </source>
         <note priority="1" from="description">Subtitle for Contact and Feedback</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionFeedback" datatype="html">
@@ -717,7 +845,8 @@
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleCookie" datatype="html">
         <source>
-        Cookie Notice</source>
+            Cookie Notice
+          </source>
         <note priority="1" from="description">Subtitle for Cookie</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
@@ -727,35 +856,10 @@
         </source>
         <note priority="1" from="description">CookiesSection</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
-      </trans-unit><trans-unit id="PageInformationComponentSubTitleContribute" datatype="html">
-        <source>Call for Contributors!</source>
-        <note priority="1" from="description">Subtitle Contributes</note>
-        <note priority="1" from="meaning">Page-informationComponent</note>
-      </trans-unit><trans-unit id="PageInformationComponentSectionContribute" datatype="html">
-        <source>
-        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
-          The Phonebook is an Open Source Project and lives from his active contributors. There are many different
-          topics where you can work on. You can help with solving an
-          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Issue<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>, work out an User-Guide
-          or document new
-          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Bugs<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
-        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
-        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
-          You can get in touch with us
-          <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/>in our official Repository<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> or you
-          take a look at our <x id="START_LINK_3" ctype="x-a" equiv-text="&lt;a&gt;"/>Documentation<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
-          <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>To be a part of this community it is not required to have programming skills.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
-        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
-        <x id="START_TAG_DIV_2" ctype="x-div" equiv-text="&lt;div&gt;"/>
-          <x id="START_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;h2&gt;"/>Thanks to our Contributors!<x id="CLOSE_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;/h2&gt;"/>
-          <x id="START_TAG_DIV_1" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
-        <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
-      </source>
-        <note priority="1" from="description">Text for Contribute</note>
-        <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleLicenses" datatype="html">
         <source>
-        Licenses</source>
+            Licenses
+          </source>
         <note priority="1" from="description">Subtitle for Licenses</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleLicensesText" datatype="html">
