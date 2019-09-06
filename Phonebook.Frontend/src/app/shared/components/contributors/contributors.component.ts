@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./contributors.component.scss']
 })
 export class ContributorsComponent implements OnInit {
-  public contributorsHTML: string = '';
+  public contributorsHTML: string = 'Loading';
   constructor(private httpClient: HttpClient) {}
 
   public ngOnInit() {
