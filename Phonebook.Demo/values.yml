@@ -5,10 +5,10 @@
 # General Variables
 host: &host 'demo-phonebook.me'
 contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
-roomPlanningToolUrl: 'undefined'
+roomPlanningToolUrl: null
 contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
-ravenUrl: 'undefined'
-employeePictureEndpoint: 'undefined'
+ravenUrl: null
+employeePictureEndpoint: null
 assetsEndpoint: 'https://demo-phonebook.me/assets'
 environment: 'preview'
 environmentTag: 'demo'
