@@ -7,23 +7,5 @@
   "automerge": false,
   "major": {
     "automerge": false
-  },
-  "packageRules": [
-    {
-      "extends": "monorepo:angular",
-      "groupName": "angular monorepo"
-    },
-    {
-      "extends": "monorepo:angularcli",
-      "groupName": "angularcli monorepo"
-    },
-    {
-      "extends": "monorepo:angularmaterial",
-      "groupName": "angularmaterial monorepo"
-    },
-    {
-      "packagePatterns": ["ngx-vcard"],
-      "enabled": false
-    }
-  ]
+  }
 }
