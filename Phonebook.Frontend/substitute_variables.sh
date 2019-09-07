@@ -28,7 +28,7 @@ done
 # Write Variables to files
 for i in "${requiredVariables[@]}" "${optionalVariables[@]}"
 do
-  # Error if variable is not defined
+  # Inform if a variable is not defined
   if [[ -z ${!i} ]]; then
     echo 'INFO: Variable "'$i'" not defined.'
   else
