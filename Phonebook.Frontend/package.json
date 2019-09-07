@@ -80,7 +80,7 @@
     "@semantic-release/exec": "3.3.3",
     "@types/jasmine": "3.3.13",
     "@types/jasminewd2": "2.0.6",
-    "@types/node": "12.0.10",
+    "@types/node": "12.7.4",
     "codelyzer": "5.1.0",
     "commitizen": "3.1.1",
     "cz-customizable": "5.10.0",
