@@ -63,7 +63,7 @@
     "ngx-clipboard": "12.1.2",
     "ngx-infinite-scroll": "7.2.0",
     "ngx-propagation-stop": "1.0.7",
-    "ngx-vcard": "1.2.3",
+    "ngx-vcard": "1.2.12",
     "raven-js": "3.27.2",
     "rxjs": "6.5.3",
     "uglify-es": "3.3.9",
