@@ -93,7 +93,7 @@
     "karma-jasmine": "2.0.1",
     "karma-jasmine-html-reporter": "1.4.2",
     "license-checker": "25.0.1",
-    "ng-mocks": "8.0.0",
+    "ng-mocks": "8.1.0",
     "ng2-mock-component": "0.2.0",
     "ngx-i18nsupport": "0.17.1",
     "protractor": "5.4.2",
