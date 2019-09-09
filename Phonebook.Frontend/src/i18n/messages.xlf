@@ -1034,6 +1034,11 @@
         <note priority="1" from="description">Snack Bar display Action Button for a feature update</note>
         <note priority="1" from="meaning">ReleaseInfoService</note>
       </trans-unit>
+      <trans-unit id="ContributorsErrorMessage" datatype="html">
+        <source>Contributors could not be loaded.</source>
+        <note priority="1" from="description">Contributors error Message</note>
+        <note priority="1" from="meaning">ContributorsErrorMessage</note>
+      </trans-unit>
       <trans-unit id="navigationBarGreetingsMessageFirstApril" datatype="html">
         <source>Happy April Fools&apos; Day</source>
         <note priority="1" from="description">Greetings Message on first April</note>

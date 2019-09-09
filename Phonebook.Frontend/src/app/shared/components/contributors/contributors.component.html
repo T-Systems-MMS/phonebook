@@ -21,7 +21,7 @@
       look at our <a href="https://t-systems-mms.github.io/phonebook/" target="_blank">Documentation</a>.
       <div><b>To be a part of this community it is not required to have programming skills.</b></div>
     </span>
-    <div class="pb-margin-top-20">
+    <div *ngIf="contributorsLoaded" class="pb-margin-top-20">
       <h2>Thanks to our Contributors!</h2>
       <div class="contributors-table" [innerHTML]="contributorsHTML"></div>
     </div>

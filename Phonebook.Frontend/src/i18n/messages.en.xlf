@@ -1457,6 +1457,10 @@
         <source>Fixed what?</source><target state="final">Fixed what?</target>
         <note priority="1" from="description">Snack Bar display Action Button for a feature update</note>
         <note priority="1" from="meaning">ReleaseInfoService</note>
+      </trans-unit><trans-unit id="ContributorsErrorMessage" datatype="html">
+        <source>Contributors could not be loaded.</source><target state="final">Contributors could not be loaded.</target>
+        <note priority="1" from="description">Contributors error Message</note>
+        <note priority="1" from="meaning">ContributorsErrorMessage</note>
       </trans-unit><trans-unit id="navigationBarGreetingsMessageFirstApril" datatype="html">
         <source>Happy April Fools' Day</source><target state="final">Happy April Fools' Day</target>
         <note priority="1" from="description">Greetings Message on first April</note>

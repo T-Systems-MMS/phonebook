@@ -1378,6 +1378,10 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <source>Fixed what?</source><target state="translated">Was ist neu?</target>
         <note priority="1" from="description">Snack Bar display Action Button for a feature update</note>
         <note priority="1" from="meaning">ReleaseInfoService</note>
+      </trans-unit><trans-unit id="ContributorsErrorMessage" datatype="html">
+        <source>Contributors could not be loaded.</source><target state="translated">Mitwirkende konnten nicht geladen werden.</target>
+        <note priority="1" from="description">Contributors error Message</note>
+        <note priority="1" from="meaning">ContributorsErrorMessage</note>
       </trans-unit><trans-unit id="navigationBarGreetingsMessageFirstApril" datatype="html">
         <source>Happy April Fools' Day</source><target state="new">Einen schönen ersten April</target>
         <note priority="1" from="description">Greetings Message on first April</note>
