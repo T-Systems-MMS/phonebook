@@ -6,11 +6,11 @@ To contact another user directly from the result list you click the ![envelope i
 If you search for a unique name or abbreviation the search will open the relevant profile on its own. Otherwise you have to select the right entry from the result list. 
 
 ![screenshot of search results](media/searchresults.PNG)
-## Configure search results
+## :wrench: Configure search results
 It is possible to reduce the search results by hiding selected attributes. Select  ![gear icon](media/gearicon.PNG) to open the table columns configuration. Use Drag & Drop to sort the attributes in "displayed" and "not displayed".
 
 ![screenshot of table columns configuation](media/configuretable.PNG)
-## Filter
+## :small_red_triangle_down: Filter
 Every column of the result list can be used as a filter. To do so you need to type in the relevant attribute and define its value with ": value X". Confirm your filter with Enter and go on with typing your search request. 
 
 Example: You want to find Thomas from Munich 
@@ -21,7 +21,7 @@ Example: You want to find Thomas from Munich
 
 When you've opened a profile - whether it's yours or another users - you can use all clickable attributes (bright colored) as filters, too. 
 
-## Profiles of colleagues 
+## :two_women_holding_hands: Profiles of colleagues 
 The profiles list contact details, direct supervisor, team assistant, profit center, employment type, organizational unit, and location. 
 
 In the lower part of the profile you will also find the map to the colleagues office.  
