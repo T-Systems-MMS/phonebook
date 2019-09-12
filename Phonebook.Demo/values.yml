@@ -36,6 +36,7 @@ affinity: {}
 
 # Traefik Configuration
 traefik:
+  enabled: true
   startupArguments:
     - ''
   dashboard:
@@ -52,13 +53,7 @@ traefik:
     challengeType: 'http-01'
     domains:
       enabled: true
-      domainsList:
-        - main: *host
-        - sans:
-            - 'board.demo-phonebook.me'
-            - 'assets.demo-phonebook.me'
   rbac:
     enabled: true
   kubernetes:
     namespaces:
-      - kube-public

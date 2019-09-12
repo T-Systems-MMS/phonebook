@@ -15,7 +15,8 @@ metadata:
   {{- end }}
 spec:
   rules:
-    - http:
+    - host: {{ .Values.host }}
+      http:
         paths:
           - path: /
             backend:

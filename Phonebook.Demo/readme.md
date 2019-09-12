@@ -10,7 +10,7 @@
 
 1. `az group create --subscription <id> --name phonebook-kubernetes --location northeurope`
 2. `az provider register --subscription <id> --namespace Microsoft.ContainerService`
-3. `az aks create --subscription <id> --resource-group phonebook-kubernetes --name phonebook-cluster --node-count 1 --enable-addons monitoring --generate-ssh-keys`
+3. `az aks create --subscription <id> --resource-group phonebook-kubernetes --name phonebook-cluster --node-count 1 --enable-addons monitoring --generate-ssh-keys --disable-rbac`
 4. `az aks get-credentials --subscription <id> --resource-group phonebook-kubernetes --name phonebook-cluster`
 
 > More Information [here](https://docs.microsoft.com/de-de/azure/aks/kubernetes-walkthrough)
