@@ -60,7 +60,7 @@
     "marked": "0.7.0",
     "ng2-rx-componentdestroyed": "3.0.1",
     "ngx-clipboard": "12.2.1",
-    "ngx-infinite-scroll": "7.2.0",
+    "ngx-infinite-scroll": "8.0.0",
     "ngx-propagation-stop": "1.0.20",
     "ngx-vcard": "1.2.12",
     "raven-js": "3.27.2",
