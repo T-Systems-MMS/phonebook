@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ConnectableObservable, Observable } from 'rxjs';
-import { map, mergeMap, publishReplay } from 'rxjs/operators';
+import { ConnectableObservable, Observable, of, throwError } from 'rxjs';
+import { map, mergeMap, publishReplay, catchError } from 'rxjs/operators';
 import { PersonService } from 'src/app/services/api/person.service';
 import { Person } from 'src/app/shared/models';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
@@ -19,6 +19,11 @@ export class CurrentUserService {
   constructor(private httpClient: HttpClient, private personService: PersonService) {}
 
   private getCurrentUserObject(): Observable<WhoAmIResponse> {
+    if (runtimeEnvironment.employeePicturesEndpoint === undefined) {
+      return throwError(
+        'The runtime variable "EMPLOYEE_PICTURES_ENDPOINT" is not defined. (You can define the variable in the docker container)'
+      );
+    }
     if (this.currentUserObjectObservable != null) {
       return this.currentUserObjectObservable;
     }
@@ -44,7 +49,7 @@ export class CurrentUserService {
       })
     );
   }
-  
+
   public getCurrentUser(): Observable<Person | null> {
     if (this.currentUserObservable != null) {
       return this.currentUserObservable;
@@ -65,7 +70,8 @@ export class CurrentUserService {
     return this.getCurrentUserObject().pipe(
       map(whoAmIResponse => {
         return whoAmIResponse.hasPicture;
-      })
+      }),
+      catchError(err => of(false))
     );
   }
 }

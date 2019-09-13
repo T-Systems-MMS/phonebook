@@ -34,7 +34,7 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
   public imageSize: number = 100;
   private USER: Person = Person.empty();
   private RANDOM: string;
-  public imageUrl: string = '';
+  public imageUrl?: string = undefined;
   public useAprilEndpoint: boolean = false;
   public imageLoaded: boolean = false;
   public dialogRef: MatDialogRef<ProfilePictureEnlargeDialog, any> | null;
@@ -67,24 +67,22 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
   }
 
   public updateImageUrl() {
-    if (!this.useAprilEndpoint) {
-      if (this.RANDOM) {
-        this.imageUrl = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/${
-          this.imageSize
-        }.jpg?random=${this.RANDOM}`;
+    if (runtimeEnvironment.employeePicturesEndpoint !== undefined) {
+      if (!this.useAprilEndpoint) {
+        if (this.RANDOM) {
+          this.imageUrl = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/${this.imageSize}.jpg?random=${this.RANDOM}`;
+        } else {
+          this.imageUrl = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/${this.imageSize}.jpg`;
+        }
       } else {
-        this.imageUrl = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/${
-          this.imageSize
-        }.jpg`;
+        this.httpClient
+          .get('/api/april/pictures/' + this.user.Id, {
+            responseType: 'text'
+          })
+          .subscribe(text => {
+            this.imageUrl = text;
+          });
       }
-    } else {
-      this.httpClient
-        .get('/api/april/pictures/' + this.user.Id, {
-          responseType: 'text'
-        })
-        .subscribe(text => {
-          this.imageUrl = text;
-        });
     }
   }
 
