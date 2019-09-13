@@ -25,6 +25,7 @@ ingress:
 
 # Traefik Configuration 
 traefik:
+  enabled: true
   startupArguments:
     - ''
   ssl:

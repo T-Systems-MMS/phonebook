@@ -47,6 +47,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.frontend.rule.type: PathPrefixStrip
+    traefik.frontend.priority: '50'
 spec:
   rules:
     - http:
