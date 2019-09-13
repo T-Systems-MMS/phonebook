@@ -1,5 +1,5 @@
 # base image
-FROM node:11.2.0 as builder
+FROM node:11.15.0 as builder
 
 # set working directory
 RUN  mkdir /usr/local/app
