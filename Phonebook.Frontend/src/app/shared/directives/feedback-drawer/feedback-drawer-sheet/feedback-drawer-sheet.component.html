@@ -3,7 +3,7 @@
     Leave Feedback, report a Bug or submit a new Idea
   </h3>
 
-  <mat-list-item>
+  <mat-list-item *ngIf="runtimeEnvironment.contactUrl">
     <a
       mat-button
       color="primary"

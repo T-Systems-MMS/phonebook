@@ -25,13 +25,14 @@ export interface RuntimeEnvironmentInterface {
   readonly environment: Environment;
   /**
    * The URL to the Raven Instance, in order to report Bugs.
-   * If set to null Raven does not get activated.
+   * If undefined Raven does not get activated.
    */
-  ravenURL: string | null;
+  readonly ravenURL?: string;
   /**
    * Get the URL of the employee Pictures endpoint without a ending '/'
+   * If undefined the Id will be displayed.
    */
-  readonly employeePicturesEndpoint: string;
+  readonly employeePicturesEndpoint?: string;
   /*'
    * Get the URL of the assets endpoint without an ending '/'
    */
@@ -39,16 +40,16 @@ export interface RuntimeEnvironmentInterface {
   /**
    * Your Companies Contact Email, that users can use to ask questions about the Phonebook.
    */
-  contactEmail: string | null;
+  readonly contactEmail?: string;
   /**
    * Your Companies Contact Url, that users will submit Bugs, Features or Feedback to.
    * Supposedly a contact Form, like ours: https://github.com/T-Systems-MMS/phonebook/issues/new
    */
-  contactUrl: string | null;
+  readonly contactUrl?: string;
   /**
    * Your Companies Room Planning Tool Url, that users can use to book rooms for meetings etc.
    **/
-  roomPlanningToolUrl: string | null;
+  readonly roomPlanningToolUrl?: string;
 }
 
 export enum Environment {
