@@ -1,5 +1,5 @@
 <div class="pb-margin-left-right-responsive">
-  <div class="header pb-margin-top-20">
+  <div class="pb-text-align-center pb-margin-top-20">
     <h1 i18n="PageInformationComponent|Title of the page information@@PageInformationComponentTitle">
       Phonebook
     </h1>
@@ -10,9 +10,9 @@
   </div>
   <div class="pb-flex pb-center-element">
     <!-- contact and feedback -->
-    <mat-card class="small-card">
-      <mat-card-header>
-        <mat-card-title
+    <mat-card class="small-card pb-text-align-center pb-margin-05">
+      <mat-card-header class="pb-center-element">
+        <mat-card-title class="pb-icon-60"
           ><mat-icon color="primary">sentiment_satisfied_alt</mat-icon>
           <p
             i18n="Page-informationComponent|Subtitle for Contact and Feedback@@PageInformationComponentSubTitleFeedback"
@@ -39,9 +39,9 @@
       </mat-card-content>
     </mat-card>
     <!-- cookie notice -->
-    <mat-card class="small-card">
-      <mat-card-header>
-        <mat-card-title
+    <mat-card class="small-card pb-text-align-center pb-margin-05">
+      <mat-card-header class="pb-center-element">
+        <mat-card-title class="pb-icon-60"
           ><mat-icon color="primary">info_outline</mat-icon>
           <p i18n="Page-informationComponent|Subtitle for Cookie@@PageInformationComponentSubTitleCookie">
             Cookie Notice
@@ -56,44 +56,13 @@
       </mat-card-content>
     </mat-card>
   </div>
-  <div class="pb-flex pb-center-element">
-    <!-- call for contributors -->
-    <mat-card class="pb-w-100">
-      <mat-card-header>
-        <mat-card-title
-          ><mat-icon color="primary">error_outline</mat-icon>
-          <p i18n="Page-informationComponent|Subtitle Contributes@@PageInformationComponentSubTitleContribute">
-            Call for Contributors!
-          </p></mat-card-title
-        >
-      </mat-card-header>
-
-      <mat-card-content i18n="Page-informationComponent|Text for Contribute@@PageInformationComponentSectionContribute">
-        <span>
-          The Phonebook is an Open Source Project and lives from his active contributors. There are many different
-          topics where you can work on. You can help with solving an
-          <a href="https://github.com/T-Systems-MMS/phonebook/issues" target="_blank">Issue</a>, work out an User-Guide
-          or document new
-          <a href="https://github.com/T-Systems-MMS/phonebook/issues/new/choose" target="_blank">Bugs</a>.
-        </span>
-        <span>
-          You can get in touch with us
-          <a href="https://github.com/T-Systems-MMS/phonebook/" target="_blank">in our official Repository</a> or you
-          take a look at our <a href="https://t-systems-mms.github.io/phonebook/" target="_blank">Documentation</a>.
-          <div><b>To be a part of this community it is not required to have programming skills.</b></div>
-        </span>
-        <div class="pb-margin-top-20">
-          <h2>Thanks to our Contributors!</h2>
-          <div class="contributors-table" [innerHTML]="contributorsHTML"></div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
+  <!-- call for contributors -->
+  <app-contributors class="pb-center-element pb-margin-05"></app-contributors>
   <!-- licences -->
   <div class="pb-flex pb-center-element">
-    <mat-card class="pb-w-100">
-      <mat-card-header>
-        <mat-card-title
+    <mat-card class="pb-w-100 pb-text-align-center pb-margin-05">
+      <mat-card-header class="pb-center-element">
+        <mat-card-title class="pb-icon-60"
           ><mat-icon color="primary">attachment_outlined</mat-icon>
           <p i18n="Page-informationComponent|Subtitle for Licenses@@PageInformationComponentSubTitleLicenses">
             Licenses

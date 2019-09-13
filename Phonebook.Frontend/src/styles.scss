@@ -18,6 +18,7 @@ $custom-typography: mat-typography-config(
 );
 
 @include mat-core($custom-typography);
+@import 'mixins';
 @import 'themes';
 @import 'media-queries';
 
@@ -69,6 +70,10 @@ app-root {
 
 .pb-margin-20 {
   margin: 20px;
+}
+
+.pb-margin-05 {
+  margin: 0.5%;
 }
 
 .pb-margin-top-20 {
@@ -142,9 +147,14 @@ app-root {
   min-height: 100%;
 }
 
+.pb-text-align-center {
+  text-align: center;
+}
 
-.pb-float-right {
-  float: right;
+.pb-icon-60 {
+  mat-icon {
+    @include mat-icon-size(60px);
+  }
 }
 
 .pb-margin-left-right-responsive {
