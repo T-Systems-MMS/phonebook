@@ -95,7 +95,7 @@ declare const require;
       useFactory: (locale: string) => {
         locale = locale || 'en';
         // if we are already on our default locale, we do not need to set any translations
-        return require(`raw-loader!../i18n/messages.${locale}.xlf`);
+        return require(`raw-loader!../i18n/messages.${locale}.xlf`).default;
       },
       deps: [LOCALE_ID]
     },
