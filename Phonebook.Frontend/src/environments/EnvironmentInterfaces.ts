@@ -50,6 +50,10 @@ export interface RuntimeEnvironmentInterface {
    * Your Companies Room Planning Tool Url, that users can use to book rooms for meetings etc.
    **/
   readonly roomPlanningToolUrl?: string;
+  /**
+   * Your Companies Smart Spaces Url, that users can use to view the Smart Spaces.
+   **/
+  readonly smartSpacesUrl?: string;
 }
 
 export enum Environment {

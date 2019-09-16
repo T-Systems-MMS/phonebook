@@ -6,6 +6,7 @@
 host: &host 'demo-phonebook.me'
 contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
 roomPlanningToolUrl: null
+smartSpacesUrl: null
 contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
 ravenUrl: null
 employeePictureEndpoint: null

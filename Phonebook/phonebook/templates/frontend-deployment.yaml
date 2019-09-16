@@ -60,6 +60,8 @@ spec:
               value: "{{ .Values.employeePictureEndpoint }}"
             - name: ASSETS_ENDPOINT
               value: "{{ .Values.assetsEndpoint }}"
+            - name: SMARTSPACES_URL
+              value: {{ .Values.smartSpacesUrl }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
