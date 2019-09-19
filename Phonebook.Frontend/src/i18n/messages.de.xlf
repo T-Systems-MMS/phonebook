@@ -410,7 +410,7 @@
         <note priority="1" from="description">Info Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
       </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
-        <source>Report a Bug</source><target state="new">Melde einen Bug</target>
+        <source>Report a Bug or share an Idea</source><target state="translated">Melde einen Bug oder teile eine Idee</target>
         <note priority="1" from="description">Link to Bug page</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="navigationBarBugTooltip" datatype="html">

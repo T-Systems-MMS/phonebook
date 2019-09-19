@@ -566,7 +566,7 @@
         <note priority="1" from="description">Release Notes Menu Item</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
-        <source>Report a Bug</source>
+        <source>Report a Bug or share an Idea</source>
         <note priority="1" from="description">Link to Bug page</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="navigationBarBugTooltip" datatype="html">
