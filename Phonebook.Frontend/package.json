@@ -104,7 +104,7 @@
     "tslint": "5.20.0",
     "typescript": "3.4.5",
     "webdriver-manager": "12.1.6",
-    "webpack-bundle-analyzer": "3.5.0"
+    "webpack-bundle-analyzer": "3.5.1"
   },
   "config": {
     "pre-git": {
