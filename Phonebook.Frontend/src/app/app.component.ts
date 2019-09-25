@@ -1,24 +1,28 @@
 import { Platform } from '@angular/cdk/platform';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NavigationError, Router } from '@angular/router';
+import { NavigationError, Router, UrlTree, ActivatedRoute } from '@angular/router';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Store } from '@ngxs/store';
-import { filter } from 'rxjs/operators';
+import { filter, skip } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
 import { AppState, InitTheme, SetSendFeedback } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+  //get url params
+  private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
+  private skipDialog: boolean = this.urlParams.get('skip_dialog') == 'true';
   constructor(
     private snackBar: MatSnackBar,
     private releaseMigrationService: ReleaseInfoService,
@@ -29,7 +33,8 @@ export class AppComponent implements OnInit {
     private matDialog: MatDialog,
     private i18n: I18n,
     private platform: Platform,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   public ngOnInit() {
@@ -95,6 +100,17 @@ export class AppComponent implements OnInit {
     //   });
     // }
 
+    //queryParamMap did not work, because condition if dialog should open must wait for subscription
+    //and skip(1) would only work if params exist, if not it will skip the subscription..
+    /* this.activatedRoute.queryParamMap
+      .pipe(
+        //skip(1),
+        untilComponentDestroyed(this)
+      )
+      .subscribe(queryParamMap => {
+        this.skipDialog = queryParamMap.get('skipDialog') == 'true';
+      }); */
+
     // Ask for Permission to send Bug reports
     const test = this.store.selectSnapshot(AppState.sendFeedback);
     if (this.store.selectSnapshot(AppState.sendFeedback) == null && runtimeEnvironment.ravenURL != null) {
@@ -106,12 +122,15 @@ export class AppComponent implements OnInit {
       });
     }
 
-    if (DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)) {
+    if (
+      !this.skipDialog &&
+      DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)
+    ) {
       this.matDialog.open(DisplayNotificationDialog, {
         height: '90vh',
         width: '90vw'
       });
-    } else {
+    } else if (!this.skipDialog) {
       // Display the Release Dialog only if no notification Dialog is shown, in order to not overwhelm the user with dialogs.
       this.releaseMigrationService.checkForUpdate();
     }
@@ -128,4 +147,5 @@ export class AppComponent implements OnInit {
       this.router.navigateByUrl('/');
     });
   }
+  public ngOnDestroy(): void {}
 }
