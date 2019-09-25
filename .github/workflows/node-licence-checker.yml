@@ -7,8 +7,9 @@ jobs:
   check-licenses:
     runs-on: ubuntu-18.04
     steps:
+    - uses: actions/checkout@master
     - name: Check for Licenses
       uses: docker://cdssnc/node-license-checker-github-action
       with:
-        args: "--direct --start /home/runner/work/phonebook/phonebook/Phonebook.Frontend --onlyAllow 'MIT'"
+        args: "phonebook/Phonebook.Frontend --onlyAllow 'MIT'"
  
