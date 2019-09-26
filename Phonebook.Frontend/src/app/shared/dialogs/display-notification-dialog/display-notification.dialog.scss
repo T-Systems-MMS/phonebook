@@ -24,10 +24,16 @@ h3 {
 }
 
 .announcement {
-  margin-bottom: 10px;
+  margin-left: 2px;
   cursor: pointer;
   &:hover {
     color: gray;
+  }
+}
+.cookie-notices {
+  margin-left: 5px;
+  p {
+    float: left;
   }
 }
 mat-card {

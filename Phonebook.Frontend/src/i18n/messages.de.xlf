@@ -943,6 +943,14 @@
     </target>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
+        <source>
+        Annoyed by the start-dialogs? Klick here:
+      </source><target state="translated">
+        Genervt von den Start-Dialogen? Klick hier:
+      </target>
+        <note priority="1" from="description">Annoyed by cookies notice</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
         <source>
           This site uses cookies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the

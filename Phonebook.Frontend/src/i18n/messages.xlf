@@ -102,6 +102,12 @@
     </source>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
+        <source>
+        Annoyed by the start-dialogs? Klick here:
+      </source>
+        <note priority="1" from="description">Annoyed by cookies notice</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="BugReportConsentComponentTitle" datatype="html">
         <source>
     We need your help!
