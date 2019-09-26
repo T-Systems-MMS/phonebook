@@ -135,6 +135,16 @@
         "code",
         "ideas"
       ]
+    },
+    {
+      "login": "oliverguhr",
+      "name": "Oliver Guhr",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3495355?v=4",
+      "profile": "https://www.oliverguhr.eu",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
