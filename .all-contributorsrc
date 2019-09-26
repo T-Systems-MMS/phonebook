@@ -105,6 +105,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "renkin",
+      "name": "René Kießig",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/12253492?v=4",
+      "profile": "https://github.com/renkin",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
