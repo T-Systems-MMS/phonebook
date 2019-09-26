@@ -105,6 +105,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "schurzi",
+      "name": "schurzi",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1736679?v=4",
+      "profile": "http://www.drachen-server.de",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
