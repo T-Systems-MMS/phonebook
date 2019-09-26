@@ -13,6 +13,7 @@
   <tr>
     <td align="center"><a href="https://github.com/PhoebeNgnfld"><img src="https://avatars2.githubusercontent.com/u/54710033?v=4" width="100px;" alt="PhoebeNgnfld"/><br /><sub><b>PhoebeNgnfld</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=PhoebeNgnfld" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.drachen-server.de"><img src="https://avatars3.githubusercontent.com/u/1736679?v=4" width="100px;" alt="schurzi"/><br /><sub><b>schurzi</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=schurzi" title="Code">💻</a> <a href="#ideas-schurzi" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/renkin"><img src="https://avatars0.githubusercontent.com/u/12253492?v=4" width="100px;" alt="René Kießig"/><br /><sub><b>René Kießig</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=renkin" title="Code">💻</a> <a href="#ideas-renkin" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
