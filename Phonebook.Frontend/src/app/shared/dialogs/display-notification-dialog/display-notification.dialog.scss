@@ -23,6 +23,13 @@ h3 {
   margin: 0 0 0 auto;
 }
 
+.announcement {
+  margin-bottom: 10px;
+  cursor: pointer;
+  &:hover {
+    color: gray;
+  }
+}
 mat-card {
   min-width: 25%;
   border: 1px solid;

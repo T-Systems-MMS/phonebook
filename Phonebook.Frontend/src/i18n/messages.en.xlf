@@ -1313,6 +1313,14 @@
         <target state="final">Building</target>
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
+        <source>Add skip_dialog=true as parameter to url for skipping start dialogs if cookies are deleted after each session.</source><target state="final">Add skip_dialog=true as parameter to url for skipping start dialogs if cookies are deleted after each session.</target>
+        <note priority="1" from="description">Message for new no cookie url</note>
+        <note priority="1" from="meaning">Display-New-Url-Advice</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesUrl" datatype="html">
+        <source>Go to Url</source><target state="final">Go to Url</target>
+        <note priority="1" from="description">Message for following no cookie url</note>
+        <note priority="1" from="meaning">Go-to-New-Url-Advice</note>
       </trans-unit><trans-unit id="DataPersonStatus" datatype="html">
         <source>
               Status

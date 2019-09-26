@@ -9,7 +9,7 @@ import { filter, skip } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
-import { AppState, InitTheme, SetSendFeedback } from 'src/app/shared/states/App.state';
+import { AppState, InitTheme, SetSendFeedback, SetDisplayedNotificationVersion } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
@@ -22,7 +22,7 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
   private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
-  private skipDialog: boolean = this.urlParams.get('skip_dialog') == 'true';
+  private skipDialog: boolean = this.urlParams.get('skip_dialog') === 'true';
   constructor(
     private snackBar: MatSnackBar,
     private releaseMigrationService: ReleaseInfoService,
@@ -122,15 +122,17 @@ export class AppComponent implements OnInit, OnDestroy {
       });
     }
 
-    if (
-      !this.skipDialog &&
-      DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)
-    ) {
+    //if skip_cookies is set, dont show dialogs
+    if (this.skipDialog) {
+      this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
+    }
+
+    if (DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)) {
       this.matDialog.open(DisplayNotificationDialog, {
         height: '90vh',
         width: '90vw'
       });
-    } else if (!this.skipDialog) {
+    } else {
       // Display the Release Dialog only if no notification Dialog is shown, in order to not overwhelm the user with dialogs.
       this.releaseMigrationService.checkForUpdate();
     }

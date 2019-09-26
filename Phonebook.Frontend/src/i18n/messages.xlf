@@ -2,34 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="PageInformationComponentSubTitleContribute" datatype="html">
-        <source>
-        Call for Contributors!
-      </source>
-        <note priority="1" from="description">Subtitle Contributes</note>
-        <note priority="1" from="meaning">Page-informationComponent</note>
-      </trans-unit><trans-unit id="PageInformationComponentSectionContribute" datatype="html">
-        <source>
-    <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
-      The Phonebook is an Open Source Project and lives from his active contributors. There are many different topics
-      where you can work on. You can help with solving an
-      <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Issue<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>, work out an User-Guide or
-      document new <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Bugs<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
-    <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
-    <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
-      You can get in touch with us
-      <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/>in our official Repository<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> or you take a
-      look at our <x id="START_LINK_3" ctype="x-a" equiv-text="&lt;a&gt;"/>Documentation<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
-      <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>To be a part of this community it is not required to have programming skills.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
-    <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
-    <x id="START_TAG_DIV_2" ctype="x-div" equiv-text="&lt;div&gt;"/>
-      <x id="START_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;h2&gt;"/>Thanks to our Contributors!<x id="CLOSE_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;/h2&gt;"/>
-      <x id="START_TAG_DIV_1" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
-    <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
-  </source>
-        <note priority="1" from="description">Text for Contribute</note>
-        <note priority="1" from="meaning">Page-informationComponent</note>
-      </trans-unit><trans-unit id="WelcomeHeadline" datatype="html">
+      <trans-unit id="WelcomeHeadline" datatype="html">
         <source>
     Welcome to the new Phonebook!
   </source>
@@ -817,6 +790,33 @@
         <source>{VAR_PLURAL, plural, =0 {No Learners } =1 {Learner: } other {Learners: } }</source>
         <note priority="1" from="description">Learners Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSubTitleContribute" datatype="html">
+        <source>
+        Call for Contributors!
+      </source>
+        <note priority="1" from="description">Subtitle Contributes</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSectionContribute" datatype="html">
+        <source>
+    <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+      The Phonebook is an Open Source Project and lives from his active contributors. There are many different topics
+      where you can work on. You can help with solving an
+      <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Issue<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>, work out an User-Guide or
+      document new <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Bugs<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
+    <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+    <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+      You can get in touch with us
+      <x id="START_LINK_2" ctype="x-a" equiv-text="&lt;a&gt;"/>in our official Repository<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> or you take a
+      look at our <x id="START_LINK_3" ctype="x-a" equiv-text="&lt;a&gt;"/>Documentation<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.
+      <x id="START_TAG_DIV" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>To be a part of this community it is not required to have programming skills.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+    <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+    <x id="START_TAG_DIV_2" ctype="x-div" equiv-text="&lt;div&gt;"/>
+      <x id="START_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;h2&gt;"/>Thanks to our Contributors!<x id="CLOSE_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;/h2&gt;"/>
+      <x id="START_TAG_DIV_1" ctype="x-div" equiv-text="&lt;div&gt;"/><x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+    <x id="CLOSE_TAG_DIV" ctype="x-div" equiv-text="&lt;/div&gt;"/>
+  </source>
+        <note priority="1" from="description">Text for Contribute</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentTitle" datatype="html">
         <source>
       Phonebook
@@ -1083,6 +1083,16 @@
         <source>Building</source>
         <note priority="1" from="description">Title of Table Column &quot;Building&quot;</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit>
+      <trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
+        <source>Add skip_dialog=true as parameter to url for skipping start dialogs if cookies are deleted after each session.</source>
+        <note priority="1" from="description">Message for new no cookie url</note>
+        <note priority="1" from="meaning">Display-New-Url-Advice</note>
+      </trans-unit>
+      <trans-unit id="PageInformationNewUrlNoCookiesUrl" datatype="html">
+        <source>Go to Url</source>
+        <note priority="1" from="description">Message for following no cookie url</note>
+        <note priority="1" from="meaning">Go-to-New-Url-Advice</note>
       </trans-unit>
       <trans-unit id="GeneralSuccessMessageCopy" datatype="html">
         <source>Copied to clipboard!</source>
