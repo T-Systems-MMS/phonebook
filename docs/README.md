@@ -86,6 +86,7 @@ The project makes use of the following noteworthy frameworks:
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/PhoebeNgnfld"><img src="https://avatars2.githubusercontent.com/u/54710033?v=4" width="100px;" alt="PhoebeNgnfld"/><br /><sub><b>PhoebeNgnfld</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=PhoebeNgnfld" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.oliverguhr.eu"><img src="https://avatars1.githubusercontent.com/u/3495355?v=4" width="100px;" alt="Oliver Guhr"/><br /><sub><b>Oliver Guhr</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=oliverguhr" title="Code">💻</a> <a href="#ideas-oliverguhr" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
