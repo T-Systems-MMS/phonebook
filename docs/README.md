@@ -86,6 +86,7 @@ The project makes use of the following noteworthy frameworks:
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/PhoebeNgnfld"><img src="https://avatars2.githubusercontent.com/u/54710033?v=4" width="100px;" alt="PhoebeNgnfld"/><br /><sub><b>PhoebeNgnfld</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=PhoebeNgnfld" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/danielsy"><img src="https://avatars1.githubusercontent.com/u/8321455?v=4" width="100px;" alt="danielsy"/><br /><sub><b>danielsy</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=danielsy" title="Code">💻</a> <a href="#ideas-danielsy" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
