@@ -1,4 +1,24 @@
-<div class="svg-container" [style.display]="floorPlanSVG ? 'block' : 'none'" #floorplanSVG></div>
+<!-- Container for Smart Spaces -->
+<ng-container *ngIf="floorplan == 'DDR7HausD24' && runtimeEnvironment.smartSpacesUrl">
+  <mat-slide-toggle
+    color="primary"
+    class="pb-flex"
+    (toggleChange)="showSmartSpaces = !showSmartSpaces && (showSpinner = true)"
+    [checked]="showSmartSpaces"
+    i18n="Room-planComponent|View Smart Spaces Toggle@@Room-planComponentSmartSpacesToggle"
+    >View Smart Spaces</mat-slide-toggle
+  >
+  <div class="pb-center-element pb-margin-top-20" *ngIf="showSpinner">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <iframe
+    *ngIf="showSmartSpaces"
+    [src]="this.sanitizer.bypassSecurityTrustResourceUrl(runtimeEnvironment.smartSpacesUrl)"
+    (load)="iframeLoaded()"
+  ></iframe>
+</ng-container>
+<!-- Container for floorPlanSVG -->
+<div class="svg-container" [style.display]="floorPlanSVG && !showSmartSpaces ? 'block' : 'none'" #floorplanSVG></div>
 <!-- Use normal Floorplan picture if it is not yet converted -->
 <ng-container *ngIf="!floorPlanSVG">
   <img
