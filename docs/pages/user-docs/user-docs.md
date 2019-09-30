@@ -1,8 +1,13 @@
-# User Guide
+---
+layout: default
+title: User Guide
+nav_order: 600
+has_children: true
+has_toc: false
+permalink: /pages/user-docs/
+---
+
+# :smiley_cat: User Guide
 On the following pages you will find a User Guide to the Phonebook. Please navigate to your subpage of interest:
 
-[ :newspaper: Dashboard](dashboard-page.md){: .btn .btn-green } 
-
-[ :mag_right: Search](search.md){: .btn .btn-green } 
-
-[ :trident: Organigram, :door: Rooms and :open_file_folder: Profile Menu](profile-menu.md){: .btn .btn-green } 
+[:newspaper: Dashboard](dashboard-page){: .btn .btn-purple } [:mag_right: Search](search){: .btn .btn-purple } [:two_women_holding_hands: Profile Page](profile-page){: .btn .btn-purple } [:trident: Subpages](subpages){: .btn .btn-purple } 
