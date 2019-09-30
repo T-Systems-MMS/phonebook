@@ -1,4 +1,4 @@
-# Search
+# :mag_right: Search
 You can search for names, abbreviations, locations or departments. The search results display contact information your colleagues and details of their employment. 
 
 To contact another user directly from the result list you click the ![envelope icon](media/envelope.png) next to the name. This will open your email program. The same logic applies for **phone calls** after clicking the displayed number of a user. 
@@ -21,6 +21,8 @@ Example: You want to find Thomas from Munich
 
 When you've opened a profile - whether it's yours or another users - you can use all clickable attributes (bright colored) as filters, too. 
 
+**Caution!** You can only use filters that are configurate as "displayed" in the filter settings (see above).
+
 ## :two_women_holding_hands: Profiles of colleagues 
 The profiles list contact details, direct supervisor, team assistant, profit center, employment type, organizational unit, and location. 
 
@@ -33,3 +35,5 @@ You can choose from the following actions:
 * **Open Organigram**: By clicking "show organigram" you open the organigram at the exact position your colleague is located at. This offers you insight into the other team members of  and supervisors.  
 * **Share profile**: Use ![share icon](media/shareicon.png) to either download the whole profile, share it via Rocketchat, copy the link to the current profile or share it via mail. 
 * **Bookmark profile**: To safe a profile and display it on your dashboard you can bookmark it with ![bookmark icon](media/bookmarkicon1.png)
+
+Wanna know more about the Phonebook? Read also [ :newspaper: Dashboard](dashboard-page.md) and [ :mag_right: Search](search.md). 
