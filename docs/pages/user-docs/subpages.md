@@ -9,7 +9,7 @@ nav_order: 640
 
 This subpage offers you a visualization of our organizational structure. By scrolling down the page you find different work units which can be expanded by clicking on the arrow far to the right. 
 ## :door:  Rooms 
-When you open the room subpage you can directly open our internal **booking tool** and check for available facilities as in Outlook. 
+When you open the room subpage you can directly open our internal **booking tool** and check for available facilities as in Outlook. If this doesn't work, the function is disabled by your company
 
 To find a specific room, you need to navigate either via the column at the left side or by clicking the buttons displayed in the middle. 
 ![screenshot of room subpage ](media/rooms_demo.PNG)
