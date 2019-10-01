@@ -15,9 +15,11 @@ If you search for a unique name or abbreviation the search will open the relevan
 ## :wrench: Configure search results
 It is possible to reduce the search results by hiding selected attributes. Select  ![gear icon](media/gearicon.PNG) to open the table columns configuration. Use Drag & Drop to sort the attributes in "displayed" and "not displayed".
 
-![screenshot of table columns configuation](media/configuretable.PNG)
+![screenshot of table columns configuration](media/configuretable.PNG)
 ## :small_red_triangle_down: Filter
-Every column of the result list can be used as a filter. To do so you need to type in the relevant attribute and define its value with ": value X". Confirm your filter with Enter and go on with typing your search request. 
+Every column of the result list can be used as a filter. When you've opened a profile - whether it's yours or another users - you can use all **clickable attributes** (bright colored) as filters. 
+
+You can also type in the relevant attribute into the search bar and define its value with ": value X". Confirm your filter with Enter and go on with typing your search request. 
 
 Example: You want to find Thomas from Munich 
 
@@ -25,6 +27,5 @@ Example: You want to find Thomas from Munich
 1. **Enter** 
 1. ![established city filter + "Thomas"](media/filter2.PNG)
 
-When you've opened a profile - whether it's yours or another users - you can use all clickable attributes (bright colored) as filters, too. 
 
-**Caution!** You can only use filters that are configurate as "displayed" in the filter settings (see above).
+
