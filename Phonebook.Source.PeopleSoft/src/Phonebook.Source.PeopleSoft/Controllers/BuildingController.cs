@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Phonebook.Source.PeopleSoft.Models;
 
 namespace Phonebook.Source.PeopleSoft.Controllers
@@ -22,32 +20,59 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet]
         public IEnumerable<Building> Get()
         {
-            return Context.Buildings;
+            return this.inlcudeDependencies(Context.Buildings);
         }
 
         // GET: api/Building/5
         [HttpGet("{id}")]
         public Building Get(int id)
         {
-            return Context.Buildings.First(b => b.Id == id);
+            return this.inlcudeDependencies(Context.Buildings).First(b => b.Id == id);
         }
 
-        // POST: api/Building
-        [HttpPost]
-        public void Post([FromBody] Building value)
+        private IQueryable<Building> inlcudeDependencies(IQueryable<Building> query)
         {
-        }
-
-        // PUT: api/Building/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Building value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return query
+                    .AsNoTracking()
+                    .Include(b => b.Location)
+                    .Include(b => b.BuildingParts)
+                    .Include(b => b.Floors)
+                        .ThenInclude(f => f.Rooms)
+                    // the following select will remove cycle references
+                    .Select(b => new Building()
+                    {
+                        ShortName = b.ShortName,
+                        Address = b.Address,
+                        Name = b.Name,
+                        Id = b.Id,
+                        LocationId = b.LocationId,
+                        Location = b.Location != null ? new Location()
+                        {
+                            Id = b.Location.Id,
+                            Country = b.Location.Country,
+                            Name = b.Location.Name,
+                            ShortName = b.Location.ShortName
+                        } : null,
+                        BuildingParts = b.BuildingParts != null? b.BuildingParts.Select(bp => new BuildingPart()
+                        {
+                            BuildingId = bp.BuildingId,
+                            Id = bp.Id,
+                            Description = bp.Description
+                        }) : null,
+                        Floors = b.Floors != null ? b.Floors.Select(f => new Floor()
+                        {
+                            Id = f.Id,
+                            BuildingId = f.BuildingId,
+                            Describtion = f.Describtion,
+                            Rooms = f.Rooms.Select(r =>
+                            new Room(){
+                                Id =r.Id,
+                                FloorId = r.FloorId,
+                                Map = r.Map,
+                                Number = r.Number
+                            })
+                        }): null
+                    });
         }
     }
 }

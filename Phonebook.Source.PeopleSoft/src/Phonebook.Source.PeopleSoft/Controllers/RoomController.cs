@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Phonebook.Source.PeopleSoft.Models;
 
 namespace Phonebook.Source.PeopleSoft.Controllers
@@ -21,32 +19,24 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet]
         public IEnumerable<Room> Get()
         {
-            return Context.Rooms;
+            return this.inlcudeDependencies(Context.Rooms);
         }
 
         // GET: api/Room/5
         [HttpGet("{id}")]
         public Room Get(int id)
         {
-            return Context.Rooms.First(r => r.Id == id);
+            return this.inlcudeDependencies(Context.Rooms).First(r => r.Id == id);
         }
 
-        // POST: api/Room
-        [HttpPost]
-        public void Post([FromBody] Room value)
+        private IQueryable<Room> inlcudeDependencies(IQueryable<Room> query)
         {
-        }
+            return query
+                .AsNoTracking()
+                .Include(r => r.Members)
+                .Include(r => r.Floor)
+                .Include(r => r.BuildingPart);
 
-        // PUT: api/Room/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Room value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

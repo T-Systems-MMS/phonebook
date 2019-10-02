@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Phonebook.Source.PeopleSoft</RootNamespace>
+    <UserSecretsId>87c803aa-de8f-4eaf-a14b-0f59d53083cf</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.30" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0-preview8.19405.7" />    
   </ItemGroup>
 
 </Project>

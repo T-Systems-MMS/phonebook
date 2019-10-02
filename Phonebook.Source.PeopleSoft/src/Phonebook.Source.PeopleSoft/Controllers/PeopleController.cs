@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Phonebook.Source.PeopleSoft.Models;
 
 namespace Phonebook.Source.PeopleSoft.Controllers
@@ -22,32 +20,53 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet]
         public IEnumerable<Person> Get()
         {
-            return Context.Peoples;
+            return this.inlcudeDependencies(Context.Peoples);
         }
 
         // GET: api/People/5
         [HttpGet("{id}")]
         public Person Get(int id)
         {
-            return Context.Peoples.First(p => p.Id == id);
+            return this.inlcudeDependencies(Context.Peoples).First(p => p.Id == id);
         }
 
-        // POST: api/People
-        [HttpPost]
-        public void Post([FromBody] Person value)
+        private IEnumerable<Person> inlcudeDependencies(IQueryable<Person> query)
         {
-        }
+            return query
+                    .AsNoTracking()
+                    .Include(p => p.OrgUnit)
+                    .Include(p => p.Room)                    
+                    // the following select will remove cicle references
+                    .Select(p =>
+                    new Person() {
+                      Id= p.Id,
+                      EMail = p.EMail,
+                      FAX = p.FAX,
+                      FirstName = p.FirstName,
+                      FunctionId = p.FunctionId,
+                      LastName = p.LastName,
+                      MobilPhone = p.MobilPhone,
+                      OrgUnit = p.OrgUnit != null ? new OrgUnit(){
+                        CostCenter = p.OrgUnit.CostCenter,
+                        Id = p.OrgUnit.Id,
+                        Name = p.OrgUnit.Name,
+                        ShortName = p.ShortName
+                      } : null,
+                      OrgUnitId = p.OrgUnitId,
+                      Phone = p.Phone,
+                      Room = p.Room != null ? new Room(){
+                          Id = p.Room.Id,
+                          BuildingPartId = p.Room.BuildingPartId,
+                          FloorId = p.Room.FloorId,
+                          Map = p.Room.Map,
+                          Number = p.Room.Number
+                      } : null,
+                      ShortName = p.ShortName,
+                      StatusId = p.StatusId,
+                      Title = p.Title,
+                      RoomId = p.RoomId
+                    });
 
-        // PUT: api/People/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Person value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

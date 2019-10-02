@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,16 +23,12 @@ namespace Phonebook.Source.PeopleSoft
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
-                // TODO: remove this after the following issue is solved: https://github.com/dotnet/corefx/issues/38579
-                .AddNewtonsoftJson(d =>
-                {
-                    // we have self referenzing models, so we must ignor them in the json serialisation.
-                    d.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
+            services.AddControllers();
             services.AddDbContext<ModelContext>(options =>
                 options
-                    .UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction => oracleOptionsAction.UseRelationalNulls(false)));
+                    .UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction => oracleOptionsAction.UseRelationalNulls(false))
+                    .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning))
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
