@@ -23,9 +23,9 @@ You can also type in the relevant attribute into the search bar and define its v
 
 Example: You want to find Thomas from Munich 
 
-1. ![city: munich](media/filter1.PNG) 
+1. ![example for the filter: 'city: munich'](media/filter1.PNG) 
 1. **Enter** 
-1. ![established city filter + "Thomas"](media/filter2.PNG)
+1. ![example for filter: 'city: munich "Thomas"](media/filter2.PNG)
 
 
 
