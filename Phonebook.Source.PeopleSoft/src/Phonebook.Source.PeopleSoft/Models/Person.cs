@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Phonebook.Source.PeopleSoft.Models
 {
     public class Person
     {
-        [Column(name:"P_ID")]
+        [Column(name:"ID")]
         public int Id { get; set; }
         [Column(name: "KUERZEL")]
         public string ShortName { get; set; }
@@ -31,10 +27,10 @@ namespace Phonebook.Source.PeopleSoft.Models
         // TODO: missing view in database!
         // Currently not working
         // public Status Status { get; set; }
-        [Column(name: "ORG_ID")]
+        [Column(name: "ORGEINHEIT_ID")]
         public int OrgUnitId { get; set; }        
         public virtual OrgUnit OrgUnit { get; set; }
-        [Column(name: "F_ID")]
+        [Column(name: "FUNKTION_ID")]
         public int? FunctionId { get; set; }
         // TODO: missing view in database!
         // Currently not working

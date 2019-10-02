@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Phonebook.Source.PeopleSoft.Models
 {
@@ -15,7 +12,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name: "KURZBEZEICHNUNG")]
         public string ShortName { get; set; }
         [Column(name:"VATER")]
-        public int ParentId { get; set; }        
+        public int? ParentId { get; set; }        
         public virtual OrgUnit Parent { get; set; }
         [Column(name:"KST")]
         public string CostCenter { get; set; }        

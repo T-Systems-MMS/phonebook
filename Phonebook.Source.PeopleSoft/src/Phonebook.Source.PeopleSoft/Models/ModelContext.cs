@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Phonebook.Source.PeopleSoft.Models
 {
@@ -54,6 +51,12 @@ namespace Phonebook.Source.PeopleSoft.Models
                     .HasOne<Building>(f => f.Building)
                         .WithMany(b => b.Floors)
                         .HasForeignKey(f => f.BuildingId);
+            modelBuilder
+                .Entity<Floor>()
+                .ToTable("V_ETAGE")
+                    .HasMany<Room>(f => f.Rooms)
+                        .WithOne(r => r.Floor)
+                        .HasForeignKey(r => r.FloorId);
 
             // BuildingPart
             modelBuilder

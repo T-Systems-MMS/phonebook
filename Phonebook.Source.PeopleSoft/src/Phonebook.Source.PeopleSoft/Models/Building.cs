@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Phonebook.Source.PeopleSoft.Models
 {
     public class Building
     {
-        [Column(name: "G_ID")]
+        [Column(name: "ID")]
         public int Id { get; set; }
-        [Column(name: "S_ID")]
+        [Column(name: "STANDORT_ID")]
         public int LocationId { get; set; }        
         public virtual Location Location { get; set; }
         [Column(name: "KURZBEZEICHNUNG")]
