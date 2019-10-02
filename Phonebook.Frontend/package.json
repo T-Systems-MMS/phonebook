@@ -78,7 +78,7 @@
     "@semantic-release/exec": "3.3.7",
     "@types/jasmine": "3.4.1",
     "@types/jasminewd2": "2.0.7",
-    "@types/node": "12.7.8",
+    "@types/node": "12.7.9",
     "codelyzer": "5.1.2",
     "commitizen": "4.0.3",
     "concurrently": "4.1.2",
