@@ -24,16 +24,13 @@ namespace Phonebook.Source.PeopleSoft.Models
         public string EMail { get; set; }
         [Column(name: "MITARBEITER_STATUS_ID")]
         public int StatusId { get; set; }
-        // TODO: missing view in database!
-        // Currently not working
-        // public Status Status { get; set; }
+        public virtual Status Status { get; set; }
         [Column(name: "ORGEINHEIT_ID")]
         public int OrgUnitId { get; set; }        
         public virtual OrgUnit OrgUnit { get; set; }
         [Column(name: "FUNKTION_ID")]
         public int? FunctionId { get; set; }
-        // TODO: missing view in database!
-        // Currently not working
+        public virtual Function Function { get; set; }
         [Column(name: "RAUM_ID")]
         public int? RoomId { get; set; }        
         public virtual Room Room { get; set; }

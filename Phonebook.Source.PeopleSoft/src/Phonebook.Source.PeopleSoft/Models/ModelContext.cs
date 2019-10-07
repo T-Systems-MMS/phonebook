@@ -109,6 +109,32 @@ namespace Phonebook.Source.PeopleSoft.Models
                     .HasOne<Room>(p => p.Room)
                         .WithMany(r => r.Members)
                         .HasForeignKey(p => p.RoomId);
+            modelBuilder
+                .Entity<Person>()
+                .ToTable("V_PERSON")
+                    .HasOne<Status>(p => p.Status)
+                        .WithMany(s => s.Peoples)
+                        .HasForeignKey(p => p.StatusId);
+            modelBuilder
+                .Entity<Person>()
+                .ToTable("V_PERSON")
+                    .HasOne<Function>(p => p.Function)
+                        .WithMany(f => f.Peoples)
+                        .HasForeignKey(p => p.FunctionId);
+
+            // Status
+            modelBuilder
+                .Entity<Status>()
+                .ToTable("V_PERSON_STATUS")
+                    .HasMany<Person>(s => s.Peoples)
+                        .WithOne(p => p.Status);
+
+            // Function
+            modelBuilder
+                .Entity<Function>()
+                .ToTable("V_FUNKTIONEN")
+                    .HasMany<Person>(s => s.Peoples)
+                        .WithOne(p => p.Function);
         }
 
         public DbSet<Location> Locations { get; set; }
@@ -118,5 +144,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         public DbSet<Room> Rooms { get; set; }
         public DbSet<OrgUnit> OrgUnits { get; set; }
         public DbSet<Person> Peoples { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<Function> Functions { get; set; }
     }
 }
