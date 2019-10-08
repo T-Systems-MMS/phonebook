@@ -55,7 +55,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private store: Store,
     private i18n: I18n,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   public ngOnInit() {
     this.getRandomMoney();
@@ -105,6 +105,8 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public openChangePopup(): void {
+    const wrapper = document.getElementById('1');
+    wrapper.classList.add('blur');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -120,7 +122,10 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       Lastname: name.lastNames,
       Titel: name.Titel
     };
-    this.dialog.open(DialogComponent, dialogConfig);
+    const dialogref = this.dialog.open(DialogComponent, dialogConfig);
+    dialogref.afterClosed().subscribe(result => {
+      wrapper.classList.remove('blur')
+    });
   }
 
   public getLink() {
@@ -131,7 +136,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ToggleBookmark(this.person));
   }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy() { }
 
   @HostListener('click')
   public getRandomMoney(): void {
