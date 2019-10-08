@@ -1,8 +1,14 @@
 .center {
   text-align: center;
+  margin: 10;
 }
 
 .actions {
   text-align: center;
-  margin: 0 0 0 0 auto;
+  margin: 20px;
+  top: 30px;
+  
+}
+.actions > button{
+  width: 100%;
 }

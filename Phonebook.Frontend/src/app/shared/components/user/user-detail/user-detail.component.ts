@@ -16,8 +16,9 @@ import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { UserInformationDialogComponent } from 'src/app/shared/dialogs/user-information/user-information-dialog/user-information-dialog.component';
+import { DialogComponent } from 'src/app/shared/dialogs/user-information/dialog/dialog.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -97,10 +98,26 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       'This is the Phonebook Link: ' + this.windowRef.getCurrentUrl()
     );
   }
-
+  
   public openChangePopup(): void {
-    new UserInformationDialogComponent(this.dialog).openDialog(this.person);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '22vh';
+    dialogConfig.width = '30vw';
+    const name = {
+      firstNames: this.person.Firstname,
+      lastNames: this.person.Surname,
+      Titel: this.person.Title
+    };
+    dialogConfig.data = {
+      Firstname: name.firstNames,
+      Lastname: name.lastNames,
+      Titel: name.Titel
+    };
+    this.dialog.open(DialogComponent, dialogConfig);
   }
+
 
   public getLink() {
     return this.windowRef.getCurrentUrl();
