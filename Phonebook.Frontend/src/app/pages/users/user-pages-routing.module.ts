@@ -19,4 +19,4 @@ const routes: Routes = [
   providers: [UserDetailPageResolver],
   exports: [RouterModule]
 })
-export class UserPagesRoutingModule {}
+export class UserPagesRoutingModule { }

@@ -10,7 +10,7 @@ import { runtimeEnvironment } from 'src/environments/runtime-environment';
 export class PageInformationComponent implements OnInit {
   public isPreview: boolean = true;
   public runtimeEnvironment: RuntimeEnvironmentInterface = runtimeEnvironment;
-  constructor() {}
+  constructor() { }
 
   public ngOnInit() {
     this.isPreview = runtimeEnvironment.environment === Environment.production ? false : true;

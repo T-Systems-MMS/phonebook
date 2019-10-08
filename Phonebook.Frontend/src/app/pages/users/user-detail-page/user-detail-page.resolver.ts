@@ -11,7 +11,7 @@ import { Person } from 'src/app/shared/models';
   providedIn: 'root'
 })
 export class UserDetailPageResolver implements Resolve<Person> {
-  constructor(private personSearchService: PersonService, private snackBar: MatSnackBar, private i18n: I18n) {}
+  constructor(private personSearchService: PersonService, private snackBar: MatSnackBar, private i18n: I18n) { }
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Person> {
     const personId = route.paramMap.get('id');
@@ -32,15 +32,15 @@ export class UserDetailPageResolver implements Resolve<Person> {
               id: 'UserDetailPageResolverNotFoundFirstPart',
               value: 'User with Id'
             }) +
-              ' "' +
-              personId +
-              '" ' +
-              this.i18n({
-                meaning: 'UserDetailPageResolver',
-                description: 'Second part of the message displayed when a user is not found',
-                id: 'UserDetailPageResolverNotFoundSecondPart',
-                value: 'not found.'
-              }),
+            ' "' +
+            personId +
+            '" ' +
+            this.i18n({
+              meaning: 'UserDetailPageResolver',
+              description: 'Second part of the message displayed when a user is not found',
+              id: 'UserDetailPageResolverNotFoundSecondPart',
+              value: 'not found.'
+            }),
             '',
             { duration: 3000 }
           );
