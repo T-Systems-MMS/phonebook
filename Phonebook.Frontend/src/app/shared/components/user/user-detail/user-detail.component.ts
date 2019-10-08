@@ -10,15 +10,20 @@ import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Select, Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { VCard, VCardEncoding } from 'ngx-vcard';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MailService } from 'src/app/services/mail.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialog, MatDialogConfig } from '@angular/material';
-import { UserInformationDialogComponent } from 'src/app/shared/dialogs/user-information/user-information-dialog/user-information-dialog.component';
-import { DialogComponent } from 'src/app/shared/dialogs/user-information/dialog/dialog.component';
+import { DialogComponent } from 'src/app/shared/dialogs/userinformation/dialog.component';
+
+export interface DialogData {
+  Firstname: string;
+  Lastname: string;
+  Titel: string;
+}
 
 @Component({
   selector: 'app-user-detail',
@@ -98,7 +103,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       'This is the Phonebook Link: ' + this.windowRef.getCurrentUrl()
     );
   }
-  
+
   public openChangePopup(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -117,7 +122,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     };
     this.dialog.open(DialogComponent, dialogConfig);
   }
-
 
   public getLink() {
     return this.windowRef.getCurrentUrl();

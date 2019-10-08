@@ -3,7 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component';
 import { SettingsComponent } from 'src/app/pages/settings/settings.component';
 import { environment } from 'src/environments/environment';
-import { UserInformationDialogComponent } from "src/app/shared/dialogs/user-information/user-information-dialog/user-information-dialog.component";
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, pathMatch: 'full' },
@@ -19,7 +18,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('src/app/pages/page-information/page-information.module').then(m => m.PageInformationModule)
   },
-  { path: 'user-dialog', component: UserInformationDialogComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '**', redirectTo: '' }
 ];
