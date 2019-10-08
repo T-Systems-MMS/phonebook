@@ -1,15 +1,23 @@
-import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Select, Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { VCard, VCardEncoding } from 'ngx-vcard';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { MailService } from 'src/app/services/mail.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
+import { MatDialog } from '@angular/material';
+import { UserInformationDialogComponent } from 'src/app/shared/dialogs/user-information/user-information-dialog/user-information-dialog.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -39,7 +47,8 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
-    private i18n: I18n
+    private i18n: I18n,
+    private dialog: MatDialog
   ) {}
 
   public ngOnInit() {
@@ -74,7 +83,10 @@ export class UserDetailComponent implements OnInit, OnDestroy {
         value: 'T-Systems Multimedia Solutions',
         param: { type: ['work'] }
       },
-      categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
+      categories: [
+        ...this.person.Business.OrgUnit,
+        ...this.person.Business.ShortOrgUnit
+      ],
       nickname: this.person.Id
     };
   }
@@ -84,6 +96,10 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       'Information about ' + this.person.Surname + ' ' + this.person.Firstname,
       'This is the Phonebook Link: ' + this.windowRef.getCurrentUrl()
     );
+  }
+
+  public openChangePopup(): void {
+    new UserInformationDialogComponent(this.dialog).openDialog(this.person);
   }
 
   public getLink() {

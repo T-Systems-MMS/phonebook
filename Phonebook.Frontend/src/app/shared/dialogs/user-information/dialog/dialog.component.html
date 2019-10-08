@@ -1,0 +1,17 @@
+<div>
+  <div class="center">
+    <h2 mat-dialog-title>User Information</h2>
+    <div mat-dialog-content>
+      <span>
+        Dear {{ data.Titel }} {{ data.Firstname }} {{ data.Lastname }}<br />
+        Unfortunately, you cannot change your user information via the Phonebook
+        interface. <br />
+        If your data is incorrect, please contact your human resources
+        department.
+      </span>
+    </div>
+  </div>
+  <div mat-dialog-actions class="action">
+    <button mat-button (click)="onNoClick()">Got it!</button>
+  </div>
+</div>
