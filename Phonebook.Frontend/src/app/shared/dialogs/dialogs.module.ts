@@ -13,6 +13,7 @@ import { MatDialogRef } from '@angular/material';
   imports: [RouterModule, MaterialModule, ContributorsModule],
   exports: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent],
   entryComponents: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent, DialogComponent],
-  providers: [MatDialogRef]
+  providers: [
+    { provide: MatDialogRef, useValue: {} }]
 })
-export class DialogsModule {}
+export class DialogsModule { }

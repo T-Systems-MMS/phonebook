@@ -17,7 +17,7 @@ import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialog, MatDialogConfig } from '@angular/material';
-import { DialogComponent } from 'src/app/shared/dialogs/userinformation/dialog.component';
+import { UserInformationDialogComponent } from 'src/app/shared/dialogs/userinformation/dialog.component';
 
 export interface DialogData {
   Firstname: string;
@@ -122,7 +122,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       Lastname: name.lastNames,
       Titel: name.Titel
     };
-    const dialogref = this.dialog.open(DialogComponent, dialogConfig);
+    const dialogref = this.dialog.open(UserInformationDialogComponent, dialogConfig);
     dialogref.afterClosed().subscribe(result => {
       wrapper.classList.remove('blur')
     });

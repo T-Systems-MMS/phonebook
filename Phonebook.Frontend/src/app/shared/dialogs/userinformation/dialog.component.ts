@@ -7,9 +7,10 @@ import { DialogData } from 'src/app/shared/components/user/user-detail/user-deta
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-export class DialogComponent {
+export class UserInformationDialogComponent
+{
   constructor(
-    public dialogRef: MatDialogRef<DialogComponent>,
+    public dialogRef: MatDialogRef<UserInformationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
 }

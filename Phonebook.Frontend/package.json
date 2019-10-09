@@ -57,7 +57,6 @@
     "@ngxs/storage-plugin": "3.4.3",
     "@ngxs/store": "3.4.3",
     "classlist.js": "1.1.20150312",
-    "jquery": "^3.4.1",
     "marked": "0.7.0",
     "ng2-rx-componentdestroyed": "3.0.1",
     "ngx-clipboard": "12.2.1",
