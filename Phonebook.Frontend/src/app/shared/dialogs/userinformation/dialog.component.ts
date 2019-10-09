@@ -10,5 +10,5 @@ import { DialogData } from 'src/app/shared/components/user/user-detail/user-deta
 export class UserInformationDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<UserInformationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData | any) {}
 }

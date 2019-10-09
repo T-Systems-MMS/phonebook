@@ -1,15 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserInformationDialogComponent } from './dialog.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-// Deactivated, because MatDialogRef is not easily testable.
-xdescribe('UserInformationDialogComponent', () => {
+describe('UserInformationDialogComponent', () => {
   let component: UserInformationDialogComponent;
   let fixture: ComponentFixture<UserInformationDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserInformationDialogComponent ]
+      declarations: [ UserInformationDialogComponent ],
+      providers: [{ provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: {} }]
     })
     .compileComponents();
   }));
