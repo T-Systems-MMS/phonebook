@@ -23,19 +23,6 @@ h3 {
   margin: 0 0 0 auto;
 }
 
-.announcement {
-  margin-left: 2px;
-  cursor: pointer;
-  &:hover {
-    color: gray;
-  }
-}
-.cookie-notices {
-  margin-left: 5px;
-  p {
-    float: left;
-  }
-}
 mat-card {
   min-width: 25%;
   border: 1px solid;

@@ -112,17 +112,22 @@
     <!-- call for contributors -->
     <app-contributors class="border-1 pb-center-element pb-border-color-primary pb-margin-05"></app-contributors>
   </mat-dialog-content>
+
   <div class="spacer"></div>
   <mat-dialog-actions>
-    <p i18n="Display-notificationDialog|Cookie notice@@WelcomeCookieNotice">
+    <span i18n="Display-notificationDialog|Cookie notice@@WelcomeCookieNotice">
       This site uses cookies to ensure the basic functionality of the app.
-    </p>
-    <div class="cookie-notices">
-      <p i18n="Display-notificationDialog|Annoyed by cookies notice@@PageInformationNewUrlNoCookiesText">
-        Annoyed by the start-dialogs? Klick here:
-      </p>
-      <mat-icon class="announcement" (click)="openSnackBar()">announcement</mat-icon>
-    </div>
+    </span>
+    <span i18n="Display-notificationDialog|Annoyed by cookies notice@@PageInformationNewUrlNoCookiesText">
+      You deactivated cookies and keep getting those dialogs?
+    </span>
+    <button
+      i18n="Display-notificationDialog|Deactivate Startup Dialogues@@PageInformationNewUrlNoCookiesButton"
+      mat-button
+      (click)="skipDialoges()"
+    >
+      Deactivate startup dialogues!
+    </button>
     <div class="actions">
       <button mat-button mat-dialog-close cdkFocusInitial>
         Cool!

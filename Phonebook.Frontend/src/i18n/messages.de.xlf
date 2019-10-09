@@ -945,11 +945,19 @@
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
         <source>
-        Annoyed by the start-dialogs? Klick here:
-      </source><target state="translated">
-        Genervt von den Start-Dialogen? Klick hier:
+      You deactivated cookies and keep getting those dialogs?
+    </source><target state="translated">
+        Du hast Cookies deaktiviert und dir werden diese Dialoge ständig angezeigt?
       </target>
         <note priority="1" from="description">Annoyed by cookies notice</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
+        <source>
+      Deactivate startup dialogues!
+    </source><target state="translated">
+        Start-Dialoge deaktivieren!
+      </target>
+        <note priority="1" from="description">Deactivate Startup Dialogues</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
         <source>
@@ -1247,14 +1255,14 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
-        <source>Add skip_dialog=true as parameter to url for skipping start dialogs if cookies are deleted after each session.</source>
-        <target state="translated">Füge skip_dialog=true als Url-Parameter hinzu, um Startdialoge zu überspringen wenn Cookies in deinem Browser nach jeder Session gelöscht werden.</target>
+        <source>Please notice: You wont get any information about updates or releases with the set url prameter.</source>
+        <target state="translated">Bitte beachte: Mit dem gesetzten Url-Parameter werden keine Dialoge zu Updates oder Neuen Features angezeigt.</target>
         <note priority="1" from="description">Message for new no cookie url</note>
-        <note priority="1" from="meaning">Display-New-Url-Advice</note>
+        <note priority="1" from="meaning">Display advice to new url</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesUrl" datatype="html">
-        <source>Go to Url</source><target state="translated">Link folgen</target>
+        <source>Reset Url</source><target state="translated">Url zurücksetzen</target>
         <note priority="1" from="description">Message for following no cookie url</note>
-        <note priority="1" from="meaning">Go-to-New-Url-Advice</note>
+        <note priority="1" from="meaning">Restore Url</note>
       </trans-unit><trans-unit id="DataPersonStatus" datatype="html">
         <source>
               Status

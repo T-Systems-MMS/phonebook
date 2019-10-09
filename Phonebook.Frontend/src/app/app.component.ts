@@ -2,17 +2,16 @@ import { Platform } from '@angular/cdk/platform';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NavigationError, Router, UrlTree, ActivatedRoute } from '@angular/router';
+import { NavigationError, Router } from '@angular/router';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Store } from '@ngxs/store';
-import { filter, skip } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
 import { AppState, InitTheme, SetSendFeedback, SetDisplayedNotificationVersion } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 
 @Component({
   selector: 'app-root',
@@ -31,10 +30,9 @@ export class AppComponent implements OnInit, OnDestroy {
     // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
     // private swUpdates: SwUpdate,
     private matDialog: MatDialog,
-    private i18n: I18n,
     private platform: Platform,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private i18n: I18n
   ) {}
 
   public ngOnInit() {
@@ -100,17 +98,11 @@ export class AppComponent implements OnInit, OnDestroy {
     //   });
     // }
 
-    //queryParamMap did not work, because condition if dialog should open must wait for subscription
-    //and skip(1) would only work if params exist, if not it will skip the subscription..
-    /* this.activatedRoute.queryParamMap
-      .pipe(
-        //skip(1),
-        untilComponentDestroyed(this)
-      )
-      .subscribe(queryParamMap => {
-        this.skipDialog = queryParamMap.get('skipDialog') == 'true';
-      }); */
-
+    //if skip_cookies is set, dont show dialogs
+    if (this.skipDialog) {
+      this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
+      this.openSnackBar();
+    }
     // Ask for Permission to send Bug reports
     const test = this.store.selectSnapshot(AppState.sendFeedback);
     if (this.store.selectSnapshot(AppState.sendFeedback) == null && runtimeEnvironment.ravenURL != null) {
@@ -120,11 +112,6 @@ export class AppComponent implements OnInit, OnDestroy {
       matDialogRef.afterClosed().subscribe(consent => {
         this.store.dispatch(new SetSendFeedback(consent));
       });
-    }
-
-    //if skip_cookies is set, dont show dialogs
-    if (this.skipDialog) {
-      this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
     }
 
     if (DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)) {
@@ -148,6 +135,29 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.events.pipe(filter(e => e instanceof NavigationError)).subscribe(e => {
       this.router.navigateByUrl('/');
     });
+  }
+  public openSnackBar() {
+    this.snackBar
+      .open(
+        this.i18n({
+          meaning: 'Display advice to new url',
+          description: 'Message for new no cookie url',
+          id: 'PageInformationNewUrlNoCookies',
+          value: 'Please notice: You wont get any information about updates or releases with the set url prameter.'
+        }),
+        this.i18n({
+          meaning: 'Restore Url',
+          description: 'Message for following no cookie url',
+          id: 'PageInformationNewUrlNoCookiesUrl',
+          value: 'Reset Url'
+        }),
+        { duration: 10000 }
+      )
+      .onAction()
+      .subscribe(() => {
+        //remove url parameter and reload page
+        window.location.href = window.location.href.split('?')[0];
+      });
   }
   public ngOnDestroy(): void {}
 }
