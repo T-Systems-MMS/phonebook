@@ -105,7 +105,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public openChangePopup(): void {
-    const wrapper = new  HTMLElement().getElementsByClassName('pb-margin-20')[0];
+    const wrapper = document.getElementsByClassName('pb-margin-20')[0];
     wrapper.classList.add('blur');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
