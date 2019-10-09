@@ -83,28 +83,12 @@ declare const require;
     NotImplementedModule,
     FeedbackDrawerModule,
     MatBadgeModule,
-    NgxsModule.forRoot(
-      [
-        AppState,
-        BookmarksState,
-        LastPersonsState,
-        CommonPersonsState,
-        SearchState,
-        TableState
-      ],
-      {
-        // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
-        // developmentMode: !environment.production
-      }
-    ),
+    NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState], {
+      // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
+      // developmentMode: !environment.production
+    }),
     NgxsStoragePluginModule.forRoot({
-      key: [
-        'appstate',
-        'bookmarks',
-        'commonpersons',
-        'lastpersons',
-        'tablestate'
-      ]
+      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
