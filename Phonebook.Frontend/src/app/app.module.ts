@@ -54,7 +54,6 @@ import { environment } from 'src/environments/environment';
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
-import { UserInformationDialogComponent } from './shared/dialogs/userinformation/dialog.component';
 
 declare const require;
 
@@ -64,8 +63,7 @@ declare const require;
     SearchComponent,
     DashboardComponent,
     NavigationComponent,
-    OnlineBarComponent,
-    UserInformationDialogComponent
+    OnlineBarComponent
   ],
 
   imports: [
