@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  constructor(private store: Store, private cd: ChangeDetectorRef) { }
+  constructor(private store: Store, private cd: ChangeDetectorRef) {}
 
   public ngOnInit() {
     this.changeOrder();

@@ -5,13 +5,11 @@ import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notifi
 import { ReleaseNotificationDialog } from 'src/app/shared/dialogs/release-notification-dialog/release-notification.dialog';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { ContributorsModule } from 'src/app/shared/components/contributors/contributors.module';
-import { UserInformationDialogComponent } from './userinformation/dialog.component';
-import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @NgModule({
-  declarations: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent, UserInformationDialogComponent],
+  declarations: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent],
   imports: [RouterModule, MaterialModule, ContributorsModule],
-  exports: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent, UserInformationDialogComponent],
-  entryComponents: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent, UserInformationDialogComponent]
+  exports: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent],
+  entryComponents: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent]
 })
-export class DialogsModule { }
+export class DialogsModule {}
