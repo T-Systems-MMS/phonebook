@@ -6,4 +6,4 @@ import { UserPagesRoutingModule } from 'src/app/pages/users/user-pages-routing.m
 @NgModule({
   imports: [CommonModule, UserPagesRoutingModule, UserDetailPageModule]
 })
-export class UserPagesModule { }
+export class UserPagesModule {}
