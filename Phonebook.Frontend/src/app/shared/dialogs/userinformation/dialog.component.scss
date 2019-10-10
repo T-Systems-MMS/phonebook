@@ -1,0 +1,16 @@
+.center {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  text-align: center;
+  margin: 20px;
+  top: 30px;
+  
+}
+.actions > button{
+  width: 100%;
+}

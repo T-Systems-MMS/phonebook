@@ -3,5 +3,6 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "files.eol": "\n",
   "prettier.singleQuote": true,
+  "prettier.printWidth": 120,
   "tslint.autoFixOnSave": true
 }

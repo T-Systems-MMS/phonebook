@@ -30,4 +30,4 @@ const routes: Routes = [
   ],
   providers: []
 })
-export class PageInformationModule {}
+export class PageInformationModule { }

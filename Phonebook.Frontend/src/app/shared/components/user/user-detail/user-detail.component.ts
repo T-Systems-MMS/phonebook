@@ -1,4 +1,10 @@
-import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Select, Store } from '@ngxs/store';
@@ -10,6 +16,14 @@ import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { UserInformationDialogComponent } from 'src/app/shared/dialogs/userinformation/dialog.component';
+
+export interface DialogData {
+  Firstname: string;
+  Lastname: string;
+  Titel: string;
+}
 
 @Component({
   selector: 'app-user-detail',
@@ -39,8 +53,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
-    private i18n: I18n
-  ) {}
+    private i18n: I18n,
+    private dialog: MatDialog
+  ) { }
 
   public ngOnInit() {
     this.getRandomMoney();
@@ -74,7 +89,10 @@ export class UserDetailComponent implements OnInit, OnDestroy {
         value: 'T-Systems Multimedia Solutions',
         param: { type: ['work'] }
       },
-      categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
+      categories: [
+        ...this.person.Business.OrgUnit,
+        ...this.person.Business.ShortOrgUnit
+      ],
       nickname: this.person.Id
     };
   }
@@ -86,6 +104,30 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     );
   }
 
+  public openChangePopup(): void {
+    const wrapper = document.getElementsByClassName('pb-margin-20')[0];
+    wrapper.classList.add('blur');
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '22vh';
+    dialogConfig.width = '30vw';
+    const name = {
+      firstNames: this.person.Firstname,
+      lastNames: this.person.Surname,
+      Titel: this.person.Title
+    };
+    dialogConfig.data = {
+      Firstname: name.firstNames,
+      Lastname: name.lastNames,
+      Titel: name.Titel
+    };
+    const dialogref = this.dialog.open(UserInformationDialogComponent, dialogConfig);
+    dialogref.afterClosed().subscribe(result => {
+      wrapper.classList.remove('blur')
+    });
+  }
+
   public getLink() {
     return this.windowRef.getCurrentUrl();
   }
@@ -94,7 +136,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ToggleBookmark(this.person));
   }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy() { }
 
   @HostListener('click')
   public getRandomMoney(): void {

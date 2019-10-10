@@ -24,4 +24,4 @@ import { SettingsComponent } from './settings.component';
   entryComponents: [],
   exports: [SettingsComponent]
 })
-export class SettingsModule {}
+export class SettingsModule { }
