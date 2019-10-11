@@ -31,7 +31,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     private notImplementedService: NotImplementedService,
     public featureFlagService: FeatureFlagService,
     private i18n: I18n
-  ) { }
+  ) {}
 
   public ngOnInit() {
     this.languageValue = this.languageService.getLanguage();
@@ -122,7 +122,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.featureFlagService.set(flag, event.checked);
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 }
 
 enum Layout {

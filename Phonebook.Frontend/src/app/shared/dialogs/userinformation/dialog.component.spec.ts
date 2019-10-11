@@ -9,10 +9,9 @@ describe('UserInformationDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserInformationDialogComponent ],
+      declarations: [UserInformationDialogComponent],
       providers: [{ provide: MatDialogRef, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: {} }]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

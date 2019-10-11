@@ -12,7 +12,7 @@ import { AddToLastPersons, IncrementCommonPerson } from 'src/app/shared/states';
 export class UserDetailPageComponent implements OnInit, OnDestroy {
   public person: Person = Person.empty();
 
-  constructor(private activatedRoute: ActivatedRoute, private store: Store) { }
+  constructor(private activatedRoute: ActivatedRoute, private store: Store) {}
 
   public ngOnInit() {
     this.activatedRoute.data.subscribe(data => {
@@ -22,5 +22,5 @@ export class UserDetailPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 }
