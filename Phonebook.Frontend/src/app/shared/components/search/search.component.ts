@@ -6,14 +6,7 @@ import { Observable } from 'rxjs';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
 import { SearchFilter } from 'src/app/shared/models';
-import {
-  AddSearchFilter,
-  RemoveLastSearchFilter,
-  RemoveSearchFilter,
-  ResetSearch,
-  SearchState,
-  UpdateUrl
-} from 'src/app/shared/states';
+import { AddSearchFilter, RemoveLastSearchFilter, RemoveSearchFilter, ResetSearch, SearchState, UpdateUrl } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-search',
