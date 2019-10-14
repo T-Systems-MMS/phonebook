@@ -7,6 +7,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { ContributorsModule } from 'src/app/shared/components/contributors/contributors.module';
 import { UserInformationDialogComponent } from './userinformation/dialog.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
     BugReportConsentComponent,
     UserInformationDialogComponent
   ],
-  imports: [RouterModule, MaterialModule, ContributorsModule],
+  imports: [CommonModule, RouterModule, MaterialModule, ContributorsModule],
   exports: [
     ReleaseNotificationDialog,
     DisplayNotificationDialog,

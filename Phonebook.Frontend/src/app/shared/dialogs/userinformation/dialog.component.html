@@ -1,11 +1,18 @@
 <div>
   <div class="center">
     <h2 mat-dialog-title>User Information</h2>
-    <div mat-dialog-content>
+    <div mat-dialog-content *ngIf="onMyProfile">
       <span>
         Dear {{ data.Titel }} {{ data.Firstname }} {{ data.Lastname }}<br />
         Unfortunately, you can not change your user information via the Phonebook interface. <br />
         If your data is incorrect, please contact your human resources department.
+      </span>
+    </div>
+    <div mat-dialog-content *ngIf="!(onMyProfile)">
+      <span>
+        Dear {{ data.Titel }} {{ data.Firstname }} {{ data.Lastname }}<br/>
+        Is there something wrong with the profile? <br>
+        Please let your colleague know that his data is incorrect and that he can have it changed by his Human Resource Department.
       </span>
     </div>
   </div>
