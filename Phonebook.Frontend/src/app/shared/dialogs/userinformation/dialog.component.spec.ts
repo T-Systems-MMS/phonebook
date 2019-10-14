@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserInformationDialogComponent } from './dialog.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-describe('UserInformationDialogComponent', () => {
+xdescribe('UserInformationDialogComponent', () => {
   let component: UserInformationDialogComponent;
   let fixture: ComponentFixture<UserInformationDialogComponent>;
 
