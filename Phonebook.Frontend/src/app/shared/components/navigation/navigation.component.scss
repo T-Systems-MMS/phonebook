@@ -1,27 +1,6 @@
 @import 'media-queries';
 @import '~@angular/material/theming';
 
-@keyframes changeColor {
-  0% {
-    color: #ff0000;
-  }
-  25% {
-    color: #fffb00;
-  }
-  50% {
-    color: #00ff00;
-  }
-  60% {
-    color: #00fff2;
-  }
-  75% {
-    color: #0c08f8;
-  }
-  100% {
-    color: #ff009d;
-  }
-}
-
 mat-sidenav-container {
   width: 100%;
 
@@ -43,7 +22,6 @@ mat-sidenav-container {
     }
 
     .beta-tag {
-      animation: changeColor 10s ease-out infinite;
       vertical-align: top !important;
       background-color: mat-color(mat-palette($mat-teal, 500));
       text-transform: uppercase;
@@ -53,7 +31,6 @@ mat-sidenav-container {
     }
 
     .version {
-      animation: changeColor 60s ease-in-out infinite;
       vertical-align: baseline;
     }
 

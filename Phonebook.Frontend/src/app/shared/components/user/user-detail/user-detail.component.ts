@@ -12,6 +12,7 @@ import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { UserInformationDialogComponent } from 'src/app/shared/dialogs/userinformation/dialog.component';
+import { CurrentUserService } from 'src/app/services/api/current-user.service';
 
 export interface DialogData {
   Firstname: string;
@@ -33,6 +34,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarks$: Observable<Person[]>;
   public randomMoney: string;
+  public currentUserId: string = '';
   public vCardEncoding: typeof VCardEncoding = VCardEncoding;
   public get address(): string[] {
     return this.person.Location.RoomCollection[0].Description.split(',');
@@ -48,10 +50,18 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private windowRef: WindowRef,
     private store: Store,
     private i18n: I18n,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private currentUserService: CurrentUserService,
   ) {}
 
   public ngOnInit() {
+    this.currentUserService.getCurrentUserId().subscribe(
+      id => {
+        this.currentUserId = id;
+      },
+      error => {
+        // do nothing, as the id will never be ''
+      });
     this.getRandomMoney();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
       const index = bookmarks.findIndex(p => p.Id === this.person.Id);
@@ -94,7 +104,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       'This is the Phonebook Link: ' + this.windowRef.getCurrentUrl()
     );
   }
-
+  public isVisible(): boolean {
+    return this.person.Id.toLowerCase() === this.currentUserId.toLowerCase();
+  }
   public openChangePopup(): void {
     const wrapper = document.getElementsByClassName('pb-margin-20')[0];
     wrapper.classList.add('blur');

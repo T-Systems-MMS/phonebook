@@ -45,48 +45,57 @@
       <!-- Actions -->
       <div class="actions">
         <div>
-          <button
-            mat-icon-button
-            (click)="toggleBookmark()"
-            i18n-matTooltip="User-detailComponent|Tooltip for saving a person as favourite@@UserDetailComponentTooltipBookmark"
-            matTooltip="Bookmark this person"
-          >
-            <mat-icon>{{ bookmarked }}</mat-icon>
-          </button>
+          <div >
+            <button *ngIf="isVisible()" mat-menu-item (click)="openChangePopup()">
+              <span>Report incorrect data</span>
+            </button>
+          </div>
+          <div>
+            <button
+              mat-icon-button
+              (click)="toggleBookmark()"
+              i18n-matTooltip="User-detailComponent|Tooltip for saving a person as favourite@@UserDetailComponentTooltipBookmark"
+              matTooltip="Bookmark this person"
+            >
+              <mat-icon>{{ bookmarked }}</mat-icon>
+            </button>
+            <button
+              id="view_toggle"
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              i18n-matTooltip="User-detailComponent|Tooltip for opening the share menu@@UserDetailComponentTooltipShare"
+              matTooltip="Share"
+            >
+              <mat-icon>share</mat-icon>
+            </button>
+            <mat-menu #menu>
+              <button mat-menu-item [vcdDownloadVCard]="vCard" [encoding]="vCardEncoding.utf8">
+                <mat-icon>perm_contact_calendar</mat-icon>
+                <span
+                  i18n="User-detailComponent|Share Menu: Donwload Contact Option@@UserDetailComponentShareDownloadContact"
+                  >Download Contact</span
+                >
+              </button>
+              <!-- TODO: Add Chat Link -->
+              <a mat-menu-item target="_blank" rel="noopener" [href]="'example.com/chat' + person.Id.toLowerCase()">
+                <mat-icon>chat</mat-icon>
+                <span i18n="User-detailComponent|Share Menu: Rocket Chat Option@@UserDetailComponentShareRocketChat"
+                  >Rocket Chat</span
+                >
+              </a>
+              <button mat-menu-item actionDrawer [copy]="getLink()">
+                <mat-icon>link</mat-icon>
+                <span i18n="User-detailComponent|Share Menu: Link Option@@UserDetailComponentShareLink">Link</span>
+              </button>
+              <button mat-menu-item (click)="sendMail()">
+                <mat-icon>email</mat-icon>
+                <span i18n="User-detailComponent|Share Menu: Mail Option@@UserDetailComponentShareMail"
+                  >Share by mail</span
+                >
+              </button>
+            </mat-menu>
+          </div>
         </div>
-        <button
-          id="view_toggle"
-          mat-icon-button
-          [matMenuTriggerFor]="menu"
-          i18n-matTooltip="User-detailComponent|Tooltip for opening the share menu@@UserDetailComponentTooltipShare"
-          matTooltip="Share"
-        >
-          <mat-icon>share</mat-icon>
-        </button>
-        <mat-menu #menu>
-          <button mat-menu-item [vcdDownloadVCard]="vCard" [encoding]="vCardEncoding.utf8">
-            <mat-icon>perm_contact_calendar</mat-icon>
-            <span
-              i18n="User-detailComponent|Share Menu: Donwload Contact Option@@UserDetailComponentShareDownloadContact"
-              >Download Contact</span
-            >
-          </button>
-          <!-- TODO: Add Chat Link -->
-          <a mat-menu-item target="_blank" rel="noopener" [href]="'example.com/chat' + person.Id.toLowerCase()">
-            <mat-icon>chat</mat-icon>
-            <span i18n="User-detailComponent|Share Menu: Rocket Chat Option@@UserDetailComponentShareRocketChat"
-              >Rocket Chat</span
-            >
-          </a>
-          <button mat-menu-item actionDrawer [copy]="getLink()">
-            <mat-icon>link</mat-icon>
-            <span i18n="User-detailComponent|Share Menu: Link Option@@UserDetailComponentShareLink">Link</span>
-          </button>
-          <button mat-menu-item (click)="sendMail()">
-            <mat-icon>email</mat-icon>
-            <span i18n="User-detailComponent|Share Menu: Mail Option@@UserDetailComponentShareMail">Share by mail</span>
-          </button>
-        </mat-menu>
       </div>
     </mat-card-header>
     <mat-card-content>
@@ -270,11 +279,6 @@
             <app-address mat-line [location]="person.Location" class="pb-flex pb-margin-top-20"></app-address>
           </mat-list-item>
         </mat-list>
-        <h4>
-          <a mat-button (click)="openChangePopup()">
-            <span class="mat-small">Change User Information</span>
-          </a>
-        </h4>
       </div>
       <ng-container *ngIf="!previewView">
         <mat-divider></mat-divider>
