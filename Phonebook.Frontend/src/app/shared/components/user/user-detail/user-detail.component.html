@@ -45,7 +45,12 @@
       <!-- Actions -->
       <div class="actions">
         <div>
-          <button mat-icon-button  matTooltip="Find Incorrect Data? Report them!" (click)="openChangePopup()">
+          <button 
+          mat-icon-button  
+          matTooltip="Find Incorrect Data? Report them!" 
+          i18n-matTooltip="User-detailComponent|Tooltip Incorrect Data@@UserDetailComponentTooltipDataChange"
+          (click)="openChangePopup()"
+          >
             <mat-icon>report_problem</mat-icon>
           </button>
           <button

@@ -25,7 +25,6 @@ export class UserInformationDialogComponent implements OnInit {
         // do nothing, as the id will never be ''
       }
     );
-    console.log(this.currentUserId);
   }
   public get onMyProfile(): boolean {
     return this.currentUserId.toLowerCase() === this.data.Id.toLowerCase();
