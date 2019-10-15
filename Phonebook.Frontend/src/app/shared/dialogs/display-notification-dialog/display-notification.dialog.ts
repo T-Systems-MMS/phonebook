@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngxs/store';
 import { SetDisplayedNotificationVersion } from 'src/app/shared/states';
+import { Router } from '@angular/router';
 
 /**
  * Display Notification Dialog
@@ -14,12 +15,12 @@ import { SetDisplayedNotificationVersion } from 'src/app/shared/states';
 })
 export class DisplayNotificationDialog implements OnInit, OnDestroy {
   public static version: number = 1;
-  constructor(public dialogRef: MatDialogRef<DisplayNotificationDialog>, store: Store) {
+  constructor(public dialogRef: MatDialogRef<DisplayNotificationDialog>, store: Store, private router: Router) {
     store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
   }
-
   public skipDialoges() {
-    window.location.href = window.location.href + '?skip_dialog=true';
+    this.router.navigateByUrl('/?skip_dialog=true');
+    this.dialogRef.close();
   }
   public ngOnInit() {}
 

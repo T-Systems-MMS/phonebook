@@ -2,7 +2,7 @@ import { Platform } from '@angular/cdk/platform';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NavigationError, Router } from '@angular/router';
+import { NavigationError, Router, ActivatedRoute } from '@angular/router';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Store } from '@ngxs/store';
 import { filter } from 'rxjs/operators';
@@ -12,6 +12,7 @@ import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning
 import { AppState, InitTheme, SetSendFeedback, SetDisplayedNotificationVersion } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 
 @Component({
   selector: 'app-root',
@@ -32,9 +33,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private matDialog: MatDialog,
     private platform: Platform,
     private router: Router,
-    private i18n: I18n
+    private i18n: I18n,
+    private activatedRoute: ActivatedRoute
   ) {}
-
   public ngOnInit() {
     this.store.dispatch(new InitTheme());
     // Commented as long as serviceWorker is reinstalled
@@ -101,10 +102,16 @@ export class AppComponent implements OnInit, OnDestroy {
     //if skip_cookies is set, dont show dialogs
     if (this.skipDialog) {
       this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
-      this.openSnackBar();
     }
+    //subscribe on query param changes, if changed open snackbar
+    this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParamMap => {
+      if (queryParamMap.get('skip_dialog') === 'true') {
+        this.skipDialog = true;
+        this.openSnackBar();
+      }
+    });
+
     // Ask for Permission to send Bug reports
-    const test = this.store.selectSnapshot(AppState.sendFeedback);
     if (this.store.selectSnapshot(AppState.sendFeedback) == null && runtimeEnvironment.ravenURL != null) {
       const matDialogRef = this.matDialog.open(BugReportConsentComponent, {
         hasBackdrop: true
@@ -143,7 +150,8 @@ export class AppComponent implements OnInit, OnDestroy {
           meaning: 'Display advice to new url',
           description: 'Message for new no cookie url',
           id: 'PageInformationNewUrlNoCookies',
-          value: 'Please notice: You wont get any information about updates or releases with the set url prameter.'
+          value:
+            'Save the site URL as a favourite now in order to not get any more dialogues. Please notice: You wont get any information about updates or releases with the set url prameter.'
         }),
         this.i18n({
           meaning: 'Restore Url',
@@ -151,12 +159,12 @@ export class AppComponent implements OnInit, OnDestroy {
           id: 'PageInformationNewUrlNoCookiesUrl',
           value: 'Reset Url'
         }),
-        { duration: 10000 }
+        { duration: 15000 }
       )
       .onAction()
       .subscribe(() => {
-        //remove url parameter and reload page
-        window.location.href = window.location.href.split('?')[0];
+        //remove url parameter and close snackbar
+        this.router.navigateByUrl('/');
       });
   }
   public ngOnDestroy(): void {}
