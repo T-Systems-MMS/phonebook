@@ -8,10 +8,10 @@
         If your data is incorrect, please contact your hr department.
       </span>
     </div>
-    <div mat-dialog-content *ngIf="!(onMyProfile)">
+    <div mat-dialog-content *ngIf="!onMyProfile">
       <span i18n="User-InformationDialog|Profile@@Colleague Profile">
-        Dear {{ data.Firstname }}<br/>
-        Is there something wrong with the profile? <br>
+        Dear {{ data.Firstname }}<br />
+        Is there something wrong with the profile? <br />
         Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
       </span>
     </div>

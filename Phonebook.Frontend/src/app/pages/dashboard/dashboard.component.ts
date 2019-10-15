@@ -5,7 +5,12 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
-import { LastPersonsState, RemoveFromLastPersons, ResetLastPersons, SetLastPersons } from 'src/app/shared/states/LastPersons.state';
+import {
+  LastPersonsState,
+  RemoveFromLastPersons,
+  ResetLastPersons,
+  SetLastPersons
+} from 'src/app/shared/states/LastPersons.state';
 
 @Component({
   selector: 'app-dashboard',
