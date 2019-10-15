@@ -41,8 +41,14 @@ import { ErrorHandlerModule } from 'src/app/shared/error/error.module';
 // Modules
 import { MaterialModule } from 'src/app/shared/material.module';
 import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
-import { AppState, BookmarksState, CommonPersonsState, LastPersonsState, SearchState, TableState } from 'src/app/shared/states';
-
+import {
+  AppState,
+  BookmarksState,
+  CommonPersonsState,
+  LastPersonsState,
+  SearchState,
+  TableState
+} from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
@@ -52,13 +58,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 declare const require;
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchComponent,
-    DashboardComponent,
-    NavigationComponent,
-    OnlineBarComponent
-  ],
+  declarations: [AppComponent, SearchComponent, DashboardComponent, NavigationComponent, OnlineBarComponent],
 
   imports: [
     BrowserModule,
@@ -124,4 +124,4 @@ declare const require;
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

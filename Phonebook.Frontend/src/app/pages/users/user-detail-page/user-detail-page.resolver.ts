@@ -32,15 +32,15 @@ export class UserDetailPageResolver implements Resolve<Person> {
               id: 'UserDetailPageResolverNotFoundFirstPart',
               value: 'User with Id'
             }) +
-             ' "' +
-             personId +
-             '" ' +
-             this.i18n({
-               meaning: 'UserDetailPageResolver',
-               description: 'Second part of the message displayed when a user is not found',
-               id: 'UserDetailPageResolverNotFoundSecondPart',
-               value: 'not found.'
-             }),
+              ' "' +
+              personId +
+              '" ' +
+              this.i18n({
+                meaning: 'UserDetailPageResolver',
+                description: 'Second part of the message displayed when a user is not found',
+                id: 'UserDetailPageResolverNotFoundSecondPart',
+                value: 'not found.'
+              }),
             '',
             { duration: 3000 }
           );
