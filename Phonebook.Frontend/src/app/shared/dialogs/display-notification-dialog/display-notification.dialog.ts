@@ -18,7 +18,7 @@ export class DisplayNotificationDialog implements OnInit, OnDestroy {
   constructor(public dialogRef: MatDialogRef<DisplayNotificationDialog>, store: Store, private router: Router) {
     store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
   }
-  public skipDialoges() {
+  public skipStartDialogs() {
     this.router.navigateByUrl('/?skip_dialog=true');
     this.dialogRef.close();
   }

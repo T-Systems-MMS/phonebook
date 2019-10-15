@@ -953,11 +953,11 @@
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
         <source>
-      Deactivate startup dialogues!
+      Deactivate startup dialogs!
     </source><target state="translated">
         Start-Dialoge deaktivieren!
       </target>
-        <note priority="1" from="description">Deactivate Startup Dialogues</note>
+        <note priority="1" from="description">Deactivate Startup Dialogs</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
         <source>
@@ -1255,7 +1255,7 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
-        <source>Save the site URL as a favourite now in order to not get any more dialogues. Please notice: You wont get any information about updates or releases with the set url prameter.</source>
+        <source>Save the site URL as a favourite now in order to not get any more dialogs. Please notice: You wont get any information about updates or releases with the set url prameter.</source>
         <target state="translated">Speicher die Seiten-URL jetzt als Favorit um Startdialoge auch zukünftig zu überspringen. Bitte beachte: Mit dem gesetzten Url-Parameter werden keine Dialoge zu Updates oder Neuen Features angezeigt.</target>
         <note priority="1" from="description">Message for new no cookie url</note>
         <note priority="1" from="meaning">Display advice to new url</note>

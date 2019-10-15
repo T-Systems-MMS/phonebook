@@ -107,7 +107,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParamMap => {
       if (queryParamMap.get('skip_dialog') === 'true') {
         this.skipDialog = true;
-        this.openSnackBar();
+        this.openSkippedDialogsSnackBar();
       }
     });
 
@@ -143,7 +143,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('/');
     });
   }
-  public openSnackBar() {
+  public openSkippedDialogsSnackBar() {
     this.snackBar
       .open(
         this.i18n({
@@ -151,7 +151,7 @@ export class AppComponent implements OnInit, OnDestroy {
           description: 'Message for new no cookie url',
           id: 'PageInformationNewUrlNoCookies',
           value:
-            'Save the site URL as a favourite now in order to not get any more dialogues. Please notice: You wont get any information about updates or releases with the set url prameter.'
+            'Save the site URL as a favourite now in order to not get any more dialogs. Please notice: You wont get any information about updates or releases with the set url prameter.'
         }),
         this.i18n({
           meaning: 'Restore Url',
@@ -167,5 +167,5 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/');
       });
   }
-  public ngOnDestroy(): void {}
+  public ngOnDestroy() {}
 }
