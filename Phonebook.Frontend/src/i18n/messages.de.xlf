@@ -733,9 +733,6 @@
         <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
           You've found a bug or have an idea for a new feature?
         <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
-        <x id="START_TAG_SPAN_2" ctype="x-span" equiv-text="&lt;span>"/>
-          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>Click here<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
-        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
       </source><target state="translated">
       <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
           Dies ist eine Installation des Open Source Phonebooks.
@@ -748,11 +745,36 @@
         <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
           Du hast einen Bug gefunden oder eine tolle Idee für ein neues Feature?
         <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
-        <x id="START_TAG_SPAN_2" ctype="x-span" equiv-text="&lt;span>"/>
-          <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a>"/>Klicke hier<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>
-        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
     </target>
         <note priority="1" from="description">Feedback Section</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSectionFeedbackButton" datatype="html">
+        <source>Contact us</source><target state="translated">Kontaktiere uns</target>
+        <note priority="1" from="description">Feedback Button</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSubTitleUserGuide" datatype="html">
+        <source>
+            User Guide
+          </source><target state="translated">
+            Benutzerhandbuch
+          </target>
+        <note priority="1" from="description">Subtitle for User Guide</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSectionUserGuide" datatype="html">
+        <source>
+        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          Are you new to the Phonebook? Do you have any questions? Then visit the Phonebook's User Guide. It explains all its the features and possibilities.
+        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+      </source><target state="translated">
+        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span>"/>
+          Du bist neu beim Phonebook oder hast noch Fragen? Dann kannst du dir das Benutzerhandbuch vom Phonebook angucken. Es erklärt alle Funktionen und Möglichkeiten.
+        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span>"/>
+      </target>
+        <note priority="1" from="description">User Guide Section</note>
+        <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit><trans-unit id="PageInformationComponentSectionUserGuideButton" datatype="html">
+        <source>Open User Guide</source><target state="translated">Benutzerhandbuch öffnen</target>
+        <note priority="1" from="description">User Guide Button</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentSubTitleCookie" datatype="html">
         <source>
