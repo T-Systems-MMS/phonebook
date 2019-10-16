@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - name: Merge pull requests
-      uses: pascalgn/automerge-action@v0.2.4
+      uses: pascalgn/automerge-action@v0.4.2
       continue-on-error: true
       env: 
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
