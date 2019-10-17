@@ -18,6 +18,7 @@ import { Environment, EnvironmentInterface } from 'src/environments/EnvironmentI
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { HASH_LONG, HASH_SHORT, VERSION } from 'src/environments/version';
 
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',

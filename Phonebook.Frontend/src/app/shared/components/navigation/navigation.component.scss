@@ -70,6 +70,11 @@ mat-sidenav-container {
   }
 }
 
+.menu {
+  display: flex;
+  align-items: center;
+}
+
 // Dynamic Search Bar Width
 
 @include smaller {

@@ -137,12 +137,15 @@
               </button>
               <button mat-icon-button [matMenuTriggerFor]="personalmenu">
                 <mat-icon
+                  *ngIf="currentUser == null"
                   matBadge="!"
                   matBadgeColor="accent"
                   matBadgeSize="small"
                   [matBadgeHidden]="!releaseInfoService.newUpdate"
                   >person</mat-icon
                 >
+                <app-profile-picture *ngIf="currentUser != null" [imageSize]="50" class="pb-self-centered circle square-img40" [user]="currentUser">
+                </app-profile-picture>
               </button>
               <mat-menu #personalmenu>
                 <button mat-menu-item (click)="navigateToOwnProfile()" *ngIf="currentUser != null">
