@@ -1,20 +1,17 @@
 .mat-card{
-  display:flex;
+  display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 // mat-card-footer doesn't align with bottom, you have to user manually styling
 // --> https://github.com/angular/components/issues/11094
-.mat-card-header {
-  flex-shrink: 0;
-}
-  
 .mat-card-content{
   flex-grow: 1;
   overflow: auto;
 }
 
-.mat-card-footer {
+.mat-card-action {
   margin-bottom: 0;
 }
 // manually styling ends here
