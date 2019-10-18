@@ -75,6 +75,16 @@ mat-sidenav-container {
   align-items: center;
 }
 
+.mobileedition {
+  display: inline-block;
+  position: relative;
+  top: -2px;  // the height and width in 4px more than from the other icons
+  left: -2px; // --> moving it 2px
+  width: 28px;
+  height: 28px;
+  margin-right: 16px;
+  vertical-align: middle;
+}
 // Dynamic Search Bar Width
 
 @include smaller {

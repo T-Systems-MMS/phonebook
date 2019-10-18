@@ -61,6 +61,13 @@ app-root {
   display: block;
 }
 
+.square-img36 {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+
 // Styles for Cards
 
 .pb-right-top-action {
@@ -181,30 +188,30 @@ app-root {
 //Media query classes
 @include on-med-and-up {
   .pb-hide-on-med-and-up {
-    display: none;
+    display: none !important;
   }
 }
 
 @include below-small {
   .pb-hide-below-small {
-    display: none;
+    display: none !important;
   }
 }
 
 @include below-med {
   .pb-hide-below-med {
-    display: none;
+    display: none !important;
   }
 }
 
 @include below-big {
   .pb-hide-below-big {
-    display: none;
+    display: none !important;
   }
 }
 
 input::-ms-clear {
-  display: none;
+  display: none !important;
 }
 
 @import 'overrides';

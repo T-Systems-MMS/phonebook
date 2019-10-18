@@ -29,7 +29,9 @@
         </mat-list-item>
         <mat-list-item>
           <button mat-menu-item (click)="navigateToOwnProfile(); sidenav.close()">
-            <mat-icon>perm_identity</mat-icon>
+            <mat-icon *ngIf="currentUser == null">perm_identity</mat-icon>
+            <app-profile-picture *ngIf="currentUser != null" [imageSize]="50" class="pb-self-centered circle square-img36 mobileedition" [user]="currentUser">
+              </app-profile-picture>
             <span i18n="NavigationComponent|Link to the users profile@@NavigationComponentMyProfile">My profile</span>
           </button>
         </mat-list-item>
