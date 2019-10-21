@@ -19,6 +19,15 @@ mat-card-header {
   }
 }
 
+.blur {
+  background-size: cover;
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -ms-filter: blur(4px);
+  -o-filter: blur(4px);
+  filter: blur(4px) grayscale(0.01);
+}
+
 mat-card-content {
   .pb-roomplan {
     width: 100%;
@@ -50,6 +59,7 @@ mat-card-content {
     flex-flow: column;
     align-items: center;
   }
+
 
   mat-list {
     flex: 1;

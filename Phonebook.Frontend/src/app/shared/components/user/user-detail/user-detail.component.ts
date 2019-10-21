@@ -10,7 +10,15 @@ import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { UserInformationComponent } from 'src/app/shared/dialogs/user-information/user-information.component';
 
+export interface DialogData {
+  Firstname: string;
+  Lastname: string;
+  Titel: string;
+  Id: string;
+}
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
@@ -39,6 +47,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
+    private dialog: MatDialog,
     private i18n: I18n
   ) {}
 
@@ -86,6 +95,31 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     );
   }
 
+  public openChangePopup(): void {
+    const wrapper = document.getElementsByClassName('pb-margin-20')[0];
+    wrapper.classList.add('blur');
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '25vh';
+    dialogConfig.width = '30vw';
+    const name = {
+      firstNames: this.person.Firstname,
+      lastNames: this.person.Surname,
+      Titel: this.person.Title,
+      Id: this.person.Id
+    };
+    dialogConfig.data = {
+      Id: name.Id,
+      Firstname: name.firstNames,
+      Lastname: name.lastNames,
+      Titel: name.Titel
+    };
+    const dialogref = this.dialog.open(UserInformationComponent, dialogConfig);
+    dialogref.afterClosed().subscribe(result => {
+      wrapper.classList.remove('blur');
+    });
+  }
   public getLink() {
     return this.windowRef.getCurrentUrl();
   }

@@ -376,6 +376,10 @@
       </source><target state="translated">TEST</target>
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
+      </trans-unit><trans-unit id="UserDetailComponentTooltipDataChange" datatype="html">
+        <source>Find Incorrect Data? Report them!</source><target state="final">TEST</target>
+        <note priority="1" from="description">Tooltip Incorrect Data</note>
+        <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentChangeButton" datatype="html">
         <source>
@@ -1102,6 +1106,40 @@
         <source>Skills</source><target state="final">TEST</target>
         <note priority="1" from="description">Tab Headline for Skills</note>
         <note priority="1" from="meaning">UserDetailComponent</note>
+      </trans-unit><trans-unit id="Headline" datatype="html">
+        <source>User Information</source><target state="final">TEST</target>
+        <note priority="1" from="description">Headline</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Your Profile" datatype="html">
+        <source>
+        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        If your data is incorrect, please contact your hr department.
+      </source><target state="new">
+        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        If your data is incorrect, please contact your hr department.
+      </target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Colleague Profile" datatype="html">
+        <source>
+        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
+      </source><target state="new">
+        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
+      </target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Button" datatype="html">
+        <source>
+      Got it!
+    </source><target state="final">TEST</target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="TableComponentColumnOrgUnitLabel" datatype="html">
         <source>Change sorting for column Organization Unit</source><target state="final">TEST</target>
         <note priority="1" from="description">Label for sorting the column 'Organization Unit'</note>

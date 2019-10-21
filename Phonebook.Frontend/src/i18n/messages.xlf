@@ -168,85 +168,10 @@
       </source>
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
-      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">
-        <source>
-  Change Profile Picture
-</source>
-        <note priority="1" from="description">Title</note>
-        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
-      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentContent" datatype="html">
-        <source>
-  <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>
-    You&apos;re changing your profile picture? Nice! But please notice:
-  <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/>
-  <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/>
-    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
-      The picture is used only by the Phonebook Application.
-    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
-      To upload a profile picture is your free choice.
-    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
-      You can change or delete your picture at any time. (Just click the Button right next to the upload Button.)
-    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
-      Your profile picture will deleted if you choose to leave the company.
-    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-  <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/>
-</source>
-        <note priority="1" from="description">Content</note>
-        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
-      </trans-unit><trans-unit id="GeneralCancelButton" datatype="html">
-        <source>Cancel</source>
-      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentButtonChangePicture" datatype="html">
-        <source>
-    Change my Picture!
-  </source>
-        <note priority="1" from="description">Button to consent sending bug reports</note>
-        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
-      </trans-unit><trans-unit id="ChangeProfilePictureComponentChangeButton" datatype="html">
-        <source>
-        Change Picture</source>
-        <note priority="1" from="description">Button for changing the Profile Picture</note>
-        <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
-      </trans-unit><trans-unit id="ChangeProfilePictureComponentChangeButtonAriaLabel" datatype="html">
-        <source>This opens up a dialog to select a profile picture from you file system.</source>
-        <note priority="1" from="description">Aria Label for the &apos;Change Picture&apos; Button</note>
-        <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
-      </trans-unit><trans-unit id="ChangeProfilePictureComponentDeleteButtonTooltip" datatype="html">
-        <source>Delete your Profile Picture</source>
-        <note priority="1" from="description">Tooltip for deleting the Profile picture</note>
-        <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
-      </trans-unit><trans-unit id="ChangeProfilePictureComponentDeleteButtonAriaLabel" datatype="html">
-        <source>Button for deleting your Profile Picture.</source>
-        <note priority="1" from="description">Aria Label for deleting the Profile Picture</note>
-        <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentTitle" datatype="html">
-        <source>Settings</source>
-        <note priority="1" from="description">Title of the settings page</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentTitleDescription" datatype="html">
-        <source>
-      Change the theme or language of this application.
-    </source>
-        <note priority="1" from="description">Title description of the settings page</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentSubTitleLanguage" datatype="html">
-        <source>Language</source>
-        <note priority="1" from="description">Language SubTitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentSubTitleColorTheme" datatype="html">
-        <source>Color Theme</source>
-        <note priority="1" from="description">Color Theme SubTitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="navigationBarColorChangerTooltip" datatype="html">
-        <source>Here you can change the color theme of the app.</source>
-        <note priority="1" from="description">Color Change Button Tooltip</note>
-        <note priority="1" from="meaning">navigationBar</note>
-      </trans-unit><trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
-        <source>Layout</source>
-        <note priority="1" from="description">Layout Subtitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="UserDetailComponentTooltipDataChange" datatype="html">
+        <source>Find Incorrect Data? Report them!</source>
+        <note priority="1" from="description">Tooltip Incorrect Data</note>
+        <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentTooltipBookmark" datatype="html">
         <source>Bookmark this person</source>
         <note priority="1" from="description">Tooltip for saving a person as favourite</note>
@@ -365,6 +290,111 @@
         <source>Skills</source>
         <note priority="1" from="description">Tab Headline for Skills</note>
         <note priority="1" from="meaning">UserDetailComponent</note>
+      </trans-unit><trans-unit id="Headline" datatype="html">
+        <source>User Information</source>
+        <note priority="1" from="description">Headline</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Your Profile" datatype="html">
+        <source>
+        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+        unfortunately, you can&apos;t change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+        If your data is incorrect, please contact your hr department.
+      </source>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Colleague Profile" datatype="html">
+        <source>
+        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+        Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+        Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
+      </source>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Button" datatype="html">
+        <source>
+      Got it!
+    </source>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">
+        <source>
+  Change Profile Picture
+</source>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentContent" datatype="html">
+        <source>
+  <x id="START_PARAGRAPH" ctype="x-p" equiv-text="&lt;p&gt;"/>
+    You&apos;re changing your profile picture? Nice! But please notice:
+  <x id="CLOSE_PARAGRAPH" ctype="x-p" equiv-text="&lt;/p&gt;"/>
+  <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+      The picture is used only by the Phonebook Application.
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+      To upload a profile picture is your free choice.
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+      You can change or delete your picture at any time. (Just click the Button right next to the upload Button.)
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+    <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+      Your profile picture will deleted if you choose to leave the company.
+    <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+  <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/>
+</source>
+        <note priority="1" from="description">Content</note>
+        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
+      </trans-unit><trans-unit id="GeneralCancelButton" datatype="html">
+        <source>Cancel</source>
+      </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentButtonChangePicture" datatype="html">
+        <source>
+    Change my Picture!
+  </source>
+        <note priority="1" from="description">Button to consent sending bug reports</note>
+        <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureComponentChangeButton" datatype="html">
+        <source>
+        Change Picture</source>
+        <note priority="1" from="description">Button for changing the Profile Picture</note>
+        <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureComponentChangeButtonAriaLabel" datatype="html">
+        <source>This opens up a dialog to select a profile picture from you file system.</source>
+        <note priority="1" from="description">Aria Label for the &apos;Change Picture&apos; Button</note>
+        <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureComponentDeleteButtonTooltip" datatype="html">
+        <source>Delete your Profile Picture</source>
+        <note priority="1" from="description">Tooltip for deleting the Profile picture</note>
+        <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
+      </trans-unit><trans-unit id="ChangeProfilePictureComponentDeleteButtonAriaLabel" datatype="html">
+        <source>Button for deleting your Profile Picture.</source>
+        <note priority="1" from="description">Aria Label for deleting the Profile Picture</note>
+        <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentTitle" datatype="html">
+        <source>Settings</source>
+        <note priority="1" from="description">Title of the settings page</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentTitleDescription" datatype="html">
+        <source>
+      Change the theme or language of this application.
+    </source>
+        <note priority="1" from="description">Title description of the settings page</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentSubTitleLanguage" datatype="html">
+        <source>Language</source>
+        <note priority="1" from="description">Language SubTitle</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentSubTitleColorTheme" datatype="html">
+        <source>Color Theme</source>
+        <note priority="1" from="description">Color Theme SubTitle</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="navigationBarColorChangerTooltip" datatype="html">
+        <source>Here you can change the color theme of the app.</source>
+        <note priority="1" from="description">Color Change Button Tooltip</note>
+        <note priority="1" from="meaning">navigationBar</note>
+      </trans-unit><trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
+        <source>Layout</source>
+        <note priority="1" from="description">Layout Subtitle</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
         <source>
     Leave Feedback, report a Bug or suggest a new Idea
