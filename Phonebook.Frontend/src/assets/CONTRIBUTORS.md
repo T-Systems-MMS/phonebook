@@ -19,6 +19,9 @@
     <td align="center"><a href="https://github.com/FrankLambrette"><img src="https://avatars3.githubusercontent.com/u/55480780?v=4" width="100px;" alt="FrankLambrette"/><br /><sub><b>FrankLambrette</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=FrankLambrette" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Zeroks77"><img src="https://avatars2.githubusercontent.com/u/40673554?v=4" width="100px;" alt="Dominik Mangatter"/><br /><sub><b>Dominik Mangatter</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=Zeroks77" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/BrunoZirnstein"><img src="https://avatars3.githubusercontent.com/u/56590240?v=4" width="100px;" alt="BrunoZirnstein"/><br /><sub><b>BrunoZirnstein</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=BrunoZirnstein" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
