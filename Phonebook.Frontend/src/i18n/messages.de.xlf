@@ -160,7 +160,7 @@
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentTooltipDataChange" datatype="html">
-        <source>Find Incorrect Data? Report them!</source><target state="new">Find Incorrect Data? Report them!</target>
+        <source>Find Incorrect Data? Report them!</source><target state="translated">Stimmt etwas auf dem Profil nicht? Melde es!</target>
         <note priority="1" from="description">Tooltip Incorrect Data</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
@@ -1252,9 +1252,9 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
         If your data is incorrect, please contact your hr department.
       </source><target state="new">
-        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        If your data is incorrect, please contact your hr department.
+        Hallo <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        leider kannst du via Phonebook deine Daten nicht ändern. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Falls du deine Daten ändern möchtest wende dich bitte an deine HR Abteilung.
       </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
@@ -1264,9 +1264,9 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
         Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
       </source><target state="new">
-        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
+        Hallo <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Stimmt etwas auf dem Profil nicht? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Lass es doch deinen Kollegen wissen, dass er seine Daten über das Hr ändern lassen kann. 
       </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
@@ -1274,7 +1274,7 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <source>
       Got it!
     </source><target state="new">
-      Got it!
+      Geht klar!
     </target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>

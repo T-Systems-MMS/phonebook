@@ -1325,9 +1325,9 @@
         unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
         If your data is incorrect, please contact your hr department.
       </source><target state="final">
-        Hallo <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        leider kannst du deine Daten nicht über das Phonebook direkt ändern. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        Falls deine Daten falsch sind, wende dich an deine HR Abteilung.
+        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        If your data is incorrect, please contact your hr department.
       </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
@@ -1337,9 +1337,9 @@
         Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
         Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
       </source><target state="final">
-        Hallo <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        Sind die Daten auf dem Profil falsch? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        Bitte kontaktiere deinen Kollegen und informiere ihn / sie, dass er/ sie die Daten über die HR Abteilung ändern lassen kann.
+        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
       </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
@@ -1347,7 +1347,7 @@
         <source>
       Got it!
     </source><target state="final">
-      Geht klar!
+      Got it!
     </target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
