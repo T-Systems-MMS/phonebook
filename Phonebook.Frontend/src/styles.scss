@@ -41,32 +41,24 @@ app-root {
 .circle {
   border-radius: 50%;
   overflow: hidden;
+  display: block; // only with display block/inline-block the border-radius is applied
 }
 
 .square-img100 {
-  width: 100px;
-  height: 100px;
-  display: block;
+  @include square-img-size(100px);
 }
 
 .square-img50 {
-  width: 50px;
-  height: 50px;
-  display: block;
+  @include square-img-size(50px);
 }
 
 .square-img40 {
-  width: 40px;
-  height: 40px;
-  display: block;
+  @include square-img-size(40px);
 }
 
 .square-img36 {
-  width: 36px;
-  height: 36px;
-  display: block;
+  @include square-img-size(36px);
 }
-
 
 // Styles for Cards
 
@@ -150,6 +142,11 @@ app-root {
   justify-content: center;
 }
 
+.pb-orthogonal-center-element {
+  display: flex;
+  align-items: center;
+}
+
 .pb-text-overflow {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -188,30 +185,30 @@ app-root {
 //Media query classes
 @include on-med-and-up {
   .pb-hide-on-med-and-up {
-    display: none !important;
+    display: none;
   }
 }
 
 @include below-small {
   .pb-hide-below-small {
-    display: none !important;
+    display: none;
   }
 }
 
 @include below-med {
   .pb-hide-below-med {
-    display: none !important;
+    display: none;
   }
 }
 
 @include below-big {
   .pb-hide-below-big {
-    display: none !important;
+    display: none;
   }
 }
 
 input::-ms-clear {
-  display: none !important;
+  display: none;
 }
 
 @import 'overrides';

@@ -70,12 +70,9 @@ mat-sidenav-container {
   }
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-}
-
-.mobileedition {
+// styling the profile picture in the mobile navbar
+// because the styling for the icons aren't containing the picture and the size is different
+#pb-nav-mobile app-profile-picture {
   display: inline-block;
   position: relative;
   top: -2px;  // the height and width in 4px more than from the other icons

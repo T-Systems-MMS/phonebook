@@ -5,3 +5,8 @@
   width: $size;
   line-height: $size;
 }
+
+@mixin square-img-size($size) {
+  width: $size;
+  height: $size;
+}
