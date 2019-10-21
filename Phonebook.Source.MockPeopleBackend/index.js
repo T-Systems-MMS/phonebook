@@ -86,7 +86,7 @@ function generatePerson() {
       ReceptionPhone: null,
       LinkPicture: null,
       LinkRoutingInfo: null,
-      City: { Name: room.Place, Building: room.Building },
+      City: { Name: room.Place, Building: room.Building, zipCode: faker.address.zipCode() },
       RoomCollection: [
         {
           Building: room.Building,
