@@ -865,7 +865,7 @@
       </trans-unit><trans-unit id="PageInformationComponentSectionUserGuide" datatype="html">
         <source>
         <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
-          Are you new to the Phonebook? Do you have any questions? Then visit the Phonebook&apos;s User Guide. It explains all its the features and possibilities.
+          Are you new to the Phonebook? Do you have any questions? Then visit the Phonebook&apos;s User Guide. It explains all its features and possibilities.
         <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
       </source>
         <note priority="1" from="description">User Guide Section</note>

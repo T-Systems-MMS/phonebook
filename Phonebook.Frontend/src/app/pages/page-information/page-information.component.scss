@@ -1,3 +1,5 @@
+@import 'media-queries';
+
 .mat-card{
   display: flex;
   flex-direction: column;
@@ -10,13 +12,9 @@
   flex-grow: 1;
   overflow: auto;
 }
-
-.mat-card-action {
-  margin-bottom: 0;
-}
 // manually styling ends here
 
-@media (max-width: 767px) {
+@include below-med  {
   .cardcontainer {
     flex-wrap: wrap;
     flex-direction: column;
