@@ -74,7 +74,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   public openSettings() {
-    //prevent overlapping dialogs
+    //prevent opening multiple dialogs
     if (this.dialog.openDialogs.length === 0) {
       this.dialog.open(TableSettingsDialog, {
         height: '90vh',
