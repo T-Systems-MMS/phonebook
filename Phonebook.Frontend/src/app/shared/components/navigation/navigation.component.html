@@ -137,14 +137,15 @@
               <button mat-button [routerLink]="['/rooms']" i18n="@@navigationRooms">
                 Rooms
               </button>
-              <button mat-icon-button [matMenuTriggerFor]="personalmenu">
-                <mat-icon
-                  matBadge="!"
-                  matBadgeColor="accent"
-                  matBadgeSize="small"
-                  [matBadgeHidden]="releaseInfoService.newUpdate"
-                  *ngIf="currentUser == null">person</mat-icon
-                >
+              <button
+                mat-icon-button
+                matBadge="!"
+                matBadgeColor="accent"
+                matBadgeSize="small"
+                [matBadgeHidden]="releaseInfoService.newUpdate"
+                [matMenuTriggerFor]="personalmenu"
+              >
+                <mat-icon *ngIf="currentUser == null">person</mat-icon>
                 <app-profile-picture *ngIf="currentUser != null" [imageSize]="50" class="pb-self-centered circle square-img40" [user]="currentUser">
                 </app-profile-picture>
               </button>
