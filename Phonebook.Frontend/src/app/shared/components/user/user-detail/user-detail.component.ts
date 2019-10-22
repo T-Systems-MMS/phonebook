@@ -105,7 +105,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       Id: this.person.Id
     };
     const dialogConfig : MatDialogConfig = {
-      disableClose : true,
       autoFocus : true,
       height : '23vh',
       width : '30vw',
@@ -116,7 +115,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
         Titel: name.Titel
       }
     };
-    console.log(dialogConfig)
     const dialogref = this.dialog.open(IncorrectUserInformationComponent, dialogConfig);
     dialogref.afterClosed().subscribe(result => {
       wrapper.classList.remove('blur');
