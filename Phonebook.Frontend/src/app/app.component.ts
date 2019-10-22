@@ -22,7 +22,7 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
   private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
-  private skipDialog: boolean = this.urlParams.get('skip_dialog') === 'true';
+  private skippedDialogs: boolean = this.urlParams.get('skip_dialog') === 'true';
   constructor(
     private snackBar: MatSnackBar,
     private releaseMigrationService: ReleaseInfoService,
@@ -100,14 +100,17 @@ export class AppComponent implements OnInit, OnDestroy {
     // }
 
     //if skip_cookies is set, dont show dialogs
-    if (this.skipDialog) {
+    if (this.skippedDialogs) {
       this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
     }
     //subscribe on query param changes, if changed open snackbar
     this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParamMap => {
       if (queryParamMap.get('skip_dialog') === 'true') {
-        this.skipDialog = true;
-        this.openSkippedDialogsSnackBar();
+        if (!this.skippedDialogs) {
+          this.openJustSkippedDialogsSnackBar();
+        } else {
+          this.openSkippedDialogsSnackBar();
+        }
       }
     });
 
@@ -143,12 +146,12 @@ export class AppComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('/');
     });
   }
-  public openSkippedDialogsSnackBar() {
+  public openJustSkippedDialogsSnackBar() {
     this.snackBar
       .open(
         this.i18n({
           meaning: 'Display advice to new url',
-          description: 'Message for new no cookie url',
+          description: 'Message for just set no cookie url',
           id: 'PageInformationNewUrlNoCookies',
           value:
             'Save the site URL as a favourite now in order to not get any more dialogs. Please notice: You wont get any information about updates or releases with the set url prameter.'
@@ -157,9 +160,32 @@ export class AppComponent implements OnInit, OnDestroy {
           meaning: 'Restore Url',
           description: 'Message for following no cookie url',
           id: 'PageInformationNewUrlNoCookiesUrl',
-          value: 'Reset Url'
+          value: 'Reset'
         }),
-        { duration: 15000 }
+        { duration: 8000 }
+      )
+      .onAction()
+      .subscribe(() => {
+        //remove url parameter and close snackbar
+        this.router.navigateByUrl('/');
+      });
+  }
+  public openSkippedDialogsSnackBar() {
+    this.snackBar
+      .open(
+        this.i18n({
+          meaning: 'Warning no dialogs are shown',
+          description: 'Message to inform user that no dialogs will be shown',
+          id: 'PageInformationNoDialogs',
+          value: 'Dialogs are deactivated. Please notice: You wont get any information about updates or releases.'
+        }),
+        this.i18n({
+          meaning: 'Restore Url',
+          description: 'Message for following no cookie url',
+          id: 'PageInformationNewUrlNoCookiesUrl',
+          value: 'Reset'
+        }),
+        { duration: 8000 }
       )
       .onAction()
       .subscribe(() => {

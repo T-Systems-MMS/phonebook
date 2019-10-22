@@ -1256,13 +1256,17 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
         <source>Save the site URL as a favourite now in order to not get any more dialogs. Please notice: You wont get any information about updates or releases with the set url prameter.</source>
-        <target state="translated">Speicher die Seiten-URL jetzt als Favorit um Startdialoge auch zukünftig zu überspringen. Bitte beachte: Mit dem gesetzten Url-Parameter werden keine Dialoge zu Updates oder Neuen Features angezeigt.</target>
-        <note priority="1" from="description">Message for new no cookie url</note>
+        <target state="translated">Speicher die Seiten-URL jetzt als Favorit um Startdialoge auch zukünftig zu überspringen. Bitte beachte: Mit dem gesetzten Url-Parameter werden keine Dialoge zu Updates oder neuen Features angezeigt.</target>
+        <note priority="1" from="description">Message for just set no cookie url</note>
         <note priority="1" from="meaning">Display advice to new url</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesUrl" datatype="html">
-        <source>Reset Url</source><target state="translated">Url zurücksetzen</target>
+        <source>Reset</source><target state="translated">Rückgängig</target>
         <note priority="1" from="description">Message for following no cookie url</note>
         <note priority="1" from="meaning">Restore Url</note>
+      </trans-unit><trans-unit id="PageInformationNoDialogs" datatype="html">
+        <source>Dialogs are deactivated. Please notice: You wont get any information about updates or releases.</source><target state="translated">Startdialoge sind deaktiviert. Bitte beachte, dass du keine Informationen zu Updates oder neuen Features angezeigt bekommst. </target>
+        <note priority="1" from="description">Message to inform user that no dialogs will be shown</note>
+        <note priority="1" from="meaning">Warning no dialogs are shown</note>
       </trans-unit><trans-unit id="DataPersonStatus" datatype="html">
         <source>
               Status
