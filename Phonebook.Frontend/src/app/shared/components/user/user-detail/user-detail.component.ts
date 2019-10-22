@@ -13,11 +13,11 @@ import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/user-information.component';
 
-export interface dialogData {
-  Firstname: string;
-  Lastname: string;
-  Titel: string;
-  Id: string;
+export interface DialogData {
+  firstname: string;
+  lastname: string;
+  titel: string;
+  id: string;
 }
 @Component({
   selector: 'app-user-detail',
@@ -95,7 +95,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     );
   }
 
-  public openChangePopup(): void {
+  public openInformationIncorrectDialog(): void {
     const wrapper = document.getElementsByClassName('pb-margin-20')[0];
     wrapper.classList.add('blur');
     const name = {
