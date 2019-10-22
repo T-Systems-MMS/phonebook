@@ -127,7 +127,7 @@
               </button>
             </div>
             <div class="pb-spacer"></div>
-            <div class="pb-orthogonal-center-element pb-hide-below-med">
+            <div class="pb-center-element-orthogonal pb-hide-below-med">
               <button mat-button [routerLink]="['/']" i18n="@@navigationDashboard">
                 Dashboard
               </button>
@@ -139,12 +139,11 @@
               </button>
               <button mat-icon-button [matMenuTriggerFor]="personalmenu">
                 <mat-icon
-                  *ngIf="currentUser == null"
                   matBadge="!"
                   matBadgeColor="accent"
                   matBadgeSize="small"
-                  [matBadgeHidden]="!releaseInfoService.newUpdate"
-                  >person</mat-icon
+                  [matBadgeHidden]="releaseInfoService.newUpdate"
+                  *ngIf="currentUser == null">person</mat-icon
                 >
                 <app-profile-picture *ngIf="currentUser != null" [imageSize]="50" class="pb-self-centered circle square-img40" [user]="currentUser">
                 </app-profile-picture>
