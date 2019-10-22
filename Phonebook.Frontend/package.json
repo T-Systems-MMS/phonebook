@@ -63,6 +63,7 @@
     "ngx-infinite-scroll": "8.0.0",
     "ngx-propagation-stop": "1.0.22",
     "ngx-vcard": "1.2.16",
+    "ngx-widget-grid": "^6.0.2",
     "raven-js": "3.27.2",
     "rxjs": "6.5.3",
     "uglify-es": "3.3.9",

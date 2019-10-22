@@ -47,12 +47,14 @@ import { environment } from 'src/environments/environment';
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
+import { DashboardModule } from 'src/app/pages/dashboard/dashboard.module';
 
 declare const require;
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, DashboardComponent, NavigationComponent, OnlineBarComponent],
+  declarations: [AppComponent, SearchComponent, NavigationComponent, OnlineBarComponent],
   imports: [
+    DashboardModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
