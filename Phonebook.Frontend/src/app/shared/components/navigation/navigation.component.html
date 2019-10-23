@@ -142,7 +142,7 @@
                 matBadge="!"
                 matBadgeColor="accent"
                 matBadgeSize="small"
-                [matBadgeHidden]="releaseInfoService.newUpdate"
+                [matBadgeHidden]="!releaseInfoService.newUpdate"
                 [matMenuTriggerFor]="personalmenu"
               >
                 <mat-icon *ngIf="currentUser == null">person</mat-icon>
