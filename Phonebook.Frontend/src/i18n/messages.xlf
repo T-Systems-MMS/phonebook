@@ -169,7 +169,7 @@
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentTooltipDataChange" datatype="html">
-        <source>Find Incorrect Data? Report them!</source>
+        <source>Found Incorrect Data? Report them!</source>
         <note priority="1" from="description">Tooltip Incorrect Data</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentTooltipBookmark" datatype="html">
@@ -291,23 +291,23 @@
         <note priority="1" from="description">Tab Headline for Skills</note>
         <note priority="1" from="meaning">UserDetailComponent</note>
       </trans-unit><trans-unit id="Headline" datatype="html">
-        <source>User Information</source>
+        <source>Incorrect User Information</source>
         <note priority="1" from="description">Headline</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Your Profile" datatype="html">
         <source>
-        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
-        unfortunately, you can&apos;t change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
-        If your data is incorrect, please contact your hr department.
-      </source>
+      Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+      unfortunately, you can&apos;t change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+      If your data is incorrect, please contact your hr department.
+    </source>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Colleague Profile" datatype="html">
         <source>
-        Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
-        Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
-        Please let your colleague know that the data is incorrect and that it can be changed through our hr department.
-      </source>
+      Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+      Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+      Please let your colleague know that the data is incorrect and that it can be changed through your hr department.
+    </source>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Button" datatype="html">
