@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IncorrectUserInformationComponent } from './Incorrect-user-information.component';
+import { IncorrectUserInformationComponent } from './incorrect-user-information.component';
 
 xdescribe('IncorrectUserInformationComponent', () => {
   let component: IncorrectUserInformationComponent;

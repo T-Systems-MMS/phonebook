@@ -11,7 +11,7 @@ import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialogConfig, MatDialog } from '@angular/material';
-import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/Incorrect-user-information.component';
+import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 
 export interface DialogData {
   firstname: string;
