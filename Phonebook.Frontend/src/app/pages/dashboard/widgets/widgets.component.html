@@ -1,5 +1,78 @@
-<div class="widget-container">
-  <ngx-widget-grid [rows]="4" [columns]="5" [highlightNextPosition]="false" [showGrid]="true">
-    <ngx-widget [resizable]="true"></ngx-widget>
-  </ngx-widget-grid>
+<mat-drawer-container class="sidenav-container" autosize>
+  <mat-drawer #drawer class="sidenav-content" mode="side">
+    <button
+      class="btn btn-sm"
+      [hidden]="!editable"
+      (mouseover)="toggleHighlight(true)"
+      (mouseleave)="toggleHighlight(false)"
+      (click)="addWidget()"
+    >
+      <mat-icon>add</mat-icon>
+      Widget
+    </button>
+    <div class="toggle-switch">
+      <button id="grid" (click)="showGrid()">{{ (isGridVisible && 'Vanish Grid') || 'Show Grid' }}</button>
+    </div>
+    Rows: <b>{{ rows }}</b>
+    <div class="btn-group">
+      <button class="btn btn-sm btn-icon" (click)="doRows(false)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <button class="btn btn-sm btn-icon" (click)="doRows(true)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    Cols: <b>{{ cols }}</b>
+    <div class="btn-group">
+      <button class="btn btn-sm btn-icon" (click)="doCols(false)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <button class="btn btn-sm btn-icon" (click)="doCols(true)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-drawer>
+  <button
+    class="btn btn-sm"
+    [class.btn-primary]="editable"
+    (click)="editable = !editable"
+    mat-button
+    (click)="drawer.toggle()"
+  >
+    <button mat-icon-button *ngIf="!editable">
+      <mat-icon>create</mat-icon>
+    </button>
+    {{ (editable && 'Done') || 'Edit' }}
+  </button>
+</mat-drawer-container>
+
+<div class="dashboard-container">
+  <div class="form"></div>
+
+  <div class="dashboard-page">
+    <ngx-widget-grid
+      [rows]="rows"
+      [columns]="cols"
+      [highlightNextPosition]="highlightNextPosition"
+      #grid
+      [showGrid]="isGridVisible"
+      (widgetPositionChange)="onWidgetChange($event)"
+    >
+      <ngx-widget
+        *ngFor="let widget of gridWidget; let $index = index"
+        [position]="widget"
+        [movable]="editable"
+        [resizable]="editable"
+        [swapOnMove]="editable"
+      >
+        <div style="height:100%;width:100%; display:flex;">
+          <ng-template {{widget.component}}>
+            <button (click)="askDeleteWidget($index)" *ngIf="editable">
+              <mat-icon>delete_sweep</mat-icon>
+            </button>
+          </ng-template>
+        </div>
+      </ngx-widget>
+    </ngx-widget-grid>
+  </div>
 </div>
