@@ -1,9 +1,7 @@
-import { Component, ViewChild, OnInit, ComponentFactoryResolver } from '@angular/core';
+import { Component, ViewChild, OnInit, ComponentFactoryResolver, TemplateRef, ViewContainerRef } from '@angular/core';
 import { NgxWidgetGridComponent, WidgetPositionChange } from 'ngx-widget-grid';
 import { RecentComponent } from 'src/app/pages/dashboard/widgets/recent/recent.component';
 import { BookmarkedComponent } from 'src/app/pages/dashboard/widgets/bookmarked/bookmarked.component';
-import { Widget } from 'src/app/pages/dashboard/widgets/widget.model';
-import { WidgetService } from 'src/app/pages/dashboard/widgets/widget.service';
 
 @Component({
   selector: 'app-widgets',
@@ -14,7 +12,6 @@ export class WidgetsComponent implements OnInit {
   @ViewChild('grid', { static: true }) public grid: NgxWidgetGridComponent;
   public rows = 6;
   public cols = 6;
-  public widgets: Widget[];
   public swapWidgets = false;
   public isGridVisible = false;
   public highlightNextPosition = false;
@@ -22,20 +19,14 @@ export class WidgetsComponent implements OnInit {
   public gridWidget: any[] = new Array();
   public set editable(editable: boolean) {
     this._editable = editable;
-    this.isGridVisible = editable;
   }
-  private widgetService: WidgetService = new WidgetService();
   public get editable() {
     return this._editable;
   }
   constructor() {}
 
   public ngOnInit() {
-    this.widgets = this.widgetService.getWidgets();
-    this.widgets.forEach(widget => {
-      const nextPosition = this.grid.getNextPosition();
-      this.gridWidget.push({ component: widget.component, nextPosition });
-    });
+      let nextPosition = this.grid.getNextPosition();
   }
   toggleHighlight(doHighlight: boolean) {
     this.highlightNextPosition = !!doHighlight;
@@ -54,7 +45,7 @@ export class WidgetsComponent implements OnInit {
   }
 
   askDeleteWidget(index) {
-    this.widgets.splice(index, 1);
+    this.gridWidget.splice(index, 1);
   }
 
   deleteWidget() {}

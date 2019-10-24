@@ -7,12 +7,10 @@ import { BookmarkedComponent } from 'src/app/pages/dashboard/widgets/bookmarked/
 import { RecentComponent } from 'src/app/pages/dashboard/widgets/recent/recent.component';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { UserModule } from 'src/app/shared/components/user/user.module';
-import { WidgetService } from 'src/app/pages/dashboard/widgets/widget.service';
 
 @NgModule({
   declarations: [DashboardComponent, WidgetsComponent, BookmarkedComponent, RecentComponent],
   imports: [NgxWidgetGridModule, CommonModule, MaterialModule, UserModule],
-  providers: [WidgetService],
   exports: [NgxWidgetGridModule, DashboardComponent, WidgetsComponent, BookmarkedComponent, RecentComponent]
 })
 export class DashboardModule {}

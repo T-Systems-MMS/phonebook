@@ -47,8 +47,6 @@
 </mat-drawer-container>
 
 <div class="dashboard-container">
-  <div class="form"></div>
-
   <div class="dashboard-page">
     <ngx-widget-grid
       [rows]="rows"
@@ -66,11 +64,10 @@
         [swapOnMove]="editable"
       >
         <div style="height:100%;width:100%; display:flex;">
-          <ng-template {{widget.component}}>
-            <button (click)="askDeleteWidget($index)" *ngIf="editable">
-              <mat-icon>delete_sweep</mat-icon>
-            </button>
-          </ng-template>
+          <app-bookmarked> </app-bookmarked>
+          <button (click)="askDeleteWidget($index)" *ngIf="editable" class="delete">
+            <mat-icon>delete_sweep</mat-icon>
+          </button>
         </div>
       </ngx-widget>
     </ngx-widget-grid>

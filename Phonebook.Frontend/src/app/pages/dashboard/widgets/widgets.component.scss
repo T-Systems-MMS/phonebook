@@ -3,7 +3,7 @@
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .dashboard-container {
@@ -32,7 +32,7 @@ ngx-widget {
 }
 
 .sidenav-container {
-  width:  30vw;
+  width: 30vw;
   height: 10vh;
 }
 
@@ -41,4 +41,10 @@ ngx-widget {
   height: 100%;
   align-items: center;
   justify-content: center;
+}
+
+.delete {
+  height: 10%;
+  position: absolute;
+  right: 0px;
 }
