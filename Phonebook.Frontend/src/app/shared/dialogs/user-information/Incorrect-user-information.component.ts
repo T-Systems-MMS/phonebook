@@ -5,8 +5,8 @@ import { DialogData } from 'src/app/shared/components/user/user-detail/user-deta
 
 @Component({
   selector: 'app-user-information',
-  templateUrl: './Incorrect-user-information.component.html',
-  styleUrls: ['./Incorrect-user-information.component.scss']
+  templateUrl: './incorrect-user-information.component.html',
+  styleUrls: ['./incorrect-user-information.component.scss']
 })
 export class IncorrectUserInformationComponent implements OnInit {
 
