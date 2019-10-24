@@ -5,8 +5,8 @@ import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notifi
 import { ReleaseNotificationDialog } from 'src/app/shared/dialogs/release-notification-dialog/release-notification.dialog';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { ContributorsModule } from 'src/app/shared/components/contributors/contributors.module';
-import { IncorrectUserInformationComponent } from './user-information/user-information.component';
 import { CommonModule } from '@angular/common';
+import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/Incorrect-user-information.component';
 
 @NgModule({
   declarations: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent, IncorrectUserInformationComponent],

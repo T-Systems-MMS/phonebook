@@ -11,7 +11,7 @@ import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialogConfig, MatDialog } from '@angular/material';
-import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/user-information.component';
+import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/Incorrect-user-information.component';
 
 export interface DialogData {
   firstname: string;
@@ -96,19 +96,15 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public openInformationIncorrectDialog(): void {
-    const wrapper = document.getElementsByClassName('pb-margin-20')[0];
-    wrapper.classList.add('blur');
     const name = {
       firstNames: this.person.Firstname,
       lastNames: this.person.Surname,
       Titel: this.person.Title,
       Id: this.person.Id
     };
-    const dialogConfig : MatDialogConfig = {
-      autoFocus : true,
-      height : '23vh',
-      width : '30vw',
-      data : {
+    const dialogConfig: MatDialogConfig = {
+      autoFocus: true,
+      data: {
         Id: name.Id,
         Firstname: name.firstNames,
         Lastname: name.lastNames,
@@ -116,9 +112,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       }
     };
     const dialogref = this.dialog.open(IncorrectUserInformationComponent, dialogConfig);
-    dialogref.afterClosed().subscribe(result => {
-      wrapper.classList.remove('blur');
-    });
   }
   public getLink() {
     return this.windowRef.getCurrentUrl();
