@@ -1,11 +1,5 @@
 @import 'media-queries';
 
-.mat-card{
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
 @include below-med  {
   .cardcontainer {
     flex-wrap: wrap;
