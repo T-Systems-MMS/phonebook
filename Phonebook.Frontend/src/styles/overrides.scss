@@ -22,6 +22,12 @@ $config: mat-typography-config();
   height: inherit;
 }
 
+// This fixes https://github.com/angular/components/issues/11094
+.mat-card-content{
+  flex-grow: 1;
+  overflow: auto;
+}
+
 // This fixes https://github.com/angular/components/issues/4609
 .mat-dialog-override {
   mat-dialog-container {
