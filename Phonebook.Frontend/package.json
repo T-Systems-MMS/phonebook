@@ -73,7 +73,7 @@
     "@angular/cli": "8.3.9",
     "@angular/compiler-cli": "8.2.10",
     "@angular/language-service": "8.2.10",
-    "@compodoc/compodoc": "1.1.10",
+    "@compodoc/compodoc": "1.1.11",
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/exec": "3.3.7",
     "@types/jasmine": "3.4.4",
