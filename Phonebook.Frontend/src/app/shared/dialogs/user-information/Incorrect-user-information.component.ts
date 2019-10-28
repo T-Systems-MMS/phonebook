@@ -28,6 +28,6 @@ export class IncorrectUserInformationComponent implements OnInit {
     );
   }
   public get onMyProfile(): boolean {
-    return this.currentUserId.toLowerCase() === this.data.Id.toLowerCase();
+    return this.currentUserId.toLowerCase() === this.data.Id.toLowerCase( );
   }
 }
