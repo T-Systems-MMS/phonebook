@@ -10,7 +10,7 @@ import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
-import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 
 export interface DialogData {
@@ -94,12 +94,13 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public openInformationIncorrectDialog(): void {
+    const dialogData : DialogData = {
+      firstname : this.person.Firstname,
+      id : this.person.Id
+    };
     const dialogConfig: MatDialogConfig = {
       autoFocus: true,
-      data: {
-        Firstname: this.person.Firstname,
-        Id: this.person.Id
-      }
+      data: dialogData,
     };
     const dialogref = this.dialog.open(IncorrectUserInformationComponent, dialogConfig);
   }
