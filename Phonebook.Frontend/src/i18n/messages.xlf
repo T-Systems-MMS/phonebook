@@ -110,7 +110,7 @@
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
         <source>
-      Deactivate startup dialogs!
+      Deactivate startup-dialogs!
     </source>
         <note priority="1" from="description">Deactivate Startup Dialogs</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
@@ -907,7 +907,7 @@
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
-        <source>Save the site URL as a favourite now in order to not get any more dialogs. Please notice: You wont get any information about updates or releases with the set url prameter.</source>
+        <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won&apos;t get any information about updates or releases with the set url parameter.</source>
         <note priority="1" from="description">Message for just set no cookie url</note>
         <note priority="1" from="meaning">Display advice to new url</note>
       </trans-unit>
@@ -917,7 +917,7 @@
         <note priority="1" from="meaning">Restore Url</note>
       </trans-unit>
       <trans-unit id="PageInformationNoDialogs" datatype="html">
-        <source>Dialogs are deactivated. Please notice: You wont get any information about updates or releases.</source>
+        <source>Startup-Dialogs are deactivated. Please notice: You won&apos;t get any information about updates or releases.</source>
         <note priority="1" from="description">Message to inform user that no dialogs will be shown</note>
         <note priority="1" from="meaning">Warning no dialogs are shown</note>
       </trans-unit>

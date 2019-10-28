@@ -154,7 +154,7 @@ export class AppComponent implements OnInit, OnDestroy {
           description: 'Message for just set no cookie url',
           id: 'PageInformationNewUrlNoCookies',
           value:
-            'Save the site URL as a favourite now in order to not get any more dialogs. Please notice: You wont get any information about updates or releases with the set url prameter.'
+            'Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won\'t get any information about updates or releases with the set url parameter.'
         }),
         this.i18n({
           meaning: 'Restore Url',
@@ -177,7 +177,8 @@ export class AppComponent implements OnInit, OnDestroy {
           meaning: 'Warning no dialogs are shown',
           description: 'Message to inform user that no dialogs will be shown',
           id: 'PageInformationNoDialogs',
-          value: 'Startup-Dialogs are deactivated. Please notice: You wont get any information about updates or releases.'
+          value:
+            'Startup-Dialogs are deactivated. Please notice: You won\'t get any information about updates or releases.'
         }),
         this.i18n({
           meaning: 'Restore Url',
