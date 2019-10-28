@@ -177,7 +177,7 @@ export class AppComponent implements OnInit, OnDestroy {
           meaning: 'Warning no dialogs are shown',
           description: 'Message to inform user that no dialogs will be shown',
           id: 'PageInformationNoDialogs',
-          value: 'Dialogs are deactivated. Please notice: You wont get any information about updates or releases.'
+          value: 'Startup-Dialogs are deactivated. Please notice: You wont get any information about updates or releases.'
         }),
         this.i18n({
           meaning: 'Restore Url',
