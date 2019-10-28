@@ -15,8 +15,6 @@ import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-i
 
 export interface DialogData {
   firstname: string;
-  lastname: string;
-  titel: string;
   id: string;
 }
 @Component({
@@ -96,19 +94,11 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public openInformationIncorrectDialog(): void {
-    const name = {
-      firstNames: this.person.Firstname,
-      lastNames: this.person.Surname,
-      Titel: this.person.Title,
-      Id: this.person.Id
-    };
     const dialogConfig: MatDialogConfig = {
       autoFocus: true,
       data: {
-        Id: name.Id,
-        Firstname: name.firstNames,
-        Lastname: name.lastNames,
-        Titel: name.Titel
+        Firstname: this.person.Firstname,
+        Id: this.person.Id
       }
     };
     const dialogref = this.dialog.open(IncorrectUserInformationComponent, dialogConfig);

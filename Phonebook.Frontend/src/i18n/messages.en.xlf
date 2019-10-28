@@ -1323,11 +1323,11 @@
         <source>
       Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
       unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-      If your data is incorrect, please contact your hr department.
+      If your data is incorrect, please contact your Human Resources department.
     </source><target state="final">
       Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
       unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-      If your data is incorrect, please contact your hr department.
+      If your data is incorrect, please contact your Human Resources department.
     </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
@@ -1335,11 +1335,11 @@
         <source>
       Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
       Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-      Please let your colleague know that the data is incorrect and that it can be changed through your hr department.
+      Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources department.
     </source><target state="final">
       Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
       Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-      Please let your colleague know that the data is incorrect and that it can be changed through your hr department.
+      Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources department.
     </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
