@@ -991,6 +991,22 @@
     </target>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
+        <source>
+      You deactivated cookies and keep getting those dialogs?
+    </source><target state="final">
+      You deactivated cookies and keep getting those dialogs?
+    </target>
+        <note priority="1" from="description">Annoyed by cookies notice</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
+        <source>
+      Deactivate startup-dialogs!
+    </source><target state="final">
+      Deactivate startup-dialogs!
+    </target>
+        <note priority="1" from="description">Deactivate Startup Dialogs</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
         <source>
           This site uses cookies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
@@ -1313,6 +1329,18 @@
         <target state="final">Building</target>
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
+        <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.</source><target state="final">Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.</target>
+        <note priority="1" from="description">Message for just set no cookie url</note>
+        <note priority="1" from="meaning">Display advice to new url</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesUrl" datatype="html">
+        <source>Reset</source><target state="final">Reset</target>
+        <note priority="1" from="description">Message for following no cookie url</note>
+        <note priority="1" from="meaning">Restore Url</note>
+      </trans-unit><trans-unit id="PageInformationNoDialogs" datatype="html">
+        <source>Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases.</source><target state="final">Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases.</target>
+        <note priority="1" from="description">Message to inform user that no dialogs will be shown</note>
+        <note priority="1" from="meaning">Warning no dialogs are shown</note>
       </trans-unit><trans-unit id="DataPersonStatus" datatype="html">
         <source>
               Status
