@@ -13,7 +13,7 @@ import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialogConfig, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 
-export interface DialogData {
+export interface IncorecctUserInfromationDialogData {
   firstname: string;
   id: string;
 }
@@ -94,7 +94,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public openInformationIncorrectDialog(): void {
-    const dialogData : DialogData = {
+    const dialogData : IncorecctUserInfromationDialogData = {
       firstname : this.person.Firstname,
       id : this.person.Id
     };
