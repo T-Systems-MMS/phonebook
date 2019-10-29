@@ -114,7 +114,7 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Ask for Permission to send Bug reports
+    // Ask for Permission to send Bug reports, don't show dialog if dialogs should be skipped
     if (
       this.store.selectSnapshot(AppState.sendFeedback) == null &&
       runtimeEnvironment.ravenURL != null &&
