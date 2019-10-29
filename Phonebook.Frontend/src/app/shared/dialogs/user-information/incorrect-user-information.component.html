@@ -2,14 +2,14 @@
   <h2 mat-dialog-title i18n="User-InformationDialog|Headline@@Headline">Incorrect User Information</h2>
   <div mat-dialog-content *ngIf="onMyProfile">
     <span i18n="User-InformationDialog|Profile@@Your Profile">
-      Dear {{ data.Firstname }},<br />
+      Dear {{ data.firstname }},<br />
       unfortunately, you can't change your user information via the Phonebook interface. <br />
       If your data is incorrect, please contact your Human Resources department.
     </span>
   </div>
   <div mat-dialog-content *ngIf="!onMyProfile">
     <span i18n="User-InformationDialog|Profile@@Colleague Profile">
-      Dear {{ data.Firstname }}<br />
+      Dear {{ data.firstname }}<br />
       Is there something wrong with the profile? <br />
       Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources department.
     </span>

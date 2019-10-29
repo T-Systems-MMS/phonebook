@@ -94,13 +94,13 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public openInformationIncorrectDialog(): void {
-    const dialogData : IncorrectUserInfromationDialogData = {
-      firstname : this.person.Firstname,
-      id : this.person.Id
+    const dialogData: IncorrectUserInfromationDialogData = {
+      firstname: this.person.Firstname,
+      id: this.person.Id
     };
     const dialogConfig: MatDialogConfig = {
       autoFocus: true,
-      data: dialogData,
+      data: dialogData
     };
     const dialogref = this.dialog.open(IncorrectUserInformationComponent, dialogConfig);
   }
