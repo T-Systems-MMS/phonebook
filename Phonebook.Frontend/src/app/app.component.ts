@@ -115,7 +115,11 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     // Ask for Permission to send Bug reports
-    if (this.store.selectSnapshot(AppState.sendFeedback) == null && runtimeEnvironment.ravenURL != null) {
+    if (
+      this.store.selectSnapshot(AppState.sendFeedback) == null &&
+      runtimeEnvironment.ravenURL != null &&
+      !this.skippedDialogs
+    ) {
       const matDialogRef = this.matDialog.open(BugReportConsentComponent, {
         hasBackdrop: true
       });
@@ -129,7 +133,7 @@ export class AppComponent implements OnInit, OnDestroy {
         height: '90vh',
         width: '90vw'
       });
-    } else {
+    } else if (!this.skippedDialogs) {
       // Display the Release Dialog only if no notification Dialog is shown, in order to not overwhelm the user with dialogs.
       this.releaseMigrationService.checkForUpdate();
     }
@@ -154,7 +158,7 @@ export class AppComponent implements OnInit, OnDestroy {
           description: 'Message for just set no cookie url',
           id: 'PageInformationNewUrlNoCookies',
           value:
-            'Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won\'t get any information about updates or releases with the set url parameter.'
+            "Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter."
         }),
         this.i18n({
           meaning: 'Restore Url',
@@ -178,7 +182,7 @@ export class AppComponent implements OnInit, OnDestroy {
           description: 'Message to inform user that no dialogs will be shown',
           id: 'PageInformationNoDialogs',
           value:
-            'Startup-Dialogs are deactivated. Please notice: You won\'t get any information about updates or releases.'
+            "Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases."
         }),
         this.i18n({
           meaning: 'Restore Url',
