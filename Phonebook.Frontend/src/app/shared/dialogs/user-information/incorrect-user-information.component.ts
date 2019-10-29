@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { IncorecctUserInfromationDialogData } from 'src/app/shared/components/user/user-detail/user-detail.component';
+import { IncorrectUserInfromationDialogData } from 'src/app/shared/components/user/user-detail/user-detail.component';
 
 @Component({
   selector: 'app-user-information',
@@ -14,7 +14,7 @@ export class IncorrectUserInformationComponent implements OnInit {
   constructor(
     public currentUserService: CurrentUserService,
     public dialogRef: MatDialogRef<IncorrectUserInformationComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IncorecctUserInfromationDialogData | any
+    @Inject(MAT_DIALOG_DATA) public data: IncorrectUserInfromationDialogData | any
   ) {}
 
   public ngOnInit() {
