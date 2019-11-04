@@ -286,6 +286,10 @@
         <source>Release Notes</source><target state="translated">Release Notes</target>
         <note priority="1" from="description">Release Notes Menu Item</note>
         <note priority="1" from="meaning">NavigationComponent</note>
+      </trans-unit><trans-unit id="NavigationComponentFeedback" datatype="html">
+        <source>Submit Feedback</source><target state="translated">Gib uns Feedback</target>
+        <note priority="1" from="description">Link to Bug page</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
@@ -417,10 +421,6 @@
         <target state="translated">Du hast Feedback, dann klicke hier.</target>
         <note priority="1" from="description">Info Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
-      </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
-        <source>Report a Bug or suggest an Idea</source><target state="translated">Melde einen Bug oder teile eine Idee</target>
-        <note priority="1" from="description">Link to Bug page</note>
-        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="navigationBarBugTooltip" datatype="html">
         <source>Found a Bug? Than that`s the right place to click.</source><target state="new">Du hast einen Bug gefunden? Dann melde ihn hier.</target>
         <note priority="1" from="description">Bug Button Tooltip</note>
