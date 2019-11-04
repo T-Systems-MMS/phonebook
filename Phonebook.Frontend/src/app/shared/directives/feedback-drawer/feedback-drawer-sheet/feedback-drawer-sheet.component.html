@@ -1,8 +1,26 @@
 <mat-list>
-  <h3 mat-line i18n="FeedbackDrawerSheetComponent|Title of the Feedback Drawer@@FeedbackDrawerSheetComponentTitle">
-    Leave Feedback, report a Bug or submit a new Idea
+  <h3
+    mat-line
+    i18n="FeedbackDrawerSheetComponent|Title of the Feedback Drawer@@FeedbackDrawerSheetComponentTitle"
+    class="pb-text-align-center"
+  >
+    Leave Feedback, report a Bug or suggest a new Idea
   </h3>
-
+  <mat-list-item *ngIf="runtimeEnvironment.contactEmail">
+    <a
+      mat-button
+      color="primary"
+      target="_blank"
+      rel="noopener"
+      href="{{ runtimeEnvironment.contactEmail }}"
+      (click)="closeBottomSheet()"
+    >
+      <span
+        i18n="FeedbackDrawerSheetComponent|Button for contacting the private Organization via email@@FeedbackDrawerSheetComponentButtonPrivateOrganizationMail"
+        >Contact your private organization via email</span
+      >
+    </a>
+  </mat-list-item>
   <mat-list-item *ngIf="runtimeEnvironment.contactUrl">
     <a
       mat-button
@@ -14,7 +32,7 @@
     >
       <span
         i18n="FeedbackDrawerSheetComponent|Button for contacting the private Organization@@FeedbackDrawerSheetComponentButtonPrivateOrganization"
-        >Contact your private Organization</span
+        >Contact your private organization repository</span
       >
     </a>
   </mat-list-item>
@@ -24,13 +42,28 @@
       mat-button
       target="_blank"
       rel="noopener"
-      href="https://github.com/T-Systems-MMS/phonebook/issues/new/choose"
+      href="https://github.com/T-Systems-MMS/phonebook/issues/new?assignees=&labels=feature&template=feature_request.md"
       (click)="closeBottomSheet()"
     >
       <img class="github-icon" alt="github" src="assets/img/GitHub-Mark-32px.png" />
       <span
-        i18n="FeedbackDrawerSheetComponent|Button for contacting the public Github@@FeedbackDrawerSheetComponentButtonPublicGithub"
-        >Contact the public Project</span
+        i18n="FeedbackDrawerSheetComponent|Button for suggesting a new feature on Github@@FeedbackDrawerSheetComponentButtonPublicGithubFeature"
+        >Suggest an idea or a new feature</span
+      >
+    </a>
+  </mat-list-item>
+  <mat-list-item>
+    <a
+      mat-button
+      target="_blank"
+      rel="noopener"
+      href="https://github.com/T-Systems-MMS/phonebook/issues/new?assignees=&labels=bug&template=bug_report.md"
+      (click)="closeBottomSheet()"
+    >
+      <img class="github-icon" alt="github" src="assets/img/GitHub-Mark-32px.png" />
+      <span
+        i18n="FeedbackDrawerSheetComponent|Button for reporting a bug on Github@@FeedbackDrawerSheetComponentButtonPublicGithubBug"
+        >Report a bug</span
       >
     </a>
   </mat-list-item>
