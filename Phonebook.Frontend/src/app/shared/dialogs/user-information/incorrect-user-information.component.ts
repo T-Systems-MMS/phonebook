@@ -28,7 +28,6 @@ export class IncorrectUserInformationComponent implements OnInit {
     );
   }
   public get onMyProfile(): boolean {
-    console.log(this.data)
     return this.currentUserId.toLowerCase() === this.data.id.toLowerCase();
   }
 }
