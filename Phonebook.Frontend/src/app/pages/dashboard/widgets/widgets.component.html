@@ -64,7 +64,9 @@
         [swapOnMove]="editable"
       >
         <div style="height:100%;width:100%; display:flex;">
-          <app-bookmarked> </app-bookmarked>
+          <ng-container>
+            <ng-template #parent></ng-template>
+          </ng-container>
           <button (click)="askDeleteWidget($index)" *ngIf="editable" class="delete">
             <mat-icon>delete_sweep</mat-icon>
           </button>

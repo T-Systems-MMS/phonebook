@@ -11,6 +11,7 @@ import { UserModule } from 'src/app/shared/components/user/user.module';
 @NgModule({
   declarations: [DashboardComponent, WidgetsComponent, BookmarkedComponent, RecentComponent],
   imports: [NgxWidgetGridModule, CommonModule, MaterialModule, UserModule],
+  entryComponents: [BookmarkedComponent, RecentComponent],
   exports: [NgxWidgetGridModule, DashboardComponent, WidgetsComponent, BookmarkedComponent, RecentComponent]
 })
 export class DashboardModule {}

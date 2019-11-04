@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, ComponentFactoryResolver, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, OnInit, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { NgxWidgetGridComponent, WidgetPositionChange } from 'ngx-widget-grid';
 import { RecentComponent } from 'src/app/pages/dashboard/widgets/recent/recent.component';
 import { BookmarkedComponent } from 'src/app/pages/dashboard/widgets/bookmarked/bookmarked.component';
@@ -10,23 +10,26 @@ import { BookmarkedComponent } from 'src/app/pages/dashboard/widgets/bookmarked/
 })
 export class WidgetsComponent implements OnInit {
   @ViewChild('grid', { static: true }) public grid: NgxWidgetGridComponent;
-  public rows = 6;
-  public cols = 6;
-  public swapWidgets = false;
-  public isGridVisible = false;
-  public highlightNextPosition = false;
-  private _editable = false;
+  @ViewChild('parent', { static: true}) private parent: any;
+  public rows: number = 6;
+  public cols: number = 6;
+  public swapWidgets: boolean = false;
+  public isGridVisible: boolean = false;
+  public highlightNextPosition: boolean = false;
+  private _editable: boolean = false;
   public gridWidget: any[] = new Array();
   public set editable(editable: boolean) {
     this._editable = editable;
   }
+  private widgets: any[] = new Array();
   public get editable() {
     return this._editable;
   }
-  constructor() {}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   public ngOnInit() {
-      let nextPosition = this.grid.getNextPosition();
+    const bookmarked = this.componentFactoryResolver.resolveComponentFactory(BookmarkedComponent);
+    this.widgets.push(this.parent.createComponent(bookmarked));
   }
   toggleHighlight(doHighlight: boolean) {
     this.highlightNextPosition = !!doHighlight;
@@ -38,9 +41,7 @@ export class WidgetsComponent implements OnInit {
   addWidget() {
     const nextPosition = this.grid.getNextPosition();
     if (nextPosition) {
-      this.gridWidget.push({ ...nextPosition });
-    } else {
-      console.warn('No Space Available!! ');
+      this.gridWidget.push({ widget: this.widgets[0], ...nextPosition });
     }
   }
 
