@@ -35,7 +35,6 @@ export class WidgetsComponent implements AfterViewInit {
     return this.isGridVisible;
   }
   addWidget() {
-    this.container = this.widget;
     const bookmarked = this.componentFactoryResolver.resolveComponentFactory(BookmarkedComponent);
     this.widgets.push(this.container.createComponent(bookmarked));
     const nextPosition = this.grid.getNextPosition();

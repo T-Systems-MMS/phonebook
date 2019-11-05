@@ -13,23 +13,25 @@
     <div class="toggle-switch">
       <button id="grid" (click)="showGrid()">{{ (isGridVisible && 'Vanish Grid') || 'Show Grid' }}</button>
     </div>
-    Rows: <b>{{ rows }}</b>
     <div class="btn-group">
-      <button class="btn btn-sm btn-icon" (click)="doRows(false)">
-        <mat-icon>remove</mat-icon>
-      </button>
-      <button class="btn btn-sm btn-icon" (click)="doRows(true)">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-    Cols: <b>{{ cols }}</b>
-    <div class="btn-group">
-      <button class="btn btn-sm btn-icon" (click)="doCols(false)">
-        <mat-icon>remove</mat-icon>
-      </button>
-      <button class="btn btn-sm btn-icon" (click)="doCols(true)">
-        <mat-icon>add</mat-icon>
-      </button>
+      Rows: <b>{{ rows }}</b>
+      <div class="btn-group">
+        <button class="btn btn-sm btn-icon" (click)="doRows(false)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <button class="btn btn-sm btn-icon" (click)="doRows(true)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      Cols: <b>{{ cols }}</b>
+      <div class="btn-group">
+        <button class="btn btn-sm btn-icon" (click)="doCols(false)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <button class="btn btn-sm btn-icon" (click)="doCols(true)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-drawer>
   <button
