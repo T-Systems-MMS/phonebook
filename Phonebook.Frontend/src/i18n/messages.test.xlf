@@ -1112,7 +1112,7 @@
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Your Profile" datatype="html">
         <source>
-      Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      Dear <x id="INTERPOLATION" equiv-text="{{ data.firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
       unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
       If your data is incorrect, please contact your Human Resources department.
     </source><target state="new">
@@ -1124,7 +1124,6 @@
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Colleague Profile" datatype="html">
         <source>
-      Dear <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
       Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
       Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources department.
     </source><target state="new">

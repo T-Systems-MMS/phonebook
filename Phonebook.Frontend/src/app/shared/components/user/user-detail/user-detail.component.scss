@@ -1,9 +1,7 @@
 @import 'media-queries';
-
 mat-card-header {
   mat-card-title-group {
     flex-direction: row-reverse;
-
     .user-picture {
       margin: 0 20px 10px 0;
       text-align: center;
@@ -12,7 +10,6 @@ mat-card-header {
       align-items: center;
     }
   }
-
   .actions {
     margin: 0 0 0 auto;
     display: flex;
@@ -28,7 +25,6 @@ mat-card-content {
       display: block;
     }
   }
-
   @include below-big {
     .pb-roomplan {
       img {
@@ -36,11 +32,9 @@ mat-card-content {
       }
     }
   }
-
   .pb-wrap {
     flex-flow: wrap;
   }
-
   .pb-skills {
     height: 200px;
     padding-top: 30px;
@@ -49,7 +43,6 @@ mat-card-content {
     flex-flow: column;
     align-items: center;
   }
-
   mat-list {
     flex: 1;
     min-width: 350px;
