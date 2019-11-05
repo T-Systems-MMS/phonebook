@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewContainerRef } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { LastPersonsState, BookmarksState, UpdateBookmarkOrder, ResetLastPersons, SetLastPersons, RemoveFromLastPersons, ToggleBookmark } from 'src/app/shared/states';
 import { Observable, Subscription } from 'rxjs';
@@ -22,7 +22,9 @@ export class BookmarkedComponent implements OnInit {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  constructor(private store: Store, private cd: ChangeDetectorRef) {}
+  constructor(
+    public viewContainerRef: ViewContainerRef,
+    private store: Store, private cd: ChangeDetectorRef) {}
 
   public ngOnInit() {
     this.changeOrder();
