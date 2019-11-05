@@ -1,5 +1,5 @@
 <mat-drawer-container class="sidenav-container" autosize>
-  <mat-drawer #drawer class="sidenav-content" mode="side">
+  <mat-drawer #drawer mode="side">
     <button
       class="btn btn-sm"
       [hidden]="!editable"
@@ -10,28 +10,24 @@
       <mat-icon>add</mat-icon>
       Widget
     </button>
-    <div class="toggle-switch">
-      <button id="grid" (click)="showGrid()">{{ (isGridVisible && 'Vanish Grid') || 'Show Grid' }}</button>
-    </div>
+    <button class="btn-group" id="grid" (click)="showGrid()">
+      {{ (isGridVisible && 'Vanish Grid') || 'Show Grid' }}
+    </button>
     <div class="btn-group">
-      Rows: <b>{{ rows }}</b>
-      <div class="btn-group">
-        <button class="btn btn-sm btn-icon" (click)="doRows(false)">
-          <mat-icon>remove</mat-icon>
-        </button>
-        <button class="btn btn-sm btn-icon" (click)="doRows(true)">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-      Cols: <b>{{ cols }}</b>
-      <div class="btn-group">
-        <button class="btn btn-sm btn-icon" (click)="doCols(false)">
-          <mat-icon>remove</mat-icon>
-        </button>
-        <button class="btn btn-sm btn-icon" (click)="doCols(true)">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
+      <span> Rows: {{ rows }} </span>
+      <button class="btn btn-sm btn-icon" (click)="doRows(false)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <button class="btn btn-sm btn-icon" (click)="doRows(true)">
+        <mat-icon>add</mat-icon>
+      </button>
+      <span> Cols: {{ cols }} </span>
+      <button class="btn btn-sm btn-icon" (click)="doCols(false)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <button class="btn btn-sm btn-icon" (click)="doCols(true)">
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
   </mat-drawer>
   <button
