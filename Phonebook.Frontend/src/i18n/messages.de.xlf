@@ -1243,7 +1243,7 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="description">Tab Headline for Skills</note>
         <note priority="1" from="meaning">UserDetailComponent</note>
       </trans-unit><trans-unit id="Headline" datatype="html">
-        <source>Incorrect User Information</source><target state="new">User Information</target>
+        <source>Incorrect User Information</source><target state="new">Benutzerinformation</target>
         <note priority="1" from="description">Headline</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Your Profile" datatype="html">
