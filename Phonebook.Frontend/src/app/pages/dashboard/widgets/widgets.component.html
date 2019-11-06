@@ -1,16 +1,8 @@
 <mat-drawer-container class="sidenav-container" autosize>
-  <mat-drawer #drawer mode="side">
-    <button
-      class="btn btn-sm"
-      [hidden]="!editable"
-      (mouseover)="toggleHighlight(true)"
-      (mouseleave)="toggleHighlight(false)"
-      (click)="addWidget()"
-    >
-      <mat-icon>add</mat-icon>
-      Widget
-    </button>
-    <button class="btn-group" id="grid" (click)="showGrid()">
+  <mat-drawer #drawer mode="side" value="">
+    <input type="checkbox" value="bookmarkedWidget" [checked]="bookmarkedWidget" (change)="bookmarkedWidget = !bookmarkedWidget" />
+    Bookedmarked Widget
+    <button class="btn-group" id="grid" (click)="toggleGridVisibility()">
       {{ (isGridVisible && 'Vanish Grid') || 'Show Grid' }}
     </button>
     <div class="btn-group">
@@ -52,20 +44,16 @@
       [highlightNextPosition]="highlightNextPosition"
       #grid
       [showGrid]="isGridVisible"
-      (widgetPositionChange)="onWidgetChange($event)"
     >
       <ngx-widget
-        *ngFor="let widget of gridWidget; let $index = index"
-        [position]="widget"
+        *ngIf="bookmarkedWidget"
         [movable]="editable"
         [resizable]="editable"
         [swapOnMove]="editable"
+        [position]="getPosition(bookmarked)"
       >
         <div style="height:100%;width:100%; display:flex;">
-          <ng-template #dynamicComponent></ng-template>
-          <button (click)="askDeleteWidget($index)" *ngIf="editable" class="delete">
-            <mat-icon>delete_sweep</mat-icon>
-          </button>
+          <app-bookmarked></app-bookmarked>
         </div>
       </ngx-widget>
     </ngx-widget-grid>

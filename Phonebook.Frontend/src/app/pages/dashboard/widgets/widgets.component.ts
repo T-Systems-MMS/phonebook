@@ -17,36 +17,41 @@ export class WidgetsComponent implements AfterViewInit {
   public isGridVisible: boolean = false;
   public highlightNextPosition: boolean = false;
   private _editable: boolean = false;
-  public gridWidget: any[] = new Array();
+  bookmarkedWidget: boolean = false;
+  recentWidget: boolean = false;
   public set editable(editable: boolean) {
     this._editable = editable;
   }
-  private widgets: any[] = new Array();
+  private widgets: any[];
   public get editable() {
     return this._editable;
   }
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private widget: ViewContainerRef) {}
-  public ngAfterViewInit() {}
-  toggleHighlight(doHighlight: boolean) {
-    this.highlightNextPosition = !!doHighlight;
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  public ngAfterViewInit() {
+    this.widgets.push(this.grid.getNextPosition());
+
+    this.widgets.push(this.grid.getNextPosition());
   }
-  showGrid() {
+  toggleHighlight(doHighlight: boolean) {
+    this.highlightNextPosition = !doHighlight;
+  }
+  toggleGridVisibility() {
     this.isGridVisible = !this.isGridVisible;
     return this.isGridVisible;
   }
-  addWidget() {
-    const bookmarked = this.componentFactoryResolver.resolveComponentFactory(BookmarkedComponent);
-    this.widgets.push(this.container.createComponent(bookmarked));
-    const nextPosition = this.grid.getNextPosition();
-    if (nextPosition) {
-      this.gridWidget.push({ widget: this.widgets[0], ...nextPosition });
+  getPosition(componentName) {
+    switch (componentName) {
+      case 'bookmarked': {
+        console.log('asd');
+        return this.widgets[0].getPosition();
+      }
+      case 'recent': {
+        return this.widgets[1];
+      }
+      default:
+        return this.grid.getNextPosition();
     }
   }
-  askDeleteWidget(index) {
-    this.gridWidget.splice(index, 1);
-  }
-  deleteWidget() {}
-  onWidgetChange(event: WidgetPositionChange) {}
   doRows(add: boolean) {
     if (add) {
       this.rows++;
