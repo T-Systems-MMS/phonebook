@@ -1,7 +1,14 @@
 <mat-drawer-container class="sidenav-container" autosize>
   <mat-drawer #drawer mode="side" value="">
-    <input type="checkbox" value="bookmarkedWidget" [checked]="bookmarkedWidget" (change)="bookmarkedWidget = !bookmarkedWidget" />
+    <input
+      type="checkbox"
+      value="bookmarkedWidget"
+      [checked]="bookmarkedWidget"
+      (change)="bookmarkedWidget = !bookmarkedWidget"
+    />
     Bookedmarked Widget
+    <input type="checkbox" value="recentWidget" [checked]="recentWidget" (change)="recentWidget = !recentWidget" />
+    Recent Search Widget
     <button class="btn-group" id="grid" (click)="toggleGridVisibility()">
       {{ (isGridVisible && 'Vanish Grid') || 'Show Grid' }}
     </button>
@@ -41,19 +48,29 @@
     <ngx-widget-grid
       [rows]="rows"
       [columns]="cols"
-      [highlightNextPosition]="highlightNextPosition"
       #grid
       [showGrid]="isGridVisible"
+      [highlightNextPosition]="highlightNextPosition"
+      (widgetPositionChange)="onWidgetChange($event)"
     >
       <ngx-widget
         *ngIf="bookmarkedWidget"
         [movable]="editable"
         [resizable]="editable"
-        [swapOnMove]="editable"
-        [position]="getPosition(bookmarked)"
+        [position]="getPosition('bookmarked')"
       >
         <div style="height:100%;width:100%; display:flex;">
           <app-bookmarked></app-bookmarked>
+        </div>
+      </ngx-widget>
+      <ngx-widget
+        *ngIf="recentWidget"
+        [movable]="editable"
+        [resizable]="editable"
+        [position]="getPosition('recent')"
+      >
+        <div style="height:100%;width:100%; display:flex;">
+          <app-recent></app-recent>
         </div>
       </ngx-widget>
     </ngx-widget-grid>

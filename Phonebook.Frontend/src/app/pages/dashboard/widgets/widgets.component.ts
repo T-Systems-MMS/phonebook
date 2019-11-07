@@ -1,5 +1,5 @@
 import { Component, ViewChild, ComponentFactoryResolver, AfterViewInit, ViewContainerRef } from '@angular/core';
-import { NgxWidgetGridComponent, WidgetPositionChange } from 'ngx-widget-grid';
+import { NgxWidgetGridComponent, WidgetPositionChange, Rectangle, NgxWidgetComponent } from 'ngx-widget-grid';
 import { RecentComponent } from 'src/app/pages/dashboard/widgets/recent/recent.component';
 import { BookmarkedComponent } from 'src/app/pages/dashboard/widgets/bookmarked/bookmarked.component';
 
@@ -12,41 +12,37 @@ export class WidgetsComponent implements AfterViewInit {
   @ViewChild('grid', { static: true }) public grid: NgxWidgetGridComponent;
   @ViewChild('dynamicComponent', { static: true, read: ViewContainerRef }) container: ViewContainerRef;
   public rows: number = 6;
-  public cols: number = 6;
+  public cols: number = 11;
   public swapWidgets: boolean = false;
   public isGridVisible: boolean = false;
-  public highlightNextPosition: boolean = false;
   private _editable: boolean = false;
+  private highlightNextPosition: boolean = false;
   bookmarkedWidget: boolean = false;
   recentWidget: boolean = false;
   public set editable(editable: boolean) {
     this._editable = editable;
   }
-  private widgets: any[];
+  private widgets: any[] = new Array();
   public get editable() {
     return this._editable;
   }
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
   public ngAfterViewInit() {
-    this.widgets.push(this.grid.getNextPosition());
-
-    this.widgets.push(this.grid.getNextPosition());
-  }
-  toggleHighlight(doHighlight: boolean) {
-    this.highlightNextPosition = !doHighlight;
+    this.widgets.push(
+      { position: new Rectangle({ top: 1, left: 1, width: 9, height: 6 }) },
+      { position: new Rectangle({ top: 1, left: 10, width: 2, height: 6 }) }
+    );
   }
   toggleGridVisibility() {
     this.isGridVisible = !this.isGridVisible;
     return this.isGridVisible;
   }
-  getPosition(componentName) {
+  getPosition(componentName: string) {
     switch (componentName) {
       case 'bookmarked': {
-        console.log('asd');
-        return this.widgets[0].getPosition();
+        return this.widgets[0].position;
       }
       case 'recent': {
-        return this.widgets[1];
+        return this.widgets[1].position;
       }
       default:
         return this.grid.getNextPosition();
