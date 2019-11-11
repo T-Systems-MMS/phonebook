@@ -43,11 +43,6 @@
     "typescript.preferences.quoteStyle": "single",
     "javascript.referencesCodeLens.enabled": true,
     "typescript.referencesCodeLens.enabled": true,
-    "prettier.jsxSingleQuote": true,
-    "prettier.singleQuote": true,
-    "prettier.tslintIntegration": true,
-    "prettier.printWidth": 120,
-    "prettier.jsxBracketSameLine": false,
     "[html]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },

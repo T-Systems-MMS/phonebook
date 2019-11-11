@@ -74,10 +74,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   public openSettings() {
-    this.dialog.open(TableSettingsDialog, {
-      height: '90vh',
-      width: '90vw'
-    });
+    //prevent opening multiple dialogs
+    if (this.dialog.openDialogs.length === 0) {
+      this.dialog.open(TableSettingsDialog, {
+        height: '90vh',
+        width: '90vw'
+      });
+    }
   }
 
   public ngOnDestroy() {}

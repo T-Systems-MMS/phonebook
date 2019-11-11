@@ -7,7 +7,7 @@
   "
 >
   <ng-container *ngIf="this.location.RoomCollection.length == 1">
-    <span>{{ address[0] }}</span>
+    <span>{{ address[0] }}<ng-container *ngIf="location.City.ZipCode != null">, {{ location.City.ZipCode }}</ng-container></span>
     <span>{{ address[1] }}</span>
     <ng-container *ngIf="location.RoomCollection">
       <span

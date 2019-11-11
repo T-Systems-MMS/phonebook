@@ -102,6 +102,18 @@
     </source>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
+        <source>
+      You deactivated cookies and keep getting those dialogs?
+    </source>
+        <note priority="1" from="description">Annoyed by cookies notice</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
+        <source>
+      Deactivate startup-dialogs!
+    </source>
+        <note priority="1" from="description">Deactivate Startup Dialogs</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="BugReportConsentComponentTitle" datatype="html">
         <source>
     We need your help!
@@ -901,6 +913,21 @@
         </source>
         <note priority="1" from="description">Attributions SubTitle</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
+      </trans-unit>
+      <trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
+        <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won&apos;t get any information about updates or releases with the set url parameter.</source>
+        <note priority="1" from="description">Message for just set no cookie url</note>
+        <note priority="1" from="meaning">Display advice to new url</note>
+      </trans-unit>
+      <trans-unit id="PageInformationNewUrlNoCookiesUrl" datatype="html">
+        <source>Reset</source>
+        <note priority="1" from="description">Message for following no cookie url</note>
+        <note priority="1" from="meaning">Restore Url</note>
+      </trans-unit>
+      <trans-unit id="PageInformationNoDialogs" datatype="html">
+        <source>Startup-Dialogs are deactivated. Please notice: You won&apos;t get any information about updates or releases.</source>
+        <note priority="1" from="description">Message to inform user that no dialogs will be shown</note>
+        <note priority="1" from="meaning">Warning no dialogs are shown</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentCopiedFirstPart" datatype="html">
         <source>Link to</source>
