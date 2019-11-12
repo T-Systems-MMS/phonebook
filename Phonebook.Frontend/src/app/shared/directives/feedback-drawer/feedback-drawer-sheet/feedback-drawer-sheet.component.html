@@ -12,7 +12,7 @@
       color="primary"
       target="_blank"
       rel="noopener"
-      href="{{ runtimeEnvironment.contactEmail }}"
+      [href]="'mailto:' + runtimeEnvironment.contactEmail"
       (click)="closeBottomSheet()"
     >
       <span

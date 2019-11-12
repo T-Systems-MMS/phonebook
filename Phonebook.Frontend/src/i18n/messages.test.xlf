@@ -275,7 +275,7 @@
         <note priority="1" from="description">Button for contacting the private Organization via email</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganization" datatype="html">
-        <source>Contact your private organization repository</source><target state="translated">TEST</target>
+        <source>Contact your private organization</source><target state="translated">TEST</target>
         <note priority="1" from="description">Button for contacting the private Organization</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubFeature" datatype="html">
