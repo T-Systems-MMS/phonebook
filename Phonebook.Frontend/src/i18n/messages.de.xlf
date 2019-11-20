@@ -15,17 +15,25 @@
         <note priority="1" from="meaning">AddFilterComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
         <source>
-    Leave Feedback, report a Bug or submit a new Idea
+    Leave Feedback, report a Bug or suggest a new Idea
   </source><target state="translated">Sage deine Meinung, melde einen Fehler oder erzähle von deiner Idee</target>
         <note priority="1" from="description">Title of the Feedback Drawer</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganizationMail" datatype="html">
+        <source>Contact your private organization via email</source><target state="new">Schreibe deiner privaten Organisation eine E-Mail</target>
+        <note priority="1" from="description">Button for contacting the private Organization via email</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganization" datatype="html">
-        <source>Contact your private Organization</source><target state="translated">Kontaktiere deine private Organisation</target>
+        <source>Contact your private organization</source><target state="translated">Kontaktiere deine private Organisation</target>
         <note priority="1" from="description">Button for contacting the private Organization</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
-      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithub" datatype="html">
-        <source>Contact the public Project</source><target state="translated">Kontaktiere unser öffentliches Projekt</target>
-        <note priority="1" from="description">Button for contacting the public Github</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubFeature" datatype="html">
+        <source>Suggest an idea or a new feature</source><target state="new">Schlage eine Idee oder ein neues Feature vor</target>
+        <note priority="1" from="description">Button for suggesting a new feature on Github</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubBug" datatype="html">
+        <source>Report a bug</source><target state="translated">Melde einen Bug</target>
+        <note priority="1" from="description">Button for reporting a bug on Github</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="IeWarningComponentTitle" datatype="html">
         <source>
@@ -278,6 +286,10 @@
         <source>Release Notes</source><target state="translated">Release Notes</target>
         <note priority="1" from="description">Release Notes Menu Item</note>
         <note priority="1" from="meaning">NavigationComponent</note>
+      </trans-unit><trans-unit id="NavigationComponentFeedback" datatype="html">
+        <source>Submit Feedback</source><target state="translated">Gib uns Feedback</target>
+        <note priority="1" from="description">Link to Bug page</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
@@ -409,10 +421,6 @@
         <target state="translated">Du hast Feedback, dann klicke hier.</target>
         <note priority="1" from="description">Info Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
-      </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
-        <source>Report a Bug</source><target state="new">Melde einen Bug</target>
-        <note priority="1" from="description">Link to Bug page</note>
-        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="navigationBarBugTooltip" datatype="html">
         <source>Found a Bug? Than that`s the right place to click.</source><target state="new">Du hast einen Bug gefunden? Dann melde ihn hier.</target>
         <note priority="1" from="description">Bug Button Tooltip</note>

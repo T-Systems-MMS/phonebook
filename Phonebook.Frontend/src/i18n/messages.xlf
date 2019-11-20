@@ -367,17 +367,25 @@
         <note priority="1" from="meaning">UserDetailComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
         <source>
-    Leave Feedback, report a Bug or submit a new Idea
+    Leave Feedback, report a Bug or suggest a new Idea
   </source>
         <note priority="1" from="description">Title of the Feedback Drawer</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganizationMail" datatype="html">
+        <source>Contact your private organization via email</source>
+        <note priority="1" from="description">Button for contacting the private Organization via email</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganization" datatype="html">
-        <source>Contact your private Organization</source>
+        <source>Contact your private organization</source>
         <note priority="1" from="description">Button for contacting the private Organization</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
-      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithub" datatype="html">
-        <source>Contact the public Project</source>
-        <note priority="1" from="description">Button for contacting the public Github</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubFeature" datatype="html">
+        <source>Suggest an idea or a new feature</source>
+        <note priority="1" from="description">Button for suggesting a new feature on Github</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubBug" datatype="html">
+        <source>Report a bug</source>
+        <note priority="1" from="description">Button for reporting a bug on Github</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="ColumnTitleRoom" datatype="html">
         <source>
@@ -550,8 +558,8 @@
         <source>Release Notes</source>
         <note priority="1" from="description">Release Notes Menu Item</note>
         <note priority="1" from="meaning">NavigationComponent</note>
-      </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
-        <source>Report a Bug</source>
+      </trans-unit><trans-unit id="NavigationComponentFeedback" datatype="html">
+        <source>Submit Feedback</source>
         <note priority="1" from="description">Link to Bug page</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="navigationBarBugTooltip" datatype="html">
