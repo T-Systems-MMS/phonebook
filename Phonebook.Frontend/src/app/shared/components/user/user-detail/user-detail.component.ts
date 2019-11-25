@@ -14,8 +14,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 
 export interface IncorrectUserInformationDialogData {
-  firstname: string;
-  id: string;
+  person: Person;
 }
 @Component({
   selector: 'app-user-detail',
@@ -95,11 +94,11 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 
   public openInformationIncorrectDialog(): void {
     const dialogData: IncorrectUserInformationDialogData = {
-      firstname: this.person.Firstname,
-      id: this.person.Id
+      person: this.person
     };
     const dialogConfig: MatDialogConfig = {
       autoFocus: true,
+      hasBackdrop: true,
       data: dialogData
     };
     this.dialog.open(IncorrectUserInformationComponent, dialogConfig);

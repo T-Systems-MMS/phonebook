@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { IncorrectUserInformationDialogData } from 'src/app/shared/components/user/user-detail/user-detail.component';
+import { WindowRef } from 'src/app/services/windowRef.service';
+import { MailService } from 'src/app/services/mail.service';
 
 @Component({
   selector: 'app-user-information',
@@ -12,6 +14,9 @@ export class IncorrectUserInformationComponent implements OnInit {
 
   public currentUserId: string = '';
   constructor(
+    
+    private mailService: MailService,
+    private windowRef: WindowRef,
     public currentUserService: CurrentUserService,
     public dialogRef: MatDialogRef<IncorrectUserInformationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IncorrectUserInformationDialogData | any
@@ -27,7 +32,13 @@ export class IncorrectUserInformationComponent implements OnInit {
       }
     );
   }
+  public sendMail(){
+    this.mailService.openMail(
+      'Information about ' + this.data.person.Surname + ' ' + this.data.person.Firstname,
+      'This is the Phonebook Link: ' + this.windowRef.getCurrentUrl()
+    );
+  }
   public get onMyProfile(): boolean {
-    return this.currentUserId.toLowerCase() === this.data.id.toLowerCase();
+    return this.currentUserId.toLowerCase() === this.data.person.Id.toLowerCase();
   }
 }

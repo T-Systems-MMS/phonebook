@@ -1,8 +1,8 @@
-<div class="pb-text-align-center">
+<div class="">
   <h2 mat-dialog-title i18n="User-InformationDialog|Headline@@Headline">Incorrect User Information</h2>
   <div mat-dialog-content *ngIf="onMyProfile">
     <span i18n="User-InformationDialog|Profile@@Your Profile">
-      Dear {{ data.firstname }},<br />
+      Dear {{ data.person.Firstname }},<br />
       unfortunately, you can't change your user information via the Phonebook interface. <br />
       If your data is incorrect, please contact your Human Resources department.
     </span>
@@ -14,9 +14,16 @@
       department.
     </span>
   </div>
-  <div mat-dialog-actions class="pb-center-element">
-    <button mat-button mat-dialog-close cdkFocusInitial i18n="User-InformationDialog|Button@@Button" class="actions">
-      Got it!
-    </button>
+  <div mat-dialog-actions>
+    <div>
+      <button mat-menu-item (click)="sendMail()">
+        <mat-icon mat-list-icon>email</mat-icon>
+      </button>
+    </div>
+    <div class="action">
+      <button mat-button mat-dialog-close cdkFocusInitial i18n="User-InformationDialog|Button@@Button" >
+        Got it!
+      </button>
+    </div>
   </div>
 </div>
