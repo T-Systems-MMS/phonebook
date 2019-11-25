@@ -16,7 +16,9 @@
   </div>
   <div mat-dialog-actions>
     <div>
-      <button mat-menu-item (click)="sendMail()">
+      <button mat-icon-button (click)="sendMail()"
+      i18n-matTooltip="User-InformationDialog|Button@@SendEmail"
+      matTooltip="Hey send your colleqgue a direct message">
         <mat-icon mat-list-icon>email</mat-icon>
       </button>
     </div>
