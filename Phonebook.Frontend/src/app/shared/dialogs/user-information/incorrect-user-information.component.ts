@@ -19,7 +19,7 @@ export class IncorrectUserInformationComponent implements OnInit {
     public currentUserService: CurrentUserService,
     public dialogRef: MatDialogRef<IncorrectUserInformationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IncorrectUserInformationDialogData | any
- 
+
   ) {}
 
   public ngOnInit() {

@@ -1279,6 +1279,10 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
     </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="HREF" datatype="html">
+        <source>mailto:<x id="INTERPOLATION" equiv-text="{{this.data.person.Contacts.Email}}"/>?subject=Issue%20with%20your%20Profiledata&amp;body=Hey%20<x id="INTERPOLATION_1" equiv-text="{{this.data.person.Firstname}}"/>%2C%20%0A%0A%20while%20browsing%20your%20profile%20I%20noticed%20that%20something%20is%20not%20right%3A%0APlease%20contact%20the%20HR%20Department%20to%20fix%20it.%0ALink%20to%20your%20Profile:%3A%20<x id="INTERPOLATION_2" equiv-text="{{this.windowRef.getCurrentUrl()}}"/></source><target state="new">mailto:<x id="INTERPOLATION" equiv-text="{{this.data.person.Contacts.Email}}"/>?subject=Fehler%20auf%20deinem%20Phonebookprofil&amp;body=Hey%20<x id="INTERPOLATION_1" equiv-text="{{this.data.person.Firstname}}"/>%0AAls%20ich%20%C3%BCber%20dein%20Profil%20geschaut%20habe%2C%20ist%20mir%20folgendes%20aufgefallen%3A%0A%0ABitte%20kontaktiere%20deine%20HR%20Abteilung%20um%20deine%20Daten%20zu%20aktualisieren.%0ADein%20Profil:%3A<x id="INTERPOLATION_2" equiv-text="{{this.windowRef.getCurrentUrl()}}"/></target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="SendEmail" datatype="html">
         <source>Send your colleague a direct message</source><target state="translated">Hey sende deinem Kollegen direkt eine Nachricht</target>
         <note priority="1" from="description">Button</note>
