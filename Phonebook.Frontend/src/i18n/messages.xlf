@@ -310,14 +310,21 @@
     </source>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Notify" datatype="html">
+        <source>
+      <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>email<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
+      Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>
+    </source>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="SendEmail" datatype="html">
-        <source>Hey send your colleqgue a direct message</source>
+        <source>Send your colleague a direct message</source>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Button" datatype="html">
         <source>
-        Got it!
-      </source>
+      Got it!
+    </source>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">

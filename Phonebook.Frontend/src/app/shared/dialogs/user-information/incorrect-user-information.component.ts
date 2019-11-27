@@ -11,15 +11,15 @@ import { MailService } from 'src/app/services/mail.service';
   styleUrls: ['./incorrect-user-information.component.scss']
 })
 export class IncorrectUserInformationComponent implements OnInit {
-
   public currentUserId: string = '';
+  public mailBody : string = '';
   constructor(
-    
     private mailService: MailService,
-    private windowRef: WindowRef,
+    public windowRef: WindowRef,
     public currentUserService: CurrentUserService,
     public dialogRef: MatDialogRef<IncorrectUserInformationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IncorrectUserInformationDialogData | any
+ 
   ) {}
 
   public ngOnInit() {
@@ -30,12 +30,6 @@ export class IncorrectUserInformationComponent implements OnInit {
       error => {
         // do nothing, as the id will never be ''
       }
-    );
-  }
-  public sendMail(){
-    this.mailService.openMail(
-      'Information about ' + this.data.person.Surname + ' ' + this.data.person.Firstname,
-      'This is the Phonebook Link: ' + this.windowRef.getCurrentUrl()
     );
   }
   public get onMyProfile(): boolean {

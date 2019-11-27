@@ -1343,16 +1343,26 @@
     </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Notify" datatype="html">
+        <source>
+      <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>email<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
+      Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>
+    </source><target state="final">
+      <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>email<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
+      Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>
+    </target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="SendEmail" datatype="html">
-        <source>Hey send your colleqgue a direct message</source><target state="final">Hey send your colleqgue a direct message</target>
+        <source>Send your colleague a direct message</source><target state="final">Send your colleague a direct message</target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Button" datatype="html">
         <source>
-        Got it!
-      </source><target state="final">
-        Got it!
-      </target>
+      Got it!
+    </source><target state="final">
+      Got it!
+    </target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
