@@ -97,7 +97,7 @@
     "ngx-i18nsupport": "0.17.1",
     "protractor": "5.4.2",
     "protractor-console-plugin": "0.1.1",
-    "puppeteer": "^2.0.0",
+    "puppeteer": "2.0.0",
     "semantic-release": "15.13.28",
     "semantic-release-docker-test": "1.0.2",
     "ts-node": "8.4.1",
