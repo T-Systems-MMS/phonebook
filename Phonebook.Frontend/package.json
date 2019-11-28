@@ -53,7 +53,7 @@
     "@ngx-translate/i18n-polyfill": "1.0.0",
     "@ngxs/devtools-plugin": "3.5.1",
     "@ngxs/logger-plugin": "3.5.1",
-    "@ngxs/router-plugin": "3.5.1-dev.master-faa521f",
+    "@ngxs/router-plugin": "3.5.1",
     "@ngxs/storage-plugin": "3.5.1",
     "@ngxs/store": "3.5.1",
     "classlist.js": "1.1.20150312",
