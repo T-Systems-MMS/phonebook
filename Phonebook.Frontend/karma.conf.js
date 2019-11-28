@@ -18,11 +18,15 @@ module.exports = function(config) {
     customLaunchers: {
       ChromeHeadlessCustom: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222']
+        flags: ['--no-sandbox', '--disable-gpu', '--remote-debugging-port=9222']
       }
     },
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
+      // Activate only for debugging purposes
+      // jasmine: {
+      //   random: false
+      // }
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, 'coverage'),
