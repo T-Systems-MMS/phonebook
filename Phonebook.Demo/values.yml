@@ -12,6 +12,7 @@ employeePictureEndpoint: null
 assetsEndpoint: 'https://demo-phonebook.me/assets'
 environment: 'preview'
 environmentTag: 'demo'
+rocketChatUrl: 'https://open.rocket.chat'
 
 frontend:
   replicaCount: 1
