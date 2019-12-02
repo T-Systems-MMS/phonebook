@@ -4,7 +4,7 @@
 requiredVariables=( BASE_URL SERVER_NAME ENVIRONMENT ENVIRONMENT_TAG ASSETS_ENDPOINT CONTACT_EMAIL CONTACT_URL)
 
 # State all optional variables here
-optionalVariables=( RAVEN_URL EMPLOYEE_PICTURES_ENDPOINT ROOMPLANNINGTOOL_URL)
+optionalVariables=( RAVEN_URL EMPLOYEE_PICTURES_ENDPOINT ROOMPLANNINGTOOL_URL ROCKETCHAT_URL)
 
 # BASE_URL - used througout the whole app (e.g. opensearch.xml) - example: https://example.com/
 

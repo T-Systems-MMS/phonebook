@@ -29,7 +29,9 @@
         </mat-list-item>
         <mat-list-item>
           <button mat-menu-item (click)="navigateToOwnProfile(); sidenav.close()">
-            <mat-icon>perm_identity</mat-icon>
+            <mat-icon *ngIf="currentUser == null">perm_identity</mat-icon>
+            <app-profile-picture *ngIf="currentUser != null" [imageSize]="50" class="pb-self-centered circle" [user]="currentUser">
+              </app-profile-picture>
             <span i18n="NavigationComponent|Link to the users profile@@NavigationComponentMyProfile">My profile</span>
           </button>
         </mat-list-item>
@@ -74,7 +76,7 @@
             (click)="sidenav.close()"
           >
             <mat-icon>bug_report</mat-icon>
-            <span i18n="NavigationComponent|Link to Bug page@@NavigationComponentBug">Report a Bug</span>
+            <span i18n="NavigationComponent|Link to Bug page@@NavigationComponentFeedback">Submit Feedback</span>
           </button>
         </mat-list-item>
       </mat-list>
@@ -125,7 +127,7 @@
               </button>
             </div>
             <div class="pb-spacer"></div>
-            <div class="menu pb-hide-below-med">
+            <div class="pb-center-element-orthogonal pb-hide-below-med">
               <button mat-button [routerLink]="['/']" i18n="@@navigationDashboard">
                 Dashboard
               </button>
@@ -135,14 +137,17 @@
               <button mat-button [routerLink]="['/rooms']" i18n="@@navigationRooms">
                 Rooms
               </button>
-              <button mat-icon-button [matMenuTriggerFor]="personalmenu">
-                <mat-icon
-                  matBadge="!"
-                  matBadgeColor="accent"
-                  matBadgeSize="small"
-                  [matBadgeHidden]="!releaseInfoService.newUpdate"
-                  >person</mat-icon
-                >
+              <button
+                mat-icon-button
+                matBadge="!"
+                matBadgeColor="accent"
+                matBadgeSize="small"
+                [matBadgeHidden]="!releaseInfoService.newUpdate"
+                [matMenuTriggerFor]="personalmenu"
+              >
+                <mat-icon *ngIf="currentUser == null">person</mat-icon>
+                <app-profile-picture *ngIf="currentUser != null" [imageSize]="50" class="pb-self-centered circle square-img40" [user]="currentUser">
+                </app-profile-picture>
               </button>
               <mat-menu #personalmenu>
                 <button mat-menu-item (click)="navigateToOwnProfile()" *ngIf="currentUser != null">
@@ -175,7 +180,7 @@
                 </button>
                 <button mat-menu-item feedbackDrawer>
                   <mat-icon>bug_report</mat-icon>
-                  <span i18n="@@NavigationComponentBug">Report a Bug</span>
+                  <span i18n="@@NavigationComponentFeedback">Submit Feedback</span>
                 </button>
               </mat-menu>
             </div>

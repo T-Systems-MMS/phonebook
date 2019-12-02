@@ -174,7 +174,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
-            "sourceMap": false,
+            "sourceMap": true,
             "styles": [
               "src/styles.scss",
               "src/fonts/fonts.css",

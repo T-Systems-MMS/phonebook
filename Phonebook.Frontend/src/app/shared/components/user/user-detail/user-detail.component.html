@@ -71,8 +71,7 @@
               >Download Contact</span
             >
           </button>
-          <!-- TODO: Add Chat Link -->
-          <a mat-menu-item target="_blank" rel="noopener" [href]="'example.com/chat' + person.Id.toLowerCase()">
+          <a *ngIf="rocketChatLink" mat-menu-item target="_blank" rel="noopener" [href]="rocketChatLink">
             <mat-icon>chat</mat-icon>
             <span i18n="User-detailComponent|Share Menu: Rocket Chat Option@@UserDetailComponentShareRocketChat"
               >Rocket Chat</span

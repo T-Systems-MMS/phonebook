@@ -16,8 +16,8 @@ export class MailService {
       recipient +
       //'?cc=' + cc +
       //'?bcc=' + bcc +
-      '&subject=' +
-      subject +
+      '?subject=' +
+      encodeURIComponent(subject) +
       '&body=' +
       encodeURIComponent(body);
   }
