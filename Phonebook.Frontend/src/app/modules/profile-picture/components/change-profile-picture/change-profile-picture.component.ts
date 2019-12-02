@@ -27,9 +27,14 @@ export class ChangeProfilePictureComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.currentUserService.getCurrentUserId().subscribe(id => {
-      this.currentUserId = id;
-    });
+    this.currentUserService.getCurrentUserId().subscribe(
+      id => {
+        this.currentUserId = id;
+      },
+      error => {
+        // do nothing, as the id will never be ''
+      }
+    );
   }
 
   public isVisible(): boolean {

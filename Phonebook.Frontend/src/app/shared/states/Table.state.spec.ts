@@ -1,10 +1,9 @@
-import { Store, NgxsModule } from '@ngxs/store';
 import { async, TestBed } from '@angular/core/testing';
-import { PhonebookSortDirection } from 'src/app/shared/models';
-import { TableState, SetVisibleTableColumns } from 'src/app/shared/states';
-import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
+import { NgxsModule, Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { SetTableResultCount, TableStateModel } from 'src/app/shared/states/Table.state';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
+import { SetVisibleTableColumns, TableState } from 'src/app/shared/states';
+import { SetTableResultCount } from 'src/app/shared/states/Table.state';
 
 describe('[States] Table', () => {
   let store: Store;

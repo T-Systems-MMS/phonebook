@@ -1,11 +1,11 @@
-import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { ColumnDefinitions, getColumnsAsStringArray } from 'src/app/shared/config/columnDefinitions';
 import { Column } from 'src/app/shared/models';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
-import { ColumnDefinitions, getColumnsAsStringArray } from 'src/app/shared/config/columnDefinitions';
 
 export class SetVisibleTableColumns {
   public static readonly type: string = '[Table State] Set visible Table Columns';
-  constructor(public columns: Column[]) { }
+  constructor(public columns: Column[]) {}
 }
 
 export class ResetTableSettings {
@@ -14,7 +14,7 @@ export class ResetTableSettings {
 
 export class SetTableResultCount {
   public static readonly type: string = '[Table State] Set Table Result Count';
-  constructor(public resultCount: number) { }
+  constructor(public resultCount: number) {}
 }
 
 export interface TableStateModel {

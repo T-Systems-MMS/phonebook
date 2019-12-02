@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
 import { NotImplementedService } from 'src/app/modules/not-implemented/not-implemented.service';
 import { LanguageService } from 'src/app/services/language.service';
-import { Language } from 'src/app/shared/models/enumerables/Language';  
+import { Language } from 'src/app/shared/models/enumerables/Language';
 import { AppState, SetTheme } from 'src/app/shared/states';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
 
@@ -23,9 +23,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public languages: string[] = Object.keys(Language);
   public layoutValue: Layout = Layout.view_module;
   public layout: string[] = Object.values(Layout);
-  public featureFlags: Observable<
-    { name: string; value: boolean }[]
-  > = this.featureFlagService.getAllDefaultDisabled();
+  public featureFlags: Observable<{ name: string; value: boolean }[]> = this.featureFlagService.getAllDefaultDisabled();
 
   constructor(
     private store: Store,
@@ -86,7 +84,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
           meaning: 'SettingsComponent'
         });
       }
-      default: 
+      default:
         throw Error(`Translation for theme ${theme} does not exists.`);
     }
   }

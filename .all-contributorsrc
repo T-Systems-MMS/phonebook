@@ -1,0 +1,182 @@
+{
+  "files": [
+    "docs/README.md",
+    "Phonebook.Frontend/src/assets/CONTRIBUTORS.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "DanielHabenicht",
+      "name": "DanielHabenicht",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13590797?v=4",
+      "profile": "https://danielhabenicht.github.io/",
+      "contributions": [
+        "question",
+        "bug",
+        "blog",
+        "code",
+        "content",
+        "doc",
+        "design",
+        "ideas",
+        "infra",
+        "maintenance",
+        "projectManagement",
+        "review",
+        "security",
+        "translation",
+        "test"
+      ]
+    },
+    {
+      "login": "mschwrdtnr",
+      "name": "Max S.",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/39745446?v=4",
+      "profile": "https://github.com/mschwrdtnr",
+      "contributions": [
+        "code",
+        "bug",
+        "blog",
+        "doc",
+        "ideas",
+        "maintenance",
+        "projectManagement",
+        "review",
+        "translation",
+        "question"
+      ]
+    },
+    {
+      "login": "paule96",
+      "name": "paule96",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11291885?v=4",
+      "profile": "https://github.com/paule96",
+      "contributions": [
+        "code",
+        "ideas",
+        "maintenance",
+        "review"
+      ]
+    },
+    {
+      "login": "marcuskrahl",
+      "name": "Marcus Krahl",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/527426?v=4",
+      "profile": "https://www.marcuskrahl.de",
+      "contributions": [
+        "review",
+        "question"
+      ]
+    },
+    {
+      "login": "kirkone",
+      "name": "Kirsten Kluge",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15778270?v=4",
+      "profile": "http://www.codez.one/",
+      "contributions": [
+        "question",
+        "review"
+      ]
+    },
+    {
+      "login": "GentleJames",
+      "name": "GentleJames",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/53565550?v=4",
+      "profile": "https://github.com/GentleJames",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "J-C-O",
+      "name": "Julius T.",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/47179422?v=4",
+      "profile": "https://github.com/J-C-O",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "PhoebeNgnfld",
+      "name": "PhoebeNgnfld",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/54710033?v=4",
+      "profile": "https://github.com/PhoebeNgnfld",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "schurzi",
+      "name": "schurzi",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1736679?v=4",
+      "profile": "http://www.drachen-server.de",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "renkin",
+      "name": "René Kießig",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/12253492?v=4",
+      "profile": "https://github.com/renkin",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "danielsy",
+      "name": "danielsy",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8321455?v=4",
+      "profile": "https://github.com/danielsy",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "oliverguhr",
+      "name": "Oliver Guhr",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3495355?v=4",
+      "profile": "https://www.oliverguhr.eu",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "FrankLambrette",
+      "name": "FrankLambrette",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/55480780?v=4",
+      "profile": "https://github.com/FrankLambrette",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Zeroks77",
+      "name": "Dominik Mangatter",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/40673554?v=4",
+      "profile": "https://github.com/Zeroks77",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "BrunoZirnstein",
+      "name": "BrunoZirnstein",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/56590240?v=4",
+      "profile": "https://github.com/BrunoZirnstein",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "phonebook",
+  "projectOwner": "T-Systems-MMS",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}

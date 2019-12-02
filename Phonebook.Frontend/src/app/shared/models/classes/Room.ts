@@ -31,7 +31,6 @@ export class Room {
     this.Id = Id;
     this.Place = Place;
     this.FloorPlan = FloorPlan;
-
   }
 
   public static empty(): Room {

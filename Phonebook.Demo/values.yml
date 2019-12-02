@@ -1,0 +1,62 @@
+# Default values for phonebook.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# General Variables
+host: &host 'demo-phonebook.me'
+contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
+roomPlanningToolUrl: null
+contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
+ravenUrl: null
+employeePictureEndpoint: null
+assetsEndpoint: 'https://demo-phonebook.me/assets'
+environment: 'preview'
+environmentTag: 'demo'
+
+frontend:
+  replicaCount: 1
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  #limits:
+  # cpu: 100m
+  # memory: 128Mi
+  #requests:
+  # cpu: 100m
+  # memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Traefik Configuration
+traefik:
+  enabled: true
+  startupArguments:
+    - ''
+  dashboard:
+    enabled: true
+    domain: board.demo-phonebook.me
+    ingress:
+      annotations:
+        traefik.frontend.priority: '100'
+  ssl:
+    enabled: true
+    enforced: true
+  acme:
+    staging: false
+    enabled: true
+    email: *contactEmail
+    onHostRule: true
+    challengeType: 'http-01'
+    domains:
+      enabled: true
+  rbac:
+    enabled: true
+  kubernetes:
+    namespaces:

@@ -1,21 +1,12 @@
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import {
-  Business,
-  City,
-  Contacts,
-  Location,
-  Messenger,
-  Person,
-  PersonType,
-  PhonebookSortDirection
-} from 'src/app/shared/models';
+import { Business, City, Contacts, Location, Messenger, Person, PersonStatus, PhonebookSortDirection } from 'src/app/shared/models';
 import { TableLogic } from './table-logic';
 
 describe('Table Logic - Sort', () => {
   it('"Axel" before "Zarathustra"', () => {
     const unsortedPersonsArray: Person[] = [
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Zarathustra',
         '',
@@ -27,7 +18,7 @@ describe('Table Logic - Sort', () => {
         new Business([], [], [], [], [], [], '')
       ),
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Axel',
         '',
@@ -46,7 +37,7 @@ describe('Table Logic - Sort', () => {
       })
     ).toEqual([
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Axel',
         '',
@@ -58,7 +49,7 @@ describe('Table Logic - Sort', () => {
         new Business([], [], [], [], [], [], '')
       ),
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Zarathustra',
         '',
@@ -74,7 +65,7 @@ describe('Table Logic - Sort', () => {
   it('"Zarathustra" before "Axel"', () => {
     const unsortedPersonsArray: Person[] = [
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Axel',
         '',
@@ -86,7 +77,7 @@ describe('Table Logic - Sort', () => {
         new Business([], [], [], [], [], [], '')
       ),
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Zarathustra',
         '',
@@ -106,7 +97,7 @@ describe('Table Logic - Sort', () => {
       })
     ).toEqual([
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Zarathustra',
         '',
@@ -118,7 +109,7 @@ describe('Table Logic - Sort', () => {
         new Business([], [], [], [], [], [], '')
       ),
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Axel',
         '',
@@ -137,7 +128,7 @@ describe('Table Logic - Filter', () => {
   it('Find "Mustermann"', () => {
     const unsortedPersonsArray: Person[] = [
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Mustermann',
         'Max',
@@ -151,7 +142,7 @@ describe('Table Logic - Filter', () => {
     ];
     expect(TableLogic.filter(unsortedPersonsArray, 'Mustermann', [ColumnDefinitions.fullname])).toEqual([
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Mustermann',
         'Max',
@@ -168,7 +159,7 @@ describe('Table Logic - Filter', () => {
   it('NOT find "Otherman"', () => {
     const unsortedPersonsArray: Person[] = [
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'Mustermann',
         'Max',
@@ -186,7 +177,7 @@ describe('Table Logic - Filter', () => {
   it('Find Person with Diarectics', () => {
     const unsortedPersonsArray: Person[] = [
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',
         'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',
@@ -204,7 +195,7 @@ describe('Table Logic - Filter', () => {
       ])
     ).toEqual([
       new Person(
-        PersonType.Interner_Mitarbeiter,
+        PersonStatus.Interner_Mitarbeiter,
         '',
         'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',
         'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',

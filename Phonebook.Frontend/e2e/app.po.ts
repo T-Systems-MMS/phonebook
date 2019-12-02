@@ -8,5 +8,4 @@ export class AppPage {
   public getTitle() {
     return element(by.id('title')).getText();
   }
-
 }

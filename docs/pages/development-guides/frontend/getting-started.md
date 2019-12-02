@@ -78,9 +78,6 @@ npm install
 # Pull the docker image for backend mock
 docker pull tsystemsmms/phonebook-build:mock-backend
 
-# Run the backend mock before
-docker run -p 8080:80 tsystemsmms/phonebook-build:mock-backend
-
 # Run the project
 npm run start -- --open
 ```

@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-
-import { LanguageService } from './language.service';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import { LanguageService } from './language.service';
+
 
 describe('LanguageService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    providers: [{ provide: I18n, useClass: MockI18nService }]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      providers: [{ provide: I18n, useClass: MockI18nService }]
+    })
+  );
 
   it('should be created', () => {
     const service: LanguageService = TestBed.get(LanguageService);
@@ -14,6 +16,4 @@ describe('LanguageService', () => {
   });
 });
 
-class MockI18nService {
-
-}
+class MockI18nService {}

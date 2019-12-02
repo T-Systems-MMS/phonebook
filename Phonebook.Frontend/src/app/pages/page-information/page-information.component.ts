@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EnvironmentService, Environment } from 'src/app/services/environment.service';
-import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
+import { Environment, RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Component({
@@ -11,12 +10,9 @@ import { runtimeEnvironment } from 'src/environments/runtime-environment';
 export class PageInformationComponent implements OnInit {
   public isPreview: boolean = true;
   public runtimeEnvironment: RuntimeEnvironmentInterface = runtimeEnvironment;
-  constructor(
-    private environmentService: EnvironmentService
-  ) { }
+  constructor() {}
 
   public ngOnInit() {
-    this.isPreview = this.environmentService.getEnvironment() === Environment.production ? false : true;
+    this.isPreview = runtimeEnvironment.environment === Environment.production ? false : true;
   }
-
 }

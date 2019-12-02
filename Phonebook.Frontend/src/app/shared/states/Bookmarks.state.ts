@@ -1,15 +1,15 @@
-import { State, Action, StateContext, Selector, createSelector } from '@ngxs/store';
-import { Person, PhonebookSortDirection } from 'src/app/shared/models';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 
 export class ToggleBookmark {
   public static readonly type: string = '[Bookmarks] Toggle Bookmark';
-  constructor(public person: Person) { }
+  constructor(public person: Person) {}
 }
 
 export class UpdateBookmarkOrder {
   public static readonly type: string = '[Bookmarks] Set new Bookmark Order';
-  constructor(public orderedBookmarks: Person[]) { }
+  constructor(public orderedBookmarks: Person[]) {}
 }
 
 @State<Person[]>({
@@ -17,7 +17,6 @@ export class UpdateBookmarkOrder {
   defaults: []
 })
 export class BookmarksState {
-
   @Selector()
   public static sortedBookmarks(state: Person[]) {
     return (sort: PhonebookSortDirection) => {

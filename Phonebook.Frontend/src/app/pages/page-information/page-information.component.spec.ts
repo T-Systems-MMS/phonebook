@@ -1,15 +1,14 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { PageInformationComponent } from './page-information.component';
 import { MatListModule } from '@angular/material/list';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockComponent } from 'ng2-mock-component';
 import { MockDirective } from 'ng-mocks';
+import { MockComponent } from 'ng2-mock-component';
 import { FeedbackDrawerDirective } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.directive';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { WINDOW, WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
+import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
+import { PageInformationComponent } from './page-information.component';
 
-describe('PageInformationComponent', () => {
+xdescribe('PageInformationComponent', () => {
   let component: PageInformationComponent;
   let fixture: ComponentFixture<PageInformationComponent>;
 

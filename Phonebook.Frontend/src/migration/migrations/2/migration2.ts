@@ -1,6 +1,6 @@
-import { Migration } from 'src/migration/Migration';
 import { Column } from 'src/app/shared/models';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
+import { Migration } from 'src/migration/Migration';
 
 const TABLESTATE_KEY: string = 'tablestate';
 export const migration2: Migration = {

@@ -1,9 +1,10 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of, ConnectableObservable, combineLatest } from 'rxjs';
-import { map, publishReplay, catchError, startWith } from 'rxjs/operators';
 import { Location } from '@angular/common';
-import { EnvironmentService, Environment } from 'src/app/services/environment.service';
+import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
+import { combineLatest, ConnectableObservable, Observable, of } from 'rxjs';
+import { catchError, map, publishReplay, startWith } from 'rxjs/operators';
+import { Environment } from 'src/environments/EnvironmentInterfaces';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Injectable()
 export class FeatureFlagService {
@@ -13,11 +14,7 @@ export class FeatureFlagService {
   };
   private flagOverwriteEmitter: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(
-    private httpClient: HttpClient,
-    private location: Location,
-    private environmentService: EnvironmentService
-  ) {}
+  constructor(private httpClient: HttpClient, private location: Location) {}
 
   /**
    * Returns the Feature Flags.
@@ -69,7 +66,7 @@ export class FeatureFlagService {
     }
     // Flags with 0 are disabled by default, but can be enabled by the user
     if (value === 0) {
-      if (this.environmentService.getEnvironment() === Environment.production) {
+      if (runtimeEnvironment.environment === Environment.production) {
         return false;
       } else {
         return true;
@@ -114,7 +111,8 @@ export class FeatureFlagService {
     return Math.random() >= percentage / 100;
   }
 
- public static isFirstApril(date: Date): boolean {
-  const firstApril = new Date('2019-04-01T00:00:00')
-  return date.getDate() == firstApril.getDate() &&  date.getMonth() == firstApril.getMonth()}
+  public static isFirstApril(date: Date): boolean {
+    const firstApril = new Date('2019-04-01T00:00:00');
+    return date.getDate() == firstApril.getDate() && date.getMonth() == firstApril.getMonth();
+  }
 }

@@ -1,0 +1,38 @@
+# Default values for phonebook.
+
+# General Variables
+host: &host 'localhost'
+contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
+
+# Frontend Variables
+frontend:
+  name: frontend
+  image:
+    repository: tsystemsmms
+    name: phonebook-frontend
+    tag: 1.22.3
+    pullPolicy: Always
+  replicaCount: 3
+  service:
+    type: ClusterIP
+    port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    {}
+
+
+# Traefik Configuration 
+traefik:
+  enabled: true
+  startupArguments:
+    - ''
+  ssl:
+    enabled: true
+    enforced: true
+  rbac:
+    enabled: true
+  kubernetes:
+    namespaces:
+      - kube-public

@@ -1,14 +1,14 @@
-import { Contacts } from './Contacts';
-import { Business } from './Business';
-import { PersonType } from 'src/app/shared/models/enumerables/PersonType';
-import { Messenger } from './Messenger';
-import { City } from './City';
-import { Location } from './Location';
 import { Room } from 'src/app/shared/models/classes/Room';
+import { PersonStatus } from 'src/app/shared/models/enumerables/PersonStatus';
+import { Business } from './Business';
+import { City } from './City';
+import { Contacts } from './Contacts';
+import { Location } from './Location';
+import { Messenger } from './Messenger';
 /* tslint:disable:variable-name */
 
 export class Person {
-  public Type: PersonType;
+  public Type: PersonStatus;
   public Id: string;
   public Firstname: string;
   public Surname: string;
@@ -19,7 +19,7 @@ export class Person {
   public Location: Location;
   public Business: Business;
   constructor(
-    type: PersonType,
+    type: PersonStatus,
     id: string,
     firstname: string,
     surname: string,
@@ -43,7 +43,7 @@ export class Person {
   }
 
   public isLearner(): boolean {
-    return this.Type === PersonType.Interner_Lernender || this.Type === PersonType.Externer_Lernender;
+    return this.Type === PersonStatus.Interner_Lernender || this.Type === PersonStatus.Externer_Lernender;
   }
   public isSupervisor(): boolean {
     return this.Role.indexOf('Leiter') >= 0;
@@ -52,13 +52,13 @@ export class Person {
     return this.Role.indexOf('Management & Team Support') >= 0;
   }
 
-  public isOfType(type: PersonType) {
-    return this.Type === type;
+  public isOfStatus(status: PersonStatus) {
+    return this.Type === status;
   }
 
   public static empty(): Person {
     return new Person(
-      PersonType.Interner_Mitarbeiter,
+      PersonStatus.Interner_Mitarbeiter,
       '',
       '',
       '',

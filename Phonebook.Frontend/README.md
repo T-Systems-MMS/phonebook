@@ -1,3 +1,3 @@
 # View the documentation on GitHub-Pages
 
-[GitHub-Pages](https://mschwrdtnr.github.io/phonebook/pages/development-guides/)
+[GitHub-Pages](https://t-systems-mms.github.io/phonebook/pages/development-guides/)

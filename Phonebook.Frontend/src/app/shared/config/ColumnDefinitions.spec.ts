@@ -1,19 +1,9 @@
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { mockPerson } from 'src/app/shared/mocks/person';
-import {
-  Business,
-  City,
-  Contacts,
-  Location,
-  Messenger,
-  Person,
-  PersonType,
-  PhonebookSortDirection,
-  Room
-} from 'src/app/shared/models';
+import { Business, City, Contacts, Location, Messenger, Person, PersonStatus, PhonebookSortDirection, Room } from 'src/app/shared/models';
 
 const personA = new Person(
-  PersonType.Interner_Lernender,
+  PersonStatus.Interner_Lernender,
   'aaaa',
   'Abc',
   'Abc',
@@ -26,7 +16,7 @@ const personA = new Person(
 );
 
 const personB = new Person(
-  PersonType.Interner_Lernender,
+  PersonStatus.Interner_Lernender,
   'xxxx',
   'xyz',
   'xyz',

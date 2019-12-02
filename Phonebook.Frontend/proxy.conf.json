@@ -8,6 +8,15 @@
     },
     "logLevel": "debug"
   },
+  "/external_assets/*": {
+    "target": "http://localhost:8081",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/external_assets": ""
+    },
+    "logLevel": "debug"
+  },
   "/changelog.md": {
     "target": "http://localhost:8000",
     "secure": false,

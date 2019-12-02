@@ -1,51 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Deactivate Compatibility Mode in IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Phonebook</title>
+    <script>
+      window.ENV = {
+        environment: '${ENVIRONMENT}',
+        environmentTag: '${ENVIRONMENT_TAG}',
+        ravenURL: '${RAVEN_URL}',
+        employeePicturesEndpoint: '${EMPLOYEE_PICTURES_ENDPOINT}',
+        oldEmployeePictureEndpoint: '${OLD_EMPLOYEE_PICTURE_ENDPOINT}',
+        assetsEndpoint: '${ASSETS_ENDPOINT}',
+        contactEmail: '${CONTACT_EMAIL}',
+        roomPlanningToolUrl: '${ROOMPLANNINGTOOL_URL}',
+        contactUrl: '${CONTACT_URL}'
+      };
+    </script>
+    <base href="/" />
+    <!-- Opensearch Compatibility https://stackoverflow.com/questions/7630144/how-to-add-google-chrome-omnibox-search-support-for-your-site -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Phonebook Search" href="/opensearch.xml" />
 
-<head>
-  <meta charset="utf-8">
-  <!-- Deactivate Compatibility Mode in IE -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Phonebook</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#1976d2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+
+  <body class="mat-typography">
+    <app-root></app-root>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+  </body>
+
+  <!-- Anti Clickjacking Script -->
+  <!-- From: http://seclab.stanford.edu/websec/framebusting/framebust.pdf-->
+  <style>
+    body {
+      display: none;
+    }
+  </style>
   <script>
-    const ENV = {
-      ravenURL: '${RAVEN_URL}',
-      employeePicturesEndpoint: '${EMPLOYEE_PICTURES_ENDPOINT}',
-      oldEmployeePictureEndpoint: '${OLD_EMPLOYEE_PICTURE_ENDPOINT}',
-      assetsEndpoint: '${ASSETS_ENDPOINT}',
-      contactEmail: '${CONTACT_EMAIL}',
-      roomPlanningToolUrl: '${ROOMPLANNINGTOOL_URL}',
-      contactUrl: '${CONTACT_URL}'
+    if (self == top) {
+      document.getElementsByTagName('body')[0].style.display = 'flex';
+    } else {
+      top.location = self.location;
     }
   </script>
-  <base href="/">
-  <!-- Opensearch Compatibility https://stackoverflow.com/questions/7630144/how-to-add-google-chrome-omnibox-search-support-for-your-site -->
-  <link rel="search" type="application/opensearchdescription+xml" title="Phonebook Search"
-    href="assets/opensearch.xml" />
-
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-
-<body class="mat-typography">
-  <app-root></app-root>
-  <noscript>Please enable JavaScript to continue using this application.</noscript>
-</body>
-
-<!-- Anti Clickjacking Script -->
-<!-- From: http://seclab.stanford.edu/websec/framebusting/framebust.pdf-->
-<style>
-  body {
-    display: none;
-  }
-</style>
-<script>
-  if (self == top) {
-    document.getElementsByTagName('body')[0].style.display = 'flex';
-  } else {
-    top.location = self.location;
-  }
-</script>
-
 </html>

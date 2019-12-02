@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SettingsComponent } from './settings.component';
-import { MaterialModule } from 'src/app/shared/material.module';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FeatureFlagModule } from 'src/app/modules/feature-flag/feature-flag.module';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { RouterModule } from '@angular/router';
+import { FeatureFlagModule } from 'src/app/modules/feature-flag/feature-flag.module';
+import { MaterialModule } from 'src/app/shared/material.module';
+import { SettingsComponent } from './settings.component';
 
 @NgModule({
   imports: [

@@ -2,7 +2,9 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": false
@@ -13,5 +15,8 @@
     "preserveWhitespaces": false,
     "strictPropertyInitialization": false
   },
-  "exclude": ["test.ts", "**/*.spec.ts"]
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
 }

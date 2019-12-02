@@ -1,15 +1,14 @@
-h3 {
-  font-size: 1.5rem;
-}
+@import 'media-queries';
 
-p {
-  font-size: 0.75rem;
+h3 {
+  font-size: 2rem;
 }
 
 .displayDialog {
   height: 100%;
   display: flex;
   flex-direction: column;
+  text-align: center; //center whole text in dialog
 }
 
 .mat-dialog-content {
@@ -22,4 +21,20 @@ p {
 
 .actions {
   margin: 0 0 0 auto;
+}
+
+mat-card {
+  min-width: 25%;
+  border: 1px solid;
+
+  @include below-big {
+    min-width: 40%;
+  }
+  @include below-med {
+    min-width: 80%;
+  }
+}
+
+.border-1 {
+  border: 1px solid;
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FloorplanService } from 'src/app/services/floorplan.service';
 import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
@@ -25,7 +25,10 @@ export class RoomPlanComponent implements OnInit, OnChanges {
     this.loadSVG();
   }
 
-  public ngOnChanges() {
+  public ngOnChanges(changes: SimpleChanges) {
+    if (changes.hasOwnProperty('floorplan')) {
+      this.loadSVG();
+    }
     this.refreshRoomPlan();
   }
 
@@ -50,7 +53,7 @@ export class RoomPlanComponent implements OnInit, OnChanges {
       roomElement = svgContainer.querySelector('[id=\'' + this.room + '\']');
       if (roomElement != null && roomElement.firstElementChild != null) {
         Array.from(roomElement.childNodes).forEach(element => {
-          if (element.nodeName === 'rect' || element.nodeName === 'path') {
+          if (element.nodeName === 'rect' || element.nodeName === 'path' || element.nodeName === 'polygon') {
             (element as HTMLElement).setAttribute('style', 'fill: #E20074;');
           }
         });
