@@ -17,8 +17,7 @@
   <div *ngIf="!onMyProfile">
     <a
       mat-icon-button
-      i18n-href="User-InformationDialog|Profile@@HREF"
-      href="mailto:{{this.data.person.Contacts.Email}}?subject=Issue%20with%20your%20Profiledata&amp;body=Hey%20{{this.data.person.Firstname}}%2C%20%0A%0A%20while%20browsing%20your%20profile%20I%20noticed%20that%20something%20is%20not%20right%3A%0APlease%20contact%20the%20HR%20Department%20to%20fix%20it.%0ALink%20to%20your%20Profile:%3A%20{{this.windowRef.getCurrentUrl()}}"
+      (click)="sendMail()"
       i18n-matTooltip="User-InformationDialog|Button@@SendEmail"
       matTooltip="Send your colleague a direct message"
       i18n="User-InformationDialog|Profile@@Notify"

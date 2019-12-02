@@ -35,4 +35,11 @@ export class IncorrectUserInformationComponent implements OnInit {
   public get onMyProfile(): boolean {
     return this.currentUserId.toLowerCase() === this.data.person.Id.toLowerCase();
   }
+  public sendMail() {
+    this.mailService.openMail(
+      'There is an Issue with your Phonebook Profil',
+      'Hi ' + this.data.person.Firstname + ', \n while browsing your profile I noticed that something is not right: \n\n\n Please contact the HR Department to fix it. This is the Phonebook Link: ' + this.windowRef.getCurrentUrl(),
+      this.data.person.Contacts.Email
+    );
+  }
 }
