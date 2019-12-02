@@ -11,6 +11,7 @@ COPY ./package.json /usr/local/app/package.json
 RUN npm ci 
 # Because: https://stackoverflow.com/questions/37715224/copy-multiple-directories-with-one-command
 COPY ./src/ ./src/
+COPY ./ngsw-config.json /usr/local/app/ngsw-config.json
 
 COPY ["angular.json", "tsconfig.json", "tslint.json", "./"]
 RUN npm run build:de
