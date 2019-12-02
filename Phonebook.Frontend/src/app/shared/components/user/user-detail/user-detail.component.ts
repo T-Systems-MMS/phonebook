@@ -12,6 +12,7 @@ import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 export interface IncorrectUserInformationDialogData {
   person: Person;
@@ -39,6 +40,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 
   @Input()
   public previewView: boolean = false;
+  public rocketChatLink: string | null = null;
   constructor(
     private snackBar: MatSnackBar,
     private mailService: MailService,
@@ -50,6 +52,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.getRandomMoney();
+    this.rocketChatLink = this.getRocketChatLink();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
       const index = bookmarks.findIndex(p => p.Id === this.person.Id);
       if (index > -1) {
@@ -109,6 +112,10 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 
   public toggleBookmark() {
     this.store.dispatch(new ToggleBookmark(this.person));
+  }
+
+  public getRocketChatLink(): string | null {
+    return runtimeEnvironment.rocketChatUrl !== undefined ? runtimeEnvironment.rocketChatUrl + '/direct/' + this.person.Id.toLowerCase() : null;
   }
 
   public ngOnDestroy() {}
