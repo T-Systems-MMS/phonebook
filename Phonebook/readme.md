@@ -16,6 +16,7 @@ We use [traefik](https://traefik.io/) under the hood.
     host: &host 'example.com'
     contactUrl: '<Your Contact Url, maybe an issue tracker?>'
     roomPlanningToolUrl: '<Url to your Room Planning Tool>'
+    smartSpacesUrl: '<Url to your Smart Spaces Site>'
     contactEmail: &contactEmail '<Your Contact Email>'
     employeePictureEndpoint: '<Url To you User Picture Endpoint>'
     assetsEndpoint: '<Url To you User Assets Endpoint>'

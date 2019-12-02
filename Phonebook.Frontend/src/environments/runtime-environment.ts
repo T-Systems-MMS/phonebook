@@ -10,5 +10,9 @@ export const runtimeEnvironment: RuntimeEnvironmentInterface = {
   assetsEndpoint: ENV.assetsEndpoint !== '${ASSETS_ENDPOINT}' ? ENV.assetsEndpoint : '/external_assets',
   contactEmail: ENV.contactEmail !== '${CONTACT_EMAIL}' ? ENV.contactEmail : undefined,
   roomPlanningToolUrl: ENV.roomPlanningToolUrl !== '${ROOMPLANNINGTOOL_URL}' ? ENV.roomPlanningToolUrl : undefined,
+  smartSpacesUrl:
+    ENV.smartSpacesUrl !== '${SMARTSPACES_URL}'
+      ? ENV.smartSpacesUrl
+      : undefined,
   contactUrl: ENV.contactUrl !== '${CONTACT_URL}' ? ENV.contactUrl : undefined
 };

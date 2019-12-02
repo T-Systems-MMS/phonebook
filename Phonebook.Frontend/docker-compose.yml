@@ -28,6 +28,7 @@ services:
       RAVEN_URL: 'https://sdfdsf9876987sdf987sdfs876sdf9@sentry.example.de/1'
       EMPLOYEE_PICTURES_ENDPOINT: 'https://pictures.example.com/'
       ASSETS_ENDPOINT: 'https://localhost:8081/api/assets'
+      SMARTSPACES_URL: 'http://example.com'
       ROOMPLANNINGTOOL_URL: 'http://example.com'
     ports:
       - 80:80

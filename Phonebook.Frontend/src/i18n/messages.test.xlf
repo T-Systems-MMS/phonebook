@@ -1156,6 +1156,10 @@
   </source><target state="translated">TEST</target>
         <note priority="1" from="description">Sentence displayed if search did not return any results</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="Room-planComponentSmartSpacesToggle" datatype="html">
+        <source>View Smart Spaces</source><target state="final">TEST</target>
+        <note priority="1" from="description">View Smart Spaces Toggle</note>
+        <note priority="1" from="meaning">Room-planComponent</note>
       </trans-unit>
     </body>
   </file>

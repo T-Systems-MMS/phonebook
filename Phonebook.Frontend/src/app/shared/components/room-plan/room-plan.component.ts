@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChi
 import { FloorplanService } from 'src/app/services/floorplan.service';
 import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-room-plan',
   templateUrl: './room-plan.component.html',
@@ -16,9 +17,11 @@ export class RoomPlanComponent implements OnInit, OnChanges {
   public element: ElementRef;
   public floorPlanSVG: string | null = null;
   public floorPlanNotFound: boolean = false;
+  public showSmartSpaces: boolean = false;
+  public showSpinner: boolean = false;
   public runtimeEnvironment: RuntimeEnvironmentInterface = runtimeEnvironment;
 
-  constructor(private floorplanService: FloorplanService) {}
+  constructor(private floorplanService: FloorplanService, public sanitizer: DomSanitizer) {}
 
   public ngOnInit() {
     this.refreshRoomPlan();
@@ -68,5 +71,9 @@ export class RoomPlanComponent implements OnInit, OnChanges {
         this.refreshRoomPlan();
       });
     }
+  }
+
+  public iframeLoaded() {
+    this.showSpinner = false;
   }
 }
