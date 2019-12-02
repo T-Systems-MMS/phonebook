@@ -50,6 +50,10 @@ export interface RuntimeEnvironmentInterface {
    * Your Companies Room Planning Tool Url, that users can use to book rooms for meetings etc.
    **/
   readonly roomPlanningToolUrl?: string;
+  /**
+   * The Base Url of the RocketChat Messenger
+   */
+  readonly rocketChatUrl?: string;
 }
 
 export enum Environment {

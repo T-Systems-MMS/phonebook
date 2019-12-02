@@ -60,6 +60,8 @@ spec:
               value: "{{ .Values.employeePictureEndpoint }}"
             - name: ASSETS_ENDPOINT
               value: "{{ .Values.assetsEndpoint }}"
+            - name: ROCKETCHAT_URL
+              value: "{{ .Values.rocketChatUrl }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
