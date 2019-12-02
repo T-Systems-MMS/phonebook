@@ -45,7 +45,6 @@
     "typescript.referencesCodeLens.enabled": true,
     "prettier.jsxSingleQuote": true,
     "prettier.singleQuote": true,
-    "prettier.tslintIntegration": true,
     "prettier.printWidth": 120,
     "prettier.jsxBracketSameLine": false,
     "[html]": {
