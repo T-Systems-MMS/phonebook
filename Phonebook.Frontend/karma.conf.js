@@ -16,13 +16,17 @@ module.exports = function(config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     customLaunchers: {
-      ChromeHeadless: {
-        base: 'Chrome',
-        flags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222']
+      ChromeHeadlessCustom: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu', '--remote-debugging-port=9222']
       }
     },
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
+      // Activate only for debugging purposes
+      // jasmine: {
+      //   random: false
+      // }
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, 'coverage'),
@@ -37,7 +41,7 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadlessCustom'],
     singleRun: true,
     files: ['globals.js']
   });

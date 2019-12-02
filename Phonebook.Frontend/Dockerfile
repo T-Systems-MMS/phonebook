@@ -22,7 +22,7 @@ RUN npm run build:en
 ### production ###
 ##################
 
-FROM nginx:1.17.4
+FROM nginx:1.17.6
 WORKDIR /etc/nginx
 
 ARG BASE_URL

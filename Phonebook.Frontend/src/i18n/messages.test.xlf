@@ -59,6 +59,10 @@
         <source>Release Notes</source><target state="final">TEST</target>
         <note priority="1" from="description">Release Notes Menu Item</note>
         <note priority="1" from="meaning">NavigationComponent</note>
+      </trans-unit><trans-unit id="NavigationComponentFeedback" datatype="html">
+        <source>Submit Feedback</source><target state="final">TEST</target>
+        <note priority="1" from="description">Link to Bug page</note>
+        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
@@ -161,10 +165,6 @@
         <target state="translated">TEST</target>
         <note priority="1" from="description">Info Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
-      </trans-unit><trans-unit id="NavigationComponentBug" datatype="html">
-        <source>Report a Bug</source><target state="final">TEST</target>
-        <note priority="1" from="description">Link to Bug page</note>
-        <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="navigationBarBugTooltip" datatype="html">
         <source>Found a Bug? Than that`s the right place to click.</source><target state="final">TEST</target>
         <note priority="1" from="description">Bug Button Tooltip</note>
@@ -266,17 +266,25 @@
         <note priority="1" from="meaning">AddFilterComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
         <source>
-    Leave Feedback, report a Bug or submit a new Idea
+    Leave Feedback, report a Bug or suggest a new Idea
   </source><target state="translated">TEST</target>
         <note priority="1" from="description">Title of the Feedback Drawer</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganizationMail" datatype="html">
+        <source>Contact your private organization via email</source><target state="translated">TEST</target>
+        <note priority="1" from="description">Button for contacting the private Organization via email</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganization" datatype="html">
-        <source>Contact your private Organization</source><target state="translated">TEST</target>
+        <source>Contact your private organization</source><target state="translated">TEST</target>
         <note priority="1" from="description">Button for contacting the private Organization</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
-      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithub" datatype="html">
-        <source>Contact the public Project</source><target state="translated">TEST</target>
-        <note priority="1" from="description">Button for contacting the public Github</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubFeature" datatype="html">
+        <source>Suggest an idea or a new feature</source><target state="final">TEST</target>
+        <note priority="1" from="description">Button for suggesting a new feature on Github</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubBug" datatype="html">
+        <source>Report a bug</source><target state="final">TEST</target>
+        <note priority="1" from="description">Button for reporting a bug on Github</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="IeWarningComponentTitle" datatype="html">
         <source>
@@ -894,6 +902,18 @@
     </source><target state="translated">TEST</target>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
+        <source>
+      You deactivated cookies and keep getting those dialogs?
+    </source><target state="translated">TEST</target>
+        <note priority="1" from="description">Annoyed by cookies notice</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
+        <source>
+      Deactivate startup-dialogs!
+    </source><target state="translated">TEST</target>
+        <note priority="1" from="description">Deactivate Startup Dialogs</note>
+        <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
         <source>
           This site uses cookies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the
@@ -1117,6 +1137,18 @@
         <source>Building</source><target state="final">TEST</target>
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
+        <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.</source><target state="translated">TEST</target>
+        <note priority="1" from="description">Message for just set no cookie url</note>
+        <note priority="1" from="meaning">Display advice to new url</note>
+      </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesUrl" datatype="html">
+        <source>Reset</source><target state="translated">TEST</target>
+        <note priority="1" from="description">Message for following no cookie url</note>
+        <note priority="1" from="meaning">Restore Url</note>
+      </trans-unit><trans-unit id="PageInformationNoDialogs" datatype="html">
+        <source>Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases.</source><target state="translated">TEST</target>
+        <note priority="1" from="description">Message to inform user that no dialogs will be shown</note>
+        <note priority="1" from="meaning">Warning no dialogs are shown</note>
       </trans-unit><trans-unit id="DataPersonStatus" datatype="html">
         <source>
               Status
