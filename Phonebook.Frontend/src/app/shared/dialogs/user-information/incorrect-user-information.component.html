@@ -16,14 +16,14 @@
   </div>
   <div *ngIf="!onMyProfile">
     <a
-      mat-icon-button
+      mat-raised-button
       (click)="sendMail()"
       i18n-matTooltip="User-InformationDialog|Button@@SendEmail"
       matTooltip="Send your colleague a direct message"
       i18n="User-InformationDialog|Profile@@Notify"
     >
       <mat-icon mat-list-icon>email</mat-icon>
-      Notify {{ data.person.Firstname }}
+     <span i18n="User-InformationDialog|Profile@@Notify">Notify {{ data.person.Firstname }}</span>
     </a>
   </div>
   <div align="end">
