@@ -39,9 +39,12 @@ COPY ./nginx/ ./
 COPY ./substitute_variables.sh ./substitute_variables.sh
 RUN chmod +x ./substitute_variables.sh
 
+COPY ./index_rehash.sh ./index_rehash.sh
+RUN chmod +x ./index_rehash.sh
+
 RUN rm /usr/share/nginx/html/index.html
 COPY --from=builder /usr/local/app/dist /usr/share/nginx/html
 COPY ./opensearch.xml /usr/share/nginx/html/opensearch.xml
 
-ENTRYPOINT ["./substitute_variables.sh", "/usr/share/nginx/html", "./substitute_variables.sh", "/etc/nginx"]
+ENTRYPOINT ["./substitute_variables.sh", "/usr/share/nginx/html", "./substitute_variables.sh", "/etc/nginx", "./index_rehash.sh", "/usr/share/nginx/html"]
 CMD ["nginx"]
