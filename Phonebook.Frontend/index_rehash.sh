@@ -26,7 +26,7 @@ do
     sed -i "s|\"\/de\/index\.html\":\s\"\(.*\)\"|\"/""$i""/index.html\": \"""$replaceString""\"|Ig;w /dev/stdout" "$1/$i/ngsw.json"
   else
     # If DEBUG=false do it without logging
-    sed -i "s|""\/de\/index\.html"":\s""\(.*\)""|""/$i/index.html"": $replaceString""|Ig" "$1/$i/ngsw.json"
+    sed -i "s|\"\/de\/index\.html\":\s\"\(.*\)\"|\"/""$i""/index.html\": \"""$replaceString""\"|Ig" "$1/$i/ngsw.json"
   fi
 done
 
