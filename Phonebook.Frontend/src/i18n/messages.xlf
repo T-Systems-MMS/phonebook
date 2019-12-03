@@ -321,7 +321,7 @@
         <source>Send your colleague a direct message</source>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
-      </trans-unit><trans-unit id="Button" datatype="html">
+      </trans-unit><trans-unit id="GotItButton" datatype="html">
         <source>
       Got it!
     </source>

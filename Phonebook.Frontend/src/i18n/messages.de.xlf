@@ -1283,11 +1283,11 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <source>Send your colleague a direct message</source><target state="translated">Hey sende deinem Kollegen direkt eine Nachricht</target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
-      </trans-unit><trans-unit id="Button" datatype="html">
+      </trans-unit><trans-unit id="GotItButton" datatype="html">
         <source>
       Got it!
     </source><target state="new">
-      Geht klar!
+      Got it!
     </target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
