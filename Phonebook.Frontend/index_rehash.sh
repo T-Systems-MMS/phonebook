@@ -23,10 +23,10 @@ do
   if [ "$DEBUG" = true ]
   then
     # If DEBUG=true in order to log the replaced files
-    sed -i "s|\"\/de\/index\.html\":\s\"\(.*\)\"|\"/""$i""/index.html\": \"""$replaceString""\"|Ig;w /dev/stdout" "$1/$i/ngsw.json"
+    sed -i "s|\"\/$i\/index\.html\":\s\"\(.*\)\"|\"/""$i""/index.html\": \"""$replaceString""\"|Ig;w /dev/stdout" "$1/$i/ngsw.json"
   else
     # If DEBUG=false do it without logging
-    sed -i "s|\"\/de\/index\.html\":\s\"\(.*\)\"|\"/""$i""/index.html\": \"""$replaceString""\"|Ig" "$1/$i/ngsw.json"
+    sed -i "s|\"\/$i\/index\.html\":\s\"\(.*\)\"|\"/""$i""/index.html\": \"""$replaceString""\"|Ig" "$1/$i/ngsw.json"
   fi
 done
 
