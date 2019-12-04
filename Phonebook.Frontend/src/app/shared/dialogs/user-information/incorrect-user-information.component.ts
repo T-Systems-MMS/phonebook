@@ -45,7 +45,13 @@ export class IncorrectUserInformationComponent implements OnInit {
         id: 'User-InformationDialogSubject',
         value: 'There is an Issue with your Phonebook Profil'
       }),
-      'Hi ' + this.data.person.Firstname +
+      this.i18n({
+        meaning: 'MailToMateGreeting',
+        description: 'Send a mail to your mate if there is something wrong on the profile ',
+        id: 'User-InformationDialogGreeting',
+        value: 'Hi '
+      })
+      + this.data.person.Firstname +
       this.i18n({
         meaning: 'MailToMateBody',
         description: 'Send a mail to your mate if there is something wrong on the profile ',
