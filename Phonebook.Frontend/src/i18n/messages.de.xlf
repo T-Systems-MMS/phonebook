@@ -1276,7 +1276,7 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="SendEmail" datatype="html">
-        <source>Send your colleague a direct message</source><target state="translated">Hey sende deinem Kollegen direkt eine Nachricht</target>
+        <source>Send your colleague a direct message</source><target state="translated">Sende deinem Kollegen direkt eine Nachricht.</target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="GotItButton" datatype="html">
