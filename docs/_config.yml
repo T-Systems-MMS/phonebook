@@ -35,6 +35,7 @@ plugins:
   - jemoji
   - jekyll-remote-theme
   - jekyll-readme-index
+  - jekyll-mermaid
 
 readme_index:
   enabled: true

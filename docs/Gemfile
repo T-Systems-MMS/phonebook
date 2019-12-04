@@ -18,6 +18,7 @@ gem "just-the-docs"
 gem "github-pages", group: :jekyll_plugins
 
 gem "jekyll-readme-index"
+gem "jekyll-mermaid"
 
 # If you have any plugins, put them here!
 # group :jekyll_plugins do
