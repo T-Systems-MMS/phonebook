@@ -1386,7 +1386,7 @@
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="User-InformationDialogSubject" datatype="html">
-        <source>There is an Issue with your Phonebook Profil</source><target state="final">There is an Issue with your Phonebook Profil</target>
+        <source>There is an Issue with your Phonebook-Profile</source><target state="final">There is an Issue with your Phonebook-Profile</target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateSubject</note>
       </trans-unit><trans-unit id="User-InformationDialogGreeting" datatype="html">
@@ -1395,10 +1395,10 @@
         <note priority="1" from="meaning">MailToMateGreeting</note>
       </trans-unit><trans-unit id="User-InformationDialogBody" datatype="html">
         <source>, 
- while browsing your profile I noticed that something is not right: 
- Please contact the HR Department to fix it. This is the Phonebook Link: </source><target state="final">, 
- while browsing your profile I noticed that something is not right: 
- Please contact the HR Department to fix it. This is the Phonebook Link: </target>
+while browsing your profile I noticed that something is not right: 
+Please contact the HR Department to fix it.This is the Phonebook Link: </source><target state="final">, 
+while browsing your profile I noticed that something is not right: 
+Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateBody</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">

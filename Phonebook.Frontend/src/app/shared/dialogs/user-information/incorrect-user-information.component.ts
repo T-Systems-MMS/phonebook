@@ -56,7 +56,7 @@ export class IncorrectUserInformationComponent implements OnInit {
         meaning: 'MailToMateBody',
         description: 'Send a mail to your mate if there is something wrong on the profile ',
         id: 'User-InformationDialogBody',
-        value: ', \n while browsing your profile I noticed that something is not right: \n\n\n Please contact the HR Department to fix it. This is the Phonebook Link: '
+        value: ', \nwhile browsing your profile I noticed that something is not right: \nPlease contact the HR Department to fix it.This is the Phonebook Link: '
       })
       + this.windowRef.getCurrentUrl(),
       this.data.person.Contacts.Email

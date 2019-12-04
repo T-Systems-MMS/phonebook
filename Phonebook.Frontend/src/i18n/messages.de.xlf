@@ -1312,7 +1312,7 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="User-InformationDialogSubject" datatype="html">
-        <source>There is an Issue with your Phonebook Profil</source><target state="translated">Fehler auf deinem Phonebookprofil</target>
+        <source>There is an Issue with your Phonebook-Profile</source><target state="translated">Fehler auf deinem Phonebookprofil</target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateSubject</note>
       </trans-unit><trans-unit id="User-InformationDialogGreeting" datatype="html">
@@ -1321,8 +1321,8 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="meaning">MailToMateGreeting</note>
       </trans-unit><trans-unit id="User-InformationDialogBody" datatype="html">
         <source>, 
- while browsing your profile I noticed that something is not right: 
- Please contact the HR Department to fix it. This is the Phonebook Link: </source><target state="translated">, 
+while browsing your profile I noticed that something is not right: 
+Please contact the HR Department to fix it.This is the Phonebook Link: </source><target state="translated">, 
  beim Besuch deines Profils, ist mir aufgefallen, dass es Fehler gibt: 
  
 Gib doch dem HR kurz bescheid und lass deine Daten richtig stellen.
