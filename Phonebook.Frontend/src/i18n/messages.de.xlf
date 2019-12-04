@@ -1271,7 +1271,6 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Notify" datatype="html">
         <source>Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/></source><target state="translated">
-      <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>email<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
       Benachrichtige <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>
     </target>
         <note priority="1" from="description">Profile</note>
