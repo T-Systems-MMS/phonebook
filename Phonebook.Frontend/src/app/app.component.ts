@@ -13,6 +13,7 @@ import { AppState, InitTheme, SetSendFeedback, SetDisplayedNotificationVersion }
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { LoginHelper } from 'src/app/shared/login/login.helper';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute
   ) {}
   public ngOnInit() {
+    LoginHelper.EnsureNavigationToStoredLocation();
     this.store.dispatch(new InitTheme());
     // Commented as long as serviceWorker is reinstalled
     // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
