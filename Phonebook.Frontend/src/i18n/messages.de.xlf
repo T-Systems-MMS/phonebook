@@ -1323,7 +1323,8 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <source>, 
  while browsing your profile I noticed that something is not right: 
  Please contact the HR Department to fix it. This is the Phonebook Link: </source><target state="translated">, 
- beim besuchen deines Profils, ist mir aufgefalles das es Fehler gibt: 
+ beim Besuch deines Profils, ist mir aufgefallen, dass es Fehler gibt: 
+ 
 Gib doch dem HR kurz bescheid und lass deine Daten richtig stellen.
 Link zu deinem Profil: </target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
