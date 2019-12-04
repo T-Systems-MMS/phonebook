@@ -1,4 +1,16 @@
 {
+  "/signin-wsfed":{
+    "target": "https://localhost:5001",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/Login": {
+    "target": "https://localhost:5001",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
   "/api/*": {
     "target": "http://localhost:8080",
     "secure": false,
