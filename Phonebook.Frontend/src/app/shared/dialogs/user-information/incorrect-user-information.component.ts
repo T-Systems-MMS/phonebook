@@ -43,7 +43,7 @@ export class IncorrectUserInformationComponent implements OnInit {
         meaning: 'MailToMateSubject',
         description: 'Send a mail to your mate if there is something wrong on the profile ',
         id: 'User-InformationDialogSubject',
-        value: 'There is an Issue with your Phonebook Profil'
+        value: 'There is an Issue with your Phonebook-Profile'
       }),
       this.i18n({
         meaning: 'MailToMateGreeting',
