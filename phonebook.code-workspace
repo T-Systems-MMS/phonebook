@@ -5,6 +5,10 @@
       "path": "./Phonebook.Frontend"
     },
     {
+      "name": "Backend",
+      "path": "Phonebook.Backend"
+    },
+    {
       "name": "Source.PeopleSoft",
       "path": "./Phonebook.Source.PeopleSoft"
     },
@@ -38,7 +42,13 @@
     }
   ],
   "settings": {
-    "cSpell.words": ["Kubernetes", "Phonebook"],
+    "cSpell.words": [
+      "ADFS",
+      "Kubernetes",
+      "Phonebook",
+      "Wtrealm",
+      "wsfed"
+    ],
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
     "javascript.referencesCodeLens.enabled": true,
