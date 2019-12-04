@@ -1,6 +1,6 @@
 dependencies:
 - name: traefik
   condition: traefik.enabled
-  version: 1.82.3
+  version: 1.78.4
   appVersion: 1.7.14
   repository: https://kubernetes-charts.storage.googleapis.com
