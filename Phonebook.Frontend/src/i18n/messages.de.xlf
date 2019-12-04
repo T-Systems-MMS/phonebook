@@ -1265,7 +1265,7 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
       department.
     </source><target state="new">
         Stimmt etwas auf dem Profil nicht? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        Lass es doch deinen Kollegen wissen, dass er seine Daten über das Human Resources ändern lassen kann. 
+        Lass deinen Kollegen wissen, dass er seine Daten über die Human Resources Abteilung ändern lassen kann. 
       </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
