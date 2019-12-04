@@ -1283,7 +1283,7 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <source>
       Got it!
     </source><target state="new">
-      Got it!
+      Verstanden!
     </target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
