@@ -10,8 +10,13 @@ import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
+export interface IncorrectUserInformationDialogData {
+  person: Person;
+}
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
@@ -41,6 +46,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
+    private dialog: MatDialog,
     private i18n: I18n
   ) {}
 
@@ -89,6 +95,17 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     );
   }
 
+  public openInformationIncorrectDialog(): void {
+    const dialogData: IncorrectUserInformationDialogData = {
+      person: this.person
+    };
+    const dialogConfig: MatDialogConfig = {
+      autoFocus: true,
+      hasBackdrop: true,
+      data: dialogData
+    };
+    this.dialog.open(IncorrectUserInformationComponent, dialogConfig);
+  }
   public getLink() {
     return this.windowRef.getCurrentUrl();
   }

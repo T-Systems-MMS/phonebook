@@ -28,7 +28,7 @@
         <note priority="1" from="description">Button for contacting the private Organization</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubFeature" datatype="html">
-        <source>Suggest an idea or a new feature</source><target state="new">Schlage eine Idee oder ein neues Feature vor</target>
+        <source>Suggest an idea or a new feature</source><target state="translated">Schlage eine Idee oder ein neues Feature vor</target>
         <note priority="1" from="description">Button for suggesting a new feature on Github</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubBug" datatype="html">
@@ -159,6 +159,10 @@
       </source><target state="translated">Zustimmen</target>
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
+      </trans-unit><trans-unit id="UserDetailComponentTooltipDataChange" datatype="html">
+        <source>Found Incorrect Data? Report them!</source><target state="translated">Stimmt etwas auf dem Profil nicht? Melde es!</target>
+        <note priority="1" from="description">Tooltip Incorrect Data</note>
+        <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentChangeButton" datatype="html">
         <source>
@@ -205,25 +209,25 @@
         <note priority="1" from="description">Color Theme SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
-        <source>Blue Light Theme</source><target state="new">
+        <source>Blue Light Theme</source><target state="translated">
                                     Blau-Hell Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option: Blue Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
-        <source>Blue Dark Theme</source><target state="new">
+        <source>Blue Dark Theme</source><target state="translated">
                                     Blau-Dunkel Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option: Blue Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
-        <source>Magenta Dark Theme</source><target state="new">
+        <source>Magenta Dark Theme</source><target state="translated">
                                     Magenta-Dunkel Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
-        <source>Magenta Light Theme</source><target state="new">
+        <source>Magenta Light Theme</source><target state="translated">
                                     Magenta-Hell Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option: Magenta Light</note>
@@ -1260,6 +1264,51 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <source>Skills</source><target state="translated">Skills</target>
         <note priority="1" from="description">Tab Headline for Skills</note>
         <note priority="1" from="meaning">UserDetailComponent</note>
+      </trans-unit><trans-unit id="Headline" datatype="html">
+        <source>Incorrect User Information</source><target state="new">Benutzerinformation</target>
+        <note priority="1" from="description">Headline</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Your Profile" datatype="html">
+        <source>
+      Dear <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      If your data is incorrect, please contact your Human Resources department.
+    </source><target state="new">
+        Hallo <x id="INTERPOLATION" equiv-text="{{ data.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        leider kannst du via Phonebook deine Daten nicht ändern. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Falls du deine Daten ändern möchtest wende dich bitte an deine Human Resources Abteilung.
+      </target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Colleague Profile" datatype="html">
+        <source>
+      Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources
+      department.
+    </source><target state="new">
+        Stimmt etwas auf dem Profil nicht? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+        Lass deinen Kollegen wissen, dass er seine Daten über die Human Resources Abteilung ändern lassen kann. 
+      </target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Notify" datatype="html">
+        <source>Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/></source><target state="translated">
+      Benachrichtige <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>
+    </target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="SendEmail" datatype="html">
+        <source>Send your colleague a direct message</source><target state="translated">Sende deinem Kollegen direkt eine Nachricht.</target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="GotItButton" datatype="html">
+        <source>
+      Got it!
+    </source><target state="new">
+      Verstanden!
+    </target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnOrgUnitLabel" datatype="html">
         <source>Change sorting for column Organization Unit</source>
@@ -1284,6 +1333,24 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <target state="translated">Gebäude</target>
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="User-InformationDialogSubject" datatype="html">
+        <source>There is an Issue with your Phonebook-Profile</source><target state="translated">Fehler auf deinem Phonebookprofil</target>
+        <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
+        <note priority="1" from="meaning">MailToMateSubject</note>
+      </trans-unit><trans-unit id="User-InformationDialogGreeting" datatype="html">
+        <source>Hi </source><target state="translated">Hallo </target>
+        <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
+        <note priority="1" from="meaning">MailToMateGreeting</note>
+      </trans-unit><trans-unit id="User-InformationDialogBody" datatype="html">
+        <source>, 
+while browsing your profile I noticed that something is not right: 
+Please contact the HR Department to fix it.This is the Phonebook Link: </source><target state="translated">, 
+beim Besuch deines Profils, ist mir aufgefallen, dass es Fehler gibt: 
+ 
+Gib doch dem HR kurz bescheid und lass deine Daten richtig stellen.
+Link zu deinem Profil: </target>
+        <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
+        <note priority="1" from="meaning">MailToMateBody</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
         <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.</source>
         <target state="translated">Speicher die Seiten-URL jetzt als Favorit um Startdialoge auch zukünftig zu überspringen. Bitte beachte: Mit dem gesetzten Url-Parameter werden keine Dialoge zu Updates oder neuen Features angezeigt.</target>

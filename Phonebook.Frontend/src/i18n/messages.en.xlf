@@ -181,6 +181,10 @@
       </target>
         <note priority="1" from="description">Button to consent sending bug reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
+      </trans-unit><trans-unit id="UserDetailComponentTooltipDataChange" datatype="html">
+        <source>Found Incorrect Data? Report them!</source><target state="final">Found Incorrect Data? Report them!</target>
+        <note priority="1" from="description">Tooltip Incorrect Data</note>
+        <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentChangeButton" datatype="html">
         <source>
@@ -1333,6 +1337,50 @@
         <source>Skills</source><target state="final">Skills</target>
         <note priority="1" from="description">Tab Headline for Skills</note>
         <note priority="1" from="meaning">UserDetailComponent</note>
+      </trans-unit><trans-unit id="Headline" datatype="html">
+        <source>Incorrect User Information</source><target state="final">Incorrect User Information</target>
+        <note priority="1" from="description">Headline</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Your Profile" datatype="html">
+        <source>
+      Dear <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      If your data is incorrect, please contact your Human Resources department.
+    </source><target state="final">
+      Dear <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>,<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      unfortunately, you can't change your user information via the Phonebook interface. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      If your data is incorrect, please contact your Human Resources department.
+    </target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Colleague Profile" datatype="html">
+        <source>
+      Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources
+      department.
+    </source><target state="final">
+      Is there something wrong with the profile? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
+      Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources
+      department.
+    </target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="Notify" datatype="html">
+        <source>Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/></source><target state="final">Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/></target>
+        <note priority="1" from="description">Profile</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="SendEmail" datatype="html">
+        <source>Send your colleague a direct message</source><target state="final">Send your colleague a direct message</target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
+      </trans-unit><trans-unit id="GotItButton" datatype="html">
+        <source>
+      Got it!
+    </source><target state="final">
+      Got it!
+    </target>
+        <note priority="1" from="description">Button</note>
+        <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnOrgUnitLabel" datatype="html">
         <source>Change sorting for column Organization Unit</source>
@@ -1359,6 +1407,26 @@
         <target state="final">Building</target>
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="User-InformationDialogSubject" datatype="html">
+        <source>There is an Issue with your Phonebook-Profile</source><target state="final">There is an Issue with your Phonebook-Profile</target>
+        <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
+        <note priority="1" from="meaning">MailToMateSubject</note>
+      </trans-unit><trans-unit id="User-InformationDialogGreeting" datatype="html">
+        <source>Hi </source><target state="final">Hi </target>
+        <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
+        <note priority="1" from="meaning">MailToMateGreeting</note>
+      </trans-unit><trans-unit id="User-InformationDialogBody" datatype="html">
+        <source>, 
+while browsing your profile I noticed that something is not right: 
+
+Please contact the HR Department to fix it.
+This is the Phonebook Link: </source><target state="final">, 
+while browsing your profile I noticed that something is not right: 
+
+Please contact the HR Department to fix it.
+This is the Phonebook Link: </target>
+        <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
+        <note priority="1" from="meaning">MailToMateBody</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
         <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.</source><target state="final">Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.</target>
         <note priority="1" from="description">Message for just set no cookie url</note>
