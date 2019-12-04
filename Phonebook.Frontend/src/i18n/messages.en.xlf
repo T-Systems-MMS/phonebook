@@ -1344,13 +1344,7 @@
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Notify" datatype="html">
-        <source>
-      <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>email<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
-      Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>
-    </source><target state="final">
-      <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>email<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
-      Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>
-    </target>
+        <source>Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/></source><target state="final">Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/></target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="SendEmail" datatype="html">
@@ -1395,6 +1389,10 @@
         <source>There is an Issue with your Phonebook Profil</source><target state="final">There is an Issue with your Phonebook Profil</target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateSubject</note>
+      </trans-unit><trans-unit id="User-InformationDialogGreeting" datatype="html">
+        <source>Hi </source><target state="final">Hi </target>
+        <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
+        <note priority="1" from="meaning">MailToMateGreeting</note>
       </trans-unit><trans-unit id="User-InformationDialogBody" datatype="html">
         <source>, 
  while browsing your profile I noticed that something is not right: 

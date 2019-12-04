@@ -311,10 +311,7 @@
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="Notify" datatype="html">
-        <source>
-      <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>email<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
-      Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/>
-    </source>
+        <source>Notify <x id="INTERPOLATION" equiv-text="{{ data.person.Firstname }}"/></source>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit><trans-unit id="SendEmail" datatype="html">
@@ -1164,6 +1161,11 @@
         <source>There is an Issue with your Phonebook Profil</source>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateSubject</note>
+      </trans-unit>
+      <trans-unit id="User-InformationDialogGreeting" datatype="html">
+        <source>Hi </source>
+        <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
+        <note priority="1" from="meaning">MailToMateGreeting</note>
       </trans-unit>
       <trans-unit id="User-InformationDialogBody" datatype="html">
         <source>, 
