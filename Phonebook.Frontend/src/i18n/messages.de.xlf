@@ -28,7 +28,7 @@
         <note priority="1" from="description">Button for contacting the private Organization</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubFeature" datatype="html">
-        <source>Suggest an idea or a new feature</source><target state="new">Schlage eine Idee oder ein neues Feature vor</target>
+        <source>Suggest an idea or a new feature</source><target state="translated">Schlage eine Idee oder ein neues Feature vor</target>
         <note priority="1" from="description">Button for suggesting a new feature on Github</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit><trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubBug" datatype="html">
@@ -209,25 +209,25 @@
         <note priority="1" from="description">Color Theme SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
-        <source>Blue Light Theme</source><target state="new">
+        <source>Blue Light Theme</source><target state="translated">
                                     Blau-Hell Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option: Blue Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
-        <source>Blue Dark Theme</source><target state="new">
+        <source>Blue Dark Theme</source><target state="translated">
                                     Blau-Dunkel Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option: Blue Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
-        <source>Magenta Dark Theme</source><target state="new">
+        <source>Magenta Dark Theme</source><target state="translated">
                                     Magenta-Dunkel Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option: Magenta Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
-        <source>Magenta Light Theme</source><target state="new">
+        <source>Magenta Light Theme</source><target state="translated">
                                     Magenta-Hell Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option: Magenta Light</note>
@@ -1312,17 +1312,17 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="description">Title of Table Column "Building"</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit><trans-unit id="User-InformationDialogSubject" datatype="html">
-        <source>There is an Issue with your Phonebook Profil</source><target state="new">Fehler auf deinem Phonebookprofil</target>
+        <source>There is an Issue with your Phonebook Profil</source><target state="translated">Fehler auf deinem Phonebookprofil</target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateSubject</note>
       </trans-unit><trans-unit id="User-InformationDialogGreeting" datatype="html">
-        <source>Hi </source><target state="new">Hallo </target>
+        <source>Hi </source><target state="translated">Hallo </target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateGreeting</note>
       </trans-unit><trans-unit id="User-InformationDialogBody" datatype="html">
         <source>, 
  while browsing your profile I noticed that something is not right: 
- Please contact the HR Department to fix it. This is the Phonebook Link: </source><target state="new">, 
+ Please contact the HR Department to fix it. This is the Phonebook Link: </source><target state="translated">, 
  beim besuchen deines Profils, ist mir aufgefalles das es Fehler gibt: 
 Gib doch dem HR kurz bescheid und lass deine Daten richtig stellen.
 Link zu deinem Profil: </target>
