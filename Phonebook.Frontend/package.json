@@ -81,7 +81,7 @@
     "@types/node": "12.12.14",
     "codelyzer": "5.2.0",
     "commitizen": "4.0.3",
-    "concurrently": "5.0.0",
+    "concurrently": "5.0.1",
     "cz-customizable": "6.2.0",
     "jasmine-core": "3.5.0",
     "jasmine-spec-reporter": "4.2.1",
