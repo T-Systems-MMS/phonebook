@@ -7,13 +7,9 @@
 @import 'src/styles/shadows.theme';
 
 //Global Color Theme Mixin
-@mixin global-theme($theme) {
+@mixin global-default-theme($theme) {
   $primary: map-get($theme, primary);
   $background: map-get($theme, foreground);
-
-  a {
-    color: mat-color($primary);
-  }
 
   .pb-color-primary {
     color: mat-color($primary) !important;
@@ -33,11 +29,29 @@
   }
 }
 
+@mixin global-dark-theme($theme) {
+  @include global-default-theme($theme);
+  $primary_light: mat-color(map-get($theme, primary), lighter);
+  @include add-filter-component-color($primary_light);
+
+  a {
+    color: $primary_light;
+  }
+}
+
+@mixin global-light-theme($theme) {
+  @include global-default-theme($theme);
+  $primary_dark: mat-color(map-get($theme, primary), darker);
+  @include add-filter-component-color($primary_dark);
+
+  a {
+    color: $primary_dark;
+  }
+}
+
 @mixin custom-components-theme($theme) {
   @include search-component-theme($theme);
-  @include add-filter-component-theme($theme);
   @include user-list-component-theme($theme);
-  @include global-theme($theme);
   @include navigation-component-theme($theme);
   @include profile-picture-component-theme($theme);
   @include shadow-theme($theme);
@@ -47,20 +61,24 @@
 .blue_light_theme {
   @include angular-material-theme($blue_light_theme);
   @include custom-components-theme($blue_light_theme);
+  @include global-light-theme($blue_light_theme);
 }
 
 .blue_dark_theme {
   @include angular-material-theme($blue_dark_theme);
   @include custom-components-theme($blue_dark_theme);
+  @include global-dark-theme($blue_dark_theme);
 }
 
 @import 'src/styles/themes/magenta';
 .magenta_light_theme {
   @include angular-material-theme($magenta_light_theme);
   @include custom-components-theme($magenta_light_theme);
+  @include global-light-theme($magenta_light_theme);
 }
 
 .magenta_dark_theme {
   @include angular-material-theme($magenta_dark_theme);
   @include custom-components-theme($magenta_dark_theme);
+  @include global-dark-theme($magenta_dark_theme);
 }

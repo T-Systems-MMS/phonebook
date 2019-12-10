@@ -1,7 +1,7 @@
 /**
  * Default Theme
  */
-$default-primary: mat-palette($mat-indigo);
+$default-primary: mat-palette($mat-indigo, 500, 200, 700);
 $default-accent: mat-palette($mat-teal, A200, A100, A400);
 $default-warn: mat-palette($mat-red);
 
@@ -10,7 +10,7 @@ $blue_light_theme: mat-light-theme($default-primary, $default-accent, $default-w
 /**
  * Dark Theme
  */
-$dark-primary: mat-palette($mat-indigo);
+$dark-primary: mat-palette($mat-indigo, 500, 200, 700);
 $dark-accent: mat-palette($mat-teal, A200, A100, A400);
 $dark-warn: mat-palette($mat-red);
 
