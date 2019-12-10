@@ -15,13 +15,13 @@ $light-focused: rgba(white, 0.12);
 
 $magenta: (
   50: #e20074,
-  100: #ff57a2,
+  100: #e20074,
   200: #e20074,
   300: #e20074,
   400: #e20074,
   500: #e20074,
   600: #e20074,
-  700: #aa0049,
+  700: #e20074,
   800: #e20074,
   900: #e20074,
   A100: #e20074,
@@ -112,8 +112,8 @@ $red: (
   )
 );
 
-// Specifies the color that should be used as mat-palette($color-palette, normal: 500, light: 100, dark: 700)
-$default-primary: mat-palette($magenta, 500, 100, 700);
+// Specifies the color that should be used as mat-palette($color-palette, normal, light, dark)
+$default-primary: mat-palette($magenta);
 $light-accent: mat-palette($lightblue, A200, A100, A400);
 $default-warn: mat-palette($red);
 
