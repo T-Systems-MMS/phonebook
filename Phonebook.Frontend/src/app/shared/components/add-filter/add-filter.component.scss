@@ -1,0 +1,9 @@
+.mat-standard-chip.pb-filter {
+  /* Workaround for https://github.com/angular/components/pull/13962
+   and https://github.com/angular/components/issues/14934
+  */
+  height: unset;
+  width: unset;
+  padding: 3px 9px;
+  min-height: 24px;
+}

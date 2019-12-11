@@ -158,12 +158,13 @@
         {{ columnTranslate.getTranslation(columns.orgUnit.id) }}
       </mat-header-cell>
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="person.Business.ShortOrgUnit[0]">
-        </app-add-filter>
-        <span *ngFor="let orgUnit of person.Business.ShortOrgUnit.slice(1)"
-          >,
-          <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="orgUnit"></app-add-filter>
-        </span>
+        <mat-chip-list>
+          <app-add-filter
+            *ngFor="let orgUnit of person.Business.ShortOrgUnit"
+            [filterColumn]="columns.orgUnit"
+            [filterValue]="orgUnit"
+          ></app-add-filter>
+        </mat-chip-list>
       </mat-cell>
     </ng-container>
 
