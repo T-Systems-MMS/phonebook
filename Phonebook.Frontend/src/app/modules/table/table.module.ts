@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatChipsModule } from '@angular/material';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ProfilePictureModule } from 'src/app/modules/profile-picture/profile-picture.module';
 import { TableComponent } from 'src/app/modules/table/components/table/table.component';
@@ -19,6 +20,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
     ActionDrawerModule,
     ProfilePictureModule,
     InfiniteScrollModule,
+    MatChipsModule,
     UserModule
   ],
   declarations: [TableComponent, TableSettingsDialog],

@@ -233,15 +233,15 @@
               </a>
             </h4>
             <p mat-line>
-              <li *ngFor="let shortOrgUnit of person.Business.ShortOrgUnit; let index = index">
+              <mat-chip-list class="mat-chip-list-stacked">
                 <app-add-filter
+                  *ngFor="let shortOrgUnit of person.Business.ShortOrgUnit; let index = index"
                   [filterColumn]="columns.orgUnit"
                   [filterValue]="shortOrgUnit"
                   [displayText]="person.Business.OrgUnit[index] + ' (' + shortOrgUnit + ')'"
                   [resetSearchTerm]="true"
-                >
-                </app-add-filter>
-              </li>
+                ></app-add-filter>
+              </mat-chip-list>
             </p>
           </mat-list-item>
           <mat-list-item>

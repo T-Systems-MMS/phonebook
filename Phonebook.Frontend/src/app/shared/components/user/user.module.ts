@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatChipsModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -38,6 +39,7 @@ import { InteractiveAttributeFieldModule } from 'src/app/shared/interactive-attr
     MatCardModule,
     MatListModule,
     MatTabsModule,
+    MatChipsModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,

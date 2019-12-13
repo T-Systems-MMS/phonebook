@@ -1,8 +1,8 @@
-<a
+<mat-chip
   propagationStop
   (click)="addFilter()"
   (keyup.enter)="addFilter()"
-  class="pb-pointer"
+  class="pb-pointer pb-filter"
   tabindex="0"
   i18n-matTooltip="AddFilterComponent|Tooltip for adding a filter to the search@@AddFilterComponentTooltip"
   i18n-aria-label="AddFilterComponent|Aria Label for adding a filter to the search@@AddFilterComponentAriaLabel"
@@ -10,17 +10,15 @@
   aria-label="Refines the Search by adding this as a Filter."
   [matTooltipPosition]="'left'"
 >
-  <span class="pb-c-text">
-    <ng-container [ngSwitch]="filterColumn">
-      <ng-container *ngSwitchCase="column.room">
-        <ng-container *ngIf="displayText != null">
-          <ng-container i18n="@@ColumnTitleRoom">
-            Room
-          </ng-container>
-          {{ displayText }}
+  <ng-container [ngSwitch]="filterColumn">
+    <ng-container *ngSwitchCase="column.room">
+      <ng-container *ngIf="displayText != null">
+        <ng-container i18n="@@ColumnTitleRoom">
+          Room
         </ng-container>
+        {{ displayText }}
       </ng-container>
-      <ng-container *ngSwitchDefault>{{ displayText }}</ng-container>
     </ng-container>
-  </span>
-</a>
+    <ng-container *ngSwitchDefault>{{ displayText }}</ng-container>
+  </ng-container>
+</mat-chip>
