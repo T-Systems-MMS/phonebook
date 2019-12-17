@@ -57,7 +57,7 @@
     "@ngxs/storage-plugin": "3.6.0",
     "@ngxs/store": "3.6.0",
     "classlist.js": "1.1.20150312",
-    "marked": "0.7.0",
+    "marked": "0.8.0",
     "ng2-rx-componentdestroyed": "3.0.1",
     "ngx-clipboard": "12.3.0",
     "ngx-infinite-scroll": "8.0.1",
