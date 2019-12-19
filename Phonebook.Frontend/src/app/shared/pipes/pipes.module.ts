@@ -1,6 +1,6 @@
-import { TelephonePipe } from './tel.pipe';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { TelephonePipe } from './telephone.pipe';
 
 @NgModule({
   declarations: [TelephonePipe],
