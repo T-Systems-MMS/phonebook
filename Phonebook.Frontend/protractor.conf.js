@@ -4,7 +4,6 @@
 // Use puppeteer
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
-
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 exports.config = {
@@ -13,7 +12,6 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      // Use puppeteer
       binary: process.env.CHROME_BIN,
       args: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222']
     }
