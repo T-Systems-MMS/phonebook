@@ -1,4 +1,3 @@
-import { PipesModule } from './../../shared/pipes/pipes.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +23,7 @@ import { AddressModule } from 'src/app/shared/components/address/address.module'
 import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.module';
 import { UserModule } from 'src/app/shared/components/user/user.module';
 import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { BuildingComponent } from './components/building/building.component';
 import { CityComponent } from './components/city/city.component';
 import { OverviewComponent } from './components/overview/overview.component';

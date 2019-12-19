@@ -1,4 +1,3 @@
-import { PipesModule } from './../../shared/pipes/pipes.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -10,6 +9,7 @@ import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter
 import { UserModule } from 'src/app/shared/components/user/user.module';
 import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
 import { MaterialModule } from 'src/app/shared/material.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
