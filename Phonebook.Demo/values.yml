@@ -5,13 +5,14 @@
 # General Variables
 host: &host 'demo-phonebook.me'
 contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
-roomPlanningToolUrl: 'undefined'
+roomPlanningToolUrl: null
 contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
-ravenUrl: 'undefined'
-employeePictureEndpoint: 'undefined'
+ravenUrl: null
+employeePictureEndpoint: null
 assetsEndpoint: 'https://demo-phonebook.me/assets'
 environment: 'preview'
 environmentTag: 'demo'
+rocketChatUrl: 'https://open.rocket.chat'
 
 frontend:
   replicaCount: 1
@@ -36,11 +37,15 @@ affinity: {}
 
 # Traefik Configuration
 traefik:
+  enabled: true
   startupArguments:
     - ''
   dashboard:
     enabled: true
     domain: board.demo-phonebook.me
+    ingress:
+      annotations:
+        traefik.frontend.priority: '100'
   ssl:
     enabled: true
     enforced: true
@@ -52,13 +57,7 @@ traefik:
     challengeType: 'http-01'
     domains:
       enabled: true
-      domainsList:
-        - main: *host
-        - sans:
-            - 'board.demo-phonebook.me'
-            - 'assets.demo-phonebook.me'
   rbac:
     enabled: true
   kubernetes:
     namespaces:
-      - kube-public

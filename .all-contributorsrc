@@ -96,6 +96,82 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "PhoebeNgnfld",
+      "name": "PhoebeNgnfld",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/54710033?v=4",
+      "profile": "https://github.com/PhoebeNgnfld",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "schurzi",
+      "name": "schurzi",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1736679?v=4",
+      "profile": "http://www.drachen-server.de",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "renkin",
+      "name": "René Kießig",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/12253492?v=4",
+      "profile": "https://github.com/renkin",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "danielsy",
+      "name": "danielsy",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8321455?v=4",
+      "profile": "https://github.com/danielsy",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "oliverguhr",
+      "name": "Oliver Guhr",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3495355?v=4",
+      "profile": "https://www.oliverguhr.eu",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "FrankLambrette",
+      "name": "FrankLambrette",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/55480780?v=4",
+      "profile": "https://github.com/FrankLambrette",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Zeroks77",
+      "name": "Dominik Mangatter",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/40673554?v=4",
+      "profile": "https://github.com/Zeroks77",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "BrunoZirnstein",
+      "name": "BrunoZirnstein",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/56590240?v=4",
+      "profile": "https://github.com/BrunoZirnstein",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

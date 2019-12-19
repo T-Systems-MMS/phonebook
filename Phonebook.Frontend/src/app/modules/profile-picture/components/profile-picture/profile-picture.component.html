@@ -5,7 +5,7 @@
   (click)="onClick()"
   [class.no-hover]="!canEnlargeOnClick || !imageLoaded"
 >
-  <img [src]="imageUrl" [alt]="altText" (load)="useImage($event)" [style.display]="imageLoaded ? 'block' : 'none'" />
+  <img *ngIf="imageUrl" [src]="imageUrl" [alt]="altText" (load)="useImage($event)" [style.display]="imageLoaded ? 'block' : 'none'" />
   <div id="enlarge" *ngIf="canEnlargeOnClick">
     <mat-icon>zoom_in</mat-icon>
   </div>
