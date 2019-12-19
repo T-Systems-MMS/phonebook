@@ -11,9 +11,9 @@ exports.config = {
   specs: ['./e2e/**/*.e2e-spec.ts'],
   capabilities: {
     browserName: 'chrome',
-    // Use puppeteer
-    binary: require('puppeteer').executablePath(),
     chromeOptions: {
+      // Use puppeteer
+      binary: require('puppeteer').executablePath(),
       args: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222']
     }
   },
