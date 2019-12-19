@@ -115,7 +115,7 @@
         <button
           mat-button
           actionDrawer
-          [copy]="person.Contacts.Mobile | telephone"
+          [copy]="person.Contacts.Mobile"
           [tel]="person.Contacts.Mobile | telephone"
           *ngIf="person.Contacts.Mobile != ''"
         >
