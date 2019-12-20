@@ -6,7 +6,7 @@ describe('TestPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('transforms numer', () => {
+  it('transforms number', () => {
     const pipe = new TelephonePipe();
     expect(pipe.transform('+49 32432 234234')).toBe('+4932432234234');
   })
