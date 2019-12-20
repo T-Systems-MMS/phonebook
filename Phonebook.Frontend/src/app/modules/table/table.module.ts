@@ -10,6 +10,7 @@ import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter
 import { UserModule } from 'src/app/shared/components/user/user.module';
 import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
 import { MaterialModule } from 'src/app/shared/material.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -20,8 +21,9 @@ import { MaterialModule } from 'src/app/shared/material.module';
     ActionDrawerModule,
     ProfilePictureModule,
     InfiniteScrollModule,
-    MatChipsModule,
-    UserModule
+    UserModule,
+    PipesModule,
+    MatChipsModule
   ],
   declarations: [TableComponent, TableSettingsDialog],
   entryComponents: [TableSettingsDialog]

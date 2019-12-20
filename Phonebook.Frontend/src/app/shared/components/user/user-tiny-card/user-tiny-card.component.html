@@ -20,7 +20,7 @@
           color="primary"
           actionDrawer
           [copy]="person.Contacts.Phone"
-          [tel]="person.Contacts.Phone"
+          [tel]="person.Contacts.Phone | telephone"
         >
           <mat-icon>call</mat-icon>
         </button>

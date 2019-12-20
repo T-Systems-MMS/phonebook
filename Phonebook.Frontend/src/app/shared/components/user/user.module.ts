@@ -23,6 +23,7 @@ import { UserSmallCardComponent } from 'src/app/shared/components/user/user-smal
 import { UserTinyCardComponent } from 'src/app/shared/components/user/user-tiny-card/user-tiny-card.component';
 import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
 import { InteractiveAttributeFieldModule } from 'src/app/shared/interactive-attribute-field/interactive-attribute-field.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { InteractiveAttributeFieldModule } from 'src/app/shared/interactive-attr
     NgxVcardModule,
     MatTooltipModule,
     NotImplementedModule,
-    InteractiveAttributeFieldModule
+    InteractiveAttributeFieldModule,
+    PipesModule
   ],
   declarations: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent],
   exports: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent]
