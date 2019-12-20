@@ -79,7 +79,7 @@
     "@types/jasmine": "3.5.0",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "12.12.21",
-    "codelyzer": "5.2.0",
+    "codelyzer": "5.2.1",
     "commitizen": "4.0.3",
     "concurrently": "5.0.2",
     "cz-customizable": "6.2.0",
