@@ -24,7 +24,7 @@
   </mat-card-header>
   <mat-card-content>
     <mat-divider></mat-divider>
-    <div class="pb-expand pb-wrap">
+    <div class="pb-flex pb-wrap">
       <mat-list>
         <h3 mat-subheader i18n="Datapoint|Label for address@@DataLocationAddress">Address</h3>
         <mat-list-item>
@@ -83,7 +83,7 @@
         >
           <mat-card-header> {{ floor.name }}. <span i18n="@@DataPersonFloor">Floor</span> </mat-card-header>
           <mat-card-content>
-            <div class="pb-expand pb-wrap">
+            <div class="pb-flex pb-wrap">
               <app-room-plan class="pb-roomplan" [floorplan]="floor.children[0].data.FloorPlan"></app-room-plan>
             </div>
           </mat-card-content>
