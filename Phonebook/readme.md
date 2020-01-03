@@ -21,7 +21,7 @@ We use [traefik](https://traefik.io/) under the hood.
     assetsEndpoint: '<Url To you User Assets Endpoint>'
     ```
 
-    For a more complete Example have a look at our demo [values.yml](../Phonebook.Demo/values.yml).
+    For a more complete Example have a look at our demo [values.yml](../demo/values.yml).
 
 2. Install your Phonebook application by running `helm install --values ./path/to/your/values.yml https://github.com/T-Systems-MMS/phonebook/releases/download/<latest release>/phonebook.tgz`
 
