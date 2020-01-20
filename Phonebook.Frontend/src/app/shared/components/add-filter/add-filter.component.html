@@ -1,5 +1,6 @@
 <mat-chip
   propagationStop
+  *ngIf="filterValue"
   (click)="addFilter()"
   (keyup.enter)="addFilter()"
   class="pb-pointer pb-filter"
