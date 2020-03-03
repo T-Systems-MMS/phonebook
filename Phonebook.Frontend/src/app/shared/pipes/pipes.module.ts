@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { TelephonePipe } from './telephone.pipe';
 
 @NgModule({
@@ -8,7 +8,7 @@ import { TelephonePipe } from './telephone.pipe';
   exports: [TelephonePipe]
 })
 export class PipesModule {
-  public static forRoot() {
+  public static forRoot(): ModuleWithProviders<PipesModule> {
     return {
       ngModule: PipesModule,
       providers: []

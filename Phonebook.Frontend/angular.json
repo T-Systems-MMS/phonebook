@@ -4,6 +4,15 @@
   "newProjectRoot": "projects",
   "projects": {
     "phonebook": {
+      "i18n": {
+        "locales": {
+          "en": "src/i18n/messages.en.xlf",
+          "de": {
+            "translation": "src/i18n/messages.de.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -116,24 +125,39 @@
           },
           "configurations": {
             "en": {
-              "i18nFile": "src/i18n/messages.en.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "en",
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "i18nMissingTranslation": "error",
-              "outputPath": "dist/en",
-              "baseHref": "/en/"
-            },
+            "localize": [
+              "en"
+            ],
+              "outputPath": "dist"
+},
             "de": {
-              "i18nFile": "src/i18n/messages.de.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "de",
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "i18nMissingTranslation": "error",
-              "outputPath": "dist/de",
-              "baseHref": "/de/"
-            },
+            "localize": [
+              "de"
+            ],
+              "outputPath": "dist"
+},
             "preview": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "i18nFile": "src/i18n/messages.de.xlf",
-              "i18nFormat": "xlf",
               "i18nLocale": "de",
               "i18nMissingTranslation": "error",
               "outputPath": "dist/"
@@ -236,7 +260,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

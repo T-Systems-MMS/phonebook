@@ -7,7 +7,7 @@ import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.se
   exports: [FeatureFlagDirective]
 })
 export class FeatureFlagModule {
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders<FeatureFlagModule> {
     return {
       ngModule: FeatureFlagModule,
       providers: [FeatureFlagService]
