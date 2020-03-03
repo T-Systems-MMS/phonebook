@@ -5,12 +5,9 @@
   "projects": {
     "phonebook": {
       "i18n": {
+        "sourceLocale": "en",
         "locales": {
-          "en": "src/i18n/messages.en.xlf",
-          "de": {
-            "translation": "src/i18n/messages.de.xlf",
-            "baseHref": ""
-          }
+          "de": "src/i18n/messages.de.xlf"
         }
       },
       "root": "",
@@ -50,26 +47,19 @@
             "aot": true,
             "extractLicenses": true,
             "vendorChunk": false,
-            "buildOptimizer": false
+            "buildOptimizer": false,
+            "i18nMissingTranslation": "error"
           },
           "configurations": {
             "en": {
-              "i18nFile": "src/i18n/messages.en.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "en",
-              "i18nMissingTranslation": "warn"
+              "localize": [
+                "en"
+              ]
             },
             "de": {
-              "i18nFile": "src/i18n/messages.de.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "de",
-              "i18nMissingTranslation": "warn"
-            },
-            "test": {
-              "i18nFile": "src/i18n/messages.test.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "test",
-              "i18nMissingTranslation": "warn"
+              "localize": [
+                "de"
+              ]
             },
             "debug": {
               "fileReplacements": [
@@ -132,11 +122,11 @@
                 }
               ],
               "i18nMissingTranslation": "error",
-            "localize": [
-              "en"
-            ],
+              "localize": [
+                "en"
+              ],
               "outputPath": "dist"
-},
+            },
             "de": {
               "budgets": [
                 {
@@ -145,11 +135,11 @@
                 }
               ],
               "i18nMissingTranslation": "error",
-            "localize": [
-              "de"
-            ],
+              "localize": [
+                "de"
+              ],
               "outputPath": "dist"
-},
+            },
             "preview": {
               "budgets": [
                 {
@@ -265,5 +255,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

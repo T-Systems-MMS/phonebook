@@ -26,7 +26,7 @@
     "build-docker:prod": "docker build -t phonebook . && docker run --rm phonebook:latest",
     "build-compose:dev": "npm run compose-build && docker-compose run --rm --service-ports nginx ",
     "i18n": "ng-xi18n --i18nFormat xlf",
-    "extract-i18n": "ng xi18n --i18nFormat xlf --output-path i18n --i18n-locale en && ngx-extractor --input src/**/*.ts --format xlf --outFile src/i18n/messages.xlf && node src/i18n/remove-context.js src/i18n/messages.xlf && xliffmerge --profile xliffmerge.json && cd src/i18n && node ./generateTestTranslations.js",
+    "extract-i18n": "ng xi18n --i18nFormat xlf --output-path i18n --i18n-locale en && ngx-extractor --input src/**/*.ts --format xlf --outFile src/i18n/messages.xlf && node src/i18n/remove-context.js src/i18n/messages.xlf && xliffmerge --profile xliffmerge.json && cd src/i18n",
     "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/stats.json",
     "check-license": "license-checker",
     "lint": "ng lint",
