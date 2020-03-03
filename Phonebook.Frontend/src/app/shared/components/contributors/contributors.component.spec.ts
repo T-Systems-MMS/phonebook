@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContributorsComponent } from './contributors.component';
-import { MatIconModule, MatCardModule, MatSnackBarModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 

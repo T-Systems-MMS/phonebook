@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IncorrectUserInformationDialogData } from 'src/app/shared/components/user/user-detail/user-detail.component';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { MailService } from 'src/app/services/mail.service';

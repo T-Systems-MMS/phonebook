@@ -10,7 +10,7 @@ import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
-import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 

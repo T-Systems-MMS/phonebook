@@ -3,7 +3,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlatformModule } from '@angular/cdk/platform';
 import { HttpClientModule } from '@angular/common/http';
 import { LOCALE_ID, NgModule, TRANSLATIONS } from '@angular/core';
-import { MatBadgeModule } from '@angular/material';
+import { MatBadgeModule } from '@angular/material/badge';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { I18n } from '@ngx-translate/i18n-polyfill';
@@ -46,7 +46,7 @@ import { environment } from 'src/environments/environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
-import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 declare const require;
 
