@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { Select, Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { VCard, VCardEncoding } from 'ngx-vcard';
@@ -46,8 +46,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
-    private dialog: MatDialog,
-    private i18n: I18n
+    private dialog: MatDialog
   ) {}
 
   public ngOnInit() {
@@ -115,7 +114,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public getRocketChatLink(): string | null {
-    return runtimeEnvironment.rocketChatUrl !== undefined ? runtimeEnvironment.rocketChatUrl + '/direct/' + this.person.Id.toLowerCase() : null;
+    return runtimeEnvironment.rocketChatUrl !== undefined
+      ? runtimeEnvironment.rocketChatUrl + '/direct/' + this.person.Id.toLowerCase()
+      : null;
   }
 
   public ngOnDestroy() {}

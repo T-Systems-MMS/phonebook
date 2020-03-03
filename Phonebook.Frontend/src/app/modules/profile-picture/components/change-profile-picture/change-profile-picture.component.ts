@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { ChangeProfilePictureDialogComponent } from 'src/app/modules/profile-picture/components/change-profile-picture-dialog/change-profile-picture-dialog.component';
 import { ProfilePictureService } from 'src/app/modules/profile-picture/profile-picture.service';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
@@ -22,8 +22,7 @@ export class ChangeProfilePictureComponent implements OnInit {
     private profilePictureService: ProfilePictureService,
     private currentUserService: CurrentUserService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog,
-    private i18n: I18n
+    private dialog: MatDialog
   ) {}
 
   public ngOnInit() {
@@ -59,12 +58,7 @@ export class ChangeProfilePictureComponent implements OnInit {
               this.profilePictureService.uploadUserPicture(file).subscribe(
                 success => {
                   this.snackBar.open(
-                    this.i18n({
-                      meaning: 'ChangeProfilePictureComponent',
-                      description: 'Success Message if profile picture was updated',
-                      id: 'ChangeProfilePictureComponentSuccessUpdate',
-                      value: 'Updated your Profile Picture!'
-                    }),
+                    $localize`:ChangeProfilePictureComponent|Success Message if profile picture was updated@@ChangeProfilePictureComponentSuccessUpdate:Updated your Profile Picture!`,
                     '',
                     {
                       duration: 3000
@@ -77,18 +71,8 @@ export class ChangeProfilePictureComponent implements OnInit {
                   if (error.status === 400) {
                     this.snackBar
                       .open(
-                        this.i18n({
-                          meaning: 'ChangeProfilePictureComponent',
-                          description: 'Error Message if wrong File Type is supplied',
-                          id: 'ChangeProfilePictureComponentErrorWrongFileType',
-                          value: `The File Type is not supported.`
-                        }),
-                        this.i18n({
-                          meaning: 'ChangeProfilePictureComponent',
-                          description: 'Button on Error Message if wrong File Type is supplied',
-                          id: 'ChangeProfilePictureComponentErrorWrongFileTypeButton',
-                          value: 'I want to add more support!'
-                        }),
+                        $localize`:ChangeProfilePictureComponent|Error Message if wrong File Type is supplied@@ChangeProfilePictureComponentErrorWrongFileType:The File Type is not supported.`,
+                        $localize`:ChangeProfilePictureComponent|Button on Error Message if wrong File Type is supplied@@ChangeProfilePictureComponentErrorWrongFileTypeButton:I want to add more support!`,
                         {
                           duration: 3000
                         }
@@ -100,12 +84,7 @@ export class ChangeProfilePictureComponent implements OnInit {
                     return;
                   }
                   this.snackBar.open(
-                    this.i18n({
-                      meaning: 'GeneralErrorMessage',
-                      description: 'A general Error message, that can be displayed everywhere',
-                      id: 'GeneralErrorMessage',
-                      value: 'Something went wrong. Please try again.'
-                    }),
+                    $localize`:GeneralErrorMessage|A general Error message, that can be displayed everywhere@@GeneralErrorMessage:Something went wrong. Please try again.`,
                     '',
                     {
                       duration: 3000
@@ -116,12 +95,8 @@ export class ChangeProfilePictureComponent implements OnInit {
               );
             } else {
               this.snackBar.open(
-                this.i18n({
-                  meaning: 'ChangeProfilePictureComponent',
-                  description: 'Error Message if supplied file size is to big (without size and unit)',
-                  id: 'ChangeProfilePictureComponentErrorFileSize',
-                  value: 'Your file is too big! It should be smaller than'
-                }) + ' 50MB.',
+                $localize`:ChangeProfilePictureComponent|Error Message if supplied file size is to big (without size and unit)@@ChangeProfilePictureComponentErrorFileSize:Your file is too big! It should be smaller than` +
+                  ' 50MB.',
                 '',
                 {
                   duration: 3000
@@ -138,12 +113,7 @@ export class ChangeProfilePictureComponent implements OnInit {
     this.profilePictureService.deleteUserPicture().subscribe(
       success => {
         this.snackBar.open(
-          this.i18n({
-            meaning: 'ChangeProfilePictureComponent',
-            description: 'Success Message if user deleted its profile picture',
-            id: 'ChangeProfilePictureComponentSuccessDelete',
-            value: 'Your profile picture was deleted!'
-          }),
+          $localize`:ChangeProfilePictureComponent|Success Message if user deleted its profile picture@@ChangeProfilePictureComponentSuccessDelete:Your profile picture was deleted!`,
           '',
           {
             duration: 3000
@@ -152,16 +122,9 @@ export class ChangeProfilePictureComponent implements OnInit {
         this.profilePictureService.reload.emit(this.userId);
       },
       error => {
-        this.snackBar.open(
-          this.i18n({
-            id: 'GeneralErrorMessage',
-            value: 'Something went wrong. Please try again.'
-          }),
-          '',
-          {
-            duration: 3000
-          }
-        );
+        this.snackBar.open($localize`:@@GeneralErrorMessage:Something went wrong. Please try again.`, '', {
+          duration: 3000
+        });
       }
     );
   }

@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { I18n } from '@ngx-translate/i18n-polyfill';
 
 describe('ContributorsComponent', () => {
   let component: ContributorsComponent;
@@ -14,7 +13,7 @@ describe('ContributorsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ContributorsComponent],
       imports: [HttpClientTestingModule, MatIconModule, MatCardModule, MatSnackBarModule],
-      providers: [{ provide: I18n }]
+      providers: []
     }).compileComponents();
   }));
 

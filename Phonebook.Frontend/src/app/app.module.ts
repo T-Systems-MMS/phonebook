@@ -6,7 +6,7 @@ import { LOCALE_ID, NgModule, TRANSLATIONS } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
@@ -97,15 +97,15 @@ declare const require;
     UserPagesModule
   ],
   providers: [
-    {
-      provide: TRANSLATIONS,
-      useFactory: (locale: string) => {
-        locale = locale || 'en';
-        // if we are already on our default locale, we do not need to set any translations
-        return require(`raw-loader!../i18n/messages.${locale}.xlf`).default;
-      },
-      deps: [LOCALE_ID]
-    },
+    // {
+    //   provide: TRANSLATIONS,
+    //   useFactory: (locale: string) => {
+    //     locale = locale || 'en';
+    //     // if we are already on our default locale, we do not need to set any translations
+    //     return require(`raw-loader!../i18n/messages.${locale}.xlf`).default;
+    //   },
+    //   deps: [LOCALE_ID]
+    // },
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { panelClass: 'mat-dialog-override' } },
     WINDOW_PROVIDER,
     ServiceWorkerService,
@@ -114,7 +114,6 @@ declare const require;
     FloorplanService,
     ReleaseInfoService,
     ThemeService,
-    I18n,
     ColumnTranslate
   ],
   bootstrap: [AppComponent]

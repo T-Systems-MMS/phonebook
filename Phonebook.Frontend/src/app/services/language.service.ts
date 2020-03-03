@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { Language } from 'src/app/shared/models/enumerables/Language';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
-  constructor(private i18n: I18n) {}
+  constructor() {}
 
   public getLanguage(): Language {
     switch (this.getLangCookie()) {
@@ -27,19 +27,9 @@ export class LanguageService {
   public getLanguageTranslation(lang: Language): string {
     switch (lang) {
       case Language.de:
-        return this.i18n({
-          value: 'German',
-          description: 'GeneralLanguageGerman',
-          id: 'GeneralLanguageGerman',
-          meaning: 'GeneralLanguageGerman'
-        });
+        return $localize`:GeneralLanguageGerman|GeneralLanguageGerman@@GeneralLanguageGerman:German`;
       case Language.en:
-        return this.i18n({
-          value: 'English',
-          description: 'GeneralLanguageEnglish',
-          id: 'GeneralLanguageEnglish',
-          meaning: 'GeneralLanguageEnglish'
-        });
+        return $localize`:GeneralLanguageEnglish|GeneralLanguageEnglish@@GeneralLanguageEnglish:English`;
       default:
         throw new Error(`No Language Translation specified for '${lang}'!`);
     }

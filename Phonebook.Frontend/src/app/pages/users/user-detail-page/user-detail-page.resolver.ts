@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { PersonService } from 'src/app/services/api/person.service';
@@ -11,7 +11,7 @@ import { Person } from 'src/app/shared/models';
   providedIn: 'root'
 })
 export class UserDetailPageResolver implements Resolve<Person> {
-  constructor(private personSearchService: PersonService, private snackBar: MatSnackBar, private i18n: I18n) {}
+  constructor(private personSearchService: PersonService, private snackBar: MatSnackBar) {}
 
   public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Person> {
     const personId = route.paramMap.get('id');
@@ -26,21 +26,11 @@ export class UserDetailPageResolver implements Resolve<Person> {
         }),
         catchError(err => {
           this.snackBar.open(
-            this.i18n({
-              meaning: 'UserDetailPageResolver',
-              description: 'First part of the message displayed when a user is not found',
-              id: 'UserDetailPageResolverNotFoundFirstPart',
-              value: 'User with Id'
-            }) +
+            $localize`:UserDetailPageResolver|First part of the message displayed when a user is not found@@UserDetailPageResolverNotFoundFirstPart:User with Id` +
               ' "' +
               personId +
               '" ' +
-              this.i18n({
-                meaning: 'UserDetailPageResolver',
-                description: 'Second part of the message displayed when a user is not found',
-                id: 'UserDetailPageResolverNotFoundSecondPart',
-                value: 'not found.'
-              }),
+              $localize`:UserDetailPageResolver|Second part of the message displayed when a user is not found@@UserDetailPageResolverNotFoundSecondPart:not found.`,
             '',
             { duration: 3000 }
           );

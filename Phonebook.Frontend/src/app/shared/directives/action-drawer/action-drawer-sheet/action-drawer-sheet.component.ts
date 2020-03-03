@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { ActionButtonInterface } from 'src/app/shared/directives/action-drawer/action-drawer.directive';
 
 @Component({
@@ -13,8 +13,7 @@ export class ActionDrawerSheetComponent {
   constructor(
     private bottomSheetRef: MatBottomSheetRef<ActionDrawerSheetComponent>,
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: ActionButtonInterface,
-    private snackBar: MatSnackBar,
-    private i18n: I18n
+    private snackBar: MatSnackBar
   ) {}
 
   public closeBottomSheet(): void {
@@ -23,12 +22,7 @@ export class ActionDrawerSheetComponent {
 
   public copySuccessToast() {
     this.snackBar.open(
-      this.i18n({
-        id: 'GeneralSuccessMessageCopy',
-        value: 'Copied to clipboard!',
-        description: 'Message displayed when copying a link is successfully',
-        meaning: 'GeneralSuccessMessageCopy'
-      }),
+      $localize`:GeneralSuccessMessageCopy|Message displayed when copying a link is successfully@@GeneralSuccessMessageCopy:Copied to clipboard!`,
       '',
       { duration: 2000 }
     );
@@ -36,10 +30,7 @@ export class ActionDrawerSheetComponent {
 
   public copyErrorToast() {
     this.snackBar.open(
-      this.i18n({
-        id: 'GeneralErrorMessageCopy',
-        value: `Couldn't copy to the clipboard, something went wrong. Try again.`
-      }),
+      $localize`:@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
       '',
       { duration: 2000 }
     );

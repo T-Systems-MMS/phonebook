@@ -50,7 +50,6 @@
     "@angular/platform-browser-dynamic": "9.0.4",
     "@angular/router": "9.0.4",
     "@angular/service-worker": "9.0.4",
-    "@ngx-translate/i18n-polyfill": "1.0.0",
     "@ngxs/devtools-plugin": "3.6.2",
     "@ngxs/logger-plugin": "3.6.2",
     "@ngxs/router-plugin": "3.6.2",

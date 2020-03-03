@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ColumnTranslate {
-  constructor(private i18n: I18n) {}
+  constructor() {}
   public getTranslation(columnId: ColumnId): string {
     /*
+     * TODO: Localization
+     * TODO: Try of it works with new angular localization
      * workaround for ngx translate
      * necassary because the generated translations are wrong
      * They insert a new line after some strings and thus a space in the translated version of the string
@@ -28,96 +30,31 @@ export class ColumnTranslate {
   private getInternalTranslation(columnId: ColumnId): string {
     switch (columnId) {
       case ColumnId.picture:
-        return this.i18n({
-          value: 'Picture',
-          description: 'Title of Table Column "Picture"',
-          id: 'ColumnTitlePicture',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Picture"@@ColumnTitlePicture:Picture`;
       case ColumnId.id:
-        return this.i18n({
-          value: 'Id',
-          description: 'Title of Table Column "Id"',
-          id: 'ColumnTitleId',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Id"@@ColumnTitleId:Id`;
       case ColumnId.fullname:
-        return this.i18n({
-          value: 'Name',
-          description: 'Title of Table Column "Name"',
-          id: 'ColumnTitleFullName',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Name"@@ColumnTitleFullName:Name`;
       case ColumnId.email:
-        return this.i18n({
-          value: 'Email',
-          description: 'Title of Table Column "Email"',
-          id: 'ColumnEmailName',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Email"@@ColumnEmailName:Email`;
       case ColumnId.phone:
-        return this.i18n({
-          value: 'Phone',
-          description: 'Title of Table Column "Phone"',
-          id: 'ColumnTitlePhone',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Phone"@@ColumnTitlePhone:Phone`;
       case ColumnId.mobile:
-        return this.i18n({
-          value: 'Mobile',
-          description: 'Title of Table Column "Mobile"',
-          id: 'ColumnTitleMobile',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Mobile"@@ColumnTitleMobile:Mobile`;
       case ColumnId.role:
-        return this.i18n({
-          value: 'Role',
-          description: 'Title of Table Column "Role"',
-          id: 'ColumnTitleRole',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Role"@@ColumnTitleRole:Role`;
       case ColumnId.city:
-        return this.i18n({
-          value: 'City',
-          description: 'Title of Table Column "City"',
-          id: 'ColumnTitleCity',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "City"@@ColumnTitleCity:City`;
       case ColumnId.orgUnit:
-        return this.i18n({
-          value: 'Organization Unit',
-          description: 'Title of Table Column "Organization Unit"',
-          id: 'ColumnTitleOrgUnit',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Organization Unit"@@ColumnTitleOrgUnit:Organization Unit`;
       case ColumnId.room:
-        return this.i18n({
-          value: 'Room',
-          description: 'Title of Table Column "Room"',
-          id: 'ColumnTitleRoom',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Room"@@ColumnTitleRoom:Room`;
       case ColumnId.building:
-        return this.i18n({
-          value: 'Building',
-          description: 'Title of Table Column "Building"',
-          id: 'ColumnTitleBuilding',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Building"@@ColumnTitleBuilding:Building`;
       case ColumnId.costcenter:
-        return this.i18n({
-          value: 'Profitcenter',
-          description: 'Title of Table Column "Profitcenter" once Costcenter',
-          id: 'ColumnTitleCostcenter',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Profitcenter" once Costcenter@@ColumnTitleCostcenter:Profitcenter`;
       case ColumnId.status:
-        return this.i18n({
-          value: 'Status',
-          description: 'Title of Table Column "Status"',
-          id: 'DataPersonStatus',
-          meaning: 'TableComponent'
-        });
+        return $localize`:TableComponent|Title of Table Column "Status"@@DataPersonStatus:Status`;
       default:
         throw Error('Column not found.');
     }

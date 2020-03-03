@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
@@ -29,8 +29,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     private store: Store,
     public languageService: LanguageService,
     private notImplementedService: NotImplementedService,
-    public featureFlagService: FeatureFlagService,
-    private i18n: I18n
+    public featureFlagService: FeatureFlagService
   ) {}
 
   public ngOnInit() {
@@ -53,36 +52,16 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public getThemeName(theme: Theme) {
     switch (theme) {
       case Theme.blue_light_theme: {
-        return this.i18n({
-          value: 'Blue Light Theme',
-          description: 'Color Theme Option: Blue Light',
-          id: 'SettingsComponentColorThemeBlueLight',
-          meaning: 'SettingsComponent'
-        });
+        return $localize`:SettingsComponent|Color Theme Option - Blue Light@@SettingsComponentColorThemeBlueLight:Blue Light Theme`;
       }
       case Theme.blue_dark_theme: {
-        return this.i18n({
-          value: 'Blue Dark Theme',
-          description: 'Color Theme Option: Blue Dark',
-          id: 'SettingsComponentColorThemeBlueDark',
-          meaning: 'SettingsComponent'
-        });
+        return $localize`:SettingsComponent|Color Theme Option -  Blue Dark@@SettingsComponentColorThemeBlueDark:Blue Dark Theme`;
       }
       case Theme.magenta_light_theme: {
-        return this.i18n({
-          value: 'Magenta Light Theme',
-          description: 'Color Theme Option: Magenta Light',
-          id: 'SettingsComponentColorThemeMagentaLight',
-          meaning: 'SettingsComponent'
-        });
+        return $localize`:SettingsComponent|Color Theme Option - Magenta Light@@SettingsComponentColorThemeMagentaLight:Magenta Light Theme`;
       }
       case Theme.magenta_dark_theme: {
-        return this.i18n({
-          value: 'Magenta Dark Theme',
-          description: 'Color Theme Option: Magenta Dark',
-          id: 'SettingsComponentColorThemeMagentaDark',
-          meaning: 'SettingsComponent'
-        });
+        return $localize`:SettingsComponent|Color Theme Option - Magenta Dark@@SettingsComponentColorThemeMagentaDark:Magenta Dark Theme`;
       }
       default:
         throw Error(`Translation for theme ${theme} does not exists.`);
@@ -92,28 +71,13 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public getLayoutName(layout: Layout): string {
     switch (layout) {
       case Layout.view_list: {
-        return this.i18n({
-          value: 'List View',
-          description: 'View Mode: List',
-          id: 'NavigationComponentViewModeList',
-          meaning: 'NavigationComponent'
-        });
+        return $localize`:NavigationComponent|View Mode - List@@NavigationComponentViewModeList:List View`;
       }
       case Layout.view_module: {
-        return this.i18n({
-          value: 'Module View',
-          description: 'View Mode: Module',
-          id: 'NavigationComponentViewModeModule',
-          meaning: 'NavigationComponent'
-        });
+        return $localize`:NavigationComponent|View Mode - Module@@NavigationComponentViewModeModule:Module View`;
       }
       case Layout.view_stream: {
-        return this.i18n({
-          value: 'Stream View',
-          description: 'View Mode: Stream',
-          id: 'NavigationComponentViewModeStream',
-          meaning: 'NavigationComponent'
-        });
+        return $localize`:NavigationComponent|View Mode - Stream@@NavigationComponentViewModeStream:Stream View`;
       }
     }
   }
