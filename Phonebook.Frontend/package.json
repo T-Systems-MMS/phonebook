@@ -38,6 +38,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/core": "^9.0.4",
+    "@angular-devkit/schematics": "^9.0.4",
     "@angular/animations": "8.2.14",
     "@angular/cdk": "8.2.3",
     "@angular/common": "8.2.14",
@@ -56,6 +58,7 @@
     "@ngxs/router-plugin": "3.6.0",
     "@ngxs/storage-plugin": "3.6.0",
     "@ngxs/store": "3.6.0",
+    "@schematics/angular": "^9.0.4",
     "classlist.js": "1.1.20150312",
     "marked": "0.8.0",
     "ng2-rx-componentdestroyed": "3.0.1",
