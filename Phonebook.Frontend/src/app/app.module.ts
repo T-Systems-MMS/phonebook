@@ -3,9 +3,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlatformModule } from '@angular/cdk/platform';
 import { HttpClientModule } from '@angular/common/http';
 import { LOCALE_ID, NgModule, TRANSLATIONS } from '@angular/core';
-import { MatBadgeModule } from '@angular/material';
+import { MatBadgeModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
@@ -41,12 +42,18 @@ import { ErrorHandlerModule } from 'src/app/shared/error/error.module';
 // Modules
 import { MaterialModule } from 'src/app/shared/material.module';
 import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
-import { AppState, BookmarksState, CommonPersonsState, LastPersonsState, SearchState, TableState } from 'src/app/shared/states';
+import {
+  AppState,
+  BookmarksState,
+  CommonPersonsState,
+  LastPersonsState,
+  SearchState,
+  TableState
+} from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
-import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
 
 declare const require;
 
@@ -55,6 +62,7 @@ declare const require;
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     HttpClientModule,
     ErrorHandlerModule.forRoot(),
@@ -99,7 +107,7 @@ declare const require;
       },
       deps: [LOCALE_ID]
     },
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {panelClass: 'mat-dialog-override'}},
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { panelClass: 'mat-dialog-override' } },
     WINDOW_PROVIDER,
     ServiceWorkerService,
     WindowRef,

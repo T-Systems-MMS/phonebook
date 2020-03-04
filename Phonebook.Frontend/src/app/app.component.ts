@@ -1,18 +1,19 @@
 import { Platform } from '@angular/cdk/platform';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NavigationError, Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationError, Router } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { Store } from '@ngxs/store';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { filter } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
-import { AppState, InitTheme, SetSendFeedback, SetDisplayedNotificationVersion } from 'src/app/shared/states/App.state';
-import { ReleaseInfoService } from './services/release-info.service';
+import { AppState, InitTheme, ServiceWorkerNotificationDisplayed, SetDisplayedNotificationVersion, SetSendFeedback } from 'src/app/shared/states/App.state';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { ReleaseInfoService } from './services/release-info.service';
 
 @Component({
   selector: 'app-root',
@@ -27,9 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private releaseMigrationService: ReleaseInfoService,
     private store: Store,
-    // Commented as long as serviceWorker is reinstalled
-    // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
-    // private swUpdates: SwUpdate,
+    private swUpdates: SwUpdate,
     private matDialog: MatDialog,
     private platform: Platform,
     private router: Router,
@@ -38,66 +37,64 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
   public ngOnInit() {
     this.store.dispatch(new InitTheme());
-    // Commented as long as serviceWorker is reinstalled
-    // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
-    // //Checking if the Service Worker was installed correctly.
-    // if (!this.store.selectSnapshot(AppState.serviceWorkerNotificationDisplayed)) {
-    //   if ('serviceWorker' in navigator) {
-    //     this.swUpdates.activated.subscribe(active => {
-    //       if (active.current) {
-    //         this.snackBar.open(
-    //           this.i18n({
-    //             value: 'Hurray! You can use this Website offline.',
-    //             description: 'Message indicating the service worker was successfully installed',
-    //             id: 'AppComponentServiceWorkerSuccessMessage',
-    //             meaning: 'AppComponent'
-    //           }),
-    //           '',
-    //           { duration: 3000 }
-    //         );
-    //         this.store.dispatch(new ServiceWorkerNotificationDisplayed());
-    //       }
-    //     });
-    //   } else {
-    //     this.snackBar.open(
-    //       this.i18n({
-    //         value: 'Your Browser does not support Offline Apps!',
-    //         description: 'Message indicating the service worker was not installed',
-    //         id: 'AppComponentServiceWorkerErrorMessage',
-    //         meaning: 'AppComponent'
-    //       }),
-    //       '',
-    //       {
-    //         duration: 3000
-    //       }
-    //     );
-    //     this.store.dispatch(new ServiceWorkerNotificationDisplayed());
-    //   }
-    // }
+    //Checking if the Service Worker was installed correctly.
+    if (!this.store.selectSnapshot(AppState.serviceWorkerNotificationDisplayed)) {
+      if ('serviceWorker' in navigator) {
+        this.swUpdates.activated.subscribe(active => {
+          if (active.current) {
+            this.snackBar.open(
+              this.i18n({
+                value: 'Hurray! You can use this Website offline.',
+                description: 'Message indicating the service worker was successfully installed',
+                id: 'AppComponentServiceWorkerSuccessMessage',
+                meaning: 'AppComponent'
+              }),
+              '',
+              { duration: 3000 }
+            );
+            this.store.dispatch(new ServiceWorkerNotificationDisplayed());
+          }
+        });
+      } else {
+        this.snackBar.open(
+          this.i18n({
+            value: 'Your Browser does not support Offline Apps!',
+            description: 'Message indicating the service worker was not installed',
+            id: 'AppComponentServiceWorkerErrorMessage',
+            meaning: 'AppComponent'
+          }),
+          '',
+          {
+            duration: 3000
+          }
+        );
+        this.store.dispatch(new ServiceWorkerNotificationDisplayed());
+      }
+    }
 
-    // // Check if a new Update for the Service worker is available
-    // if (this.swUpdates.isEnabled) {
-    //   this.swUpdates.available.subscribe(() => {
-    //     const updateNotification = this.snackBar.open(
-    //       this.i18n({
-    //         value: 'A newer version is available. Do you want to update straight away?',
-    //         description: 'Message indicating the app can be updated and question if it should be updated',
-    //         id: 'AppComponentServiceWorkerUpdateMessage',
-    //         meaning: 'AppComponent'
-    //       }),
-    //       this.i18n({
-    //         value: 'Update!',
-    //         description: 'Button Text for updating the app',
-    //         id: 'AppComponentServiceWorkerUpdateButtonMessage',
-    //         meaning: 'AppComponent'
-    //       }),
-    //       { duration: 4000 }
-    //     );
-    //     updateNotification.onAction().subscribe(onAction => {
-    //       window.location.reload();
-    //     });
-    //   });
-    // }
+    // Check if a new Update for the Service worker is available
+    if (this.swUpdates.isEnabled) {
+      this.swUpdates.available.subscribe(() => {
+        const updateNotification = this.snackBar.open(
+          this.i18n({
+            value: 'A newer version is available. Do you want to update straight away?',
+            description: 'Message indicating the app can be updated and question if it should be updated',
+            id: 'AppComponentServiceWorkerUpdateMessage',
+            meaning: 'AppComponent'
+          }),
+          this.i18n({
+            value: 'Update!',
+            description: 'Button Text for updating the app',
+            id: 'AppComponentServiceWorkerUpdateButtonMessage',
+            meaning: 'AppComponent'
+          }),
+          { duration: 4000 }
+        );
+        updateNotification.onAction().subscribe(onAction => {
+          window.location.reload();
+        });
+      });
+    }
 
     //if skip_cookies is set, dont show dialogs
     if (this.skippedDialogs) {

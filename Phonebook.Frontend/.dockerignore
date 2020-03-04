@@ -11,6 +11,8 @@
 !tslint.json
 !nginx
 !substitute_variables.sh
+!index_rehash.sh
 !globals.js
 !version.js
 !opensearch.xml
+!ngsw-config.json
