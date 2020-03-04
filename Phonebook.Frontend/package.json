@@ -64,7 +64,7 @@
     "ngx-propagation-stop": "1.0.22",
     "ngx-vcard": "1.2.20",
     "raven-js": "3.27.2",
-    "rxjs": "6.5.3",
+    "rxjs": "6.5.4",
     "uglify-es": "3.3.9",
     "zone.js": "0.10.2"
   },
