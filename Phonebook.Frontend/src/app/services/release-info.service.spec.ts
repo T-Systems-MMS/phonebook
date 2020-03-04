@@ -17,7 +17,6 @@ describe('ReleaseInfoService', () => {
       imports: [MatDialogModule, MatSnackBarModule, NgxsModule.forRoot([AppState]), HttpClientModule],
       providers: [
         ReleaseInfoService,
-        ,
         {
           provide: ThemeService,
           useValue: null

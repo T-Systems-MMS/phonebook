@@ -21,7 +21,7 @@ Here is a quick overview:
 ### **Unit Tests**
 
 ```bash
-npm run test-compose:dev
+npm run test-compose
 ```
 
 In order to run them without docker use the companion command `npm run test:dev`.

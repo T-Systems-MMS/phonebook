@@ -8,9 +8,6 @@ import { environment } from './environments/environment';
 
 environment.migrationLevel = migrate();
 
-// Load `$localize` onto the global scope - used for i18n tags
-import '@angular/localize/init';
-
 if (runtimeEnvironment.environment !== Environment.development) {
   enableProdMode();
 }

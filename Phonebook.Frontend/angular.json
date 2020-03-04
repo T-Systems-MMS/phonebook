@@ -4,23 +4,29 @@
   "newProjectRoot": "projects",
   "projects": {
     "phonebook": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "i18n": {
         "sourceLocale": "en",
         "locales": {
           "de": "src/i18n/messages.de.xlf"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
-      "projectType": "application",
       "architect": {
-        "dev": {
+        "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
@@ -39,18 +45,39 @@
                 "src/styles"
               ]
             },
-            "optimization": false,
-            "outputHashing": "none",
-            "sourceMap": true,
-            "extractCss": true,
-            "namedChunks": false,
-            "aot": true,
-            "extractLicenses": true,
-            "vendorChunk": false,
-            "buildOptimizer": false,
-            "i18nMissingTranslation": "error"
+            "showCircularDependencies": true,
+            "aot": true
           },
           "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "i18nMissingTranslation": "error",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
             "en": {
               "localize": [
                 "en"
@@ -71,106 +98,21 @@
             }
           }
         },
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "showCircularDependencies": true,
-            "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
-            "assets": [
-              "src/assets",
-              "src/favicon.ico",
-              "src/changelog.md",
-              "src/manifest.webmanifest"
-            ],
-            "styles": [
-              "src/styles.scss",
-              "src/fonts/fonts.css",
-              "src/fonts/materialicons/material-icons.css"
-            ],
-            "scripts": [],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles"
-              ]
-            },
-            "optimization": true,
-            "outputHashing": "all",
-            "sourceMap": false,
-            "extractCss": true,
-            "namedChunks": false,
-            "aot": true,
-            "extractLicenses": true,
-            "vendorChunk": false,
-            "buildOptimizer": true,
-            "fileReplacements": [
-              {
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }
-            ]
-          },
-          "configurations": {
-            "en": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
-              "i18nMissingTranslation": "error",
-              "localize": [
-                "en"
-              ],
-              "outputPath": "dist"
-            },
-            "de": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
-              "i18nMissingTranslation": "error",
-              "localize": [
-                "de"
-              ],
-              "outputPath": "dist"
-            },
-            "preview": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
-              "i18nFile": "src/i18n/messages.de.xlf",
-              "i18nLocale": "de",
-              "i18nMissingTranslation": "error",
-              "outputPath": "dist/"
-            }
-          }
-        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "phonebook:dev:en"
+            "browserTarget": "phonebook:build",
+            "optimization": false
           },
           "configurations": {
             "debug": {
-              "browserTarget": "phonebook:dev:debug"
+              "browserTarget": "phonebook:build:debug"
             },
             "en": {
-              "browserTarget": "phonebook:dev:en"
+              "browserTarget": "phonebook:build:en"
             },
             "de": {
-              "browserTarget": "phonebook:dev:de"
-            },
-            "test": {
-              "browserTarget": "phonebook:dev:test"
+              "browserTarget": "phonebook:build:de"
             }
           }
         },
@@ -184,10 +126,9 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [],
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
             "sourceMap": true,
             "styles": [
               "src/styles.scss",
@@ -203,59 +144,39 @@
               "includePaths": [
                 "src/styles"
               ]
-            }
+            },
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        }
-      }
-    },
-    "phonebook-e2e": {
-      "root": "",
-      "sourceRoot": "",
-      "projectType": "application",
-      "architect": {
+        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "./protractor.conf.js",
+            "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "phonebook:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "phonebook:serve:production"
+            }
           }
         }
       }
     }
   },
   "defaultProject": "phonebook",
-  "schematics": {
-    "@schematics/angular:component": {
-      "prefix": "app",
-      "style": "scss"
-    },
-    "@schematics/angular:directive": {
-      "prefix": "app"
-    }
-  },
   "cli": {
     "analytics": false
   }
