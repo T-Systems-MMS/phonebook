@@ -65,7 +65,7 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
         }
       });
   }
-  private getProfilePictureUrl() {
+  private getAprilProfilePictureUrl() {
     var random =  Math.floor(Math.random() * Math.floor(9)).toString();
     switch (random) {
       case '0': return 'https://cdn.pixabay.com/photo/2020/02/15/17/51/drawing-4851591_960_720.png';
@@ -90,10 +90,10 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
           this.imageUrl = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/${this.imageSize}.jpg`;
         }
       } else {
-        this.imageUrl = this.getProfilePictureUrl();
+        this.imageUrl = this.getAprilProfilePictureUrl();
       }
     }else{
-      this.imageUrl = this.getProfilePictureUrl();
+      this.imageUrl = this.getAprilProfilePictureUrl();
     }
   }
 
