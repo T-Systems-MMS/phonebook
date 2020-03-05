@@ -12,7 +12,7 @@ RUN npm ci
 # Because: https://stackoverflow.com/questions/37715224/copy-multiple-directories-with-one-command
 COPY ./src/ ./src/
 
-COPY ["angular.json", "tsconfig.json", "tslint.json", "./"]
+COPY ["angular.json", "tsconfig.json", "tsconfig.app.json", "tsconfig.spec.json", "tslint.json", "./"]
 RUN npm run build
 
 
