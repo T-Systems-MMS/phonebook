@@ -36,7 +36,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public tableResultCount$: Observable<number>;
   public displayTableSettings: boolean = false;
   public hasImage: boolean = false;
-
+  public isFirstApril: boolean = false;
+  
   public currentUser: Person | null = null;
   constructor(
     private currentUserService: CurrentUserService,
@@ -70,6 +71,12 @@ export class NavigationComponent implements OnInit, OnDestroy {
       });
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(route => {
       this.displayTableSettings = this.router.url.includes('search');
+    });
+    this.featureFlagService
+    .get('firstApril')
+    .pipe(untilComponentDestroyed(this))
+    .subscribe(flag => {
+      this.isFirstApril = flag;
     });
   }
 
