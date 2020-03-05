@@ -122,9 +122,13 @@ export class ChangeProfilePictureComponent implements OnInit {
         this.profilePictureService.reload.emit(this.userId);
       },
       error => {
-        this.snackBar.open($localize`:@@GeneralErrorMessage:Something went wrong. Please try again.`, '', {
-          duration: 3000
-        });
+        this.snackBar.open(
+          $localize`:GeneralErrorMessage|Something went wrong, this is the message to be displayed@@GeneralErrorMessage:Something went wrong. Please try again.`,
+          '',
+          {
+            duration: 3000
+          }
+        );
       }
     );
   }

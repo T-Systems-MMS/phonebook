@@ -30,7 +30,7 @@ export class ActionDrawerSheetComponent {
 
   public copyErrorToast() {
     this.snackBar.open(
-      $localize`:@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
+      $localize`:ErrorMessageCopy|Message displayed if something was not copied succesfully@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
       '',
       { duration: 2000 }
     );

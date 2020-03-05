@@ -13,7 +13,11 @@ export class ActionDrawerDirective {
     // Checks if only one of the actions is true
     if (this.copy && !this.tel && !this.mailto) {
       this.clipboardService.copyFromContent(this.copy);
-      this.snackBar.open($localize`:@@GeneralSuccessMessageCopy:Copied to clipboard!`, '', { duration: 2000 });
+      this.snackBar.open(
+        $localize`:SuccessMessageCopy|Message displayed if something was copied succesfully@@GeneralSuccessMessageCopy:Copied to clipboard!`,
+        '',
+        { duration: 2000 }
+      );
     } else if (!this.copy && !this.tel && this.mailto) {
       window.open('mailto:${this.tel}', '_blank');
     } else if (!this.copy && this.tel && !this.mailto) {
