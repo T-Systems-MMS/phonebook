@@ -44,7 +44,7 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
     private profilePictureService: ProfilePictureService,
     private featureFlagService: FeatureFlagService,
     private httpClient: HttpClient
-  ) {}
+  ) { }
 
   public ngOnInit() {
     this.featureFlagService
@@ -66,7 +66,7 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
       });
   }
   private getAprilProfilePictureUrl() {
-    var random =  Math.floor(Math.random() * Math.floor(9)).toString();
+    var random = Math.floor(Math.random() * Math.floor(9)).toString();
     switch (random) {
       case '0': return 'https://cdn.pixabay.com/photo/2020/02/15/17/51/drawing-4851591_960_720.png';
       case '1': return 'https://cdn.pixabay.com/photo/2019/01/30/16/55/unicorn-3964925_960_720.png';
@@ -92,11 +92,8 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
       } else {
         this.imageUrl = this.getAprilProfilePictureUrl();
       }
-    }else{
-      this.imageUrl = this.getAprilProfilePictureUrl();
     }
   }
-
   public useImage(event: Event) {
     this.imageLoaded = true;
   }
