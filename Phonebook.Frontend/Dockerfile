@@ -13,8 +13,7 @@ RUN npm ci
 COPY ./src/ ./src/
 
 COPY ["angular.json", "tsconfig.json", "tslint.json", "./"]
-RUN npm run build:de
-RUN npm run build:en
+RUN npm run build
 
 
 

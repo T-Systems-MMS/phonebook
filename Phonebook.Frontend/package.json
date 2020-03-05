@@ -18,7 +18,7 @@
     "e2e": "ng e2e",
     "e2e-docker": "npm run docker-build && docker run --rm build_phonebook npm run e2e",
     "pre-build": "locl convert -s=src/i18n/messages.de.xlf -f=json -o=dist/i18n/de.json && locl convert -s=src/i18n/messages.en.xlf -f=json -o=dist/i18n/en.json",
-    "build": "npm run pre-build && npm run build:prod",
+    "build": "npm run build:prod",
     "build:prod": "ng build --configuration=production,de,en --localize",
     "build-docker:prod": "docker build -t phonebook . && docker run --rm phonebook:latest",
     "build-compose:dev": "npm run compose-build && docker-compose run --rm --service-ports nginx ",
