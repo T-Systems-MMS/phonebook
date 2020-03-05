@@ -62,3 +62,9 @@
   @include angular-material-theme($magenta_dark_theme);
   @include custom-components-theme($magenta_dark_theme);
 }
+
+@import 'src/styles/themes/unicorn';
+.unicorn_theme {
+  @include angular-material-theme($unicorn_theme);
+  @include custom-components-theme($unicorn_theme);
+}

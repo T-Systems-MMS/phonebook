@@ -60,6 +60,14 @@ export class SettingsComponent implements OnInit, OnDestroy {
           meaning: 'SettingsComponent'
         });
       }
+      case Theme.unicorn_theme: {
+        return this.i18n({
+          value: 'Unicorn Theme',
+          description: 'Color Theme Option: Unicorn',
+          id: 'SettingsComponentColorThemeUnicorn',
+          meaning: 'SettingsComponent'
+        });
+      }
       case Theme.blue_dark_theme: {
         return this.i18n({
           value: 'Blue Dark Theme',
