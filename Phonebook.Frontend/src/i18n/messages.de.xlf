@@ -432,9 +432,7 @@
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentPropertySupervisor" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {No Supervisor } =1 {Supervisor: } other {Supervisors: }}</source>
-        <target state="translated">
-          <x id="ICU" equiv-text="{node.supervisors.length, plural, =0 {...} =1 {...} other {...}}"/>
-        </target>
+        <target state="translated">{VAR_PLURAL, plural, =0 {Keine Leiter} =1 {Leiter: } other {Leiter: } }</target>
         <note priority="1" from="description">Supervisor Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
