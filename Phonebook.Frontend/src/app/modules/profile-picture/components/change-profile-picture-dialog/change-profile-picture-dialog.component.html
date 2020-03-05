@@ -1,5 +1,6 @@
-<h2 mat-dialog-title i18n="ChangeProfilePictureDialogComponent|Title@@ChangeProfilePictureDialogComponentTitle">Change
-  Profile Picture</h2>
+<h2 mat-dialog-title i18n="ChangeProfilePictureDialogComponent|Title@@ChangeProfilePictureDialogComponentTitle">
+  Change Profile Picture
+</h2>
 <mat-dialog-content i18n="ChangeProfilePictureDialogComponent|Content@@ChangeProfilePictureDialogComponentContent">
   <p>
     You're changing your profile picture? Nice! But please notice:
@@ -14,11 +15,19 @@
     <li>
       You can change or delete your picture at any time. (Just click the Button right next to the upload Button.)
     </li>
+    <li>
+      Your profile picture will deleted if you choose to leave the company.
+    </li>
   </ul>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button [mat-dialog-close]="false" i18n="@@GeneralCancelButton">Cancel</button>
-  <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial
-    i18n="ChangeProfilePictureDialogComponent|Button to consent sending bug reports@@ChangeProfilePictureDialogComponentButtonChangePicture">Change
-    my Picture!</button>
+  <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    i18n="ChangeProfilePictureDialogComponent|Button to consent sending bug reports@@ChangeProfilePictureDialogComponentButtonChangePicture"
+  >
+    Change my Picture!
+  </button>
 </mat-dialog-actions>

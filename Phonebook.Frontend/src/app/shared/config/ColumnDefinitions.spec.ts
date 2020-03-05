@@ -1,9 +1,9 @@
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { mockPerson } from 'src/app/shared/mocks/person';
-import { Business, City, Contacts, Location, Messenger, Person, PersonType, PhonebookSortDirection, Room } from 'src/app/shared/models';
+import { Business, City, Contacts, Location, Messenger, Person, PersonStatus, PhonebookSortDirection, Room } from 'src/app/shared/models';
 
 const personA = new Person(
-  PersonType.Interner_Lernender,
+  PersonStatus.Interner_Lernender,
   'aaaa',
   'Abc',
   'Abc',
@@ -16,7 +16,7 @@ const personA = new Person(
 );
 
 const personB = new Person(
-  PersonType.Interner_Lernender,
+  PersonStatus.Interner_Lernender,
   'xxxx',
   'xyz',
   'xyz',
@@ -39,9 +39,9 @@ describe('Column Filter Functions: ', () => {
   });
 
   it('fullname', () => {
-    expect(ColumnDefinitions.fullname.filterFunction(/Dr\.MaxMustermann/i, mockPerson)).toBe(true);
-    expect(ColumnDefinitions.fullname.filterFunction(/MaxMustermann/i, mockPerson)).toBe(true);
-    expect(ColumnDefinitions.fullname.filterFunction(/MustermannMax/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/Dr\. Max Mustermann/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/Max Mustermann/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/Mustermann Max/i, mockPerson)).toBe(true);
     expect(ColumnDefinitions.fullname.filterFunction(/Max/i, mockPerson)).toBe(true);
     expect(ColumnDefinitions.fullname.filterFunction(/Mustermann/i, mockPerson)).toBe(true);
     expect(ColumnDefinitions.fullname.filterFunction(/Nichtswaspasst/i, mockPerson)).toBe(false);

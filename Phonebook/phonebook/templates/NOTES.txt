@@ -1,0 +1,2 @@
+Your Application should be running under the specified host: 
+  https://{{ .Values.host }}

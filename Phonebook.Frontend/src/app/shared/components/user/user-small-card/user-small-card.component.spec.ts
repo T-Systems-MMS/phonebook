@@ -1,9 +1,11 @@
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MockPipe } from 'ng-mocks';
 import { UserSmallCardComponent } from 'src/app/shared/components/user/user-small-card/user-small-card.component';
-import { NO_ERRORS_SCHEMA, Component } from '@angular/core';
 import { Person } from 'src/app/shared/models';
-import { prependOnceListener } from 'cluster';
+import { TelephonePipe } from 'src/app/shared/pipes/telephone.pipe';
+
+
 
 describe('UserSmallCardComponent', () => {
   let component: UserSmallCardComponent;
@@ -11,7 +13,7 @@ describe('UserSmallCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponentWrapper, UserSmallCardComponent],
+      declarations: [TestComponentWrapper, UserSmallCardComponent, MockPipe(TelephonePipe, (...args) => args[0])],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));

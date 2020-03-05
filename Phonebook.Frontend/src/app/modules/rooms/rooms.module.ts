@@ -1,7 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoomDetailComponent } from 'src/app/modules/rooms/components/room/room.component';
-import { RoomTreeComponent } from 'src/app/modules/rooms/components/room-tree/room-tree.component';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
@@ -14,19 +12,21 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { ClipboardModule } from 'ngx-clipboard';
+import { PropagationStopModule } from 'ngx-propagation-stop';
+import { FloorComponent } from 'src/app/modules/rooms/components/floor/floor.component';
+import { RoomTreeComponent } from 'src/app/modules/rooms/components/room-tree/room-tree.component';
+import { RoomDetailComponent } from 'src/app/modules/rooms/components/room/room.component';
 import { RoomsRoutingModule } from 'src/app/modules/rooms/rooms-routing.module';
+import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter.module';
+import { AddressModule } from 'src/app/shared/components/address/address.module';
+import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.module';
+import { UserModule } from 'src/app/shared/components/user/user.module';
+import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { BuildingComponent } from './components/building/building.component';
 import { CityComponent } from './components/city/city.component';
 import { OverviewComponent } from './components/overview/overview.component';
-import { FloorComponent } from 'src/app/modules/rooms/components/floor/floor.component';
-import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter.module';
-import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
-import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.module';
-import { ClipboardModule } from 'ngx-clipboard';
-import { AddressModule } from 'src/app/shared/components/address/address.module';
-import { PropagationStopModule } from 'ngx-propagation-stop';
-import { UserModule } from 'src/app/shared/components/user/user.module';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
@@ -50,7 +50,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatToolbarModule,
     MatTooltipModule,
     MatSidenavModule,
-    UserModule
+    UserModule,
+    PipesModule
   ],
   declarations: [
     RoomDetailComponent,
@@ -58,6 +59,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     BuildingComponent,
     FloorComponent,
     CityComponent,
-    OverviewComponent]
+    OverviewComponent
+  ]
 })
-export class RoomsModule { }
+export class RoomsModule {}

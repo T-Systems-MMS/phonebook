@@ -1,9 +1,8 @@
-import { Column } from 'src/app/shared/models/interfaces';
 import { Helpers } from 'src/app/modules/table/helpers';
-import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { Person } from 'src/app/shared/models/classes/Person';
 import { PhonebookSortDirection } from 'src/app/shared/models/enumerables';
-import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
+import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
+import { Column } from 'src/app/shared/models/interfaces';
 
 export const ColumnDefinitions: {
   picture: Readonly<Column>;
@@ -18,6 +17,7 @@ export const ColumnDefinitions: {
   room: Readonly<Column>;
   building: Readonly<Column>;
   costcenter: Readonly<Column>;
+  status: Readonly<Column>;
   getAll(): Readonly<Column>[];
   getDefault(): Readonly<Column>[];
   getAllFilterableColumns(): Readonly<Column>[];
@@ -59,8 +59,9 @@ export const ColumnDefinitions: {
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
       return (
-        filterString.test(person.Title + person.Firstname + person.Surname) ||
-        filterString.test(person.Surname + person.Firstname)
+        filterString.test(
+          person.Title + ' ' + Helpers.removeAccents(person.Firstname) + ' ' + Helpers.removeAccents(person.Surname)
+        ) || filterString.test(Helpers.removeAccents(person.Surname) + ' ' + Helpers.removeAccents(person.Firstname))
       );
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
@@ -127,7 +128,7 @@ export const ColumnDefinitions: {
     sortable: true,
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
-      return filterString.test(person.Role);
+      return filterString.test(Helpers.removeAccents(person.Role));
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       return Helpers.stringCompare(a.Role, b.Role) * Helpers.sortDirection(sortDirection);
@@ -140,7 +141,7 @@ export const ColumnDefinitions: {
     sortable: true,
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
-      return filterString.test(person.Location.City.Name);
+      return filterString.test(Helpers.removeAccents(person.Location.City.Name));
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       return Helpers.stringCompare(a.Location.City.Name, b.Location.City.Name) * Helpers.sortDirection(sortDirection);
@@ -155,13 +156,13 @@ export const ColumnDefinitions: {
     filterFunction: (filterString: RegExp, person: Person) => {
       // Searches for the Organization Unit Short Form, e.g. 'GB DB'
       for (let i = 0; i < person.Business.ShortOrgUnit.length; i++) {
-        if (filterString.test(person.Business.ShortOrgUnit[i])) {
+        if (filterString.test(Helpers.removeAccents(person.Business.ShortOrgUnit[i]))) {
           return true;
         }
       }
       // Searches for the Organization Unit Long Form, e.g. 'Digital Business'
       for (let i = 0; i < person.Business.OrgUnit.length; i++) {
-        if (filterString.test(person.Business.OrgUnit[i])) {
+        if (filterString.test(Helpers.removeAccents(person.Business.OrgUnit[i]))) {
           return true;
         }
       }
@@ -179,7 +180,8 @@ export const ColumnDefinitions: {
     fullMatchFilter: false,
     filterFunction: (filterString: RegExp, person: Person) => {
       return (
-        person.Location.RoomCollection[0].Number != null && filterString.test(person.Location.RoomCollection[0].Number)
+        person.Location.RoomCollection[0].Number != null &&
+        filterString.test(Helpers.removeAccents(person.Location.RoomCollection[0].Number))
       );
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
@@ -198,7 +200,7 @@ export const ColumnDefinitions: {
     filterFunction: (filterString: RegExp, person: Person) => {
       return (
         person.Location.RoomCollection[0].Building != null &&
-        filterString.test(person.Location.RoomCollection[0].Building)
+        filterString.test(Helpers.removeAccents(person.Location.RoomCollection[0].Building))
       );
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
@@ -221,6 +223,19 @@ export const ColumnDefinitions: {
       return Helpers.stringCompare(a.Business.Costcenter, b.Business.Costcenter) * Helpers.sortDirection(sortDirection);
     }
   },
+  status: {
+    id: ColumnId.status,
+    rank: 10,
+    filterable: true,
+    sortable: true,
+    fullMatchFilter: false,
+    filterFunction: (filterString: RegExp, person: Person) => {
+      return filterString.test(person.Type);
+    },
+    sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
+      return Helpers.stringCompare(a.Type, b.Type) * Helpers.sortDirection(sortDirection);
+    }
+  },
   getAll: () => {
     return [
       ColumnDefinitions.picture,
@@ -234,7 +249,8 @@ export const ColumnDefinitions: {
       ColumnDefinitions.orgUnit,
       ColumnDefinitions.room,
       ColumnDefinitions.building,
-      ColumnDefinitions.costcenter
+      ColumnDefinitions.costcenter,
+      ColumnDefinitions.status
     ];
   },
   getDefault: () => {

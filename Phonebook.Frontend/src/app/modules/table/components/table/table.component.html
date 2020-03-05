@@ -1,38 +1,77 @@
-<div class="pb-w-100 pb-overflow-auto" [ngClass]="dataSource.data.length > 0 ? '': 'pb-no-display'" infinite-scroll
-  [infiniteScrollDistance]="2" [infiniteScrollThrottle]="100" [infiniteScrollUpDistance]="0.5" (scrolled)="loadMore()"
-  [scrollWindow]="false" (scroll)="scrolling($event)">
+<div
+  class="pb-w-100 pb-overflow-auto"
+  [ngClass]="dataSource.data.length > 0 ? '' : 'pb-no-display'"
+  infinite-scroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="100"
+  [infiniteScrollUpDistance]="0.5"
+  (scrolled)="loadMore()"
+  [scrollWindow]="false"
+  (scroll)="scrolling($event)"
+>
   <div class="spinner-container" *ngIf="dataSource.loading$ | async">
     <mat-spinner></mat-spinner>
   </div>
-  <app-user-detail [previewView]="true" [person]="previewPerson" *ngIf="previewPerson"
-    (click)="routeToUser(previewPerson.Id)" tabindex="0"></app-user-detail>
-  <mat-table #table class="pb-w-100" [dataSource]="dataSource" matSort [matSortActive]="sortActive"
-    [matSortDirection]="sortDirection" track-by="trackById">
+  <app-user-detail
+    [previewView]="true"
+    [person]="previewPerson"
+    *ngIf="previewPerson"
+    (click)="routeToUser(previewPerson.Id)"
+    tabindex="0"
+  ></app-user-detail>
+  <mat-table
+    #table
+    class="pb-w-100"
+    [dataSource]="dataSource"
+    matSort
+    [matSortActive]="sortActive"
+    [matSortDirection]="sortDirection"
+    track-by="trackById"
+  >
     <ng-container [matColumnDef]="columns.picture.id">
-      <mat-header-cell *matHeaderCellDef> {{columnTranslate.getTranslation(columns.picture.id)}} </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+        {{ columnTranslate.getTranslation(columns.picture.id) }}
+      </mat-header-cell>
       <mat-cell *matCellDef="let person">
-        <app-profile-picture class="circle square-img50" [user]="person" [altText]="person.Id"
-          [canEnlargeOnHover]="true" [imageSize]="50"></app-profile-picture>
+        <app-profile-picture
+          class="circle square-img50"
+          [user]="person"
+          [altText]="person.Id"
+          [canEnlargeOnHover]="true"
+          [imageSize]="50"
+        ></app-profile-picture>
       </mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="columns.id.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Id"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Id'@@TableComponentColumnIdLabel">
-        {{columnTranslate.getTranslation(columns.id.id)}}</mat-header-cell>
-      <mat-cell *matCellDef="let person">{{person.Id | lowercase}}</mat-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Id"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Id'@@TableComponentColumnIdLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.id.id) }}</mat-header-cell
+      >
+      <mat-cell *matCellDef="let person">{{ person.Id | lowercase }}</mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="columns.fullname.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Name"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Name'@@TableComponentColumnNameLabel">
-        {{columnTranslate.getTranslation(columns.fullname.id)}}</mat-header-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Name"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Name'@@TableComponentColumnNameLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.fullname.id) }}</mat-header-cell
+      >
 
-      <mat-cell *matCellDef="let person"> {{person.Surname + ', ' + person.Firstname}}</mat-cell>
+      <mat-cell *matCellDef="let person"> {{ person.Surname + ', ' + person.Firstname }}</mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="columns.email.id">
-      <mat-header-cell *matHeaderCellDef> {{columnTranslate.getTranslation(columns.email.id)}} </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+        {{ columnTranslate.getTranslation(columns.email.id) }}
+      </mat-header-cell>
       <mat-cell *matCellDef="let person">
         <button mat-icon-button actionDrawer [copy]="person.Contacts.Email" [mailto]="person.Contacts.Email">
           <mat-icon>email</mat-icon>
@@ -41,66 +80,107 @@
     </ng-container>
 
     <ng-container [matColumnDef]="columns.phone.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Phone"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Phone'@@TableComponentColumnPhoneLabel">
-        {{columnTranslate.getTranslation(columns.phone.id)}}</mat-header-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Phone"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Phone'@@TableComponentColumnPhoneLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.phone.id) }}</mat-header-cell
+      >
 
       <mat-cell *matCellDef="let person">
-        <button mat-button actionDrawer [copy]="person.Contacts.Phone" [tel]="person.Contacts.Phone"
-          *ngIf="person.Contacts.Phone != ''">
-          {{person.Contacts.Phone}}
+        <button
+          mat-button
+          actionDrawer
+          [copy]="person.Contacts.Phone"
+          [tel]="person.Contacts.Phone | telephone"
+          *ngIf="person.Contacts.Phone != ''"
+        >
+          {{ person.Contacts.Phone }}
         </button>
       </mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="columns.mobile.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Mobile"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Mobile'@@TableComponentColumnMobileLabel">
-        {{columnTranslate.getTranslation(columns.mobile.id)}}</mat-header-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Mobile"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Mobile'@@TableComponentColumnMobileLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.mobile.id) }}</mat-header-cell
+      >
       <mat-cell *matCellDef="let person">
-        <button mat-button actionDrawer [copy]="person.Contacts.Mobile" [tel]="person.Contacts.Mobile"
-          *ngIf="person.Contacts.Mobile != ''">
-          {{person.Contacts.Mobile}}
+        <button
+          mat-button
+          actionDrawer
+          [copy]="person.Contacts.Mobile"
+          [tel]="person.Contacts.Mobile | telephone"
+          *ngIf="person.Contacts.Mobile != ''"
+        >
+          {{ person.Contacts.Mobile }}
         </button>
       </mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="columns.role.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Role"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Role'@@TableComponentColumnRoleLabel">
-        {{columnTranslate.getTranslation(columns.role.id)}}</mat-header-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Role"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Role'@@TableComponentColumnRoleLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.role.id) }}</mat-header-cell
+      >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.role" [filterValue]="person.Role"></app-add-filter>
       </mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="columns.city.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column City"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'City'@@TableComponentColumnCityLabel">
-        {{columnTranslate.getTranslation(columns.city.id)}}</mat-header-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column City"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'City'@@TableComponentColumnCityLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.city.id) }}</mat-header-cell
+      >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.city" [filterValue]="person.Location.City.Name"></app-add-filter>
       </mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="columns.orgUnit.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Organization Unit"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Organization Unit'@@TableComponentColumnOrgUnitLabel">
-        {{columnTranslate.getTranslation(columns.orgUnit.id)}}
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Organization Unit"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Organization Unit'@@TableComponentColumnOrgUnitLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.orgUnit.id) }}
       </mat-header-cell>
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="person.Business.ShortOrgUnit[0]">
-        </app-add-filter>
-        <span *ngFor="let orgUnit of person.Business.ShortOrgUnit.slice(1)">,
-          <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="orgUnit"></app-add-filter>
-        </span>
+        <mat-chip-list>
+          <app-add-filter
+            *ngFor="let orgUnit of person.Business.ShortOrgUnit"
+            [filterColumn]="columns.orgUnit"
+            [filterValue]="orgUnit"
+          ></app-add-filter>
+        </mat-chip-list>
       </mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="columns.room.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Room"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Room'@@TableComponentColumnRoomLabel">
-        {{columnTranslate.getTranslation(columns.room.id)}}</mat-header-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Room"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Room'@@TableComponentColumnRoomLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.room.id) }}</mat-header-cell
+      >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.room" [filterValue]="person.Location.RoomCollection[0].Number">
         </app-add-filter>
@@ -108,9 +188,14 @@
     </ng-container>
 
     <ng-container [matColumnDef]="columns.building.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Building"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Building'@@TableComponentColumnBuildingLabel">
-        {{columnTranslate.getTranslation(columns.building.id)}}</mat-header-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Building"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Building'@@TableComponentColumnBuildingLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.building.id) }}</mat-header-cell
+      >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.building" [filterValue]="person.Location.RoomCollection[0].Building">
         </app-add-filter>
@@ -118,27 +203,46 @@
     </ng-container>
 
     <ng-container [matColumnDef]="columns.costcenter.id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header sortButtonLabel="Change sorting for column Costcenter"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Costcenter'@@TableComponentColumnCostcenterLabel">
-        {{columnTranslate.getTranslation(columns.costcenter.id)}}</mat-header-cell>
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column Profitcenter"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Profitcenter' once Costcenter@@TableComponentColumnCostcenterLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.costcenter.id) }}</mat-header-cell
+      >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.costcenter" [filterValue]="person.Business.Costcenter"></app-add-filter>
       </mat-cell>
     </ng-container>
 
+    <ng-container [matColumnDef]="columns.status.id">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column status"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Status'@@TableComponentColumnStatusLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.status.id) }}</mat-header-cell
+      >
+      <mat-cell *matCellDef="let person">
+        <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type"></app-add-filter>
+      </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" [class.mat-elevation-z5]="!onTop">
     </mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="routeToUser(row.Id)" mat-ripple></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="routeToUser(row.Id)" mat-ripple></mat-row>
     <!-- <mat-row *matRowDef="let row; columns: displayedColumns;" mat-ripple>HI</mat-row> -->
   </mat-table>
 </div>
 <mat-card *ngIf="!dataSource.data.length" class="notfound-container">
   <ng-container
-    i18n="TableComponent|Sentence displayed if search did not return any results@@TableComponentSearchNoResult">
+    i18n="TableComponent|Sentence displayed if search did not return any results@@TableComponentSearchNoResult"
+  >
     Your search returned no results.
   </ng-container>
 </mat-card>
-
 
 <button mat-fab color="primary" *ngIf="!onTop" class="floating-action-button" (click)="scrollToTop(table)">
   <mat-icon>arrow_upward</mat-icon>

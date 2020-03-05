@@ -1,16 +1,17 @@
-import { Store, NgxsModule } from '@ngxs/store';
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import {
-  SearchState,
-  AddSearchFilter,
-  RemoveSearchFilter,
-  RemoveLastSearchFilter,
-  ResetSearch,
-  SetSearchFiltersAndSearchTerm
-} from 'src/app/shared/states/Search.state';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsModule, Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
+import {
+  AddSearchFilter,
+  RemoveLastSearchFilter,
+  RemoveSearchFilter,
+  ResetSearch,
+  SearchState,
+  SetSearchFiltersAndSearchTerm
+} from 'src/app/shared/states/Search.state';
 
 const ROUTER_STATE = {
   state: {
@@ -22,7 +23,10 @@ const ROUTER_STATE = {
       outlet: 'primary',
       routeConfig: null,
       firstChild: {
-        url: [{ path: 'user', parameters: {} }, { path: 'JAAB', parameters: {} }],
+        url: [
+          { path: 'user', parameters: {} },
+          { path: 'JAAB', parameters: {} }
+        ],
         params: { id: 'JAAB' },
         queryParams: {},
         data: {},
@@ -34,7 +38,10 @@ const ROUTER_STATE = {
       },
       children: [
         {
-          url: [{ path: 'user', parameters: {} }, { path: 'JAAB', parameters: {} }],
+          url: [
+            { path: 'user', parameters: {} },
+            { path: 'JAAB', parameters: {} }
+          ],
           params: { id: 'JAAB' },
           queryParams: {},
           data: {},
@@ -57,7 +64,17 @@ describe('[States] Search', () => {
   let store: Store;
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, NgxsModule.forRoot([SearchState]), NgxsRouterPluginModule.forRoot()]
+      declarations: [SimpleComponent],
+      imports: [
+        RouterTestingModule.withRoutes([
+          {
+            path: '**',
+            component: SimpleComponent
+          }
+        ]),
+        NgxsModule.forRoot([SearchState]),
+        NgxsRouterPluginModule.forRoot()
+      ]
     }).compileComponents();
     store = TestBed.get(Store);
     store.reset({
@@ -228,3 +245,9 @@ describe('[States] Search', () => {
     });
   });
 });
+
+@Component({
+  selector: 'cmp',
+  template: ''
+})
+class SimpleComponent {}

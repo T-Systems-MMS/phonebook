@@ -3,59 +3,87 @@
     <mat-card-header>
       <mat-card-title-group>
         <div class="user-picture">
-          <app-profile-picture mat-card-md-image class="circle" [user]="person" [altText]="person.Id"
-            [canEnlargeOnClick]="true">
+          <app-profile-picture
+            mat-card-md-image
+            class="circle"
+            [user]="person"
+            [altText]="person.Id"
+            [canEnlargeOnClick]="true"
+          >
           </app-profile-picture>
-          <app-change-profile-picture [userId]="person.Id">
-          </app-change-profile-picture>
+          <app-change-profile-picture [userId]="person.Id"> </app-change-profile-picture>
         </div>
         <mat-card-title>
           <div class="pb-block">
-            <ng-container *ngIf="!person.isOfType(type.Fremdkraft)">
-              <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="person.Business.ShortOrgUnit[0]"
-                [resetSearchTerm]="true"></app-add-filter>
-              <span *ngFor="let orgUnit of person.Business.ShortOrgUnit.slice(1)"> |
+            <ng-container *ngIf="!person.isOfStatus(status.Fremdkraft)">
+              <app-add-filter
+                [filterColumn]="columns.orgUnit"
+                [filterValue]="person.Business.ShortOrgUnit[0]"
+                [resetSearchTerm]="true"
+              ></app-add-filter>
+              <span *ngFor="let orgUnit of person.Business.ShortOrgUnit.slice(1)">
+                |
                 <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="orgUnit" [resetSearchTerm]="true">
                 </app-add-filter>
               </span>
             </ng-container>
           </div>
-          <span class="mat-display-1">{{person.Title}} {{person.Firstname}} {{person.Surname}} ({{person.Id}})</span>
+          <span class="mat-display-1"
+            >{{ person.Title }} {{ person.Firstname }} {{ person.Surname }} ({{ person.Id }})</span
+          >
         </mat-card-title>
         <mat-card-subtitle>
-          <p *ngIf="!person.isOfType(type.Fremdkraft)">
+          <p *ngIf="!person.isOfStatus(status.Fremdkraft)">
             <app-add-filter [filterColumn]="columns.role" [filterValue]="person.Role" [resetSearchTerm]="true">
             </app-add-filter>
-            | {{person.Type}}
+            |
+            <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type" [resetSearchTerm]="true">
+            </app-add-filter>
           </p>
         </mat-card-subtitle>
       </mat-card-title-group>
       <!-- Actions -->
       <div class="actions">
         <div>
-          <button mat-icon-button (click)="toggleBookmark()"
+          <button
+            mat-icon-button
+            matTooltip="Found Incorrect Data? Report them!"
+            i18n-matTooltip="User-detailComponent|Tooltip Incorrect Data@@UserDetailComponentTooltipDataChange"
+            (click)="openInformationIncorrectDialog()"
+          >
+            <mat-icon>report_problem</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            (click)="toggleBookmark()"
             i18n-matTooltip="User-detailComponent|Tooltip for saving a person as favourite@@UserDetailComponentTooltipBookmark"
-            matTooltip="Bookmark this person">
-            <mat-icon>{{bookmarked}}</mat-icon>
+            matTooltip="Bookmark this person"
+          >
+            <mat-icon>{{ bookmarked }}</mat-icon>
           </button>
         </div>
-        <button id="view_toggle" mat-icon-button [matMenuTriggerFor]="menu"
+        <button
+          id="view_toggle"
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
           i18n-matTooltip="User-detailComponent|Tooltip for opening the share menu@@UserDetailComponentTooltipShare"
-          matTooltip="Share">
+          matTooltip="Share"
+        >
           <mat-icon>share</mat-icon>
         </button>
         <mat-menu #menu>
           <button mat-menu-item [vcdDownloadVCard]="vCard" [encoding]="vCardEncoding.utf8">
             <mat-icon>perm_contact_calendar</mat-icon>
             <span
-              i18n="User-detailComponent|Share Menu: Donwload Contact Option@@UserDetailComponentShareDownloadContact">Download
-              Contact</span>
+              i18n="User-detailComponent|Share Menu: Donwload Contact Option@@UserDetailComponentShareDownloadContact"
+              >Download Contact</span
+            >
           </button>
-          <!-- TODO: Add Chat Link -->
-          <a mat-menu-item target="_blank" rel="noopener" [href]="'example.com/chat' + person.Id.toLowerCase()">
+          <a *ngIf="rocketChatLink" mat-menu-item target="_blank" rel="noopener" [href]="rocketChatLink">
             <mat-icon>chat</mat-icon>
-            <span i18n="User-detailComponent|Share Menu: Rocket Chat Option@@UserDetailComponentShareRocketChat">Rocket
-              Chat</span>
+            <span i18n="User-detailComponent|Share Menu: Rocket Chat Option@@UserDetailComponentShareRocketChat"
+              >Rocket Chat</span
+            >
           </a>
           <button mat-menu-item actionDrawer [copy]="getLink()">
             <mat-icon>link</mat-icon>
@@ -70,136 +98,180 @@
     </mat-card-header>
     <mat-card-content>
       <mat-divider></mat-divider>
-      <div class="pb-expand pb-wrap">
+      <div class="pb-flex pb-wrap">
         <mat-list>
-          <h3 mat-subheader
-            i18n="User-detailComponent|Subtitle for Contact Details@@UserDetailComponentSubTitleContactDetails">Contact
-            Details</h3>
-          <mat-list-item>
+          <h3
+            mat-subheader
+            i18n="User-detailComponent|Subtitle for Contact Details@@UserDetailComponentSubTitleContactDetails"
+          >
+            Contact Details
+          </h3>
+          <mat-list-item *ngIf="person.Contacts.Email !== ''">
             <mat-icon mat-list-icon>email</mat-icon>
             <h4 mat-line i18n="@@ColumnTitleEmail">Email</h4>
             <p mat-line>
-              <button mat-button actionDrawer [copy]="person.Contacts.Email" [mailto]="person.Contacts.Email">
-                {{person.Contacts.Email}}
-              </button>
+              <app-interactive-attribute-field [value]="person.Contacts.Email" [mailto]="true">
+              </app-interactive-attribute-field>
             </p>
           </mat-list-item>
           <mat-list-item *ngIf="person.Contacts.Phone !== ''">
             <mat-icon mat-list-icon>phone</mat-icon>
             <h4 mat-line i18n="@@ColumnTitlePhone">Phone</h4>
             <p mat-line>
-              <button mat-button actionDrawer [copy]="person.Contacts.Phone" [tel]="person.Contacts.Phone">
-                {{person.Contacts.Phone}}
-              </button>
+              <app-interactive-attribute-field [value]="person.Contacts.Phone" [tel]="true">
+              </app-interactive-attribute-field>
             </p>
           </mat-list-item>
           <mat-list-item *ngIf="person.Contacts.Mobile !== ''">
             <mat-icon mat-list-icon>smartphone</mat-icon>
             <h4 mat-line i18n="@@ColumnTitleMobile">Mobile</h4>
             <p mat-line>
-              <button mat-button actionDrawer [copy]="person.Contacts.Mobile" [tel]="person.Contacts.Mobile">
-                {{person.Contacts.Mobile}}
-              </button>
+              <app-interactive-attribute-field [value]="person.Contacts.Mobile" [tel]="true">
+              </app-interactive-attribute-field>
             </p>
           </mat-list-item>
           <mat-list-item *ngIf="person.Contacts.Fax !== ''">
             <mat-icon mat-list-icon>print</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.Fax data@@DataPersonFax">Fax</h4>
+            <h4 mat-line i18n="Datapoint|Label for Person.Fax data@@DataPersonFax">
+              Fax
+            </h4>
             <p mat-line>
-              <button mat-button actionDrawer [copy]="person.Contacts.Fax">
-                {{person.Contacts.Fax}}
-              </button>
+              <app-interactive-attribute-field [value]="person.Contacts.Fax"></app-interactive-attribute-field>
             </p>
           </mat-list-item>
-          <mat-list-item *featureFlag="'firstApril'" matTooltip="Happy April Fools' Day." matTooltipPosition="below"
-            i18n-matTooltip="Datapoint|Tooltip for april fools' day information Information@@UserDetailComponentAprilFoolDayTooltip">
+          <mat-list-item
+            *featureFlag="'firstApril'"
+            matTooltip="Happy April Fools' Day."
+            matTooltipPosition="below"
+            i18n-matTooltip="Datapoint|Tooltip for april fools' day information Information@@UserDetailComponentAprilFoolDayTooltip"
+          >
             <mat-icon mat-list-icon>attach_money</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.Money data@@DataPersonMoney">Salary</h4>
-            <p mat-line>
-              {{randomMoney}} €
-            </p>
+            <h4 mat-line i18n="Datapoint|Label for Person.Money data@@DataPersonMoney">
+              Salary
+            </h4>
+            <p mat-line>{{ randomMoney }} €</p>
           </mat-list-item>
         </mat-list>
-        <mat-list *ngIf="!person.isOfType(type.Fremdkraft)">
-          <h3 mat-subheader
-            i18n="User-detailComponent|Subtitle for Further Information@@UserDetailComponentSubTitleFurtherInformation">
-            Further
-            Information</h3>
+        <mat-list *ngIf="!person.isOfStatus(status.Fremdkraft)">
+          <h3
+            mat-subheader
+            i18n="User-detailComponent|Subtitle for Further Information@@UserDetailComponentSubTitleFurtherInformation"
+          >
+            Further Information
+          </h3>
           <mat-list-item>
             <mat-icon mat-list-icon>supervisor_account</mat-icon>
             <h4 mat-line i18n="Datapoint|Label for Person.Supervisor (direct supervisor) @@DataPersonDirectSupervisor">
-              Direct
-              Supervisor</h4>
+              Direct Supervisor
+            </h4>
             <p mat-line>
               <a mat-button [routerLink]="['/user/' + person.Business.ShortSupervisor]">
-                {{person.Business.Supervisor}}
+                {{ person.Business.Supervisor }}
               </a>
             </p>
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>group</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.TeamAssistant @@DataPersonTeamAssistant">Team Assistants</h4>
+            <h4 mat-line i18n="Datapoint|Label for Person.TeamAssistant @@DataPersonTeamAssistant">
+              Team Assistants
+            </h4>
             <div mat-line>
               <div class="pb-flex-row">
-                <ng-container *ngFor=" let assistent of person.Business.BusinessunitTeamassistent; let index=index">
-                  <a mat-button
-                    [routerLink]="[ '/user/' + person.Business.ShortBusinessunitTeamassistent[index]]">{{assistent}}</a>
+                <ng-container *ngFor="let assistent of person.Business.BusinessunitTeamassistent; let index = index">
+                  <a mat-button [routerLink]="['/user/' + person.Business.ShortBusinessunitTeamassistent[index]]">{{
+                    assistent
+                  }}</a>
                 </ng-container>
               </div>
             </div>
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>attach_money</mat-icon>
-            <h4 mat-line i18n="@@ColumnTitleCostcenter">Costcenter</h4>
+            <h4 mat-line i18n="@@ColumnTitleCostcenter">Profitcenter</h4>
             <p mat-line>
-              <app-add-filter [filterColumn]="columns.costcenter" [filterValue]="person.Business.Costcenter"
-                [resetSearchTerm]="true"></app-add-filter>
+              <app-add-filter
+                [filterColumn]="columns.costcenter"
+                [filterValue]="person.Business.Costcenter"
+                [resetSearchTerm]="true"
+              ></app-add-filter>
             </p>
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>category</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.Type data@@DataPersonType">Type</h4>
+            <h4 mat-line i18n="Datapoint|Label for Person.Status data@@DataPersonStatus">
+              Status
+            </h4>
             <p mat-line>
-              {{person.Type}}
+              {{ person.Type }}
             </p>
           </mat-list-item>
         </mat-list>
-        <mat-list *ngIf="!person.isOfType(type.Fremdkraft)">
-          <h3 mat-subheader i18n="@@UserDetailComponentSubTitleFurtherInformation">Further Information</h3>
+        <mat-list *ngIf="!person.isOfStatus(status.Fremdkraft)">
+          <h3 mat-subheader i18n="@@UserDetailComponentSubTitleFurtherInformation">
+            Further Information
+          </h3>
           <mat-list-item>
             <mat-icon mat-list-icon>business</mat-icon>
             <h4 mat-line>
               <ng-container i18n="@@ColumnTitleOrgUnit">
                 Organization Unit
               </ng-container>
-              <a mat-button
-                [routerLink]="['/organigram', person.Business.ShortOrgUnit[0], person.Business.ShortOrgUnit[1], person.Business.ShortOrgUnit[2]]">
-                <span class="mat-small"
-                  i18n="User-detailComponent|Button to show the persons position in the organigram@@UserDetailComponentButtonShowInOrganigram">Show
-                  in Organigram</span>
+              <a
+                mat-button
+                [routerLink]="[
+                  '/organigram',
+                  person.Business.ShortOrgUnit[0],
+                  person.Business.ShortOrgUnit[1],
+                  person.Business.ShortOrgUnit[2]
+                ]"
+              >
+                <span
+                  class="mat-small"
+                  i18n="User-detailComponent|Button to show the persons position in the organigram@@UserDetailComponentButtonShowInOrganigram"
+                  >Show in Organigram</span
+                >
               </a>
             </h4>
             <p mat-line>
-              <li *ngFor="let shortOrgUnit of person.Business.ShortOrgUnit; let index=index ">
-                <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="shortOrgUnit"
-                  [displayText]="person.Business.OrgUnit[index] + ' (' + shortOrgUnit + ')'" [resetSearchTerm]="true">
-                </app-add-filter>
-              </li>
+              <mat-chip-list class="mat-chip-list-stacked">
+                <app-add-filter
+                  *ngFor="let shortOrgUnit of person.Business.ShortOrgUnit; let index = index"
+                  [filterColumn]="columns.orgUnit"
+                  [filterValue]="shortOrgUnit"
+                  [displayText]="person.Business.OrgUnit[index] + ' (' + shortOrgUnit + ')'"
+                  [resetSearchTerm]="true"
+                ></app-add-filter>
+              </mat-chip-list>
             </p>
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>location_on</mat-icon>
             <h4 mat-line>
               <ng-container
-                i18n="User-detailComponent|Combined location of the person (city, building, floor, room)@@UserDetailComponentLabelLocation">
+                i18n="User-detailComponent|Combined location of the person (city, building, floor, room)@@UserDetailComponentLabelLocation"
+              >
                 Location
               </ng-container>
-              <a mat-button
-                [routerLink]="[ '/rooms/' + person.Location.RoomCollection[0].Place + '/' + person.Location.RoomCollection[0].Building + '/' + person.Location.RoomCollection[0].Floor + '/' + person.Location.RoomCollection[0].Number]"
-                *ngIf="person.Location.RoomCollection[0].Description != null">
-                <span class="mat-small"
-                  i18n="User-detailComponent|Button to show the persons room@@UserDetailComponentButtonShowRoom">Show
-                  Room</span>
+              <a
+                mat-button
+                [routerLink]="[
+                  '/rooms/' +
+                    person.Location.RoomCollection[0].Place +
+                    '/' +
+                    person.Location.RoomCollection[0].Building +
+                    '/' +
+                    person.Location.RoomCollection[0].Floor +
+                    '/' +
+                    person.Location.RoomCollection[0].Number
+                ]"
+                *ngIf="person.Location.RoomCollection[0].Description != null"
+              >
+                <span
+                  class="mat-small"
+                  i18n="User-detailComponent|Button to show the persons room@@UserDetailComponentButtonShowRoom"
+                >
+                  Show Room
+                </span>
               </a>
             </h4>
             <app-address mat-line [location]="person.Location" class="pb-flex pb-margin-top-20"></app-address>
@@ -209,27 +281,40 @@
       <ng-container *ngIf="!previewView">
         <mat-divider></mat-divider>
         <mat-tab-group mat-stretch-tabs headerPosition="above">
-          <mat-tab label="Roomplan"
-            i18n-label="UserDetailComponent|Tab Headline for Roomplan@@UserDetailComponentTabHeadlineRoomplan">
+          <mat-tab
+            label="Roomplan"
+            i18n-label="UserDetailComponent|Tab Headline for Roomplan@@UserDetailComponentTabHeadlineRoomplan"
+          >
             <div class="pb-roomplan" *ngIf="person.Location.RoomCollection[0].Description != null">
-              <ng-container *ngIf="!person.isOfType(type.Fremdkraft)">
-                <app-room-plan [floorplan]="person.Location.RoomCollection[0].FloorPlan"
-                  [room]="person.Location.RoomCollection[0].Number"></app-room-plan>
+              <ng-container *ngIf="!person.isOfStatus(status.Fremdkraft)">
+                <app-room-plan
+                  [floorplan]="person.Location.RoomCollection[0].FloorPlan"
+                  [room]="person.Location.RoomCollection[0].Number"
+                ></app-room-plan>
               </ng-container>
             </div>
           </mat-tab>
-          <mat-tab label="Skills"
-            i18n-label="UserDetailComponent|Tab Headline for Skills@@UserDetailComponentTabHeadlineSkills">
-            <div class="pb-expand pb-skills"
-              i18n="User-detailComponent|Text for the upcoming skill tag feature@@UserDetailComponenMessageContributeSkills">
+          <mat-tab
+            label="Skills"
+            i18n-label="UserDetailComponent|Tab Headline for Skills@@UserDetailComponentTabHeadlineSkills"
+          >
+            <div
+              class="pb-flex pb-skills"
+              i18n="User-detailComponent|Text for the upcoming skill tag feature@@UserDetailComponenMessageContributeSkills"
+            >
               This is where a coworkers skills would be shown. But this is still work in Progress, you can make it
-              happen
-              faster!
-              <a mat-raised-button color="primary" target="_blank" rel="noopener"
-                href="https://github.com/T-Systems-MMS/skoop-webapp">
+              happen faster!
+              <a
+                mat-raised-button
+                color="primary"
+                target="_blank"
+                rel="noopener"
+                href="https://github.com/T-Systems-MMS/skoop-webapp"
+              >
                 <mat-icon>code</mat-icon>
                 Contribute
               </a>
+              <span> </span>
             </div>
           </mat-tab>
         </mat-tab-group>

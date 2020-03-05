@@ -8,6 +8,24 @@ import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 export class ColumnTranslate {
   constructor(private i18n: I18n) {}
   public getTranslation(columnId: ColumnId): string {
+    /*
+     * workaround for ngx translate
+     * necassary because the generated translations are wrong
+     * They insert a new line after some strings and thus a space in the translated version of the string
+     * E.G. What it should look like:
+     *  <source>Address</source><target state="final">Address</target>
+     * looks like:
+     *   <source>
+     *     Buildings
+     *   </source><target state="final">
+     *     Buildings
+     *   </target>
+     *
+     * IssueLink: https://github.com/ngx-translate/i18n-polyfill/issues/63
+     */
+    return this.getInternalTranslation(columnId).trim();
+  }
+  private getInternalTranslation(columnId: ColumnId): string {
     switch (columnId) {
       case ColumnId.picture:
         return this.i18n({
@@ -88,9 +106,16 @@ export class ColumnTranslate {
         });
       case ColumnId.costcenter:
         return this.i18n({
-          value: 'Costcenter',
-          description: 'Title of Table Column "Costcenter"',
+          value: 'Profitcenter',
+          description: 'Title of Table Column "Profitcenter" once Costcenter',
           id: 'ColumnTitleCostcenter',
+          meaning: 'TableComponent'
+        });
+      case ColumnId.status:
+        return this.i18n({
+          value: 'Status',
+          description: 'Title of Table Column "Status"',
+          id: 'DataPersonStatus',
           meaning: 'TableComponent'
         });
       default:

@@ -1,6 +1,6 @@
-import { Directive, Input, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
-import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { Directive, Input, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
 
 @Directive({ selector: '[featureFlag]' })
 export class FeatureFlagDirective implements OnDestroy {

@@ -1,0 +1,59 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Phonebook Docu
+email: phonebook-t-systems-mms@mg.telekom.de
+description: >- # this means to ignore newlines until "baseurl:"
+  Documentation for the Open-Source Application "Phonebook".
+baseurl: '/phonebook/' # the subpath of your site, e.g. /blog
+url: '' # the base hostname & protocol for your site, e.g. http://example.com
+
+# Enable or disable the site search
+search_enabled: true
+
+# Aux links for the upper right navigation
+aux_links:
+  'Phonebook on GitHub':
+    - '//github.com/T-Systems-MMS/phonebook'
+
+# Build settings
+markdown: kramdown
+remote_theme: pmarsceill/just-the-docs
+plugins:
+  - jemoji
+  - jekyll-remote-theme
+  - jekyll-readme-index
+
+readme_index:
+  enabled: true
+  remove_originals: true
+  with_frontmatter: true
+
+# Other Variables
+contributors: '[contributors](https://github.com/T-Systems-MMS/phonebook/graphs/contributors)'
+current_issues: '[current Issues](https://github.com/T-Systems-MMS/phonebook/issues)'
+coming_soon: '> :gear: Coming soon.. Want to help? Contact us or take look on our current Issues'
+maintenance: '> :gear: In maintenance'
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

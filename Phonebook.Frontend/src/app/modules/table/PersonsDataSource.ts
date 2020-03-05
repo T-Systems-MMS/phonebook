@@ -1,9 +1,9 @@
-import { Person } from 'src/app/shared/models/classes';
+import { MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { TableLogic } from 'src/app/modules/table/table-logic';
-import { MatTableDataSource } from '@angular/material/table';
+import { Column, SearchFilter, TableSort } from 'src/app/shared/models';
+import { Person } from 'src/app/shared/models/classes';
 import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
-import { SearchFilter, Column, TableSort } from 'src/app/shared/models';
 
 export class PersonsDataSource extends MatTableDataSource<Person> {
   private PAGE_SIZE: number = 30;
@@ -63,10 +63,7 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
       });
 
       // Searching
-      let searchResult: Person[] = preResult;
-      if (this.lastFilterKeyword !== filterKeyword) {
-        searchResult = TableLogic.filter(preResult, filterKeyword, searchableColumns);
-      }
+      let searchResult: Person[] = TableLogic.filter(preResult, filterKeyword, searchableColumns);
 
       // Sorting
       switch (sort.direction) {

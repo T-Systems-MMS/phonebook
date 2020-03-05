@@ -1,10 +1,8 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { SetDisplayedNotificationVersion } from 'src/app/shared/states';
-import { Person } from 'src/app/shared/models';
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
-import { CurrentUserService } from 'src/app/services/api/current-user.service';
+import { Router } from '@angular/router';
 
 /**
  * Display Notification Dialog
@@ -17,16 +15,14 @@ import { CurrentUserService } from 'src/app/services/api/current-user.service';
 })
 export class DisplayNotificationDialog implements OnInit, OnDestroy {
   public static version: number = 1;
-  constructor(
-    public dialogRef: MatDialogRef<DisplayNotificationDialog>,
-    store: Store
-  ) {
+  constructor(public dialogRef: MatDialogRef<DisplayNotificationDialog>, store: Store, private router: Router) {
     store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
   }
-
-  public ngOnInit() {
+  public skipStartDialogs() {
+    this.router.navigateByUrl('/?skip_dialog=true');
+    this.dialogRef.close();
   }
+  public ngOnInit() {}
 
-  public ngOnDestroy() {
-  }
+  public ngOnDestroy() {}
 }

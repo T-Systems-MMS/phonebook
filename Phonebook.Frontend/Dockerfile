@@ -1,5 +1,5 @@
 # base image
-FROM node:11.2.0 as builder
+FROM node:11.15.0 as builder
 
 # set working directory
 RUN  mkdir /usr/local/app
@@ -22,7 +22,7 @@ RUN npm run build:en
 ### production ###
 ##################
 
-FROM nginx:1.15.8
+FROM nginx:1.17.6
 WORKDIR /etc/nginx
 
 ARG BASE_URL
@@ -40,6 +40,7 @@ RUN chmod +x ./substitute_variables.sh
 
 RUN rm /usr/share/nginx/html/index.html
 COPY --from=builder /usr/local/app/dist /usr/share/nginx/html
+COPY ./opensearch.xml /usr/share/nginx/html/opensearch.xml
 
 ENTRYPOINT ["./substitute_variables.sh", "/usr/share/nginx/html", "./substitute_variables.sh", "/etc/nginx"]
 CMD ["nginx"]

@@ -1,5 +1,4 @@
 import { PhonebookSortDirection } from 'src/app/shared/models/enumerables/PhonebookSortDirection';
-import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
 
 /**
  * Helper Function
@@ -88,5 +87,13 @@ export class Helpers {
 
   public static stripNonNumericalCharacters(string: string): string {
     return string.replace(new RegExp('\\D', 'g'), '');
+  }
+
+  /**
+   * Removes Accents from the string.
+   * @param str Any String
+   */
+  public static removeAccents(str: string): string {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 }

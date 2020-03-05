@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { OnlineBarComponent } from './online-bar.component';
 import { ServiceWorkerService } from 'src/app/services/service-worker.service';
+import { OnlineBarComponent } from './online-bar.component';
+
 
 describe('OnlineBarComponent', () => {
   let component: OnlineBarComponent;

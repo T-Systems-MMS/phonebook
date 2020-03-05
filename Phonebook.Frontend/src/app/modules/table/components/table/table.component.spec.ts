@@ -1,16 +1,16 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { TableComponent } from 'src/app/modules/table/components//table/table.component';
-import { Person } from 'src/app/shared/models';
-import { PersonService } from 'src/app/services/api/person.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { NgxsModule } from '@ngxs/store';
-import { SearchState, TableState } from 'src/app/shared/states';
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NgxsModule } from '@ngxs/store';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TableComponent } from 'src/app/modules/table/components//table/table.component';
+import { PersonService } from 'src/app/services/api/person.service';
+import { Person } from 'src/app/shared/models';
+import { SearchState, TableState } from 'src/app/shared/states';
 
 class MockPersonService {
   public findByKeyword(keyword: String): Person[] {

@@ -1,5 +1,4 @@
 // Define themes as described in this guide: https://material.angular.io/guide/theming
-@import 'src/app/shared/components/add-filter/add-filter.component.theme';
 @import 'src/app/shared/components/search/search.component.theme';
 @import 'src/app/shared/components/navigation/navigation.component.theme';
 @import 'src/app/modules/table/components/table/table.component.theme';
@@ -9,9 +8,21 @@
 //Global Color Theme Mixin
 @mixin global-theme($theme) {
   $primary: map-get($theme, primary);
+  $background: map-get($theme, foreground);
 
   a {
     color: mat-color($primary);
+  }
+
+  .pb-color-primary {
+    color: mat-color($primary) !important;
+  }
+
+  .pb-border-color-primary {
+    border-color: mat-color($primary) !important;
+  }
+  .pb-color-background {
+    color: mat-color($background, text) !important;
   }
 
   .color-warn {
@@ -23,7 +34,6 @@
 
 @mixin custom-components-theme($theme) {
   @include search-component-theme($theme);
-  @include add-filter-component-theme($theme);
   @include user-list-component-theme($theme);
   @include global-theme($theme);
   @include navigation-component-theme($theme);
@@ -32,23 +42,23 @@
 }
 
 @import 'src/styles/themes/blue';
-.blue-light-theme {
-  @include angular-material-theme($blue-light-theme);
-  @include custom-components-theme($blue-light-theme);
+.blue_light_theme {
+  @include angular-material-theme($blue_light_theme);
+  @include custom-components-theme($blue_light_theme);
 }
 
-.blue-dark-theme {
-  @include angular-material-theme($blue-dark-theme);
-  @include custom-components-theme($blue-dark-theme);
+.blue_dark_theme {
+  @include angular-material-theme($blue_dark_theme);
+  @include custom-components-theme($blue_dark_theme);
 }
 
 @import 'src/styles/themes/magenta';
-.magenta-light-theme {
-  @include angular-material-theme($magenta-light-theme);
-  @include custom-components-theme($magenta-light-theme);
+.magenta_light_theme {
+  @include angular-material-theme($magenta_light_theme);
+  @include custom-components-theme($magenta_light_theme);
 }
 
-.magenta-dark-theme {
-  @include angular-material-theme($magenta-dark-theme);
-  @include custom-components-theme($magenta-dark-theme);
+.magenta_dark_theme {
+  @include angular-material-theme($magenta_dark_theme);
+  @include custom-components-theme($magenta_dark_theme);
 }

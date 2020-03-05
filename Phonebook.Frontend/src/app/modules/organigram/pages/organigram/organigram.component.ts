@@ -10,7 +10,7 @@ import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram
 export class OrganigramComponent implements OnInit {
   public nodes: UnitTreeNode[] = [];
 
-  constructor(private organigramService: OrganigramService) { }
+  constructor(private organigramService: OrganigramService) {}
 
   public ngOnInit() {
     this.organigramService.getOrganigram().subscribe(organigram => {

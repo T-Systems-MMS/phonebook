@@ -1,4 +1,4 @@
-import { State, Action, StateContext } from '@ngxs/store';
+import { Action, State, StateContext } from '@ngxs/store';
 import { Person } from 'src/app/shared/models';
 
 /**

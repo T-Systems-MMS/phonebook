@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { BugReportConsentComponent } from './bug-report-consent.component';
 import { MockComponent } from 'ng2-mock-component';
+import { BugReportConsentComponent } from './bug-report-consent.component';
+
 
 // Deactivated, because MatDialogRef is not easily testable.
 xdescribe('BugReportConsentComponent', () => {

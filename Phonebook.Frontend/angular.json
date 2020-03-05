@@ -19,9 +19,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/services",
-              "src/manifest.json",
-              "src/changelog.md"
+              "src/changelog.md",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss",
@@ -29,7 +28,6 @@
               "src/fonts/materialicons/material-icons.css"
             ],
             "scripts": [],
-            "ngswConfigPath": "src/ngsw-config.json",
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/styles"
@@ -43,8 +41,7 @@
             "aot": true,
             "extractLicenses": true,
             "vendorChunk": false,
-            "buildOptimizer": false,
-            "serviceWorker": true
+            "buildOptimizer": false
           },
           "configurations": {
             "en": {
@@ -87,9 +84,8 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/services",
-              "src/manifest.json",
-              "src/changelog.md"
+              "src/changelog.md",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss",
@@ -102,7 +98,6 @@
                 "src/styles"
               ]
             },
-            "ngswConfigPath": "src/ngsw-config.json",
             "optimization": true,
             "outputHashing": "all",
             "sourceMap": false,
@@ -112,7 +107,6 @@
             "extractLicenses": true,
             "vendorChunk": false,
             "buildOptimizer": true,
-            "serviceWorker": true,
             "fileReplacements": [
               {
                 "replace": "src/environments/environment.ts",
@@ -127,8 +121,7 @@
               "i18nLocale": "en",
               "i18nMissingTranslation": "error",
               "outputPath": "dist/en",
-              "baseHref": "/en/",
-              "ngswConfigPath": "src/ngsw-config.en.json"
+              "baseHref": "/en/"
             },
             "de": {
               "i18nFile": "src/i18n/messages.de.xlf",
@@ -136,16 +129,14 @@
               "i18nLocale": "de",
               "i18nMissingTranslation": "error",
               "outputPath": "dist/de",
-              "baseHref": "/de/",
-              "ngswConfigPath": "src/ngsw-config.de.json"
+              "baseHref": "/de/"
             },
             "preview": {
               "i18nFile": "src/i18n/messages.de.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "de",
               "i18nMissingTranslation": "error",
-              "outputPath": "dist/",
-              "serviceWorker": false
+              "outputPath": "dist/"
             }
           }
         },
@@ -183,7 +174,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
-            "sourceMap": false,
+            "sourceMap": true,
             "styles": [
               "src/styles.scss",
               "src/fonts/fonts.css",
@@ -192,8 +183,7 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "src/services",
-              "src/manifest.json"
+              "src/manifest.webmanifest"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [

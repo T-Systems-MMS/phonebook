@@ -1,57 +1,137 @@
 <div class="displayDialog">
-  <h2 mat-dialog-title>Willkommen beim neuen Phonebook!</h2>
+  <h3 mat-dialog-title class="pb-color-primary" i18n="Display-notificationDialog|Welcome Headline@@WelcomeHeadline">
+    Welcome to the new Phonebook!
+  </h3>
   <mat-dialog-content>
-    <span>Das neue Phonebook bietet dir nicht nur ein neues Design sondern auch zahlreiche Funktionen, die es besser
-      als
-      seinen Vorgänger machen:
+    <span i18n="Display-notificationDialog|Welcome Introduction@@WelcomeIntroduction"
+      >The new Phonebook not only offers you a new design, but also numerous features that make it better than its
+      predecessor.
     </span>
-    <mat-list>
-      <mat-list-item>
-        <h5 matLine>Das Profilbild kann von dir selbst ausgetauscht werden.</h5>
-        <p matLine>
-          Klicke dafür einfach oben rechts auf <mat-icon>person</mat-icon> Icon und dann auf "Mein
-          Profil".
-        </p>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine> Häufig kontaktierte Kollegen können als Favoriten gespeichert werden.</h5>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine>Die Tabellenspalten können nach persönlichen Präferenzen angepasst und sortiert werden.</h5>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine>Personen können über Links geteilt werden.</h5>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine>Das Phonebook steht dir in Deutsch und Englisch zur Verfügung.</h5>
-        <p matLine>Klicke einfach oben rechts auf das <mat-icon>person</mat-icon> Icon und dann auf
-          "Einstellungen".
-        </p>
-      </mat-list-item>
-      <mat-list-item>
-        <h5 matLine>Eine Raumübersicht</h5>
-        <p matLine>Damit kannst du ganz einfach nachgucken wer wo sitzt. </p>
-      </mat-list-item>
-    </mat-list>
-
-    <p> Da fehlt noch was oder dir ist direkt der erste Fehler ins Auge gesprungen (hoffentlich nicht)? Dann teile uns
-      deine <a href="https://github.com/T-Systems-MMS/phonebook">Anmerkungen
-        oder Ideen </a> mit. Bugs kannst du <a href="https://github.com/T-Systems-MMS/phonebook">hier</a>
-      melden oder jederzeit oben links.
-    </p>
-    <h3>Aufruf an dich!</h3>
-    <p>Dies ist ein OpenSource-Projekt, es lebt von Mitstreitern die aktiv mitgestalten.</p>
-    <p> Wenn du also Interesse, Zeit oder Ideen hast und mitmachen möchtest
-      <a href="https://github.com/T-Systems-MMS/phonebook">melde dich bei uns, bzw. leg direkt
-        los</a>.
-      Programmieren ist dafür nämlich keine Voraussetzung! </p>
-
+    <div class="pb-flex-row pb-center-element">
+      <!-- Profilbild -->
+      <mat-card class="pb-flex-1 pb-border-color-primary pb-margin-05">
+        <mat-card-header class="pb-center-element">
+          <mat-card-title class="pb-icon-60">
+            <mat-icon color="primary">person</mat-icon>
+            <p i18n="Display-notificationDialog|Profile Image Feature Headline@@WelcomeFeatureProfilePictureHeadline">
+              You can set a profile picture by yourself
+            </p>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content
+          i18n="Display-notificationDialog|Profile Image Feature Description@@WelcomeFeatureProfilePictureDescription"
+        >
+          Simply click on the
+          <button mat-icon-button disabled="true"><mat-icon color="primary">person</mat-icon></button>
+          icon in the upper right corner and then on "My Profile".
+        </mat-card-content>
+      </mat-card>
+      <!-- Bookmark -->
+      <mat-card mat-card class="pb-flex-1 pb-border-color-primary pb-margin-05">
+        <mat-card-header class="pb-center-element">
+          <mat-card-title class="pb-icon-60">
+            <mat-icon color="primary">bookmark_border</mat-icon>
+            <p i18n="Display-notificationDialog|Bookmark Feature Headline@@WelcomeFeatureBookmarkHeadline">
+              Colleagues can be saved as a favorite
+            </p>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content
+          i18n="Display-notificationDialog|Bookmark Feature Description@@WelcomeFeatureBookmarkDescription"
+        >
+          Just click on the
+          <button mat-icon-button disabled="true"><mat-icon color="primary">bookmark_border</mat-icon></button>
+          icon at one of your colleagues.
+        </mat-card-content>
+      </mat-card>
+      <!-- table settings -->
+      <mat-card mat-card class="pb-flex-1 pb-border-color-primary pb-margin-05">
+        <mat-card-header class="pb-center-element">
+          <mat-card-title class="pb-icon-60">
+            <mat-icon color="primary">settings</mat-icon>
+            <p i18n="Display-notificationDialog|Table Settings Headlin@@WelcomeFeatureTableSettingsHeadline">
+              Table columns can be sorted and customized
+            </p>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content
+          i18n="Display-notificationDialog|Table Settings Description@@WelcomeFeatureTableSettingsDescription"
+        >
+          The settings
+          <button mat-icon-button disabled="true"><mat-icon color="primary">settings</mat-icon></button>
+          can be found at the search page in the upper right corner.
+        </mat-card-content>
+      </mat-card>
+      <!-- share -->
+      <mat-card mat-card class="pb-flex-1 pb-border-color-primary pb-margin-05">
+        <mat-card-header class="pb-center-element">
+          <mat-card-title class="pb-icon-60">
+            <mat-icon color="primary">share</mat-icon>
+            <p i18n="Display-notificationDialog|Share Headline@@WelcomeFeatureShareHeadline">
+              People can be shared via links
+            </p>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content i18n="Display-notificationDialog|Share description@@WelcomeFeatureShareDescription">
+          The different ways to share a profile can be found by clicking on the
+          <button mat-icon-button disabled="true"><mat-icon color="primary">share</mat-icon></button>
+          icon.
+        </mat-card-content>
+      </mat-card>
+      <!-- language -->
+      <mat-card mat-card class="pb-flex-1 pb-border-color-primary pb-margin-05">
+        <mat-card-header class="pb-center-element">
+          <mat-card-title class="pb-icon-60">
+            <mat-icon color="primary">language</mat-icon>
+            <p i18n="Display-notificationDialog|Language Headline@@WelcomeFeatureLanguageHeadline">
+              The Phonebook is available in German and English
+            </p>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content i18n="Display-notificationDialog|Language description@@WelcomeFeatureLanguageDescription">
+          Simply click on the
+          <button mat-icon-button disabled="true"><mat-icon color="primary">person</mat-icon></button>
+          icon in the top right corner and go to the settings.
+        </mat-card-content>
+      </mat-card>
+      <!-- roomplan -->
+      <mat-card mat-card class="pb-flex-1 pb-border-color-primary pb-margin-05">
+        <mat-card-header class="pb-center-element">
+          <mat-card-title class="pb-icon-60">
+            <mat-icon color="primary">room</mat-icon>
+            <p i18n="Display-notificationDialog|Room Plan Headline@@WelcomeFeatureRoomplanHeadline">
+              You can view a roomplan for each employee
+            </p>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content i18n="Display-notificationDialog|Room Plan description@@WelcomeFeatureRoomplanDescription">
+          Just go to the profile of a colleague and scroll down.
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- call for contributors -->
+    <app-contributors class="border-1 pb-center-element pb-border-color-primary pb-margin-05"></app-contributors>
   </mat-dialog-content>
+
   <div class="spacer"></div>
   <mat-dialog-actions>
-    <p>Diese Seite nutzt Cookies um die Grundfunktionalität der App sicherzustellen.</p>
+    <span i18n="Display-notificationDialog|Cookie notice@@WelcomeCookieNotice">
+      This site uses cookies to ensure the basic functionality of the app.
+    </span>
+    <span i18n="Display-notificationDialog|Annoyed by cookies notice@@PageInformationNewUrlNoCookiesText">
+      You deactivated cookies and keep getting those dialogs?
+    </span>
+    <button
+      i18n="Display-notificationDialog|Deactivate Startup Dialogs@@PageInformationNewUrlNoCookiesButton"
+      mat-button
+      (click)="skipStartDialogs()"
+    >
+      Deactivate startup-dialogs!
+    </button>
     <div class="actions">
-      <button mat-button mat-dialog-close cdkFocusInitial>Cool!</button>
+      <button mat-button mat-dialog-close cdkFocusInitial>
+        Cool!
+      </button>
     </div>
   </mat-dialog-actions>
 </div>
