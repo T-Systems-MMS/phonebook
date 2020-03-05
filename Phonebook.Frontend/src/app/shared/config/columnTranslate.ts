@@ -9,8 +9,8 @@ export class ColumnTranslate {
   constructor() {}
   public getTranslation(columnId: ColumnId): string {
     /*
-     * TODO: Localization
-     * TODO: Try of it works with new angular localization
+     * TODO: #515
+     * Try of it works with new angular localization
      * workaround for ngx translate
      * necassary because the generated translations are wrong
      * They insert a new line after some strings and thus a space in the translated version of the string
