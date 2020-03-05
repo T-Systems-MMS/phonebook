@@ -112,8 +112,7 @@ export class FeatureFlagService {
   }
 
   public static isFirstApril(date: Date): boolean {
-    const firstApril = new Date('2019-04-01T00:00:00');
-   // return date.getDate() == firstApril.getDate() && date.getMonth() == firstApril.getMonth();
-  return true;
+    const firstApril = new Date('2020-04-01T00:00:00');
+   return date.getDate() == firstApril.getDate() && date.getMonth() == firstApril.getMonth();
   }
 }
