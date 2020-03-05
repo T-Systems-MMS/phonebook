@@ -61,41 +61,60 @@
       on a workmates page.
     </div>
   </div>
-  <mat-divider [vertical]="true"></mat-divider>
-  <cdk-virtual-scroll-viewport itemSize="148" class="pb-last">
-    <h1>
-      <ng-container i18n="DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent">
-        Recent People
-      </ng-container>
-      <button
-        mat-button
-        *ngIf="removedLastPersons == null && (lastPersons$ | async)?.length != 0"
-        (click)="resetLastPersons()"
-        i18n="@@GeneralResetButton"
-      >
-        Reset
-      </button>
-      <button mat-button *ngIf="removedLastPersons != null" (click)="undoLastPersons()">
-        <mat-icon>undo</mat-icon>
-        <span i18n="GeneralUndoButton|Button for undoing something@@GeneralUndoButton"> Undo </span>
-      </button>
-    </h1>
-    <div class="pb-flex-row">
-      <ng-container *cdkVirtualFor="let person of lastPersons$ | async">
-        <app-user-tiny-card
-          [person]="person"
-          [actionButtonIcon]="'close'"
-          (actionButtonClicked)="removeFromLastPersons(person)"
-          class="pb-card"
-        ></app-user-tiny-card>
-      </ng-container>
-      <div
-        *ngIf="(lastPersons$ | async)?.length === 0"
-        i18n="DashboardComponent|Message displayed if no people have been visited recently@@DashboardComponentDescriptionRecent"
-      >
-        Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most recent
-        ones will be displayed here.
-      </div>
-    </div>
-  </cdk-virtual-scroll-viewport>
+  <div class="toggle-drawer">
+    <button
+      mat-icon-button
+      (click)="drawer.toggle()"
+      i18n-matTooltio="
+        DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip
+      "
+      i18n-aria-label="
+        DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel
+      "
+      matTooltip="Expand or Collapse recently viewed people"
+    >
+      <mat-icon>{{ drawer.opened ? 'chevron_right' : 'chevron_left' }} </mat-icon>
+    </button>
+  </div>
+  <mat-drawer-container hasBackdrop="false" class="container">
+    <mat-drawer-content class="content"> </mat-drawer-content>
+    <mat-drawer #drawer mode="side" [opened]="drawerOpenByDefault">
+      <cdk-virtual-scroll-viewport itemSize="148" class="pb-last">
+        <h1>
+          <ng-container i18n="DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent">
+            Recent People
+          </ng-container>
+          <button
+            mat-button
+            *ngIf="removedLastPersons == null && (lastPersons$ | async)?.length != 0"
+            (click)="resetLastPersons()"
+            i18n="@@GeneralResetButton"
+          >
+            Reset
+          </button>
+          <button mat-button *ngIf="removedLastPersons != null" (click)="undoLastPersons()">
+            <mat-icon>undo</mat-icon>
+            <span i18n="GeneralUndoButton|Button for undoing something@@GeneralUndoButton"> Undo </span>
+          </button>
+        </h1>
+        <div class="pb-flex-row">
+          <ng-container *cdkVirtualFor="let person of lastPersons$ | async">
+            <app-user-tiny-card
+              [person]="person"
+              [actionButtonIcon]="'close'"
+              (actionButtonClicked)="removeFromLastPersons(person)"
+              class="pb-card"
+            ></app-user-tiny-card>
+          </ng-container>
+          <div
+            *ngIf="(lastPersons$ | async)?.length === 0"
+            i18n="DashboardComponent|Message displayed if no people have been visited recently@@DashboardComponentDescriptionRecent"
+          >
+          Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most recent
+          ones will be displayed here.
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </mat-drawer>
+  </mat-drawer-container>
 </div>

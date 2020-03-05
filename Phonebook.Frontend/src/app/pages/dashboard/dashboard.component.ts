@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  public drawerOpenByDefault: boolean = false;
+  public drawerOpenByDefault: boolean = true;
   constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver,
     ) {}
 
