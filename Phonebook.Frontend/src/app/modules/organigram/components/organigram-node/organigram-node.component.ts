@@ -29,7 +29,14 @@ export class OrganigramNodeComponent implements OnInit {
       this.expand = Expanded.isExpanded;
       if (nodePath.length === this.node.depth + 2) {
         // Scroll to this node if it is the leave of the route
-        (this.thisNode.nativeElement as HTMLElement).scrollIntoView();
+        /*
+         * Set Timpout ist needed until Angular has fixed this issue:
+         * https://github.com/angular/angular/issues/35879 or
+         * https://github.com/angular/angular/issues/19742
+         */
+        setTimeout(() => {
+          (this.thisNode.nativeElement as HTMLElement).scrollIntoView();
+        }, 100);
       }
     }
   }
