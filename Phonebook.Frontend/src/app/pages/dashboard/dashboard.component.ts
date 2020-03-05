@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
@@ -6,7 +7,6 @@ import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
 import { LastPersonsState, RemoveFromLastPersons, ResetLastPersons, SetLastPersons } from 'src/app/shared/states/LastPersons.state';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -24,10 +24,14 @@ export class DashboardComponent implements OnInit {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  constructor(private store: Store, private cd: ChangeDetectorRef) {}
+  public drawerOpenByDefault: boolean = false;
+  constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver,
+    ) {}
 
   public ngOnInit() {
     this.changeOrder();
+    this.drawerOpenByDefault = this.breakpointObserver.isMatched('(min-width: 1500px)');
+
   }
 
   public changeOrder() {
