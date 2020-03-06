@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationError, Router, ActivatedRoute } from '@angular/router';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { Store } from '@ngxs/store';
 import { filter } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private matDialog: MatDialog,
     private platform: Platform,
     private router: Router,
-    private i18n: I18n,
+
     private activatedRoute: ActivatedRoute
   ) {}
   public ngOnInit() {
@@ -46,12 +46,7 @@ export class AppComponent implements OnInit, OnDestroy {
     //     this.swUpdates.activated.subscribe(active => {
     //       if (active.current) {
     //         this.snackBar.open(
-    //           this.i18n({
-    //             value: 'Hurray! You can use this Website offline.',
-    //             description: 'Message indicating the service worker was successfully installed',
-    //             id: 'AppComponentServiceWorkerSuccessMessage',
-    //             meaning: 'AppComponent'
-    //           }),
+    //           $localize`:AppComponent|Message indicating the service worker was successfully installed@@AppComponentServiceWorkerSuccessMessage:Hurray! You can use this Website offline.`,
     //           '',
     //           { duration: 3000 }
     //         );
@@ -60,12 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
     //     });
     //   } else {
     //     this.snackBar.open(
-    //       this.i18n({
-    //         value: 'Your Browser does not support Offline Apps!',
-    //         description: 'Message indicating the service worker was not installed',
-    //         id: 'AppComponentServiceWorkerErrorMessage',
-    //         meaning: 'AppComponent'
-    //       }),
+    //       $localize`:AppComponent|Message indicating the service worker was not installed@@AppComponentServiceWorkerErrorMessage:Your Browser does not support Offline Apps!`,
     //       '',
     //       {
     //         duration: 3000
@@ -79,18 +69,8 @@ export class AppComponent implements OnInit, OnDestroy {
     // if (this.swUpdates.isEnabled) {
     //   this.swUpdates.available.subscribe(() => {
     //     const updateNotification = this.snackBar.open(
-    //       this.i18n({
-    //         value: 'A newer version is available. Do you want to update straight away?',
-    //         description: 'Message indicating the app can be updated and question if it should be updated',
-    //         id: 'AppComponentServiceWorkerUpdateMessage',
-    //         meaning: 'AppComponent'
-    //       }),
-    //       this.i18n({
-    //         value: 'Update!',
-    //         description: 'Button Text for updating the app',
-    //         id: 'AppComponentServiceWorkerUpdateButtonMessage',
-    //         meaning: 'AppComponent'
-    //       }),
+    //       $localize`:AppComponent|Message indicating the app can be updated and question if it should be updated@@AppComponentServiceWorkerUpdateMessage:A newer version is available. Do you want to update straight away?`,
+    //       $localize`:AppComponent|Button Text for updating the app@@AppComponentServiceWorkerUpdateButtonMessage:Update!`,
     //       { duration: 4000 }
     //     );
     //     updateNotification.onAction().subscribe(onAction => {
@@ -153,18 +133,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public openJustSkippedDialogsSnackBar() {
     this.snackBar
       .open(
-        this.i18n({
-          meaning: 'Display advice to new url',
-          description: 'Message for just set no cookie url',
-          id: 'PageInformationNewUrlNoCookies',
-          value: `Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.`
-        }),
-        this.i18n({
-          meaning: 'Restore Url',
-          description: 'Message for following no cookie url',
-          id: 'PageInformationNewUrlNoCookiesUrl',
-          value: 'Reset'
-        }),
+        $localize`:Display advice to new url|Message for just set no cookie url@@PageInformationNewUrlNoCookies:Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.`,
+        $localize`:Restore Url|Message for following no cookie url@@PageInformationNewUrlNoCookiesUrl:Reset`,
         { duration: 8000 }
       )
       .onAction()
@@ -176,18 +146,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public openSkippedDialogsSnackBar() {
     this.snackBar
       .open(
-        this.i18n({
-          meaning: 'Warning no dialogs are shown',
-          description: 'Message to inform user that no dialogs will be shown',
-          id: 'PageInformationNoDialogs',
-          value: `Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases.`
-        }),
-        this.i18n({
-          meaning: 'Restore Url',
-          description: 'Message for following no cookie url',
-          id: 'PageInformationNewUrlNoCookiesUrl',
-          value: 'Reset'
-        }),
+        $localize`:Warning no dialogs are shown|Message to inform user that no dialogs will be shown@@PageInformationNoDialogs:Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases.`,
+        $localize`:Restore Url|Message for following no cookie url@@PageInformationNewUrlNoCookiesUrl:Reset`,
         { duration: 8000 }
       )
       .onAction()

@@ -1,5 +1,6 @@
 import { Action, State, StateContext } from '@ngxs/store';
 import { Person } from 'src/app/shared/models';
+import { Injectable } from '@angular/core';
 
 export class AddToLastPersons {
   public static readonly type: string = '[Last Persons] Add Person';
@@ -24,6 +25,7 @@ export class RemoveFromLastPersons {
   name: 'lastpersons',
   defaults: []
 })
+@Injectable()
 export class LastPersonsState {
   @Action(AddToLastPersons)
   public incrementPerson(ctx: StateContext<Person[]>, action: AddToLastPersons) {
