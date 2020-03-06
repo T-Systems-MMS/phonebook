@@ -24,14 +24,12 @@ export class DashboardComponent implements OnInit {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  public drawerOpenByDefault: boolean = true;
+  public drawerOpen: boolean = true;
   constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver,
     ) {}
 
   public ngOnInit() {
     this.changeOrder();
-    this.drawerOpenByDefault = this.breakpointObserver.isMatched('(min-width: 1500px)');
-
   }
 
   public changeOrder() {
