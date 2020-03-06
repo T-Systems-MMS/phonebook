@@ -53,3 +53,14 @@
     /* Safari, Android, iOS */
       url('roboto-v18-latin-ext_latin_vietnamese_cyrillic-ext_greek-ext_greek_cyrillic-500.svg#Roboto') format('svg'); /* Legacy iOS */
 }
+
+
+
+@font-face {
+  font-family: 'la_belle_auroreregular';
+  src: url('labelleaurore-regular-webfont.woff2') format('woff2'),
+       url('labelleaurore-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
