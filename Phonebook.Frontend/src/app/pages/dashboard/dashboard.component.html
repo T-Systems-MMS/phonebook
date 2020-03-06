@@ -76,6 +76,7 @@
       <mat-icon>{{ drawer.opened ? 'chevron_right' : 'chevron_left' }} </mat-icon>
     </button>
   </div>
+  <mat-divider [vertical]="true"></mat-divider>
   <mat-drawer-container hasBackdrop="false" class="container" position="end">
     <mat-drawer-content class="content"> </mat-drawer-content>
     <mat-drawer #drawer mode="side" [opened]="drawerOpen">
