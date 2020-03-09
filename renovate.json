@@ -1,0 +1,17 @@
+{
+  "extends": ["config:base", "schedule:nonOfficeHours", ":semanticCommits", "docker:enableMajor"],
+  "labels": ["dependencies"],
+  "masterIssue": true,
+  "stabilityDays": 3,
+  "prCreation": "not-pending",
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "minor": {
+    "automerge": false
+  },
+  "dockerfile": {
+    "pinDigests": true
+  }
+}

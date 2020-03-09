@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { combineLatest, ConnectableObservable, Observable, of } from 'rxjs';
 import { catchError, map, publishReplay, startWith } from 'rxjs/operators';
-import { Environment, EnvironmentService } from 'src/app/services/environment.service';
+import { Environment } from 'src/environments/EnvironmentInterfaces';
+import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Injectable()
 export class FeatureFlagService {
@@ -13,11 +14,7 @@ export class FeatureFlagService {
   };
   private flagOverwriteEmitter: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(
-    private httpClient: HttpClient,
-    private location: Location,
-    private environmentService: EnvironmentService
-  ) {}
+  constructor(private httpClient: HttpClient, private location: Location) {}
 
   /**
    * Returns the Feature Flags.
@@ -69,7 +66,7 @@ export class FeatureFlagService {
     }
     // Flags with 0 are disabled by default, but can be enabled by the user
     if (value === 0) {
-      if (this.environmentService.getEnvironment() === Environment.production) {
+      if (runtimeEnvironment.environment === Environment.production) {
         return false;
       } else {
         return true;

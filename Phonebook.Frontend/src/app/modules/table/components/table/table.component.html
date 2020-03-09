@@ -29,7 +29,9 @@
     track-by="trackById"
   >
     <ng-container [matColumnDef]="columns.picture.id">
-      <mat-header-cell *matHeaderCellDef> {{ columnTranslate.getTranslation(columns.picture.id) }} </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+        {{ columnTranslate.getTranslation(columns.picture.id) }}
+      </mat-header-cell>
       <mat-cell *matCellDef="let person">
         <app-profile-picture
           class="circle square-img50"
@@ -67,7 +69,9 @@
     </ng-container>
 
     <ng-container [matColumnDef]="columns.email.id">
-      <mat-header-cell *matHeaderCellDef> {{ columnTranslate.getTranslation(columns.email.id) }} </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+        {{ columnTranslate.getTranslation(columns.email.id) }}
+      </mat-header-cell>
       <mat-cell *matCellDef="let person">
         <button mat-icon-button actionDrawer [copy]="person.Contacts.Email" [mailto]="person.Contacts.Email">
           <mat-icon>email</mat-icon>
@@ -90,7 +94,7 @@
           mat-button
           actionDrawer
           [copy]="person.Contacts.Phone"
-          [tel]="person.Contacts.Phone"
+          [tel]="person.Contacts.Phone | telephone"
           *ngIf="person.Contacts.Phone != ''"
         >
           {{ person.Contacts.Phone }}
@@ -112,7 +116,7 @@
           mat-button
           actionDrawer
           [copy]="person.Contacts.Mobile"
-          [tel]="person.Contacts.Mobile"
+          [tel]="person.Contacts.Mobile | telephone"
           *ngIf="person.Contacts.Mobile != ''"
         >
           {{ person.Contacts.Mobile }}
@@ -158,12 +162,13 @@
         {{ columnTranslate.getTranslation(columns.orgUnit.id) }}
       </mat-header-cell>
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="person.Business.ShortOrgUnit[0]">
-        </app-add-filter>
-        <span *ngFor="let orgUnit of person.Business.ShortOrgUnit.slice(1)"
-          >,
-          <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="orgUnit"></app-add-filter>
-        </span>
+        <mat-chip-list>
+          <app-add-filter
+            *ngFor="let orgUnit of person.Business.ShortOrgUnit"
+            [filterColumn]="columns.orgUnit"
+            [filterValue]="orgUnit"
+          ></app-add-filter>
+        </mat-chip-list>
       </mat-cell>
     </ng-container>
 
@@ -208,6 +213,20 @@
       >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.costcenter" [filterValue]="person.Business.Costcenter"></app-add-filter>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container [matColumnDef]="columns.status.id">
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortButtonLabel="Change sorting for column status"
+        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Status'@@TableComponentColumnStatusLabel"
+      >
+        {{ columnTranslate.getTranslation(columns.status.id) }}</mat-header-cell
+      >
+      <mat-cell *matCellDef="let person">
+        <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type"></app-add-filter>
       </mat-cell>
     </ng-container>
 

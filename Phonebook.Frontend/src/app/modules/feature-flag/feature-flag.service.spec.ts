@@ -2,7 +2,6 @@ import { Location } from '@angular/common';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { Environment, EnvironmentService } from 'src/app/services/environment.service';
 import { FeatureFlagService } from './feature-flag.service';
 
 describe('FeatureFlagService', () => {
@@ -14,11 +13,7 @@ describe('FeatureFlagService', () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       imports: [HttpClientTestingModule],
-      providers: [
-        FeatureFlagService,
-        { provide: Location, useClass: LocationMock },
-        { provide: EnvironmentService, useClass: MockEnviromentService }
-      ]
+      providers: [FeatureFlagService, { provide: Location, useClass: LocationMock }]
     }).compileComponents();
     httpMock = TestBed.get(HttpTestingController);
     featureFlagServiceTest = TestBed.get(FeatureFlagService);
@@ -101,11 +96,5 @@ describe('FeatureFlagService', () => {
 class LocationMock {
   public prepareExternalUrl(url: string): string {
     return '/' + url;
-  }
-}
-
-class MockEnviromentService {
-  public getEnvironment(): Environment {
-    return Environment.production;
   }
 }

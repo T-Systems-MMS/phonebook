@@ -28,7 +28,7 @@
         actionDrawer
         color="primary"
         [copy]="person.Contacts.Phone"
-        [tel]="person.Contacts.Phone"
+        [tel]="person.Contacts.Phone | telephone"
       >
         <div>
           <mat-icon>call</mat-icon>
@@ -41,7 +41,7 @@
         actionDrawer
         color="primary"
         [copy]="person.Contacts.Mobile"
-        [tel]="person.Contacts.Mobile"
+        [tel]="person.Contacts.Mobile | telephone"
       >
         <div>
           <mat-icon>call</mat-icon>

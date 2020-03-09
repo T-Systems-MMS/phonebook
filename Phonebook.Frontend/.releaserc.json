@@ -23,10 +23,6 @@
     },
     {
       "path": "@semantic-release/exec",
-      "cmd": "echo ##vso[build.updatebuildnumber]${nextRelease.version}"
-    },
-    {
-      "path": "@semantic-release/exec",
       "cmd": "docker pull tsystemsmms/phonebook-build:latest || true"
     },
     {
@@ -86,7 +82,6 @@
   "success": [
     "@semantic-release/github"
   ],
-  "analyzeCommits": "simple-commit-message",
   "plugins": [
     [
       "@semantic-release/commit-analyzer",

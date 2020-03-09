@@ -11,7 +11,7 @@ import { runtimeEnvironment } from 'src/environments/runtime-environment';
  * Service for changing the User Picture
  */
 export class ProfilePictureService {
-  private readonly endpoint: string = runtimeEnvironment.employeePicturesEndpoint;
+  private readonly endpoint?: string = runtimeEnvironment.employeePicturesEndpoint;
   public reload: EventEmitter<string> = new EventEmitter();
 
   constructor(private httpClient: HttpClient, private currentUserService: CurrentUserService) {}
@@ -20,6 +20,11 @@ export class ProfilePictureService {
    * Upload the file as new User Picture of the currently authenticated User
    */
   public uploadUserPicture(file: File): Observable<any> {
+    if (this.endpoint === undefined) {
+      throw new Error(
+        'The runtime variable "EMPLOYEE_PICTURES_ENDPOINT" is not defined. (You can define the variable in the docker container)'
+      );
+    }
     const formData: FormData = new FormData();
     formData.append('file', file);
 
@@ -48,6 +53,11 @@ export class ProfilePictureService {
   }
 
   public deleteUserPicture(): Observable<any> {
+    if (this.endpoint === undefined) {
+      throw new Error(
+        'The runtime variable "EMPLOYEE_PICTURES_ENDPOINT" is not defined. (You can define the variable in the docker container)'
+      );
+    }
     return new Observable<any>(observer => {
       this.currentUserService.getCurrentUserId().subscribe(
         userName => {

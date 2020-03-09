@@ -3,9 +3,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlatformModule } from '@angular/cdk/platform';
 import { HttpClientModule } from '@angular/common/http';
 import { LOCALE_ID, NgModule, TRANSLATIONS } from '@angular/core';
+import { MatBadgeModule } from '@angular/material/badge';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
@@ -23,7 +24,6 @@ import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component'
 import { SettingsModule } from 'src/app/pages/settings/settings.module';
 import { UserPagesModule } from 'src/app/pages/users/user-pages.module';
 import { ApiModule } from 'src/app/services/api/api.module';
-import { EnvironmentService } from 'src/app/services/environment.service';
 import { MailService } from 'src/app/services/mail.service';
 import { ReleaseInfoService } from 'src/app/services/release-info.service';
 import { ServiceWorkerService } from 'src/app/services/service-worker.service';
@@ -41,11 +41,19 @@ import { ErrorHandlerModule } from 'src/app/shared/error/error.module';
 // Modules
 import { MaterialModule } from 'src/app/shared/material.module';
 import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
-import { AppState, BookmarksState, CommonPersonsState, LastPersonsState, SearchState, TableState } from 'src/app/shared/states';
+import {
+  AppState,
+  BookmarksState,
+  CommonPersonsState,
+  LastPersonsState,
+  SearchState,
+  TableState
+} from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 declare const require;
 
@@ -65,6 +73,7 @@ declare const require;
     FeatureFlagModule.forRoot(),
     NotImplementedModule,
     FeedbackDrawerModule,
+    MatBadgeModule,
     NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState], {
       // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
       // developmentMode: !environment.production
@@ -88,15 +97,16 @@ declare const require;
     UserPagesModule
   ],
   providers: [
-    {
-      provide: TRANSLATIONS,
-      useFactory: (locale: string) => {
-        locale = locale || 'en';
-        // if we are already on our default locale, we do not need to set any translations
-        return require(`raw-loader!../i18n/messages.${locale}.xlf`);
-      },
-      deps: [LOCALE_ID]
-    },
+    // {
+    //   provide: TRANSLATIONS,
+    //   useFactory: (locale: string) => {
+    //     locale = locale || 'en';
+    //     // if we are already on our default locale, we do not need to set any translations
+    //     return require(`raw-loader!../i18n/messages.${locale}.xlf`).default;
+    //   },
+    //   deps: [LOCALE_ID]
+    // },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { panelClass: 'mat-dialog-override' } },
     WINDOW_PROVIDER,
     ServiceWorkerService,
     WindowRef,
@@ -104,9 +114,7 @@ declare const require;
     FloorplanService,
     ReleaseInfoService,
     ThemeService,
-    I18n,
-    ColumnTranslate,
-    EnvironmentService
+    ColumnTranslate
   ],
   bootstrap: [AppComponent]
 })

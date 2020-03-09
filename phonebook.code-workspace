@@ -1,77 +1,72 @@
 {
-	"folders": [
-		{
-			"name": "Frontend",
-			"path": "./Phonebook.Frontend"
-		},
-		{
-			"name": "Backend",
-			"path": "./Phonebook.Backend"
-		},
-		{
-			"name": "Source.PeopleSoft",
-			"path": "./Phonebook.Source.PeopleSoft"
-		},
-		{
-			"name": "Phonebook (Helm)",
-			"path": "./Phonebook"
-		},
-		{
-			"name": "Documentation",
-			"path": "./docs"
-		},
-		{
-			"name": "Phonebook Demo",
-			"path": "./Phonebook.Demo"
-		},
-		{
-			"name": "Assets",
-			"path": "./Phonebook.Assets"
-		},
-		{
-			"name": "Source.Mock",
-			"path": "./Phonebook.Source.MockPeopleBackend"
-		},
-		{
-			"name": "Azure Pipelines",
-			"path": "./.azure/pipelines"
-		},
-		{
-			"name": "root",
-			"path": "."
-		}
-	],
-	"settings": {
-		"cSpell.words": [
-			"Kubernetes",
-			"Phonebook"
-		],
-		"javascript.preferences.quoteStyle": "single",
-		"typescript.preferences.quoteStyle": "single",
-		"javascript.referencesCodeLens.enabled": true,
-		"typescript.referencesCodeLens.enabled": true,
-		"prettier.jsxSingleQuote": true,
-		"prettier.singleQuote": true,
-		"prettier.tslintIntegration": true,
-		"prettier.printWidth": 120,
-		"prettier.jsxBracketSameLine": false,
-		"[html]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
-		},
-		"[javascript]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
-		},
-		"[typescript]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
-		},
-		"files.associations": {
-			"**/assets/js/search-data.json": "plaintext"
-		}
-	},
-	"extensions": {
-		"recommendations": [
-			"esbenp.prettier-vscode",
-			"streetsidesoftware.code-spell-checker"
-		]
-	}
+	    "folders": [
+        {
+            "name": "Frontend",
+            "path": "./Phonebook.Frontend"
+        },
+        {
+            "name": "Backend",
+            "path": "./Phonebook.Backend"
+        },
+        {
+            "name": "Source.PeopleSoft",
+            "path": "./Phonebook.Source.PeopleSoft"
+        },
+        {
+            "name": "Phonebook (Helm)",
+            "path": "./Phonebook"
+        },
+        {
+            "name": "Documentation",
+            "path": "./docs"
+        },
+        {
+            "name": "Demo",
+            "path": "./demo"
+        },
+        {
+            "name": "Demo - Assets",
+            "path": "./demo/Assets"
+        },
+        {
+            "name": "Demo - Datasource",
+            "path": "./demo/source"
+        },
+        {
+            "name": "Azure Pipelines",
+            "path": "./.azure/pipelines"
+        },
+        {
+            "name": "root",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "cSpell.words": [
+            "Kubernetes",
+            "Phonebook"
+        ],
+        "javascript.preferences.quoteStyle": "single",
+        "typescript.preferences.quoteStyle": "single",
+        "javascript.referencesCodeLens.enabled": true,
+        "typescript.referencesCodeLens.enabled": true,
+        "[html]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "files.associations": {
+            "**/assets/js/search-data.json": "plaintext"
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "streetsidesoftware.code-spell-checker"
+        ]
+    }
 }

@@ -4,7 +4,7 @@
   <img
     *ngIf="!floorPlanNotFound"
     [src]="runtimeEnvironment.assetsEndpoint + '/roomplan/' + floorplan + '.jpg'"
-    class="roomplan"
+    class="img-container"
     alt="Roomplan"
     (error)="floorPlanNotFound = true"
   />

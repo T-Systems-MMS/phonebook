@@ -17,50 +17,75 @@ mat-sidenav-container {
     display: flex;
     flex-flow: column;
 
-    #pb-greetings {
-      flex: 1;
-    }
+    .navigation {
+      z-index: 1;
 
-    .beta-tag {
-      vertical-align: top !important;
-      background-color: mat-color(mat-palette($mat-teal, 500));
-      text-transform: uppercase;
-      color: white;
-      padding: 2px 5px;
-      border-radius: 10px;
-    }
+      #pb-greetings {
+        flex: 1;
+      }
 
-    .version {
-      vertical-align: baseline;
-    }
+      .beta-tag {
+        vertical-align: top !important;
+        background-color: mat-color(mat-palette($mat-teal, 500));
+        text-transform: uppercase;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 10px;
+      }
 
-    .table-settings {
-      position: absolute;
-      right: 0;
-      margin-right: 16px;
-      vertical-align: middle;
-    }
+      .version {
+        vertical-align: baseline;
+      }
 
-    .row-toolbar {
-      width: 100%;
-      margin-bottom: 0;
-      display: flex;
-      align-items: center;
-    }
+      .table-settings {
+        position: absolute;
+        right: 0;
+        margin-right: 16px;
+        vertical-align: middle;
+      }
 
-    #search {
-      margin: auto;
-      height: 3rem;
-    }
+      .row-toolbar {
+        width: 100%;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+      }
 
-    @media (max-width: 599px) {
       #search {
-        height: 2.5rem;
+        margin: auto;
+        height: 3rem;
+      }
+
+      .pb-missing-userimage-info {
+        flex: 2;
+        margin: 0 auto;
+      }
+
+      .pb-opacity-background {
+        background: rgba(0, 0, 0, 0.15);
+      }
+
+      @media (max-width: 599px) {
+        #search {
+          height: 2.5rem;
+        }
       }
     }
   }
 }
 
+// styling the profile picture in the mobile navbar
+// because the styling for the icons aren't containing the picture and the size is different
+#pb-nav-mobile app-profile-picture {
+  display: inline-block;
+  position: relative;
+  top: -2px; // the height and width in 4px more than from the other icons
+  left: -2px; // --> moving it 2px
+  width: 28px;
+  height: 28px;
+  margin-right: 16px;
+  vertical-align: middle;
+}
 // Dynamic Search Bar Width
 
 @include smaller {

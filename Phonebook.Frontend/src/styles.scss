@@ -18,6 +18,7 @@ $custom-typography: mat-typography-config(
 );
 
 @include mat-core($custom-typography);
+@import 'mixins';
 @import 'themes';
 @import 'media-queries';
 
@@ -40,17 +41,19 @@ app-root {
 .circle {
   border-radius: 50%;
   overflow: hidden;
+  display: block; // only with display block/inline-block the border-radius is applied
 }
 
 .square-img100 {
-  width: 100px;
-  height: 100px;
-  display: block;
+  @include square-img-size(100px);
 }
 
 .square-img50 {
-  width: 50px;
-  height: 50px;
+  @include square-img-size(50px);
+}
+
+.square-img40 {
+  @include square-img-size(40px);
 }
 
 // Styles for Cards
@@ -71,12 +74,16 @@ app-root {
   margin: 20px;
 }
 
+.pb-margin-05 {
+  margin: 0.5%;
+}
+
 .pb-margin-top-20 {
   margin-top: 20px;
 }
 
 .pb-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .pb-flex-row {
@@ -126,6 +133,16 @@ app-root {
   align-items: center;
 }
 
+.pb-center-element {
+  display: flex;
+  justify-content: center;
+}
+
+.pb-center-element-orthogonal {
+  display: flex;
+  align-items: center;
+}
+
 .pb-text-overflow {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -135,6 +152,34 @@ app-root {
 .pb-height-expand {
   min-width: 100%;
   min-height: 100%;
+}
+
+.pb-float-right {
+  float: right;
+}
+
+.pb-text-align-center {
+  text-align: center;
+}
+
+.pb-icon-60 {
+  mat-icon {
+    @include mat-icon-size(60px);
+  }
+}
+
+.pb-margin-left-right-responsive {
+  margin: auto 15%;
+
+  @include below-big {
+    margin: auto 10%;
+  }
+  @include below-med {
+    margin: auto 5%;
+  }
+  @include below-small {
+    margin: auto 1%;
+  }
 }
 
 //Media query classes

@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { ClipboardService } from 'ngx-clipboard';
 import { ActionDrawerSheetComponent } from 'src/app/shared/directives/action-drawer/action-drawer-sheet/action-drawer-sheet.component';
 
@@ -14,10 +14,7 @@ export class ActionDrawerDirective {
     if (this.copy && !this.tel && !this.mailto) {
       this.clipboardService.copyFromContent(this.copy);
       this.snackBar.open(
-        this.i18n({
-          id: 'GeneralSuccessMessageCopy',
-          value: 'Copied to clipboard!'
-        }),
+        $localize`:SuccessMessageCopy|Message displayed if something was copied succesfully@@GeneralSuccessMessageCopy:Copied to clipboard!`,
         '',
         { duration: 2000 }
       );
@@ -33,8 +30,7 @@ export class ActionDrawerDirective {
     el: ElementRef,
     private bottomSheet: MatBottomSheet,
     private clipboardService: ClipboardService,
-    private snackBar: MatSnackBar,
-    private i18n: I18n
+    private snackBar: MatSnackBar
   ) {}
 
   @Input()

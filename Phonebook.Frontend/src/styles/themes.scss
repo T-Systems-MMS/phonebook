@@ -1,5 +1,4 @@
 // Define themes as described in this guide: https://material.angular.io/guide/theming
-@import 'src/app/shared/components/add-filter/add-filter.component.theme';
 @import 'src/app/shared/components/search/search.component.theme';
 @import 'src/app/shared/components/navigation/navigation.component.theme';
 @import 'src/app/modules/table/components/table/table.component.theme';
@@ -16,6 +15,13 @@
   }
 
   .pb-color-primary {
+    color: mat-color($primary) !important;
+  }
+
+  .pb-border-color-primary {
+    border-color: mat-color($primary) !important;
+  }
+  .pb-color-background {
     color: mat-color($background, text) !important;
   }
 
@@ -28,7 +34,6 @@
 
 @mixin custom-components-theme($theme) {
   @include search-component-theme($theme);
-  @include add-filter-component-theme($theme);
   @include user-list-component-theme($theme);
   @include global-theme($theme);
   @include navigation-component-theme($theme);

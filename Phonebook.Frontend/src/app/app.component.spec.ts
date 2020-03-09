@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SwUpdate } from '@angular/service-worker';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { NgxsModule } from '@ngxs/store';
 import { MockDirective } from 'ng-mocks';
 import { FeatureFlagDirective } from 'src/app/modules/feature-flag/feature-flag.directive';
@@ -31,7 +31,6 @@ describe('AppComponent', () => {
         { provide: ServiceWorkerService, useValue: null },
         { provide: FeatureFlagService, useValue: null },
         { provide: MatDialog, useValue: null },
-        { provide: I18n, useClass: MockI18nService },
         { provide: ThemeService, useValue: null }
       ],
       schemas: [NO_ERRORS_SCHEMA]
@@ -44,5 +43,3 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 });
-
-class MockI18nService {}

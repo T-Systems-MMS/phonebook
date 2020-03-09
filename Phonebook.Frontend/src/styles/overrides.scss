@@ -21,3 +21,28 @@ $config: mat-typography-config();
   position: relative;
   height: inherit;
 }
+
+// This fixes https://github.com/angular/components/issues/11094
+mat-card.mat-card {
+  //two times mat-card to override component styling of the material component (through higher specificity)
+  display: flex;
+  flex-direction: column;
+
+  .mat-card-content {
+    flex-grow: 1;
+  }
+}
+
+// This fixes https://github.com/angular/components/issues/4609
+.mat-dialog-override {
+  mat-dialog-container {
+    > :first-child {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    mat-dialog-content {
+      flex-grow: 1;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.contributors-table {
+  ::ng-deep table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  ::ng-deep tr {
+    display: inline;
+  }
+  ::ng-deep td {
+    display: inline-block;
+    a[title] {
+      display: none;
+    }
+  }
+}

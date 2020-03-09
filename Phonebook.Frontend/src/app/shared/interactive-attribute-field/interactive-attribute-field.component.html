@@ -11,13 +11,13 @@
   <a
     *ngIf="tel"
     mat-button
-    href="tel:{{ value }}"
+    href="tel:{{ value | telephone }}"
     i18n-matTooltip="GeneralCallButton|call Number button@@GeneralCallButton"
     matTooltip="Call the Number"
   >
     {{ value }}
   </a>
-  <a *ngIf="!tel && !mailto" mat-button class="pb-color-primary" disabled>
+  <a *ngIf="!tel && !mailto" mat-button class="pb-color-background" disabled>
     {{ value }}
   </a>
   <button

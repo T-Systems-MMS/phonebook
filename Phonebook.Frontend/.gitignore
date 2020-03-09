@@ -20,6 +20,7 @@ node_modules/
 
 # IDE - VSCode
 .vscode/*
+!.vscode/*.code-snippets
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -38,8 +39,8 @@ key.pem
 cert.pem
 
 # e2e
-/e2e/*.js
-/e2e/*.map
+/e2e/src/*.js
+/e2e/src/*.map
 
 # System Files
 .DS_Store

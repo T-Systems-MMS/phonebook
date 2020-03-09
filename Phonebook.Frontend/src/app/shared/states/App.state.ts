@@ -1,6 +1,7 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { Injectable } from '@angular/core';
 
 export class ServiceWorkerNotificationDisplayed {
   public static readonly type: string = '[App State] Service Worker Notification displayed';
@@ -51,6 +52,7 @@ export interface AppStateModel {
     activeTheme: Theme.magenta_light_theme
   }
 })
+@Injectable()
 export class AppState {
   constructor(private themeService: ThemeService) {}
   @Selector()

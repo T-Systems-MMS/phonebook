@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
 import { BuildingService } from 'src/app/services/api/building.service';
 import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
@@ -24,7 +24,7 @@ export class CityComponent implements OnInit {
     private route: ActivatedRoute,
     private roomService: RoomService,
     private router: Router,
-    private i18n: I18n,
+
     private snackBar: MatSnackBar,
     private buildingService: BuildingService
   ) {}
@@ -36,12 +36,7 @@ export class CityComponent implements OnInit {
         .subscribe(node => {
           if (node == null) {
             this.snackBar.open(
-              this.i18n({
-                meaning: 'CityComponent',
-                description: 'Error Message if City does not exist.',
-                id: 'CityComponentErrorNoCity',
-                value: 'City does not exist.'
-              }),
+              $localize`:CityComponent|Error Message if City does not exist.@@CityComponentErrorNoCity:City does not exist.`,
               '',
               { duration: 5000 }
             );

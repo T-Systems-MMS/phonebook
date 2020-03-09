@@ -2,7 +2,6 @@
 
 # General Variables
 host: &host 'localhost'
-contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
 
 # Frontend Variables
 frontend:
@@ -25,6 +24,7 @@ ingress:
 
 # Traefik Configuration 
 traefik:
+  enabled: true
   startupArguments:
     - ''
   ssl:

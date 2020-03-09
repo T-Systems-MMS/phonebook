@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phonebook-mock-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phonebook-mock-backend
+  template:
+    metadata:
+      labels:
+        app: phonebook-mock-backend
+    spec:
+      nodeSelector:
+        'beta.kubernetes.io/os': linux
+      containers:
+        - name: phonebook-mock-backend
+          image: tsystemsmms/phonebook-build:mock-backend
+          imagePullPolicy: 'Always'
+          # resources:
+          #   requests:
+          #     cpu: 100m
+          #     memory: 128Mi
+          #   limits:
+          #     cpu: 250m
+          #     memory: 256Mi
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phonebook-mock-backend-service
+spec:
+  ports:
+    - name: http
+      targetPort: 80
+      port: 80
+  selector:
+    app: phonebook-mock-backend
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: phonebook-mock-backend-ingress
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+    traefik.frontend.priority: '50'
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: phonebook-mock-backend-service
+              servicePort: http

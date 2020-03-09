@@ -41,7 +41,7 @@
   </mat-card-header>
   <mat-card-content>
     <mat-divider></mat-divider>
-    <div class="pb-expand pb-wrap">
+    <div class="pb-flex pb-wrap">
       <mat-list>
         <h3
           mat-subheader
@@ -57,7 +57,7 @@
           >
             Location
           </h4>
-          <app-address mat-line [location]="{ RoomCollection: [room] }"></app-address>
+          <app-address mat-line [location]="{ RoomCollection: [room], City: {}}"></app-address>
         </mat-list-item>
         <mat-list-item *ngIf="room.Phone">
           <mat-icon mat-list-icon>phone</mat-icon>
@@ -68,7 +68,7 @@
             Phone Number
           </h4>
           <p mat-line>
-            <button actionDrawer [tel]="room.Phone" [copy]="room.Phone">
+            <button actionDrawer [tel]="room.Phone | telephone" [copy]="room.Phone">
               {{ room.Phone }}
             </button>
           </p>

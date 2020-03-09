@@ -15,7 +15,7 @@
         </div>
         <mat-card-title>
           <div class="pb-block">
-            <ng-container *ngIf="!person.isOfType(type.Fremdkraft)">
+            <ng-container *ngIf="!person.isOfStatus(status.Fremdkraft)">
               <app-add-filter
                 [filterColumn]="columns.orgUnit"
                 [filterValue]="person.Business.ShortOrgUnit[0]"
@@ -33,16 +33,26 @@
           >
         </mat-card-title>
         <mat-card-subtitle>
-          <p *ngIf="!person.isOfType(type.Fremdkraft)">
+          <p *ngIf="!person.isOfStatus(status.Fremdkraft)">
             <app-add-filter [filterColumn]="columns.role" [filterValue]="person.Role" [resetSearchTerm]="true">
             </app-add-filter>
-            | {{ person.Type }}
+            |
+            <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type" [resetSearchTerm]="true">
+            </app-add-filter>
           </p>
         </mat-card-subtitle>
       </mat-card-title-group>
       <!-- Actions -->
       <div class="actions">
         <div>
+          <button
+            mat-icon-button
+            matTooltip="Found Incorrect Data? Report them!"
+            i18n-matTooltip="User-detailComponent|Tooltip Incorrect Data@@UserDetailComponentTooltipDataChange"
+            (click)="openInformationIncorrectDialog()"
+          >
+            <mat-icon>report_problem</mat-icon>
+          </button>
           <button
             mat-icon-button
             (click)="toggleBookmark()"
@@ -69,8 +79,7 @@
               >Download Contact</span
             >
           </button>
-          <!-- TODO: Add Chat Link -->
-          <a mat-menu-item target="_blank" rel="noopener" [href]="'example.com/chat' + person.Id.toLowerCase()">
+          <a *ngIf="rocketChatLink" mat-menu-item target="_blank" rel="noopener" [href]="rocketChatLink">
             <mat-icon>chat</mat-icon>
             <span i18n="User-detailComponent|Share Menu: Rocket Chat Option@@UserDetailComponentShareRocketChat"
               >Rocket Chat</span
@@ -89,7 +98,7 @@
     </mat-card-header>
     <mat-card-content>
       <mat-divider></mat-divider>
-      <div class="pb-expand pb-wrap">
+      <div class="pb-flex pb-wrap">
         <mat-list>
           <h3
             mat-subheader
@@ -143,7 +152,7 @@
             <p mat-line>{{ randomMoney }} €</p>
           </mat-list-item>
         </mat-list>
-        <mat-list *ngIf="!person.isOfType(type.Fremdkraft)">
+        <mat-list *ngIf="!person.isOfStatus(status.Fremdkraft)">
           <h3
             mat-subheader
             i18n="User-detailComponent|Subtitle for Further Information@@UserDetailComponentSubTitleFurtherInformation"
@@ -189,15 +198,15 @@
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon>category</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.Type data@@DataPersonType">
-              Type
+            <h4 mat-line i18n="Datapoint|Label for Person.Status data@@DataPersonStatus">
+              Status
             </h4>
             <p mat-line>
               {{ person.Type }}
             </p>
           </mat-list-item>
         </mat-list>
-        <mat-list *ngIf="!person.isOfType(type.Fremdkraft)">
+        <mat-list *ngIf="!person.isOfStatus(status.Fremdkraft)">
           <h3 mat-subheader i18n="@@UserDetailComponentSubTitleFurtherInformation">
             Further Information
           </h3>
@@ -224,15 +233,15 @@
               </a>
             </h4>
             <p mat-line>
-              <li *ngFor="let shortOrgUnit of person.Business.ShortOrgUnit; let index = index">
+              <mat-chip-list class="mat-chip-list-stacked">
                 <app-add-filter
+                  *ngFor="let shortOrgUnit of person.Business.ShortOrgUnit; let index = index"
                   [filterColumn]="columns.orgUnit"
                   [filterValue]="shortOrgUnit"
                   [displayText]="person.Business.OrgUnit[index] + ' (' + shortOrgUnit + ')'"
                   [resetSearchTerm]="true"
-                >
-                </app-add-filter>
-              </li>
+                ></app-add-filter>
+              </mat-chip-list>
             </p>
           </mat-list-item>
           <mat-list-item>
@@ -277,7 +286,7 @@
             i18n-label="UserDetailComponent|Tab Headline for Roomplan@@UserDetailComponentTabHeadlineRoomplan"
           >
             <div class="pb-roomplan" *ngIf="person.Location.RoomCollection[0].Description != null">
-              <ng-container *ngIf="!person.isOfType(type.Fremdkraft)">
+              <ng-container *ngIf="!person.isOfStatus(status.Fremdkraft)">
                 <app-room-plan
                   [floorplan]="person.Location.RoomCollection[0].FloorPlan"
                   [room]="person.Location.RoomCollection[0].Number"
@@ -290,7 +299,7 @@
             i18n-label="UserDetailComponent|Tab Headline for Skills@@UserDetailComponentTabHeadlineSkills"
           >
             <div
-              class="pb-expand pb-skills"
+              class="pb-flex pb-skills"
               i18n="User-detailComponent|Text for the upcoming skill tag feature@@UserDetailComponenMessageContributeSkills"
             >
               This is where a coworkers skills would be shown. But this is still work in Progress, you can make it

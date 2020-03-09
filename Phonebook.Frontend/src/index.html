@@ -7,13 +7,16 @@
     <title>Phonebook</title>
     <script>
       window.ENV = {
+        environment: '${ENVIRONMENT}',
+        environmentTag: '${ENVIRONMENT_TAG}',
         ravenURL: '${RAVEN_URL}',
         employeePicturesEndpoint: '${EMPLOYEE_PICTURES_ENDPOINT}',
         oldEmployeePictureEndpoint: '${OLD_EMPLOYEE_PICTURE_ENDPOINT}',
         assetsEndpoint: '${ASSETS_ENDPOINT}',
         contactEmail: '${CONTACT_EMAIL}',
         roomPlanningToolUrl: '${ROOMPLANNINGTOOL_URL}',
-        contactUrl: '${CONTACT_URL}'
+        contactUrl: '${CONTACT_URL}',
+        rocketChatUrl: '${ROCKETCHAT_URL}'
       };
     </script>
     <base href="/" />

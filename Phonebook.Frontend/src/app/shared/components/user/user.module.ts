@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,6 +23,7 @@ import { UserSmallCardComponent } from 'src/app/shared/components/user/user-smal
 import { UserTinyCardComponent } from 'src/app/shared/components/user/user-tiny-card/user-tiny-card.component';
 import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
 import { InteractiveAttributeFieldModule } from 'src/app/shared/interactive-attribute-field/interactive-attribute-field.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -38,13 +40,15 @@ import { InteractiveAttributeFieldModule } from 'src/app/shared/interactive-attr
     MatCardModule,
     MatListModule,
     MatTabsModule,
+    MatChipsModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
     NgxVcardModule,
     MatTooltipModule,
     NotImplementedModule,
-    InteractiveAttributeFieldModule
+    InteractiveAttributeFieldModule,
+    PipesModule
   ],
   declarations: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent],
   exports: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent]
