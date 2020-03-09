@@ -1,46 +1,67 @@
-.dashboard {
-  display: flex;
-  flex-flow: row wrap;
-  margin-top: 20px;
+mat-drawer-container {
   width: 100%;
-  //@media (max-width: 1037px) {
-    //display: block;
-  //}
 
-  .pb-bookmarked {
-    margin-left: 10px;
+  mat-drawer-content,
+  mat-drawer {
+    padding-left: 10px;
+  }
+}
+
+.pb-bookmarked {
+  margin-top: 2%;
+  height: 98%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .pb-bookmarked-title {
     display: flex;
-    flex-direction: column;
-    flex: 1;
+    flex-direction: row;
+    h1 {
+      margin: 0;
+    }
+    mat-form-field {
+      margin-left: 16px;
+    }
+    ::ng-deep .mat-form-field-infix {
+      border: none;
+    }
+  }
 
-    .pb-bookmarked-title {
-      display: flex;
-      flex-direction: row;
-      margin: 0 0 16px 0;
-      h1 {
-        margin: 0;
-      }
-      mat-form-field {
-        margin-left: 16px;
-      }
-      ::ng-deep .mat-form-field-infix {
-        border: none;
-      }
-    }
-  }
-  mat-divider {
-    margin: 15px 0 15px 0;
-    @media (max-width: 1037px) {
-    }
-  }
-  .pb-last {
-    flex: 1;
-    max-width: 360px;
-    margin-left: 10px;
+  .pb-bookmarks-list {
     overflow-y: auto;
-    @media (max-width: 1037px) {
-      max-width: unset;
-      height: 100vh;
+  }
+}
+
+.pb-recent-people-drawer {
+  width: 370px;
+  background-color: unset;
+}
+
+.pb-recent-people {
+  margin-top: 2%;
+  height: 98%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .pb-recent-people-list {
+    flex: 1;
+  }
+}
+
+.toggle-drawer {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 46%;
+  padding-right: 10px;
+
+  button {
+    align-self: center;
+    span {
+      writing-mode: tb-rl;
     }
   }
 }
@@ -48,10 +69,6 @@
 .pb-small-card {
   width: 320px;
   height: 275px;
-  @media (max-width: 500px) {
-    max-width: 250px;
-    height: 275px;
-  }
 }
 
 .pb-card {
@@ -75,32 +92,4 @@
 
 .cdk-drag-animating {
   transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.pb-last {
-  width:500px; 
-  height: 100%;
-  @media (max-width: 1037px) {
-    max-width: unset;
-    height: 100vh;
-  }
-}
-
-.toggle-drawer{
-  display: flex;
-  position: relative;
-  height:20px;
-  z-index: 1000;
-  //@media (max-width: 725px) {
-    //margin-left: auto;
-    //width: 0px;
-  //}
-}
-
-.pb-flex-row {
-  position: relative;
-}
-
-.mat-drawer {
-  background-color: #f9f9f9;
 }

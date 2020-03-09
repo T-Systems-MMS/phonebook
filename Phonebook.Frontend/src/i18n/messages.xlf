@@ -180,6 +180,11 @@
         <note priority="1" from="description">Button for closing something</note>
         <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit>
+      <trans-unit id="DashboardComponentTitleRecent" datatype="html">
+        <source> Recent People </source>
+        <note priority="1" from="description">Title of the recent people section</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit>
       <trans-unit id="DashboardComponentTitleBookmark" datatype="html">
         <source> Bookmarked People </source>
         <note priority="1" from="description">Title of the Bookmarked people section</note>
@@ -200,14 +205,14 @@
         <note priority="1" from="description">The alphabetical desc order of the favorite cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
-      <trans-unit id="DashboardComponentTitleRecent" datatype="html">
-        <source> Recent People </source>
-        <note priority="1" from="description">Title of the recent people section</note>
+      <trans-unit id="DashboardComponentButtonExpandTooltip" datatype="html">
+        <source>Expand or Collapse recently viewed people</source>
+        <note priority="1" from="description">Tooltip for expanding recently viewed people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
-      <trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
-        <source> You haven&apos;t bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </source>
-        <note priority="1" from="description">Message displayed if no people are bookmarked</note>
+      <trans-unit id="DashboardComponentButtonExpandArialLabel" datatype="html">
+        <source>Button expanding or collapsing the recently viewed people section</source>
+        <note priority="1" from="description">Aria Label for expanding recently viewed people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="GeneralUndoButton" datatype="html">
@@ -217,7 +222,13 @@
       </trans-unit>
       <trans-unit id="DashboardComponentDescriptionRecent" datatype="html">
         <source> Looks like you haven&apos;t searched for any colleagues yet. Search for somebody to see how it works! The most recent ones will be displayed here. </source>
-        <note priority="1" from="description">Message displayed if no people have been visited recently</note>
+        <note priority="1" from="description">Message displayed if no people have been visited
+              recently</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit>
+      <trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
+        <source> You haven&apos;t bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </source>
+        <note priority="1" from="description">Message displayed if no people are bookmarked</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentTitle" datatype="html">
