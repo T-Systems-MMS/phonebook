@@ -1,81 +1,84 @@
 <div class="dashboard">
-  <div class="pb-bookmarked">
-    <div class="pb-bookmarked-title">
-      <h1 i18n="DashboardComponent|Title of the Bookmarked people section@@DashboardComponentTitleBookmark">
-        Bookmarked People
-      </h1>
-      <mat-form-field>
-        <mat-select [(value)]="favoriteSort" (valueChange)="changeOrder()">
-          <mat-option
-            value=""
-            i18n="DashboardComponent|The standard (customizable) order of the favorite cards@@DashboardComponentOrderNone"
-          >
-            Custom Order</mat-option
-          >
-          <mat-option
-            value="asc"
-            i18n="DashboardComponent|The alphabetical asc order of the favorite cards@@DashboardComponentOrderAsc"
-          >
-            Alphabetical asc</mat-option
-          >
-          <mat-option
-            value="desc"
-            i18n="DashboardComponent|The alphabetical desc order of the favorite cards@@DashboardComponentOrderDesc"
-          >
-            Alphabetical desc</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
-    <div cdkDropListGroup class="pb-flex-row">
-      <div
-        *ngFor="let person of bookmarkedPersons; index as i"
-        cdkDropList
-        [cdkDropListData]="i"
-        cdkDropListOrientation="horizontal"
-        class="card-container"
-      >
-        <app-user-small-card
-          [person]="person"
-          [actionButtonIcon]="'close'"
-          [actionButtonClasses]="'white'"
-          (actionButtonClicked)="removeFromBookmarkedPersons(person)"
-          class="pb-small-card pb-card"
-          cdkDrag
-          (cdkDragEntered)="entered($event)"
-          (cdkDragEnded)="ended($event)"
-          [cdkDragData]="i"
-          [cdkDragDisabled]="favoriteSort != ''"
-        ></app-user-small-card>
-      </div>
-    </div>
-    <div
-      *ngIf="bookmarkedPersons.length === 0"
-      i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
-    >
-      You haven't bookmarked anybody yet, look for the button
-      <button mat-icon-button>
-        <mat-icon>bookmark_border</mat-icon>
-      </button>
-      on a workmates page.
-    </div>
-  </div>
-  <div class="toggle-drawer">
-    <button
-      mat-icon-button
-      (click)="drawer.toggle()"
-      i18n-matTooltip="DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip"
-      i18n-aria-label="DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel"
-      matTooltip="Expand or Collapse recently viewed people"
-    >
-      <mat-icon>{{ drawer.opened ? 'chevron_right' : 'chevron_left' }} </mat-icon>
-    </button>
-  </div>
-  <mat-divider [vertical]="true"></mat-divider>
+
   <mat-drawer-container hasBackdrop="false" class="container" position="end">
-    <mat-drawer-content class="content"> </mat-drawer-content>
-    <mat-drawer #drawer mode="side" [opened]="drawerOpen">
+    <mat-drawer-content class="content"> 
+      <div class="pb-bookmarked">
+        <div class="pb-bookmarked-title">
+          <h1 i18n="DashboardComponent|Title of the Bookmarked people section@@DashboardComponentTitleBookmark">
+            Bookmarked People
+          </h1>
+          <mat-form-field>
+            <mat-select [(value)]="favoriteSort" (valueChange)="changeOrder()">
+              <mat-option
+                value=""
+                i18n="DashboardComponent|The standard (customizable) order of the favorite cards@@DashboardComponentOrderNone"
+              >
+                Custom Order</mat-option
+              >
+              <mat-option
+                value="asc"
+                i18n="DashboardComponent|The alphabetical asc order of the favorite cards@@DashboardComponentOrderAsc"
+              >
+                Alphabetical asc</mat-option
+              >
+              <mat-option
+                value="desc"
+                i18n="DashboardComponent|The alphabetical desc order of the favorite cards@@DashboardComponentOrderDesc"
+              >
+                Alphabetical desc</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>    
+        <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
+        <div cdkDropListGroup class="pb-flex-row">
+          <div
+            *ngFor="let person of bookmarkedPersons; index as i"
+            cdkDropList
+            [cdkDropListData]="i"
+            cdkDropListOrientation="horizontal"
+            class="card-container"
+          >
+            <app-user-small-card
+              [person]="person"
+              [actionButtonIcon]="'close'"
+              [actionButtonClasses]="'white'"
+              (actionButtonClicked)="removeFromBookmarkedPersons(person)"
+              class="pb-small-card pb-card"
+              cdkDrag
+              (cdkDragEntered)="entered($event)"
+              (cdkDragEnded)="ended($event)"
+              [cdkDragData]="i"
+              [cdkDragDisabled]="favoriteSort != ''"
+            ></app-user-small-card>
+          </div>
+        </div>
+        <div
+          *ngIf="bookmarkedPersons.length === 0"
+          i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
+        >
+          You haven't bookmarked anybody yet, look for the button
+          <button mat-icon-button>
+            <mat-icon>bookmark_border</mat-icon>
+          </button>
+          on a workmates page.
+        </div>
+      </div>
+      <div class="toggle-drawer">
+        <button
+          mat-icon-button
+          (click)="drawer.toggle()"
+          i18n-matTooltip="DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip"
+          i18n-aria-label="DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel"
+          matTooltip="Expand or Collapse recently viewed people"
+        >
+          <mat-icon>{{ drawer.opened ? 'chevron_right' : 'chevron_left' }} </mat-icon>
+        </button>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+    </mat-drawer-content>
+    <mat-drawer #drawer mode="side" [opened]="drawerOpen" position="end">
+      <ng-template #recentpeople>
       <cdk-virtual-scroll-viewport itemSize="148" class="pb-last">
         <h1>
           <ng-container i18n="DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent">
@@ -112,6 +115,13 @@
           </div>
         </div>
       </cdk-virtual-scroll-viewport>
-    </mat-drawer>
+    </ng-template> 
+    <ng-container *ngIf="!(smallerScreen)" >
+    <ng-container *ngTemplateOutlet="recentpeople" ></ng-container>
+  </ng-container>
+  </mat-drawer>
   </mat-drawer-container>
+<ng-container *ngIf="smallerScreen">
+  <ng-container *ngTemplateOutlet="recentpeople" ></ng-container>
+</ng-container>
 </div>
