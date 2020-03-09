@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { Select } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable } from 'rxjs';
@@ -42,7 +42,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
     private currentUserService: CurrentUserService,
     private router: Router,
     public dialog: MatDialog,
-    public i18n: I18n,
     public featureFlagService: FeatureFlagService,
     public badge: MatBadgeModule,
     public releaseInfoService: ReleaseInfoService
@@ -90,19 +89,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
       untilComponentDestroyed(this),
       map(enabled => {
         if (enabled) {
-          return this.i18n({
-            value: `Happy April Fools' Day`,
-            description: 'Greetings Message on first April',
-            id: 'navigationBarGreetingsMessageFirstApril',
-            meaning: 'NavigationBar'
-          });
+          return $localize`:NavigationBar|Greetings Message on first April@@navigationBarGreetingsMessageFirstApril:Happy April Fools' Day`;
         }
-        return this.i18n({
-          value: 'Have a nice day',
-          description: 'Greetings Message',
-          id: 'navigationBarGreetingsMessage',
-          meaning: 'NavigationBar'
-        });
+        return $localize`:NavigationBar|Greetings Message@@navigationBarGreetingsMessage:Have a nice day`;
       })
     );
   }

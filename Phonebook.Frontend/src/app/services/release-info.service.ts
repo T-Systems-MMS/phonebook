@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { Store } from '@ngxs/store';
 import { ReleaseNotificationDialog } from 'src/app/shared/dialogs/release-notification-dialog/release-notification.dialog';
 import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
@@ -17,7 +18,7 @@ export class ReleaseInfoService {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private store: Store,
-    private i18n: I18n,
+
     private httpClient: HttpClient
   ) {}
 
@@ -69,18 +70,8 @@ export class ReleaseInfoService {
   private displayReleaseNotification() {
     this.snackBar
       .open(
-        this.i18n({
-          value: 'We`ve fixed some Bugs and added some new Features for you, with ❤',
-          description: 'Snack Bar display for a feature update',
-          id: 'ReleaseInfoServiceSnackBarUpdateTitle',
-          meaning: 'ReleaseInfoService'
-        }),
-        this.i18n({
-          value: 'Fixed what?',
-          description: 'Snack Bar display Action Button for a feature update',
-          id: 'ReleaseInfoServiceSnackBarUpdateButton',
-          meaning: 'ReleaseInfoService'
-        }),
+        $localize`:ReleaseInfoService|Snack Bar display for a feature update@@ReleaseInfoServiceSnackBarUpdateTitle:We've fixed some Bugs and added some new Features for you, with ❤`,
+        $localize`:ReleaseInfoService|Snack Bar display Action Button for a feature update@@ReleaseInfoServiceSnackBarUpdateButton:Fixed what?`,
         {
           duration: 8000
         }

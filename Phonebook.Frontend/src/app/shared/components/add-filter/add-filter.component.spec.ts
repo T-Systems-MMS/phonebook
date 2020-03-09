@@ -67,7 +67,7 @@ describe('AddFilterComponent', () => {
   template: '<app-add-filter [filterColumn]="column" [filterValue]="filterValue"></app-add-filter>'
 })
 class TestComponentWrapperWithoutDisplayText {
-  @ViewChild(AddFilterComponent, { static: false })
+  @ViewChild(AddFilterComponent)
   public componentUnderTest: AddFilterComponent;
   public column = ColumnDefinitions.orgUnit;
   public filterValue = 'filter';
@@ -79,7 +79,7 @@ class TestComponentWrapperWithoutDisplayText {
     '<app-add-filter [filterColumn]="column" [filterValue]="filterValue" [displayText]="displayText"></app-add-filter>'
 })
 class TestComponentWrapperFullIO {
-  @ViewChild(AddFilterComponent, { static: false })
+  @ViewChild(AddFilterComponent)
   public componentUnderTest: AddFilterComponent;
   public column = ColumnDefinitions.orgUnit;
 

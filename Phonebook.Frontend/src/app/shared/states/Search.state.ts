@@ -3,6 +3,7 @@ import { Navigate, RouterNavigation, RouterState } from '@ngxs/router-plugin';
 import { Action, Actions, ofActionSuccessful, Selector, State, StateContext, Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { PhonebookSortDirection, SearchFilter, TableSort } from 'src/app/shared/models';
+import { Injectable } from '@angular/core';
 
 export class AddSearchFilter {
   public static readonly type: string = '[Search State] Add Search Filter';
@@ -44,6 +45,7 @@ export interface SearchStateModel {
     searchFilters: []
   }
 })
+@Injectable()
 export class SearchState {
   constructor(private store: Store, private actions$: Actions) {
     this.actions$.pipe(ofActionSuccessful(RouterNavigation)).subscribe(routeInfo => {
