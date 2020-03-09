@@ -17,16 +17,16 @@
       "path": "./docs"
     },
     {
-      "name": "Phonebook Demo",
-      "path": "./Phonebook.Demo"
+      "name": "Demo",
+      "path": "./demo"
     },
     {
-      "name": "Assets",
-      "path": "./Phonebook.Assets"
+      "name": "Demo - Assets",
+      "path": "./demo/Assets"
     },
     {
-      "name": "Source.Mock",
-      "path": "./Phonebook.Source.MockPeopleBackend"
+      "name": "Demo - Datasource",
+      "path": "./demo/source"
     },
     {
       "name": "Azure Pipelines",
@@ -38,7 +38,10 @@
     }
   ],
   "settings": {
-    "cSpell.words": ["Kubernetes", "Phonebook"],
+    "cSpell.words": [
+      "Kubernetes",
+      "Phonebook"
+    ],
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
     "javascript.referencesCodeLens.enabled": true,
@@ -57,6 +60,8 @@
     }
   },
   "extensions": {
-    "recommendations": ["esbenp.prettier-vscode"]
+    "recommendations": [
+      "esbenp.prettier-vscode"
+    ]
   }
 }

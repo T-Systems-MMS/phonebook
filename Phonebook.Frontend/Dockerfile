@@ -1,5 +1,5 @@
 # base image
-FROM node:11.15.0 as builder
+FROM node:12.16 as builder
 
 # set working directory
 RUN  mkdir /usr/local/app
@@ -12,9 +12,8 @@ RUN npm ci
 # Because: https://stackoverflow.com/questions/37715224/copy-multiple-directories-with-one-command
 COPY ./src/ ./src/
 
-COPY ["angular.json", "tsconfig.json", "tslint.json", "./"]
-RUN npm run build:de
-RUN npm run build:en
+COPY ["angular.json", "tsconfig.json", "tsconfig.app.json", "tsconfig.spec.json", "tslint.json", "./"]
+RUN npm run build
 
 
 
@@ -22,7 +21,7 @@ RUN npm run build:en
 ### production ###
 ##################
 
-FROM nginx:1.17.6
+FROM nginx:1.17.9
 WORKDIR /etc/nginx
 
 ARG BASE_URL

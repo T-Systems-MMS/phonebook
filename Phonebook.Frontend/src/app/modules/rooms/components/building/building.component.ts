@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BuildingService } from 'src/app/services/api/building.service';
 import { Location, City, BuildingPart } from 'src/app/shared/models';
@@ -28,7 +28,7 @@ export class BuildingComponent implements OnInit {
     private route: ActivatedRoute,
     private roomService: RoomService,
     private router: Router,
-    private i18n: I18n,
+
     private snackBar: MatSnackBar,
     private buildingService: BuildingService
   ) {}
@@ -40,12 +40,7 @@ export class BuildingComponent implements OnInit {
         .subscribe(node => {
           if (node == null) {
             this.snackBar.open(
-              this.i18n({
-                meaning: 'BuildingComponent',
-                description: 'Error Message if Building does not exist.',
-                id: 'BuildingComponentErrorNoBuilding',
-                value: 'Building does not exist.'
-              }),
+              $localize`:BuildingComponent|Error Message if Building does not exist.@@BuildingComponentErrorNoBuilding:Building does not exist.`,
               '',
               { duration: 5000 }
             );

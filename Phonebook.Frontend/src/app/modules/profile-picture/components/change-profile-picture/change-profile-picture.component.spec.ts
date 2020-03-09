@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { async, ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { MockComponent } from 'ng2-mock-component';
 import { Observable, of } from 'rxjs';
 import { ChangeProfilePictureComponent } from 'src/app/modules/profile-picture/components/change-profile-picture/change-profile-picture.component';
 import { ProfilePictureService } from 'src/app/modules/profile-picture/profile-picture.service';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
-
 
 xdescribe('ChangeProfilePictureComponent', () => {
   let component: ChangeProfilePictureComponent;
@@ -20,8 +19,7 @@ xdescribe('ChangeProfilePictureComponent', () => {
       declarations: [MockComponent({ selector: 'mat-icon' }), ChangeProfilePictureComponent, TestComponentWrapper],
       providers: [
         { provide: CurrentUserService, useClass: mockCurrentUserService },
-        { provide: ProfilePictureService, useClass: MockProfilePictureService },
-        { provide: I18n, useClass: MockI18nService }
+        { provide: ProfilePictureService, useClass: MockProfilePictureService }
       ]
     }).compileComponents();
     injector = getTestBed();
@@ -44,8 +42,6 @@ export class mockCurrentUserService {
     return of('username');
   }
 }
-
-class MockI18nService {}
 
 @Component({
   selector: 'test-component-wrapper',

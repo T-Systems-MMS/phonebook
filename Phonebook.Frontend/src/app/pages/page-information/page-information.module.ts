@@ -6,7 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule, Routes } from '@angular/router';
 import { PageInformationComponent } from 'src/app/pages/page-information/page-information.component';
 import { FeedbackDrawerModule } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.module';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 import { ContributorsModule } from 'src/app/shared/components/contributors/contributors.module';
 
 const routes: Routes = [

@@ -19,11 +19,11 @@ This is the current project structure.
 
  * **Phonebook (Root)**
    * **[docs:](/phonebook/pages/doc-guides/)** Documents for the whole project hosted with Jekyll on GitHub-Pages
-   * **Phonebook.Assets:** Example implementation for serving assets like roomplans or static images
    * **[Phonebook.Frontend:](frontend/general-guide)** Frontend project with all related sources
-   * **Phonebook.Source.MockPeopleBackend:** Mock data source 
    * **Phonebook.Source.PeopleSoft:** One of the future data sources for the PeopleSoft application
-   * **Phonebook.Demo:** Demo Application of the Phonebook
+   * **demo:** Demo Application of the Phonebook
+   * **demo/assets:** Example implementation for serving assets like roomplans or static images
+   * **demo/source:** Mock data source 
 
 ---
 

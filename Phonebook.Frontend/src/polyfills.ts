@@ -14,6 +14,9 @@
  * Learn more in https://angular.io/guide/browser-support
  */
 
+// Load `$localize` onto the global scope - used for i18n tags
+import '@angular/localize/init';
+
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */

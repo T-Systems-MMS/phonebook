@@ -16,8 +16,7 @@
       <mat-card-subtitle>
         <div>
           <span i18n="OrganigramNodeComponent|Supervisor Property@@OrganigramNodeComponentPropertySupervisor">{node.supervisors.length,
-            plural, =0 { No Supervisor } =1 { Supervisor: } other { Supervisors: }}
-          </span>
+            plural, =0 { No Supervisor } =1 { Supervisor: } other { Supervisors: }}</span>
           <a *ngFor="let person of node.supervisors" [routerLink]="['/user', person.Id]">
             {{ person.Firstname + ' ' + person.Surname}}
           </a>

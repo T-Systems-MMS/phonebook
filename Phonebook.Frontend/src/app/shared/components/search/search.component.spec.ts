@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { NgxsModule, Store } from '@ngxs/store';
 import { MockComponent } from 'ng2-mock-component';
 import { BehaviorSubject } from 'rxjs';
@@ -11,7 +11,6 @@ import { mockPerson } from 'src/app/shared/mocks/person';
 import { Person } from 'src/app/shared/models';
 import { SearchState } from 'src/app/shared/states';
 import { SearchComponent } from './search.component';
-
 
 class MockSearchService {
   public keyword: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -38,7 +37,7 @@ describe('SearchComponent', () => {
         MatSnackBarModule,
         NgxsModule.forRoot([SearchState])
       ],
-      providers: [{ provide: I18n, useClass: MockI18nService }]
+      providers: []
     }).compileComponents();
   }));
 
@@ -52,5 +51,3 @@ describe('SearchComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-class MockI18nService {}
