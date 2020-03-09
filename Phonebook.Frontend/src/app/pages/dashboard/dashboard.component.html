@@ -65,12 +65,8 @@
     <button
       mat-icon-button
       (click)="drawer.toggle()"
-      i18n-matTooltio="
-        DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip
-      "
-      i18n-aria-label="
-        DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel
-      "
+      i18n-matTooltip="RoomTreeComponent|Tooltip for expanding the tree view@@RoomTreeComponentButtonExpandTooltip"
+      i18n-aria-label="RoomTreeComponent|Aria Label for expanding the tree view@@RoomTreeComponentButtonExpandAriaLabel"
       matTooltip="Expand or Collapse recently viewed people"
     >
       <mat-icon>{{ drawer.opened ? 'chevron_right' : 'chevron_left' }} </mat-icon>

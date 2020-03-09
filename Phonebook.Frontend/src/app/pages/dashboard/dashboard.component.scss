@@ -3,9 +3,9 @@
   flex-flow: row wrap;
   margin-top: 20px;
   width: 100%;
-  @media (max-width: 1037px) {
-    display: block;
-  }
+  //@media (max-width: 1037px) {
+    //display: block;
+  //}
 
   .pb-bookmarked {
     margin-left: 10px;
@@ -30,25 +30,29 @@
   }
   mat-divider {
     margin: 15px 0 15px 0;
-    @media (max-width: 1037px) {
-      display: none;
-    }
+    //@media (max-width: 1037px) {
+      //display: none;
+    //}
   }
   .pb-last {
     flex: 1;
     max-width: 360px;
     margin-left: 10px;
     overflow-y: auto;
-    @media (max-width: 1037px) {
-      max-width: unset;
-      height: 100vh;
-    }
+    //@media (max-width: 1037px) {
+      //max-width: unset;
+      //height: 100vh;
+    //}
   }
 }
 
 .pb-small-card {
   width: 320px;
   height: 275px;
+  //@media (max-width: 500px) {
+    //max-width: 250px;
+    //height: 275px;
+  //}
 }
 
 .pb-card {
@@ -77,13 +81,22 @@
 .pb-last {
   width:500px; 
   height: 100%;
+  @media (max-width: 1037px) {
+    max-width: unset;
+    height: 100vh;
+  }
 }
 
 .toggle-drawer{
   display: flex;
   position: relative;
   top: 50%;
-  height:21px;
+  height:20px;
+  z-index: 1;
+  @media (max-width: 725px) {
+    //margin-left: auto;
+    width: 0px;
+  }
 }
 
 .pb-flex-row {
