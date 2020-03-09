@@ -5,6 +5,11 @@
 @import 'src/app/modules/profile-picture/components/profile-picture/profile-picture.component.theme';
 @import 'src/styles/shadows.theme';
 
+
+
+
+
+
 //Global Color Theme Mixin
 @mixin global-theme($theme) {
   $primary: map-get($theme, primary);
@@ -41,6 +46,30 @@
   @include shadow-theme($theme);
 }
 
+$april-typography: mat-typography-config(
+  $font-family: 'la_belle_auroreregular, "Helvetica Neue", normal',
+  $display-4: mat-typography-level(115px, 112px, 300),
+  $display-3: mat-typography-level(57px, 56px, 500),
+  $display-2: mat-typography-level(47px, 48px, 500),
+  $display-1: mat-typography-level(33px, 40px, 500),
+  $headline: mat-typography-level(26px, 32px, 500),
+  $body-1: mat-typography-level(20px, 32px, 500),
+  $body-2: mat-typography-level(26px, 32px, 500),
+  $title: mat-typography-level(22px, 32px, 500),
+  $subheading-2: mat-typography-level(18px, 28px, 500),
+  $subheading-1: mat-typography-level(23px, 24px, 500),
+  $caption: mat-typography-level(20px, 20px, 500),
+  $button: mat-typography-level(23px, 20px, 500),
+  $input: mat-typography-level(inherit, 1.125, 500)
+);
+
+@import 'src/styles/themes/unicorn';
+.unicorn_theme{
+  @include mat-core($april-typography);
+  @include angular-material-theme($unicorn_theme);
+  @include custom-components-theme($unicorn_theme);
+}
+
 @import 'src/styles/themes/blue';
 .blue_light_theme {
   @include angular-material-theme($blue_light_theme);
@@ -62,26 +91,3 @@
   @include angular-material-theme($magenta_dark_theme);
   @include custom-components-theme($magenta_dark_theme);
 }
-
-$april-typography: mat-typography-config(
-  $font-family: 'la_belle_auroreregular, "Helvetica Neue", normal',
-  $display-4: mat-typography-level(115px, 112px, 300),
-  $display-3: mat-typography-level(57px, 56px, 500),
-  $display-2: mat-typography-level(47px, 48px, 500),
-  $display-1: mat-typography-level(33px, 40px, 500),
-  $headline: mat-typography-level(26px, 32px, 500),
-  $title: mat-typography-level(22px, 32px, 500),
-  $subheading-2: mat-typography-level(18px, 28px, 500),
-  $subheading-1: mat-typography-level(23px, 24px, 500),
-  $caption: mat-typography-level(20px, 20px, 500),
-  $button: mat-typography-level(23px, 20px, 500),
-  $input: mat-typography-level(inherit, 1.125, 500)
-);
-
-@import 'src/styles/themes/unicorn';
-.unicorn_theme{
-  @include mat-core($april-typography);
-  @include angular-material-theme($unicorn_theme);
-  @include custom-components-theme($unicorn_theme);
-}
-

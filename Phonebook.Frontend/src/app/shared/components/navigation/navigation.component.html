@@ -109,7 +109,7 @@
             <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null && hasImage">
               {{ (getGreetingMessage() | async) + ' ' + currentUser.Firstname }}!
             </div>
-            <div id="unicorn" *featureFlag="'firstApril'" style="transform: scaleX(-1); ">
+            <div id="unicorn" *featureFlag="'firstApril'">
 
               <img src="/assets/gif/RainbowCloud.gif" height=50px; />
             </div>
