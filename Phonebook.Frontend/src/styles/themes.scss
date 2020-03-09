@@ -5,11 +5,6 @@
 @import 'src/app/modules/profile-picture/components/profile-picture/profile-picture.component.theme';
 @import 'src/styles/shadows.theme';
 
-
-
-
-
-
 //Global Color Theme Mixin
 @mixin global-theme($theme) {
   $primary: map-get($theme, primary);
@@ -64,12 +59,35 @@ $april-typography: mat-typography-config(
 );
 
 @import 'src/styles/themes/unicorn';
-.unicorn_theme{
+.unicorn_theme {
   @include mat-core($april-typography);
   @include angular-material-theme($unicorn_theme);
   @include custom-components-theme($unicorn_theme);
+  .mat-table{
+    background-color: #FFF3AD;  
+  }
+  .mat-drawer-inner-container {
+    background-color: #D2FFD6 !important;
+  }
+  .mat-option.mat-selected{
+    color : 	#550644 !important;
+  }
+  .mat-card  {
+    background-color: #FFF3AD;
+  }
+  .mat-tab-group{
+    background-color: #FFF3AD;  
+  }
+  .search{
+    background-color: #D2FFD6;
+  }
+  .mat-toolbar {
+    background-color: #D2FFD6;
+  }
+  .mat-card-subtitle{
+    color: black;
+  }
 }
-
 @import 'src/styles/themes/blue';
 .blue_light_theme {
   @include angular-material-theme($blue_light_theme);
