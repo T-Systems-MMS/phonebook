@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  public drawerOpen: boolean = this.breakpointObserver.isMatched('(max-width: 768px)');
+  public drawerOpen: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
   public drawerMode: MatDrawerMode = 'side';
   public smallerScreen: boolean = false;
   constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}

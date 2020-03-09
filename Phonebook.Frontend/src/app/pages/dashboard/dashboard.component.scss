@@ -4,6 +4,7 @@ mat-drawer-container {
   mat-drawer-content,
   mat-drawer {
     padding-left: 10px;
+    overflow: hidden;
   }
 }
 
