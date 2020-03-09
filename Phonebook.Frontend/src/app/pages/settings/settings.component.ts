@@ -55,12 +55,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
         return $localize`:SettingsComponent|Color Theme Option - Blue Light@@SettingsComponentColorThemeBlueLight:Blue Light Theme`;
       }
       case Theme.unicorn_theme: {
-        return this.i18n({
-          value: 'Unicorn Theme',
-          description: 'Color Theme Option: Unicorn',
-          id: 'SettingsComponentColorThemeUnicorn',
-          meaning: 'SettingsComponent'
-        });
+        return $localize`:SettingsComponent|Color Theme Option -  Unicorn@@SettingsComponentColorThemeUnicorn:Unicorn Theme`;
       }
       case Theme.blue_dark_theme: {
         return $localize`:SettingsComponent|Color Theme Option -  Blue Dark@@SettingsComponentColorThemeBlueDark:Blue Dark Theme`;
