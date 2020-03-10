@@ -76,7 +76,8 @@
         for (var key in browserList) {
           html += '<li onclick="openURL(this)" value="' + browserList[key] + '"><strong>' + key + '</strong></li>';
         }
-        html += '</ul></div>';
+        html += '</ul><p>If this was detected by mistake consider <a href="https://github.com/T-Systems-MMS/phonebook/issues/new/choose">opening an issue</a>.</p> </div>';
+
         document.getElementsByTagName('body')[0].innerHTML = html;
       }
     }
