@@ -42,6 +42,8 @@
 }
 @import 'src/styles/themes/unicorn';
 .unicorn_theme {
+  font-family: 'la_belle_auroreregular';
+  font-size: 18px;
   @include mat-core($april-typography);
   @include angular-material-theme($unicorn_theme);
   @include custom-components-theme($unicorn_theme);
