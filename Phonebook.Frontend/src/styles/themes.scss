@@ -5,6 +5,23 @@
 @import 'src/app/modules/profile-picture/components/profile-picture/profile-picture.component.theme';
 @import 'src/styles/shadows.theme';
 
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(20px, 32px, 500),
+  $subheading-2: mat-typography-level(16px, 28px, 400),
+  $subheading-1: mat-typography-level(15px, 24px, 400),
+  $body-2: mat-typography-level(14px, 24px, 500),
+  $body-1: mat-typography-level(14px, 20px, 400),
+  $caption: mat-typography-level(12px, 20px, 400),
+  $button: mat-typography-level(14px, 14px, 500),
+  $input: mat-typography-level(inherit, 1.125, 400)
+);
+
 //Global Color Theme Mixin
 @mixin global-theme($theme) {
   $primary: map-get($theme, primary);
@@ -42,33 +59,37 @@
 }
 @import 'src/styles/themes/unicorn';
 .unicorn_theme {
-  font-family: 'la_belle_auroreregular';
-  font-size: 18px;
   @include mat-core($april-typography);
   @include angular-material-theme($unicorn_theme);
   @include custom-components-theme($unicorn_theme);
-  .mat-table{
-    background-color: #FFF3AD;  
+  .mat-button{
+    font-size: 19px;
+  }
+  .dashboard{
+    font-family:  'la_belle_auroreregular, "Helvetica Neue", normal' !important; 
+  }
+  .mat-table {
+    background-color: #fff3ad;
   }
   .mat-drawer-inner-container {
-    background-color: #D2FFD6 !important;
+    background-color: #d2ffd6 !important;
   }
-  .mat-option.mat-selected{
-    color : 	#550644 !important;
+  .mat-option.mat-selected {
+    color: #550644 !important;
   }
-  .mat-card  {
-    background-color: #FFF3AD;
+  .mat-card {
+    background-color: #fff3ad;
   }
-  .mat-tab-group{
-    background-color: #FFF3AD;  
+  .mat-tab-group {
+    background-color: #fff3ad;
   }
-  .search{
-    background-color: #D2FFD6;
+  .search {
+    background-color: #d2ffd6;
   }
   .mat-toolbar {
-    background-color: #D2FFD6;
+    background-color: #d2ffd6;
   }
-  .mat-card-subtitle{
+  .mat-card-subtitle {
     color: black;
   }
 }
@@ -76,20 +97,24 @@
 .blue_light_theme {
   @include angular-material-theme($blue_light_theme);
   @include custom-components-theme($blue_light_theme);
+  @include mat-core($custom-typography);
 }
 
 .blue_dark_theme {
   @include angular-material-theme($blue_dark_theme);
   @include custom-components-theme($blue_dark_theme);
+  @include mat-core($custom-typography);
 }
 
 @import 'src/styles/themes/magenta';
 .magenta_light_theme {
   @include angular-material-theme($magenta_light_theme);
   @include custom-components-theme($magenta_light_theme);
+  @include mat-core($custom-typography);
 }
 
 .magenta_dark_theme {
   @include angular-material-theme($magenta_dark_theme);
   @include custom-components-theme($magenta_dark_theme);
+  @include mat-core($custom-typography);
 }
