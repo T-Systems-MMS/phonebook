@@ -9,10 +9,18 @@ import { filter } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
-import { AppState, InitTheme, SetSendFeedback, SetDisplayedNotificationVersion } from 'src/app/shared/states/App.state';
+import {
+  AppState,
+  InitTheme,
+  SetTheme,
+  SetSendFeedback,
+  SetDisplayedNotificationVersion
+} from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
 
 @Component({
   selector: 'app-root',
@@ -33,11 +41,19 @@ export class AppComponent implements OnInit, OnDestroy {
     private matDialog: MatDialog,
     private platform: Platform,
     private router: Router,
-
+    public featureFlagService: FeatureFlagService,
     private activatedRoute: ActivatedRoute
   ) {}
   public ngOnInit() {
     this.store.dispatch(new InitTheme());
+    this.featureFlagService
+      .get('firstApril')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(flag => {
+        if (flag) {
+          this.store.dispatch(new SetTheme(Theme.unicorn_theme));
+        }
+      });
     // Commented as long as serviceWorker is reinstalled
     // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
     // //Checking if the Service Worker was installed correctly.
