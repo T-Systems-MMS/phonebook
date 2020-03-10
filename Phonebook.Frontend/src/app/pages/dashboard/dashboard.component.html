@@ -1,5 +1,5 @@
 <mat-drawer-container hasBackdrop="false" class="container" position="end">
-  <mat-drawer #drawer [mode]="drawerMode" [opened]="drawerOpen" position="end" class="pb-recent-people-drawer">
+  <mat-drawer #drawer [mode]="drawerMode" [opened]="drawerOpened" position="end" class="pb-recent-people-drawer">
     <div class="pb-recent-people">
       <h1>
         <ng-container i18n="DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent">
@@ -111,7 +111,7 @@
     <div class="toggle-drawer">
       <button
         mat-icon-button
-        (click)="drawer.toggle()"
+        (click)="drawer.toggle(); setDrawer()"
         i18n-matTooltip="
            DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip
         "

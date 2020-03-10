@@ -31,13 +31,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  public drawerOpen: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
+  public drawerOpened: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
   public drawerMode: MatDrawerMode = 'side';
   public smallerScreen: boolean = false;
   constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
 
   public ngOnInit() {
     this.changeOrder();
+    this.drawerOpened = JSON.parse(localStorage.getItem('drawerSetting'));
     this.breakpointObserver
       .observe('(max-width: 768px)')
       .pipe(untilComponentDestroyed(this))
@@ -107,12 +108,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
       localStorage.clickcount = 1;
     }
     if (localStorage.clickcount % 2 === 0) {
-      this.drawerOpen = false;
-      localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpen));
+      this.drawerOpened = false;
+      localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpened));
     }
     if (localStorage.clickcount % 2 === 1) {
-      this.drawerOpen = true;
-      localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpen));
+      this.drawerOpened = true;
+      localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpened));
     }
   }
   
