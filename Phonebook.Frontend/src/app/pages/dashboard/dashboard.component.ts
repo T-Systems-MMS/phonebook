@@ -116,6 +116,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
       localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpened));
     }
   }
-  
   ngOnDestroy(): void {}
 }
