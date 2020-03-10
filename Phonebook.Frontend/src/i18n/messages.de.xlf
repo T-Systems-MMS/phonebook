@@ -156,6 +156,10 @@
                                 </target>
         <note priority="1" from="description">Color Theme Option - Blue Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentColorThemeUnicorn" datatype="html">
+        <source>Unicorn Theme</source><target state="new">Einhorn Farbschema</target>
+        <note priority="1" from="description">Color Theme Option -  Unicorn</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
         <source>Blue Dark Theme</source><target state="translated">
                                     Blau-Dunkel Farbschema
