@@ -181,7 +181,17 @@ app-root {
     margin: auto 1%;
   }
 }
-
+.pb-no-ie {
+  top: 38%;
+  left: 38%;
+  position: absolute;
+}
+.pb-no-ie li {
+  cursor: pointer;
+  &:hover {
+    color: #9b9e9e;
+  }
+}
 //Media query classes
 @include on-med-and-up {
   .pb-hide-on-med-and-up {

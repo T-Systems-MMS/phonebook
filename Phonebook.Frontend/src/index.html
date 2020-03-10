@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script src="./no-ie.js"></script>
     <!-- Deactivate Compatibility Mode in IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Phonebook</title>
@@ -28,7 +29,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
-
   <body class="mat-typography">
     <app-root></app-root>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
@@ -46,6 +46,40 @@
       document.getElementsByTagName('body')[0].style.display = 'flex';
     } else {
       top.location = self.location;
+    }
+    msieversion();
+
+    function openURL(e) {
+      browser = e.getAttribute('value');
+      if (browser == 'microsoft-edge') {
+        //edge can not be opened via shell
+        window.open((browser = e.getAttribute('value') + ':' + window.location.href));
+      } else {
+        new ActiveXObject('WScript.Shell').run(browser + ' ' + window.location.href);
+      }
+    }
+
+    function msieversion() {
+      var browserList = {
+        //list of browser-links where app can be openend in: key=browser name, value=shell-command to open browser
+        'Microsoft Edge': 'microsoft-edge',
+        'Google Chrome': 'chrome',
+        'Mozilla Firefox': 'firefox',
+        Opera: 'opera'
+      };
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf('MSIE ');
+
+      if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        // stone age browser IE
+        var html =
+          '<div class="pb-no-ie"><p><strong>This application does not support Internet Explorer!</strong></p><p>To run the Phonebook, please use one of the following modern browsers:</p><ul>';
+        for (var key in browserList) {
+          html += '<li onclick="openURL(this)" value="' + browserList[key] + '"><strong>' + key + '</strong></li>';
+        }
+        html += '</ul></div>';
+        document.getElementsByTagName('body')[0].innerHTML = html;
+      }
     }
   </script>
 </html>
