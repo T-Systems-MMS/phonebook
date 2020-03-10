@@ -7,8 +7,9 @@ import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.se
 import { NotImplementedService } from 'src/app/modules/not-implemented/not-implemented.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { Language } from 'src/app/shared/models/enumerables/Language';
-import { AppState, SetTheme } from 'src/app/shared/states';
+import { AppState, SetTheme, SetLayout } from 'src/app/shared/states';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 
 @Component({
   selector: 'app-settings',
@@ -21,7 +22,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public themeValue$: Observable<Theme>;
   public themes: string[] = Object.values(Theme);
   public languages: string[] = Object.keys(Language);
-  public layoutValue: Layout = Layout.view_module;
+  public layoutValue: Layout = Layout.module;
   public layout: string[] = Object.values(Layout);
   public featureFlags: Observable<{ name: string; value: boolean }[]> = this.featureFlagService.getAllDefaultDisabled();
 
@@ -45,9 +46,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.languageService.setLanguage(lang);
   }
 
-  public changeLayout(layout: Layout) {
-    this.notImplementedService.notImplemented();
-    this.layoutValue = layout;
+  public changeLayout(layoutClass: Layout) {
+    this.store.dispatch(new SetLayout(layoutClass));
   }
 
   public getThemeName(theme: Theme) {
@@ -91,7 +91,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   public getLayoutName(layout: Layout): string {
     switch (layout) {
-      case Layout.view_list: {
+      case Layout.list: {
         return this.i18n({
           value: 'List View',
           description: 'View Mode: List',
@@ -99,7 +99,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
           meaning: 'NavigationComponent'
         });
       }
-      case Layout.view_module: {
+      case Layout.module: {
         return this.i18n({
           value: 'Module View',
           description: 'View Mode: Module',
@@ -107,7 +107,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
           meaning: 'NavigationComponent'
         });
       }
-      case Layout.view_stream: {
+      case Layout.stream: {
         return this.i18n({
           value: 'Stream View',
           description: 'View Mode: Stream',
@@ -123,10 +123,4 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {}
-}
-
-enum Layout {
-  view_list = 'view_list',
-  view_module = 'view_module',
-  view_stream = 'view_stream'
 }

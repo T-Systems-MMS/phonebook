@@ -1,6 +1,8 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
+import { LayoutService } from 'src/app/services/layout.service';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 
 export class ServiceWorkerNotificationDisplayed {
   public static readonly type: string = '[App State] Service Worker Notification displayed';
@@ -29,6 +31,11 @@ export class InitTheme {
   public static readonly type: string = '[App State] Init activeTheme';
 }
 
+export class SetLayout {
+  public static readonly type: string = '[App State] Set activeLayout';
+  constructor(public activeLayout: Layout) {}
+}
+
 export interface AppStateModel {
   serviceWorkerNotificationDisplayed: boolean;
   version: string;
@@ -39,6 +46,7 @@ export interface AppStateModel {
    */
   sendFeedback: boolean | null;
   activeTheme: Theme;
+  activeLayout: Layout;
 }
 
 @State<AppStateModel>({
@@ -48,11 +56,12 @@ export interface AppStateModel {
     version: '0.0.0',
     displayedNotificationVersion: 0,
     sendFeedback: null,
-    activeTheme: Theme.magenta_light_theme
+    activeTheme: Theme.magenta_light_theme,
+    activeLayout: Layout.list
   }
 })
 export class AppState {
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService, private layoutService: LayoutService) {}
   @Selector()
   public static serviceWorkerNotificationDisplayed(state: AppStateModel): boolean {
     return state.serviceWorkerNotificationDisplayed;
@@ -65,6 +74,11 @@ export class AppState {
   @Selector()
   public static activeTheme(state: AppStateModel): Theme {
     return state.activeTheme;
+  }
+
+  @Selector()
+  public static activeLayout(state: AppStateModel): Layout {
+    return state.activeLayout;
   }
 
   @Selector()
@@ -125,5 +139,15 @@ export class AppState {
   public initTheme(ctx: StateContext<AppStateModel>) {
     const state = ctx.getState();
     this.themeService.setTheme(state.activeTheme);
+  }
+
+  @Action(SetLayout)
+  public setLayout(ctx: StateContext<AppStateModel>, action: SetLayout) {
+    const state = ctx.getState();
+    this.layoutService.setLayout(action.activeLayout);
+    ctx.setState({
+      ...state,
+      activeLayout: action.activeLayout
+    });
   }
 }
