@@ -98,5 +98,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public removeFromBookmarkedPersons(person: Person) {
     this.store.dispatch(new ToggleBookmark(person));
   }
+
+  public setDrawer() {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount) + 1;
+    }
+    else {
+      localStorage.clickcount = 1;
+    }
+    if (localStorage.clickcount % 2 === 0) {
+      this.drawerOpen = false;
+      localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpen));
+    }
+    if (localStorage.clickcount % 2 === 1) {
+      this.drawerOpen = true;
+      localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpen));
+    }
+  }
+  
   ngOnDestroy(): void {}
 }
