@@ -2,8 +2,7 @@
  * Unicorn Theme
  */
 
-
- $april-typography: mat-typography-config(
+$april-typography: mat-typography-config(
   $font-family: 'la_belle_auroreregular, "Helvetica Neue", normal',
   $display-4: mat-typography-level(112px, 112px, 300),
   $display-3: mat-typography-level(56px, 56px, 400),
@@ -17,124 +16,136 @@
   $button: mat-typography-level(18px, 14px, 500),
   $input: mat-typography-level(inherit, 1.125, 400),
   $body-1: mat-typography-level(18px, 32px, 500),
-  $body-2: mat-typography-level(18px, 32px, 600),
- );
+  $body-2: mat-typography-level(18px, 32px, 600)
+);
 
- $light-primary-text: rgba(#A71B57, 0.87);
- $light-secondary-text: rgba(#A71B57, 0.54);
- $light-disabled-text: rgba(#A71B57, 0.38);
- $light-dividers: rgba(#A71B57, 0.12);
- $light-focused: rgba(#A71B57, 0.12);
- 
- $unicorn: (
-   50: #A2EDFF,
-   100: #A2EDFF,
-   200: #A2EDFF,
-   300: #A2EDFF,
-   400: #A2EDFF,
-   500: #A2EDFF,
-   600: #A2EDFF,
-   700: #A2EDFF,
-   800: #A2EDFF,
-   900: #A2EDFF,
-   A100: #A2EDFF,
-   A200: #A2EDFF,
-   A400: #A2EDFF,
-   A700: #A2EDFF,
-   contrast: (
-     50: $light-primary-text,
-     100: $light-primary-text,
-     200: $light-primary-text,
-     300: $light-primary-text,
-     400: $light-primary-text,
-     500: $light-primary-text,
-     600: $light-primary-text,
-     700: $light-primary-text,
-     800: $light-primary-text,
-     900: $light-primary-text,
-     A100: $light-primary-text,
-     A200: $light-primary-text,
-     A400: $light-primary-text,
-     A700: $light-primary-text
-   )
- );
- 
- $lightblue: (
-   50: #C9B1FF,
-   100: #C9B1FF,
-   200: #C9B1FF,
-   300: #C9B1FF,
-   400: #C9B1FF,
-   500: #C9B1FF,
-   600: #C9B1FF,
-   700: #C9B1FF,
-   800: #C9B1FF,
-   900: #C9B1FF,
-   A100: #C9B1FF,
-   A200: #C9B1FF,
-   A400: #C9B1FF,
-   A700: #C9B1FF,
-   contrast: (
-     50: $light-primary-text,
-     100: $light-primary-text,
-     200: $light-primary-text,
-     300: $light-primary-text,
-     400: $light-primary-text,
-     500: $light-primary-text,
-     600: $light-primary-text,
-     700: $light-primary-text,
-     800: $light-primary-text,
-     900: $light-primary-text,
-     A100: $light-primary-text,
-     A200: $light-primary-text,
-     A400: $light-primary-text,
-     A700: $light-primary-text
-   )
- );
- 
- $red: (
-   50: #FFB2B1,
-   100: #FFB2B1,
-   200: #FFB2B1,
-   300: #FFB2B1,
-   400: #FFB2B1,
-   500: #FFB2B1,
-   600: #FFB2B1,
-   700: #FFB2B1,
-   800: #FFB2B1,
-   900: #FFB2B1,
-   A100: #FFB2B1,
-   A200: #FFB2B1,
-   A400: #FFB2B1,
-   A700: #FFB2B1,
-   contrast: (
-     50: $light-primary-text,
-     100: $light-primary-text,
-     200: $light-primary-text,
-     300: $light-primary-text,
-     400: $light-primary-text,
-     500: $light-primary-text,
-     600: $light-primary-text,
-     700: $light-primary-text,
-     800: $light-primary-text,
-     900: $light-primary-text,
-     A100: $light-primary-text,
-     A200: $light-primary-text,
-     A400: $light-primary-text,
-     A700: $light-primary-text
-   )
- );
+$light-primary-text: rgba(#a71b57, 0.87);
+$light-secondary-text: rgba(#a71b57, 0.54);
+$light-disabled-text: rgba(#a71b57, 0.38);
+$light-dividers: rgba(#a71b57, 0.12);
+$light-focused: rgba(#a71b57, 0.12);
+
+$mat-color: rgba(#fff3ad, 1);
+$secondary: rgba(#d2ffd6, 1);
+$darkHighlight: rgba(#550644, 1);
 
 
+$unicorn: (
+  50: #a2edff,
+  100: #a2edff,
+  200: #a2edff,
+  300: #a2edff,
+  400: #a2edff,
+  500: #a2edff,
+  600: #a2edff,
+  700: #a2edff,
+  800: #a2edff,
+  900: #a2edff,
+  A100: #a2edff,
+  A200: #a2edff,
+  A400: #a2edff,
+  A700: #a2edff,
+  contrast: (
+    50: $light-primary-text,
+    100: $light-primary-text,
+    200: $light-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $light-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
 
- 
- // Specifies the color that should be used as mat-palette($color-palette, normal, light, light)
- $default-primary: mat-palette($unicorn);
- $light-accent: mat-palette($lightblue, A200, A100, A400);
- $default-warn: mat-palette($red);
- 
- $unicorn_theme:  mat-light-theme($default-primary, $light-accent, $default-warn);
- $background-color:rgb(246, 156, 224);
- $background: map-get($unicorn_theme, background);
- $background: map_merge($background, (background: $background-color));
- $unicorn_theme: map_merge($unicorn_theme, (background: $background));
+$lightblue: (
+  50: #c9b1ff,
+  100: #c9b1ff,
+  200: #c9b1ff,
+  300: #c9b1ff,
+  400: #c9b1ff,
+  500: #c9b1ff,
+  600: #c9b1ff,
+  700: #c9b1ff,
+  800: #c9b1ff,
+  900: #c9b1ff,
+  A100: #c9b1ff,
+  A200: #c9b1ff,
+  A400: #c9b1ff,
+  A700: #c9b1ff,
+  contrast: (
+    50: $light-primary-text,
+    100: $light-primary-text,
+    200: $light-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $light-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+$red: (
+  50: #ffb2b1,
+  100: #ffb2b1,
+  200: #ffb2b1,
+  300: #ffb2b1,
+  400: #ffb2b1,
+  500: #ffb2b1,
+  600: #ffb2b1,
+  700: #ffb2b1,
+  800: #ffb2b1,
+  900: #ffb2b1,
+  A100: #ffb2b1,
+  A200: #ffb2b1,
+  A400: #ffb2b1,
+  A700: #ffb2b1,
+  contrast: (
+    50: $light-primary-text,
+    100: $light-primary-text,
+    200: $light-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $light-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+// Specifies the color that should be used as mat-palette($color-palette, normal, light, light)
+$default-primary: mat-palette($unicorn);
+$light-accent: mat-palette($lightblue, A200, A100, A400);
+$default-warn: mat-palette($red);
+
+$unicorn_theme: mat-light-theme($default-primary, $light-accent, $default-warn);
+$background-color: rgb(246, 156, 224);
+$background: map-get($unicorn_theme, background);
+$background: map_merge(
+  $background,
+  (
+    background: $background-color
+  )
+);
+$unicorn_theme: map_merge(
+  $unicorn_theme,
+  (
+    background: $background
+  )
+);

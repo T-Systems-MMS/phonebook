@@ -65,29 +65,19 @@ $custom-typography: mat-typography-config(
   .mat-button {
     font-size: 19px;
   }
-  .mat-table {
-    background-color: #fff3ad;
-  }
-  .mat-drawer-inner-container {
-    background-color: #d2ffd6 !important;
+  .mat-table,
+  .mat-card,
+  .mat-tab-group {
+    background-color: $mat-color;
   }
   .mat-option.mat-selected {
-    color: #550644 !important;
+    color: $darkHighlight !important;
   }
-  .mat-card {
-    background-color: #fff3ad;
-  }
-  .mat-tab-group {
-    background-color: #fff3ad;
-  }
-  .search {
-    background-color: #d2ffd6;
-  }
-  .unicorn_theme .mat-snack-bar-container {
-    background-color: #d2ffd6;
-  }
+  .search,
+  .mat-drawer-inner-container,
+  .mat-snack-bar-container,
   .mat-toolbar {
-    background-color: #d2ffd6;
+    background-color: $secondary;
   }
   .mat-card-subtitle {
     color: black;
