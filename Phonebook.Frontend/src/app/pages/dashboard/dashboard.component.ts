@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,7 +13,8 @@ import {
   SetLastPersons
 } from 'src/app/shared/states/LastPersons.state';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
-import { MatDrawerMode } from '@angular/material/sidenav';
+import { MatDrawerMode, MatDrawer } from '@angular/material/sidenav';
+import { AppState, SetRecentPeopleDrawer } from 'src/app/shared/states';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,6 +22,8 @@ import { MatDrawerMode } from '@angular/material/sidenav';
   host: { class: 'pb-expand' }
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  @ViewChild('drawer', { static: true })
+  public drawer: MatDrawer;
   @Select(LastPersonsState)
   public lastPersons$: Observable<Person[]>;
   public bookmarkedPersons: Person[];
@@ -31,14 +34,25 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  public drawerOpened: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
+  public drawerOpened: boolean; // this.activeDrawer === false ? false : !this.breakpointObserver.isMatched('(max-width: 768px)');
   public drawerMode: MatDrawerMode = 'side';
   public smallerScreen: boolean = false;
+  public activeDrawer: boolean;
   constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
 
   public ngOnInit() {
     this.changeOrder();
-    this.drawerOpened = JSON.parse(localStorage.getItem('drawerSetting'));
+    var activeDrawerState = this.store.selectOnce(state => state.appstate.activeDrawer);
+    activeDrawerState.subscribe(d => {
+      this.activeDrawer = d;
+      if(this.activeDrawer){
+        this.drawerOpened = true;
+        this.drawer.open();
+      }else{
+        this.drawerOpened = false;
+        this.drawer.close();
+      }
+    });
     this.breakpointObserver
       .observe('(max-width: 768px)')
       .pipe(untilComponentDestroyed(this))
@@ -101,20 +115,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   public setDrawer() {
-    if (localStorage.clickcount) {
-      localStorage.clickcount = Number(localStorage.clickcount) + 1;
-    }
-    else {
-      localStorage.clickcount = 1;
-    }
-    if (localStorage.clickcount % 2 === 0) {
-      this.drawerOpened = false;
-      localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpened));
-    }
-    if (localStorage.clickcount % 2 === 1) {
-      this.drawerOpened = true;
-      localStorage.setItem('drawerSetting', JSON.stringify(this.drawerOpened));
-    }
-  }
+    this.store.dispatch(new SetRecentPeopleDrawer(true));
+}
   ngOnDestroy(): void {}
 }

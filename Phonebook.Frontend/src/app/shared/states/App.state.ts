@@ -30,6 +30,11 @@ export class InitTheme {
   public static readonly type: string = '[App State] Init activeTheme';
 }
 
+export class SetRecentPeopleDrawer {
+  public static readonly type: string = '[App State] Set activeDrawer';
+  constructor(public activeDrawer: boolean) {}
+}
+
 export interface AppStateModel {
   serviceWorkerNotificationDisplayed: boolean;
   version: string;
@@ -40,6 +45,7 @@ export interface AppStateModel {
    */
   sendFeedback: boolean | null;
   activeTheme: Theme;
+  activeDrawer: boolean;
 }
 
 @State<AppStateModel>({
@@ -49,7 +55,8 @@ export interface AppStateModel {
     version: '0.0.0',
     displayedNotificationVersion: 0,
     sendFeedback: null,
-    activeTheme: Theme.magenta_light_theme
+    activeTheme: Theme.magenta_light_theme,
+    activeDrawer: true
   }
 })
 @Injectable()
@@ -76,6 +83,10 @@ export class AppState {
   @Selector()
   public static sendFeedback(state: AppStateModel): boolean | null {
     return state.sendFeedback;
+  }
+  @Selector()
+  public static activeDrawer(state: AppStateModel): boolean {
+    return state.activeDrawer;
   }
 
   @Action(ServiceWorkerNotificationDisplayed)
@@ -127,5 +138,14 @@ export class AppState {
   public initTheme(ctx: StateContext<AppStateModel>) {
     const state = ctx.getState();
     this.themeService.setTheme(state.activeTheme);
+  }
+
+  @Action(SetRecentPeopleDrawer)
+  public setDrawer(ctx: StateContext<AppStateModel>) {
+    const state = ctx.getState();
+    ctx.setState({
+      ...state,
+      activeDrawer: !state.activeDrawer
+    });
   }
 }
