@@ -2,7 +2,15 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template" target-language="de">
     <body>
-      <trans-unit id="AddFilterComponentTooltip" datatype="html">
+      <trans-unit id="PageInformationApril" datatype="html">
+        <source> Happy Aprils Fools Day! You don't like the Theme? Change it.</source><target state="new"> Frohen ersten April! Dir gefällt das Farbschema nicht? Ändere es!</target>
+        <note priority="1" from="description">Change Theme back from Unicorntheme</note>
+        <note priority="1" from="meaning">Change Theme back from Unicorntheme</note>
+      </trans-unit><trans-unit id="PageInformationUnicornTheme" datatype="html">
+        <source>Change Theme</source><target state="new">Ändere das Farbschema</target>
+        <note priority="1" from="description">Message for Change Theme</note>
+        <note priority="1" from="meaning">Change Theme</note>
+      </trans-unit><trans-unit id="AddFilterComponentTooltip" datatype="html">
         <source>Add this as a filter</source>
         <target state="translated">Als Filter hinzufügen</target>
         <note priority="1" from="description">Tooltip for adding a filter to the search</note>

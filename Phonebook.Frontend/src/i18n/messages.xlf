@@ -1,6 +1,16 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext">
     <body>
+      <trans-unit id="PageInformationApril" datatype="html">
+        <source> Happy Aprils Fools Day! You don&apos;t like the Theme? Change it.</source>
+        <note priority="1" from="description">Change Theme back from Unicorntheme</note>
+        <note priority="1" from="meaning">Change Theme back from Unicorntheme</note>
+      </trans-unit>
+      <trans-unit id="PageInformationUnicornTheme" datatype="html">
+        <source>Change Theme</source>
+        <note priority="1" from="description">Message for Change Theme</note>
+        <note priority="1" from="meaning">Change Theme</note>
+      </trans-unit>
       <trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
         <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won&apos;t get any information about updates or releases with the set url parameter.</source>
         <note priority="1" from="description">Message for just set no cookie url</note>

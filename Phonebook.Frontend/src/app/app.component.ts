@@ -158,8 +158,8 @@ export class AppComponent implements OnInit, OnDestroy {
         if (name === Theme.unicorn_theme) {
           this.snackBar
           .open(
-            $localize`:Display advice to new url|Message for just set no cookie url@@PageInformationNewUrlNoCookies: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
-            $localize`:Restore Url|Message for following no cookie url@@PageInformationNewUrlNoCookiesUrl:Change Theme`
+            $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
+            $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
           )
           .onAction()
           .subscribe(() => {
