@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  public drawerOpened: boolean; // this.activeDrawer === false ? false : !this.breakpointObserver.isMatched('(max-width: 768px)');
+  public drawerOpened: boolean;
   public drawerMode: MatDrawerMode = 'side';
   public smallerScreen: boolean = false;
   public activeDrawer: boolean;
@@ -42,16 +42,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.changeOrder();
-    var activeDrawerState = this.store.selectOnce(state => state.appstate.activeDrawer);
+    const activeDrawerState = this.store.selectOnce(state => state.appstate.activeDrawer);
     activeDrawerState.subscribe(d => {
       this.activeDrawer = d;
-      if(this.activeDrawer){
+      if (this.activeDrawer) {
         this.drawerOpened = true;
-        this.drawer.open();
-      }else{
+      }if (this.drawerOpened) {
+        this.drawerOpened = !this.breakpointObserver.isMatched('(max-width: 768px)');
+      }else {
         this.drawerOpened = false;
-        this.drawer.close();
       }
+
     });
     this.breakpointObserver
       .observe('(max-width: 768px)')
