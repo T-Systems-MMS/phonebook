@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-
-import { AppState, SetTheme } from 'src/app/shared/states';
 import { Select } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable } from 'rxjs';
@@ -18,7 +16,6 @@ import { environment } from 'src/environments/environment';
 import { Environment, EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { HASH_LONG, HASH_SHORT, VERSION } from 'src/environments/version';
-import { Theme } from '../../models/enumerables/Theme';
 
 @Component({
   selector: 'app-navigation',
