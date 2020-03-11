@@ -189,7 +189,7 @@ app-root {
 .pb-no-ie a {
   cursor: pointer;
   text-decoration: none;
-  &:hover {
+  &:hover, &:focus {
     color: #9b9e9e;
   }
 }
