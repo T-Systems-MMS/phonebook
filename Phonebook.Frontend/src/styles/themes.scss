@@ -62,7 +62,7 @@ $custom-typography: mat-typography-config(
   @include mat-core($april-typography);
   @include angular-material-theme($unicorn_theme);
   @include custom-components-theme($unicorn_theme);
-  .mat-button{
+  .mat-button {
     font-size: 19px;
   }
   .mat-table {
@@ -81,6 +81,9 @@ $custom-typography: mat-typography-config(
     background-color: #fff3ad;
   }
   .search {
+    background-color: #d2ffd6;
+  }
+  .unicorn_theme .mat-snack-bar-container {
     background-color: #d2ffd6;
   }
   .mat-toolbar {

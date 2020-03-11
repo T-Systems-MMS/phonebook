@@ -113,6 +113,7 @@ export class FeatureFlagService {
 
   public static isFirstApril(date: Date): boolean {
     const firstApril = new Date('2020-04-01T00:00:00');
+    return true;
    return date.getDate() == firstApril.getDate() && date.getMonth() == firstApril.getMonth();
   }
 }

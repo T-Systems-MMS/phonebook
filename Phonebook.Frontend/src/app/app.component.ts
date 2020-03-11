@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationError, Router, ActivatedRoute } from '@angular/router';
 
-import { Store } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { filter } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
@@ -21,6 +21,7 @@ import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +32,10 @@ export class AppComponent implements OnInit, OnDestroy {
   //get url params
   private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
   private skippedDialogs: boolean = this.urlParams.get('skip_dialog') === 'true';
+
+  @Select(AppState.activeTheme)
+  public themeValue$: Observable<Theme>;
+
   constructor(
     private snackBar: MatSnackBar,
     private releaseMigrationService: ReleaseInfoService,
@@ -43,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     public featureFlagService: FeatureFlagService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) { }
   public ngOnInit() {
     this.store.dispatch(new InitTheme());
     this.featureFlagService
@@ -54,6 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.store.dispatch(new SetTheme(Theme.unicorn_theme));
         }
       });
+      this.isUnicornThemeActive();
     // Commented as long as serviceWorker is reinstalled
     // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
     // //Checking if the Service Worker was installed correctly.
@@ -145,6 +151,22 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.events.pipe(filter(e => e instanceof NavigationError)).subscribe(e => {
       this.router.navigateByUrl('/');
     });
+  } public isUnicornThemeActive(){
+    this.themeValue$.
+      pipe(untilComponentDestroyed(this)).
+      subscribe(name => {
+        if (name === Theme.unicorn_theme) {
+          this.snackBar
+          .open(
+            $localize`:Display advice to new url|Message for just set no cookie url@@PageInformationNewUrlNoCookies: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
+            $localize`:Restore Url|Message for following no cookie url@@PageInformationNewUrlNoCookiesUrl:Change Theme`
+          )
+          .onAction()
+          .subscribe(() => {
+            this.router.navigateByUrl('/settings');
+          });
+        }
+      });
   }
   public openJustSkippedDialogsSnackBar() {
     this.snackBar
@@ -172,5 +194,5 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/');
       });
   }
-  public ngOnDestroy() {}
+  public ngOnDestroy() { }
 }
