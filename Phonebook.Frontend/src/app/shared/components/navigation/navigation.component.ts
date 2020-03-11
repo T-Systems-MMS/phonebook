@@ -39,7 +39,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public tableResultCount$: Observable<number>;
   public displayTableSettings: boolean = false;
   public hasImage: boolean = false;
-
   public currentUser: Person | null = null;
   constructor(
     private currentUserService: CurrentUserService,
@@ -85,7 +84,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 
   public getGreetingMessage(): Observable<string> {
     return this.featureFlagService.get('firstApril').pipe(

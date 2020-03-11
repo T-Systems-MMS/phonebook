@@ -87,7 +87,7 @@
               </button>
             </div>
             <div id="unicorn" *featureFlag="'firstApril'">
-              <img src="/assets/gif/RainbowCloud.gif" height=50px; />
+              <img src="assets/gif/RainbowCloud.gif" height=50px; />
             </div>
             <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null && hasImage">
               {{ (getGreetingMessage() | async) + ' ' + currentUser.Firstname }}!
