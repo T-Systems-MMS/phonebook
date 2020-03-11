@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.store.dispatch(new SetTheme(Theme.unicorn_theme));
         }
       });
-      this.isUnicornThemeActive();
+    this.isUnicornThemeActive();
     // Commented as long as serviceWorker is reinstalled
     // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
     // //Checking if the Service Worker was installed correctly.
@@ -151,20 +151,21 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.events.pipe(filter(e => e instanceof NavigationError)).subscribe(e => {
       this.router.navigateByUrl('/');
     });
-  } public isUnicornThemeActive(){
+  }
+  public isUnicornThemeActive() {
     this.themeValue$.
       pipe(untilComponentDestroyed(this)).
       subscribe(name => {
         if (name === Theme.unicorn_theme) {
           this.snackBar
-          .open(
-            $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
-            $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
-          )
-          .onAction()
-          .subscribe(() => {
-            this.router.navigateByUrl('/settings');
-          });
+            .open(
+              $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
+              $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
+            )
+            .onAction()
+            .subscribe(() => {
+              this.router.navigateByUrl('/settings');
+            });
         }
       });
   }
