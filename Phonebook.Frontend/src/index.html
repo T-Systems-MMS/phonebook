@@ -68,7 +68,8 @@
           window.location.href +
           '">open it in Microsoft Edge</a></strong> or use one of the following modern browsers:</p><ul><strong>';
         for (var key in browserList) {
-          html += '<li><strong><a href="' + browserList[key] + '" target="_blank">' + key + '</a></strong></li>';
+          html += '<li><strong><a href="' + browserList[key] + '" target="_blank" rel="nofollow">' + key + '</a></strong></li>';
+
         }
         html +=
           '</ul><p>If this was detected by mistake consider <a href="https://github.com/T-Systems-MMS/phonebook/issues/new/choose">opening an issue</a>.</p> </div>';
