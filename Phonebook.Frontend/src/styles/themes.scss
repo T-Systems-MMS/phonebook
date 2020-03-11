@@ -70,7 +70,7 @@ $custom-typography: mat-typography-config(
   .mat-tab-group {
     background-color: $mat-color;
   }
-  .mat-option.mat-selected {
+  .mat-option.mat-selected, .mat-button.mat-primary {
     color: $darkHighlight !important;
   }
   .search,
