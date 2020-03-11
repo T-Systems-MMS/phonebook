@@ -186,8 +186,9 @@ app-root {
   left: 38%;
   position: absolute;
 }
-.pb-no-ie li {
+.pb-no-ie a {
   cursor: pointer;
+  text-decoration: none;
   &:hover {
     color: #9b9e9e;
   }
