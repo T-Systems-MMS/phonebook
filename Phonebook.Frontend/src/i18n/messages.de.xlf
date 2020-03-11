@@ -407,7 +407,7 @@
         <note priority="1" from="description">Tooltip for expanding recently viewed people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentButtonExpandArialLabel" datatype="html">
-        <source>Button expanding or collapsing the recently viewed people section</source><target state="new">Knop um den Bereich kürzlich gesuchte Personen zu schließen oder zu öffnen</target>
+        <source>Button expanding or collapsing the recently viewed people section</source><target state="new">Knopf um den Bereich kürzlich gesuchte Personen zu schließen oder zu öffnen</target>
         <note priority="1" from="description">Aria Label for expanding recently viewed people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
