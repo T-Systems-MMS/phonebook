@@ -55,8 +55,8 @@
         'Mozilla Firefox': 'https://www.mozilla.org',
         Opera: 'https://www.opera.com'
       };
-      var ua = window.navigator.userAgent;
-      var msie = ua.indexOf('MSIE ');
+      var msie = window.navigator.userAgent.indexOf('MSIE ');
+
 
       if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
         // stone age browser IE
