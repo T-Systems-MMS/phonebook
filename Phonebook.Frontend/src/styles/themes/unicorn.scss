@@ -20,14 +20,14 @@ $april-typography: mat-typography-config(
 );
 
 $unicorn-primary-text: rgba(#a71b57, 0.87);
-$unicorn-secondary-text: rgba(#a71b57, 0.54);
-$unicorn-disabled-text: rgba(#a71b57, 0.38);
-$unicorn-dividers: rgba(#a71b57, 0.12);
-$unicorn-focused: rgba(#a71b57, 0.12);
+$light-secondary-text: rgba(#a71b57, 0.54);
+$light-disabled-text: rgba(#a71b57, 0.38);
+$light-dividers: rgba(#a71b57, 0.12);
+$light-focused: rgba(#a71b57, 0.12);
 
 $mat-color: rgba(#fff3ad, 1);
 $secondary: rgba(#d2ffd6, 1);
-$darkHighunicorn: rgba(#550644, 1);
+$darkHighlight: rgba(#550644, 1);
 
 
 $unicorn: (
@@ -63,7 +63,7 @@ $unicorn: (
   )
 );
 
-$unicornblue: (
+$unicornBlue: (
   50: #c9b1ff,
   100: #c9b1ff,
   200: #c9b1ff,
@@ -129,12 +129,12 @@ $red: (
   )
 );
 
-// Specifies the color that should be used as mat-palette($color-palette, normal, unicorn, unicorn)
+// Specifies the color that should be used as mat-palette($color-palette, normal, light, light)
 $default-primary: mat-palette($unicorn);
-$unicorn-accent: mat-palette($unicornblue, A200, A100, A400);
+$light-accent: mat-palette($unicornBlue, A200, A100, A400);
 $default-warn: mat-palette($red);
 
-$unicorn_theme: mat-unicorn-theme($default-primary, $unicorn-accent, $default-warn);
+$unicorn_theme: mat-light-theme($default-primary, $light-accent, $default-warn);
 $background-color: rgb(246, 156, 224);
 $background: map-get($unicorn_theme, background);
 $background: map_merge(

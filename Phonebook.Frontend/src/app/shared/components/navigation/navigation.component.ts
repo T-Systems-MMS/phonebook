@@ -81,7 +81,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy() { }
 
   public getGreetingMessage(): Observable<string> {
     return this.featureFlagService.get('firstApril').pipe(
@@ -112,7 +112,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
   public navigateToSettings() {
-      this.router.navigateByUrl(`/settings`);
+    this.router.navigateByUrl(`/settings`);
   }
 
   public navigateToOwnProfile() {
