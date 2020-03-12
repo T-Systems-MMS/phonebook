@@ -68,17 +68,18 @@ $custom-typography: mat-typography-config(
   .mat-table,
   .mat-card,
   .mat-tab-group {
-    background-color: $mat-color;
+    background-color: $unicorn_mat-color;
   }
   .mat-option.mat-selected,
-  .mat-button.mat-primary {
-    color: $darkHighlight !important;
+  .mat-button.mat-primary,
+  .mat-snack-bar-container {
+    color: $unicorn_darkHighlight !important;
   }
   .search,
   .mat-drawer-inner-container,
   .mat-snack-bar-container,
   .mat-toolbar {
-    background-color: $secondary;
+    background-color: $unicorn_secondary;
   }
   .mat-card-subtitle {
     color: black;

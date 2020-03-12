@@ -141,7 +141,7 @@
       <nav>
         <mat-toolbar color="primary">
           <mat-toolbar-row class="mat-elevation-z6">
-            <div class="left app-title">
+            <div class="left app-title" *featureFlag="!'firstApril'">
               <button mat-button [routerLink]="['/']">
                 <span
                   class="mat-display-1"

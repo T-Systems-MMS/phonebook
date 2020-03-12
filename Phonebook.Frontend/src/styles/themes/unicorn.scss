@@ -25,10 +25,10 @@ $unicorn-disabled-text: rgba(#a71b57, 0.38);
 $unicorn-dividers: rgba(#a71b57, 0.12);
 $unicorn-focused: rgba(#a71b57, 0.12);
 
-$mat-color: rgba(#fff3ad, 1);
-$secondary: rgba(#d2ffd6, 1);
-$darkHighlight: rgba(#550644, 1);
-$background-color: rgb(246, 156, 224);
+$unicorn_mat-color: rgba(#fff3ad, 1);
+$unicorn_secondary: rgba(#d2ffd6, 1);
+$unicorn_darkHighlight: rgba(#550644, 1);
+$unicorn_background-color: rgb(246, 156, 224);
 
 $unicorn: (
   50: #a2edff,
@@ -139,7 +139,7 @@ $background: map-get($unicorn_theme, background);
 $background: map_merge(
   $background,
   (
-    background: $background-color
+    background: $unicorn_background-color
   )
 );
 $unicorn_theme: map_merge(

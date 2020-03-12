@@ -111,10 +111,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
       return runtimeEnvironment.environmentTag;
     }
   }
-  public navigateToSettings() {
-    this.router.navigateByUrl(`/settings`);
-  }
-
   public navigateToOwnProfile() {
     if (this.currentUser != null) {
       this.router.navigateByUrl(`/user/${this.currentUser.Id}`);
