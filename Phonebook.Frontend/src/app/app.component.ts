@@ -30,8 +30,11 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
-  private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
-  private skippedDialogs: boolean = this.urlParams.get('skip_dialog') === 'true';
+  private urlParams: URLSearchParams = new URLSearchParams(
+    window.location.search
+  );
+  private skippedDialogs: boolean =
+    this.urlParams.get('skip_dialog') === 'true';
 
   @Select(AppState.activeTheme)
   public themeValue$: Observable<Theme>;
@@ -48,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     public featureFlagService: FeatureFlagService,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) {}
   public ngOnInit() {
     this.store.dispatch(new InitTheme());
     this.featureFlagService
@@ -103,18 +106,22 @@ export class AppComponent implements OnInit, OnDestroy {
 
     //if skip_cookies is set, dont show dialogs
     if (this.skippedDialogs) {
-      this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
+      this.store.dispatch(
+        new SetDisplayedNotificationVersion(DisplayNotificationDialog.version)
+      );
     }
     //subscribe on query param changes, if changed open snackbar
-    this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParamMap => {
-      if (queryParamMap.get('skip_dialog') === 'true') {
-        if (!this.skippedDialogs) {
-          this.openJustSkippedDialogsSnackBar();
-        } else {
-          this.openSkippedDialogsSnackBar();
+    this.activatedRoute.queryParamMap
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(queryParamMap => {
+        if (queryParamMap.get('skip_dialog') === 'true') {
+          if (!this.skippedDialogs) {
+            this.openJustSkippedDialogsSnackBar();
+          } else {
+            this.openSkippedDialogsSnackBar();
+          }
         }
-      }
-    });
+      });
 
     // Ask for Permission to send Bug reports, don't show dialog if dialogs should be skipped
     if (
@@ -130,7 +137,10 @@ export class AppComponent implements OnInit, OnDestroy {
       });
     }
 
-    if (DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)) {
+    if (
+      DisplayNotificationDialog.version >
+      (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)
+    ) {
       this.matDialog.open(DisplayNotificationDialog, {
         height: '90vh',
         width: '90vw'
@@ -148,26 +158,26 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     // Route Routes with failing Resolvers to the Main Page
-    this.router.events.pipe(filter(e => e instanceof NavigationError)).subscribe(e => {
-      this.router.navigateByUrl('/');
-    });
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationError))
+      .subscribe(e => {
+        this.router.navigateByUrl('/');
+      });
   }
   public isUnicornThemeActive() {
-    this.themeValue$.
-      pipe(untilComponentDestroyed(this)).
-      subscribe(name => {
-        if (name === Theme.unicorn_theme) {
-          this.snackBar
-            .open(
-              $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
-              $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
-            )
-            .onAction()
-            .subscribe(() => {
-              this.router.navigateByUrl('/settings');
-            });
-        }
-      });
+    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe(name => {
+      if (name === Theme.unicorn_theme) {
+        this.snackBar
+          .open(
+            $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
+            $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
+          )
+          .onAction()
+          .subscribe(() => {
+            this.router.navigateByUrl('/settings');
+          });
+      }
+    });
   }
   public openJustSkippedDialogsSnackBar() {
     this.snackBar
@@ -195,5 +205,5 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/');
       });
   }
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 }

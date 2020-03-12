@@ -6,21 +6,33 @@
         <mat-list-item>
           <button mat-menu-item [routerLink]="['/']" (click)="sidenav.close()">
             <mat-icon>dashboard</mat-icon>
-            <ng-container i18n="NavigationBar|Link to Dashboard@@navigationDashboard">
+            <ng-container
+              i18n="NavigationBar|Link to Dashboard@@navigationDashboard"
+            >
               Dashboard
             </ng-container>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item [routerLink]="['/organigram']" (click)="sidenav.close()">
+          <button
+            mat-menu-item
+            [routerLink]="['/organigram']"
+            (click)="sidenav.close()"
+          >
             <mat-icon>business</mat-icon>
-            <ng-container i18n="NavigationBar|Link to Organigram@@navigationOrganigram">
+            <ng-container
+              i18n="NavigationBar|Link to Organigram@@navigationOrganigram"
+            >
               Organigram
             </ng-container>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item [routerLink]="['/rooms']" (click)="sidenav.close()">
+          <button
+            mat-menu-item
+            [routerLink]="['/rooms']"
+            (click)="sidenav.close()"
+          >
             <mat-icon>meeting_room</mat-icon>
             <ng-container i18n="NavigationBar|Link to Rooms@@navigationRooms">
               Rooms
@@ -28,43 +40,96 @@
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item (click)="navigateToOwnProfile(); sidenav.close()">
+          <button
+            mat-menu-item
+            (click)="navigateToOwnProfile(); sidenav.close()"
+          >
             <mat-icon *ngIf="currentUser == null">perm_identity</mat-icon>
-            <app-profile-picture *ngIf="currentUser != null" [imageSize]="50" class="pb-self-centered circle"
-              [user]="currentUser">
+            <app-profile-picture
+              *ngIf="currentUser != null"
+              [imageSize]="50"
+              class="pb-self-centered circle"
+              [user]="currentUser"
+            >
             </app-profile-picture>
-            <span i18n="NavigationComponent|Link to the users profile@@NavigationComponentMyProfile">My profile</span>
+            <span
+              i18n="
+                NavigationComponent|Link to the users
+                profile@@NavigationComponentMyProfile
+              "
+              >My profile</span
+            >
           </button>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>
-          <button mat-menu-item focus [routerLink]="['/settings']" (click)="sidenav.close()">
+          <button
+            mat-menu-item
+            focus
+            [routerLink]="['/settings']"
+            (click)="sidenav.close()"
+          >
             <mat-icon>settings</mat-icon>
             <span i18n="@@SettingsComponentTitle">Settings</span>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item [routerLink]="['/further-information']"
-            i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
-            matTooltip="Got Feedback? Than that`s the right place to click." (click)="sidenav.close()">
+          <button
+            mat-menu-item
+            [routerLink]="['/further-information']"
+            i18n-matTooltip="
+              navigationBar|Info Button Tooltip@@navigationBarInfoTooltip
+            "
+            matTooltip="Got Feedback? Than that`s the right place to click."
+            (click)="sidenav.close()"
+          >
             <mat-icon>info_outline</mat-icon>
-            <span i18n="NavigationComponent|Link to Information page@@NavigationComponentInformation">Information</span>
+            <span
+              i18n="
+                NavigationComponent|Link to Information
+                page@@NavigationComponentInformation
+              "
+              >Information</span
+            >
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item (click)="sidenav.close(); releaseInfoService.displayReleaseDialog()">
+          <button
+            mat-menu-item
+            (click)="sidenav.close(); releaseInfoService.displayReleaseDialog()"
+          >
             <mat-icon>new_releases</mat-icon>
-            <span matBadge="!" matBadgeColor="accent" matBadgeSize="small"
+            <span
+              matBadge="!"
+              matBadgeColor="accent"
+              matBadgeSize="small"
               [matBadgeHidden]="!releaseInfoService.newUpdate"
-              i18n="NavigationComponent|Release Notes Menu Item@@NavigationComponentReleaseNotes">Release Notes</span>
+              i18n="
+                NavigationComponent|Release Notes Menu
+                Item@@NavigationComponentReleaseNotes
+              "
+              >Release Notes</span
+            >
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item feedbackDrawer
-            i18n-matTooltip="navigationBar|Bug Button Tooltip@@navigationBarBugTooltip"
-            matTooltip="Found a Bug? Than that`s the right place to click." (click)="sidenav.close()">
+          <button
+            mat-menu-item
+            feedbackDrawer
+            i18n-matTooltip="
+              navigationBar|Bug Button Tooltip@@navigationBarBugTooltip
+            "
+            matTooltip="Found a Bug? Than that`s the right place to click."
+            (click)="sidenav.close()"
+          >
             <mat-icon>bug_report</mat-icon>
-            <span i18n="NavigationComponent|Link to Bug page@@NavigationComponentFeedback">Submit Feedback</span>
+            <span
+              i18n="
+                NavigationComponent|Link to Bug
+                page@@NavigationComponentFeedback
+              "
+              >Submit Feedback</span
+            >
           </button>
         </mat-list-item>
       </mat-list>
@@ -78,52 +143,116 @@
           <mat-toolbar-row class="mat-elevation-z6">
             <div class="left app-title">
               <button mat-button [routerLink]="['/']">
-                <span class="mat-display-1" id="title"
-                  i18n="NavigationBar|Application Name@@navigationBarApplicationName">Phonebook</span>
-                <span class="beta-tag mat-headline pb-hide-below-small"
-                  *ngIf="currentEnvironment != Environment.production">{{ getEnvironmentTag() }}</span>
-                <span class="version pb-hide-below-small" *ngIf="currentEnvironment != Environment.development">
-                  v{{ version }}</span>
+                <span
+                  class="mat-display-1"
+                  id="title"
+                  i18n="
+                    NavigationBar|Application Name@@navigationBarApplicationName
+                  "
+                  >Phonebook</span
+                >
+                <span
+                  class="beta-tag mat-headline pb-hide-below-small"
+                  *ngIf="currentEnvironment != Environment.production"
+                  >{{ getEnvironmentTag() }}</span
+                >
+                <span
+                  class="version pb-hide-below-small"
+                  *ngIf="currentEnvironment != Environment.development"
+                >
+                  v{{ version }}</span
+                >
               </button>
             </div>
             <div id="unicorn" *featureFlag="'firstApril'">
-              <img src="assets/gif/RainbowCloud.gif" height=50px; />
+              <img src="assets/gif/RainbowCloud.gif" height="50px;" />
             </div>
-            <div id="pb-greetings" class="pb-hide-below-big" *ngIf="currentUser != null && hasImage">
-              {{ (getGreetingMessage() | async) + ' ' + currentUser.Firstname }}!
+            <div
+              id="pb-greetings"
+              class="pb-hide-below-big"
+              *ngIf="currentUser != null && hasImage"
+            >
+              {{
+                (getGreetingMessage() | async) + ' ' + currentUser.Firstname
+              }}!
             </div>
-            <div class="pb-missing-userimage-info pb-hide-below-big" *ngIf="currentUser != null && !hasImage">
-              <button mat-stroked-button class="pb-opacity-background mat-body-2" (click)="navigateToOwnProfile()"
-                i18n-matTooltip="NavigationComponent|Tooltip for MissingUserImage@@MissingUserImageTooltip"
-                i18n-aria-label="NavigationComponent|Aria label for MissingUserImage@@MissingUserImageAriaLabel"
+            <div
+              class="pb-missing-userimage-info pb-hide-below-big"
+              *ngIf="currentUser != null && !hasImage"
+            >
+              <button
+                mat-stroked-button
+                class="pb-opacity-background mat-body-2"
+                (click)="navigateToOwnProfile()"
+                i18n-matTooltip="
+                  NavigationComponent|Tooltip for
+                  MissingUserImage@@MissingUserImageTooltip
+                "
+                i18n-aria-label="
+                  NavigationComponent|Aria label for
+                  MissingUserImage@@MissingUserImageAriaLabel
+                "
                 matTooltip="If you upload a picture it will be easier for your colleagues to find and contact you!"
-                aria-label="Button which greets and asks for picture uploading.">
-                <ng-container i18n="NavigationComponent|Greeting@@MissingUserImageGreeting">Hey</ng-container>
+                aria-label="Button which greets and asks for picture uploading."
+              >
+                <ng-container
+                  i18n="NavigationComponent|Greeting@@MissingUserImageGreeting"
+                  >Hey</ng-container
+                >
                 {{ currentUser.Firstname }},
-                <ng-container i18n="NavigationComponent|Message@@MissingUserImageMessage">you haven't uploaded a picture
-                  yet. Want to upload one?</ng-container>
+                <ng-container
+                  i18n="NavigationComponent|Message@@MissingUserImageMessage"
+                  >you haven't uploaded a picture yet. Want to upload
+                  one?</ng-container
+                >
               </button>
             </div>
             <div class="pb-spacer"></div>
             <div class="pb-center-element-orthogonal pb-hide-below-med">
-              <button mat-button [routerLink]="['/']" i18n="@@navigationDashboard">
+              <button
+                mat-button
+                [routerLink]="['/']"
+                i18n="@@navigationDashboard"
+              >
                 Dashboard
               </button>
-              <button mat-button [routerLink]="['/organigram']" i18n="@@navigationOrganigram">
+              <button
+                mat-button
+                [routerLink]="['/organigram']"
+                i18n="@@navigationOrganigram"
+              >
                 Organigram
               </button>
-              <button mat-button [routerLink]="['/rooms']" i18n="@@navigationRooms">
+              <button
+                mat-button
+                [routerLink]="['/rooms']"
+                i18n="@@navigationRooms"
+              >
                 Rooms
               </button>
-              <button mat-icon-button matBadge="!" matBadgeColor="accent" matBadgeSize="small"
-                [matBadgeHidden]="!releaseInfoService.newUpdate" [matMenuTriggerFor]="personalmenu">
+              <button
+                mat-icon-button
+                matBadge="!"
+                matBadgeColor="accent"
+                matBadgeSize="small"
+                [matBadgeHidden]="!releaseInfoService.newUpdate"
+                [matMenuTriggerFor]="personalmenu"
+              >
                 <mat-icon *ngIf="currentUser == null">person</mat-icon>
-                <app-profile-picture *ngIf="currentUser != null" [imageSize]="50"
-                  class="pb-self-centered circle square-img40" [user]="currentUser">
+                <app-profile-picture
+                  *ngIf="currentUser != null"
+                  [imageSize]="50"
+                  class="pb-self-centered circle square-img40"
+                  [user]="currentUser"
+                >
                 </app-profile-picture>
               </button>
               <mat-menu #personalmenu>
-                <button mat-menu-item (click)="navigateToOwnProfile()" *ngIf="currentUser != null">
+                <button
+                  mat-menu-item
+                  (click)="navigateToOwnProfile()"
+                  *ngIf="currentUser != null"
+                >
                   <mat-icon>perm_identity</mat-icon>
                   <span i18n="@@NavigationComponentMyProfile">My profile</span>
                 </button>
@@ -131,28 +260,50 @@
                   <mat-icon>settings</mat-icon>
                   <span i18n="@@SettingsComponentTitle">Settings</span>
                 </button>
-                <button mat-menu-item [routerLink]="['/further-information']"
-                  i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
-                  matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click.">
+                <button
+                  mat-menu-item
+                  [routerLink]="['/further-information']"
+                  i18n-matTooltip="
+                    navigationBar|Info Button Tooltip@@navigationBarInfoTooltip
+                  "
+                  matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click."
+                >
                   <mat-icon>info_outline</mat-icon>
-                  <span i18n="@@NavigationComponentInformation">Information</span>
+                  <span i18n="@@NavigationComponentInformation"
+                    >Information</span
+                  >
                 </button>
-                <button mat-menu-item (click)="releaseInfoService.displayReleaseDialog()">
+                <button
+                  mat-menu-item
+                  (click)="releaseInfoService.displayReleaseDialog()"
+                >
                   <mat-icon>new_releases</mat-icon>
-                  <span matBadge="!" matBadgeColor="accent" matBadgeSize="small"
-                    [matBadgeHidden]="!releaseInfoService.newUpdate" i18n="@@NavigationComponentReleaseNotes">Release
-                    Notes</span>
+                  <span
+                    matBadge="!"
+                    matBadgeColor="accent"
+                    matBadgeSize="small"
+                    [matBadgeHidden]="!releaseInfoService.newUpdate"
+                    i18n="@@NavigationComponentReleaseNotes"
+                    >Release Notes</span
+                  >
                 </button>
                 <button mat-menu-item feedbackDrawer>
                   <mat-icon>bug_report</mat-icon>
-                  <span i18n="@@NavigationComponentFeedback">Submit Feedback</span>
+                  <span i18n="@@NavigationComponentFeedback"
+                    >Submit Feedback</span
+                  >
                 </button>
               </mat-menu>
             </div>
             <div class="pb-hide-on-med-and-up">
               <button mat-icon-button (click)="sidenav.toggle()">
-                <mat-icon matBadge="!" matBadgeColor="accent" matBadgeSize="small"
-                  [matBadgeHidden]="!releaseInfoService.newUpdate">menu</mat-icon>
+                <mat-icon
+                  matBadge="!"
+                  matBadgeColor="accent"
+                  matBadgeSize="small"
+                  [matBadgeHidden]="!releaseInfoService.newUpdate"
+                  >menu</mat-icon
+                >
               </button>
             </div>
           </mat-toolbar-row>
@@ -160,7 +311,10 @@
             <div class="row-toolbar">
               <app-search id="search"></app-search>
               <div class="table-settings" *ngIf="displayTableSettings">
-                <span class="mat-h4" i18n="TableComponent|Result Count@@TableComponentResultCount">
+                <span
+                  class="mat-h4"
+                  i18n="TableComponent|Result Count@@TableComponentResultCount"
+                >
                   {{ tableResultCount$ | async }} Results
                 </span>
                 <button mat-icon-button (click)="openSettings()">
@@ -185,7 +339,12 @@
         <span *ngIf="currentEnvironment != Environment.development">
           <span>{{ getEnvironmentTag() }}</span> - v{{ version }}
           -
-          <a href="https://github.com/T-Systems-MMS/phonebook/commit/{{ versionHashLong }}">{{ versionHashShort }}</a>
+          <a
+            href="https://github.com/T-Systems-MMS/phonebook/commit/{{
+              versionHashLong
+            }}"
+            >{{ versionHashShort }}</a
+          >
         </span>
       </div>
       <div>
