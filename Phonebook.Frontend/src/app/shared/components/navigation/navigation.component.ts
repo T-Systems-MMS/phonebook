@@ -30,6 +30,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public versionHashLong: typeof HASH_LONG = HASH_LONG;
   public environment: EnvironmentInterface = environment;
   public Environment: typeof Environment = Environment;
+  public firstApril : boolean = false;
   public currentEnvironment: Environment = runtimeEnvironment.environment;
 
   @Select(TableState.resultCount)
@@ -47,6 +48,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit() {
+    this.featureFlagService
+      .get('firstApril')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(flag => {
+        this.firstApril = flag;
+      });
+
     this.currentUserService
       .getCurrentUser()
       .pipe(untilComponentDestroyed(this))
