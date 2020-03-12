@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -24,6 +24,14 @@ import { AppState, SetRecentPeopleDrawer } from 'src/app/shared/states';
 export class DashboardComponent implements OnInit, OnDestroy {
   @ViewChild('drawer', { static: true })
   public drawer: MatDrawer;
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (event.target.innerWidth < 768) {
+      this.drawer.close();
+    } else {
+      this.drawer.open();
+    }
+  }
   @Select(LastPersonsState)
   public lastPersons$: Observable<Person[]>;
   public bookmarkedPersons: Person[];
@@ -47,19 +55,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.activeDrawer = d;
       if (this.activeDrawer) {
         this.drawerOpened = true;
-      }if (this.drawerOpened) {
-        this.drawerOpened = !this.breakpointObserver.isMatched('(max-width: 768px)');
-      }else {
+      }//if (this.drawerOpened) {
+        //this.drawerOpened = !this.breakpointObserver.isMatched('(max-width: 768px)');
+      //}
+      else {
         this.drawerOpened = false;
       }
 
     });
-    this.breakpointObserver
-      .observe('(max-width: 768px)')
-      .pipe(untilComponentDestroyed(this))
-      .subscribe(result => {
-        this.drawerMode = !result.matches ? 'side' : 'push';
-      });
+    //this.breakpointObserver
+      //.observe('(max-width: 768px)')
+      //.pipe(untilComponentDestroyed(this))
+      //.subscribe(result => {
+       // this.drawerMode = !result.matches ? 'side' : 'push';
+      //});
   }
 
   public changeOrder() {
