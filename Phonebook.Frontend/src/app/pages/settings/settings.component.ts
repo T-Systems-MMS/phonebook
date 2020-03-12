@@ -22,8 +22,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public themeValue$: Observable<Theme>;
   public themes: string[] = Object.values(Theme);
   public languages: string[] = Object.keys(Language);
-  public layoutValue: Layout = Layout.module;
+  @Select(AppState.activeLayout)
+  public layoutValue$: Observable<Layout>;
   public layout: string[] = Object.values(Layout);
+  public layoutValue: Layout = Layout.view_module;
   public featureFlags: Observable<{ name: string; value: boolean }[]> = this.featureFlagService.getAllDefaultDisabled();
 
   constructor(
@@ -91,7 +93,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   public getLayoutName(layout: Layout): string {
     switch (layout) {
-      case Layout.list: {
+      case Layout.view_list: {
         return this.i18n({
           value: 'List View',
           description: 'View Mode: List',
@@ -99,7 +101,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
           meaning: 'NavigationComponent'
         });
       }
-      case Layout.module: {
+      case Layout.view_module: {
         return this.i18n({
           value: 'Module View',
           description: 'View Mode: Module',
@@ -107,7 +109,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
           meaning: 'NavigationComponent'
         });
       }
-      case Layout.stream: {
+      case Layout.view_stream: {
         return this.i18n({
           value: 'Stream View',
           description: 'View Mode: Stream',

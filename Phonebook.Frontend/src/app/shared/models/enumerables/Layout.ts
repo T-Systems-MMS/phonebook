@@ -1,5 +1,5 @@
 export enum Layout {
-    list = 'list_layout',
-    module = 'module_layout',
-    stream = 'stream_layout'
+    view_list = 'view_list',
+    view_module = 'view_module',
+    view_stream = 'view_stream'
 }

@@ -28,6 +28,7 @@ import { MailService } from 'src/app/services/mail.service';
 import { ReleaseInfoService } from 'src/app/services/release-info.service';
 import { ServiceWorkerService } from 'src/app/services/service-worker.service';
 import { ThemeService } from 'src/app/services/theme.service';
+import { LayoutService } from 'src/app/services/layout.service';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter.module';
 import { NavigationComponent } from 'src/app/shared/components/navigation/navigation.component';
@@ -107,6 +108,7 @@ declare const require;
     FloorplanService,
     ReleaseInfoService,
     ThemeService,
+    LayoutService,
     I18n,
     ColumnTranslate
   ],
