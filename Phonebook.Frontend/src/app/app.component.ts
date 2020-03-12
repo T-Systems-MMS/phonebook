@@ -57,9 +57,9 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe(flag => {
         if (flag) {
           this.store.dispatch(new SetTheme(Theme.unicorn_theme));
+          this.isUnicornThemeActive();
         }
       });
-    this.isUnicornThemeActive();
     // Commented as long as serviceWorker is reinstalled
     // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
     // //Checking if the Service Worker was installed correctly.
