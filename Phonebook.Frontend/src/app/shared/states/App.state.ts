@@ -57,7 +57,7 @@ export interface AppStateModel {
     displayedNotificationVersion: 0,
     sendFeedback: null,
     activeTheme: Theme.magenta_light_theme,
-    activeLayout: Layout.list
+    activeLayout: Layout.view_list
   }
 })
 export class AppState {
