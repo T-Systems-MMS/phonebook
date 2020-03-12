@@ -28,8 +28,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   onResize(event) {
     if (event.target.innerWidth < 768) {
       this.drawer.close();
-    } else {
-      this.drawer.open();
     }
   }
   @Select(LastPersonsState)
