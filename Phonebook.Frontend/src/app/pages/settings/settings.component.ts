@@ -24,8 +24,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public languages: string[] = Object.keys(Language);
   @Select(AppState.activeLayout)
   public layoutValue$: Observable<Layout>;
-  public layout: string[] = Object.values(Layout);
-  public layoutValue: Layout = Layout.view_module;
+  public layouts: string[] = Object.values(Layout);
   public featureFlags: Observable<{ name: string; value: boolean }[]> = this.featureFlagService.getAllDefaultDisabled();
 
   constructor(

@@ -24,7 +24,7 @@ export class LayoutService {
 
     private getLayoutClassesFromClassList(classList: DOMTokenList): string [] {
         return Array.from(classList).filter(item => {
-            return item.includes('_view');
+            return item.includes('view_');
         });
     }
 }
