@@ -1,47 +1,67 @@
-.dashboard {
-  display: flex;
-  flex-flow: row wrap;
+mat-drawer-container {
   margin-top: 20px;
   width: 100%;
-  @media (max-width: 1037px) {
-    display: block;
-  }
 
-  .pb-bookmarked {
-    margin-left: 10px;
+  mat-drawer-content,
+  mat-drawer {
+    padding-left: 10px;
+    overflow: hidden;
+  }
+}
+
+.pb-bookmarked {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .pb-bookmarked-title {
     display: flex;
-    flex-direction: column;
-    flex: 1;
+    flex-direction: row;
+    h1 {
+      margin: 0;
+    }
+    mat-form-field {
+      margin-left: 16px;
+    }
+    ::ng-deep .mat-form-field-infix {
+      border: none;
+    }
+  }
 
-    .pb-bookmarked-title {
-      display: flex;
-      flex-direction: row;
-      margin: 0 0 16px 0;
-      h1 {
-        margin: 0;
-      }
-      mat-form-field {
-        margin-left: 16px;
-      }
-      ::ng-deep .mat-form-field-infix {
-        border: none;
-      }
-    }
-  }
-  mat-divider {
-    margin: 15px 0 15px 0;
-    @media (max-width: 1037px) {
-      display: none;
-    }
-  }
-  .pb-last {
-    flex: 1;
-    max-width: 360px;
-    margin-left: 10px;
+  .pb-bookmarks-list {
     overflow-y: auto;
-    @media (max-width: 1037px) {
-      max-width: unset;
-      height: 100vh;
+  }
+}
+
+.pb-recent-people-drawer {
+  width: 370px;
+  background-color: unset;
+}
+
+.pb-recent-people {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .pb-recent-people-list {
+    flex: 1;
+  }
+}
+
+.toggle-drawer {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 46%;
+  padding-right: 10px;
+
+  button {
+    align-self: center;
+    span {
+      writing-mode: tb-rl;
     }
   }
 }

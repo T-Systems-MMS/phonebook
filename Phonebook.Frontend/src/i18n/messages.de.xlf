@@ -402,6 +402,14 @@
             </target>
         <note priority="1" from="description">The alphabetical desc order of the favorite cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit><trans-unit id="DashboardComponentButtonExpandTooltip" datatype="html">
+        <source>Expand or Collapse recently viewed people</source><target state="translated">Diesen Bereich ein- oder ausklappen.</target>
+        <note priority="1" from="description">Tooltip for expanding recently viewed people</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit><trans-unit id="DashboardComponentButtonExpandArialLabel" datatype="html">
+        <source>Button expanding or collapsing the recently viewed people section</source><target state="new">Knopf um den Bereich kürzlich gesuchte Personen zu schließen oder zu öffnen</target>
+        <note priority="1" from="description">Aria Label for expanding recently viewed people</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
         <source> You haven't bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </source><target state="translated">
           Du hast noch niemanden als Favorit gespeichert, du kannst jemanden als Favoriten speichern indem du auf diesen Knopf 
@@ -569,7 +577,8 @@
         <note priority="1" from="meaning">GeneralUndoButton</note>
       </trans-unit><trans-unit id="DashboardComponentDescriptionRecent" datatype="html">
         <source> Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most recent ones will be displayed here. </source><target state="translated">Du hast noch nicht nach Personen gesucht, deshalb werden hier noch keine Kollegen angezeigt. Such einfach nach jemanden, dann werden die letzten Suchergbenisse hier angezeigt.</target>
-        <note priority="1" from="description">Message displayed if no people have been visited recently</note>
+        <note priority="1" from="description">Message displayed if no people have been visited
+              recently</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentTitle" datatype="html">
         <source> Phonebook </source><target state="translated">Phonebook</target>
