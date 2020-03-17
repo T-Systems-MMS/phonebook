@@ -4,15 +4,24 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationError, Router, ActivatedRoute } from '@angular/router';
 
-import { Store } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { filter } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
-import { AppState, InitTheme, SetSendFeedback, SetDisplayedNotificationVersion } from 'src/app/shared/states/App.state';
+import {
+  AppState,
+  InitTheme,
+  SetTheme,
+  SetSendFeedback,
+  SetDisplayedNotificationVersion
+} from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +30,15 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 })
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
-  private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
-  private skippedDialogs: boolean = this.urlParams.get('skip_dialog') === 'true';
+  private urlParams: URLSearchParams = new URLSearchParams(
+    window.location.search
+  );
+  private skippedDialogs: boolean =
+    this.urlParams.get('skip_dialog') === 'true';
+
+  @Select(AppState.activeTheme)
+  public themeValue$: Observable<Theme>;
+
   constructor(
     private snackBar: MatSnackBar,
     private releaseMigrationService: ReleaseInfoService,
@@ -33,11 +49,20 @@ export class AppComponent implements OnInit, OnDestroy {
     private matDialog: MatDialog,
     private platform: Platform,
     private router: Router,
-
+    public featureFlagService: FeatureFlagService,
     private activatedRoute: ActivatedRoute
   ) {}
   public ngOnInit() {
     this.store.dispatch(new InitTheme());
+    this.featureFlagService
+      .get('firstApril')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(flag => {
+        if (flag) {
+          this.store.dispatch(new SetTheme(Theme.unicorn_theme));
+          this.isUnicornThemeActive();
+        }
+      });
     // Commented as long as serviceWorker is reinstalled
     // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
     // //Checking if the Service Worker was installed correctly.
@@ -81,18 +106,22 @@ export class AppComponent implements OnInit, OnDestroy {
 
     //if skip_cookies is set, dont show dialogs
     if (this.skippedDialogs) {
-      this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
+      this.store.dispatch(
+        new SetDisplayedNotificationVersion(DisplayNotificationDialog.version)
+      );
     }
     //subscribe on query param changes, if changed open snackbar
-    this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParamMap => {
-      if (queryParamMap.get('skip_dialog') === 'true') {
-        if (!this.skippedDialogs) {
-          this.openJustSkippedDialogsSnackBar();
-        } else {
-          this.openSkippedDialogsSnackBar();
+    this.activatedRoute.queryParamMap
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(queryParamMap => {
+        if (queryParamMap.get('skip_dialog') === 'true') {
+          if (!this.skippedDialogs) {
+            this.openJustSkippedDialogsSnackBar();
+          } else {
+            this.openSkippedDialogsSnackBar();
+          }
         }
-      }
-    });
+      });
 
     // Ask for Permission to send Bug reports, don't show dialog if dialogs should be skipped
     if (
@@ -108,7 +137,10 @@ export class AppComponent implements OnInit, OnDestroy {
       });
     }
 
-    if (DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)) {
+    if (
+      DisplayNotificationDialog.version >
+      (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)
+    ) {
       this.matDialog.open(DisplayNotificationDialog, {
         height: '90vh',
         width: '90vw'
@@ -126,8 +158,25 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     // Route Routes with failing Resolvers to the Main Page
-    this.router.events.pipe(filter(e => e instanceof NavigationError)).subscribe(e => {
-      this.router.navigateByUrl('/');
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationError))
+      .subscribe(e => {
+        this.router.navigateByUrl('/');
+      });
+  }
+  public isUnicornThemeActive() {
+    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe(name => {
+      if (name === Theme.unicorn_theme) {
+        this.snackBar
+          .open(
+            $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
+            $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
+          )
+          .onAction()
+          .subscribe(() => {
+            this.router.navigateByUrl('/settings');
+          });
+      }
     });
   }
   public openJustSkippedDialogsSnackBar() {

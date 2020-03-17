@@ -1,0 +1,150 @@
+﻿/**
+ * Unicorn Theme
+ */
+
+$april-typography: mat-typography-config(
+  $font-family: 'la_belle_auroreregular, "Helvetica Neue", normal',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(23px, 32px, 500),
+  $subheading-2: mat-typography-level(21px, 28px, 400),
+  $subheading-1: mat-typography-level(19px, 24px, 400),
+  $caption: mat-typography-level(18px, 20px, 400),
+  $button: mat-typography-level(18px, 14px, 500),
+  $input: mat-typography-level(inherit, 1.125, 400),
+  $body-1: mat-typography-level(18px, 32px, 500),
+  $body-2: mat-typography-level(18px, 32px, 600)
+);
+
+$unicorn-primary-text: rgba(#a71b57, 0.87);
+$unicorn-secondary-text: rgba(#a71b57, 0.54);
+$unicorn-disabled-text: rgba(#a71b57, 0.38);
+$unicorn-dividers: rgba(#a71b57, 0.12);
+$unicorn-focused: rgba(#a71b57, 0.12);
+
+$unicorn_mat-color: rgba(#fff3ad, 1);
+$unicorn_secondary: rgba(#d2ffd6, 1);
+$unicorn_darkHighlight: rgba(#550644, 1);
+$unicorn_background-color: rgb(246, 156, 224);
+
+$unicorn: (
+  50: #a2edff,
+  100: #a2edff,
+  200: #a2edff,
+  300: #a2edff,
+  400: #a2edff,
+  500: #a2edff,
+  600: #a2edff,
+  700: #a2edff,
+  800: #a2edff,
+  900: #a2edff,
+  A100: #a2edff,
+  A200: #a2edff,
+  A400: #a2edff,
+  A700: #a2edff,
+  contrast: (
+    50: $unicorn-primary-text,
+    100: $unicorn-primary-text,
+    200: $unicorn-primary-text,
+    300: $unicorn-primary-text,
+    400: $unicorn-primary-text,
+    500: $unicorn-primary-text,
+    600: $unicorn-primary-text,
+    700: $unicorn-primary-text,
+    800: $unicorn-primary-text,
+    900: $unicorn-primary-text,
+    A100: $unicorn-primary-text,
+    A200: $unicorn-primary-text,
+    A400: $unicorn-primary-text,
+    A700: $unicorn-primary-text
+  )
+);
+
+$unicornBlue: (
+  50: #c9b1ff,
+  100: #c9b1ff,
+  200: #c9b1ff,
+  300: #c9b1ff,
+  400: #c9b1ff,
+  500: #c9b1ff,
+  600: #c9b1ff,
+  700: #c9b1ff,
+  800: #c9b1ff,
+  900: #c9b1ff,
+  A100: #c9b1ff,
+  A200: #c9b1ff,
+  A400: #c9b1ff,
+  A700: #c9b1ff,
+  contrast: (
+    50: $unicorn-primary-text,
+    100: $unicorn-primary-text,
+    200: $unicorn-primary-text,
+    300: $unicorn-primary-text,
+    400: $unicorn-primary-text,
+    500: $unicorn-primary-text,
+    600: $unicorn-primary-text,
+    700: $unicorn-primary-text,
+    800: $unicorn-primary-text,
+    900: $unicorn-primary-text,
+    A100: $unicorn-primary-text,
+    A200: $unicorn-primary-text,
+    A400: $unicorn-primary-text,
+    A700: $unicorn-primary-text
+  )
+);
+
+$unicornRed: (
+  50: #ffb2b1,
+  100: #ffb2b1,
+  200: #ffb2b1,
+  300: #ffb2b1,
+  400: #ffb2b1,
+  500: #ffb2b1,
+  600: #ffb2b1,
+  700: #ffb2b1,
+  800: #ffb2b1,
+  900: #ffb2b1,
+  A100: #ffb2b1,
+  A200: #ffb2b1,
+  A400: #ffb2b1,
+  A700: #ffb2b1,
+  contrast: (
+    50: $unicorn-primary-text,
+    100: $unicorn-primary-text,
+    200: $unicorn-primary-text,
+    300: $unicorn-primary-text,
+    400: $unicorn-primary-text,
+    500: $unicorn-primary-text,
+    600: $unicorn-primary-text,
+    700: $unicorn-primary-text,
+    800: $unicorn-primary-text,
+    900: $unicorn-primary-text,
+    A100: $unicorn-primary-text,
+    A200: $unicorn-primary-text,
+    A400: $unicorn-primary-text,
+    A700: $unicorn-primary-text
+  )
+);
+
+// Specifies the color that should be used as mat-palette($color-palette, normal, light, light)
+$default-primary: mat-palette($unicorn);
+$light-accent: mat-palette($unicornBlue, A200, A100, A400);
+$default-warn: mat-palette($unicornRed);
+
+$unicorn_theme: mat-light-theme($default-primary, $light-accent, $default-warn);
+$background: map-get($unicorn_theme, background);
+$background: map_merge(
+  $background,
+  (
+    background: $unicorn_background-color
+  )
+);
+$unicorn_theme: map_merge(
+  $unicorn_theme,
+  (
+    background: $background
+  )
+);
