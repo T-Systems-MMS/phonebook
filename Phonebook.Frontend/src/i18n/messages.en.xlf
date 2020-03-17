@@ -334,6 +334,14 @@
         <source> Alphabetical desc</source><target state="final"> Alphabetical desc</target>
         <note priority="1" from="description">The alphabetical desc order of the favorite cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit><trans-unit id="DashboardComponentButtonExpandTooltip" datatype="html">
+        <source>Expand or Collapse recently viewed people</source><target state="final">Expand or Collapse recently viewed people</target>
+        <note priority="1" from="description">Tooltip for expanding recently viewed people</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit><trans-unit id="DashboardComponentButtonExpandArialLabel" datatype="html">
+        <source>Button expanding or collapsing the recently viewed people section</source><target state="final">Button expanding or collapsing the recently viewed people section</target>
+        <note priority="1" from="description">Aria Label for expanding recently viewed people</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
         <source> You haven't bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </source><target state="final"> You haven't bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </target>
         <note priority="1" from="description">Message displayed if no people are bookmarked</note>
@@ -486,7 +494,8 @@
         <source> Undo </source><target state="final"> Undo </target>
       <note from="description" priority="1">Button for undoing something</note><note from="meaning" priority="1">GeneralUndoButton</note></trans-unit><trans-unit id="DashboardComponentDescriptionRecent" datatype="html">
         <source> Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most recent ones will be displayed here. </source><target state="final"> Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most recent ones will be displayed here. </target>
-        <note priority="1" from="description">Message displayed if no people have been visited recently</note>
+        <note priority="1" from="description">Message displayed if no people have been visited
+              recently</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="PageInformationComponentTitle" datatype="html">
         <source> Phonebook </source><target state="final"> Phonebook </target>

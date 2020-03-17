@@ -1,19 +1,26 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
-import { LastPersonsState, RemoveFromLastPersons, ResetLastPersons, SetLastPersons } from 'src/app/shared/states/LastPersons.state';
-
+import {
+  LastPersonsState,
+  RemoveFromLastPersons,
+  ResetLastPersons,
+  SetLastPersons
+} from 'src/app/shared/states/LastPersons.state';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { MatDrawerMode } from '@angular/material/sidenav';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   host: { class: 'pb-expand' }
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   @Select(LastPersonsState)
   public lastPersons$: Observable<Person[]>;
   public bookmarkedPersons: Person[];
@@ -24,10 +31,19 @@ export class DashboardComponent implements OnInit {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
-  constructor(private store: Store, private cd: ChangeDetectorRef) {}
+  public drawerOpen: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
+  public drawerMode: MatDrawerMode = 'side';
+  public smallerScreen: boolean = false;
+  constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
 
   public ngOnInit() {
     this.changeOrder();
+    this.breakpointObserver
+      .observe('(max-width: 768px)')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(result => {
+        this.drawerMode = !result.matches ? 'side' : 'push';
+      });
   }
 
   public changeOrder() {
@@ -82,4 +98,5 @@ export class DashboardComponent implements OnInit {
   public removeFromBookmarkedPersons(person: Person) {
     this.store.dispatch(new ToggleBookmark(person));
   }
+  ngOnDestroy(): void {}
 }
