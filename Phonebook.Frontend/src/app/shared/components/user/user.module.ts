@@ -19,6 +19,7 @@ import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter
 import { AddressModule } from 'src/app/shared/components/address/address.module';
 import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.module';
 import { UserDetailComponent } from 'src/app/shared/components/user/user-detail/user-detail.component';
+import { UserListCardComponent } from 'src/app/shared/components/user/user-list-card/user-list-card.component';
 import { UserSmallCardComponent } from 'src/app/shared/components/user/user-small-card/user-small-card.component';
 import { UserTinyCardComponent } from 'src/app/shared/components/user/user-tiny-card/user-tiny-card.component';
 import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
@@ -50,7 +51,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     InteractiveAttributeFieldModule,
     PipesModule
   ],
-  declarations: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent],
-  exports: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent]
+  declarations: [UserDetailComponent, UserListCardComponent, UserSmallCardComponent, UserTinyCardComponent],
+  exports: [UserDetailComponent, UserListCardComponent, UserSmallCardComponent, UserTinyCardComponent]
 })
 export class UserModule {}

@@ -34,9 +34,23 @@
         cdkDropList
         [cdkDropListData]="i"
         cdkDropListOrientation="horizontal"
-        class="card-container"
+        class="card-container1"
       >
-        <app-user-small-card
+      <app-user-list-card
+          *ngIf="layoutSetting === 'view_list'"
+          [person]="person"
+          [actionButtonIcon]="'close'"
+          [actionButtonClasses]="'white'"
+          (actionButtonClicked)="removeFromBookmarkedPersons(person)"
+          class="pb-list-card pb-card pb-flex-row"
+          cdkDrag
+          (cdkDragEntered)="entered($event)"
+          (cdkDragEnded)="ended($event)"
+          [cdkDragData]="i"
+          [cdkDragDisabled]="favoriteSort != ''"
+      ></app-user-list-card>
+      <app-user-small-card 
+          *ngIf="layoutSetting === 'view_module'"
           [person]="person"
           [actionButtonIcon]="'close'"
           [actionButtonClasses]="'white'"
@@ -48,6 +62,19 @@
           [cdkDragData]="i"
           [cdkDragDisabled]="favoriteSort != ''"
         ></app-user-small-card>
+        <app-user-tiny-card 
+          *ngIf="layoutSetting === 'view_stream'"
+          [person]="person"
+          [actionButtonIcon]="'close'"
+          [actionButtonClasses]="'white'"
+          (actionButtonClicked)="removeFromBookmarkedPersons(person)"
+          class="pb-tiny-card pb-card"
+          cdkDrag
+          (cdkDragEntered)="entered($event)"
+          (cdkDragEnded)="ended($event)"
+          [cdkDragData]="i"
+          [cdkDragDisabled]="favoriteSort != ''"
+        ></app-user-tiny-card>
       </div>
     </div>
     <div

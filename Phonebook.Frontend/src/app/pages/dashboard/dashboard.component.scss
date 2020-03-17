@@ -9,6 +9,7 @@
 
   .pb-bookmarked {
     margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -56,8 +57,13 @@
   display: flex;
 }
 
-.card-container {
+.pb-list-card {
+  flex-grow: 1;
+}
+
+.card-container1 {
   display: flex;
+  flex-grow: 1;
 }
 
 .pb-card:active {

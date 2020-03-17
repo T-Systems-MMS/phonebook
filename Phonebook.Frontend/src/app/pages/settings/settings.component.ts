@@ -116,6 +116,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
           meaning: 'NavigationComponent'
         });
       }
+      default:
+        throw Error(`Translation for layout ${layout} does not exist.`);
     }
   }
 

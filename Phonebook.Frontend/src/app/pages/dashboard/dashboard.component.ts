@@ -1,12 +1,14 @@
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
 import { LastPersonsState, RemoveFromLastPersons, ResetLastPersons, SetLastPersons } from 'src/app/shared/states/LastPersons.state';
-
+import { AppState, SetLayout } from 'src/app/shared/states';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
+import { MatIcon, MatCard } from '@angular/material';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,6 +16,8 @@ import { LastPersonsState, RemoveFromLastPersons, ResetLastPersons, SetLastPerso
   host: { class: 'pb-expand' }
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('tinyCard', { static: true })
+  public tinyCard: MatCard;
   @Select(LastPersonsState)
   public lastPersons$: Observable<Person[]>;
   public bookmarkedPersons: Person[];
@@ -24,9 +28,17 @@ export class DashboardComponent implements OnInit {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
+  @Select(AppState.activeLayout)
+  public layoutValue$: Observable<Layout>;
+  public layouts: string[] = Object.values(Layout);
+  public layoutSetting: string;
   constructor(private store: Store, private cd: ChangeDetectorRef) {}
 
   public ngOnInit() {
+    const activeLayoutState = this.store.selectOnce(state => state.appstate.activeLayout);
+    activeLayoutState.subscribe(d => {
+      this.layoutSetting = d;
+    });
     this.changeOrder();
   }
 
@@ -81,5 +93,8 @@ export class DashboardComponent implements OnInit {
 
   public removeFromBookmarkedPersons(person: Person) {
     this.store.dispatch(new ToggleBookmark(person));
+  }
+  public changeLayout(layoutClass: Layout) {
+    this.store.dispatch(new SetLayout(layoutClass));
   }
 }
