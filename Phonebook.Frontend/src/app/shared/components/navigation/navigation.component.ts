@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-
 import { Select } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable } from 'rxjs';
@@ -24,19 +23,20 @@ import { HASH_LONG, HASH_SHORT, VERSION } from 'src/environments/version';
   styleUrls: ['./navigation.component.scss'],
   host: { class: 'pb-expand' }
 })
+
 export class NavigationComponent implements OnInit, OnDestroy {
   public version: typeof VERSION = VERSION;
   public versionHashShort: typeof HASH_SHORT = HASH_SHORT;
   public versionHashLong: typeof HASH_LONG = HASH_LONG;
   public environment: EnvironmentInterface = environment;
   public Environment: typeof Environment = Environment;
+  public firstApril : boolean = false;
   public currentEnvironment: Environment = runtimeEnvironment.environment;
 
   @Select(TableState.resultCount)
   public tableResultCount$: Observable<number>;
   public displayTableSettings: boolean = false;
   public hasImage: boolean = false;
-
   public currentUser: Person | null = null;
   constructor(
     private currentUserService: CurrentUserService,
@@ -45,9 +45,16 @@ export class NavigationComponent implements OnInit, OnDestroy {
     public featureFlagService: FeatureFlagService,
     public badge: MatBadgeModule,
     public releaseInfoService: ReleaseInfoService
-  ) {}
+  ) { }
 
   public ngOnInit() {
+    this.featureFlagService
+      .get('firstApril')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(flag => {
+        this.firstApril = flag;
+      });
+
     this.currentUserService
       .getCurrentUser()
       .pipe(untilComponentDestroyed(this))
@@ -82,7 +89,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy() { }
 
   public getGreetingMessage(): Observable<string> {
     return this.featureFlagService.get('firstApril').pipe(
@@ -112,7 +119,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
       return runtimeEnvironment.environmentTag;
     }
   }
-
   public navigateToOwnProfile() {
     if (this.currentUser != null) {
       this.router.navigateByUrl(`/user/${this.currentUser.Id}`);

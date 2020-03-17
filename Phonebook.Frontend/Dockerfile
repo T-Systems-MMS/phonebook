@@ -1,5 +1,5 @@
 # base image
-FROM node:12.16 as builder
+FROM node:13.10@sha256:7acfc89fbe6086bd3f3218f52e3d5dc9fd620ffe721ce36539ad175b3bec2010 as builder
 
 # set working directory
 RUN  mkdir /usr/local/app
@@ -21,7 +21,7 @@ RUN npm run build
 ### production ###
 ##################
 
-FROM nginx:1.17.9
+FROM nginx:1.17.9@sha256:3936fb3946790d711a68c58be93628e43cbca72439079e16d154b5db216b58da
 WORKDIR /etc/nginx
 
 ARG BASE_URL

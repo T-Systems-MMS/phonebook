@@ -2,7 +2,15 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template" target-language="de">
     <body>
-      <trans-unit id="AddFilterComponentTooltip" datatype="html">
+      <trans-unit id="PageInformationApril" datatype="html">
+        <source> Happy Aprils Fools Day! You don't like the Theme? Change it.</source><target state="new"> Frohen ersten April! Dir gefällt das Farbschema nicht? Ändere es!</target>
+        <note priority="1" from="description">Change Theme back from Unicorntheme</note>
+        <note priority="1" from="meaning">Change Theme back from Unicorntheme</note>
+      </trans-unit><trans-unit id="PageInformationUnicornTheme" datatype="html">
+        <source>Change Theme</source><target state="new">Ändere das Farbschema</target>
+        <note priority="1" from="description">Message for Change Theme</note>
+        <note priority="1" from="meaning">Change Theme</note>
+      </trans-unit><trans-unit id="AddFilterComponentTooltip" datatype="html">
         <source>Add this as a filter</source>
         <target state="translated">Als Filter hinzufügen</target>
         <note priority="1" from="description">Tooltip for adding a filter to the search</note>
@@ -155,6 +163,10 @@
                                     Blau-Hell Farbschema
                                 </target>
         <note priority="1" from="description">Color Theme Option - Blue Light</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentColorThemeUnicorn" datatype="html">
+        <source>Unicorn Theme</source><target state="new">Einhorn Farbschema</target>
+        <note priority="1" from="description">Color Theme Option -  Unicorn</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
         <source>Blue Dark Theme</source><target state="translated">
@@ -407,7 +419,7 @@
         <note priority="1" from="description">Tooltip for expanding recently viewed people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentButtonExpandArialLabel" datatype="html">
-        <source>Button expanding or collapsing the recently viewed people section</source><target state="new">Knop um den Bereich kürzlich gesuchte Personen zu schließen oder zu öffnen</target>
+        <source>Button expanding or collapsing the recently viewed people section</source><target state="new">Knopf um den Bereich kürzlich gesuchte Personen zu schließen oder zu öffnen</target>
         <note priority="1" from="description">Aria Label for expanding recently viewed people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
