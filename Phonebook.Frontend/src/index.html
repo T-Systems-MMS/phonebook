@@ -28,7 +28,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
-
   <body class="mat-typography">
     <app-root></app-root>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
@@ -46,6 +45,37 @@
       document.getElementsByTagName('body')[0].style.display = 'flex';
     } else {
       top.location = self.location;
+    }
+    msieversion();
+
+</script>
+<!-- Show Browser not supported Message -->
+<script>
+    function msieversion() {
+      var browserList = {
+        //list of browser-links where app can be openend in: key=browser name, value=link for browser download
+        'Google Chrome': 'https://www.google.de/chrome/',
+        'Mozilla Firefox': 'https://www.mozilla.org',
+        Opera: 'https://www.opera.com'
+      };
+      var msie = window.navigator.userAgent.indexOf('MSIE ');
+
+
+      if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        // stone age browser IE
+        var html =
+          '<div class="pb-no-ie"><h1>This application does not support Internet Explorer!</h1><p>To run the Phonebook, please <a href="microsoft-edge:' +
+          window.location.href +
+          '">open it in Microsoft Edge</a></strong> or use one of the following modern browsers:</p><ul><strong>';
+        for (var key in browserList) {
+          html += '<li><strong><a href="' + browserList[key] + '" target="_blank" rel="nofollow">' + key + '</a></strong></li>';
+
+        }
+        html +=
+          '</ul><p>If this was detected by mistake consider <a href="https://github.com/T-Systems-MMS/phonebook/issues/new/choose">opening an issue</a>.</p> </div>';
+
+        document.getElementsByTagName('body')[0].innerHTML = html;
+      }
     }
   </script>
 </html>
