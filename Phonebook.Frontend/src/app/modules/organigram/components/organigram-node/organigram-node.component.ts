@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { Navigate, RouterState } from '@ngxs/router-plugin';
 import { Store } from '@ngxs/store';
 import { UnitTreeNode } from 'src/app/services/api/organigram.service';
@@ -20,7 +20,7 @@ export class OrganigramNodeComponent implements OnInit {
   @ViewChild('thisNode', { static: true })
   public thisNode: ElementRef;
 
-  constructor(private snackBar: MatSnackBar, private windowRef: WindowRef, private store: Store, private i18n: I18n) {}
+  constructor(private snackBar: MatSnackBar, private windowRef: WindowRef, private store: Store) {}
 
   public ngOnInit() {
     const nodePath = this.getCurrentRouteAsArray();
@@ -29,7 +29,14 @@ export class OrganigramNodeComponent implements OnInit {
       this.expand = Expanded.isExpanded;
       if (nodePath.length === this.node.depth + 2) {
         // Scroll to this node if it is the leave of the route
-        (this.thisNode.nativeElement as HTMLElement).scrollIntoView();
+        /*
+         * Set Timpout ist needed until Angular has fixed this issue:
+         * https://github.com/angular/angular/issues/35879 or
+         * https://github.com/angular/angular/issues/19742
+         */
+        setTimeout(() => {
+          (this.thisNode.nativeElement as HTMLElement).scrollIntoView();
+        }, 100);
       }
     }
   }
@@ -61,21 +68,11 @@ export class OrganigramNodeComponent implements OnInit {
   public linkCopiedToast() {
     this.store.dispatch(new Navigate(this.generatePath(true)));
     this.snackBar.open(
-      this.i18n({
-        meaning: 'OrganigramNodeComponent',
-        description: 'First part of the message displayed when copying a link to the node',
-        id: 'OrganigramNodeComponentCopiedFirstPart',
-        value: 'Link to'
-      }) +
+      $localize`:OrganigramNodeComponent|First part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedFirstPart:Link to` +
         ' "' +
         this.node.name +
         '" ' +
-        this.i18n({
-          meaning: 'OrganigramNodeComponent',
-          description: 'Second part of the message displayed when copying a link to the node',
-          id: 'OrganigramNodeComponentCopiedSecondPart',
-          value: 'copied to clipboard!'
-        }),
+        $localize`:OrganigramNodeComponent|Second part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedSecondPart:copied to clipboard!`,
       '',
       { duration: 2000 }
     );
@@ -83,12 +80,7 @@ export class OrganigramNodeComponent implements OnInit {
 
   public linkErrorToast() {
     this.snackBar.open(
-      this.i18n({
-        meaning: 'GeneralErrorMessageCopy',
-        description: 'Message displayed when copying something went wrong',
-        id: 'GeneralErrorMessageCopy',
-        value: `Couldn't copy to the clipboard, something went wrong. Try again.`
-      }),
+      $localize`:GeneralErrorMessageCopy|Message displayed when copying something went wrong@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
       '',
       { duration: 2000 }
     );

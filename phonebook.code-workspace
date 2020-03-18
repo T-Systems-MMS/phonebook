@@ -38,14 +38,14 @@
     }
   ],
   "settings": {
-    "cSpell.words": [
-      "Kubernetes",
-      "Phonebook"
-    ],
+    "cSpell.words": ["Kubernetes", "Phonebook"],
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
     "javascript.referencesCodeLens.enabled": true,
     "typescript.referencesCodeLens.enabled": true,
+    "prettier.disableLanguages": [],
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
     "[html]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -60,8 +60,6 @@
     }
   },
   "extensions": {
-    "recommendations": [
-      "esbenp.prettier-vscode"
-    ]
+    "recommendations": ["esbenp.prettier-vscode"]
   }
 }
