@@ -31,7 +31,7 @@ export class PersonService {
           item.Contacts.Fax,
           item.Contacts.Email,
           item.Contacts.Phone,
-          new Messenger(item.Contacts.Messenger.Text, item.Contacts.Messenger.State)
+          new Messenger("", null)
         ),
         new Location(
           item.Location.City,
@@ -74,15 +74,16 @@ export class PersonService {
       return this.allPersonObservable;
     }
 
-    const observable = this.http.get<Person[]>('/api/persons').pipe(
-      map(personArray => {
-        return TableLogic.sort(this.generateRealPersonArray(personArray), {
-          column: ColumnDefinitions.fullname,
-          direction: PhonebookSortDirection.asc
-        });
-      }),
-      publishReplay()
-    );
+    const observable = this.http.get<Person[]>('/api/people')
+      .pipe(
+        map(personArray => {
+          return TableLogic.sort(this.generateRealPersonArray(personArray), {
+            column: ColumnDefinitions.fullname,
+            direction: PhonebookSortDirection.asc
+          });
+        }),
+        publishReplay()
+      );
     (observable as ConnectableObservable<Person[]>).connect();
     this.allPersonObservable = observable;
     return this.allPersonObservable;

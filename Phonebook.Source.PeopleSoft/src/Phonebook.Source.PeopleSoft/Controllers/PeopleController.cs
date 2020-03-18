@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Oracle.EntityFrameworkCore.Storage.Internal;
@@ -9,6 +10,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PeopleController : ControllerBase
     {
         public ModelContext Context { get; }
@@ -19,9 +21,10 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         }
         // GET: api/People
         [HttpGet]
-        public IEnumerable<Person> Get()
+        public IEnumerable<Phonebook.Source.PeopleSoft.Models.Old.Person> Get()
         {
-            return this.inlcudeDependencies(Context.Peoples);
+            _ =Context.Peoples.ToList();
+            return this.inlcudeDependencies(Context.Peoples).ToList().Select(d => new Phonebook.Source.PeopleSoft.Models.Old.Person(d));
         }
 
         // GET: api/People/5
@@ -39,17 +42,26 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                     .Include(p => p.Function)
                     .Include(p => p.OrgUnit)
                         .ThenInclude(o => o.Parent)
+                    .Include(p => p.OrgUnit)
+                        .ThenInclude(o => o.HeadOfOrgUnit)
+                    .Include(p => p.OrgUnit)
+                        .ThenInclude(o => o.OrgUnitToFunctions)
+                            .ThenInclude(o => o.Person)
                     .Include(p => p.Room)
                         .ThenInclude(r => r.BuildingPart)
                             .ThenInclude(b => b.Building)
                                 .ThenInclude(b => b.Location)
                     .Include(p => p.Room)
                         .ThenInclude(r => r.Floor)
+                            .ThenInclude(f => f.Building) // we must import also here the building because sometimes a room hasn't a buildingpart....
+                                .ThenInclude(b => b.Location)
                     .Include(p => p.Room)
+                    .Where(p => p.ShortName != null)
                     .OrderBy(p => p.Id)
                     .ToList()
                     // the following select will remove cicle references
                     .Select(p =>
+
                     new Person()
                     {
                         Id = p.Id,
@@ -57,16 +69,16 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                         FAX = p.FAX,
                         FirstName = p.FirstName,
                         FunctionId = p.FunctionId,
-                        Function = p.Function != null ? new Function() { Id = p.Function.Id, Label = p.Function.Label, Code = p.Function.Code }: null,
+                        Function = p.Function != null ? new Function() { Id = p.Function.Id, Label = p.Function.Label, Code = p.Function.Code } : null,
                         LastName = p.LastName,
                         MobilPhone = p.MobilPhone,
                         OrgUnit = p.OrgUnit != null ? createOrgUnitTree(p.OrgUnit) : null,
-                        OrgUnitId = p.OrgUnitId,
+                        //OrgUnitId = p.OrgUnitId,
                         Phone = p.Phone,
                         Room = p.Room != null ? createRoomTree(p.Room) : null,
                         ShortName = p.ShortName,
                         StatusId = p.StatusId,
-                        Status = p.Status != null ? new Status() { Id = p.Status.Id, Name = p.Status.Name, Code = p.Status.Code}: null,
+                        Status = p.Status != null ? new Status() { Id = p.Status.Id, Name = p.Status.Name, Code = p.Status.Code } : null,
                         Title = p.Title,
                         RoomId = p.RoomId
                     });
@@ -81,20 +93,22 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                 Description = room.BuildingPart.Description,
                 Id = room.BuildingPart.Id,
                 BuildingId = room.BuildingPart.BuildingId,
-                Building = room.BuildingPart.Building != null ? new Building() {
-                     Address = room.BuildingPart.Building.Address,
-                     Id = room.BuildingPart.Building.Id,
-                     Name = room.BuildingPart.Building.Name,
-                     ShortName = room.BuildingPart.Building.ShortName,
-                     LocationId = room.BuildingPart.Building.LocationId,
-                     Location = room.BuildingPart.Building.Location != null ? new Location() { 
-                         ShortName = room.BuildingPart.Building.Location.ShortName,
-                         Name = room.BuildingPart.Building.Location.Name,
-                         Country = room.BuildingPart.Building.Location.Country,
-                         Id = room.BuildingPart.Building.Location.Id
-                     } : null
-                }: null
-            }: null;
+                Building = room.BuildingPart.Building != null ? new Building()
+                {
+                    Address = room.BuildingPart.Building.Address,
+                    Id = room.BuildingPart.Building.Id,
+                    Name = room.BuildingPart.Building.Name,
+                    ShortName = room.BuildingPart.Building.ShortName,
+                    LocationId = room.BuildingPart.Building.LocationId,
+                    Location = room.BuildingPart.Building.Location != null ? new Location()
+                    {
+                        ShortName = room.BuildingPart.Building.Location.ShortName,
+                        Name = room.BuildingPart.Building.Location.Name,
+                        Country = room.BuildingPart.Building.Location.Country,
+                        Id = room.BuildingPart.Building.Location.Id
+                    } : null
+                } : null
+            } : null;
             result.Id = room.Id;
             result.FloorId = room.FloorId;
             result.Map = room.Map;
@@ -103,7 +117,23 @@ namespace Phonebook.Source.PeopleSoft.Controllers
             {
                 Id = room.Floor.Id,
                 BuildingId = room.Floor.BuildingId,
-                Describtion = room.Floor.Describtion                
+                Number = room.Floor.Number,
+                Building = room.Floor.Building != null ? new Building()
+                {
+                    Address = room.Floor.Building.Address,
+                    Id = room.Floor.Building.Id,
+                    Name = room.Floor.Building.Name,
+                    ShortName = room.Floor.Building.ShortName,
+                    LocationId = room.Floor.Building.LocationId,
+                    Location = room.Floor.Building.Location != null ? new Location()
+                    {
+                        ShortName = room.Floor.Building.Location.ShortName,
+                        Name = room.Floor.Building.Location.Name,
+                        Country = room.Floor.Building.Location.Country,
+                        Id = room.Floor.Building.Location.Id
+                    } : null
+                } : null,
+                Description = room.Floor.Description
             } : null;
 
             return result;
@@ -118,7 +148,35 @@ namespace Phonebook.Source.PeopleSoft.Controllers
             result.ParentId = orgUnit.ParentId;
             result.ShortName = orgUnit.ShortName;
             result.CostCenter = orgUnit.CostCenter;
+            result.HeadOfOrgUnitId = orgUnit.HeadOfOrgUnitId;
+            result.HeadOfOrgUnit = new Person()
+            {
+                ShortName = orgUnit.HeadOfOrgUnit == null ? string.Empty : orgUnit.HeadOfOrgUnit.ShortName,
+                FirstName = orgUnit.HeadOfOrgUnit == null ? string.Empty : orgUnit.HeadOfOrgUnit.FirstName,
+                LastName = orgUnit.HeadOfOrgUnit == null ? string.Empty : orgUnit.HeadOfOrgUnit.LastName
+
+            };
+            result.OrgUnitToFunctions = getOrgUnitFunction(orgUnit.OrgUnitToFunctions);
+
             return result;
+        }
+
+        private IEnumerable<OrgUnitToFunction> getOrgUnitFunction(IEnumerable<OrgUnitToFunction> orgUnitToFunctions)
+        {
+            foreach (var item in orgUnitToFunctions)
+            {
+                yield return new OrgUnitToFunction() {
+                    FunctionId = item.FunctionId,
+                    OrgUnitId = item.OrgUnitId,
+                    PersonId = item.PersonId,
+                    Person = new Person() {
+                        ShortName = item.Person.ShortName,
+                        FirstName = item.Person.FirstName,
+                        LastName = item.Person.LastName
+
+                    },
+                    RoleName = item.RoleName };
+            }
         }
     }
 }

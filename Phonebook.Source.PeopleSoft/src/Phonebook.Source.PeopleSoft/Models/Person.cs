@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Cors.Infrastructure;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Phonebook.Source.PeopleSoft.Models
 {
@@ -34,5 +36,10 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name: "RAUM_ID")]
         public int? RoomId { get; set; }        
         public virtual Room Room { get; set; }
+
+        
+        public virtual IEnumerable<OrgUnit> OwnedOrgUnits { get; set; }
+        
+        public virtual IEnumerable<OrgUnitToFunction> OrgUnitFunctions { get; set; }
     }
 }

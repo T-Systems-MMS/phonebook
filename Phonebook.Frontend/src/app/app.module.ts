@@ -1,7 +1,7 @@
 //Angular Imports
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlatformModule } from '@angular/cdk/platform';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LOCALE_ID, NgModule, TRANSLATIONS } from '@angular/core';
 import { MatBadgeModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,6 +47,7 @@ import { environment } from 'src/environments/environment';
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
+import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToLogin';
 
 declare const require;
 
@@ -90,6 +91,7 @@ declare const require;
     UserPagesModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRedirectToLogin, multi: true },
     {
       provide: TRANSLATIONS,
       useFactory: (locale: string) => {

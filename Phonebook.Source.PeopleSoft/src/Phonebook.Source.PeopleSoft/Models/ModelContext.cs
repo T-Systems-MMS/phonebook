@@ -95,6 +95,18 @@ namespace Phonebook.Source.PeopleSoft.Models
                 .ToTable("V_ORGEINHEIT")
                     .HasMany<Person>(o => o.Members)
                         .WithOne(p => p.OrgUnit);
+            modelBuilder
+                .Entity<OrgUnit>()
+                .ToTable("V_ORGEINHEIT")
+                    .HasOne<Person>(o => o.HeadOfOrgUnit)
+                        .WithMany(p => p.OwnedOrgUnits)
+                        .HasForeignKey(o => o.HeadOfOrgUnitId);
+            modelBuilder
+                .Entity<OrgUnit>()
+                .ToTable("V_ORGEINHEIT")
+                    .HasMany<OrgUnitToFunction>(o => o.OrgUnitToFunctions)
+                        .WithOne(p => p.OrgUnit)
+                        .HasForeignKey(s => s.OrgUnitId);
 
             // Persons
             modelBuilder
@@ -121,6 +133,12 @@ namespace Phonebook.Source.PeopleSoft.Models
                     .HasOne<Function>(p => p.Function)
                         .WithMany(f => f.Peoples)
                         .HasForeignKey(p => p.FunctionId);
+            modelBuilder
+                .Entity<Person>()
+                .ToTable("V_PERSON")
+                    .HasMany<OrgUnitToFunction>(p => p.OrgUnitFunctions)
+                        .WithOne(f => f.Person)
+                        .HasForeignKey(s => s.PersonId);
 
             // Status
             modelBuilder
@@ -135,6 +153,37 @@ namespace Phonebook.Source.PeopleSoft.Models
                 .ToTable("V_FUNKTIONEN")
                     .HasMany<Person>(s => s.Peoples)
                         .WithOne(p => p.Function);
+            modelBuilder
+                .Entity<Function>()
+                .ToTable("V_FUNKTIONEN")
+                    .HasMany<OrgUnitToFunction>(s => s.OrgUnitToFunctions)
+                        .WithOne(p => p.Function)
+                        .HasForeignKey(s => s.FunctionId);
+
+
+            // OrgUnitToFunction
+            modelBuilder
+                .Entity<OrgUnitToFunction>()
+                .HasKey(d => new { d.PersonId, d.OrgUnitId, d.FunctionId });
+
+            modelBuilder
+                .Entity<OrgUnitToFunction>()
+                .ToTable("V_PERSON_ROLLE")
+                    .HasOne<Person>(o => o.Person)
+                        .WithMany(p => p.OrgUnitFunctions)
+                        .HasForeignKey(o => o.PersonId);
+            modelBuilder
+                .Entity<OrgUnitToFunction>()
+                .ToTable("V_PERSON_ROLLE")
+                    .HasOne<OrgUnit>(o => o.OrgUnit)
+                        .WithMany(o => o.OrgUnitToFunctions)
+                        .HasForeignKey(o => o.OrgUnitId);
+            modelBuilder
+                .Entity<OrgUnitToFunction>()
+                .ToTable("V_PERSON_ROLLE")
+                    .HasOne<Function>(o => o.Function)
+                        .WithMany(o => o.OrgUnitToFunctions)
+                        .HasForeignKey(o => o.FunctionId);
         }
 
         public DbSet<Location> Locations { get; set; }
@@ -146,5 +195,6 @@ namespace Phonebook.Source.PeopleSoft.Models
         public DbSet<Person> Peoples { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Function> Functions { get; set; }
+        public DbSet<OrgUnitToFunction> OrgUnitToFunction { get; set; }
     }
 }

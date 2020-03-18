@@ -11,6 +11,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         public string Code { get; set; }
         [Column(name: "BEZEICHNUNG")]
         public string Label { get; set; }
-        public virtual IEnumerable<Person> Peoples { get; set; }
+        public virtual IEnumerable<Person> Peoples { get; set; }        
+        public virtual IEnumerable<OrgUnitToFunction> OrgUnitToFunctions { get; set; }
     }
 }

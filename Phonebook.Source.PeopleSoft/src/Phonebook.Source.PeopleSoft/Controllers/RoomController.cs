@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Source.PeopleSoft.Models;
@@ -8,18 +9,32 @@ namespace Phonebook.Source.PeopleSoft.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomController : ControllerBase
+    [Authorize]
+    public class RoomsController : ControllerBase
     {
         public ModelContext Context { get; }
-        public RoomController(ModelContext context)
+        public RoomsController(ModelContext context)
         {
             Context = context;
         }
         // GET: api/Room
         [HttpGet]
-        public IEnumerable<Room> Get()
+        public IEnumerable<dynamic> Get()
         {
-            return this.inlcudeDependencies(Context.Rooms);
+            return this.inlcudeDependencies(Context.Rooms)
+                .Select(d => new
+                {
+                    Building = $"{d?.Floor?.Building?.Name} {d?.Floor?.Building?.Number}",
+                    BuildingId = d?.Floor?.BuildingId,
+                    Floor = d?.Floor?.Number,
+                    Description = $"{d?.Floor?.Building?.Location?.Name}, {d?.Floor?.Building?.Name} {d?.Floor?.Building?.Number} {d?.BuildingPart?.Description}, Raum {d?.Number}",
+                    Phone = string.Empty,
+                    Number = d?.Number,
+                    Id = d?.Id,
+                    Place = d?.Floor?.Building?.Location?.Name,
+                    FloorPlan = d?.Map
+                })
+                ;
         }
 
         // GET: api/Room/5
@@ -29,13 +44,17 @@ namespace Phonebook.Source.PeopleSoft.Controllers
             return this.inlcudeDependencies(Context.Rooms).First(r => r.Id == id);
         }
 
-        private IQueryable<Room> inlcudeDependencies(IQueryable<Room> query)
+        private IEnumerable<Room> inlcudeDependencies(IQueryable<Room> query)
         {
             return query
                 .AsNoTracking()
                 .Include(r => r.Members)
                 .Include(r => r.Floor)
-                .Include(r => r.BuildingPart);
+                    .ThenInclude(f => f.Building)
+                        .ThenInclude(b => b.Location)
+                .Include(r => r.BuildingPart)
+                    .ThenInclude(b => b.Building)
+                        .ThenInclude(b => b.Location);
 
         }
     }

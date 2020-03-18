@@ -94,6 +94,9 @@ export class Helpers {
    * @param str Any String
    */
   public static removeAccents(str: string): string {
+    if(str ==null){
+      return '';
+    }
     return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 }

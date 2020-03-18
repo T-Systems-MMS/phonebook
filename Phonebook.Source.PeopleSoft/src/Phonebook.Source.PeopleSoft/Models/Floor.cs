@@ -7,8 +7,10 @@ namespace Phonebook.Source.PeopleSoft.Models
     {
         [Column(name: "ID")]
         public int Id { get; set; }
+        [Column(name: "NUMMER")]
+        public int Number { get; set; }
         [Column(name: "BESCHREIBUNG")]
-        public string Describtion { get; set; }
+        public string Description { get; set; }
         [Column(name: "GEBAEUDE_ID")]
         public int BuildingId { get; set; }        
         public virtual Building Building { get; set; }

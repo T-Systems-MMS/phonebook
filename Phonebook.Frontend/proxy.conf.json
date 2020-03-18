@@ -1,11 +1,14 @@
 {
-  "/api/*": {
-    "target": "http://localhost:8080",
+  "/signin-wsfed":{
+    "target": "https://localhost:5001",
     "secure": false,
     "changeOrigin": true,
-    "pathRewrite": {
-      "^/api": ""
-    },
+    "logLevel": "debug"
+  },
+  "/api/*": {
+    "target": "https://localhost:5001",
+    "secure": false,
+    "changeOrigin": true,
     "logLevel": "debug"
   },
   "/external_assets/*": {

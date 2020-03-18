@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Source.PeopleSoft.Models;
@@ -8,6 +9,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BuildingController : ControllerBase
     {
         public ModelContext Context { get; }
@@ -63,7 +65,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                         {
                             Id = f.Id,
                             BuildingId = f.BuildingId,
-                            Describtion = f.Describtion,
+                            Description = f.Description,
                             Rooms = f.Rooms.Select(r =>
                             new Room(){
                                 Id =r.Id,

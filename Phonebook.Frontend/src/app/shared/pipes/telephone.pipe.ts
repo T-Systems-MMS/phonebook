@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TelephonePipe implements PipeTransform {
   public transform(telephoneNumber: string): string {
-    return telephoneNumber.replace(/[^+0-9]/g, '');
+    return telephoneNumber == null ? '' : telephoneNumber.replace(/[^+0-9]/g, '');
   }
 }
