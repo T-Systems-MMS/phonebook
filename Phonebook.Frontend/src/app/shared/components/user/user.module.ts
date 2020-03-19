@@ -21,6 +21,7 @@ import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.mo
 import { UserDetailComponent } from 'src/app/shared/components/user/user-detail/user-detail.component';
 import { UserSmallCardComponent } from 'src/app/shared/components/user/user-small-card/user-small-card.component';
 import { UserTinyCardComponent } from 'src/app/shared/components/user/user-tiny-card/user-tiny-card.component';
+import { UserListCardComponent } from 'src/app/shared/components/user/user-list-card/user-list-card.component';
 import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
 import { InteractiveAttributeFieldModule } from 'src/app/shared/interactive-attribute-field/interactive-attribute-field.module';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
@@ -50,7 +51,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     InteractiveAttributeFieldModule,
     PipesModule
   ],
-  declarations: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent],
-  exports: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent]
+  declarations: [UserDetailComponent, UserListCardComponent, UserSmallCardComponent, UserTinyCardComponent],
+  exports: [UserDetailComponent, UserListCardComponent, UserSmallCardComponent, UserTinyCardComponent]
 })
 export class UserModule {}

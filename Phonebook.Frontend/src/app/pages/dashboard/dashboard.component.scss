@@ -10,7 +10,8 @@ mat-drawer-container {
 }
 
 .pb-bookmarked {
-  height: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -76,9 +77,28 @@ mat-drawer-container {
   display: flex;
 }
 
-.card-container {
+.pb-list-card {
+  display: flex;
+  flex-grow: 1;
+  @media (max-width: 1037px) {
+    width: 700px;
+    min-height: auto;
+  }
+}
+
+.card-container1 {
+  display: flex;
+  flex-grow: 1;
+}
+
+.card-container2 {
   display: flex;
 }
+
+.width {
+  display: contents;
+  width: 100%;
+}  
 
 .pb-card:active {
   cursor: -webkit-grabbing;

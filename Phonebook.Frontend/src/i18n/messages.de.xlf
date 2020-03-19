@@ -145,8 +145,9 @@
         <note priority="1" from="description">Title of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentTitleDescription" datatype="html">
-        <source> Change the theme or language of this application. </source><target state="translated">
-            Verändere das Farbschema oder die Sprache der Applikation.
+        <source>
+          Change the theme, language or layout of this application.</source><target state="translated">
+          Verändere das Farbschema, die Sprache oder das Layout der Applikation.
         </target>
         <note priority="1" from="description">Title description of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>

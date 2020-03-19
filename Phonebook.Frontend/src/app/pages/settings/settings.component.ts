@@ -7,8 +7,9 @@ import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.se
 import { NotImplementedService } from 'src/app/modules/not-implemented/not-implemented.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { Language } from 'src/app/shared/models/enumerables/Language';
-import { AppState, SetTheme } from 'src/app/shared/states';
+import { AppState, SetTheme, SetLayout } from 'src/app/shared/states';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 
 @Component({
   selector: 'app-settings',
@@ -21,8 +22,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public themeValue$: Observable<Theme>;
   public themes: string[] = Object.values(Theme);
   public languages: string[] = Object.keys(Language);
-  public layoutValue: Layout = Layout.view_module;
-  public layout: string[] = Object.values(Layout);
+  @Select(AppState.activeLayout)
+  public layoutValue$: Observable<Layout>;
+  public layouts: string[] = Object.values(Layout);
   public featureFlags: Observable<{ name: string; value: boolean }[]> = this.featureFlagService.getAllDefaultDisabled();
 
   constructor(
@@ -44,9 +46,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.languageService.setLanguage(lang);
   }
 
-  public changeLayout(layout: Layout) {
-    this.notImplementedService.notImplemented();
-    this.layoutValue = layout;
+  public changeLayout(layoutClass: Layout) {
+    this.store.dispatch(new SetLayout(layoutClass));
   }
 
   public getThemeName(theme: Theme) {
@@ -82,6 +83,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
       case Layout.view_stream: {
         return $localize`:NavigationComponent|View Mode - Stream@@NavigationComponentViewModeStream:Stream View`;
       }
+      default:
+        throw Error(`Translation for layout ${layout} does not exist.`);
     }
   }
 
@@ -90,10 +93,4 @@ export class SettingsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {}
-}
-
-enum Layout {
-  view_list = 'view_list',
-  view_module = 'view_module',
-  view_stream = 'view_stream'
 }

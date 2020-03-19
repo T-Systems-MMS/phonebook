@@ -1,0 +1,90 @@
+@import '~@angular/material/theming';
+
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 50px 0 50px;
+}
+
+mat-icon {
+  vertical-align: middle;
+}
+
+mat-button {
+  @media (max-width: 1037px) {
+    margin: 0 0;
+  }
+}
+
+.information {
+  display: flex;
+  flex-direction: row;
+  margin: auto 0 auto 10px;
+  min-width: 0;
+  p {
+    margin: 2px 0 1px 0;
+  }
+}
+.action {
+  position: absolute;
+  background: rgba(0, 0, 0, 0);
+  top: 10px;
+  right: 0;
+}
+
+.close {
+  background: transparent;
+  border: none;
+}
+
+.centered {
+  align-self: center;
+}
+
+.mat-body-2 {
+  padding: 0 16px;
+  @media (max-width: 1036px) {
+    padding: 0 0;
+  }
+}
+
+mat-card {
+  @include mat-elevation-transition;
+  @include mat-elevation(2);
+  width: 100%;
+  box-sizing: border-box;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @include mat-elevation(8);
+  }
+}
+
+::ng-deep .mat-card-header .mat-card-header-text {
+  margin: 0;
+}
+
+.pb-self-centered {
+  margin: auto;
+}
+
+.list-card {
+  display: flex;
+  height: 100%;
+  flex-grow: 1;
+
+  .list-card-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 0;
+    padding: 0 16px;
+    @media (max-width: 1037px) {
+      padding: 0 0;
+    }
+  }
+} 
+ 

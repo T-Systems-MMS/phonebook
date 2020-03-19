@@ -1,11 +1,14 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
+import { AppState, SetLayout } from 'src/app/shared/states';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
+import { MatCard } from '@angular/material/card';
 import {
   LastPersonsState,
   RemoveFromLastPersons,
@@ -21,6 +24,8 @@ import { MatDrawerMode } from '@angular/material/sidenav';
   host: { class: 'pb-expand' }
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  @ViewChild('tinyCard', { static: true })
+  public tinyCard: MatCard;
   @Select(LastPersonsState)
   public lastPersons$: Observable<Person[]>;
   public bookmarkedPersons: Person[];
@@ -31,6 +36,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
+  @Select(AppState.activeLayout)
+  public layoutValue$: Observable<Layout>;
+  public layouts: string[] = Object.values(Layout);
+  public layoutSetting: string;
   public drawerOpen: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
   public drawerMode: MatDrawerMode = 'side';
   public smallerScreen: boolean = false;
@@ -38,6 +47,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.changeOrder();
+    const activeLayoutState = this.store.selectOnce(state => state.appstate.activeLayout);
+    activeLayoutState.subscribe(d => {
+      this.layoutSetting = d;
+    });
     this.breakpointObserver
       .observe('(max-width: 768px)')
       .pipe(untilComponentDestroyed(this))
@@ -98,5 +111,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public removeFromBookmarkedPersons(person: Person) {
     this.store.dispatch(new ToggleBookmark(person));
   }
+
+  public changeLayout(layoutClass: Layout) {
+    this.store.dispatch(new SetLayout(layoutClass));
+  }
+
   ngOnDestroy(): void {}
 }
