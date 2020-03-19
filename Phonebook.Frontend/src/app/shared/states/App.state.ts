@@ -30,8 +30,9 @@ export class InitTheme {
   public static readonly type: string = '[App State] Init activeTheme';
 }
 
-export class ToggleRecentPeopleDrawer {
+export class SetRecentPeopleDrawer {
   public static readonly type: string = '[App State] Set recentPeopleDrawer';
+  constructor(public active: boolean) {}
 }
 
 export interface AppStateModel {
@@ -84,7 +85,7 @@ export class AppState {
     return state.sendFeedback;
   }
   @Selector()
-  public static activeDrawer(state: AppStateModel): boolean {
+  public static recentPeopleDrawer(state: AppStateModel): boolean {
     return state.recentPeopleDrawer;
   }
 
@@ -139,12 +140,12 @@ export class AppState {
     this.themeService.setTheme(state.activeTheme);
   }
 
-  @Action(ToggleRecentPeopleDrawer)
-  public setDrawer(ctx: StateContext<AppStateModel>) {
+  @Action(SetRecentPeopleDrawer)
+  public setDrawer(ctx: StateContext<AppStateModel>, action: SetRecentPeopleDrawer) {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      recentPeopleDrawer: !state.recentPeopleDrawer
+      recentPeopleDrawer: action.active
     });
   }
 }
