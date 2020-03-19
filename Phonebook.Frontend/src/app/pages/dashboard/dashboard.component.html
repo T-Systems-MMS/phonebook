@@ -29,6 +29,7 @@
     </div>
     <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
     <div cdkDropListGroup class="pb-flex-row">
+      <div *ngIf="layoutSetting === 'view_list'" class="width">
       <div
         *ngFor="let person of bookmarkedPersons; index as i"
         cdkDropList
@@ -37,7 +38,6 @@
         class="card-container1"
       >
       <app-user-list-card
-          *ngIf="layoutSetting === 'view_list'"
           [person]="person"
           [actionButtonIcon]="'close'"
           [actionButtonClasses]="'white'"
@@ -49,8 +49,17 @@
           [cdkDragData]="i"
           [cdkDragDisabled]="favoriteSort != ''"
       ></app-user-list-card>
+    </div>
+    </div>
+    <div *ngIf="layoutSetting === 'view_module'" class="width">
+    <div
+    *ngFor="let person of bookmarkedPersons; index as i"
+    cdkDropList
+    [cdkDropListData]="i"
+    cdkDropListOrientation="horizontal"
+    class="card-container2"
+      >
       <app-user-small-card 
-          *ngIf="layoutSetting === 'view_module'"
           [person]="person"
           [actionButtonIcon]="'close'"
           [actionButtonClasses]="'white'"
@@ -62,8 +71,17 @@
           [cdkDragData]="i"
           [cdkDragDisabled]="favoriteSort != ''"
         ></app-user-small-card>
+      </div>
+      </div>
+      <div *ngIf="layoutSetting === 'view_stream'" class="width">
+      <div
+        *ngFor="let person of bookmarkedPersons; index as i"
+        cdkDropList
+        [cdkDropListData]="i"
+        cdkDropListOrientation="horizontal"
+        class="card-container2"
+      >
         <app-user-tiny-card 
-          *ngIf="layoutSetting === 'view_stream'"
           [person]="person"
           [actionButtonIcon]="'close'"
           [actionButtonClasses]="'white'"
@@ -75,6 +93,7 @@
           [cdkDragData]="i"
           [cdkDragDisabled]="favoriteSort != ''"
         ></app-user-tiny-card>
+      </div>
       </div>
     </div>
     <div

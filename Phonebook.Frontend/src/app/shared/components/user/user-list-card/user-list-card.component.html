@@ -7,16 +7,23 @@
         </div>
     </mat-card-header>
     <mat-card-content>
+        <div>
         <div class="centered">
             <app-profile-picture class="pb-self-centered circle square-img50" [user]="person" [altText]="person.Id">
             </app-profile-picture>
         </div>
+        </div>
+        <div class="centered">
         <div class="information">
-            <p class="mat-body-2">{{ person.Id }}</p>
+            <p class="mat-body-2">{{ person.Id }}</p></div></div>
+        <div class="centered">
+        <div class="information"> 
             <span class="mat-subheading-2 list-card-name">
                 {{ person.Title }} {{ person.Firstname }} {{ person.Surname }}
             </span>
-        <div>
+        </div>
+        </div>
+        <div class="centered">
             <button
             *ngIf="person.Contacts.Phone != null && person.Contacts.Phone != ''"
             mat-button
@@ -44,7 +51,7 @@
             </div>
             </button>
         </div>
-        <div>
+        <div class="centered">
             <button
             mat-button
             color="primary"
@@ -54,10 +61,11 @@
             >
             <div>
             <mat-icon>mail</mat-icon>
+            <span class="pb-text-overflow">
             {{ person.Contacts.Email }}
+            </span>
             </div>
             </button>
-        </div>
         </div>
     </mat-card-content>
 </mat-card>

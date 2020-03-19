@@ -3,6 +3,18 @@
 mat-card-content {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin: 0 50px 0 50px;
+}
+
+mat-icon {
+  vertical-align: middle;
+}
+
+mat-button {
+  @media (max-width: 1037px) {
+    margin: 0 0;
+  }
 }
 
 .information {
@@ -24,6 +36,17 @@ mat-card-content {
 .close {
   background: transparent;
   border: none;
+}
+
+.centered {
+  align-self: center;
+}
+
+.mat-body-2 {
+  padding: 0 16px;
+  @media (max-width: 1037px) {
+    padding: 0 0;
+  }
 }
 
 mat-card {
@@ -58,5 +81,9 @@ mat-card {
     white-space: nowrap;
     display: inline-block;
     margin: 0;
+    padding: 0 16px;
+    @media (max-width: 1037px) {
+      padding: 0 0;
+    }
   }
 }
