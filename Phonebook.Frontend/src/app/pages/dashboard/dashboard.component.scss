@@ -10,8 +10,9 @@ mat-drawer-container {
 }
 
 .pb-bookmarked {
+  height: 100%;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 50px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -84,6 +85,10 @@ mat-drawer-container {
     width: 700px;
     min-height: auto;
   }
+}
+
+.pb-flex-row {
+  overflow: auto;
 }
 
 .card-container1 {
