@@ -21,7 +21,7 @@ Here is a quick overview:
 ### **Unit Tests**
 
 ```bash
-npm run test-compose:dev
+npm run test-compose
 ```
 
 In order to run them without docker use the companion command `npm run test:dev`.
@@ -32,9 +32,9 @@ In order to run them without docker use the companion command `npm run test:dev`
 npm run e2e-compose
 ```
 
-In order to install the webdriver behind a corporate proxy run 
+In order to install the webdriver behind a corporate proxy run
 
-`npx webdriver-manager update --proxy 'http://proxy.company.de:8080/' --ignore_ssl` 
+`npx webdriver-manager update --proxy 'http://proxy.company.de:8080/' --ignore_ssl`
 
 before.
 
@@ -45,9 +45,6 @@ In order to run them without docker use the companion command `npm run e2e:dev`.
 ```bash
 # Build the docker containers
 npm run docker-build
-
-# Analyze
-# I18N
 ```
 
 ### **Development server**
@@ -71,4 +68,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 Run `npm run test:dev` and write your Tests.
 You can use [NgMocks](https://www.npmjs.com/package/ng-mocks) for better modularity. Please note that `ng2-mock-component` should not be used anymore.
 If you get an `[object ErrorEvent] thrown` use `npm run test:dev-debug` as there is an error with Angular/cli ([Issue](https://github.com/angular/angular-cli/issues/7296)).
-

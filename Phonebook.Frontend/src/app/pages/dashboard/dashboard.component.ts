@@ -1,21 +1,29 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
-import { LastPersonsState, RemoveFromLastPersons, ResetLastPersons, SetLastPersons } from 'src/app/shared/states/LastPersons.state';
 import { AppState, SetLayout } from 'src/app/shared/states';
 import { Layout } from 'src/app/shared/models/enumerables/Layout';
 import { MatIcon, MatCard } from '@angular/material';
+import {
+  LastPersonsState,
+  RemoveFromLastPersons,
+  ResetLastPersons,
+  SetLastPersons
+} from 'src/app/shared/states/LastPersons.state';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { MatDrawerMode } from '@angular/material/sidenav';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   host: { class: 'pb-expand' }
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   @ViewChild('tinyCard', { static: true })
   public tinyCard: MatCard;
   @Select(LastPersonsState)
@@ -32,7 +40,10 @@ export class DashboardComponent implements OnInit {
   public layoutValue$: Observable<Layout>;
   public layouts: string[] = Object.values(Layout);
   public layoutSetting: string;
-  constructor(private store: Store, private cd: ChangeDetectorRef) {}
+  public drawerOpen: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
+  public drawerMode: MatDrawerMode = 'side';
+  public smallerScreen: boolean = false;
+  constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
 
   public ngOnInit() {
     const activeLayoutState = this.store.selectOnce(state => state.appstate.activeLayout);
@@ -40,6 +51,12 @@ export class DashboardComponent implements OnInit {
       this.layoutSetting = d;
     });
     this.changeOrder();
+    this.breakpointObserver
+      .observe('(max-width: 768px)')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(result => {
+        this.drawerMode = !result.matches ? 'side' : 'push';
+      });
   }
 
   public changeOrder() {
@@ -97,4 +114,5 @@ export class DashboardComponent implements OnInit {
   public changeLayout(layoutClass: Layout) {
     this.store.dispatch(new SetLayout(layoutClass));
   }
+  ngOnDestroy(): void {}
 }

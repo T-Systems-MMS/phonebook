@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { inject, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { NgxsModule, Store } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
 import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
@@ -17,7 +17,6 @@ describe('ReleaseInfoService', () => {
       imports: [MatDialogModule, MatSnackBarModule, NgxsModule.forRoot([AppState]), HttpClientModule],
       providers: [
         ReleaseInfoService,
-        { provide: I18n, useClass: MockI18nService },
         {
           provide: ThemeService,
           useValue: null
@@ -59,5 +58,3 @@ describe('ReleaseInfoService - whatVersionIncrement()', () => {
     expect(ReleaseInfoService.whatVersionIncrement('.1.0.0', '1.%0.0')).toEqual(VersionIncrement.malformatted);
   });
 });
-
-class MockI18nService {}

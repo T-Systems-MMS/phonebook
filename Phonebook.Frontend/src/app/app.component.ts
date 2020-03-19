@@ -3,16 +3,25 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationError, Router, ActivatedRoute } from '@angular/router';
-import { I18n } from '@ngx-translate/i18n-polyfill';
-import { Store } from '@ngxs/store';
+
+import { Store, Select } from '@ngxs/store';
 import { filter } from 'rxjs/operators';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
-import { AppState, InitTheme, SetSendFeedback, SetDisplayedNotificationVersion } from 'src/app/shared/states/App.state';
+import {
+  AppState,
+  InitTheme,
+  SetTheme,
+  SetSendFeedback,
+  SetDisplayedNotificationVersion
+} from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +30,15 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 })
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
-  private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
-  private skippedDialogs: boolean = this.urlParams.get('skip_dialog') === 'true';
+  private urlParams: URLSearchParams = new URLSearchParams(
+    window.location.search
+  );
+  private skippedDialogs: boolean =
+    this.urlParams.get('skip_dialog') === 'true';
+
+  @Select(AppState.activeTheme)
+  public themeValue$: Observable<Theme>;
+
   constructor(
     private snackBar: MatSnackBar,
     private releaseMigrationService: ReleaseInfoService,
@@ -33,11 +49,20 @@ export class AppComponent implements OnInit, OnDestroy {
     private matDialog: MatDialog,
     private platform: Platform,
     private router: Router,
-    private i18n: I18n,
+    public featureFlagService: FeatureFlagService,
     private activatedRoute: ActivatedRoute
   ) {}
   public ngOnInit() {
     this.store.dispatch(new InitTheme());
+    this.featureFlagService
+      .get('firstApril')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(flag => {
+        if (flag) {
+          this.store.dispatch(new SetTheme(Theme.unicorn_theme));
+          this.isUnicornThemeActive();
+        }
+      });
     // Commented as long as serviceWorker is reinstalled
     // Issue: https://github.com/T-Systems-MMS/phonebook/issues/87
     // //Checking if the Service Worker was installed correctly.
@@ -46,12 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
     //     this.swUpdates.activated.subscribe(active => {
     //       if (active.current) {
     //         this.snackBar.open(
-    //           this.i18n({
-    //             value: 'Hurray! You can use this Website offline.',
-    //             description: 'Message indicating the service worker was successfully installed',
-    //             id: 'AppComponentServiceWorkerSuccessMessage',
-    //             meaning: 'AppComponent'
-    //           }),
+    //           $localize`:AppComponent|Message indicating the service worker was successfully installed@@AppComponentServiceWorkerSuccessMessage:Hurray! You can use this Website offline.`,
     //           '',
     //           { duration: 3000 }
     //         );
@@ -60,12 +80,7 @@ export class AppComponent implements OnInit, OnDestroy {
     //     });
     //   } else {
     //     this.snackBar.open(
-    //       this.i18n({
-    //         value: 'Your Browser does not support Offline Apps!',
-    //         description: 'Message indicating the service worker was not installed',
-    //         id: 'AppComponentServiceWorkerErrorMessage',
-    //         meaning: 'AppComponent'
-    //       }),
+    //       $localize`:AppComponent|Message indicating the service worker was not installed@@AppComponentServiceWorkerErrorMessage:Your Browser does not support Offline Apps!`,
     //       '',
     //       {
     //         duration: 3000
@@ -79,18 +94,8 @@ export class AppComponent implements OnInit, OnDestroy {
     // if (this.swUpdates.isEnabled) {
     //   this.swUpdates.available.subscribe(() => {
     //     const updateNotification = this.snackBar.open(
-    //       this.i18n({
-    //         value: 'A newer version is available. Do you want to update straight away?',
-    //         description: 'Message indicating the app can be updated and question if it should be updated',
-    //         id: 'AppComponentServiceWorkerUpdateMessage',
-    //         meaning: 'AppComponent'
-    //       }),
-    //       this.i18n({
-    //         value: 'Update!',
-    //         description: 'Button Text for updating the app',
-    //         id: 'AppComponentServiceWorkerUpdateButtonMessage',
-    //         meaning: 'AppComponent'
-    //       }),
+    //       $localize`:AppComponent|Message indicating the app can be updated and question if it should be updated@@AppComponentServiceWorkerUpdateMessage:A newer version is available. Do you want to update straight away?`,
+    //       $localize`:AppComponent|Button Text for updating the app@@AppComponentServiceWorkerUpdateButtonMessage:Update!`,
     //       { duration: 4000 }
     //     );
     //     updateNotification.onAction().subscribe(onAction => {
@@ -101,18 +106,22 @@ export class AppComponent implements OnInit, OnDestroy {
 
     //if skip_cookies is set, dont show dialogs
     if (this.skippedDialogs) {
-      this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
+      this.store.dispatch(
+        new SetDisplayedNotificationVersion(DisplayNotificationDialog.version)
+      );
     }
     //subscribe on query param changes, if changed open snackbar
-    this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParamMap => {
-      if (queryParamMap.get('skip_dialog') === 'true') {
-        if (!this.skippedDialogs) {
-          this.openJustSkippedDialogsSnackBar();
-        } else {
-          this.openSkippedDialogsSnackBar();
+    this.activatedRoute.queryParamMap
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(queryParamMap => {
+        if (queryParamMap.get('skip_dialog') === 'true') {
+          if (!this.skippedDialogs) {
+            this.openJustSkippedDialogsSnackBar();
+          } else {
+            this.openSkippedDialogsSnackBar();
+          }
         }
-      }
-    });
+      });
 
     // Ask for Permission to send Bug reports, don't show dialog if dialogs should be skipped
     if (
@@ -128,7 +137,10 @@ export class AppComponent implements OnInit, OnDestroy {
       });
     }
 
-    if (DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)) {
+    if (
+      DisplayNotificationDialog.version >
+      (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)
+    ) {
       this.matDialog.open(DisplayNotificationDialog, {
         height: '90vh',
         width: '90vw'
@@ -146,25 +158,32 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     // Route Routes with failing Resolvers to the Main Page
-    this.router.events.pipe(filter(e => e instanceof NavigationError)).subscribe(e => {
-      this.router.navigateByUrl('/');
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationError))
+      .subscribe(e => {
+        this.router.navigateByUrl('/');
+      });
+  }
+  public isUnicornThemeActive() {
+    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe(name => {
+      if (name === Theme.unicorn_theme) {
+        this.snackBar
+          .open(
+            $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
+            $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
+          )
+          .onAction()
+          .subscribe(() => {
+            this.router.navigateByUrl('/settings');
+          });
+      }
     });
   }
   public openJustSkippedDialogsSnackBar() {
     this.snackBar
       .open(
-        this.i18n({
-          meaning: 'Display advice to new url',
-          description: 'Message for just set no cookie url',
-          id: 'PageInformationNewUrlNoCookies',
-          value: `Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.`
-        }),
-        this.i18n({
-          meaning: 'Restore Url',
-          description: 'Message for following no cookie url',
-          id: 'PageInformationNewUrlNoCookiesUrl',
-          value: 'Reset'
-        }),
+        $localize`:Display advice to new url|Message for just set no cookie url@@PageInformationNewUrlNoCookies:Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.`,
+        $localize`:Restore Url|Message for following no cookie url@@PageInformationNewUrlNoCookiesUrl:Reset`,
         { duration: 8000 }
       )
       .onAction()
@@ -176,18 +195,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public openSkippedDialogsSnackBar() {
     this.snackBar
       .open(
-        this.i18n({
-          meaning: 'Warning no dialogs are shown',
-          description: 'Message to inform user that no dialogs will be shown',
-          id: 'PageInformationNoDialogs',
-          value: `Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases.`
-        }),
-        this.i18n({
-          meaning: 'Restore Url',
-          description: 'Message for following no cookie url',
-          id: 'PageInformationNewUrlNoCookiesUrl',
-          value: 'Reset'
-        }),
+        $localize`:Warning no dialogs are shown|Message to inform user that no dialogs will be shown@@PageInformationNoDialogs:Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases.`,
+        $localize`:Restore Url|Message for following no cookie url@@PageInformationNewUrlNoCookiesUrl:Reset`,
         { duration: 8000 }
       )
       .onAction()

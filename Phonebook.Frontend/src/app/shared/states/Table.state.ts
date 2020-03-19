@@ -2,6 +2,7 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ColumnDefinitions, getColumnsAsStringArray } from 'src/app/shared/config/columnDefinitions';
 import { Column } from 'src/app/shared/models';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
+import { Injectable } from '@angular/core';
 
 export class SetVisibleTableColumns {
   public static readonly type: string = '[Table State] Set visible Table Columns';
@@ -29,6 +30,7 @@ export interface TableStateModel {
     resultCount: 0
   }
 })
+@Injectable()
 export class TableState {
   @Selector()
   public static visibleColumns(state: TableStateModel): Column[] {

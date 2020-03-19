@@ -5,8 +5,7 @@
     "defaultLanguage": "en",
     "languages": [
       "en",
-      "de",
-      "test"
+      "de"
     ]
   }
 }

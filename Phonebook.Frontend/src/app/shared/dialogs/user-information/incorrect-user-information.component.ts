@@ -1,10 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IncorrectUserInformationDialogData } from 'src/app/shared/components/user/user-detail/user-detail.component';
 import { WindowRef } from 'src/app/services/windowRef.service';
 import { MailService } from 'src/app/services/mail.service';
-import { I18n } from '@ngx-translate/i18n-polyfill';
 
 @Component({
   selector: 'app-user-information',
@@ -13,15 +12,13 @@ import { I18n } from '@ngx-translate/i18n-polyfill';
 })
 export class IncorrectUserInformationComponent implements OnInit {
   public currentUserId: string = '';
-  public mailBody : string = '';
+  public mailBody: string = '';
   constructor(
-    private i18n: I18n,
     private mailService: MailService,
     public windowRef: WindowRef,
     public currentUserService: CurrentUserService,
     public dialogRef: MatDialogRef<IncorrectUserInformationComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IncorrectUserInformationDialogData | any
-
   ) {}
 
   public ngOnInit() {
@@ -39,26 +36,11 @@ export class IncorrectUserInformationComponent implements OnInit {
   }
   public sendMail() {
     this.mailService.openMail(
-      this.i18n({
-        meaning: 'MailToMateSubject',
-        description: 'Send a mail to your mate if there is something wrong on the profile ',
-        id: 'User-InformationDialogSubject',
-        value: 'There is an Issue with your Phonebook-Profile'
-      }),
-      this.i18n({
-        meaning: 'MailToMateGreeting',
-        description: 'Send a mail to your mate if there is something wrong on the profile ',
-        id: 'User-InformationDialogGreeting',
-        value: 'Hi '
-      })
-      + this.data.person.Firstname +
-      this.i18n({
-        meaning: 'MailToMateBody',
-        description: 'Send a mail to your mate if there is something wrong on the profile ',
-        id: 'User-InformationDialogBody',
-        value: ', \nwhile browsing your profile I noticed that something is not right: \nPlease contact the HR Department to fix it.This is the Phonebook Link: '
-      })
-      + this.windowRef.getCurrentUrl(),
+      $localize`:MailToMateSubject|Send a mail to your mate if there is something wrong on the profile @@User-InformationDialogSubject:There is an Issue with your Phonebook-Profile`,
+      $localize`:MailToMateGreeting|Send a mail to your mate if there is something wrong on the profile @@User-InformationDialogGreeting:Hi ` +
+        this.data.person.Firstname +
+        $localize`:MailToMateBody|Send a mail to your mate if there is something wrong on the profile @@User-InformationDialogBody:, \nwhile browsing your profile I noticed that something is not right: \nPlease contact the HR Department to fix it.This is the Phonebook Link: ` +
+        this.windowRef.getCurrentUrl(),
       this.data.person.Contacts.Email
     );
   }

@@ -3,6 +3,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 import { LayoutService } from 'src/app/services/layout.service';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
 import { Layout } from 'src/app/shared/models/enumerables/Layout';
+import { Injectable } from '@angular/core';
 
 export class ServiceWorkerNotificationDisplayed {
   public static readonly type: string = '[App State] Service Worker Notification displayed';
@@ -60,6 +61,7 @@ export interface AppStateModel {
     activeLayout: Layout.view_list
   }
 })
+@Injectable()
 export class AppState {
   constructor(private themeService: ThemeService, private layoutService: LayoutService) {}
   @Selector()
