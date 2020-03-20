@@ -112,12 +112,12 @@
         <note priority="1" from="description">Title of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentTitleDescription" datatype="html">
-      <source>
-          Change the theme, language or layout of this application.
-          </source><target state="final">
-          Change the theme, language or layout of this application.
-          </target>        
+      <source> Change the theme, language or layout of this application. </source><target state="final"> Change the theme, language or layout of this application. </target>        
         <note priority="1" from="description">Title description of the settings page</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentSubtitleGeneral" datatype="html">
+        <source>General</source><target state="final">General</target>
+        <note priority="1" from="description">Subtitle General of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleLanguage" datatype="html">
         <source>Language</source><target state="final">Language</target>
@@ -214,13 +214,13 @@
         <source>List View</source><target state="final">List View</target>
         <note priority="1" from="description">View Mode - List</note>
         <note priority="1" from="meaning">NavigationComponent</note>
-      </trans-unit><trans-unit id="NavigationComponentViewModeModule" datatype="html">
-        <source>Module View</source><target state="final">Module View</target>
-        <note priority="1" from="description">View Mode - Module</note>
+      </trans-unit><trans-unit id="NavigationComponentViewModeMediumCards" datatype="html">
+        <source>Medium Cards</source><target state="final">Medium Cards</target>
+        <note priority="1" from="description">View Mode - MediumCards</note>
         <note priority="1" from="meaning">NavigationComponent</note>
-      </trans-unit><trans-unit id="NavigationComponentViewModeStream" datatype="html">
-        <source>Stream View</source><target state="final">Stream View</target>
-        <note priority="1" from="description">View Mode - Stream</note>
+      </trans-unit><trans-unit id="NavigationComponentViewModeSmallCards" datatype="html">
+        <source>Small Cards</source><target state="final">Small Cards</target>
+        <note priority="1" from="description">View Mode - SmallCards</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="UserDetailPageResolverNotFoundFirstPart" datatype="html">
         <source>User with Id</source><target state="final">User with Id</target>
@@ -284,6 +284,10 @@
         <target state="final">Here you can change the color theme of the app.</target>
         <note priority="1" from="description">Color Change Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
+      </trans-unit><trans-unit id="SettingsComponentSubtitleDashboard" datatype="html">
+        <source> Dashboard</source><target state="final"> Dashboard</target>
+        <note priority="1" from="description">Dashboard Subheading</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
         <source>Layout</source><target state="final">Layout</target>
         <note priority="1" from="description">Layout Subtitle</note>

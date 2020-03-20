@@ -78,10 +78,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
         return $localize`:NavigationComponent|View Mode - List@@NavigationComponentViewModeList:List View`;
       }
       case Layout.view_module: {
-        return $localize`:NavigationComponent|View Mode - Module@@NavigationComponentViewModeModule:Module View`;
+        return $localize`:NavigationComponent|View Mode - MediumCards@@NavigationComponentViewModeMediumCards:Medium Cards`;
       }
       case Layout.view_stream: {
-        return $localize`:NavigationComponent|View Mode - Stream@@NavigationComponentViewModeStream:Stream View`;
+        return $localize`:NavigationComponent|View Mode - SmallCards@@NavigationComponentViewModeSmallCards:Small Cards`;
       }
       default:
         throw Error(`Translation for layout ${layout} does not exist.`);
