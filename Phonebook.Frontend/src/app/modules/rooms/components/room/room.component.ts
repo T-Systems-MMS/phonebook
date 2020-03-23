@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
 import { PersonService } from 'src/app/services/api/person.service';
 import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
@@ -29,7 +29,7 @@ export class RoomDetailComponent implements OnInit {
     private roomService: RoomService,
     private mailService: MailService,
     private windowRef: WindowRef,
-    private i18n: I18n,
+
     private snackBar: MatSnackBar,
     private router: Router,
     private personService: PersonService
@@ -44,12 +44,7 @@ export class RoomDetailComponent implements OnInit {
         .subscribe(node => {
           if (node == null) {
             this.snackBar.open(
-              this.i18n({
-                meaning: 'RoomComponent',
-                description: 'Error Message if Room does not exist.',
-                id: 'RoomComponentErrorNoRoom',
-                value: 'Room does not exist.'
-              }),
+              $localize`:RoomComponent|Error Message if Room does not exist.@@RoomComponentErrorNoRoom:Room does not exist.`,
               '',
               { duration: 5000 }
             );
@@ -70,20 +65,10 @@ export class RoomDetailComponent implements OnInit {
 
   public sendMail() {
     this.mailService.openMail(
-      this.i18n({
-        meaning: 'RoomDetailComponent',
-        description:
-          'subject of the email message that is preset when clicking "Share by mail". The room is applied after this sentence.',
-        id: 'RoomDetailComponentMailSubject',
-        value: 'Information about the room: '
-      }) + this.room.Number,
-      this.i18n({
-        meaning: 'RoomDetailComponent',
-        description:
-          'the body of the email that is preset when clicking "Share by mail". The link to the room is applied after this sentence.',
-        id: 'RoomDetailComponentMailBodyPart1',
-        value: 'Here is the Link: '
-      }) + this.windowRef.getCurrentUrl()
+      $localize`:RoomDetailComponent|subject of the email message that is preset when clicking "Share by mail". The room is applied after this sentence.@@RoomDetailComponentMailSubject:Information about the room: ` +
+        this.room.Number,
+      $localize`:RoomDetailComponent|the body of the email that is preset when clicking "Share by mail". The link to the room is applied after this sentence.@@RoomDetailComponentMailBodyPart1:Here is the Link: ` +
+        this.windowRef.getCurrentUrl()
     );
   }
 

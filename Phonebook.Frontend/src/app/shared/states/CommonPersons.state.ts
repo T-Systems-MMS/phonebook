@@ -1,5 +1,6 @@
 import { Action, State, StateContext } from '@ngxs/store';
 import { Person } from 'src/app/shared/models';
+import { Injectable } from '@angular/core';
 
 /**
  * Adds the person to the list of common persons or increases the click count
@@ -21,6 +22,7 @@ export class RemoveCommonPerson {
   name: 'commonpersons',
   defaults: []
 })
+@Injectable()
 export class CommonPersonsState {
   @Action(IncrementCommonPerson)
   public incrementPerson(ctx: StateContext<ClicksPerPerson[]>, action: IncrementCommonPerson) {

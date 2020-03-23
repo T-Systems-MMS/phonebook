@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { I18n } from '@ngx-translate/i18n-polyfill';
+
 import { Select, Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { VCard, VCardEncoding } from 'ngx-vcard';
@@ -10,7 +10,7 @@ import { WindowRef } from 'src/app/services/windowRef.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PersonStatus } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
-import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
@@ -46,8 +46,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
-    private dialog: MatDialog,
-    private i18n: I18n
+    private dialog: MatDialog
   ) {}
 
   public ngOnInit() {
@@ -115,7 +114,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public getRocketChatLink(): string | null {
-    return runtimeEnvironment.rocketChatUrl !== undefined ? runtimeEnvironment.rocketChatUrl + '/direct/' + this.person.Id.toLowerCase() : null;
+    return runtimeEnvironment.rocketChatUrl !== undefined
+      ? runtimeEnvironment.rocketChatUrl + '/direct/' + this.person.Id.toLowerCase()
+      : null;
   }
 
   public ngOnDestroy() {}

@@ -1,6 +1,7 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
+import { Injectable } from '@angular/core';
 
 export class ToggleBookmark {
   public static readonly type: string = '[Bookmarks] Toggle Bookmark';
@@ -16,6 +17,7 @@ export class UpdateBookmarkOrder {
   name: 'bookmarks',
   defaults: []
 })
+@Injectable()
 export class BookmarksState {
   @Selector()
   public static sortedBookmarks(state: Person[]) {
