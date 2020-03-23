@@ -38,6 +38,7 @@ mat-drawer-container {
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow-y: auto;
 
   .pb-bookmarked-title {
     display: flex;
@@ -54,7 +55,6 @@ mat-drawer-container {
   }
 
   .pb-bookmarks-list {
-    overflow-y: auto;
     margin: 0 10px 60px 0;
   }
 }

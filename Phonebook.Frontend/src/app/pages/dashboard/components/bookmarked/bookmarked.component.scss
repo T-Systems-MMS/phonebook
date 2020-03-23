@@ -1,0 +1,121 @@
+mat-drawer-container {
+    margin-top: 20px;
+    width: 100%;
+  
+    mat-drawer-content,
+    mat-drawer {
+      padding-left: 10px;
+      overflow: hidden;
+    }
+  }
+  
+  .card-navigation {
+    display: flex;
+  
+    mat-icon {
+      margin-top: 5px;
+      padding-right: 10px;
+    }
+  }
+  
+  .different-cards {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .navigation-button {
+    width: auto;
+    margin-right: 20px;
+  }
+  
+  .navigation-name {
+    font-size: 24px;
+    font-weight: initial;
+  }
+  
+  .pb-bookmarked {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+  
+    .pb-bookmarked-title {
+      display: flex;
+      flex-direction: row;
+      h1 {
+        margin: 0;
+      }
+      mat-form-field {
+        margin-left: 16px;
+      }
+      ::ng-deep .mat-form-field-infix {
+        border: none;
+      }
+    }
+  
+    .pb-bookmarks-list {
+      margin: 0 10px 60px 0;
+    }
+  }
+  
+  .pb-recent-people-drawer {
+    width: 370px;
+    background-color: unset;
+  }
+  
+  .pb-recent-people {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    .pb-recent-people-list {
+      flex: 1;
+    }
+  }
+  
+  .toggle-drawer {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 46%;
+    padding-right: 20px;
+  
+    button {
+      align-self: center;
+      span {
+        writing-mode: tb-rl;
+      }
+    }
+  }
+  
+  .pb-small-card {
+    width: 320px;
+    height: 275px;
+  }
+  
+  .pb-card {
+    margin: 5px;
+    display: flex;
+  }
+  
+  .card-container {
+    display: flex;
+  }
+  
+  .pb-card:active {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+  
+  .cdk-drop-dragging .cdk-drag,
+  .pb-card:not(.cdk-drag-placeholder) {
+    transition: transform 150ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  

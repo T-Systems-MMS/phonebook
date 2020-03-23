@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component';
+import { DashboardComponent } from 'src/app/pages/dashboard/components/overview/dashboard.component';
 import { SettingsComponent } from 'src/app/pages/settings/settings.component';
 import { environment } from 'src/environments/environment';
+import { TeamComponent } from './pages/dashboard/components/team/team.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, pathMatch: 'full' },
