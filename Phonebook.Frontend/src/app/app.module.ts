@@ -2,11 +2,11 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlatformModule } from '@angular/cdk/platform';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LOCALE_ID, NgModule, TRANSLATIONS } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
@@ -53,7 +53,6 @@ import { environment } from 'src/environments/environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToLogin';
 
 declare const require;
@@ -108,7 +107,7 @@ declare const require;
     //   },
     //   deps: [LOCALE_ID]
     // },
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { panelClass: 'mat-dialog-override' } },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { panelClass: ['mat-dialog-override', 'mat-typography'] } },
     WINDOW_PROVIDER,
     ServiceWorkerService,
     WindowRef,
@@ -120,4 +119,4 @@ declare const require;
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
