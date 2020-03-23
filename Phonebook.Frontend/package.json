@@ -8,7 +8,7 @@
     "start:en": "concurrently -n mock-backend,assets,angular \"docker run --rm -p 8080:80 --name phonebook-backend-mock tsystemsmms/phonebook-build:mock-backend\" \"docker run --rm -p 8081:80 --name phonebook-assets tsystemsmms/phonebook-build:assets\" \"ng serve --ssl --proxy-config proxy.conf.json --configuration en\"",
     "start:de": "concurrently -n mock-backend,assets,angular \"docker run --rm -p 8080:80 --name phonebook-backend-mock tsystemsmms/phonebook-build:mock-backend\" \"docker run --rm -p 8081:80 --name phonebook-assets tsystemsmms/phonebook-build:assets\" \"ng serve --ssl --proxy-config proxy.conf.json --configuration de\"",
     "start:test": "npm run start -- --configuration test",
-    "start:debug": "ng serve --ssl --proxy-config=proxy.conf.json --configuration debug",
+    "start:debug": "ng serve --ssl --proxy-config=proxy.conf.json --configuration de",
     "start-compose": "npm run compose-build && docker-compose run --rm --service-ports angular npm run start:en",
     "start-compose:debug": "npm run compose-build && docker-compose run --rm --service-ports angular npm run start:debug",
     "test": "ng test",
@@ -102,7 +102,7 @@
     "semantic-release-docker-test": "1.0.2",
     "ts-node": "8.6.2",
     "tslint": "5.20.1",
-    "typescript": "3.4.5",
+    "typescript": "3.5.3",
     "webdriver-manager": "12.1.7",
     "webpack-bundle-analyzer": "3.6.0"
   },
