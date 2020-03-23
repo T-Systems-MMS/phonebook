@@ -103,15 +103,12 @@ export class PersonService {
     );
   }
 
-  public getPersonsByRoom(positionArray: string[]): Observable<Person[]> {
+  public getPersonsByRoom(roomId: string): Observable<Person[]> {
     return this.getAll().pipe(
       map(personArray => {
         return personArray.filter(x => {
           return (
-            x.Location.RoomCollection[0].Place === positionArray[0] &&
-            x.Location.RoomCollection[0].Building === positionArray[1] &&
-            x.Location.RoomCollection[0].Floor.toString() === positionArray[2] &&
-            x.Location.RoomCollection[0].Number === positionArray[3]
+            x.Location.RoomCollection.some( x=> x.Number == roomId)
           );
         });
       })
