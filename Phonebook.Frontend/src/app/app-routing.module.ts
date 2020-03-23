@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { TeamComponent } from './pages/dashboard/components/team/team.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, pathMatch: 'full' },
+  { path: '', loadChildren: () => import('src/app/pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'search', loadChildren: () => import('src/app/modules/table/table.module').then(m => m.TableModule) },
   { path: 'user', loadChildren: () => import('src/app/pages/users/user-pages.module').then(m => m.UserPagesModule) },
   { path: 'rooms', loadChildren: () => import('src/app/modules/rooms/rooms.module').then(m => m.RoomsModule) },
