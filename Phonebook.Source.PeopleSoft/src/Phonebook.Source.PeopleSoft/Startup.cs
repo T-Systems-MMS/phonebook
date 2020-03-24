@@ -39,7 +39,7 @@ namespace Phonebook.Source.PeopleSoft
                         .UseInMemoryDatabase("PeopleSoft")
                         .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning))
                         );
-                services.BuildServiceProvider().GetRequiredService<ModelContext>().Database.EnsureCreated();
+                
             }
             else
             {
@@ -127,8 +127,13 @@ namespace Phonebook.Source.PeopleSoft
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
         {
+            if (Configuration.GetValue<bool>("useSeeding"))
+            {              
+                services.GetRequiredService<ModelContext>().Database.EnsureCreated();
+            }
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
