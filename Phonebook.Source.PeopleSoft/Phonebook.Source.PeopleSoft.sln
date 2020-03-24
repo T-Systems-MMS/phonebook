@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.Source.PeopleSoft
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6029D2E1-DE2B-48B5-80FA-C1B3D5B6B270}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
 		..\.gitignore = ..\.gitignore
+		Dockerfile = Dockerfile
 		..\global.json = ..\global.json
 		..\LICENSE = ..\LICENSE
 		..\Readme.md = ..\Readme.md
