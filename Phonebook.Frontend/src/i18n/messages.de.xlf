@@ -258,7 +258,7 @@
         <note priority="1" from="description">View Mode - List</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="NavigationComponentViewModeMediumCards" datatype="html">
-        <source>Medium Cards</source><target state="translated">Medium Karten</target>
+        <source>Medium Cards</source><target state="translated">Mittlere Karten</target>
         <note priority="1" from="description">View Mode - MediumCards</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="NavigationComponentViewModeSmallCards" datatype="html">
@@ -360,7 +360,7 @@
         <note priority="1" from="description">Dashboard Subheading</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
-        <source>Layout</source><target state="translated">Ansicht</target>
+        <source>Layout</source><target state="translated">Ansicht der Favoriten</target>
         <note priority="1" from="description">Layout Subtitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SearchComponentPlaceholder" datatype="html">
