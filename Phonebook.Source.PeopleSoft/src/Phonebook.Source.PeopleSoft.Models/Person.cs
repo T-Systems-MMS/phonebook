@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Cors.Infrastructure;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Phonebook.Source.PeopleSoft.Models
@@ -15,7 +14,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name: "NAME")]
         public string LastName { get; set; }
         [Column(name: "TITEL")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
         [Column(name: "TELEFON")]
         public string Phone { get; set; }
         [Column(name: "MOBIL")]

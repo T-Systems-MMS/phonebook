@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Phonebook.Source.PeopleSoft.Models
+namespace Phonebook.Source.PeopleSoft.Models.Context
 {
     public class ModelContext : DbContext
     {
@@ -8,7 +8,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         {
         }
 
-        public ModelContext(DbContextOptions<ModelContext> options)
+        public ModelContext(DbContextOptions options)
             : base(options)
         {
         }

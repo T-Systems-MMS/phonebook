@@ -19,7 +19,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         
         public virtual Person HeadOfOrgUnit { get; set; }
         [Column(name:"KST")]
-        public string CostCenter { get; set; }        
+        public string? CostCenter { get; set; }        
         
         public virtual IEnumerable<Person> Members { get; set; }
         
