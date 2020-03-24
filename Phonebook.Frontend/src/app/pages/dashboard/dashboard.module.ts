@@ -49,6 +49,7 @@ import { DashboardComponent } from 'src/app/pages/dashboard/components/overview/
     PipesModule
   ],
   declarations: [
+    DashboardComponent,
     TeamComponent,
     BookmarkedComponent
   ]

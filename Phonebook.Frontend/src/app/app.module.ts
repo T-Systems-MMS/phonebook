@@ -50,6 +50,7 @@ import {
   TableState
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
+import { BookmarkedComponent } from 'src/app/pages/dashboard/components/bookmarked/bookmarked.component';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
