@@ -1,18 +1,16 @@
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
-import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
-import { AppState, SetLayout } from 'src/app/shared/states';
 import { Layout } from 'src/app/shared/models/enumerables/Layout';
 import { MatCard } from '@angular/material/card';
 import {
   AppState,
+  SetLayout,
   BookmarksState,
   SetRecentPeopleDrawer,
   ToggleBookmark,
@@ -47,13 +45,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public layoutValue$: Observable<Layout>;
   public layouts: string[] = Object.values(Layout);
   public layoutSetting: string;
-  public drawerOpen: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;
   constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
 
   public ngOnInit() {
     this.changeOrder();
+    const activeLayoutState = this.store.selectOnce(state => state.appstate.activeLayout);
+    activeLayoutState.subscribe(d => {
+      this.layoutSetting = d;
+    });
     this.store
       .select(AppState.recentPeopleDrawer)
       .pipe(untilComponentDestroyed(this))
