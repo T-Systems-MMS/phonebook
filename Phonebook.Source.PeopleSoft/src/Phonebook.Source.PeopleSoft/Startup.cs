@@ -36,7 +36,7 @@ namespace Phonebook.Source.PeopleSoft
             {
                 services.AddDbContext<ModelContext, SeedingContext>(options =>
                     options
-                        .UseSqlite(Configuration.GetConnectionString("PeopleSoftDatabaseDev"), o => o.UseRelationalNulls(false))
+                        .UseInMemoryDatabase("PeopleSoft")
                         .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning))
                         );
                 services.BuildServiceProvider().GetRequiredService<ModelContext>().Database.EnsureCreated();

@@ -9,7 +9,6 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
     {
         public SeedingContext() : base()
         {
-
         }
         public SeedingContext(DbContextOptions<SeedingContext> options)
             : base(options)
@@ -132,12 +131,12 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
             modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit1Id, Name = "Anrufbeantworter Certificate Authority", ShortName = "AB CA", ParentId = null, CostCenter = null });
             modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit2Id, Name = "Anrufbeantworter Customer Unit", ShortName = "AB CU", ParentId = OrgUnit1Id, CostCenter = "5001", HeadOfOrgUnitId = Person1Id });
             modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit3Id, Name = "Business Community Automation and Buildings", ShortName = "BC AB", ParentId = OrgUnit1Id, CostCenter = "5002" });
-            modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit4Id, Name = "Business Community Yellow", ShortName = "BC Yellow", ParentId = OrgUnit3Id, CostCenter = "5003"  });
+            modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit4Id, Name = "Business Community Yellow", ShortName = "BC Yellow", ParentId = OrgUnit3Id, CostCenter = "5003" });
             #endregion OrgUnit
 
             #region Status
             modelBuilder.Entity<Status>().HasData(new Status { Id = Status1Id, Name = "head of", Code = "Ho" });
-            modelBuilder.Entity<Status>().HasData(new Status { Id = Status2Id, Name = "internal employee", Code = "IE"});
+            modelBuilder.Entity<Status>().HasData(new Status { Id = Status2Id, Name = "internal employee", Code = "IE" });
             modelBuilder.Entity<Status>().HasData(new Status { Id = Status3Id, Name = "external employee", Code = "EX" });
             modelBuilder.Entity<Status>().HasData(new Status { Id = Status4Id, Name = "student employee", Code = "SE" });
             #endregion Status
@@ -159,7 +158,7 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
             #endregion Person
 
             #region OrgUnitToFunktion
-            modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function1Id, OrgUnitId = OrgUnit1Id, PersonId = Person1Id ,RoleName = "ABC"  });
+            modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function1Id, OrgUnitId = OrgUnit1Id, PersonId = Person1Id, RoleName = "ABC" });
             modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function2Id, OrgUnitId = OrgUnit2Id, PersonId = Person2Id, RoleName = "ABCD" });
             modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function3Id, OrgUnitId = OrgUnit3Id, PersonId = Person3Id, RoleName = "ABCDE" });
             modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function3Id, OrgUnitId = OrgUnit3Id, PersonId = Person4Id, RoleName = "ABCDEF" });
