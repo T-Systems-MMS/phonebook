@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
 import { LayoutService } from 'src/app/services/layout.service';
@@ -37,6 +38,11 @@ export class InitTheme {
   public static readonly type: string = '[App State] Init activeTheme';
 }
 
+export class SetRecentPeopleDrawer {
+  public static readonly type: string = '[App State] Set recentPeopleDrawer';
+  constructor(public active: boolean) {}
+}
+
 export interface AppStateModel {
   serviceWorkerNotificationDisplayed: boolean;
   version: string;
@@ -48,6 +54,7 @@ export interface AppStateModel {
   sendFeedback: boolean | null;
   activeTheme: Theme;
   activeLayout: Layout;
+  recentPeopleDrawer: boolean;
 }
 
 @State<AppStateModel>({
@@ -59,6 +66,7 @@ export interface AppStateModel {
     sendFeedback: null,
     activeTheme: Theme.magenta_light_theme,
     activeLayout: Layout.view_module
+    recentPeopleDrawer: true
   }
 })
 @Injectable()
@@ -89,6 +97,10 @@ export class AppState {
   @Selector()
   public static sendFeedback(state: AppStateModel): boolean | null {
     return state.sendFeedback;
+  }
+  @Selector()
+  public static recentPeopleDrawer(state: AppStateModel): boolean {
+    return state.recentPeopleDrawer;
   }
 
   @Action(ServiceWorkerNotificationDisplayed)
@@ -149,6 +161,12 @@ export class AppState {
     ctx.setState({
       ...state,
       activeLayout: action.activeLayout
+  @Action(SetRecentPeopleDrawer)
+  public setDrawer(ctx: StateContext<AppStateModel>, action: SetRecentPeopleDrawer) {
+    const state = ctx.getState();
+    ctx.setState({
+      ...state,
+      recentPeopleDrawer: action.active
     });
   }
 }
