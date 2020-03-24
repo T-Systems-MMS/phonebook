@@ -1,1 +1,62 @@
-<h1>bye</h1>
+<div class="pb-bookmarked">
+    <div class="pb-bookmarked-title">
+      <mat-form-field>
+        <mat-select [(value)]="favoriteSort" (valueChange)="changeOrder()">
+          <mat-option
+            value=""
+            i18n="
+               DashboardComponent|The standard (customizable) order of the favorite cards@@DashboardComponentOrderNone
+
+            "
+          >
+            Custom Order</mat-option
+          >
+          <mat-option
+            value="asc"
+            i18n="DashboardComponent|The alphabetical asc order of the favorite cards@@DashboardComponentOrderAsc"
+          >
+            Alphabetical asc</mat-option
+          >
+          <mat-option
+            value="desc"
+            i18n="DashboardComponent|The alphabetical desc order of the favorite cards@@DashboardComponentOrderDesc"
+          >
+            Alphabetical desc</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
+    <div cdkDropListGroup class="pb-bookmarks-list pb-flex-row">
+      <div
+        *ngFor="let person of bookmarkedPersons; index as i"
+        cdkDropList
+        [cdkDropListData]="i"
+        cdkDropListOrientation="horizontal"
+        class="card-container"
+      >
+        <app-user-small-card
+          [person]="person"
+          [actionButtonIcon]="'close'"
+          [actionButtonClasses]="'white'"
+          (actionButtonClicked)="removeFromBookmarkedPersons(person)"
+          class="pb-small-card pb-card"
+          cdkDrag
+          (cdkDragEntered)="entered($event)"
+          (cdkDragEnded)="ended($event)"
+          [cdkDragData]="i"
+          [cdkDragDisabled]="favoriteSort != ''"
+        ></app-user-small-card>
+      </div>
+    </div>
+    <div
+      *ngIf="bookmarkedPersons.length === 0"
+      i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
+    >
+      You haven't bookmarked anybody yet, look for the button
+      <button mat-icon-button>
+        <mat-icon>bookmark_border</mat-icon>
+      </button>
+      on a workmates page.
+    </div>
+  </div>
