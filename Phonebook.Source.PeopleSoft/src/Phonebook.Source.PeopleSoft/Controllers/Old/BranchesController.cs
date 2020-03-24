@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Source.PeopleSoft.Models;
+using Phonebook.Source.PeopleSoft.Models.Context;
 
 namespace Phonebook.Source.PeopleSoft.Controllers.Old
 {
@@ -16,7 +17,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers.Old
     {
         private readonly ModelContext context;
 
-        public BranchesController(Models.ModelContext context)
+        public BranchesController(ModelContext context)
         {
             this.context = context;
         }

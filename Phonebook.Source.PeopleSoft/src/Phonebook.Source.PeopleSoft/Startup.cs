@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Primitives;
 using Phonebook.Source.PeopleSoft.Models;
+using Phonebook.Source.PeopleSoft.Models.Context;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -31,11 +32,23 @@ namespace Phonebook.Source.PeopleSoft
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddJsonOptions(o => o.JsonSerializerOptions.PropertyNamingPolicy = null);
-            services.AddDbContext<ModelContext>(options =>
-                options
-                    .UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction => oracleOptionsAction.UseRelationalNulls(false))
-                    .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning))
-            );
+            if (Configuration.GetValue<bool>("useSeeding"))
+            {
+                services.AddDbContext<ModelContext, SeedingContext>(options =>
+                    options
+                        .UseSqlite(Configuration.GetConnectionString("PeopleSoftDatabaseDev"), o => o.UseRelationalNulls(false))
+                        .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning))
+                        );
+                services.BuildServiceProvider().GetRequiredService<ModelContext>().Database.EnsureCreated();
+            }
+            else
+            {
+                services.AddDbContext<ModelContext>(options =>
+                   options
+                       .UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction => oracleOptionsAction.UseRelationalNulls(false))
+                       .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning))
+               );
+            }
 
 #if DEBUG
             Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
@@ -69,7 +82,7 @@ namespace Phonebook.Source.PeopleSoft
                   options.Events.OnRedirectToIdentityProvider = (c) =>
                   {
                       var hostname = string.Empty;
-                      if(string.IsNullOrWhiteSpace(c.Request.Headers["Referer"]) == false)
+                      if (string.IsNullOrWhiteSpace(c.Request.Headers["Referer"]) == false)
                       {
                           var uri = new Uri(c.Request.Headers["Referer"]);
                           hostname = $"{uri.Host}:{uri.Port}";

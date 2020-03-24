@@ -6,13 +6,21 @@
     <UserSecretsId>87c803aa-de8f-4eaf-a14b-0f59d53083cf</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <NullableContextOptions>enable</NullableContextOptions>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.WsFederation" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.WsFederation" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.11" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.60" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Phonebook.Source.PeopleSoft.Models\Phonebook.Source.PeopleSoft.Models.csproj" />
   </ItemGroup>
 
 </Project>
