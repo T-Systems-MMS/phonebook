@@ -1,7 +1,9 @@
 ﻿
 
+using Bogus;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
+using System.Linq;
 
 namespace Phonebook.Source.PeopleSoft.Models.Context
 {
@@ -88,50 +90,152 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            var roomNumbers = new[] { "1A", "2A", "3A", "4A", "5A", "6A", "1B", "2B", "3B", "4B", "5B", "6B", "1.004785", "N100.45", "545", "0.0454a", "Apl", "F-54689", "F54689" };
+
             #region Location
-            modelBuilder.Entity<Location>().HasData(new Location { Id = LocationDresdenId, Country = "DE", ShortName = null, Name = "Dresden" });
-            modelBuilder.Entity<Location>().HasData(new Location { Id = LocationBerlinId, Country = "DE", ShortName = "B", Name = "Berlin" });
-            modelBuilder.Entity<Location>().HasData(new Location { Id = LocationNewYorkId, Country = "USA", ShortName = "NY", Name = "New York" });
+
+            var maxLocation = 3;
+            var locationFaker = new Faker<Location>()
+                        .StrictMode(false)
+                        .Rules((f, l) =>
+                        {
+                            var address = f.Address;
+                            l.Id = f.IndexVariable++ + 1;
+                            l.Country = address.CountryCode();
+                            l.ShortName = new Bogus.Randomizer().Replace("??");
+                            l.Name = address.City();
+                        });
+            var locationList = Enumerable.Range(1, maxLocation)
+                    .Select(_ => locationFaker.Generate());
+            foreach (var location in locationList)
+            {
+                modelBuilder.Entity<Location>().HasData(location);
+            }
+
             #endregion Location
 
             #region Building
-            modelBuilder.Entity<Building>().HasData(new Building { Id = BuildingR5Id, Name = "Risaer Straße", Number = "5", Address = "DD/Riesaer Straße 5, 01129 Dresden", ShortName = "R5", LocationId = LocationDresdenId });
-            modelBuilder.Entity<Building>().HasData(new Building { Id = BuildingHygId, Name = "Lingnerplatz", Number = "1", Address = "DD/Lingnerplatz 1, 01069 Dresden", ShortName = "HYG", LocationId = LocationDresdenId });
-            modelBuilder.Entity<Building>().HasData(new Building { Id = BuildingJSId, Name = "Jump Street", Number = "21", Address = "NY/Jump Street 21, 00501 New York", ShortName = "JS", LocationId = LocationNewYorkId });
-            modelBuilder.Entity<Building>().HasData(new Building { Id = BuildingA1Id, Name = "Alexanderplatz", Number = "124", Address = "B/Alexanderplatz 124, 10117 Berlin", ShortName = "A1", LocationId = LocationBerlinId });
+
+            var maxBuildings = 10;
+            var buildingFaker = new Faker<Building>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        var address = f.Address;
+                        b.Id = f.IndexVariable++ + 1;
+                        b.Name = address.StreetName();
+                        b.Number = address.BuildingNumber();
+                        b.Address = address.FullAddress();
+                        b.ShortName = new Bogus.Randomizer().Replace("???");
+                        b.LocationId = f.Random.Number(1, maxLocation);
+                    });
+            var buildingList = Enumerable.Range(1, maxBuildings)
+                    .Select(_ => buildingFaker.Generate())
+                    .ToList();
+            foreach (var building in buildingList)
+            {
+                modelBuilder.Entity<Building>().HasData(building);
+            }
+
             #endregion Building
 
             #region Floor
-            modelBuilder.Entity<Floor>().HasData(new Floor { Id = FloorR5BasementId, Description = "DD/R5/-1. Etage", Number = -1, BuildingId = BuildingR5Id });
-            modelBuilder.Entity<Floor>().HasData(new Floor { Id = FloorR5Id, Description = null, Number = 0, BuildingId = BuildingR5Id });
-            modelBuilder.Entity<Floor>().HasData(new Floor { Id = FloorHygId, Description = null, Number = 5, BuildingId = BuildingHygId });
-            modelBuilder.Entity<Floor>().HasData(new Floor { Id = FloorJSId, Description = null, Number = 5, BuildingId = BuildingJSId });
-            modelBuilder.Entity<Floor>().HasData(new Floor { Id = FloorA1Id, Description = null, Number = 5, BuildingId = BuildingA1Id });
+            var maxFloors = 100;
+            var floorFaker = new Faker<Floor>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        b.Id = f.IndexVariable++ + 1;
+                        b.Number = new Bogus.Randomizer().Number(-5, 20);
+                        b.Description = new Bogus.Randomizer().Replace($"??/?#/{b.Number}. Etage");
+                        b.BuildingId = f.PickRandom(buildingList).Id;
+                    });
+            var floorList = Enumerable.Range(1, maxFloors)
+                    .Select(_ => floorFaker.Generate())
+                    .ToList();
+            foreach (var floor in floorList)
+            {
+                modelBuilder.Entity<Floor>().HasData(floor);
+            }
             #endregion Floor
 
             #region BuildingPart
-            modelBuilder.Entity<BuildingPart>().HasData(new BuildingPart { Id = BuildingPartR5BasementId, Description = "Part A", BuildingId = BuildingR5Id });
-            modelBuilder.Entity<BuildingPart>().HasData(new BuildingPart { Id = BuildingPartR5Id, Description = "Part A to C", BuildingId = BuildingR5Id });
-            modelBuilder.Entity<BuildingPart>().HasData(new BuildingPart { Id = BuildingPartHygId, Description = "A - C", BuildingId = BuildingHygId });
-            modelBuilder.Entity<BuildingPart>().HasData(new BuildingPart { Id = BuildingPartJSId, Description = "2-G45454", BuildingId = BuildingJSId });
-            modelBuilder.Entity<BuildingPart>().HasData(new BuildingPart { Id = BuildingPartA1Id, Description = "Building F5", BuildingId = BuildingA1Id });
+
+            var maxBuildingParts = 40;
+            var BuildingPartFaker = new Faker<BuildingPart>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        b.Id = f.IndexVariable++ + 1;
+                        b.Description = new Bogus.Randomizer().Replace($"Part ?");
+                        b.BuildingId = f.PickRandom(buildingList).Id;
+                    });
+            var BuildingPartList = Enumerable.Range(1, maxBuildingParts)
+                    .Select(_ => BuildingPartFaker.Generate())
+                    .ToList();
+            foreach (var BuildingPart in BuildingPartList)
+            {
+                modelBuilder.Entity<BuildingPart>().HasData(BuildingPart);
+            }
             #endregion BuildingPart
 
             #region Room
-            modelBuilder.Entity<Room>().HasData(new Room { Id = RoomR5Id, Number = "1.004785", Map = "sample_static", BuildingPartId = BuildingPartR5Id, FloorId = FloorR5Id });
-            modelBuilder.Entity<Room>().HasData(new Room { Id = RoomR5BasementId, Number = "N100.45", Map = "sample_highlight", BuildingPartId = BuildingPartR5BasementId, FloorId = FloorR5BasementId });
-            modelBuilder.Entity<Room>().HasData(new Room { Id = RoomA1Id, Number = "545", Map = "sample_static", BuildingPartId = BuildingPartA1Id, FloorId = FloorA1Id });
-            modelBuilder.Entity<Room>().HasData(new Room { Id = RoomHygId, Number = "0.0454a", Map = "sample_highlight", BuildingPartId = BuildingPartHygId, FloorId = FloorHygId });
-            modelBuilder.Entity<Room>().HasData(new Room { Id = RoomJS1Id, Number = "Apl", Map = "sample_static", BuildingPartId = BuildingPartJSId, FloorId = FloorJSId });
-            modelBuilder.Entity<Room>().HasData(new Room { Id = RoomJS2Id, Number = "F-54689", Map = "sample_highlight", BuildingPartId = BuildingPartJSId, FloorId = FloorJSId });
-            modelBuilder.Entity<Room>().HasData(new Room { Id = RoomJS3Id, Number = "F54689", Map = "sample_static", BuildingPartId = BuildingPartJSId, FloorId = FloorJSId });
+
+            var maxRooms = 1000;
+            var RoomFaker = new Faker<Room>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        b.Id = f.IndexVariable++ + 1;
+                        b.Number = f.PickRandom(roomNumbers);
+                        b.Map = f.PickRandom(new[] { "sample_static", "sample_highlight" });
+                        b.BuildingPartId = f.PickRandom(BuildingPartList).Id;
+                        b.FloorId = f.PickRandom(floorList).Id;
+                    });
+            var RoomList = Enumerable.Range(1, maxRooms)
+                    .Select(_ => RoomFaker.Generate())
+                    .ToList();
+            foreach (var Room in RoomList)
+            {
+                modelBuilder.Entity<Room>().HasData(Room);
+            }
             #endregion Room
 
             #region OrgUnit
-            modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit1Id, Name = "Anrufbeantworter Certificate Authority", ShortName = "AB CA", ParentId = null, CostCenter = null });
-            modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit2Id, Name = "Anrufbeantworter Customer Unit", ShortName = "AB CU", ParentId = OrgUnit1Id, CostCenter = "5001", HeadOfOrgUnitId = Person1Id });
-            modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit3Id, Name = "Business Community Automation and Buildings", ShortName = "BC AB", ParentId = OrgUnit1Id, CostCenter = "5002" });
-            modelBuilder.Entity<OrgUnit>().HasData(new OrgUnit { Id = OrgUnit4Id, Name = "Business Community Yellow", ShortName = "BC Yellow", ParentId = OrgUnit3Id, CostCenter = "5003" });
+            var maxOrgUnits = 500;
+            var OrgUnitFaker = new Faker<OrgUnit>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        b.Id = f.IndexVariable++ + 1;
+                        b.Name = f.Commerce.Department();
+                        b.ShortName = new Bogus.Randomizer().Replace("**");
+                        b.ParentId = null;
+                        b.CostCenter = new Bogus.Randomizer().Replace("####");
+                    });
+            var OrgUnitList = Enumerable.Range(1, maxOrgUnits)
+                    .Select(_ => OrgUnitFaker.Generate())
+                    .ToList();
+
+            var boolRandomizer = new Bogus.Randomizer();
+            var randomPicker = new Faker();
+            foreach (var OrgUnit in OrgUnitList)
+            {
+                if (boolRandomizer.Bool())
+                {
+                    var maybeParent = randomPicker.PickRandom(OrgUnitList);
+                    while (
+                        maybeParent.Id == OrgUnit.Id ||
+                        maybeParent.ParentId == OrgUnit.Id)
+                    {
+                        maybeParent = randomPicker.PickRandom(OrgUnitList);
+                    }
+
+                    OrgUnit.ParentId = maybeParent.ParentId;
+                }
+                modelBuilder.Entity<OrgUnit>().HasData(OrgUnit);
+            }
             #endregion OrgUnit
 
             #region Status
@@ -149,21 +253,58 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
             #endregion Funktion           
 
             #region Person
-            modelBuilder.Entity<Person>().HasData(new Person { Id = Person1Id, ShortName = "KAPA", EMail = "klaus.peter@example.org", FAX = "+49123 4567899", FirstName = "Klaus", LastName = "Peter", MobilPhone = "+49123 4567898", Phone = "+49123 4567897", Title = "Dr.", StatusId = Status1Id, FunctionId = Function3Id, OrgUnitId = OrgUnit1Id });
-            modelBuilder.Entity<Person>().HasData(new Person { Id = Person2Id, ShortName = "PEMU", EMail = "Petra.Müller@example.org", FAX = "+49123 4567896", FirstName = "Petra", LastName = "Müller", MobilPhone = "+49123 4567895", Phone = "+49123 4567894", Title = null, StatusId = Status2Id, FunctionId = Function1Id, OrgUnitId = OrgUnit2Id });
-            modelBuilder.Entity<Person>().HasData(new Person { Id = Person3Id, ShortName = "MAAD", EMail = "Malika.Adøms@example.org", FAX = "+49123 4567893", FirstName = "Malika", LastName = "Adøms", MobilPhone = "+49123 4567892", Phone = "+49123 4567891", Title = null, StatusId = Status3Id, FunctionId = Function2Id, OrgUnitId = OrgUnit3Id });
-            modelBuilder.Entity<Person>().HasData(new Person { Id = Person4Id, ShortName = "PEMO", EMail = "Peter.Möller@example.org", FAX = "+49123 4567890", FirstName = "Peter", LastName = "Möller", MobilPhone = "+49123 4567889", Phone = "+49123 4567888", Title = null, StatusId = Status1Id, FunctionId = Function4Id, OrgUnitId = OrgUnit4Id });
-            modelBuilder.Entity<Person>().HasData(new Person { Id = Person5Id, ShortName = "IMBA", EMail = "Imélda.Bâtz@example.org", FAX = "+49123 4567887", FirstName = "Imélda", LastName = "Bâtz", MobilPhone = "+49123 4567886", Phone = "+49123 4567885", Title = null, StatusId = Status2Id, FunctionId = Function1Id, OrgUnitId = OrgUnit1Id });
-            modelBuilder.Entity<Person>().HasData(new Person { Id = Person6Id, ShortName = "JAPF", EMail = "Jàbari.Pfånnærstill@example.org", FAX = "+49123 4567884", FirstName = "Jàba'ri", LastName = "Pfånnærstill", MobilPhone = "+49123 4567883", Phone = "+49123 4567882", Title = null, StatusId = Status3Id, FunctionId = Function2Id, OrgUnitId = OrgUnit2Id });
+
+            var maxPersons = 5000;
+            var PersonFaker = new Faker<Person>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        b.Id = f.IndexVariable++ + 1;
+                        b.ShortName = f.Random.Replace("####");
+                        b.EMail = f.Person.Email;
+                        b.FAX = f.Phone.PhoneNumber();
+                        b.FirstName = f.Name.FirstName();
+                        b.LastName = f.Name.LastName();
+                        b.MobilPhone = f.Phone.PhoneNumber();
+                        b.Phone = f.Phone.PhoneNumber();
+                        b.Title = f.PickRandom(new[] { "Dr.", string.Empty, string.Empty, "Prof." });
+                        b.StatusId = f.Random.Number(1,4);
+                        b.FunctionId = f.Random.Number(1, 4);
+                        b.OrgUnitId = f.PickRandom(OrgUnitList).Id;
+                        b.RoomId = f.PickRandom(RoomList).Id;
+                    });
+            var PersonList = Enumerable.Range(1, maxPersons)
+                    .Select(_ => PersonFaker.Generate())
+                    .ToList();
+            foreach (var Person in PersonList)
+            {
+                if (boolRandomizer.Bool())
+                {
+                    var orgUnit = new Faker().PickRandom(OrgUnitList);
+                    if(orgUnit.Id != Person.OrgUnitId)
+                    {
+                        orgUnit.HeadOfOrgUnitId = Person.Id;
+                    }
+                }
+                modelBuilder.Entity<Person>().HasData(Person);
+            }
+
             #endregion Person
 
-            #region OrgUnitToFunktion
-            modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function1Id, OrgUnitId = OrgUnit1Id, PersonId = Person1Id, RoleName = "ABC" });
-            modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function2Id, OrgUnitId = OrgUnit2Id, PersonId = Person2Id, RoleName = "ABCD" });
-            modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function3Id, OrgUnitId = OrgUnit3Id, PersonId = Person3Id, RoleName = "ABCDE" });
-            modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function3Id, OrgUnitId = OrgUnit3Id, PersonId = Person4Id, RoleName = "ABCDEF" });
-            modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function4Id, OrgUnitId = OrgUnit4Id, PersonId = Person5Id, RoleName = "ABCDEFG" });
-            modelBuilder.Entity<OrgUnitToFunction>().HasData(new OrgUnitToFunction { FunctionId = Function1Id, OrgUnitId = OrgUnit2Id, PersonId = Person6Id, RoleName = "ABCDEFGH" });
+            #region OrgUnitToFunktion          
+
+            var faker = new Faker();
+            foreach (var person in PersonList)
+            {
+                
+                modelBuilder.Entity<OrgUnitToFunction>().HasData(
+                    new OrgUnitToFunction { 
+                        FunctionId = faker.Random.Number(1,4), 
+                        OrgUnitId = faker.PickRandom(OrgUnitList).Id, 
+                        PersonId = person.Id, 
+                        RoleName = faker.Random.Replace("###").ToUpper()
+                    });
+            }
             #endregion OrgUnitToFunktion
 
         }
