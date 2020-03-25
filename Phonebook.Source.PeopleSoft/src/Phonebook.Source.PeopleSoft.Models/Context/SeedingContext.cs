@@ -17,53 +17,6 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
         {
         }
 
-        #region Location
-        private const int LocationDresdenId = 1;
-        private const int LocationBerlinId = 2;
-        private const int LocationNewYorkId = 3;
-        #endregion Location
-
-        #region Building
-        private const int BuildingR5Id = 1;
-        private const int BuildingHygId = 2;
-        private const int BuildingJSId = 3;
-        private const int BuildingA1Id = 4;
-        #endregion Building
-
-        #region Floor
-        private const int FloorR5BasementId = 1;
-        private const int FloorR5Id = 2;
-        private const int FloorHygId = 3;
-        private const int FloorJSId = 4;
-        private const int FloorA1Id = 5;
-        #endregion Floor
-
-        #region BuildingPart
-        private const int BuildingPartR5BasementId = 1;
-        private const int BuildingPartR5Id = 2;
-        private const int BuildingPartHygId = 3;
-        private const int BuildingPartJSId = 4;
-        private const int BuildingPartA1Id = 5;
-        #endregion BuildingPart
-
-        #region Room
-        private const int RoomR5Id = 1;
-        private const int RoomR5BasementId = 2;
-        private const int RoomA1Id = 3;
-        private const int RoomHygId = 4;
-        private const int RoomJS1Id = 5;
-        private const int RoomJS2Id = 6;
-        private const int RoomJS3Id = 7;
-
-        #endregion
-
-        #region OrgUnit
-        private const int OrgUnit1Id = 1;
-        private const int OrgUnit2Id = 2;
-        private const int OrgUnit3Id = 3;
-        private const int OrgUnit4Id = 4;
-        #endregion OrgUnit
-
         #region Status
         private const int Status1Id = 1;
         private const int Status2Id = 2;
@@ -77,15 +30,6 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
         private const int Function3Id = 3;
         private const int Function4Id = 4;
         #endregion Funktion
-
-        #region Person 
-        private const int Person1Id = 1;
-        private const int Person2Id = 2;
-        private const int Person3Id = 3;
-        private const int Person4Id = 4;
-        private const int Person5Id = 5;
-        private const int Person6Id = 6;
-        #endregion Person
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
