@@ -38,6 +38,7 @@ namespace Phonebook.Source.PeopleSoft
                     options
                         .UseInMemoryDatabase("PeopleSoft")
                         .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning))
+                        .EnableSensitiveDataLogging(true)
                         );
                 
             }
