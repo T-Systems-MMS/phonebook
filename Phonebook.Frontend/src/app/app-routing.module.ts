@@ -4,9 +4,14 @@ import { DashboardComponent } from 'src/app/pages/dashboard/components/overview/
 import { SettingsComponent } from 'src/app/pages/settings/settings.component';
 import { environment } from 'src/environments/environment';
 import { TeamComponent } from './pages/dashboard/components/team/team.component';
+import { BookmarkedComponent } from './pages/dashboard/components/bookmarked/bookmarked.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, pathMatch: 'full' },
+  { path: '', component: DashboardComponent,
+  children: [
+    { path: '', component: BookmarkedComponent },
+    { path: 'team', component: TeamComponent}
+  ]},
   { path: 'search', loadChildren: () => import('src/app/modules/table/table.module').then(m => m.TableModule) },
   { path: 'user', loadChildren: () => import('src/app/pages/users/user-pages.module').then(m => m.UserPagesModule) },
   { path: 'rooms', loadChildren: () => import('src/app/modules/rooms/rooms.module').then(m => m.RoomsModule) },

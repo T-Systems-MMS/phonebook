@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Router } from '@angular/router';
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
@@ -34,7 +34,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public drawerOpen: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
   public drawerMode: MatDrawerMode = 'side';
   public smallerScreen: boolean = false;
-  constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
+  constructor(private store: Store,
+    private cd: ChangeDetectorRef,
+    private breakpointObserver: BreakpointObserver,
+    private router: Router) {}
 
   public ngOnInit() {
     this.changeOrder();
@@ -44,6 +47,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(result => {
         this.drawerMode = !result.matches ? 'side' : 'push';
       });
+    this.redirectToTeam();
   }
 
   public changeOrder() {
@@ -56,27 +60,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(persons => {
         this.bookmarkedPersons = persons;
       });
-  }
-
-  public entered(e: CdkDragEnter) {
-    if (this.bookmarkedPersons && this.bookmarkedPersons.length === 1) {
-      return;
-    }
-
-    this.lastFrom = e.item.data;
-    this.lastTo = e.container.data;
-  }
-
-  public ended(e: CdkDragEnd) {
-    if (this.bookmarkedPersons && this.bookmarkedPersons.length === 1) {
-      return;
-    }
-    if (this.lastFrom === undefined || this.lastTo === undefined) {
-      return;
-    }
-    moveItemInArray(this.bookmarkedPersons, this.lastFrom, this.lastTo);
-    this.store.dispatch(new UpdateBookmarkOrder(this.bookmarkedPersons));
-    this.cd.detectChanges();
   }
 
   public resetLastPersons() {
@@ -95,8 +78,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.store.dispatch(new RemoveFromLastPersons(person));
   }
 
-  public removeFromBookmarkedPersons(person: Person) {
-    this.store.dispatch(new ToggleBookmark(person));
+  public redirectToTeam() {
+    if (this.bookmarkedPersons.length === 0) {
+      this.router.navigate(['/team']);
+    }
   }
   ngOnDestroy(): void {}
 }

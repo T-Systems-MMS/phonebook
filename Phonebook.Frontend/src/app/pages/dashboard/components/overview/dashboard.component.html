@@ -60,6 +60,33 @@
         </span>
       </div>
       </button>
+      <div class="pb-bookmarked-title">
+        <mat-form-field>
+          <mat-select [(value)]="favoriteSort" (valueChange)="changeOrder()">
+            <mat-option
+              value=""
+              i18n="
+                 DashboardComponent|The standard (customizable) order of the favorite cards@@DashboardComponentOrderNone
+    
+              "
+            >
+              Custom Order</mat-option
+            >
+            <mat-option
+              value="asc"
+              i18n="DashboardComponent|The alphabetical asc order of the favorite cards@@DashboardComponentOrderAsc"
+            >
+              Alphabetical asc</mat-option
+            >
+            <mat-option
+              value="desc"
+              i18n="DashboardComponent|The alphabetical desc order of the favorite cards@@DashboardComponentOrderDesc"
+            >
+              Alphabetical desc</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
     <div class="toggle-drawer">
       <button

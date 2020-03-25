@@ -26,37 +26,12 @@ mat-drawer-container {
 .navigation-button {
   width: auto;
   margin-right: 20px;
+  padding-left: 0px;
 }
 
 .navigation-name {
   font-size: 24px;
   font-weight: initial;
-}
-
-.pb-bookmarked {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow-y: auto;
-
-  .pb-bookmarked-title {
-    display: flex;
-    flex-direction: row;
-    h1 {
-      margin: 0;
-    }
-    mat-form-field {
-      margin-left: 16px;
-    }
-    ::ng-deep .mat-form-field-infix {
-      border: none;
-    }
-  }
-
-  .pb-bookmarks-list {
-    margin: 0 10px 60px 0;
-  }
 }
 
 .pb-recent-people-drawer {

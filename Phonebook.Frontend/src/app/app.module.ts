@@ -58,7 +58,7 @@ import { SearchComponent } from './shared/components/search/search.component';
 declare const require;
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, DashboardComponent, NavigationComponent, OnlineBarComponent],
+  declarations: [AppComponent, SearchComponent, NavigationComponent, OnlineBarComponent, DashboardComponent, BookmarkedComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
