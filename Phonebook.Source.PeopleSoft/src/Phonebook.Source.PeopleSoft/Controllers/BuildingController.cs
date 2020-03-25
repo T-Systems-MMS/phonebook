@@ -23,17 +23,17 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet]
         public IEnumerable<Building> Get()
         {
-            return this.inlcudeDependencies(Context.Buildings);
+            return this.InlcudeDependencies(Context.Buildings);
         }
 
         // GET: api/Building/5
         [HttpGet("{id}")]
         public Building Get(int id)
         {
-            return this.inlcudeDependencies(Context.Buildings).First(b => b.Id == id);
+            return this.InlcudeDependencies(Context.Buildings).First(b => b.Id == id);
         }
 
-        private IQueryable<Building> inlcudeDependencies(IQueryable<Building> query)
+        private IQueryable<Building> InlcudeDependencies(IQueryable<Building> query)
         {
             return query
                     .AsNoTracking()

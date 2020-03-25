@@ -8,37 +8,37 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name:"ID")]
         public int Id { get; set; }
         [Column(name: "KUERZEL")]
-        public string ShortName { get; set; }
+        public string? ShortName { get; set; }
         [Column(name: "VORNAME")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
         [Column(name: "NAME")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
         [Column(name: "TITEL")]
         public string? Title { get; set; }
         [Column(name: "TELEFON")]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
         [Column(name: "MOBIL")]
-        public string MobilPhone { get; set; }
+        public string? MobilPhone { get; set; }
         [Column(name:"FAX")]
-        public string FAX { get; set; }
+        public string? FAX { get; set; }
         [Column(name: "EMAIL")]
-        public string EMail { get; set; }
+        public string? EMail { get; set; }
         [Column(name: "MITARBEITER_STATUS_ID")]
         public int StatusId { get; set; }
-        public virtual Status Status { get; set; }
+        public virtual Status? Status { get; set; }
         [Column(name: "ORGEINHEIT_ID")]
-        public int OrgUnitId { get; set; }        
-        public virtual OrgUnit OrgUnit { get; set; }
+        public int OrgUnitId { get; set; }
+        public virtual OrgUnit OrgUnit { get; set; } = new OrgUnit();
         [Column(name: "FUNKTION_ID")]
         public int? FunctionId { get; set; }
-        public virtual Function Function { get; set; }
+        public virtual Function? Function { get; set; }
         [Column(name: "RAUM_ID")]
-        public int? RoomId { get; set; }        
-        public virtual Room Room { get; set; }
+        public int? RoomId { get; set; }
+        public virtual Room Room { get; set; } = new Room();
 
         
-        public virtual IEnumerable<OrgUnit> OwnedOrgUnits { get; set; }
+        public virtual IEnumerable<OrgUnit>? OwnedOrgUnits { get; set; }
         
-        public virtual IEnumerable<OrgUnitToFunction> OrgUnitFunctions { get; set; }
+        public virtual IEnumerable<OrgUnitToFunction>? OrgUnitFunctions { get; set; }
     }
 }

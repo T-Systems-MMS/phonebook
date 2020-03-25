@@ -26,31 +26,31 @@ namespace Phonebook.Source.PeopleSoft.Controllers.Old
         [HttpGet]
         public IEnumerable<dynamic> Get()
         {
-            return this.inlcudeDependencies(context.Rooms)
+            return this.InlcudeDependencies(context.Rooms)
                 .Select(b => new
                 {
                     ContactPerson = string.Empty,
-                    LinkRoutingWebsite = $"http://maps.google.de/maps?f=q&hl=de&q={b?.Key.Name} {b?.Key?.Number},  {b?.Key.Location.Name}",
+                    LinkRoutingWebsite = $"http://maps.google.de/maps?f=q&hl=de&q={b?.Key?.Name} {b?.Key?.Number},  {b?.Key?.Location?.Name}",
                     ReceptionFax = string.Empty,
-                    Description = b.Key.Address,
+                    Description = b?.Key?.Address,
                     ReceptionPhone = string.Empty,
                     LinkPicture = string.Empty,
                     LinkRoutingInfo = string.Empty,
                     City = new
                     {
-                        Name = b?.Key?.Location?.Name,
+                        b?.Key?.Location?.Name,
                         Building = $"{b?.Key?.Name} {b?.Key?.Number}",
-                        ZipCode = Regex.Replace(b.Key.Address, ".*, ([0-9]*) .*", "$1")
+                        ZipCode = Regex.Replace(b?.Key?.Address, ".*, ([0-9]*) .*", "$1")
                     },
                     RoomCollection = b?.Select(d =>  new
                     {
                         Building = $"{d?.Floor?.Building?.Name} {d?.Floor?.Building?.Number}",
-                        BuildingId = d?.Floor?.BuildingId,
+                        d?.Floor?.BuildingId,
                         Floor = d?.Floor?.Number,
                         Description = $"{d?.Floor?.Building?.Location?.Name}, {d?.Floor?.Building?.Name} {d?.Floor?.Building?.Number}, {d?.BuildingPart?.Description}, Raum {d?.Number}",
                         Phone = string.Empty,
-                        Number = d?.Number,
-                        Id = d?.Id,
+                        d?.Number,
+                        d?.Id,
                         Place = d?.Floor?.Building?.Location?.Name,
                         FloorPlan = d?.Map
                     })
@@ -58,7 +58,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers.Old
                 ;
         }
 
-        private IEnumerable<IGrouping<Building, Room>> inlcudeDependencies(IQueryable<Room> query)
+        private IEnumerable<IGrouping<Building?, Room>> InlcudeDependencies(IQueryable<Room> query)
         {
             return query
                 .AsNoTracking()
@@ -70,7 +70,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers.Old
                     .ThenInclude(b => b.Building)
                         .ThenInclude(b => b.Location)
                 .ToList()
-                .GroupBy(d => d.Floor.Building);
+                .GroupBy(d => d?.Floor?.Building);
 
         }
     }

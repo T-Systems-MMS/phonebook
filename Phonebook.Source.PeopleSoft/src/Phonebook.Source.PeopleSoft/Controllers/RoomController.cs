@@ -22,16 +22,16 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet]
         public IEnumerable<dynamic> Get()
         {
-            return this.inlcudeDependencies(Context.Rooms)
+            return this.InlcudeDependencies(Context.Rooms)
                 .Select(d => new
                 {
                     Building = $"{d?.Floor?.Building?.Name} {d?.Floor?.Building?.Number}",
-                    BuildingId = d?.Floor?.BuildingId,
+                    d?.Floor?.BuildingId,
                     Floor = d?.Floor?.Number,
                     Description = $"{d?.Floor?.Building?.Location?.Name}, {d?.Floor?.Building?.Name} {d?.Floor?.Building?.Number} {d?.BuildingPart?.Description}, Raum {d?.Number}",
                     Phone = string.Empty,
-                    Number = d?.Number,
-                    Id = d?.Id,
+                    d?.Number,
+                    d?.Id,
                     Place = d?.Floor?.Building?.Location?.Name,
                     FloorPlan = d?.Map
                 })
@@ -42,10 +42,10 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet("{id}")]
         public Room Get(int id)
         {
-            return this.inlcudeDependencies(Context.Rooms).First(r => r.Id == id);
+            return this.InlcudeDependencies(Context.Rooms).First(r => r.Id == id);
         }
 
-        private IEnumerable<Room> inlcudeDependencies(IQueryable<Room> query)
+        private IEnumerable<Room> InlcudeDependencies(IQueryable<Room> query)
         {
             return query
                 .AsNoTracking()

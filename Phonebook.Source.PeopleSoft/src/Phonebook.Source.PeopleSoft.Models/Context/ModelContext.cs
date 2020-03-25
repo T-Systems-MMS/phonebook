@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿#pragma warning disable CS8603 // Possible null reference return.
+using Microsoft.EntityFrameworkCore;
 
 namespace Phonebook.Source.PeopleSoft.Models.Context
 {

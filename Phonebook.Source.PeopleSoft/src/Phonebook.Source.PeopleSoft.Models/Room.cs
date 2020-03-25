@@ -8,15 +8,15 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name:"ID")]
         public int Id { get; set; }
         [Column(name: "NUMMER")]
-        public string Number { get; set; }
+        public string? Number { get; set; }
         [Column(name: "ETAGE_ID")]
         public int? FloorId { get; set; }
-        public Floor Floor { get; set; }
+        public Floor Floor { get; set; } = new Floor();
         [Column(name: "GEBAEUDETEIL_ID")]
-        public int? BuildingPartId { get; set; }        
-        public virtual BuildingPart BuildingPart { get; set; }
+        public int? BuildingPartId { get; set; }
+        public virtual BuildingPart BuildingPart { get; set; } = new BuildingPart();
         [Column(name: "RAUMPLAN")]
-        public string Map { get; set; }        
-        public virtual IEnumerable<Person> Members { get; set; }
+        public string? Map { get; set; }
+        public virtual IEnumerable<Person> Members { get; set; } = new List<Person>();
     }
 }

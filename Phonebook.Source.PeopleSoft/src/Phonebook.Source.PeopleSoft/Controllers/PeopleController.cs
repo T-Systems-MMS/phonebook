@@ -25,17 +25,17 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         public IEnumerable<Phonebook.Source.PeopleSoft.Models.Old.Person> Get()
         {
             _ =Context.Peoples.ToList();
-            return this.inlcudeDependencies(Context.Peoples).ToList().Select(d => new Phonebook.Source.PeopleSoft.Models.Old.Person(d));
+            return this.InlcudeDependencies(Context.Peoples).ToList().Select(d => new Phonebook.Source.PeopleSoft.Models.Old.Person(d));
         }
 
         // GET: api/People/5
         [HttpGet("{id}")]
         public Person Get(int id)
         {
-            return this.inlcudeDependencies(Context.Peoples).First(p => p.Id == id);
+            return this.InlcudeDependencies(Context.Peoples).First(p => p.Id == id);
         }
 
-        private IEnumerable<Person> inlcudeDependencies(IQueryable<Person> query)
+        private IEnumerable<Person> InlcudeDependencies(IQueryable<Person> query)
         {
             return query
                     .AsNoTracking()
@@ -73,10 +73,10 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                         Function = p.Function != null ? new Function() { Id = p.Function.Id, Label = p.Function.Label, Code = p.Function.Code } : null,
                         LastName = p.LastName,
                         MobilPhone = p.MobilPhone,
-                        OrgUnit = p.OrgUnit != null ? createOrgUnitTree(p.OrgUnit) : null,
+                        OrgUnit = p.OrgUnit != null ? CreateOrgUnitTree(p.OrgUnit) : new OrgUnit(),
                         //OrgUnitId = p.OrgUnitId,
                         Phone = p.Phone,
-                        Room = p.Room != null ? createRoomTree(p.Room) : null,
+                        Room = p.Room != null ? CreateRoomTree(p.Room) : new Room(),
                         ShortName = p.ShortName,
                         StatusId = p.StatusId,
                         Status = p.Status != null ? new Status() { Id = p.Status.Id, Name = p.Status.Name, Code = p.Status.Code } : null,
@@ -86,7 +86,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers
 
         }
 
-        private Room createRoomTree(Room room)
+        private Room CreateRoomTree(Room room)
         {
             var result = new Room();
             result.BuildingPart = room.BuildingPart != null ? new BuildingPart()
@@ -108,8 +108,8 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                         Country = room.BuildingPart.Building.Location.Country,
                         Id = room.BuildingPart.Building.Location.Id
                     } : null
-                } : null
-            } : null;
+                } : new Building()
+            } : new BuildingPart();
             result.Id = room.Id;
             result.FloorId = room.FloorId;
             result.Map = room.Map;
@@ -133,19 +133,19 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                         Country = room.Floor.Building.Location.Country,
                         Id = room.Floor.Building.Location.Id
                     } : null
-                } : null,
+                } : new Building(),
                 Description = room.Floor.Description
-            } : null;
+            } : new Floor();
 
             return result;
         }
 
-        private OrgUnit createOrgUnitTree(OrgUnit orgUnit)
+        private OrgUnit CreateOrgUnitTree(OrgUnit orgUnit)
         {
             var result = new OrgUnit();
             result.Id = orgUnit.Id;
             result.Name = orgUnit.Name;
-            result.Parent = orgUnit.Parent != null ? createOrgUnitTree(orgUnit.Parent) : null;
+            result.Parent = orgUnit.Parent != null ? CreateOrgUnitTree(orgUnit.Parent) : null;
             result.ParentId = orgUnit.ParentId;
             result.ShortName = orgUnit.ShortName;
             result.CostCenter = orgUnit.CostCenter;
