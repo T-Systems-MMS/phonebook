@@ -32,7 +32,7 @@ In vscode simply run the task `build Backend.Login`. If you want build this with
 
 ### Run
 
-Before you can run the login backend the first time you must set some secrets. These secrets describe the connection and the trust between the identity provider and the login server. (See more in the [flow documentation](#authentication-flow))
+Before you can run the login backend for the first time you have to set some secrets. These secrets describe the connection and the trust between the identity provider and the login server. (See more inside the [flow documentation](#authentication-flow))
 
 | secret name                 | description                                                                                                                               | sample                                                                                                                          |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
