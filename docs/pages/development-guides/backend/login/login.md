@@ -17,7 +17,7 @@ nav_order: 100
     - [Run](#run)
   - [Authentication flow](#authentication-flow)
 
-> This document refers to the code under `Phonebook.Backend\Phonebook.Backend.Login`
+> This document refers to the code in `Phonebook.Backend\Phonebook.Backend.Login`
 
 ## Build & Run
 
