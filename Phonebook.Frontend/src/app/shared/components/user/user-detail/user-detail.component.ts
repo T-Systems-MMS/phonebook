@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, OnInit, OnChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Select, Store } from '@ngxs/store';
@@ -22,7 +22,7 @@ export interface IncorrectUserInformationDialogData {
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })
-export class UserDetailComponent implements OnInit, OnDestroy {
+export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   public person: Person;
   public bookmarked: Bookmarked = Bookmarked.isNotBookmarked;
@@ -49,7 +49,10 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private dialog: MatDialog
   ) {}
 
-  public ngOnInit() {
+  public ngOnInit() {}
+
+  public ngOnChanges(): void {
+    debugger;
     this.getRandomMoney();
     this.rocketChatLink = this.getRocketChatLink();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
