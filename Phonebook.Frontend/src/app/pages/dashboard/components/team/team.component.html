@@ -1,1 +1,34 @@
-<h1>hi</h1>
+<div class="pb-team">
+<div class="different-cards">
+  <button class="navigation-button" mat-button [routerLink]="['/team']">
+    <div class="card-navigation">
+    <mat-icon>people</mat-icon>
+    <span class="navigation-name" i18n="DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam">
+      My Team
+    </span>
+  </div>
+  </button>
+  </div>
+<div cdkDropListGroup class="pb-team-list pb-flex-row  pb-overflow-auto">
+  <div
+  *ngIf="bookmarkedPersons.length === 0"
+  i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
+>
+  You haven't bookmarked anybody yet, look for the button
+  <button mat-icon-button>
+    <mat-icon>bookmark_border</mat-icon>
+  </button>
+  on a workmates page.
+</div>
+</div>
+<div class="different-cards bottom-button">
+  <button class="navigation-button" mat-button [routerLink]="['/']">
+    <div class="card-navigation">
+      <mat-icon>keyboard_arrow_up</mat-icon>
+      <span class="navigation-name" i18n="DashboardComponent|Title of the Bookmarked people section@@DashboardComponentTitleBookmark">
+        Bookmarked People
+      </span>  
+    </div>
+    </button>
+  </div>
+</div>

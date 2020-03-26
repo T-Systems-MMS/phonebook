@@ -14,7 +14,7 @@ mat-drawer-container {
     display: flex;
     flex-direction: column;
     flex: 1;
-    overflow-y: auto;
+    padding-right: 10px;
   
     .pb-bookmarked-title {
       display: flex;
@@ -29,11 +29,11 @@ mat-drawer-container {
         border: none;
       }
     }
-  
+
     .pb-bookmarks-list {
-      padding-bottom: 60px;
+      flex-grow: 1;
     }
-  }
+ }
   
   .pb-small-card {
     width: 320px;
@@ -61,5 +61,35 @@ mat-drawer-container {
   
   .cdk-drag-animating {
     transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .card-navigation {
+    display: flex;
+  
+    mat-icon {
+      margin-top: 5px;
+      padding-right: 10px;
+    }
+  }
+  
+  .different-cards {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .navigation-button {
+    width: auto;
+    margin-right: 20px;
+    padding-left: 0px;
+  }
+  
+  .navigation-name {
+    font-size: 24px;
+    font-weight: initial;
+  }
+
+  .bottom-button {
+    bottom: 0%;
+    margin-top: 10px;
   }
   

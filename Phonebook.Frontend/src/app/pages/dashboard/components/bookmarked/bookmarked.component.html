@@ -1,5 +1,15 @@
 <div class="pb-bookmarked">
   <div class="pb-bookmarked-title">
+    <div class="different-cards">
+      <button class="navigation-button" mat-button [routerLink]="['/']">
+        <div class="card-navigation">
+          <mat-icon>bookmark</mat-icon>
+          <span class="navigation-name" i18n="DashboardComponent|Title of the Bookmarked people section@@DashboardComponentTitleBookmark">
+            Bookmarked People
+          </span>  
+        </div>
+        </button>
+      </div>
     <mat-form-field>
       <mat-select [(value)]="favoriteSort" (valueChange)="changeOrder()">
         <mat-option
@@ -27,7 +37,7 @@
     </mat-form-field>
   </div>
   <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
-  <div cdkDropListGroup class="pb-bookmarks-list pb-flex-row">
+  <div cdkDropListGroup class="pb-bookmarks-list pb-flex-row  pb-overflow-auto">
     <div
       *ngFor="let person of bookmarkedPersons; index as i"
       cdkDropList
@@ -48,8 +58,7 @@
         [cdkDragDisabled]="favoriteSort != ''"
       ></app-user-small-card>
     </div>
-  </div>
-  <div
+    <div
     *ngIf="bookmarkedPersons.length === 0"
     i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
   >
@@ -59,4 +68,15 @@
     </button>
     on a workmates page.
   </div>
+  </div>
+  <div class="different-cards bottom-button">
+    <button class="navigation-button" mat-button [routerLink]="['/team']">
+      <div class="card-navigation">
+      <mat-icon>keyboard_arrow_up</mat-icon>
+      <span class="navigation-name" i18n="DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam">
+        My Team
+      </span>
+    </div>
+    </button>
+    </div>
 </div>
