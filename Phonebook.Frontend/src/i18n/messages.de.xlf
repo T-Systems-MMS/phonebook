@@ -360,7 +360,7 @@
         <note priority="1" from="description">Dashboard Subheading</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
-        <source>Layout</source><target state="translated">Ansicht der Favoriten</target>
+        <source>Layout for Bookmarks</source><target state="translated">Ansicht der Favoriten</target>
         <note priority="1" from="description">Layout Subtitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SearchComponentPlaceholder" datatype="html">

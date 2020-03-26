@@ -277,7 +277,7 @@
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
-        <source>Layout</source>
+        <source>Layout for Bookmarks</source>
         <note priority="1" from="description">Layout Subtitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
