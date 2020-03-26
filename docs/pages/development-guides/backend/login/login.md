@@ -48,7 +48,8 @@ You can set secrets with the following command, in the dictionary `Phonebook.Bac
 dotnet user-secrets set {name} {value}
 ```
 
-After you have defined all secrets you can start the login backend in vscode with the launch settings `Backend.Login .NET Core Launch (web)` or on the command line with `dotnet run`. (make sure you are in the right folder for the command line stuff.)
+After you have defined all secrets you can start the login backend in VSCode with the launch settings `Backend.Login .NET Core Launch (web)` or with the command line with `dotnet run` . 
+> Make sure that you are in the right folder for the command line stuff.
 
 ## Authentication flow
 
