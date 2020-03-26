@@ -28,7 +28,7 @@ You also need VSCode. It's recommend to install the [C# Extension](https://marke
 
 ### Build
 
-In vscode simply run the task `build Backend.Login`. If you want build this with the command line you must navigate to the `Phonebook.Backend\Phonebook.Backend.Login` and run the command `dotnet build`.
+In VSCode simply run the task `build Backend.Login`. If you want to build this with the command line, you have to navigate to `Phonebook.Backend\Phonebook.Backend.Login` and run the command `dotnet build`.
 
 ### Run
 
