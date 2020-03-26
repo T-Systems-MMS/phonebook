@@ -82,7 +82,7 @@
       </div>
       <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
       <div cdkDropListGroup class="pb-flex-row">
-        <div *ngIf="layoutSetting === 'view_list'" class="width">
+        <div *ngIf="layoutSetting === Layout.view_list" class="width">
         <div
           *ngFor="let person of bookmarkedPersons; index as i"
           cdkDropList
