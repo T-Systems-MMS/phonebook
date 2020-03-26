@@ -42,7 +42,7 @@ Before you can run the login backend for the first time you have to set some sec
 
 > Information: If you aren't shure what you are doing please read [this document](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation?view=aspnetcore-3.1) first!
 
-You can set secrets with the following command, in the dictionary `Phonebook.Backend\Phonebook.Backend.Login`:
+You can set secrets in the dictionary with the following command: `Phonebook.Backend\Phonebook.Backend.Login`:
 
 ```bash
 dotnet user-secrets set {name} {value}
