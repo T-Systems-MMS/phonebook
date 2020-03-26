@@ -24,7 +24,7 @@ nav_order: 100
 ### Prequest
 
 To build and run the backend you need the **dotnet core SDK** installed in version 3.1 or higher. The latest version can be found [here](dot.net).
-Also you need VSCode. I also recommend to install the [C# Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) from Microsoft. This helps with IntelliSense and live error checking. Also I recommand the use of [IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode), this helps to write better code.
+You also need VSCode. It's recommend to install the [C# Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) from Microsoft. This helps with IntelliSense and live error checking. The use of [IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode) is also recommended. This helps to write better code.
 
 ### Build
 
