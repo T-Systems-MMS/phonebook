@@ -1,7 +1,10 @@
-* daniel-habenicht@outlook.de
+# Workaround because CODEOWNERS does not support negation patterns and they dont want to get a notification each time renovate opens a PR
+# https://github.community/t5/How-to-use-Git-and-GitHub/CODEOWNERS-file-with-a-NOT-file-type-condition/m-p/18539#M5543
+**/*.js daniel-habenicht@outlook.de
+**/*.html daniel-habenicht@outlook.de
+**/*.ts daniel-habenicht@outlook.de
+**/*.yml daniel-habenicht@outlook.de
+**/*.md daniel-habenicht@outlook.de
 
-# Stop informing CODEOWNERS about renovates auto pull requests.
-!**/package-lock.json daniel-habenicht@outlook.de
-!**/package.json daniel-habenicht@outlook.de
 
 /Phonebook.Source.PeopleSoft/ paul-jeschke@outlook.com
