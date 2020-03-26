@@ -1,3 +1,7 @@
 * daniel-habenicht@outlook.de
 
+# Stop informing CODEOWNERS about renovates auto pull requests.
+!**/package-lock.json daniel-habenicht@outlook.de
+!**/package.json daniel-habenicht@outlook.de
+
 /Phonebook.Source.PeopleSoft/ paul-jeschke@outlook.com
