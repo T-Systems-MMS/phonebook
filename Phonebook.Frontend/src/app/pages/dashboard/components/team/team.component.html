@@ -20,6 +20,16 @@
   </button>
   on a workmates page.
 </div>
+  <div
+    *ngFor="let person of teamPersons"
+    class="card-container"
+  >
+    <app-user-small-card
+      [person]="person"
+      [actionButtonClasses]="'white'"
+      class="pb-small-card pb-card"
+    ></app-user-small-card>
+  </div>
 </div>
 <div class="different-cards bottom-button">
   <button class="navigation-button" mat-button [routerLink]="['/']">

@@ -16,10 +16,15 @@ export class TeamComponent implements OnInit, OnDestroy {
   public favoriteSort: PhonebookSortDirection = PhonebookSortDirection.none;
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
+  public currentUser: Person | null = null;
+  public teamPersons: Person[];
+  public person: Person;
+
   constructor(private store: Store) {}
 
   public ngOnInit() {
     this.changeOrder();
+    this.showMyTeam();
   }
 
   public changeOrder() {
@@ -33,6 +38,11 @@ export class TeamComponent implements OnInit, OnDestroy {
         this.bookmarkedPersons = persons;
       });
   }
+
+  public showMyTeam() {
+    if (this.currentUser != null) {
+
+      }  }
 
   ngOnDestroy(): void {}
 }
