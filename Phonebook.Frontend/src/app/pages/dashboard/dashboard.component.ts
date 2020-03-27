@@ -6,7 +6,7 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
-import { MatCard } from '@angular/material/card';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 import {
   AppState,
   SetLayout,
@@ -135,10 +135,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
   ngOnDestroy(): void {}
-}
-
-export enum Layout {
-  view_list = 'view_list',
-  view_stream = 'view_stream',
-  view_module = 'view_module'
 }
