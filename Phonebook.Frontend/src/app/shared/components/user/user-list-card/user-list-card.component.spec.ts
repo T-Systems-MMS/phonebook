@@ -31,7 +31,7 @@ describe('UserListCardCompoent', () => {
     component.person.Firstname = 'First';
     component.person.Surname = 'Surname';
     component.person.Id = 'abcd';
-    expect(component.displayedUsername()).toEqual('Dr. First Surname (abcd)');
+    expect(component.displayListCard()).toEqual('Dr. First Surname (abcd)');
   });
 
   it('should display name without title', () => {
@@ -39,7 +39,7 @@ describe('UserListCardCompoent', () => {
     component.person.Firstname = 'First';
     component.person.Surname = 'LongSurname';
     component.person.Id = 'abcd';
-    expect(component.displayedUsername()).toEqual('First LongSurname (abcd)');
+    expect(component.displayListCard()).toEqual('First LongSurname (abcd)');
   });
 
   it('should display name without title and surname', () => {
@@ -47,7 +47,7 @@ describe('UserListCardCompoent', () => {
     component.person.Firstname = 'First';
     component.person.Surname = 'ReallyLongLongSurname';
     component.person.Id = 'abcd';
-    expect(component.displayedUsername()).toEqual('First (abcd)');
+    expect(component.displayListCard()).toEqual('First (abcd)');
   });
 
   it('should display name without title, surname and firstname', () => {
@@ -55,7 +55,7 @@ describe('UserListCardCompoent', () => {
     component.person.Firstname = 'ReallyReallyLongFirstName';
     component.person.Surname = 'ReallyLongLongSurname';
     component.person.Id = 'abcd';
-    expect(component.displayedUsername()).toEqual('abcd');
+    expect(component.displayListCard()).toEqual('abcd');
   });
 });
 

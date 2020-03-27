@@ -3,8 +3,6 @@
 mat-card-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 0 50px 0 50px;
 }
 
 mat-icon {
@@ -40,10 +38,11 @@ mat-button {
 
 .centered {
   align-self: center;
+  width: calc(100%/5);
 }
 
 .mat-body-2 {
-  padding: 0 16px;
+  padding: 0 16px 0 40px;
   @media (max-width: 1036px) {
     padding: 0 0;
   }
@@ -67,7 +66,7 @@ mat-card {
 }
 
 .pb-self-centered {
-  margin: auto;
+  margin: 0 30px 0 15px;
 }
 
 .list-card {

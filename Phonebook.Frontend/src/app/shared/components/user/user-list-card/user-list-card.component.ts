@@ -15,7 +15,7 @@ export class UserListCardComponent {
   public buttonClicked() {
     this.actionButtonClicked.emit();
   }
-  public displayedUsername(): string {
+  public displayListCard(): string {
     const maxWidth = 25;
     // Everything is not longer than the cards width, so display everything
     let displayString = `${this.person.Title} ${this.person.Firstname} ${this.person.Surname} (${this.person.Id})`;
