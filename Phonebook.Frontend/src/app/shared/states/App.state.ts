@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
-import { LayoutService } from 'src/app/services/layout.service';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
 import { Layout } from 'src/app/shared/models/enumerables/Layout';
 
@@ -70,7 +69,7 @@ export interface AppStateModel {
 })
 @Injectable()
 export class AppState {
-  constructor(private themeService: ThemeService, private layoutService: LayoutService) {}
+  constructor(private themeService: ThemeService) {}
   @Selector()
   public static serviceWorkerNotificationDisplayed(state: AppStateModel): boolean {
     return state.serviceWorkerNotificationDisplayed;
@@ -156,7 +155,6 @@ export class AppState {
   @Action(SetLayout)
   public setLayout(ctx: StateContext<AppStateModel>, action: SetLayout) {
     const state = ctx.getState();
-    this.layoutService.setLayout(action.activeLayout);
     ctx.setState({
       ...state,
       activeLayout: action.activeLayout

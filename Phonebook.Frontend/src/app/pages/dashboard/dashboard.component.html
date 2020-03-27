@@ -82,7 +82,7 @@
       </div>
       <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
       <div cdkDropListGroup class="pb-flex-row">
-        <div *ngIf="layoutSetting === 'view_list' "class="card-display">
+        <div *ngIf="layoutSetting === layout.view_list "class="card-display">
         <div
           *ngFor="let person of bookmarkedPersons; index as i"
           cdkDropList
@@ -104,7 +104,7 @@
         ></app-user-list-card>
       </div>
       </div>
-      <div *ngIf="layoutSetting === 'view_module'" class="card-display">
+      <div *ngIf="layoutSetting === layout.view_module "class="card-display">
       <div
       *ngFor="let person of bookmarkedPersons; index as i"
       cdkDropList
@@ -126,7 +126,7 @@
           ></app-user-small-card>
         </div>
         </div>
-        <div *ngIf="layoutSetting === 'view_stream'" class="card-display">
+        <div *ngIf="layoutSetting === layout.view_stream "class="card-display">
         <div
           *ngFor="let person of bookmarkedPersons; index as i"
           cdkDropList

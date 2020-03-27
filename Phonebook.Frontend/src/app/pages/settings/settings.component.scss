@@ -3,17 +3,10 @@
   flex-direction: row;
 }
 
-.differentSetting {
-  margin: 30px 0 20px 0 !important;
-  color: rgba(0, 0, 0, 0.54);
-  font: 400 20px/20px Roboto, "Helvetica Neue", sans-serif !important;
+mat-card-subtitle {
+  margin: 10px 0 0 0 !important;
 }
 
-.mat-card-header-text {
-  margin: 0px;
-}
-
-.subtitleSetting {
-  color: rgba(0, 0, 0, 0.87);
-  font: 500 20px/20px Roboto, "Helvetica Neue", sans-serif !important;
+.subheading {
+  margin: 10px 0 0 0 !important;
 }

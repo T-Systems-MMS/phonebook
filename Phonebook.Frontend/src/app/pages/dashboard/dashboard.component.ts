@@ -42,6 +42,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public layoutValue$: Observable<Layout>;
   public layouts: string[] = Object.values(Layout);
   public layoutSetting: string;
+  public layout: typeof Layout = Layout;
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;
   constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
