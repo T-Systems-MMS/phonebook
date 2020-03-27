@@ -11,6 +11,7 @@ mat-drawer-container {
 
 .pb-bookmarked {
   height: 100%;
+  margin-left: 10px;
   margin-right: 50px;
   display: flex;
   flex-direction: column;
@@ -80,11 +81,6 @@ mat-drawer-container {
 .pb-list-card {
   display: flex;
   flex-grow: 1;
-  margin: 0 5px 0 0;
-  border-width: 0px;
-  border-bottom-width: 1px;
-  border-style: solid;
-  border-bottom-color: rgba(0, 0, 0, 0.12);
   @media (max-width: 1037px) {
     width: 700px;
     min-height: auto;
@@ -98,7 +94,6 @@ mat-drawer-container {
 .list-container {
   display: flex;
   flex-grow: 1;
-  width: 100%;
 }
 
 .module-stream-container {
