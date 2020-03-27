@@ -57,8 +57,8 @@
         <note priority="1" from="meaning">IeWarningComponent</note>
       </trans-unit><trans-unit id="GeneralCancelButton" datatype="html">
         <source>Cancel</source><target state="final">Cancel</target>
-        
-        
+
+
       </trans-unit><trans-unit id="BugReportConsentComponentTitle" datatype="html">
         <source> We need your help! </source><target state="final"> We need your help! </target>
         <note priority="1" from="description">Title of Bug Report Consent Dialog</note>
@@ -112,7 +112,7 @@
         <note priority="1" from="description">Title of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentTitleDescription" datatype="html">
-      <source> Change the theme, language or layout of this application. </source><target state="final"> Change the theme, language or layout of this application. </target>        
+      <source> Change the theme, language or layout of this application. </source><target state="final"> Change the theme, language or layout of this application. </target>
         <note priority="1" from="description">Title description of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubtitleGeneral" datatype="html">
@@ -204,7 +204,7 @@
         <note priority="1" from="description">Link to Bug page</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
-      
+
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
         <source>Have a nice day</source>
         <target state="final">Have a nice day</target>
@@ -377,7 +377,7 @@
         <note priority="1" from="description">Supervisor Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
-      
+
       <trans-unit id="OrganigramNodeComponentPropertyAssistant" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants: }}</source>
         <target state="final">{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants: }}</target>
@@ -396,7 +396,7 @@
         <note priority="1" from="description">Learners Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
-      
+
       <trans-unit id="RoomDetailComponentShareButtonTooltip" datatype="html">
         <source>Share this room.</source>
         <target state="final">Share this room.</target>
@@ -858,10 +858,10 @@
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateGreeting</note>
       </trans-unit><trans-unit id="User-InformationDialogBody" datatype="html">
-        <source>, 
-while browsing your profile I noticed that something is not right: 
-Please contact the HR Department to fix it.This is the Phonebook Link: </source><target state="final">, 
-while browsing your profile I noticed that something is not right: 
+        <source>,
+while browsing your profile I noticed that something is not right:
+Please contact the HR Department to fix it.This is the Phonebook Link: </source><target state="final">,
+while browsing your profile I noticed that something is not right:
 Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateBody</note>
@@ -923,8 +923,8 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
       <trans-unit id="GeneralSuccessMessageCopy" datatype="html">
         <source>Copied to clipboard!</source>
         <target state="final">Copied to clipboard!</target>
-        
-        
+
+
       <note from="description" priority="1">Message displayed when copying a link is successfully</note><note from="meaning" priority="1">GeneralSuccessMessageCopy</note></trans-unit>
       <trans-unit id="GeneralErrorMessageCopy" datatype="html">
         <source>Couldn't copy to the clipboard, something went wrong. Try again.</source>
@@ -984,7 +984,7 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <note priority="1" from="description">Error Message if Room does not exist.</note>
         <note priority="1" from="meaning">RoomComponent</note>
       </trans-unit>
-      
+
       <trans-unit id="RoomDetailComponentMailSubject" datatype="html">
         <source>Information about the room: </source>
         <target state="final">Information about the room: </target>

@@ -69,8 +69,8 @@
         <note priority="1" from="meaning">IeWarningComponent</note>
       </trans-unit><trans-unit id="GeneralCancelButton" datatype="html">
         <source>Cancel</source><target state="translated">Abbrechen</target>
-        
-        
+
+
       </trans-unit><trans-unit id="BugReportConsentComponentTitle" datatype="html">
         <source> We need your help! </source><target state="translated">Wir brauchen deine Hilfe!</target>
         <note priority="1" from="description">Title of Bug Report Consent Dialog</note>
@@ -247,7 +247,7 @@
         <note priority="1" from="description">Link to Bug page</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
-      
+
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
         <source>Have a nice day</source>
         <target state="translated">Hab einen schönen Tag</target>
@@ -308,13 +308,13 @@
       Das Bild wird nur für das Phonebook verwendet.
     <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
     <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
-      Ein Bild hochzuladen ist deine eigene Entscheidung, du musst nicht. 
+      Ein Bild hochzuladen ist deine eigene Entscheidung, du musst nicht.
     <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
     <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
       Du kannst das Bilder jederzeit ändern oder löschen. (Klicke einfach auf den Knopf neben der 'Bearbeiten' Schaltfläche.)
     <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
     <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>
-      Dein Profilbild wird automatisch gelöscht, wenn du das Unternehmen verlässt. 
+      Dein Profilbild wird automatisch gelöscht, wenn du das Unternehmen verlässt.
     <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
   <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/>
 </target>
@@ -432,7 +432,7 @@
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
         <source> You haven't bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </source><target state="translated">
-          Du hast noch niemanden als Favorit gespeichert, du kannst jemanden als Favoriten speichern indem du auf diesen Knopf 
+          Du hast noch niemanden als Favorit gespeichert, du kannst jemanden als Favoriten speichern indem du auf diesen Knopf
           <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button>"/>
             <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>bookmark_border<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
           <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button>"/> klickst.
@@ -464,7 +464,7 @@
         <note priority="1" from="description">Supervisor Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
-      
+
       <trans-unit id="OrganigramNodeComponentPropertyAssistant" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants: }}</source>
         <target state="translated">{VAR_PLURAL, plural, =0 {Keine Assistenten} =1 {Assistent: } other {Assistenten: } }</target>
@@ -483,7 +483,7 @@
         <note priority="1" from="description">Learners Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
-      
+
       <trans-unit id="RoomDetailComponentShareButtonTooltip" datatype="html">
         <source>Share this room.</source>
         <target state="translated">Teile diesen Raum.</target>
@@ -1023,7 +1023,7 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
       </trans-unit><trans-unit id="Colleague Profile" datatype="html">
         <source> Is there something wrong with the profile? <x id="LINE_BREAK"/> Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources department. </source><target state="new">
         Stimmt etwas auf dem Profil nicht? <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>
-        Lass deinen Kollegen wissen, dass er seine Daten über die Human Resources Abteilung ändern lassen kann. 
+        Lass deinen Kollegen wissen, dass er seine Daten über die Human Resources Abteilung ändern lassen kann.
       </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
@@ -1074,11 +1074,11 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateGreeting</note>
       </trans-unit><trans-unit id="User-InformationDialogBody" datatype="html">
-        <source>, 
-while browsing your profile I noticed that something is not right: 
-Please contact the HR Department to fix it.This is the Phonebook Link: </source><target state="translated">, 
-beim Besuch deines Profils, ist mir aufgefallen, dass es Fehler gibt: 
- 
+        <source>,
+while browsing your profile I noticed that something is not right:
+Please contact the HR Department to fix it.This is the Phonebook Link: </source><target state="translated">,
+beim Besuch deines Profils, ist mir aufgefallen, dass es Fehler gibt:
+
 Gib doch dem HR kurz bescheid und lass deine Daten richtig stellen.
 Link zu deinem Profil: </target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
@@ -1142,8 +1142,8 @@ Link zu deinem Profil: </target>
       <trans-unit id="GeneralSuccessMessageCopy" datatype="html">
         <source>Copied to clipboard!</source>
         <target state="final">In Zwischenablage kopiert!</target>
-        
-        
+
+
       <note from="description" priority="1">Message displayed when copying a link is successfully</note><note from="meaning" priority="1">GeneralSuccessMessageCopy</note></trans-unit>
       <trans-unit id="GeneralErrorMessageCopy" datatype="html">
         <source>Couldn't copy to the clipboard, something went wrong. Try again.</source>
@@ -1203,7 +1203,7 @@ Link zu deinem Profil: </target>
         <note priority="1" from="description">Error Message if Room does not exist.</note>
         <note priority="1" from="meaning">RoomComponent</note>
       </trans-unit>
-      
+
       <trans-unit id="RoomDetailComponentMailSubject" datatype="html">
         <source>Information about the room: </source>
         <target state="translated">Informationen über diesen Raum: </target>
