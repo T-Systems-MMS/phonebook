@@ -52,7 +52,6 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   public ngOnInit() {}
 
   public ngOnChanges(): void {
-    debugger;
     this.getRandomMoney();
     this.rocketChatLink = this.getRocketChatLink();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
