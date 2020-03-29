@@ -70,17 +70,23 @@ $custom-typography: mat-typography-config(
   .mat-tab-group {
     background-color: $unicorn_mat-color;
   }
+  .mat-button,
   .mat-option.mat-selected,
   .mat-button.mat-primary,
   .mat-snack-bar-container {
     color: $unicorn_darkHighlight !important;
   }
+
   .search,
   .mat-drawer-inner-container,
-  .mat-snack-bar-container,
   .mat-toolbar {
     background-color: $unicorn_secondary;
   }
+  
+  .mat-snack-bar-container {
+    background-color: #a2edff; 
+  }
+
   .mat-card-subtitle {
     color: black;
   }
