@@ -21,7 +21,9 @@
     "target": "https://raw.githubusercontent.com/T-Systems-MMS/phonebook/master/docs/README.md",
     "secure": false,
     "changeOrigin": true,
-    "pathRewrite": { "/changelog.md": "" },
+    "pathRewrite": {
+      "/changelog.md": ""
+    },
     "logLevel": "debug"
   }
 }
