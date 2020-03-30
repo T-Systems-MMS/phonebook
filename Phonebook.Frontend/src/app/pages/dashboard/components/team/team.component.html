@@ -21,11 +21,11 @@
   on a workmates page.
 </div>
   <div
-    *ngFor="let person of teamPersons"
+    *ngFor="let node of nodes"
     class="card-container"
   >
     <app-user-small-card
-      [person]="person"
+      [person]="node"
       [actionButtonClasses]="'white'"
       class="pb-small-card pb-card"
     ></app-user-small-card>

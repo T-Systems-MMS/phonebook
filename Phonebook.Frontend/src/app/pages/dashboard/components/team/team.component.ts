@@ -4,6 +4,8 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState } from 'src/app/shared/states';
+import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
+
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
@@ -19,13 +21,15 @@ export class TeamComponent implements OnInit, OnDestroy {
   public currentUser: Person | null = null;
   public teamPersons: Person[];
   public person: Person;
+  public nodes: UnitTreeNode[] = [];
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private organigramService: OrganigramService) {}
 
   public ngOnInit() {
     this.changeOrder();
-    this.showMyTeam();
-  }
+    this.organigramService.getOrganigram().subscribe(team => {
+      this.nodes = team;
+    });  }
 
   public changeOrder() {
     if (this.bookmarkedPersonsSubscriptions) {
@@ -38,11 +42,6 @@ export class TeamComponent implements OnInit, OnDestroy {
         this.bookmarkedPersons = persons;
       });
   }
-
-  public showMyTeam() {
-    if (this.currentUser != null) {
-
-      }  }
 
   ngOnDestroy(): void {}
 }

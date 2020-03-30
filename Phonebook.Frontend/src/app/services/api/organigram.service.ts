@@ -3,10 +3,14 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
+import { CurrentUserService } from 'src/app/services/api/current-user.service';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+
 
 @Injectable()
 export class OrganigramService {
-  constructor(private personService: PersonService) {}
+  public currentUser: Person | null = null;
+  constructor(private personService: PersonService, private currentUserService: CurrentUserService) {}
 
   public getOrganigram(): Observable<UnitTreeNode[]> {
     return this.personService.getAll().pipe(
@@ -48,6 +52,25 @@ export class OrganigramService {
       } else {
         this.findNodeForPerson(person, firstnode.children, depth + 1);
       }
+    }
+  }
+
+  public getUnitForUser(node: UnitTreeNode, person: Person) {
+    this.currentUserService
+      .getCurrentUser()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(
+        user => {
+          if (user != null) {
+            this.currentUser = user;
+          }
+        },
+        error => {
+          this.currentUser = null;
+        }
+      );
+    if (this.currentUser != null) {
+      
     }
   }
 
