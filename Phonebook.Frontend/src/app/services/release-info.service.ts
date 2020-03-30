@@ -56,8 +56,8 @@ export class ReleaseInfoService {
         responseType: 'text'
       })
       .subscribe(success => {
-        import('marked').then(marked => {
-          text = marked.parse(success);
+        import('markdown-it').then(markdownit => {
+          text = markdownit.default().render(success);
           this.dialog.open(ReleaseNotificationDialog, {
             data: text,
             height: '90vh',
