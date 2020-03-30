@@ -8,7 +8,7 @@ WORKDIR /usr/local/app
 # This is only for the build and not needed if running locally
 COPY ./package-lock.json /usr/local/app/package-lock.json
 COPY ./package.json /usr/local/app/package.json
-RUN npm ci 
+RUN npm ci
 # Because: https://stackoverflow.com/questions/37715224/copy-multiple-directories-with-one-command
 COPY ./src/ ./src/
 
