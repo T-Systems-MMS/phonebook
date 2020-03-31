@@ -100,7 +100,8 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                     Id = room.BuildingPart.Building.Id,
                     Name = room.BuildingPart.Building.Name,
                     ShortName = room.BuildingPart.Building.ShortName,
-                    LocationId = room.BuildingPart.Building.LocationId,
+                    Number = room.BuildingPart.Building.Number,
+                    LocationId = room.BuildingPart.Building.LocationId,                    
                     Location = room.BuildingPart.Building.Location != null ? new Location()
                     {
                         ShortName = room.BuildingPart.Building.Location.ShortName,
@@ -125,6 +126,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                     Id = room.Floor.Building.Id,
                     Name = room.Floor.Building.Name,
                     ShortName = room.Floor.Building.ShortName,
+                    Number = room.Floor.Building.Number,
                     LocationId = room.Floor.Building.LocationId,
                     Location = room.Floor.Building.Location != null ? new Location()
                     {

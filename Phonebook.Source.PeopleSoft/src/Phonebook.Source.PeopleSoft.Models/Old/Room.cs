@@ -22,13 +22,13 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
                 {
                     return string.Empty;
                 }
-                if (room?.BuildingPart?.Building?.Name != null)
+                if (room?.BuildingPart?.Building?.Name != null && room?.BuildingPart?.Building?.Number != null)
                 {
-                    return room.BuildingPart.Building.Name;
+                    return room.BuildingPart.Building.Name + " " + room.BuildingPart.Building.Number;
                 }
-                if (room?.Floor?.Building?.Name != null)
+                if (room?.Floor?.Building?.Name != null && room?.Floor?.Building?.Number != null)
                 {
-                    return room.Floor.Building.Name;
+                    return room.Floor.Building.Name + " " + room.Floor.Building.Number;
                 }
                 return string.Empty;
             }
@@ -75,7 +75,7 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
         public string Phone { get { return string.Empty; }  }
         public string Number { get { return room?.Number == null ? string.Empty : room.Number; } }
         public string Id { get { return room == null ? string.Empty : room.Id.ToString(); } }
-        public string Place { get { return string.Empty; } }
+        public string Place { get { return room?.Floor?.Building?.Location?.Name != null ? room.Floor.Building.Location.Name: room?.BuildingPart?.Building?.Location?.Name != null ? room.BuildingPart.Building.Location.Name : string.Empty; } }
         public string FloorPlan { get { return room?.Map == null ? string.Empty : room.Map; } }
 
 
