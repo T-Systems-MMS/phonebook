@@ -1,32 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Phonebook.Source.PeopleSoft.Models
-{
-public class BuildingPart
-{
-    [Column(name: "ID")]
-    public int? Id {
-        get;
-        set;
+namespace Phonebook.Source.PeopleSoft.Models {
+  public class BuildingPart {
+    [Column(name
+            : "ID")]
+    public int
+        ? Id {
+      get;
+      set;
     }
-    [Column(name: "BESCHREIBUNG")]
+    [Column(name
+            : "BESCHREIBUNG")]
     public string? Description {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "GEBAEUDE_ID")]
-    public int? BuildingId {
-        get;
-        set;
+    [Column(name
+            : "GEBAEUDE_ID")]
+    public int
+        ? BuildingId {
+      get;
+      set;
     }
     public virtual Building? Building {
-        get;
-        set;
+      get;
+      set;
     }
     public virtual IEnumerable<Room>? Rooms {
-        get;
-        set;
+      get;
+      set;
     }
-}
+  }
 }
