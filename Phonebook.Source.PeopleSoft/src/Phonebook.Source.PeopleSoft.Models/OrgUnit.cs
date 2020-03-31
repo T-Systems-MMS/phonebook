@@ -21,8 +21,8 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name:"KST")]
         public string? CostCenter { get; set; }
 
-        public virtual IEnumerable<Person> Members { get; set; } = new List<Person>();
+        public virtual IEnumerable<Person>? Members { get; set; }
 
-        public virtual IEnumerable<OrgUnitToFunction> OrgUnitToFunctions { get; set; } = new List<OrgUnitToFunction>();
+        public virtual IEnumerable<OrgUnitToFunction>? OrgUnitToFunctions { get; set; }
     }
 }

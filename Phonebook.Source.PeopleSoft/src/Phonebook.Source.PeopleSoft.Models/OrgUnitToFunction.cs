@@ -10,15 +10,15 @@ namespace Phonebook.Source.PeopleSoft.Models
     {
         //public int Id { get; set; }
         [Column(name: "PERSON_ID")]
-        public int PersonId { get; set; }
+        public int? PersonId { get; set; }
         public virtual Person Person { get; set; }
         [Column(name: "ORG_EINHEIT_ID")]
-        public int OrgUnitId { get; set; }
+        public int? OrgUnitId { get; set; }
         public virtual OrgUnit OrgUnit { get; set; }
         [Column(name: "FUNKTIONSROLLE_ID")]
-        public int FunctionId { get; set; }
-        public virtual Function Function { get; set; }
+        public int? FunctionId { get; set; }
+        public virtual Function? Function { get; set; }
         [Column(name: "SPRECHENDER_NAME")]
-        public string RoleName { get; set; }
+        public string? RoleName { get; set; }
     }
 }

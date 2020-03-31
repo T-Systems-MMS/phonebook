@@ -6,7 +6,7 @@ namespace Phonebook.Source.PeopleSoft.Models
     public class Person
     {
         [Column(name:"ID")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         [Column(name: "KUERZEL")]
         public string? ShortName { get; set; }
         [Column(name: "VORNAME")]
@@ -28,13 +28,13 @@ namespace Phonebook.Source.PeopleSoft.Models
         public virtual Status? Status { get; set; }
         [Column(name: "ORGEINHEIT_ID")]
         public int OrgUnitId { get; set; }
-        public virtual OrgUnit OrgUnit { get; set; } = new OrgUnit();
+        public virtual OrgUnit? OrgUnit { get; set; }
         [Column(name: "FUNKTION_ID")]
         public int? FunctionId { get; set; }
         public virtual Function? Function { get; set; }
         [Column(name: "RAUM_ID")]
         public int? RoomId { get; set; }
-        public virtual Room Room { get; set; } = new Room();
+        public virtual Room? Room { get; set; }
 
         
         public virtual IEnumerable<OrgUnit>? OwnedOrgUnits { get; set; }

@@ -12,7 +12,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         public string Name { get; set; }
         [Column(name: "CODE")]
         public string? Code { get; set; }                     
-        public virtual IEnumerable<Person> Peoples { get; set; }
+        public virtual IEnumerable<Person>? Peoples { get; set; }
             
     }
 }
