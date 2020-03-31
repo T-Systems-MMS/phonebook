@@ -12,7 +12,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { ClipboardModule } from 'ngx-clipboard';
 import { PropagationStopModule } from 'ngx-propagation-stop';
 import { FloorComponent } from 'src/app/modules/rooms/components/floor/floor.component';
 import { RoomTreeComponent } from 'src/app/modules/rooms/components/room-tree/room-tree.component';
@@ -34,7 +33,6 @@ import { OverviewComponent } from './components/overview/overview.component';
     RoomsRoutingModule,
     AddFilterModule,
     RoomPlanModule,
-    ClipboardModule,
     ActionDrawerModule,
     AddressModule,
     PropagationStopModule,
