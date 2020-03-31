@@ -30,7 +30,6 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   public columns: typeof ColumnDefinitions = ColumnDefinitions;
   @Select(BookmarksState)
   public bookmarks$: Observable<Person[]>;
-  public randomMoney: string;
   public vCardEncoding: typeof VCardEncoding = VCardEncoding;
   public get address(): string[] {
     return this.person.Location.RoomCollection[0].Description.split(',');
@@ -47,12 +46,11 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
     private windowRef: WindowRef,
     private store: Store,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   public ngOnInit() {}
 
   public ngOnChanges(): void {
-    this.getRandomMoney();
     this.rocketChatLink = this.getRocketChatLink();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
       const index = bookmarks.findIndex(p => p.Id === this.person.Id);
@@ -121,13 +119,9 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
       : null;
   }
 
-  public ngOnDestroy() {}
-
-  @HostListener('click')
-  public getRandomMoney(): void {
-    this.randomMoney = (Math.random() * 1000000).toFixed(2);
-  }
+  public ngOnDestroy() { }
 }
+
 
 enum Bookmarked {
   isBookmarked = 'bookmark',
