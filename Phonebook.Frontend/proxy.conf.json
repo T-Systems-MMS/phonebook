@@ -18,9 +18,10 @@
     "logLevel": "debug"
   },
   "/changelog.md": {
-    "target": "http://localhost:8000",
+    "target": "https://raw.githubusercontent.com/T-Systems-MMS/phonebook/master/docs/README.md",
     "secure": false,
     "changeOrigin": true,
+    "pathRewrite": { "/changelog.md": "" },
     "logLevel": "debug"
   }
 }
