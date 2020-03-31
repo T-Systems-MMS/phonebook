@@ -9,7 +9,6 @@ import { debounceTime } from 'rxjs/operators';
 import { PersonsDataSource } from 'src/app/modules/table/PersonsDataSource';
 import { PersonService } from 'src/app/services/api/person.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
 import { Person, PhonebookSortDirection, TableSort } from 'src/app/shared/models';
 import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app/shared/states';
 
@@ -49,8 +48,7 @@ export class TableComponent implements OnInit, OnDestroy {
     private router: Router,
     private personService: PersonService,
     public dialog: MatDialog,
-    public store: Store,
-    public columnTranslate: ColumnTranslate
+    public store: Store
   ) {}
 
   public ngOnInit() {

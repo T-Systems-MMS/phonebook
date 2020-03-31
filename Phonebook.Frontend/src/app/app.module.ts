@@ -33,7 +33,6 @@ import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter
 import { NavigationComponent } from 'src/app/shared/components/navigation/navigation.component';
 import { OnlineBarComponent } from 'src/app/shared/components/online-bar/online-bar.component';
 import { UserModule } from 'src/app/shared/components/user/user.module';
-import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
 import { DialogsModule } from 'src/app/shared/dialogs/dialogs.module';
 import { IeWarningModule } from 'src/app/shared/dialogs/ie-warning/ie-warning.module';
 import { FeedbackDrawerModule } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.module';
@@ -114,8 +113,7 @@ declare const require;
     MailService,
     FloorplanService,
     ReleaseInfoService,
-    ThemeService,
-    ColumnTranslate
+    ThemeService
   ],
   bootstrap: [AppComponent]
 })

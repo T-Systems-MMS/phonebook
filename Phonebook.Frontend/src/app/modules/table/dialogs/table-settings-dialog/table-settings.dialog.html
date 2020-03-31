@@ -29,7 +29,7 @@
       >
         <mat-card class="item" cdkDrag *ngFor="let column of displayedColumns">
           <mat-card-title-group>
-            {{ columnTranslate.getTranslation(column.id) }}
+            {{ column.title }}
             <mat-icon>drag_handle</mat-icon>
           </mat-card-title-group>
         </mat-card>
@@ -52,7 +52,7 @@
       >
         <mat-card class="item" cdkDrag *ngFor="let column of notDisplayedColumns">
           <mat-card-title-group>
-            {{ columnTranslate.getTranslation(column.id) }}
+            {{ column.title }}
             <mat-icon>drag_handle</mat-icon>
           </mat-card-title-group>
         </mat-card>

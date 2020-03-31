@@ -5,9 +5,7 @@ import { Person } from '../classes/Person';
 
 export interface Column {
   id: ColumnId;
-  // TODO: #515
-  // If Angular i18n ever supports translations in .ts files this should be used again.
-  // title: string;
+  title: string;
   rank: number;
   filterable: boolean;
   sortable: boolean;

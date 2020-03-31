@@ -172,11 +172,21 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "friedaxvictoria",
+      "name": "friedaxvictoria",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/61278471?v=4",
+      "profile": "https://github.com/friedaxvictoria",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "phonebook",
   "projectOwner": "T-Systems-MMS",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
