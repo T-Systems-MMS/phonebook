@@ -41,13 +41,14 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   @Input()
   public previewView: boolean = false;
   public rocketChatLink: string | null = null;
+  public organigramLink: string[] = ['/organigram'];
   constructor(
     private snackBar: MatSnackBar,
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   public ngOnInit() {
     this.getRandomMoney();
@@ -85,6 +86,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
       nickname: this.person.Id
     };
+    this.organigramLink = this.organigramLink.concat(this.person.Business.ShortOrgUnit);
   }
 
   public sendMail() {
@@ -119,7 +121,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       : null;
   }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy() { }
 
   @HostListener('click')
   public getRandomMoney(): void {
