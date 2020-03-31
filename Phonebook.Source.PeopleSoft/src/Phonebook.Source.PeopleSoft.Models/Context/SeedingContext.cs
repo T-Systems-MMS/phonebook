@@ -1,6 +1,4 @@
-﻿
-
-using Bogus;
+﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Linq;

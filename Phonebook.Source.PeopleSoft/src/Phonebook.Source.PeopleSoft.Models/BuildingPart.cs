@@ -6,7 +6,7 @@ namespace Phonebook.Source.PeopleSoft.Models
     public class BuildingPart
     {
         [Column(name: "ID")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         [Column(name: "BESCHREIBUNG")]
         public string? Description { get; set; }
         [Column(name: "GEBAEUDE_ID")]

@@ -22,11 +22,11 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
                 {
                     return string.Empty;
                 }
-                if (room.BuildingPart.Building != null)
+                if (room?.BuildingPart?.Building?.Name != null)
                 {
                     return room.BuildingPart.Building.Name;
                 }
-                if (room.Floor != null)
+                if (room?.Floor?.Building?.Name != null)
                 {
                     return room.Floor.Building.Name;
                 }
@@ -41,18 +41,18 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
                 {
                     return string.Empty;
                 }
-                if (room.BuildingPart.Building != null)
+                if (room?.BuildingPart?.Building != null)
                 {
                     return room.BuildingPart.Building.Id.ToString();
                 }
-                if (room.Floor != null)
+                if (room?.Floor?.Building?.Id != null)
                 {
                     return room.Floor.Building.Id.ToString();
                 }
                 return string.Empty;
             }
         }
-        public int? Floor { get { return room?.Floor.Number; } }
+        public int? Floor { get { return room?.Floor?.Number; } }
         public string Description
         {
             get
@@ -61,11 +61,11 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
                 {
                     return string.Empty;
                 }
-                if (room.Floor != null)
+                if (room?.Floor?.Building?.Address != null)
                 {
                     return room.Floor.Building.Address;
                 }
-                if (room.BuildingPart != null)
+                if (room?.BuildingPart?.Building?.Address != null)
                 {
                     return room.BuildingPart.Building.Address;
                 }
@@ -73,10 +73,10 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
             }
         }
         public string Phone { get { return string.Empty; }  }
-        public string Number { get { return room == null ? string.Empty : room.Number; } }
+        public string Number { get { return room?.Number == null ? string.Empty : room.Number; } }
         public string Id { get { return room == null ? string.Empty : room.Id.ToString(); } }
         public string Place { get { return string.Empty; } }
-        public string FloorPlan { get { return room == null ? string.Empty : room.Map; } }
+        public string FloorPlan { get { return room?.Map == null ? string.Empty : room.Map; } }
 
 
         private int? GetFloorNumber()
