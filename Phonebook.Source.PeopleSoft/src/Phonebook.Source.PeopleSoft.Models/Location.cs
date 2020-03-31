@@ -1,33 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Phonebook.Source.PeopleSoft.Models
-{
-public class Location
-{
-    [Column(name:"ID")]
+namespace Phonebook.Source.PeopleSoft.Models {
+  public class Location {
+    [Column(name
+            : "ID")]
     public int Id {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "LAND")]
+    [Column(name
+            : "LAND")]
     public string Country {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "NAME")]
+    [Column(name
+            : "NAME")]
     public string Name {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "KURZBEZEICHNUNG")]
+    [Column(name
+            : "KURZBEZEICHNUNG")]
     public string? ShortName {
-        get;
-        set;
+      get;
+      set;
     }
-    public virtual IEnumerable<Building> Buildings {
-        get;
-        set;
+    public virtual IEnumerable<Building>Buildings {
+      get;
+      set;
     }
-}
+  }
 }

@@ -1,101 +1,114 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Phonebook.Source.PeopleSoft.Models
-{
-public class Person
-{
-    [Column(name:"ID")]
-    public int? Id {
-        get;
-        set;
+namespace Phonebook.Source.PeopleSoft.Models {
+  public class Person {
+    [Column(name
+            : "ID")]
+    public int
+        ? Id {
+      get;
+      set;
     }
-    [Column(name: "KUERZEL")]
+    [Column(name
+            : "KUERZEL")]
     public string? ShortName {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "VORNAME")]
+    [Column(name
+            : "VORNAME")]
     public string? FirstName {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "NAME")]
+    [Column(name
+            : "NAME")]
     public string? LastName {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "TITEL")]
+    [Column(name
+            : "TITEL")]
     public string? Title {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "TELEFON")]
+    [Column(name
+            : "TELEFON")]
     public string? Phone {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "MOBIL")]
+    [Column(name
+            : "MOBIL")]
     public string? MobilPhone {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name:"FAX")]
+    [Column(name
+            : "FAX")]
     public string? FAX {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "EMAIL")]
+    [Column(name
+            : "EMAIL")]
     public string? EMail {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "MITARBEITER_STATUS_ID")]
+    [Column(name
+            : "MITARBEITER_STATUS_ID")]
     public int StatusId {
-        get;
-        set;
+      get;
+      set;
     }
     public virtual Status? Status {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "ORGEINHEIT_ID")]
+    [Column(name
+            : "ORGEINHEIT_ID")]
     public int OrgUnitId {
-        get;
-        set;
+      get;
+      set;
     }
     public virtual OrgUnit? OrgUnit {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "FUNKTION_ID")]
-    public int? FunctionId {
-        get;
-        set;
+    [Column(name
+            : "FUNKTION_ID")]
+    public int
+        ? FunctionId {
+      get;
+      set;
     }
     public virtual Function? Function {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "RAUM_ID")]
-    public int? RoomId {
-        get;
-        set;
+    [Column(name
+            : "RAUM_ID")]
+    public int
+        ? RoomId {
+      get;
+      set;
     }
     public virtual Room? Room {
-        get;
-        set;
+      get;
+      set;
     }
 
-
     public virtual IEnumerable<OrgUnit>? OwnedOrgUnits {
-        get;
-        set;
+      get;
+      set;
     }
 
     public virtual IEnumerable<OrgUnitToFunction>? OrgUnitFunctions {
-        get;
-        set;
+      get;
+      set;
     }
-}
+  }
 }

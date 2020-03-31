@@ -2,29 +2,29 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security;
 
-namespace Phonebook.Source.PeopleSoft.Models
-{
-public class Status
-{
-    [Column(name: "ID")]
+namespace Phonebook.Source.PeopleSoft.Models {
+  public class Status {
+    [Column(name
+            : "ID")]
     public int Id {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "NAME")]
+    [Column(name
+            : "NAME")]
     public string Name {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "CODE")]
+    [Column(name
+            : "CODE")]
     public string? Code {
-        get;
-        set;
+      get;
+      set;
     }
     public virtual IEnumerable<Person>? Peoples {
-        get;
-        set;
+      get;
+      set;
     }
-
-}
+  }
 }

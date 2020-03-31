@@ -1,32 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Phonebook.Source.PeopleSoft.Models
-{
-public class Function
-{
-    [Column(name: "ID")]
-    public int? Id {
-        get;
-        set;
+namespace Phonebook.Source.PeopleSoft.Models {
+  public class Function {
+    [Column(name
+            : "ID")]
+    public int
+        ? Id {
+      get;
+      set;
     }
-    [Column(name: "CODE")]
+    [Column(name
+            : "CODE")]
     public string? Code {
-        get;
-        set;
+      get;
+      set;
     }
-    [Column(name: "BEZEICHNUNG")]
+    [Column(name
+            : "BEZEICHNUNG")]
     public string? Label {
-        get;
-        set;
+      get;
+      set;
     }
     public virtual IEnumerable<Person>? Peoples {
-        get;
-        set;
+      get;
+      set;
     }
     public virtual IEnumerable<OrgUnitToFunction>? OrgUnitToFunctions {
-        get;
-        set;
+      get;
+      set;
     }
-}
+  }
 }
