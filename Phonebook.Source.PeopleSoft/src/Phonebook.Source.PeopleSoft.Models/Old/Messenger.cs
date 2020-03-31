@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Phonebook.Source.PeopleSoft.Models.Old
 {
-    public class Messenger
-    {
-        public string Text => string.Empty;
-        public int? State => null;
-    }
+public class Messenger
+{
+    public string Text => string.Empty;
+    public int? State => null;
+}
 }
