@@ -24,6 +24,10 @@ nav_order: 100
 
 The People Soft backend is an api that connect to some People Soft views and provide an read only API for it. Currently it provides all data about the user, the organization structure and the building details.
 
+## Connect the Backend to the ADFS or Azure
+
+https://docs.microsoft.com/en-us/aspnet/core/security/authentication/ws-federation?view=aspnetcore-3.1
+
 ## Build & Run
 
 ### Prequest
