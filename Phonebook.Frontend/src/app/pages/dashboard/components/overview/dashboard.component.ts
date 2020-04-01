@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       error => {
         this.currentUser = null;
       }
-    ); console.log(this.currentUser);
+    );
   }
 
   public changeOrder() {

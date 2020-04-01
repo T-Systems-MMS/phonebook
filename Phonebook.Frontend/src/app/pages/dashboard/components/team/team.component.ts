@@ -5,6 +5,9 @@ import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState } from 'src/app/shared/states';
 import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
+import { CurrentUserService } from 'src/app/services/api/current-user.service';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team',
@@ -21,16 +24,30 @@ export class TeamComponent implements OnInit, OnDestroy {
   public currentUser: Person | null = null;
   public teamPersons: Person[];
   public person: Person;
-  public nodes: UnitTreeNode[] | null = null;
 
-  constructor(private store: Store, private organigramService: OrganigramService) {}
+  constructor(private store: Store,
+    private organigramService: OrganigramService,
+    private currentUserService: CurrentUserService,
+    private router: Router) {}
 
   public ngOnInit() {
     this.changeOrder();
-    this.organigramService.getUnitForUser().subscribe(team => {
-      this.nodes = team;
+    this.organigramService.getUnitForUser().subscribe(node => {
+      this.teamPersons = [...node.supervisors, ...node.assistents, ...node.employees, ...node.learners];
     });
-    console.log(this.organigramService.getUnitForUser());
+    this.currentUserService
+    .getCurrentUser()
+    .pipe(untilComponentDestroyed(this))
+    .subscribe(
+      user => {
+        if (user === null) {
+          this.router.navigate(['']);
+        }
+      },
+      error => {
+        this.currentUser = null;
+      }
+    );
   }
 
   public changeOrder() {

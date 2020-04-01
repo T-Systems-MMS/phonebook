@@ -51,24 +51,23 @@ export class OrganigramService {
     }
   }
 
-  public getUnitForUser(): Observable<UnitTreeNode[] | null> {
+  public getUnitForUser(): Observable<UnitTreeNode | null> {
     return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigram()]).pipe(
       map(([user, organigram]) => {
         if (user != null) {
-          organigram.forEach(node0 => {
+          for (let node0 of organigram) {
             if (node0.name === user.Business.OrgUnit[0]) {
-              node0.children.forEach(node1 => {
+              for (let node1 of node0.children) {
                 if (node1.name === user.Business.OrgUnit[1]) {
-                  node1.children.forEach(node2 => {
+                  for (let node2 of node1.children) {
                     if (node2.name === user.Business.OrgUnit[2]) {
-                      console.log(node2);
                       return node2;
                     }
-                  });
+                  } return node1;
                 }
-              });
+              } return node0;
             }
-          });
+          }
         }
         return null;
       })
