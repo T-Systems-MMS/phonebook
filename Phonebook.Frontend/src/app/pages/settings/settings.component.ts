@@ -9,6 +9,7 @@ import { LanguageService } from 'src/app/services/language.service';
 import { Language } from 'src/app/shared/models/enumerables/Language';
 import { AppState, SetTheme } from 'src/app/shared/states';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 
 @Component({
   selector: 'app-settings',
@@ -34,10 +35,22 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.languageValue = this.languageService.getLanguage();
+    this.useFirstAprilTheme();
   }
-
+  private useFirstAprilTheme(){
+    this.featureFlagService
+      .get('firstApril')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(flag => {
+        if (flag) {
+          this.store.dispatch(new SetTheme(Theme.unicorn_theme));
+        }
+        console.log(flag);
+      });
+  }
   public changeTheme(themeClass: Theme) {
     this.store.dispatch(new SetTheme(themeClass));
+    this.useFirstAprilTheme();
   }
 
   public changeLanguage(lang: Language) {
