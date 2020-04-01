@@ -11,7 +11,9 @@
     <div>
       <h3
         mat-subheader
-        i18n="CityComponent|Subheader for all building locations in the city@@CityComponentSubHeaderLocation"
+        i18n="
+          CityComponent|Subheader for all building locations in the
+          city@@CityComponentSubHeaderLocation"
       >
         Buildings
       </h3>
@@ -43,16 +45,11 @@
                   [href]="location.LinkRoutingWebsite"
                   target="_blank"
                   rel="noopener"
-                  *ngIf="
-                    location.LinkRoutingWebsite != '' &&
-                    location.LinkRoutingWebsite != null
-                  "
+                  *ngIf="location.LinkRoutingWebsite != '' && location.LinkRoutingWebsite != null"
                   class="mat-small"
                 >
                   <mat-icon>open_in_new</mat-icon>
-                  <span i18n="@@GeneralShowOnMapButton"
-                    >Show on Google-Maps</span
-                  >
+                  <span i18n="@@GeneralShowOnMapButton">Show on Google-Maps</span>
                 </a>
               </h3>
               <mat-list-item>
@@ -62,10 +59,7 @@
               </mat-list-item>
               <h3 mat-subheader i18n="@@DataLocationContact">Contact</h3>
               <mat-list-item
-                *ngIf="
-                  location.ReceptionPhone != '' &&
-                  location.ReceptionPhone != null
-                "
+                *ngIf="location.ReceptionPhone != '' && location.ReceptionPhone != null"
               >
                 <mat-icon mat-list-icon>call</mat-icon>
                 <h4 mat-line i18n="@@ColumnTitlePhone">Phone</h4>
@@ -81,29 +75,17 @@
                   </button>
                 </p>
               </mat-list-item>
-              <mat-list-item
-                *ngIf="
-                  location.ReceptionFax != '' && location.ReceptionFax != null
-                "
-              >
+              <mat-list-item *ngIf="location.ReceptionFax != '' && location.ReceptionFax != null">
                 <mat-icon mat-list-icon>print</mat-icon>
                 <h4 mat-line i18n="@@DataPersonFax">Fax</h4>
                 <p mat-line>
-                  <button
-                    mat-button
-                    actionDrawer
-                    [copy]="location.ReceptionFax"
-                  >
+                  <button mat-button actionDrawer [copy]="location.ReceptionFax">
                     {{ location.ReceptionFax }}
                   </button>
                 </p></mat-list-item
               >
 
-              <mat-list-item
-                *ngIf="
-                  location.ContactPerson != '' && location.ContactPerson != null
-                "
-              >
+              <mat-list-item *ngIf="location.ContactPerson != '' && location.ContactPerson != null">
                 <mat-icon mat-list-icon>person</mat-icon>
                 <h4 mat-line i18n="@@DataLocationContactPerson">
                   Contact Person

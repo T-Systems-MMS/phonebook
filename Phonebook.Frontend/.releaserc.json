@@ -1,13 +1,7 @@
 {
   "branch": "master",
-  "verifyConditions": [
-    "@semantic-release/changelog",
-    "@semantic-release/github"
-  ],
-  "verifyConfig": [
-    "@semantic-release/github",
-    "semantic-release-docker-test"
-  ],
+  "verifyConditions": ["@semantic-release/changelog", "@semantic-release/github"],
+  "verifyConfig": ["@semantic-release/github", "semantic-release-docker-test"],
   "prepare": [
     {
       "path": "@semantic-release/exec",
@@ -39,17 +33,13 @@
     },
     {
       "path": "semantic-release-docker-test",
-      "additionalTags": [
-        "latest"
-      ],
+      "additionalTags": ["latest"],
       "imageName": "phonebook-frontend",
       "repositoryName": "tsystemsmms"
     },
     {
       "path": "semantic-release-docker-test",
-      "additionalTags": [
-        "latest"
-      ],
+      "additionalTags": ["latest"],
       "imageName": "tsystemsmms/phonebook-build",
       "pushVersionTag": false
     }
@@ -76,12 +66,8 @@
       ]
     }
   ],
-  "fail": [
-    "@semantic-release/github"
-  ],
-  "success": [
-    "@semantic-release/github"
-  ],
+  "fail": ["@semantic-release/github"],
+  "success": ["@semantic-release/github"],
   "plugins": [
     [
       "@semantic-release/commit-analyzer",

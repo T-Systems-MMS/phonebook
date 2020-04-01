@@ -15,8 +15,8 @@ export const mockPerson: Person = new Person(
     Phone: '+493512820 0000',
     Messenger: {
       Text: null,
-      State: 0
-    }
+      State: 0,
+    },
   },
   {
     ContactPerson: null,
@@ -28,7 +28,7 @@ export const mockPerson: Person = new Person(
     LinkRoutingInfo: null,
     City: {
       Name: 'Dresden',
-      Building: 'Musterstraße 5'
+      Building: 'Musterstraße 5',
     },
     RoomCollection: [
       {
@@ -40,9 +40,9 @@ export const mockPerson: Person = new Person(
         Number: '503',
         Id: '1350',
         Place: 'Musterstadt',
-        FloorPlan: 'Bauteil35'
-      }
-    ]
+        FloorPlan: 'Bauteil35',
+      },
+    ],
   },
   {
     ShortBusinessunitTeamassistent: ['ABC'],
@@ -51,6 +51,6 @@ export const mockPerson: Person = new Person(
     OrgUnit: ['Corporate Unit 2', 'Business Unit', 'Other Unit'],
     BusinessunitTeamassistent: ['Max Mustermann'],
     Supervisor: ['Max Musterman'],
-    Costcenter: '8040'
+    Costcenter: '8040',
   }
 );

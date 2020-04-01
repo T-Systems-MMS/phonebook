@@ -48,7 +48,8 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Id"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Id'@@TableComponentColumnIdLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'Id'@@TableComponentColumnIdLabel"
       >
         {{ columns.id.title }}</mat-header-cell
       >
@@ -60,7 +61,8 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Name"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Name'@@TableComponentColumnNameLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'Name'@@TableComponentColumnNameLabel"
       >
         {{ columns.fullname.title }}</mat-header-cell
       >
@@ -73,7 +75,12 @@
         {{ columns.email.title }}
       </mat-header-cell>
       <mat-cell *matCellDef="let person">
-        <button mat-icon-button actionDrawer [copy]="person.Contacts.Email" [mailto]="person.Contacts.Email">
+        <button
+          mat-icon-button
+          actionDrawer
+          [copy]="person.Contacts.Email"
+          [mailto]="person.Contacts.Email"
+        >
           <mat-icon>email</mat-icon>
         </button>
       </mat-cell>
@@ -84,7 +91,8 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Phone"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Phone'@@TableComponentColumnPhoneLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'Phone'@@TableComponentColumnPhoneLabel"
       >
         {{ columns.phone.title }}</mat-header-cell
       >
@@ -107,7 +115,8 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Mobile"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Mobile'@@TableComponentColumnMobileLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'Mobile'@@TableComponentColumnMobileLabel"
       >
         {{ columns.mobile.title }}</mat-header-cell
       >
@@ -129,7 +138,8 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Role"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Role'@@TableComponentColumnRoleLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'Role'@@TableComponentColumnRoleLabel"
       >
         {{ columns.role.title }}</mat-header-cell
       >
@@ -143,12 +153,16 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column City"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'City'@@TableComponentColumnCityLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'City'@@TableComponentColumnCityLabel"
       >
         {{ columns.city.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.city" [filterValue]="person.Location.City.Name"></app-add-filter>
+        <app-add-filter
+          [filterColumn]="columns.city"
+          [filterValue]="person.Location.City.Name"
+        ></app-add-filter>
       </mat-cell>
     </ng-container>
 
@@ -158,8 +172,8 @@
         mat-sort-header
         sortButtonLabel="Change sorting for column Organization Unit"
         i18n-sortButtonLabel="
-           TableComponent|Label for sorting the column 'Organization Unit'@@TableComponentColumnOrgUnitLabel
-        "
+          TableComponent|Label for sorting the column 'Organization
+          Unit'@@TableComponentColumnOrgUnitLabel"
       >
         {{ columns.orgUnit.title }}
       </mat-header-cell>
@@ -179,12 +193,16 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Room"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Room'@@TableComponentColumnRoomLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'Room'@@TableComponentColumnRoomLabel"
       >
         {{ columns.room.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.room" [filterValue]="person.Location.RoomCollection[0].Number">
+        <app-add-filter
+          [filterColumn]="columns.room"
+          [filterValue]="person.Location.RoomCollection[0].Number"
+        >
         </app-add-filter>
       </mat-cell>
     </ng-container>
@@ -194,12 +212,16 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Building"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Building'@@TableComponentColumnBuildingLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'Building'@@TableComponentColumnBuildingLabel"
       >
         {{ columns.building.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.building" [filterValue]="person.Location.RoomCollection[0].Building">
+        <app-add-filter
+          [filterColumn]="columns.building"
+          [filterValue]="person.Location.RoomCollection[0].Building"
+        >
         </app-add-filter>
       </mat-cell>
     </ng-container>
@@ -210,14 +232,16 @@
         mat-sort-header
         sortButtonLabel="Change sorting for column Profitcenter"
         i18n-sortButtonLabel="
-           TableComponent|Label for sorting the column 'Profitcenter' once
-          Costcenter@@TableComponentColumnCostcenterLabel
-        "
+          TableComponent|Label for sorting the column 'Profitcenter' once
+          Costcenter@@TableComponentColumnCostcenterLabel"
       >
         {{ columns.costcenter.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.costcenter" [filterValue]="person.Business.Costcenter"></app-add-filter>
+        <app-add-filter
+          [filterColumn]="columns.costcenter"
+          [filterValue]="person.Business.Costcenter"
+        ></app-add-filter>
       </mat-cell>
     </ng-container>
 
@@ -226,29 +250,48 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column status"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Status'@@TableComponentColumnStatusLabel"
+        i18n-sortButtonLabel="
+          TableComponent|Label for sorting the column 'Status'@@TableComponentColumnStatusLabel"
       >
         {{ columns.status.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
-        <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type"></app-add-filter>
+        <app-add-filter
+          [filterColumn]="columns.status"
+          [filterValue]="person.Type"
+        ></app-add-filter>
       </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" [class.mat-elevation-z5]="!onTop">
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns; sticky: true"
+      [class.mat-elevation-z5]="!onTop"
+    >
     </mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="routeToUser(row.Id)" mat-ripple></mat-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="routeToUser(row.Id)"
+      mat-ripple
+    ></mat-row>
     <!-- <mat-row *matRowDef="let row; columns: displayedColumns;" mat-ripple>HI</mat-row> -->
   </mat-table>
 </div>
 <mat-card *ngIf="!dataSource.data.length" class="notfound-container">
   <ng-container
-    i18n="TableComponent|Sentence displayed if search did not return any results@@TableComponentSearchNoResult"
+    i18n="
+      TableComponent|Sentence displayed if search did not return any
+      results@@TableComponentSearchNoResult"
   >
     Your search returned no results.
   </ng-container>
 </mat-card>
 
-<button mat-fab color="primary" *ngIf="!onTop" class="floating-action-button" (click)="scrollToTop(table)">
+<button
+  mat-fab
+  color="primary"
+  *ngIf="!onTop"
+  class="floating-action-button"
+  (click)="scrollToTop(table)"
+>
   <mat-icon>arrow_upward</mat-icon>
 </button>

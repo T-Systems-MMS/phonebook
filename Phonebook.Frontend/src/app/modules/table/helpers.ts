@@ -69,7 +69,11 @@ export class Helpers {
     return Number(a) - Number(b);
   }
 
-  public static stringArrayCompare(a: string[], b: string[], direction: PhonebookSortDirection): number {
+  public static stringArrayCompare(
+    a: string[],
+    b: string[],
+    direction: PhonebookSortDirection
+  ): number {
     return Helpers.stringCompare(a.toString(), b.toString()) * Helpers.sortDirection(direction);
   }
 

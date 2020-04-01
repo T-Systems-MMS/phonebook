@@ -11,6 +11,6 @@ import { ActionDrawerDirective } from 'src/app/shared/directives/action-drawer/a
   declarations: [ActionDrawerDirective, ActionDrawerSheetComponent],
   imports: [CommonModule, ClipboardModule, PropagationStopModule, MatButtonModule, MatListModule],
   entryComponents: [ActionDrawerSheetComponent],
-  exports: [ActionDrawerDirective]
+  exports: [ActionDrawerDirective],
 })
 export class ActionDrawerModule {}

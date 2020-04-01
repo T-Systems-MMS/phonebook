@@ -48,9 +48,9 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     MatTooltipModule,
     NotImplementedModule,
     InteractiveAttributeFieldModule,
-    PipesModule
+    PipesModule,
   ],
   declarations: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent],
-  exports: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent]
+  exports: [UserDetailComponent, UserSmallCardComponent, UserTinyCardComponent],
 })
 export class UserModule {}

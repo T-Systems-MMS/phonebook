@@ -14,14 +14,19 @@ describe('ReleaseInfoService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MatDialogModule, MatSnackBarModule, NgxsModule.forRoot([AppState]), HttpClientModule],
+      imports: [
+        MatDialogModule,
+        MatSnackBarModule,
+        NgxsModule.forRoot([AppState]),
+        HttpClientModule,
+      ],
       providers: [
         ReleaseInfoService,
         {
           provide: ThemeService,
-          useValue: null
-        }
-      ]
+          useValue: null,
+        },
+      ],
     });
   });
 
@@ -32,29 +37,61 @@ describe('ReleaseInfoService', () => {
 
 describe('ReleaseInfoService - whatVersionIncrement()', () => {
   it('should return major increment', () => {
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '2.0.0')).toEqual(VersionIncrement.breaking);
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '2.2.0')).toEqual(VersionIncrement.breaking);
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '2.2.2')).toEqual(VersionIncrement.breaking);
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '2.0.0')).toEqual(
+      VersionIncrement.breaking
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '2.2.0')).toEqual(
+      VersionIncrement.breaking
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '2.2.2')).toEqual(
+      VersionIncrement.breaking
+    );
   });
   it('should return minor increment', () => {
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.1.0')).toEqual(VersionIncrement.feature);
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.1.1')).toEqual(VersionIncrement.feature);
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.1.0')).toEqual(
+      VersionIncrement.feature
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.1.1')).toEqual(
+      VersionIncrement.feature
+    );
   });
   it('should return patch increment', () => {
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.0.1')).toEqual(VersionIncrement.bugfix);
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.0.1')).toEqual(
+      VersionIncrement.bugfix
+    );
   });
   it('should return no increment', () => {
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.0.0')).toEqual(VersionIncrement.none);
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '0.1.0')).toEqual(VersionIncrement.none);
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '0.0.1')).toEqual(VersionIncrement.none);
-    expect(ReleaseInfoService.whatVersionIncrement('0.1.0', '0.0.1')).toEqual(VersionIncrement.none);
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.0.0')).toEqual(
+      VersionIncrement.none
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '0.1.0')).toEqual(
+      VersionIncrement.none
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '0.0.1')).toEqual(
+      VersionIncrement.none
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('0.1.0', '0.0.1')).toEqual(
+      VersionIncrement.none
+    );
   });
   it('should return malformated', () => {
-    expect(ReleaseInfoService.whatVersionIncrement('.1.0.0', '1.0.0')).toEqual(VersionIncrement.malformatted);
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.0.0.')).toEqual(VersionIncrement.malformatted);
-    expect(ReleaseInfoService.whatVersionIncrement('0.1.0.0', '1.0.0')).toEqual(VersionIncrement.malformatted);
-    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.0.0.02')).toEqual(VersionIncrement.malformatted);
-    expect(ReleaseInfoService.whatVersionIncrement('1.0a.0', '1.0.0')).toEqual(VersionIncrement.malformatted);
-    expect(ReleaseInfoService.whatVersionIncrement('.1.0.0', '1.%0.0')).toEqual(VersionIncrement.malformatted);
+    expect(ReleaseInfoService.whatVersionIncrement('.1.0.0', '1.0.0')).toEqual(
+      VersionIncrement.malformatted
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.0.0.')).toEqual(
+      VersionIncrement.malformatted
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('0.1.0.0', '1.0.0')).toEqual(
+      VersionIncrement.malformatted
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('1.0.0', '1.0.0.02')).toEqual(
+      VersionIncrement.malformatted
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('1.0a.0', '1.0.0')).toEqual(
+      VersionIncrement.malformatted
+    );
+    expect(ReleaseInfoService.whatVersionIncrement('.1.0.0', '1.%0.0')).toEqual(
+      VersionIncrement.malformatted
+    );
   });
 });

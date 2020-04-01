@@ -28,16 +28,16 @@ describe('SearchComponent', () => {
       declarations: [
         MockComponent({ selector: 'mat-chip-list' }),
         MockComponent({ selector: 'mat-chip', inputs: ['removable'] }),
-        SearchComponent
+        SearchComponent,
       ],
       imports: [
         RouterTestingModule,
         MatIconModule,
         MatSelectModule,
         MatSnackBarModule,
-        NgxsModule.forRoot([SearchState])
+        NgxsModule.forRoot([SearchState]),
       ],
-      providers: []
+      providers: [],
     }).compileComponents();
   }));
 

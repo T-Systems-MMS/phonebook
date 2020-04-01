@@ -1,13 +1,22 @@
 <mat-card [routerLink]="['/user', person.Id]" mat-ripple class="tiny-card">
   <mat-card-header *ngIf="actionButtonIcon">
     <div class="pb-right-top-action">
-      <button propagationStop mat-icon-button [ngClass]="actionButtonClasses" (click)="buttonClicked()">
+      <button
+        propagationStop
+        mat-icon-button
+        [ngClass]="actionButtonClasses"
+        (click)="buttonClicked()"
+      >
         <mat-icon>{{ actionButtonIcon }}</mat-icon>
       </button>
     </div>
   </mat-card-header>
   <mat-card-content>
-    <app-profile-picture class="pb-self-centered circle square-img100" [user]="person" [altText]="person.Id">
+    <app-profile-picture
+      class="pb-self-centered circle square-img100"
+      [user]="person"
+      [altText]="person.Id"
+    >
     </app-profile-picture>
     <div class="information">
       <p class="mat-body-2">{{ person.Id }}</p>

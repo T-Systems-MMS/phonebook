@@ -21,16 +21,15 @@ import { HASH_LONG, HASH_SHORT, VERSION } from 'src/environments/version';
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-expand' },
 })
-
 export class NavigationComponent implements OnInit, OnDestroy {
   public version: typeof VERSION = VERSION;
   public versionHashShort: typeof HASH_SHORT = HASH_SHORT;
   public versionHashLong: typeof HASH_LONG = HASH_LONG;
   public environment: EnvironmentInterface = environment;
   public Environment: typeof Environment = Environment;
-  public firstApril : boolean = false;
+  public firstApril: boolean = false;
   public currentEnvironment: Environment = runtimeEnvironment.environment;
 
   @Select(TableState.resultCount)
@@ -45,13 +44,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
     public featureFlagService: FeatureFlagService,
     public badge: MatBadgeModule,
     public releaseInfoService: ReleaseInfoService
-  ) { }
+  ) {}
 
   public ngOnInit() {
     this.featureFlagService
       .get('firstApril')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(flag => {
+      .subscribe((flag) => {
         this.firstApril = flag;
       });
 
@@ -59,24 +58,26 @@ export class NavigationComponent implements OnInit, OnDestroy {
       .getCurrentUser()
       .pipe(untilComponentDestroyed(this))
       .subscribe(
-        user => {
+        (user) => {
           if (user != null) {
             this.currentUser = user;
           }
         },
-        error => {
+        (error) => {
           this.currentUser = null;
         }
       );
     this.currentUserService
       .doesUserHasImage()
       .pipe(untilComponentDestroyed(this))
-      .subscribe(hasImage => {
+      .subscribe((hasImage) => {
         this.hasImage = hasImage;
       });
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(route => {
-      this.displayTableSettings = this.router.url.includes('search');
-    });
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((route) => {
+        this.displayTableSettings = this.router.url.includes('search');
+      });
   }
 
   public openSettings() {
@@ -84,17 +85,17 @@ export class NavigationComponent implements OnInit, OnDestroy {
     if (this.dialog.openDialogs.length === 0) {
       this.dialog.open(TableSettingsDialog, {
         height: '90vh',
-        width: '90vw'
+        width: '90vw',
       });
     }
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 
   public getGreetingMessage(): Observable<string> {
     return this.featureFlagService.get('firstApril').pipe(
       untilComponentDestroyed(this),
-      map(enabled => {
+      map((enabled) => {
         if (enabled) {
           return $localize`:NavigationBar|Greetings Message on first April@@navigationBarGreetingsMessageFirstApril:Happy April Fools' Day`;
         }

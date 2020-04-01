@@ -10,7 +10,7 @@ import { runtimeEnvironment } from 'src/environments/runtime-environment';
 export class FeatureFlagService {
   private CACHED_FLAGS: Observable<{ [flag: string]: number }>;
   private flagOverwrites: { [flag: string]: boolean } = {
-    firstApril: FeatureFlagService.isFirstApril(new Date())
+    firstApril: FeatureFlagService.isFirstApril(new Date()),
   };
   private flagOverwriteEmitter: EventEmitter<any> = new EventEmitter<any>();
 
@@ -42,7 +42,7 @@ export class FeatureFlagService {
       map(([flags, emitter]) => {
         return this.isEnabled(flag, flags[flag]);
       }),
-      catchError(error => {
+      catchError((error) => {
         return of(false);
       })
     );
@@ -85,9 +85,9 @@ export class FeatureFlagService {
    */
   public getAllDefaultDisabled(): Observable<{ name: string; value: boolean }[]> {
     return this.getFlags().pipe(
-      map(flags => {
+      map((flags) => {
         const returnFlags: { name: string; value: boolean }[] = [];
-        Object.keys(flags).forEach(flag => {
+        Object.keys(flags).forEach((flag) => {
           if (flags[flag] === 0) {
             returnFlags.push({ name: flag, value: this.isEnabled(flag, flags[flag]) });
           }
@@ -113,6 +113,6 @@ export class FeatureFlagService {
 
   public static isFirstApril(date: Date): boolean {
     const firstApril = new Date('2020-04-01T00:00:00');
-   return date.getDate() == firstApril.getDate() && date.getMonth() == firstApril.getMonth();
+    return date.getDate() == firstApril.getDate() && date.getMonth() == firstApril.getMonth();
   }
 }

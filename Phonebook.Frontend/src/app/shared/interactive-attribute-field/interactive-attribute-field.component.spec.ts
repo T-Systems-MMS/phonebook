@@ -7,7 +7,7 @@ xdescribe('InteractiveAttributeFieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [InteractiveAttributeFieldComponent]
+      declarations: [InteractiveAttributeFieldComponent],
     }).compileComponents();
   }));
 

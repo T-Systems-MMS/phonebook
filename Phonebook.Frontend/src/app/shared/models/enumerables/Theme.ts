@@ -3,5 +3,5 @@ export enum Theme {
   blue_dark_theme = 'blue_dark_theme',
   magenta_light_theme = 'magenta_light_theme',
   magenta_dark_theme = 'magenta_dark_theme',
-  unicorn_theme = 'unicorn_theme'
+  unicorn_theme = 'unicorn_theme',
 }

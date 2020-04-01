@@ -11,7 +11,7 @@ import { Location, City, BuildingPart } from 'src/app/shared/models';
   selector: 'app-building',
   templateUrl: './building.component.html',
   styleUrls: ['./building.component.scss'],
-  host: { class: 'pb-height-expand' }
+  host: { class: 'pb-height-expand' },
 })
 export class BuildingComponent implements OnInit {
   public node: BuildingTreeNode = {
@@ -20,7 +20,7 @@ export class BuildingComponent implements OnInit {
     id: '',
     name: '',
     path: [''],
-    type: BuildingPart.building
+    type: BuildingPart.building,
   };
   public building: Location = new Location(new City('', ''), []);
 
@@ -34,10 +34,12 @@ export class BuildingComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.roomService
-        .getNodeByPath(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
-        .subscribe(node => {
+        .getNodeByPath(
+          RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId'])
+        )
+        .subscribe((node) => {
           if (node == null) {
             this.snackBar.open(
               $localize`:BuildingComponent|Error Message if Building does not exist.@@BuildingComponentErrorNoBuilding:Building does not exist.`,
@@ -47,7 +49,7 @@ export class BuildingComponent implements OnInit {
             this.router.navigate(['/rooms']);
           } else {
             this.node = node;
-            this.buildingService.getByBuilding(this.node.name).subscribe(building => {
+            this.buildingService.getByBuilding(this.node.name).subscribe((building) => {
               if (building != null) {
                 this.building = building;
               }
@@ -58,6 +60,8 @@ export class BuildingComponent implements OnInit {
   }
 
   public navigateToFloor(floor: BuildingTreeNode) {
-    this.router.navigateByUrl(RoomHelpers.generateUrlStringFromParamArray([...this.node!.path, floor.name]));
+    this.router.navigateByUrl(
+      RoomHelpers.generateUrlStringFromParamArray([...this.node!.path, floor.name])
+    );
   }
 }

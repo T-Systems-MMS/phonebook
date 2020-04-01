@@ -19,7 +19,7 @@ $custom-typography: mat-typography-config(
   $body-1: mat-typography-level(14px, 20px, 400),
   $caption: mat-typography-level(12px, 20px, 400),
   $button: mat-typography-level(14px, 14px, 500),
-  $input: mat-typography-level(inherit, 1.125, 400)
+  $input: mat-typography-level(inherit, 1.125, 400),
 );
 
 //Global Color Theme Mixin
@@ -82,9 +82,9 @@ $custom-typography: mat-typography-config(
   .mat-toolbar {
     background-color: $unicorn_secondary;
   }
-  
+
   .mat-snack-bar-container {
-    background-color: #a2edff; 
+    background-color: #a2edff;
   }
 
   .mat-card-subtitle {

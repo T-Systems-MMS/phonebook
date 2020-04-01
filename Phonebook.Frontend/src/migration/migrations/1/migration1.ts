@@ -13,7 +13,7 @@ export const migration1: Migration = {
         visibleColumns: Column[];
       } = JSON.parse(tableStateString);
       if (tableState.visibleColumns) {
-        tableState.visibleColumns.forEach(col => {
+        tableState.visibleColumns.forEach((col) => {
           if (col.id != null && (col.id as string) === 'name') {
             col.id = ColumnId.fullname;
           }
@@ -21,5 +21,5 @@ export const migration1: Migration = {
         localStorage.setItem(TABLESTATE_KEY, JSON.stringify(tableState));
       }
     }
-  }
+  },
 };

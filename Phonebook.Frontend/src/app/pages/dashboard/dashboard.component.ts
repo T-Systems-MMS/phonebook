@@ -11,19 +11,19 @@ import {
   BookmarksState,
   SetRecentPeopleDrawer,
   ToggleBookmark,
-  UpdateBookmarkOrder
+  UpdateBookmarkOrder,
 } from 'src/app/shared/states';
 import {
   LastPersonsState,
   RemoveFromLastPersons,
   ResetLastPersons,
-  SetLastPersons
+  SetLastPersons,
 } from 'src/app/shared/states/LastPersons.state';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-expand' },
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   @Select(LastPersonsState)
@@ -38,20 +38,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public removedLastPersons: Person[] | null = null;
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;
-  constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private store: Store,
+    private cd: ChangeDetectorRef,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   public ngOnInit() {
     this.changeOrder();
     this.store
       .select(AppState.recentPeopleDrawer)
       .pipe(untilComponentDestroyed(this))
-      .subscribe(open => {
+      .subscribe((open) => {
         this.drawerOpen = open;
       });
     this.breakpointObserver
       .observe('(max-width: 768px)')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(result => {
+      .subscribe((result) => {
         this.smallScreen = result.matches;
         if (this.smallScreen) {
           this.drawerOpen = false;
@@ -67,8 +71,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
     this.bookmarkedPersonsSubscriptions = this.store
       .select(BookmarksState.sortedBookmarks)
-      .pipe(map(filterFn => filterFn(this.favoriteSort)))
-      .subscribe(persons => {
+      .pipe(map((filterFn) => filterFn(this.favoriteSort)))
+      .subscribe((persons) => {
         this.bookmarkedPersons = persons;
       });
   }

@@ -51,7 +51,7 @@ import { OverviewComponent } from './components/overview/overview.component';
     MatTooltipModule,
     MatSidenavModule,
     UserModule,
-    PipesModule
+    PipesModule,
   ],
   declarations: [
     RoomDetailComponent,
@@ -59,7 +59,7 @@ import { OverviewComponent } from './components/overview/overview.component';
     BuildingComponent,
     FloorComponent,
     CityComponent,
-    OverviewComponent
-  ]
+    OverviewComponent,
+  ],
 })
 export class RoomsModule {}

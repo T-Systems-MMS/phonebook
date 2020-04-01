@@ -8,8 +8,15 @@ import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter
 import { AddressComponent } from 'src/app/shared/components/address/address.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, AddFilterModule, MatListModule, MatButtonModule, MatIconModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    AddFilterModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   declarations: [AddressComponent],
-  exports: [AddressComponent]
+  exports: [AddressComponent],
 })
 export class AddressModule {}

@@ -15,7 +15,7 @@ export class UpdateBookmarkOrder {
 
 @State<Person[]>({
   name: 'bookmarks',
-  defaults: []
+  defaults: [],
 })
 @Injectable()
 export class BookmarksState {
@@ -36,7 +36,7 @@ export class BookmarksState {
   @Action(ToggleBookmark)
   public toggleBookmark(ctx: StateContext<Person[]>, action: ToggleBookmark) {
     const state = ctx.getState();
-    const index = state.findIndex(p => p.Id === action.person.Id);
+    const index = state.findIndex((p) => p.Id === action.person.Id);
     if (index >= 0) {
       // Person exists => Remove
       state.splice(index, 1);

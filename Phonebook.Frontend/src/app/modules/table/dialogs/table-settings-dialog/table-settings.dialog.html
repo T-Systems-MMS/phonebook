@@ -1,22 +1,33 @@
 <div>
   <h1 mat-dialog-title>
-    <ng-container i18n="TableSettingsDialog|Title for Table Column Settings@@TableSettingsDialogTitle">
+    <ng-container
+      i18n="TableSettingsDialog|Title for Table Column Settings@@TableSettingsDialogTitle"
+    >
       Configure Table Columns
     </ng-container>
-    <button class="pb-float-right" mat-icon-button mat-dialog-close><mat-icon>clear</mat-icon></button>
+    <button class="pb-float-right" mat-icon-button mat-dialog-close>
+      <mat-icon>clear</mat-icon>
+    </button>
   </h1>
 </div>
 <mat-dialog-content>
-  <p i18n="TableSettingsDialog|Description for Table Column Settings@@TableSettingsDialogDescription">
-    Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them
-    to the right.
+  <p
+    i18n="TableSettingsDialog|Description for Table Column Settings@@TableSettingsDialogDescription"
+  >
+    Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as
+    well by dragging them to the right.
   </p>
-  <p class="mat-body-2" i18n="TableSettingsDialog|Note for Table Column Settings@@TableSettingsDialogNote">
+  <p
+    class="mat-body-2"
+    i18n="TableSettingsDialog|Note for Table Column Settings@@TableSettingsDialogNote"
+  >
     Note: You can only search for displayed columns.
   </p>
   <div class="pb-container">
     <div>
-      <h2 i18n="TableSettingsDialog|Title of displayed table columns@@TableSettingsDialogSubTitleDisplayedColumns">
+      <h2
+        i18n="TableSettingsDialog|Title of displayed table columns@@TableSettingsDialogSubTitleDisplayedColumns"
+      >
         Displayed Columns:
       </h2>
       <div
@@ -68,7 +79,11 @@
   >
     Reset
   </button>
-  <button mat-button mat-dialog-close i18n="GeneralCloseButton|Button for closing something@@GeneralCloseButton">
+  <button
+    mat-button
+    mat-dialog-close
+    i18n="GeneralCloseButton|Button for closing something@@GeneralCloseButton"
+  >
     Close
   </button>
 </mat-dialog-actions>

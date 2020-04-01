@@ -44,10 +44,10 @@ export class ActionDrawerDirective {
     const actionData: ActionButtonInterface = {
       copy: this.copy,
       tel: this.tel,
-      mailto: this.mailto
+      mailto: this.mailto,
     };
     this.bottomSheet.open(ActionDrawerSheetComponent, {
-      data: actionData
+      data: actionData,
     });
   }
 }

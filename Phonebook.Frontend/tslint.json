@@ -1,64 +1,39 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
-  ],
+  "rulesDirectory": ["node_modules/codelyzer"],
   "rules": {
-    "array-type": [
-      true,
-      "array"
-    ],
+    "array-type": [true, "array"],
     "arrow-return-shorthand": false,
     "await-promise": false,
     "adjacent-overload-signatures": false,
-    "align": [
-      false
-    ],
+    "align": [false],
     "arrow-parens": false,
     "ban": false,
     "callable-types": true,
     "chai-prefer-contains-to-index-of": true,
     "chai-vague-errors": true,
     "class-name": true,
-    "comment-format": [
-      false
-    ],
-    "completed-docs": [
-      false
-    ],
+    "comment-format": [false],
+    "completed-docs": [false],
     "curly": true,
-    "cyclomatic-complexity": [
-      false
-    ],
+    "cyclomatic-complexity": [false],
     "eofline": false,
     "export-name": true,
-    "file-header": [
-      false
-    ],
+    "file-header": [false],
     "forin": true,
     "function-name": true,
     "import-blacklist": false,
     "import-name": true,
     "import-spacing": true,
-    "indent": [
-      true,
-      "spaces"
-    ],
+    "indent": [true, "spaces"],
     "insecure-random": true,
     "interface-name": false,
     "interface-over-type-literal": false,
     "jquery-deferred-must-complete": true,
     "jsdoc-format": false,
     "label-position": true,
-    "linebreak-style": [
-      true,
-      "LF"
-    ],
-    "max-classes-per-file": [
-      false
-    ],
-    "max-file-line-count": [
-      false
-    ],
+    "linebreak-style": [true, "LF"],
+    "max-classes-per-file": [false],
+    "max-file-line-count": [false],
     "max-func-body-length": [
       true,
       100,
@@ -66,14 +41,9 @@
         "ignore-parameters-to-function-regex": "describe"
       }
     ],
-    "max-line-length": [
-      true,
-      140
-    ],
+    "max-line-length": [true, 140],
     "member-access": true,
-    "member-ordering": [
-      false
-    ],
+    "member-ordering": [false],
     "missing-jsdoc": true,
     "missing-optional-annotation": true,
     "mocha-avoid-only": true,
@@ -88,18 +58,8 @@
     "no-bitwise": true,
     "no-boolean-literal-compare": false,
     "no-conditional-assignment": true,
-    "no-consecutive-blank-lines": [
-      true
-    ],
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "log",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-consecutive-blank-lines": [true],
+    "no-console": [true, "debug", "info", "log", "time", "timeEnd", "trace"],
     "no-constant-condition": true,
     "no-construct": true,
     "no-control-regex": true,
@@ -125,11 +85,7 @@
     "no-for-in-array": false,
     "no-function-constructor-with-string-args": true,
     "no-function-expression": true,
-    "no-http-string": [
-      true,
-      "http://www.example.com/?.*",
-      "http://www.examples.com/?.*"
-    ],
+    "no-http-string": [true, "http://www.example.com/?.*", "http://www.examples.com/?.*"],
     "no-import-side-effect": true,
     "no-increment-decrement": true,
     "no-inferrable-types": false,
@@ -144,9 +100,7 @@
     "no-mergeable-namespace": false,
     "no-missing-visibility-modifiers": true,
     "no-misused-new": true,
-    "no-multiline-string": [
-      true
-    ],
+    "no-multiline-string": [true],
     "no-multiple-var-decl": true,
     "no-namespace": false,
     "no-null-keyword": false,
@@ -190,28 +144,13 @@
     "no-void-expression": false,
     "no-with-statement": true,
     "non-literal-require": true,
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ],
+    "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-shorthand": false,
     "object-literal-sort-keys": false,
-    "one-line": [
-      true,
-      "check-open-brace",
-      "check-catch",
-      "check-else",
-      "check-whitespace"
-    ],
+    "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
     "one-variable-per-declaration": true,
-    "only-arrow-functions": [
-      true,
-      "allow-declarations",
-      "allow-named-functions"
-    ],
-    "ordered-imports": [
-      false
-    ],
+    "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
+    "ordered-imports": [false],
     "possible-timing-attack": true,
     "prefer-array-literal": true,
     "prefer-const": true,
@@ -223,10 +162,7 @@
     "strict-type-predicates": false,
     "promise-function-async": false,
     "promise-must-complete": true,
-    "quotemark": [
-      true,
-      "single"
-    ],
+    "quotemark": [true, "single"],
     "radix": false,
     "react-a11y-anchors": true,
     "react-a11y-aria-unsupported-elements": true,
@@ -249,10 +185,7 @@
     "react-tsx-curly-spacing": true,
     "react-unused-props-and-state": true,
     "restrict-plus-operands": false,
-    "semicolon": [
-      true,
-      "always"
-    ],
+    "semicolon": [true, "always"],
     "space-before-function-paren": false,
     "strict-boolean-expressions": false,
     "switch-default": false,
@@ -263,19 +196,9 @@
         "multiline": "never"
       }
     ],
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
-    "typedef": [
-      true,
-      "parameter",
-      "property-declaration",
-      "member-variable-declaration"
-    ],
-    "typedef-whitespace": [
-      false
-    ],
+    "triple-equals": [true, "allow-null-check"],
+    "typedef": [true, "parameter", "property-declaration", "member-variable-declaration"],
+    "typedef-whitespace": [false],
     "typeof-compare": true,
     "underscore-consistent-invocation": true,
     "unified-signatures": true,
@@ -296,18 +219,8 @@
       "severity": "warn"
     },
     "no-non-null-assertion": true,
-    "directive-selector": [
-      true,
-      "attribute",
-      "app",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "app",
-      "kebab-case"
-    ],
+    "directive-selector": [true, "attribute", "app", "camelCase"],
+    "component-selector": [true, "element", "app", "kebab-case"],
     "no-output-on-prefix": true,
     "no-inputs-metadata-property": true,
     "no-outputs-metadata-property": true,

@@ -31,13 +31,21 @@ describe('Helpers - stringCompare()', () => {
   });
 
   it('"abcdefghijklmnopqrstuvwxy" before "abcdefghijklmnopqrstuvwxyz"', () => {
-    expect(Helpers.stringCompare('abcdefghijklmnopqrstuvwxy', 'abcdefghijklmnopqrstuvwxyz')).toBeLessThan(0);
-    expect(Helpers.stringCompare('abcdefghijklmnopqrstuvwxyz', 'abcdefghijklmnopqrstuvwxy')).toBeGreaterThan(0);
+    expect(
+      Helpers.stringCompare('abcdefghijklmnopqrstuvwxy', 'abcdefghijklmnopqrstuvwxyz')
+    ).toBeLessThan(0);
+    expect(
+      Helpers.stringCompare('abcdefghijklmnopqrstuvwxyz', 'abcdefghijklmnopqrstuvwxy')
+    ).toBeGreaterThan(0);
   });
 
   it('"abcdefghijklmnopqrstuvwxy" before "ABCDEFGHIJKLMNOPQRSTUVWXYZ"', () => {
-    expect(Helpers.stringCompare('abcdefghijklmnopqrstuvwxy', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')).toBeLessThan(0);
-    expect(Helpers.stringCompare('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxy')).toBeGreaterThan(0);
+    expect(
+      Helpers.stringCompare('abcdefghijklmnopqrstuvwxy', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    ).toBeLessThan(0);
+    expect(
+      Helpers.stringCompare('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxy')
+    ).toBeGreaterThan(0);
   });
 
   it('"ä" before "a"', () => {
@@ -141,15 +149,17 @@ describe('Helpers - malformattedNumberToNumber()', () => {
 describe('Helpers - stripNonNumericalCharacters()', () => {
   it('should strip all non Numericals', () => {
     expect(
-      Helpers.stripNonNumericalCharacters('ab1cdef2ghijk3lmn4opqrst5uv6w7xyz8!"§%9&/()=?\\*+~#-.0,;:_><|`´')
+      Helpers.stripNonNumericalCharacters(
+        'ab1cdef2ghijk3lmn4opqrst5uv6w7xyz8!"§%9&/()=?\\*+~#-.0,;:_><|`´'
+      )
     ).toEqual('1234567890');
   });
 });
 
 describe('Helpers - removeAccents', () => {
   it('remove Accents', () => {
-    expect(Helpers.removeAccents('ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž')).toEqual(
-      'AAAAAAaaaaaaOOOOOOoooooEEEEeeeeCcIIIIiiiiUUUUuuuuNnSsYyyZz'
-    );
+    expect(
+      Helpers.removeAccents('ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž')
+    ).toEqual('AAAAAAaaaaaaOOOOOOoooooEEEEeeeeCcIIIIiiiiUUUUuuuuNnSsYyyZz');
   });
 });

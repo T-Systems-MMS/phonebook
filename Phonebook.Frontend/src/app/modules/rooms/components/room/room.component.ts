@@ -14,7 +14,7 @@ import { Person, Room } from 'src/app/shared/models';
   selector: 'app-room',
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.scss'],
-  host: { class: 'pb-height-expand' }
+  host: { class: 'pb-height-expand' },
 })
 export class RoomDetailComponent implements OnInit {
   public room: Room = Room.empty();
@@ -38,10 +38,12 @@ export class RoomDetailComponent implements OnInit {
   public node: BuildingTreeNode | undefined;
 
   public ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.roomService
-        .getNodeByPath(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
-        .subscribe(node => {
+        .getNodeByPath(
+          RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId'])
+        )
+        .subscribe((node) => {
           if (node == null) {
             this.snackBar.open(
               $localize`:RoomComponent|Error Message if Room does not exist.@@RoomComponentErrorNoRoom:Room does not exist.`,
@@ -55,8 +57,10 @@ export class RoomDetailComponent implements OnInit {
             this.room = this.node.data as Room;
           }
           this.personService
-            .getPersonsByRoom(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
-            .subscribe(person => {
+            .getPersonsByRoom(
+              RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId'])
+            )
+            .subscribe((person) => {
               this.persons = person;
             });
         });

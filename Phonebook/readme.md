@@ -1,7 +1,7 @@
 # Phonebook Application
 
 The Deployment Guide for the Phonebook.
-We use [traefik](https://traefik.io/) under the hood. 
+We use [traefik](https://traefik.io/) under the hood.
 
 ## Deployment
 
@@ -11,17 +11,17 @@ We use [traefik](https://traefik.io/) under the hood.
 
 1. Create your `values.yml`. For settings look [here](#Settings).
 
-    ```yml
-    # Minimal Working Example
-    host: &host 'example.com'
-    contactUrl: '<Your Contact Url, maybe an issue tracker?>'
-    roomPlanningToolUrl: '<Url to your Room Planning Tool>'
-    contactEmail: &contactEmail '<Your Contact Email>'
-    employeePictureEndpoint: '<Url To you User Picture Endpoint>'
-    assetsEndpoint: '<Url To you User Assets Endpoint>'
-    ```
+   ```yml
+   # Minimal Working Example
+   host: &host 'example.com'
+   contactUrl: '<Your Contact Url, maybe an issue tracker?>'
+   roomPlanningToolUrl: '<Url to your Room Planning Tool>'
+   contactEmail: &contactEmail '<Your Contact Email>'
+   employeePictureEndpoint: '<Url To you User Picture Endpoint>'
+   assetsEndpoint: '<Url To you User Assets Endpoint>'
+   ```
 
-    For a more complete Example have a look at our demo [values.yml](../demo/values.yml).
+   For a more complete Example have a look at our demo [values.yml](../demo/values.yml).
 
 2. Install your Phonebook application by running `helm install --values ./path/to/your/values.yml https://github.com/T-Systems-MMS/phonebook/releases/download/<latest release>/phonebook.tgz`
 

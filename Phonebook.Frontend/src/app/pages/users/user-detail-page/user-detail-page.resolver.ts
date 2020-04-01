@@ -8,7 +8,7 @@ import { PersonService } from 'src/app/services/api/person.service';
 import { Person } from 'src/app/shared/models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserDetailPageResolver implements Resolve<Person> {
   constructor(private personSearchService: PersonService, private snackBar: MatSnackBar) {}
@@ -17,14 +17,14 @@ export class UserDetailPageResolver implements Resolve<Person> {
     const personId = route.paramMap.get('id');
     if (personId) {
       return this.personSearchService.getById(personId).pipe(
-        map(person => {
+        map((person) => {
           if (person == null) {
             throw new Error();
           } else {
             return person;
           }
         }),
-        catchError(err => {
+        catchError((err) => {
           this.snackBar.open(
             $localize`:UserDetailPageResolver|First part of the message displayed when a user is not found@@UserDetailPageResolverNotFoundFirstPart:User with Id` +
               ' "' +
