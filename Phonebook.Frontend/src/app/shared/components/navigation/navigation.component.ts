@@ -89,7 +89,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 
   public getGreetingMessage(): Observable<string> {
     return this.featureFlagService.get('firstApril').pipe(

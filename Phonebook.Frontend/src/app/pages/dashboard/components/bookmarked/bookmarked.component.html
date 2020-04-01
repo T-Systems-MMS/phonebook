@@ -69,7 +69,7 @@
     on a workmates page.
   </div>
   </div>
-  <div class="different-cards bottom-button">
+  <div class="different-cards bottom-button" *ngIf='currentUser != null'>
     <button class="navigation-button" mat-button [routerLink]="['/team']">
       <div class="card-navigation">
       <mat-icon>keyboard_arrow_up</mat-icon>

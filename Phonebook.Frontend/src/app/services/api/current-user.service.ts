@@ -41,6 +41,7 @@ export class CurrentUserService {
   }
 
   public getCurrentUserId(): Observable<string> {
+    return of ('');
     return this.getCurrentUserObject().pipe(
       map(str => {
         // Userstring Layout is "Domain\\user"

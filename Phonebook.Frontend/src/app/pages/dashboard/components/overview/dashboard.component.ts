@@ -13,6 +13,7 @@ import {
   SetLastPersons
 } from 'src/app/shared/states/LastPersons.state';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { MatDrawerMode } from '@angular/material/sidenav';
 @Component({
   selector: 'app-dashboard',
@@ -34,10 +35,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public drawerOpen: boolean = !this.breakpointObserver.isMatched('(max-width: 768px)');
   public drawerMode: MatDrawerMode = 'side';
   public smallerScreen: boolean = false;
+  public currentUser: Person | null = null;
   constructor(private store: Store,
     private cd: ChangeDetectorRef,
     private breakpointObserver: BreakpointObserver,
-    private router: Router) {}
+    private router: Router,
+    private currentUserService: CurrentUserService) {}
 
   public ngOnInit() {
     this.changeOrder();
@@ -47,7 +50,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(result => {
         this.drawerMode = !result.matches ? 'side' : 'push';
       });
-    this.redirectToTeam();
+    this.currentUserService
+    .getCurrentUser()
+    .pipe(untilComponentDestroyed(this))
+    .subscribe(
+      user => {
+        if (user != null && this.bookmarkedPersons.length === 0) {
+          this.router.navigate(['/team']);
+        }
+      },
+      error => {
+        this.currentUser = null;
+      }
+    ); console.log(this.currentUser);
   }
 
   public changeOrder() {
@@ -78,10 +93,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.store.dispatch(new RemoveFromLastPersons(person));
   }
 
-  public redirectToTeam() {
-    if (this.bookmarkedPersons.length === 0) {
-      this.router.navigate(['/team']);
-    }
-  }
   ngOnDestroy(): void {}
 }
