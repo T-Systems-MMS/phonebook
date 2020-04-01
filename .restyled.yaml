@@ -1,5 +1,9 @@
 ---
-enabled: false
-#   restylers:
-#     - prettier
-#     - prettier-
+enabled: true
+  restylers:
+    - prettier
+    - prettier-json
+    - prettier-markdown
+    - prettier-yaml
+    - prettier
+    
