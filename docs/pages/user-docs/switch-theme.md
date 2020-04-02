@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Subpages
+title: Settings
 parent: User Guide
 nav_order: 650
 ---
