@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable, combineLatest, UnsubscriptionError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, combineLatest, of } from 'rxjs';
+import { catchError, map, endWith } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 @Injectable()
 export class OrganigramService {
+  public team: UnitTreeNode;
   constructor(private personService: PersonService, private currentUserService: CurrentUserService) {}
 
   public getOrganigram(): Observable<UnitTreeNode[]> {
@@ -51,29 +52,6 @@ export class OrganigramService {
     }
   }
 
-  public getUnitForUser(): Observable<UnitTreeNode | null> {
-    return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigram()]).pipe(
-      map(([user, organigram]) => {
-        if (user != null) {
-          for (let node0 of organigram) {
-            if (node0.name === user.Business.OrgUnit[0]) {
-              for (let node1 of node0.children) {
-                if (node1.name === user.Business.OrgUnit[1]) {
-                  for (let node2 of node1.children) {
-                    if (node2.name === user.Business.OrgUnit[2]) {
-                      return node2;
-                    }
-                  } return node1;
-                }
-              } return node0;
-            }
-          }
-        }
-        return null;
-      })
-    );
-  }
-
   public pushToSpecificGroup(node: UnitTreeNode, person: Person) {
     if (person.isLearner()) {
       node.learners.push(person);
@@ -84,6 +62,33 @@ export class OrganigramService {
     } else {
       node.employees.push(person);
     }
+  }
+
+  public getNode(): Observable<UnitTreeNode | null> {
+    return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigram()]).pipe(
+      map(([user, organigram]) => {
+        if (user === null) {
+        return;
+        }
+        return this.getNodeForUser(user, organigram,  0);
+      })
+    );
+  }
+
+  public getNodeForUser(user: Person, nodeChilds: UnitTreeNode[], depth: number) {
+    if (user.Business.OrgUnit.length !== 0) {
+      for (let node of nodeChilds) {
+            if (node.name === user.Business.OrgUnit[depth] && depth > user.Business.OrgUnit.length) {
+            return null;
+          } else if (node.name === user.Business.OrgUnit[depth] && depth < user.Business.OrgUnit.length - 1) {
+            this.getNodeForUser(user, node.children, depth + 1);
+          } else if (node.name === user.Business.OrgUnit[depth] && depth === user.Business.OrgUnit.length - 1 ) {
+            this.team = node;
+            break;
+          } else { continue; }
+        }
+    } else { return null; }
+    return this.team;
   }
 }
 
