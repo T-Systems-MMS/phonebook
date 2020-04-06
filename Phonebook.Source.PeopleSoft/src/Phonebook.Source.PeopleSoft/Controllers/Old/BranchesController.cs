@@ -34,7 +34,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers.Old
                     ReceptionFax = string.Empty,
                     Description = b?.Key?.Address,
                     ReceptionPhone = string.Empty,
-                    LinkPicture = string.Empty,
+                    LinkPicture = b?.Key.Id,
                     LinkRoutingInfo = string.Empty,
                     City = new
                     {
