@@ -30,6 +30,7 @@ namespace Phonebook.Source.PeopleSoft
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddResponseCompression();
 			services.AddControllers().AddJsonOptions(o => o.JsonSerializerOptions.PropertyNamingPolicy = null);
 			if (Configuration.GetValue<bool>("useSeeding"))
 			{
@@ -169,6 +170,8 @@ namespace Phonebook.Source.PeopleSoft
 			app.UseHttpsRedirection();
 			app.UseAuthentication();
 			app.UseAuthorization();
+
+			app.UseResponseCompression();
 
 			app.UseEndpoints(endpoints =>
 			 {
