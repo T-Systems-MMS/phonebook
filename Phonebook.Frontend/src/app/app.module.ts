@@ -50,8 +50,6 @@ import {
   TableState
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
-import { BookmarkedComponent } from 'src/app/pages/dashboard/components/bookmarked/bookmarked.component';
-import { TeamComponent } from 'src/app/pages/dashboard/components/team/team.component';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
@@ -63,10 +61,7 @@ declare const require;
     AppComponent,
     SearchComponent,
     NavigationComponent,
-    OnlineBarComponent,
-    DashboardComponent,
-    BookmarkedComponent,
-    TeamComponent],
+    OnlineBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

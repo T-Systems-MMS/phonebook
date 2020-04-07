@@ -43,7 +43,7 @@ export class TeamComponent implements OnInit, OnDestroy {
     .subscribe(
       user => {
         if (user === null) {
-          this.router.navigate(['']);
+          this.router.navigate(['/dashboard/bookmarked']);
         }
       },
       error => {

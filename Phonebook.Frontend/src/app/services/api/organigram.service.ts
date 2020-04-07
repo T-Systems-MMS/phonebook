@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, combineLatest, of } from 'rxjs';
-import { catchError, map, endWith } from 'rxjs/operators';
+import { Observable, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
@@ -64,7 +64,7 @@ export class OrganigramService {
     }
   }
 
-  public getNode(): Observable<UnitTreeNode | null> {
+  public getNode(): Observable<UnitTreeNode | null | undefined> {
     return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigram()]).pipe(
       map(([user, organigram]) => {
         if (user === null) {

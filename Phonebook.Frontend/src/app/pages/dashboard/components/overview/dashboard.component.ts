@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     .subscribe(
       user => {
         if (user != null && this.bookmarkedPersons.length === 0) {
-          this.router.navigate(['/team']);
+          this.router.navigate(['/dashboard/team']);
         }
       },
       error => {
