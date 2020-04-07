@@ -66,21 +66,21 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                     new Person()
                     {
                         Id = p.Id,
-                        EMail = p.EMail,
-                        FAX = p.FAX,
-                        FirstName = p.FirstName,
+                        EMail = p.EMail == null? string.Empty: p.EMail,
+                        FAX = p.FAX == null ? string.Empty : p.FAX,
+                        FirstName = p.FirstName == null? string.Empty : p.FirstName,
                         FunctionId = p.FunctionId,
                         Function = p.Function != null ? new Function() { Id = p.Function.Id, Label = p.Function.Label, Code = p.Function.Code } : null,
-                        LastName = p.LastName,
-                        MobilPhone = p.MobilPhone,
+                        LastName = p.LastName == null? string.Empty : p.LastName,
+                        MobilPhone = p.MobilPhone == null ? string.Empty : p.MobilPhone,
                         OrgUnit = p.OrgUnit != null ? CreateOrgUnitTree(p.OrgUnit) : new OrgUnit(),
                         //OrgUnitId = p.OrgUnitId,
-                        Phone = p.Phone,
+                        Phone = p.Phone == null ? string.Empty : p.Phone,
                         Room = p.Room != null ? CreateRoomTree(p.Room) : new Room(),
-                        ShortName = p.ShortName,
+                        ShortName = p.ShortName == null ? string.Empty : p.ShortName,
                         StatusId = p.StatusId,
                         Status = p.Status != null ? new Status() { Id = p.Status.Id, Name = p.Status.Name, Code = p.Status.Code } : null,
-                        Title = p.Title,
+                        Title = p.Title == null ? string.Empty : p.Title,
                         RoomId = p.RoomId
                     });
 
