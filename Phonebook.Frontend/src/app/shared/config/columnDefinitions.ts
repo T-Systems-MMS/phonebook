@@ -27,6 +27,7 @@ export const ColumnDefinitions: {
 } = {
   picture: {
     id: ColumnId.picture,
+    title: $localize`:TableComponent|Title of Table Column "Picture"@@ColumnTitlePicture:Picture`,
     rank: 0,
     filterable: false,
     sortable: false,
@@ -40,6 +41,7 @@ export const ColumnDefinitions: {
   },
   id: {
     id: ColumnId.id,
+    title: $localize`:TableComponent|Title of Table Column "Id"@@ColumnTitleId:Id`,
     rank: 100,
     filterable: true,
     sortable: true,
@@ -53,6 +55,7 @@ export const ColumnDefinitions: {
   },
   fullname: {
     id: ColumnId.fullname,
+    title: $localize`:TableComponent|Title of Table Column "Name"@@ColumnTitleFullName:Name`,
     rank: 50,
     filterable: true,
     sortable: true,
@@ -74,6 +77,7 @@ export const ColumnDefinitions: {
   },
   email: {
     id: ColumnId.email,
+    title: $localize`:TableComponent|Title of Table Column "Email"@@ColumnEmailName:Email`,
     rank: 30,
     filterable: true,
     sortable: false,
@@ -87,6 +91,7 @@ export const ColumnDefinitions: {
   },
   phone: {
     id: ColumnId.phone,
+    title: $localize`:TableComponent|Title of Table Column "Phone"@@ColumnTitlePhone:Phone`,
     rank: 1,
     filterable: true,
     sortable: true,
@@ -105,6 +110,7 @@ export const ColumnDefinitions: {
   },
   mobile: {
     id: ColumnId.mobile,
+    title: $localize`:TableComponent|Title of Table Column "Mobile"@@ColumnTitleMobile:Mobile`,
     rank: 1,
     filterable: true,
     sortable: true,
@@ -123,6 +129,7 @@ export const ColumnDefinitions: {
   },
   role: {
     id: ColumnId.role,
+    title: $localize`:TableComponent|Title of Table Column "Role"@@ColumnTitleRole:Role`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -136,6 +143,7 @@ export const ColumnDefinitions: {
   },
   city: {
     id: ColumnId.city,
+    title: $localize`:TableComponent|Title of Table Column "City"@@ColumnTitleCity:City`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -149,6 +157,7 @@ export const ColumnDefinitions: {
   },
   orgUnit: {
     id: ColumnId.orgUnit,
+    title: $localize`:TableComponent|Title of Table Column "Organization Unit"@@ColumnTitleOrgUnit:Organization Unit`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -174,6 +183,7 @@ export const ColumnDefinitions: {
   },
   room: {
     id: ColumnId.room,
+    title: $localize`:TableComponent|Title of Table Column "Room"@@ColumnTitleRoom:Room`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -193,6 +203,7 @@ export const ColumnDefinitions: {
   },
   building: {
     id: ColumnId.building,
+    title: $localize`:TableComponent|Title of Table Column "Building"@@ColumnTitleBuilding:Building`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -212,6 +223,7 @@ export const ColumnDefinitions: {
   },
   costcenter: {
     id: ColumnId.costcenter,
+    title: $localize`:TableComponent|Title of Table Column "Profitcenter" once Costcenter@@ColumnTitleCostcenter:Profitcenter`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -225,6 +237,7 @@ export const ColumnDefinitions: {
   },
   status: {
     id: ColumnId.status,
+    title: $localize`:TableComponent|Title of Table Column "Status"@@DataPersonStatus:Status`,
     rank: 10,
     filterable: true,
     sortable: true,

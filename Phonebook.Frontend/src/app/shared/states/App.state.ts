@@ -1,7 +1,7 @@
+import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
-import { Injectable } from '@angular/core';
 
 export class ServiceWorkerNotificationDisplayed {
   public static readonly type: string = '[App State] Service Worker Notification displayed';
@@ -30,6 +30,11 @@ export class InitTheme {
   public static readonly type: string = '[App State] Init activeTheme';
 }
 
+export class SetRecentPeopleDrawer {
+  public static readonly type: string = '[App State] Set recentPeopleDrawer';
+  constructor(public active: boolean) {}
+}
+
 export interface AppStateModel {
   serviceWorkerNotificationDisplayed: boolean;
   version: string;
@@ -40,6 +45,7 @@ export interface AppStateModel {
    */
   sendFeedback: boolean | null;
   activeTheme: Theme;
+  recentPeopleDrawer: boolean;
 }
 
 @State<AppStateModel>({
@@ -49,7 +55,8 @@ export interface AppStateModel {
     version: '0.0.0',
     displayedNotificationVersion: 0,
     sendFeedback: null,
-    activeTheme: Theme.magenta_light_theme
+    activeTheme: Theme.magenta_light_theme,
+    recentPeopleDrawer: true
   }
 })
 @Injectable()
@@ -76,6 +83,10 @@ export class AppState {
   @Selector()
   public static sendFeedback(state: AppStateModel): boolean | null {
     return state.sendFeedback;
+  }
+  @Selector()
+  public static recentPeopleDrawer(state: AppStateModel): boolean {
+    return state.recentPeopleDrawer;
   }
 
   @Action(ServiceWorkerNotificationDisplayed)
@@ -127,5 +138,14 @@ export class AppState {
   public initTheme(ctx: StateContext<AppStateModel>) {
     const state = ctx.getState();
     this.themeService.setTheme(state.activeTheme);
+  }
+
+  @Action(SetRecentPeopleDrawer)
+  public setDrawer(ctx: StateContext<AppStateModel>, action: SetRecentPeopleDrawer) {
+    const state = ctx.getState();
+    ctx.setState({
+      ...state,
+      recentPeopleDrawer: action.active
+    });
   }
 }
