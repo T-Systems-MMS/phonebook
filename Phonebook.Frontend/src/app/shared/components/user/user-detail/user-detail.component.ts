@@ -40,6 +40,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   @Input()
   public previewView: boolean = false;
   public rocketChatLink: string | null = null;
+  public organigramLink: string[] = ['/organigram'];
   constructor(
     private snackBar: MatSnackBar,
     private mailService: MailService,
@@ -83,6 +84,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
       nickname: this.person.Id
     };
+    this.organigramLink = this.organigramLink.concat(this.person.Business.ShortOrgUnit);
   }
 
   public sendMail() {
