@@ -96,7 +96,7 @@
         <mat-toolbar color="primary">
           <mat-toolbar-row class="mat-elevation-z6">
             <div class="left app-title">
-              <button mat-button [routerLink]="['/']" *ngIf="firstApril != true">
+              <button mat-button [routerLink]="['/']" *ngIf="unicornActive != true">
                 <span
                   class="mat-display-1"
                   id="title"
@@ -115,7 +115,7 @@
               </button>
             </div>
 
-            <div id="unicorn" *featureFlag="'firstApril'">
+            <div id="unicorn" *ngIf="unicornActive">
               <button mat-button [routerLink]="['/']">
                 <img src="assets/gif/RainbowCloud.gif" height="50px;" />
               </button>

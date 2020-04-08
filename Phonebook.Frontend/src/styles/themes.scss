@@ -67,10 +67,12 @@ $custom-typography: mat-typography-config(
   }
   .mat-table,
   .mat-card,
-  .mat-tab-group {
+  .mat-tab-group,
+  .mat-dialog-container {
     background-color: $unicorn_mat-color;
   }
   .mat-button,
+  .mat-stroked-button.mat-primary,
   .mat-option.mat-selected,
   .mat-button.mat-primary,
   .mat-snack-bar-container {
@@ -82,9 +84,13 @@ $custom-typography: mat-typography-config(
   .mat-toolbar {
     background-color: $unicorn_secondary;
   }
-  
+
   .mat-snack-bar-container {
-    background-color: #a2edff; 
+    background-color: #a2edff;
+  }
+  a,
+  b {
+    color: $unicorn-primary-text;
   }
 
   .mat-card-subtitle {
