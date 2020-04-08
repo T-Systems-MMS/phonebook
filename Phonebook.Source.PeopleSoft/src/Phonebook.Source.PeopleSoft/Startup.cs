@@ -59,7 +59,7 @@ namespace Phonebook.Source.PeopleSoft
 #if DEBUG
             Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 #endif
-            if (Configuration.GetValue<bool>("useAnonymos"))
+            if (Configuration.GetValue<bool>("useAnonymous"))
             {
                 if (!Configuration.GetValue<bool>("useSeeding"))
                 {
@@ -179,7 +179,7 @@ namespace Phonebook.Source.PeopleSoft
             app.UseResponseCompression();
 
             app.UseEndpoints(endpoints =>
-             {
+             {                 
                  endpoints.MapControllers();
              });
         }
