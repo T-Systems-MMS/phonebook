@@ -67,7 +67,8 @@ $custom-typography: mat-typography-config(
   }
   .mat-table,
   .mat-card,
-  .mat-tab-group {
+  .mat-tab-group,
+  .mat-dialog-container {
     background-color: $unicorn_mat-color;
   }
   .mat-button,
@@ -88,7 +89,7 @@ $custom-typography: mat-typography-config(
     background-color: #a2edff;
   }
   a,
-  b{
+  b {
     color: $unicorn-primary-text;
   }
 
