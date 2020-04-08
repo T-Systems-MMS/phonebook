@@ -1,6 +1,6 @@
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable, Subscription } from 'rxjs';
@@ -9,23 +9,23 @@ import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { Layout } from 'src/app/shared/models/enumerables/Layout';
 import {
   AppState,
-  SetLayout,
   BookmarksState,
+  SetLayout,
   SetRecentPeopleDrawer,
   ToggleBookmark,
-  UpdateBookmarkOrder
+  UpdateBookmarkOrder,
 } from 'src/app/shared/states';
 import {
   LastPersonsState,
   RemoveFromLastPersons,
   ResetLastPersons,
-  SetLastPersons
+  SetLastPersons,
 } from 'src/app/shared/states/LastPersons.state';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-expand' },
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   @Select(LastPersonsState)
@@ -40,8 +40,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public removedLastPersons: Person[] | null = null;
   @Select(AppState.activeLayout)
   public layoutValue$: Observable<Layout>;
-  public layouts: string[] = Object.values(Layout);
-  public layoutSetting: string;
   public layout: typeof Layout = Layout;
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;
@@ -49,20 +47,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.changeOrder();
-    const activeLayoutState = this.store.selectOnce(state => state.appstate.activeLayout);
-    activeLayoutState.subscribe(d => {
-      this.layoutSetting = d;
-    });
     this.store
       .select(AppState.recentPeopleDrawer)
       .pipe(untilComponentDestroyed(this))
-      .subscribe(open => {
+      .subscribe((open) => {
         this.drawerOpen = open;
       });
     this.breakpointObserver
       .observe('(max-width: 768px)')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(result => {
+      .subscribe((result) => {
         this.smallScreen = result.matches;
         if (this.smallScreen) {
           this.drawerOpen = false;
@@ -78,8 +72,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
     this.bookmarkedPersonsSubscriptions = this.store
       .select(BookmarksState.sortedBookmarks)
-      .pipe(map(filterFn => filterFn(this.favoriteSort)))
-      .subscribe(persons => {
+      .pipe(map((filterFn) => filterFn(this.favoriteSort)))
+      .subscribe((persons) => {
         this.bookmarkedPersons = persons;
       });
   }

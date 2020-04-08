@@ -37,9 +37,8 @@
           <div
             *ngIf="(lastPersons$ | async)?.length === 0"
             i18n="
-               DashboardComponent|Message displayed if no people have been visited
-              recently@@DashboardComponentDescriptionRecent
-            "
+              DashboardComponent|Message displayed if no people have been visited
+              recently@@DashboardComponentDescriptionRecent"
           >
             Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most
             recent ones will be displayed here.
@@ -59,9 +58,7 @@
             <mat-option
               value=""
               i18n="
-                 DashboardComponent|The standard (customizable) order of the favorite cards@@DashboardComponentOrderNone
-
-              "
+                DashboardComponent|The standard (customizable) order of the favorite cards@@DashboardComponentOrderNone"
             >
               Custom Order</mat-option
             >
@@ -81,72 +78,72 @@
         </mat-form-field>
       </div>
       <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
-      <div cdkDropListGroup class="pb-flex-row">
-        <div *ngIf="layoutSetting === layout.view_list "class="card-display">
-        <div
-          *ngFor="let person of bookmarkedPersons; index as i"
-          cdkDropList
-          [cdkDropListData]="i"
-          cdkDropListOrientation="horizontal"
-          class="list-container"
-        >
-        <app-user-list-card
-            [person]="person"
-            [actionButtonIcon]="'close'"
-            [actionButtonClasses]="'white'"
-            (actionButtonClicked)="removeFromBookmarkedPersons(person)"
-            class="pb-list-card pb-card pb-flex-row"
-            cdkDrag
-            (cdkDragEntered)="entered($event)"
-            (cdkDragEnded)="ended($event)"
-            [cdkDragData]="i"
-            [cdkDragDisabled]="favoriteSort != ''"
-        ></app-user-list-card>
-      </div>
-      </div>
-      <div *ngIf="layoutSetting === layout.view_module "class="card-display">
-      <div
-      *ngFor="let person of bookmarkedPersons; index as i"
-      cdkDropList
-      [cdkDropListData]="i"
-      cdkDropListOrientation="horizontal"
-      class="module-stream-container"
-        >
-        <app-user-small-card 
-            [person]="person"
-            [actionButtonIcon]="'close'"
-            [actionButtonClasses]="'white'"
-            (actionButtonClicked)="removeFromBookmarkedPersons(person)"
-            class="pb-small-card pb-card"
-            cdkDrag
-            (cdkDragEntered)="entered($event)"
-            (cdkDragEnded)="ended($event)"
-            [cdkDragData]="i"
-            [cdkDragDisabled]="favoriteSort != ''"
-          ></app-user-small-card>
+      <div cdkDropListGroup class="pb-flex-row" [ngSwitch]="layoutValue$ | async">
+        <div *ngSwitchCase="layout.view_list" class="card-display">
+          <div
+            *ngFor="let person of bookmarkedPersons; index as i"
+            cdkDropList
+            [cdkDropListData]="i"
+            cdkDropListOrientation="horizontal"
+            class="list-container"
+          >
+            <app-user-list-card
+              [person]="person"
+              [actionButtonIcon]="'close'"
+              [actionButtonClasses]="'white'"
+              (actionButtonClicked)="removeFromBookmarkedPersons(person)"
+              class="pb-list-card pb-card pb-flex-row"
+              cdkDrag
+              (cdkDragEntered)="entered($event)"
+              (cdkDragEnded)="ended($event)"
+              [cdkDragData]="i"
+              [cdkDragDisabled]="favoriteSort != ''"
+            ></app-user-list-card>
+          </div>
         </div>
+        <div *ngSwitchCase="layout.view_module" class="card-display">
+          <div
+            *ngFor="let person of bookmarkedPersons; index as i"
+            cdkDropList
+            [cdkDropListData]="i"
+            cdkDropListOrientation="horizontal"
+            class="module-stream-container"
+          >
+            <app-user-small-card
+              [person]="person"
+              [actionButtonIcon]="'close'"
+              [actionButtonClasses]="'white'"
+              (actionButtonClicked)="removeFromBookmarkedPersons(person)"
+              class="pb-small-card pb-card"
+              cdkDrag
+              (cdkDragEntered)="entered($event)"
+              (cdkDragEnded)="ended($event)"
+              [cdkDragData]="i"
+              [cdkDragDisabled]="favoriteSort != ''"
+            ></app-user-small-card>
+          </div>
         </div>
-        <div *ngIf="layoutSetting === layout.view_stream "class="card-display">
-        <div
-          *ngFor="let person of bookmarkedPersons; index as i"
-          cdkDropList
-          [cdkDropListData]="i"
-          cdkDropListOrientation="horizontal"
-          class="module-stream-container"
-        >
-          <app-user-tiny-card 
-            [person]="person"
-            [actionButtonIcon]="'close'"
-            [actionButtonClasses]="'white'"
-            (actionButtonClicked)="removeFromBookmarkedPersons(person)"
-            class="pb-tiny-card pb-card"
-            cdkDrag
-            (cdkDragEntered)="entered($event)"
-            (cdkDragEnded)="ended($event)"
-            [cdkDragData]="i"
-            [cdkDragDisabled]="favoriteSort != ''"
-          ></app-user-tiny-card>
-        </div>
+        <div *ngSwitchCase="layout.view_stream" class="card-display">
+          <div
+            *ngFor="let person of bookmarkedPersons; index as i"
+            cdkDropList
+            [cdkDropListData]="i"
+            cdkDropListOrientation="horizontal"
+            class="module-stream-container"
+          >
+            <app-user-tiny-card
+              [person]="person"
+              [actionButtonIcon]="'close'"
+              [actionButtonClasses]="'white'"
+              (actionButtonClicked)="removeFromBookmarkedPersons(person)"
+              class="pb-tiny-card pb-card"
+              cdkDrag
+              (cdkDragEntered)="entered($event)"
+              (cdkDragEnded)="ended($event)"
+              [cdkDragData]="i"
+              [cdkDragDisabled]="favoriteSort != ''"
+            ></app-user-tiny-card>
+          </div>
         </div>
       </div>
       <div
@@ -165,11 +162,9 @@
         mat-icon-button
         (click)="toggleDrawer()"
         i18n-matTooltip="
-           DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip
-        "
+          DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip"
         i18n-aria-label="
-           DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel
-        "
+          DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel"
         matTooltip="Expand or Collapse recently viewed people"
         aria-label="Button expanding or collapsing the recently viewed people section"
       >
