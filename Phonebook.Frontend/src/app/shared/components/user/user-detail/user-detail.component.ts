@@ -30,7 +30,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   public columns: typeof ColumnDefinitions = ColumnDefinitions;
   @Select(BookmarksState)
   public bookmarks$: Observable<Person[]>;
-  public randomMoney: string;
   public vCardEncoding: typeof VCardEncoding = VCardEncoding;
   public get address(): string[] {
     return this.person.Location.RoomCollection[0].Description.split(',');
@@ -41,16 +40,16 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   @Input()
   public previewView: boolean = false;
   public rocketChatLink: string | null = null;
+  public organigramLink: string[] = ['/organigram'];
   constructor(
     private snackBar: MatSnackBar,
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   public ngOnInit() {
-    this.getRandomMoney();
     this.rocketChatLink = this.getRocketChatLink();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
       const index = bookmarks.findIndex(p => p.Id === this.person.Id);
@@ -85,6 +84,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
       nickname: this.person.Id
     };
+    this.organigramLink = this.organigramLink.concat(this.person.Business.ShortOrgUnit);
   }
 
   public sendMail() {
@@ -119,13 +119,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       : null;
   }
 
-  public ngOnDestroy() {}
-
-  @HostListener('click')
-  public getRandomMoney(): void {
-    this.randomMoney = (Math.random() * 1000000).toFixed(2);
-  }
+  public ngOnDestroy() { }
 }
+
 
 enum Bookmarked {
   isBookmarked = 'bookmark',

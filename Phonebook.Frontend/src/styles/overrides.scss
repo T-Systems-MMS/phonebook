@@ -43,6 +43,7 @@ mat-card.mat-card {
     }
     mat-dialog-content {
       flex-grow: 1;
+      max-height: unset;
     }
   }
 }

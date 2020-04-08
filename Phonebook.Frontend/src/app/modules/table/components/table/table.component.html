@@ -30,7 +30,7 @@
   >
     <ng-container [matColumnDef]="columns.picture.id">
       <mat-header-cell *matHeaderCellDef>
-        {{ columnTranslate.getTranslation(columns.picture.id) }}
+        {{ columns.picture.title }}
       </mat-header-cell>
       <mat-cell *matCellDef="let person">
         <app-profile-picture
@@ -50,7 +50,7 @@
         sortButtonLabel="Change sorting for column Id"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Id'@@TableComponentColumnIdLabel"
       >
-        {{ columnTranslate.getTranslation(columns.id.id) }}</mat-header-cell
+        {{ columns.id.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">{{ person.Id | lowercase }}</mat-cell>
     </ng-container>
@@ -62,7 +62,7 @@
         sortButtonLabel="Change sorting for column Name"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Name'@@TableComponentColumnNameLabel"
       >
-        {{ columnTranslate.getTranslation(columns.fullname.id) }}</mat-header-cell
+        {{ columns.fullname.title }}</mat-header-cell
       >
 
       <mat-cell *matCellDef="let person"> {{ person.Surname + ', ' + person.Firstname }}</mat-cell>
@@ -70,7 +70,7 @@
 
     <ng-container [matColumnDef]="columns.email.id">
       <mat-header-cell *matHeaderCellDef>
-        {{ columnTranslate.getTranslation(columns.email.id) }}
+        {{ columns.email.title }}
       </mat-header-cell>
       <mat-cell *matCellDef="let person">
         <button mat-icon-button actionDrawer [copy]="person.Contacts.Email" [mailto]="person.Contacts.Email">
@@ -86,7 +86,7 @@
         sortButtonLabel="Change sorting for column Phone"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Phone'@@TableComponentColumnPhoneLabel"
       >
-        {{ columnTranslate.getTranslation(columns.phone.id) }}</mat-header-cell
+        {{ columns.phone.title }}</mat-header-cell
       >
 
       <mat-cell *matCellDef="let person">
@@ -109,7 +109,7 @@
         sortButtonLabel="Change sorting for column Mobile"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Mobile'@@TableComponentColumnMobileLabel"
       >
-        {{ columnTranslate.getTranslation(columns.mobile.id) }}</mat-header-cell
+        {{ columns.mobile.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
         <button
@@ -131,7 +131,7 @@
         sortButtonLabel="Change sorting for column Role"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Role'@@TableComponentColumnRoleLabel"
       >
-        {{ columnTranslate.getTranslation(columns.role.id) }}</mat-header-cell
+        {{ columns.role.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.role" [filterValue]="person.Role"></app-add-filter>
@@ -145,7 +145,7 @@
         sortButtonLabel="Change sorting for column City"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'City'@@TableComponentColumnCityLabel"
       >
-        {{ columnTranslate.getTranslation(columns.city.id) }}</mat-header-cell
+        {{ columns.city.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.city" [filterValue]="person.Location.City.Name"></app-add-filter>
@@ -157,9 +157,11 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Organization Unit"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Organization Unit'@@TableComponentColumnOrgUnitLabel"
+        i18n-sortButtonLabel="
+           TableComponent|Label for sorting the column 'Organization Unit'@@TableComponentColumnOrgUnitLabel
+        "
       >
-        {{ columnTranslate.getTranslation(columns.orgUnit.id) }}
+        {{ columns.orgUnit.title }}
       </mat-header-cell>
       <mat-cell *matCellDef="let person">
         <mat-chip-list>
@@ -179,7 +181,7 @@
         sortButtonLabel="Change sorting for column Room"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Room'@@TableComponentColumnRoomLabel"
       >
-        {{ columnTranslate.getTranslation(columns.room.id) }}</mat-header-cell
+        {{ columns.room.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.room" [filterValue]="person.Location.RoomCollection[0].Number">
@@ -194,7 +196,7 @@
         sortButtonLabel="Change sorting for column Building"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Building'@@TableComponentColumnBuildingLabel"
       >
-        {{ columnTranslate.getTranslation(columns.building.id) }}</mat-header-cell
+        {{ columns.building.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.building" [filterValue]="person.Location.RoomCollection[0].Building">
@@ -207,9 +209,12 @@
         *matHeaderCellDef
         mat-sort-header
         sortButtonLabel="Change sorting for column Profitcenter"
-        i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Profitcenter' once Costcenter@@TableComponentColumnCostcenterLabel"
+        i18n-sortButtonLabel="
+           TableComponent|Label for sorting the column 'Profitcenter' once
+          Costcenter@@TableComponentColumnCostcenterLabel
+        "
       >
-        {{ columnTranslate.getTranslation(columns.costcenter.id) }}</mat-header-cell
+        {{ columns.costcenter.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.costcenter" [filterValue]="person.Business.Costcenter"></app-add-filter>
@@ -223,7 +228,7 @@
         sortButtonLabel="Change sorting for column status"
         i18n-sortButtonLabel="TableComponent|Label for sorting the column 'Status'@@TableComponentColumnStatusLabel"
       >
-        {{ columnTranslate.getTranslation(columns.status.id) }}</mat-header-cell
+        {{ columns.status.title }}</mat-header-cell
       >
       <mat-cell *matCellDef="let person">
         <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type"></app-add-filter>
