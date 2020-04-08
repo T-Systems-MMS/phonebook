@@ -245,8 +245,8 @@
       </trans-unit>
       
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
-        <source>Have a nice day</source>
-        <target state="translated">Hab einen schönen Tag</target>
+        <source>Have a nice day,</source>
+        <target state="translated">Hab einen schönen Tag,</target>
         <note priority="1" from="description">Greetings Message</note>
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit><trans-unit id="NavigationComponentViewModeList" datatype="html">
