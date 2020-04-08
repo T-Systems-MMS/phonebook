@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,12 +8,13 @@ import { Person, PhonebookSortDirection } from 'src/app/shared/models';
 import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bookmarked',
   templateUrl: './bookmarked.component.html',
   styleUrls: ['./bookmarked.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-dashboard' },
 })
 export class BookmarkedComponent implements OnInit, OnDestroy {
   public bookmarkedPersons: Person[];
@@ -28,24 +29,26 @@ export class BookmarkedComponent implements OnInit, OnDestroy {
     private store: Store,
     private cd: ChangeDetectorRef,
     private breakpointObserver: BreakpointObserver,
-    private currentUserService: CurrentUserService) {}
+    public router: Router,
+    private currentUserService: CurrentUserService
+  ) {}
 
   public ngOnInit() {
     this.changeOrder();
     this.currentUserService
-    .getCurrentUser()
-    .pipe(untilComponentDestroyed(this))
-    .subscribe(
-      user => {
-        if (user != null) {
-          this.currentUser = user;
+      .getCurrentUser()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(
+        (user) => {
+          if (user != null) {
+            this.currentUser = user;
+          }
+        },
+        (error) => {
+          this.currentUser = null;
         }
-      },
-      error => {
-        this.currentUser = null;
-      }
-    );
-    }
+      );
+  }
 
   public changeOrder() {
     if (this.bookmarkedPersonsSubscriptions) {
@@ -53,8 +56,8 @@ export class BookmarkedComponent implements OnInit, OnDestroy {
     }
     this.bookmarkedPersonsSubscriptions = this.store
       .select(BookmarksState.sortedBookmarks)
-      .pipe(map(filterFn => filterFn(this.favoriteSort)))
-      .subscribe(persons => {
+      .pipe(map((filterFn) => filterFn(this.favoriteSort)))
+      .subscribe((persons) => {
         this.bookmarkedPersons = persons;
       });
   }

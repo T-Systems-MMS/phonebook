@@ -12,21 +12,22 @@ import {
   BookmarksState,
   SetRecentPeopleDrawer,
   ToggleBookmark,
-  UpdateBookmarkOrder
+  UpdateBookmarkOrder,
 } from 'src/app/shared/states';
 import {
   LastPersonsState,
   RemoveFromLastPersons,
   ResetLastPersons,
-  SetLastPersons
+  SetLastPersons,
 } from 'src/app/shared/states/LastPersons.state';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { MatDrawerMode } from '@angular/material/sidenav';
+import { BookmarkedComponent } from 'src/app/pages/dashboard/components/bookmarked/bookmarked.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-expand' },
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   @Select(LastPersonsState)
@@ -43,24 +44,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public drawerMode: MatDrawerMode = 'side';
   public smallScreen: boolean = false;
   public currentUser: Person | null = null;
-  constructor(private store: Store,
+  constructor(
+    private store: Store,
     private cd: ChangeDetectorRef,
     private breakpointObserver: BreakpointObserver,
-    private router: Router,
-    private currentUserService: CurrentUserService) {}
+    public router: Router,
+    private currentUserService: CurrentUserService
+  ) {}
 
   public ngOnInit() {
     this.changeOrder();
     this.store
       .select(AppState.recentPeopleDrawer)
       .pipe(untilComponentDestroyed(this))
-      .subscribe(open => {
+      .subscribe((open) => {
         this.drawerOpen = open;
       });
     this.breakpointObserver
       .observe('(max-width: 768px)')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(result => {
+      .subscribe((result) => {
         this.smallScreen = result.matches;
         if (this.smallScreen) {
           this.drawerOpen = false;
@@ -69,18 +72,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
       });
     this.currentUserService
-    .getCurrentUser()
-    .pipe(untilComponentDestroyed(this))
-    .subscribe(
-      user => {
-        if (user != null && this.bookmarkedPersons.length === 0) {
-          this.router.navigate(['/dashboard/team']);
+      .getCurrentUser()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(
+        (user) => {
+          if (user != null) {
+            this.currentUser = user;
+          }
+        },
+        (error) => {
+          this.currentUser = null;
         }
-      },
-      error => {
-        this.currentUser = null;
-      }
-    );
+      );
   }
 
   public changeOrder() {
@@ -89,8 +92,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
     this.bookmarkedPersonsSubscriptions = this.store
       .select(BookmarksState.sortedBookmarks)
-      .pipe(map(filterFn => filterFn(this.favoriteSort)))
-      .subscribe(persons => {
+      .pipe(map((filterFn) => filterFn(this.favoriteSort)))
+      .subscribe((persons) => {
         this.bookmarkedPersons = persons;
       });
   }

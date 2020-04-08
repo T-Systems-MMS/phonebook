@@ -13,56 +13,27 @@ import { Router } from '@angular/router';
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-dashboard' },
 })
 export class TeamComponent implements OnInit, OnDestroy {
-  public bookmarkedPersons: Person[];
-  public bookmarkedPersonsSubscriptions: Subscription | null = null;
-  public favoriteSort: PhonebookSortDirection = PhonebookSortDirection.none;
-  @Select(BookmarksState)
-  public bookmarkedPersons$: Observable<Person[]>;
   public currentUser: Person | null = null;
   public teamPersons: Person[];
   public person: Person;
 
-  constructor(private store: Store,
+  constructor(
+    private store: Store,
     private organigramService: OrganigramService,
     private currentUserService: CurrentUserService,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
   public ngOnInit() {
-    this.changeOrder();
-    this.organigramService.getNode().subscribe(node => {
+    this.organigramService.getNodeForCurrentUser().subscribe((node) => {
       if (node != null) {
-      this.teamPersons = [...node.supervisors, ...node.assistents, ...node.employees, ...node.learners];
+        this.teamPersons = [...node.supervisors, ...node.assistents, ...node.employees, ...node.learners];
       }
     });
-    this.currentUserService
-    .getCurrentUser()
-    .pipe(untilComponentDestroyed(this))
-    .subscribe(
-      user => {
-        if (user === null) {
-          this.router.navigate(['/dashboard/bookmarked']);
-        }
-      },
-      error => {
-        this.currentUser = null;
-      }
-    );
   }
 
-  public changeOrder() {
-    if (this.bookmarkedPersonsSubscriptions) {
-      this.bookmarkedPersonsSubscriptions.unsubscribe();
-    }
-    this.bookmarkedPersonsSubscriptions = this.store
-      .select(BookmarksState.sortedBookmarks)
-      .pipe(map(filterFn => filterFn(this.favoriteSort)))
-      .subscribe(persons => {
-        this.bookmarkedPersons = persons;
-      });
-  }
-
-  ngOnDestroy(): void {}
+  public ngOnDestroy(): void {}
 }

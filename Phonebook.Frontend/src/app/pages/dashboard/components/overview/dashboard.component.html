@@ -37,9 +37,8 @@
           <div
             *ngIf="(lastPersons$ | async)?.length === 0"
             i18n="
-               DashboardComponent|Message displayed if no people have been visited
-              recently@@DashboardComponentDescriptionRecent
-            "
+              DashboardComponent|Message displayed if no people have been visited
+              recently@@DashboardComponentDescriptionRecent"
           >
             Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most
             recent ones will be displayed here.
@@ -54,11 +53,9 @@
         mat-icon-button
         (click)="toggleDrawer()"
         i18n-matTooltip="
-           DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip
-        "
+          DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip"
         i18n-aria-label="
-           DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel
-        "
+          DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel"
         matTooltip="Expand or Collapse recently viewed people"
         aria-label="Button expanding or collapsing the recently viewed people section"
       >
@@ -71,7 +68,56 @@
       </button>
     </div>
     <div class="pb-expand">
+      <div class="different-cards" *ngIf="router.url === '/dashboard/team'">
+        <button class="navigation-button" mat-button [routerLink]="['/dashboard/team']">
+          <div class="card-navigation">
+            <mat-icon>people</mat-icon>
+            <span
+              class="navigation-name"
+              i18n="DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam"
+            >
+              My Team
+            </span>
+          </div>
+        </button>
+      </div>
       <router-outlet></router-outlet>
+      <div class="different-cards bottom-button" *ngIf="router.url === '/dashboard/team'">
+        <button class="navigation-button" mat-button [routerLink]="['/dashboard/bookmarks']">
+          <div class="card-navigation">
+            <mat-icon>keyboard_arrow_up</mat-icon>
+            <span
+              class="navigation-name"
+              i18n="DashboardComponent|Title of the Bookmarked people section@@DashboardComponentTitleBookmark"
+            >
+              Bookmarked People
+            </span>
+          </div>
+        </button>
+        <div
+          *ngIf="bookmarkedPersons.length === 0"
+          i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
+        >
+          You haven't bookmarked anybody yet, look for the button
+          <button mat-icon-button>
+            <mat-icon>bookmark_border</mat-icon>
+          </button>
+          on a workmates page.
+        </div>
+      </div>
+      <div class="different-cards bottom-button" *ngIf="currentUser != null && router.url === '/dashboard/bookmarks'">
+        <button class="navigation-button" mat-button [routerLink]="['/dashboard/team']">
+          <div class="card-navigation">
+            <mat-icon>keyboard_arrow_up</mat-icon>
+            <span
+              class="navigation-name"
+              i18n="DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam"
+            >
+              My Team
+            </span>
+          </div>
+        </button>
+      </div>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

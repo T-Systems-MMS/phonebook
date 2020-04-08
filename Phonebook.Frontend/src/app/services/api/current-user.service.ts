@@ -7,7 +7,7 @@ import { Person } from 'src/app/shared/models';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrentUserService {
   private readonly currentUserApiUrl = runtimeEnvironment.employeePicturesEndpoint + '/user/whoami?version=2';
@@ -30,7 +30,7 @@ export class CurrentUserService {
 
     const observable = this.httpClient
       .get<WhoAmIResponse>(this.currentUserApiUrl, {
-        withCredentials: true
+        withCredentials: true,
       })
       // this is a workaround for this github issue: https://github.com/ReactiveX/rxjs/issues/2972.
       // The good solution is to upgrade to typescript >2.8 but angular only supports < 2.8.
@@ -42,9 +42,9 @@ export class CurrentUserService {
 
   public getCurrentUserId(): Observable<string> {
     // User for demonstration purposes. Take out before merging!
-    return of ('9T6L');
+    return of('9t6l');
     return this.getCurrentUserObject().pipe(
-      map(str => {
+      map((str) => {
         // Userstring Layout is "Domain\\user"
         // This returns just the "user"
         return str.user.toLowerCase().split('\\')[1];
@@ -58,7 +58,7 @@ export class CurrentUserService {
     }
 
     const observable = this.getCurrentUserId().pipe(
-      mergeMap(userId => {
+      mergeMap((userId) => {
         return this.personService.getById(userId);
       }),
       publishReplay()
@@ -70,10 +70,10 @@ export class CurrentUserService {
 
   public doesUserHasImage(): Observable<boolean> {
     return this.getCurrentUserObject().pipe(
-      map(whoAmIResponse => {
+      map((whoAmIResponse) => {
         return whoAmIResponse.hasPicture;
       }),
-      catchError(err => of(false))
+      catchError((err) => of(false))
     );
   }
 }

@@ -7,7 +7,7 @@ import { TeamComponent } from './pages/dashboard/components/team/team.component'
 import { BookmarkedComponent } from './pages/dashboard/components/bookmarked/bookmarked.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard/bookmarked', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard/bookmarks', pathMatch: 'full' },
   { path: 'dashboard', loadChildren: () => import('src/app/pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'search', loadChildren: () => import('src/app/modules/table/table.module').then(m => m.TableModule) },
   { path: 'user', loadChildren: () => import('src/app/pages/users/user-pages.module').then(m => m.UserPagesModule) },

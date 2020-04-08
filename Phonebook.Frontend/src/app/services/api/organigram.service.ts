@@ -64,11 +64,11 @@ export class OrganigramService {
     }
   }
 
-  public getNode(): Observable<UnitTreeNode | null | undefined> {
+  public getNodeForCurrentUser(): Observable<UnitTreeNode | null> {
     return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigram()]).pipe(
       map(([user, organigram]) => {
         if (user === null) {
-        return;
+        return null;
         }
         return this.getNodeForUser(user, organigram,  0);
       })
@@ -83,8 +83,7 @@ export class OrganigramService {
           } else if (node.name === user.Business.OrgUnit[depth] && depth < user.Business.OrgUnit.length - 1) {
             this.getNodeForUser(user, node.children, depth + 1);
           } else if (node.name === user.Business.OrgUnit[depth] && depth === user.Business.OrgUnit.length - 1 ) {
-            this.team = node;
-            break;
+            return this.team = node;
           } else { continue; }
         }
     } else { return null; }

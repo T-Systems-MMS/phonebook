@@ -9,31 +9,6 @@ mat-drawer-container {
   }
 }
 
-.card-navigation {
-  display: flex;
-
-  mat-icon {
-    margin-top: 5px;
-    padding-right: 10px;
-  }
-}
-
-.different-cards {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.navigation-button {
-  width: auto;
-  margin-right: 20px;
-  padding-left: 0px;
-}
-
-.navigation-name {
-  font-size: 24px;
-  font-weight: initial;
-}
-
 .pb-recent-people-drawer {
   width: 370px;
   background-color: unset;
@@ -92,4 +67,52 @@ mat-drawer-container {
 
 .cdk-drag-animating {
   transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.card-navigation {
+  display: flex;
+
+  mat-icon {
+    margin-top: 5px;
+    padding-right: 10px;
+  }
+}
+
+.different-cards {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.navigation-button {
+  width: auto;
+  margin-right: 20px;
+  padding-left: 0px;
+}
+
+.navigation-name {
+  font-size: 24px;
+  font-weight: initial;
+}
+
+.bottom-button {
+  bottom: 0%;
+  margin-top: 10px;
+}
+
+.pb-expand {
+  flex-direction: column;
+}
+
+.pb-bookmarked-title {
+  display: flex;
+  flex-direction: row;
+  h1 {
+    margin: 0;
+  }
+  mat-form-field {
+    margin-left: 16px;
+  }
+  ::ng-deep .mat-form-field-infix {
+    border: none;
+  }
 }

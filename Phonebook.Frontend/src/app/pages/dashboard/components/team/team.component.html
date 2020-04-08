@@ -1,44 +1,11 @@
 <div class="pb-team">
-<div class="different-cards">
-  <button class="navigation-button" mat-button [routerLink]="['/dashboard/team']">
-    <div class="card-navigation">
-    <mat-icon>people</mat-icon>
-    <span class="navigation-name" i18n="DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam">
-      My Team
-    </span>
-  </div>
-  </button>
-  </div>
-<div cdkDropListGroup class="pb-team-list pb-flex-row  pb-overflow-auto">
-  <div
-    *ngFor="let teamPerson of teamPersons"
-    class="card-container"
-  >
-    <app-user-small-card
-      [person]="teamPerson"
-      [actionButtonClasses]="'white'"
-      class="pb-small-card pb-card"
-    ></app-user-small-card>
-  </div>
-</div>
-<div class="different-cards bottom-button">
-  <button class="navigation-button" mat-button [routerLink]="['/dashboard/bookmarked']">
-    <div class="card-navigation">
-      <mat-icon>keyboard_arrow_up</mat-icon>
-      <span class="navigation-name" i18n="DashboardComponent|Title of the Bookmarked people section@@DashboardComponentTitleBookmark">
-        Bookmarked People
-      </span>  
+  <div cdkDropListGroup class="pb-team-list pb-flex-row pb-overflow-auto">
+    <div *ngFor="let teamPerson of teamPersons" class="card-container">
+      <app-user-small-card
+        [person]="teamPerson"
+        [actionButtonClasses]="'white'"
+        class="pb-small-card pb-card"
+      ></app-user-small-card>
     </div>
-    </button>
-    <div
-    *ngIf="bookmarkedPersons.length === 0"
-    i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
-    >
-    You haven't bookmarked anybody yet, look for the button
-    <button mat-icon-button>
-      <mat-icon>bookmark_border</mat-icon>
-    </button>
-    on a workmates page.
-  </div>
   </div>
 </div>
