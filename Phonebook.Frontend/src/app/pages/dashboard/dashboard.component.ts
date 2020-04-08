@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
   @Select(AppState.activeLayout)
-  public layoutValue$: Observable<Layout>;
+  public activeLayout$: Observable<Layout>;
   public layout: typeof Layout = Layout;
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;

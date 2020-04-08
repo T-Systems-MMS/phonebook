@@ -78,7 +78,7 @@
         </mat-form-field>
       </div>
       <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
-      <div cdkDropListGroup class="pb-flex-row" [ngSwitch]="layoutValue$ | async">
+      <div cdkDropListGroup class="pb-flex-row" [ngSwitch]="activeLayout$ | async">
         <div *ngSwitchCase="layout.view_list" class="card-display">
           <div
             *ngFor="let person of bookmarkedPersons; index as i"
