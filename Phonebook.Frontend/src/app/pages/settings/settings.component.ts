@@ -1,20 +1,18 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-
-import { Store, Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
-import { NotImplementedService } from 'src/app/modules/not-implemented/not-implemented.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { Language } from 'src/app/shared/models/enumerables/Language';
-import { AppState, SetTheme, SetLayout } from 'src/app/shared/states';
-import { Theme } from 'src/app/shared/models/enumerables/Theme';
 import { Layout } from 'src/app/shared/models/enumerables/Layout';
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { AppState, SetLayout, SetTheme } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   public languageValue: Language = Language.en;
@@ -30,7 +28,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     public languageService: LanguageService,
-    private notImplementedService: NotImplementedService,
     public featureFlagService: FeatureFlagService
   ) {}
 
