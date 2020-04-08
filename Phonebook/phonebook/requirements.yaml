@@ -1,6 +1,6 @@
 dependencies:
   - name: traefik
     condition: traefik.enabled
-    version: 1.86.2
-    appVersion: 1.7.14
-    repository: https://kubernetes-charts.storage.googleapis.com
+    version: 3.4.0
+    appVersion: 2.1.3
+    repository: https://containous.github.io/traefik-helm-chart

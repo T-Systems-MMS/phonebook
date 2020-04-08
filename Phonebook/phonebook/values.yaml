@@ -2,7 +2,7 @@
 
 # General Variables
 host: &host 'localhost'
-environment: 'production'
+environment: 'development'
 
 # Frontend Variables
 frontend:
@@ -10,7 +10,7 @@ frontend:
   image:
     repository: tsystemsmms
     name: phonebook-frontend
-    tag: 1.22.3
+    tag: 1.41.0
     pullPolicy: Always
   replicaCount: 3
   service:
@@ -20,11 +20,12 @@ frontend:
 source:
   peoplesoft:
     name: source-peoplesoft
+    environment: Live
     image:
       repository: tsystemsmms
       # TODO: Change to new image
-      name: phonebook-build
-      tag: source-peoplesoft
+      name: phonebook-source-peoplesoft
+      tag: latest
       pullPolicy: Always
     replicaCount: 3
     service:
@@ -38,8 +39,19 @@ ingress:
 # Traefik Configuration
 traefik:
   enabled: true
-  startupArguments:
-    - ''
+  additional:
+    checkNewVersion: false
+    sendAnonymousUsage: false
+  dashboard:
+    enable: false
+    ingressRoute: false
+  
+  additionalArguments: 
+  - "--providers.kubernetesingress"
+  logs:
+    loglevel: warn
+  globalArguments:
+    - ''    
   ssl:
     enabled: true
     enforced: true

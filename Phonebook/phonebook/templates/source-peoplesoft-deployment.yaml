@@ -1,49 +1,52 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "phonebook.fullname" . }}
+  name: {{ include "phonebook.fullname" . }}-peoplesoft
   labels:
-    app.kubernetes.io/name: {{ include "phonebook.name" . }}
+    app.kubernetes.io/name: {{ include "phonebook.name" . }}-peoplesoft
     helm.sh/chart: {{ include "phonebook.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.source.peoplsoft.replicaCount }}
+  replicas: {{ .Values.source.peoplesoft.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "phonebook.name" . }}
+      app.kubernetes.io/name: {{ include "phonebook.name" . }}-peoplesoft
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "phonebook.name" . }}
+        app.kubernetes.io/name: {{ include "phonebook.name" . }}-peoplesoft
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       nodeSelector:
         'beta.kubernetes.io/os': linux
       containers:
-        - name: {{ .Chart.Name }}-{{ .Values.source.peoplsoft.name }}
-          image: "{{ .Values.source.peoplsoft.image.repository }}/{{ .Values.source.peoplsoft.image.name}}:{{ .Values.source.peoplsoft.image.tag }}"
-          imagePullPolicy: {{ .Values.source.peoplsoft.image.pullPolicy }}
+        - name: {{ .Chart.Name }}-{{ .Values.source.peoplesoft.name }}-peoplesoft
+          image: "{{ .Values.source.peoplesoft.image.repository }}/{{ .Values.source.peoplesoft.image.name}}:{{ .Values.source.peoplesoft.image.tag }}"
+          imagePullPolicy: {{ .Values.source.peoplesoft.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: http
-            initialDelaySeconds: 6
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: http
-            initialDelaySeconds: 6
+            - name: https
+              containerPort: 443
+              protocol: TCP
+          # TODO: use when issue #594 is resolved
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: http
+          #   initialDelaySeconds: 6
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health
+          #     port: http
+          #   initialDelaySeconds: 6
           env: 
             - name: ASPNETCORE_ENVIRONMENT
-              value: "{{ .Values.environment }}"
+              value: "{{ .Values.source.peoplesoft.environment }}"
               # See more in Doku https://t-systems-mms.github.io/phonebook/pages/development-guides/backend/getting-started
-            - 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

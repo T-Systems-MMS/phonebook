@@ -6,6 +6,6 @@ COPY ./nginx/ ./
 
 
 RUN rm -r /usr/share/nginx/html/*
-COPY ./assets /usr/share/nginx/html
+COPY ./assets /usr/share/nginx/html/assets
 
 CMD ["nginx"]

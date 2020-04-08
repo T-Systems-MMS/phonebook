@@ -1,4 +1,4 @@
-# Default values for phonebook.
+# Demo values for phonebook.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -41,15 +41,6 @@ affinity: {}
 
 # Traefik Configuration
 traefik:
-  enabled: true
-  startupArguments:
-    - ''
-  dashboard:
-    enabled: true
-    domain: board.demo-phonebook.me
-    ingress:
-      annotations:
-        traefik.frontend.priority: '100'
   ssl:
     enabled: true
     enforced: true
@@ -63,5 +54,3 @@ traefik:
       enabled: true
   rbac:
     enabled: true
-  kubernetes:
-    namespaces:
