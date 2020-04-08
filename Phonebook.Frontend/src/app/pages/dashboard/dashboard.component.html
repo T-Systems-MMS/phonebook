@@ -78,21 +78,21 @@
         </mat-form-field>
       </div>
       <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
-      <div cdkDropListGroup class="pb-flex-row" [ngSwitch]="activeLayout$ | async">
-        <div *ngSwitchCase="layout.view_list" class="card-display">
+      <div cdkDropListGroup class="pb-flex-row pb-bookmarks-list" [ngSwitch]="activeLayout$ | async">
+        <ng-container *ngSwitchCase="layout.view_list">
           <div
             *ngFor="let person of bookmarkedPersons; index as i"
             cdkDropList
             [cdkDropListData]="i"
             cdkDropListOrientation="horizontal"
-            class="list-container"
+            class="card-container pb-w-100"
           >
             <app-user-list-card
               [person]="person"
               [actionButtonIcon]="'close'"
               [actionButtonClasses]="'white'"
               (actionButtonClicked)="removeFromBookmarkedPersons(person)"
-              class="pb-list-card pb-card pb-flex-row"
+              class="pb-list-card pb-card"
               cdkDrag
               (cdkDragEntered)="entered($event)"
               (cdkDragEnded)="ended($event)"
@@ -100,14 +100,14 @@
               [cdkDragDisabled]="favoriteSort != ''"
             ></app-user-list-card>
           </div>
-        </div>
-        <div *ngSwitchCase="layout.view_module" class="card-display">
+        </ng-container>
+        <ng-container *ngSwitchCase="layout.view_module">
           <div
             *ngFor="let person of bookmarkedPersons; index as i"
             cdkDropList
             [cdkDropListData]="i"
             cdkDropListOrientation="horizontal"
-            class="module-stream-container"
+            class="card-container"
           >
             <app-user-small-card
               [person]="person"
@@ -122,21 +122,21 @@
               [cdkDragDisabled]="favoriteSort != ''"
             ></app-user-small-card>
           </div>
-        </div>
-        <div *ngSwitchCase="layout.view_stream" class="card-display">
+        </ng-container>
+        <ng-container *ngSwitchCase="layout.view_stream">
           <div
             *ngFor="let person of bookmarkedPersons; index as i"
             cdkDropList
             [cdkDropListData]="i"
             cdkDropListOrientation="horizontal"
-            class="module-stream-container"
+            class="card-container"
           >
             <app-user-tiny-card
               [person]="person"
               [actionButtonIcon]="'close'"
               [actionButtonClasses]="'white'"
               (actionButtonClicked)="removeFromBookmarkedPersons(person)"
-              class="pb-tiny-card pb-card"
+              class="pb-card"
               cdkDrag
               (cdkDragEntered)="entered($event)"
               (cdkDragEnded)="ended($event)"
@@ -144,7 +144,7 @@
               [cdkDragDisabled]="favoriteSort != ''"
             ></app-user-tiny-card>
           </div>
-        </div>
+        </ng-container>
       </div>
       <div
         *ngIf="bookmarkedPersons.length === 0"

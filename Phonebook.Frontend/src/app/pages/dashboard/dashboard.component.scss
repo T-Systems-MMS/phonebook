@@ -80,35 +80,12 @@ mat-drawer-container {
 .pb-list-card {
   display: flex;
   flex-grow: 1;
-  margin: 0 5px 0 0;
-  border-width: 0px;
-  border-bottom-width: 1px;
-  border-style: solid;
-  border-bottom-color: rgba(0, 0, 0, 0.12) ;
-  @media (max-width: 1037px) {
-    width: 700px;
-    min-height: auto;
-  }
+  margin: 0 0 1px 0;
 }
 
-.pb-flex-row {
-  overflow: auto;
-}
-
-.list-container {
-  display: flex;
-  flex-grow: 1;
-  width: 100%;
-}
-
-.module-stream-container {
+.card-container {
   display: flex;
 }
-
-.card-display {
-  display: contents;
-  width: 100%;
-}  
 
 .pb-card:active {
   cursor: -webkit-grabbing;
