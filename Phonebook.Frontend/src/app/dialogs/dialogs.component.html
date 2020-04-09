@@ -1,5 +1,11 @@
 <div>
-  <h1>
-    {{ title }}
-  </h1>
+  <div class="header">
+    <button class="close-button" mat-button mat-dialog-close cdkFocusInitial>
+      <span>x</span>
+    </button>
+    <h1 mat-dialog-title>
+      {{ title }}
+    </h1>
+  </div>
+  <div mat-dialog-content [innerHTML]="content"></div>
 </div>

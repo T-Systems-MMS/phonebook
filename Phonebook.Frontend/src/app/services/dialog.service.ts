@@ -11,22 +11,27 @@ export class DialogService {
   constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private httpClient: HttpClient) {}
   public displayDialog(item: string) {
     let text: string;
-    this.httpClient
-      .get(item + '.md', {
-        responseType: 'text',
-      })
-      .subscribe((success) => {
-        import('marked').then((marked) => {
-          text = marked.parse(success);
-          this.dialog.open(DialogsComponent, {
-            data: {
-              title: 'Leave Feedback, report a Bug or suggest a new Idea',
-              content: text,
-            },
-            maxHeight: '90vh',
-            maxWidth: '90vh',
+
+    switch (item) {
+      case 'release-notes':
+        this.httpClient
+          .get('changelog.md', {
+            responseType: 'text',
+          })
+          .subscribe((success) => {
+            import('marked').then((marked) => {
+              text = marked.parse(success);
+              this.dialog.open(DialogsComponent, {
+                data: {
+                  title: "We've updated to a newer Version!",
+                  content: text,
+                },
+                maxHeight: '90vh',
+                maxWidth: '90vh',
+              });
+            });
           });
-        });
-      });
+        break;
+    }
   }
 }

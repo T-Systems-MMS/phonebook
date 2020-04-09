@@ -37,7 +37,7 @@
               [user]="currentUser"
             >
             </app-profile-picture>
-            <span i18n=" NavigationComponent|Link to the users profile@@NavigationComponentMyProfile ">My profile</span>
+            <span i18n="NavigationComponent|Link to the users profile@@NavigationComponentMyProfile">My profile</span>
           </button>
         </mat-list-item>
         <mat-divider></mat-divider>
@@ -51,25 +51,23 @@
           <button
             mat-menu-item
             [routerLink]="['/further-information']"
-            i18n-matTooltip=" navigationBar|Info Button Tooltip@@navigationBarInfoTooltip "
+            i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
             matTooltip="Got Feedback? Than that`s the right place to click."
             (click)="sidenav.close()"
           >
             <mat-icon>info_outline</mat-icon>
-            <span i18n=" NavigationComponent|Link to Information page@@NavigationComponentInformation "
-              >Information</span
-            >
+            <span i18n="NavigationComponent|Link to Information page@@NavigationComponentInformation">Information</span>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <button mat-menu-item (click)="sidenav.close(); releaseInfoService.displayReleaseDialog()">
+          <button mat-menu-item (click)="sidenav.close(); dialogService.displayDialog('release-notes')">
             <mat-icon>new_releases</mat-icon>
             <span
               matBadge="!"
               matBadgeColor="accent"
               matBadgeSize="small"
               [matBadgeHidden]="!releaseInfoService.newUpdate"
-              i18n=" NavigationComponent|Release Notes Menu Item@@NavigationComponentReleaseNotes "
+              i18n="NavigationComponent|Release Notes Menu Item@@NavigationComponentReleaseNotes"
               >Release Notes</span
             >
           </button>
@@ -78,12 +76,12 @@
           <button
             mat-menu-item
             feedbackDrawer
-            i18n-matTooltip=" navigationBar|Bug Button Tooltip@@navigationBarBugTooltip "
+            i18n-matTooltip="navigationBar|Bug Button Tooltip@@navigationBarBugTooltip"
             matTooltip="Found a Bug? Than that`s the right place to click."
             (click)="sidenav.close()"
           >
             <mat-icon>bug_report</mat-icon>
-            <span i18n=" NavigationComponent|Link to Bug page@@NavigationComponentFeedback ">Submit Feedback</span>
+            <span i18n="NavigationComponent|Link to Bug page@@NavigationComponentFeedback">Submit Feedback</span>
           </button>
         </mat-list-item>
       </mat-list>
@@ -100,7 +98,7 @@
                 <span
                   class="mat-display-1"
                   id="title"
-                  i18n=" NavigationBar|Application Name@@navigationBarApplicationName "
+                  i18n="NavigationBar|Application Name@@navigationBarApplicationName"
                   >Phonebook</span
                 >
                 <span
@@ -128,8 +126,8 @@
                 mat-stroked-button
                 class="pb-opacity-background mat-body-2"
                 (click)="navigateToOwnProfile()"
-                i18n-matTooltip=" NavigationComponent|Tooltip for MissingUserImage@@MissingUserImageTooltip "
-                i18n-aria-label=" NavigationComponent|Aria label for MissingUserImage@@MissingUserImageAriaLabel "
+                i18n-matTooltip="NavigationComponent|Tooltip for MissingUserImage@@MissingUserImageTooltip"
+                i18n-aria-label="NavigationComponent|Aria label for MissingUserImage@@MissingUserImageAriaLabel"
                 matTooltip="If you upload a picture it will be easier for your colleagues to find and contact you!"
                 aria-label="Button which greets and asks for picture uploading."
               >
@@ -180,13 +178,13 @@
                 <button
                   mat-menu-item
                   [routerLink]="['/further-information']"
-                  i18n-matTooltip=" navigationBar|Info Button Tooltip@@navigationBarInfoTooltip "
+                  i18n-matTooltip="navigationBar|Info Button Tooltip@@navigationBarInfoTooltip"
                   matTooltip="Got Feedback? Found a Bug? Than that`s the right place to click."
                 >
                   <mat-icon>info_outline</mat-icon>
                   <span i18n="@@NavigationComponentInformation">Information</span>
                 </button>
-                <button mat-menu-item (click)="releaseInfoService.displayReleaseDialog()">
+                <button mat-menu-item (click)="dialogService.displayDialog('release-notes')">
                   <mat-icon>new_releases</mat-icon>
                   <span
                     matBadge="!"
