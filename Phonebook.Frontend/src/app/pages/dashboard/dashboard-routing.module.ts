@@ -12,6 +12,11 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/dashboard/bookmarks',
+      },
+      {
         path: 'bookmarks',
         component: BookmarkedComponent,
         pathMatch: 'full',
