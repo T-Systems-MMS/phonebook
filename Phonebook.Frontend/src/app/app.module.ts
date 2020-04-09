@@ -47,17 +47,25 @@ import {
   CommonPersonsState,
   LastPersonsState,
   SearchState,
-  TableState
+  TableState,
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
+import { DialogsComponent } from './dialogs/dialogs.component';
 
 declare const require;
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, DashboardComponent, NavigationComponent, OnlineBarComponent],
+  declarations: [
+    AppComponent,
+    SearchComponent,
+    DashboardComponent,
+    NavigationComponent,
+    OnlineBarComponent,
+    DialogsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -78,7 +86,7 @@ declare const require;
       // developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({
-      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
+      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate'],
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
@@ -93,7 +101,7 @@ declare const require;
     IeWarningModule,
     PlatformModule,
     // Pages
-    UserPagesModule
+    UserPagesModule,
   ],
   providers: [
     // {
@@ -113,8 +121,8 @@ declare const require;
     FloorplanService,
     ReleaseInfoService,
     ThemeService,
-    ColumnTranslate
+    ColumnTranslate,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
