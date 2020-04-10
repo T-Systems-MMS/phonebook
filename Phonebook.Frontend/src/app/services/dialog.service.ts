@@ -6,6 +6,7 @@ import { DialogsComponent } from 'src/app/dialogs/dialogs.component';
 import { DialogItem } from 'src/app/dialogs/dialog-item';
 import { ReleaseNotificationDialog } from 'src/app/shared/dialogs/release-notification-dialog/release-notification.dialog';
 import { BugReportConsentComponent } from 'src/app/shared/dialogs/bug-report-consent/bug-report-consent.component';
+import { FeedbackDrawerSheetComponent } from 'src/app/shared/directives/feedback-drawer/feedback-drawer-sheet/feedback-drawer-sheet.component';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,16 @@ export class DialogService {
           data: {
             title: "We've updated to a newer Version!",
             content: new DialogItem(ReleaseNotificationDialog),
+          },
+          maxHeight: '90vh',
+          maxWidth: '90vh',
+        });
+        break;
+      case 'feedback':
+        this.dialog.open(DialogsComponent, {
+          data: {
+            title: 'Leave Feedback, report a Bug or suggest a new Idea',
+            content: new DialogItem(FeedbackDrawerSheetComponent),
           },
           maxHeight: '90vh',
           maxWidth: '90vh',
