@@ -17,5 +17,8 @@ export class DialogsComponent implements OnInit {
     this.title = data.title;
   }
 
+  close() {
+    this.dialogRef.close();
+  }
   ngOnInit() {}
 }
