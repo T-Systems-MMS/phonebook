@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HtmlParser } from '@angular/compiler';
+import { DialogItem } from 'src/app/dialogs/dialog-item';
 
 @Component({
   selector: 'app-dialogs',
@@ -9,8 +10,8 @@ import { HtmlParser } from '@angular/compiler';
 })
 export class DialogsComponent implements OnInit {
   title: string;
-  content: string;
-
+  content: DialogItem;
+  @ViewChild('appdialogview', { read: ViewContainerRef }) container;
   constructor(public dialogRef: MatDialogRef<DialogsComponent>, @Inject(MAT_DIALOG_DATA) data) {
     this.content = data.content;
     this.title = data.title;

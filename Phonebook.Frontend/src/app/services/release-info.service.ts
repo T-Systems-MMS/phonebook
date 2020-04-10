@@ -8,9 +8,10 @@ import { ReleaseNotificationDialog } from 'src/app/shared/dialogs/release-notifi
 import { VersionIncrement } from 'src/app/shared/models/enumerables/VersionIncrement';
 import { AppState, SetVersion } from 'src/app/shared/states';
 import { VERSION } from 'src/environments/version';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReleaseInfoService {
   public newUpdate: boolean = false; //shows that the application was updated
@@ -48,23 +49,10 @@ export class ReleaseInfoService {
     }
   }
 
+  // TODO: This still has to be tested.
+  private dialogService: DialogService;
   public displayReleaseDialog() {
-    let text = 'Changelog could not be loaded.';
-    this.newUpdate = false;
-    this.httpClient
-      .get('changelog.md', {
-        responseType: 'text'
-      })
-      .subscribe(success => {
-        import('marked').then(marked => {
-          text = marked.parse(success);
-          this.dialog.open(ReleaseNotificationDialog, {
-            data: text,
-            height: '90vh',
-            width: '90vw'
-          });
-        });
-      });
+    this.dialogService.displayDialog('release-notes');
   }
 
   private displayReleaseNotification() {
@@ -73,11 +61,11 @@ export class ReleaseInfoService {
         $localize`:ReleaseInfoService|Snack Bar display for a feature update@@ReleaseInfoServiceSnackBarUpdateTitle:We've fixed some Bugs and added some new Features for you, with ❤`,
         $localize`:ReleaseInfoService|Snack Bar display Action Button for a feature update@@ReleaseInfoServiceSnackBarUpdateButton:Fixed what?`,
         {
-          duration: 8000
+          duration: 8000,
         }
       )
       .onAction()
-      .subscribe(clicked => {
+      .subscribe((clicked) => {
         this.displayReleaseDialog();
       });
   }

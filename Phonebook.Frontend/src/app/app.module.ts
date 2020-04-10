@@ -54,6 +54,7 @@ import { environment } from 'src/environments/environment';
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import { DialogsComponent } from './dialogs/dialogs.component';
+import { DialogViewComponent } from './dialogs/dialog-view/dialog-view.component';
 
 declare const require;
 
@@ -65,6 +66,7 @@ declare const require;
     NavigationComponent,
     OnlineBarComponent,
     DialogsComponent,
+    DialogViewComponent,
   ],
   imports: [
     BrowserModule,
