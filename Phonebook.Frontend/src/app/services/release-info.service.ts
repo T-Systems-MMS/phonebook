@@ -19,7 +19,7 @@ export class ReleaseInfoService {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private store: Store,
-
+    private dialogService: DialogService,
     private httpClient: HttpClient
   ) {}
 
@@ -50,7 +50,7 @@ export class ReleaseInfoService {
   }
 
   // TODO: This still has to be tested.
-  private dialogService: DialogService;
+
   public displayReleaseDialog() {
     this.dialogService.displayDialog('release-notes');
   }
