@@ -7,8 +7,7 @@ namespace Phonebook.Source.PeopleSoft
     {
         public static void Main(string[] args)
         {
-            var builder = CreateWebHostBuilder(args).Build();
-            builder.Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateWebHostBuilder(string[] args) =>
