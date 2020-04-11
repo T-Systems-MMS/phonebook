@@ -55,11 +55,8 @@
     "[typescript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "extensions": {
-        "recommendations": [
-            "esbenp.prettier-vscode",
-            "streetsidesoftware.code-spell-checker"
-        ]
+    "files.associations": {
+      "**/assets/js/search-data.json": "plaintext"
     }
   },
   "extensions": {
