@@ -3,16 +3,16 @@
 # Declare variables to be passed into your templates.
 
 # General Variables
-host: &host 'demo-phonebook.me'
-contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
+host: &host "demo-phonebook.me"
+contactUrl: "https://github.com/T-Systems-MMS/phonebook/issues"
 roomPlanningToolUrl: null
-contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
+contactEmail: &contactEmail "phonebook-t-systems-mms@mg.telekom.de"
 ravenUrl: null
 employeePictureEndpoint: null
-assetsEndpoint: 'https://demo-phonebook.me/assets'
-environment: 'preview'
-environmentTag: 'demo'
-rocketChatUrl: 'https://open.rocket.chat'
+assetsEndpoint: "https://demo-phonebook.me/assets"
+environment: "preview"
+environmentTag: "demo"
+rocketChatUrl: "https://open.rocket.chat"
 
 frontend:
   replicaCount: 1
@@ -20,6 +20,7 @@ frontend:
 source:
   peoplesoft:
     replicaCount: 1
+    environment: Development
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -43,13 +44,13 @@ affinity: {}
 traefik:
   enabled: true
   startupArguments:
-    - ''
+    - ""
   dashboard:
     enabled: true
     domain: board.demo-phonebook.me
     ingress:
       annotations:
-        traefik.frontend.priority: '100'
+        traefik.frontend.priority: "100"
   ssl:
     enabled: true
     enforced: true
@@ -58,7 +59,7 @@ traefik:
     enabled: true
     email: *contactEmail
     onHostRule: true
-    challengeType: 'http-01'
+    challengeType: "http-01"
     domains:
       enabled: true
   rbac:
