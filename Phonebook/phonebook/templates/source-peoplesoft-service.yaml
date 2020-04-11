@@ -7,8 +7,6 @@ metadata:
     helm.sh/chart: {{ include "phonebook.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
   type: {{ .Values.source.peoplesoft.service.type }}
   ports:
