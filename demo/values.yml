@@ -41,6 +41,15 @@ affinity: {}
 
 # Traefik Configuration
 traefik:
+  enabled: true
+  startupArguments:
+    - ''
+  dashboard:
+    enabled: true
+    domain: board.demo-phonebook.me
+    ingress:
+      annotations:
+        traefik.frontend.priority: '100'
   ssl:
     enabled: true
     enforced: true

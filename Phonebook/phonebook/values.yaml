@@ -2,7 +2,7 @@
 
 # General Variables
 host: &host 'localhost'
-environment: 'development'
+environment: 'production'
 
 # Frontend Variables
 frontend:
@@ -39,19 +39,8 @@ ingress:
 # Traefik Configuration
 traefik:
   enabled: true
-  additional:
-    checkNewVersion: false
-    sendAnonymousUsage: false
-  dashboard:
-    enable: false
-    ingressRoute: false
-  
-  additionalArguments: 
-  - "--providers.kubernetesingress"
-  logs:
-    loglevel: warn
-  globalArguments:
-    - ''    
+  startupArguments:
+    - ""
   ssl:
     enabled: true
     enforced: true

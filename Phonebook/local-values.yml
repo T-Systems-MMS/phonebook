@@ -1,13 +1,13 @@
-host: &host 'demo-phonebook.local'
-contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
+host: &host "demo-phonebook.local"
+contactUrl: "https://github.com/T-Systems-MMS/phonebook/issues"
 roomPlanningToolUrl: null
-contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
+contactEmail: &contactEmail "phonebook-t-systems-mms@mg.telekom.de"
 ravenUrl: null
 employeePictureEndpoint: null
-assetsEndpoint: 'https://demo-phonebook.local/assets'
-environment: 'development'
-environmentTag: 'dev'
-rocketChatUrl: 'https://open.rocket.chat'
+assetsEndpoint: "https://demo-phonebook.local/assets"
+environment: "development"
+environmentTag: "dev"
+rocketChatUrl: "https://open.rocket.chat"
 
 frontend:
   replicaCount: 1
@@ -19,24 +19,14 @@ source:
 
 traefik:
   enabled: true
-  additional:
-    checkNewVersion: false
-    sendAnonymousUsage: false
+  startupArguments:
+    - ""
   dashboard:
-    # Enable the dashboard on Traefik
-    enable: true
-    # Expose the dashboard and api through an ingress route at /dashboard
-    # and /api This is not secure and SHOULD NOT be enabled on production
-    # deployments
-    ingressRoute: true
-
-  additionalArguments:
-    - '--providers.kubernetesingress'
-    - '--api.insecure=true'
-  logs:
-    loglevel: debug
-  globalArguments:
-    - ''
+    enabled: true
+    domain: board.demo-phonebook.local
+    ingress:
+      annotations:
+        traefik.frontend.priority: "100"
 
   ssl:
     enabled: true

@@ -29,9 +29,6 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
-            - name: https
-              containerPort: 443
-              protocol: TCP
           # TODO: use when issue #594 is resolved
           # livenessProbe:
           #   httpGet:
