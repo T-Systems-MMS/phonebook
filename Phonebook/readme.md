@@ -63,7 +63,7 @@ helm delete <deployment-name>
 
 ## Development
 
-You need `helm3` and a running kubernetes cluster.
+You need `helm2` and a running kubernetes cluster.
 
 1. Add `phonebook-demo.local` to your hosts, pointing to `localhost` (127.0.0.1).
 2. cd into the `/Phonebook` Folder
