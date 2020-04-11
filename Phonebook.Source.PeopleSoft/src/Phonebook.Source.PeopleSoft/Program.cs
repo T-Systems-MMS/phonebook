@@ -8,11 +8,6 @@ namespace Phonebook.Source.PeopleSoft
         public static void Main(string[] args)
         {
             var builder = CreateWebHostBuilder(args).Build();
-            if(builder.ServerFeatures.Count() > 0)
-            {
-                // Here we are know we are not in an IIS
-                throw new ApplicationException("This web app must run in an IIS. You are currently not running in a IIS.");
-            }
             builder.Run();
         }
 
