@@ -14,7 +14,7 @@ namespace Phonebook.Backend.PictureService.Controllers.V2
 
     [Route("[controller]")]
     [ApiController]
-    //[Authorize]    
+    [Authorize]
     [ApiVersion("2.0")]
     public class UserController : ControllerBase
     {

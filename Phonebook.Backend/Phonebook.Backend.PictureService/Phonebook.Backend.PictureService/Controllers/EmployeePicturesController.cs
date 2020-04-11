@@ -12,9 +12,6 @@ using System.Linq;
 
 namespace Phonebook.Backend.PictureService.Controllers
 {
-    /// <summary>
-    /// 
-    /// </summary>
     [Authorize]
     [EnableCors("AllowDomainList")]
     [Route("/")]

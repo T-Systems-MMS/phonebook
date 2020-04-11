@@ -18,6 +18,7 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.Reflection;
+using static Phonebook.Backend.PictureService.Helpers.AdfsHelper;
 
 namespace Phonebook.Backend.PictureService
 {
@@ -71,21 +72,12 @@ namespace Phonebook.Backend.PictureService
                 options.SubstituteApiVersionInUrl = true;
             });
 
-            //Enable IIS Integration            
-            //services.AddAuthentication(IISDefaults.AuthenticationScheme);
-            //services.Configure<IISOptions>(options =>
-            //{
-            //    options.AutomaticAuthentication = true;
-            //});
-            //services.AddCors(o => o.AddPolicy(CorsPolicy, builder =>
-            //{
-            //    // Add some CORS allowed origins here
-            //    builder.WithOrigins(this.AppSettings.AllowedCORSDomains).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
-            //}));
+            // Auth
 
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-
+#if DEBUG
+            Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
+#endif
+            AddWsFederation(services, Configuration);
 
             services.AddImageProcessingSettings(Configuration);
 
@@ -142,7 +134,10 @@ namespace Phonebook.Backend.PictureService
             app.UseStaticFiles();
 
             app.UseRouting();
-            
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
