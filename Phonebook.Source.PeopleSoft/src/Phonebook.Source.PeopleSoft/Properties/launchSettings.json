@@ -1,11 +1,7 @@
 {
   "iisSettings": {
-    "windowsAuthentication": true,
+    "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iis": {
-      "applicationUrl": "http://localhost/Phonebook.Source.PeopleSoft",
-      "sslPort": 0
-    },
     "iisExpress": {
       "applicationUrl": "http://localhost:22913",
       "sslPort": 44390
