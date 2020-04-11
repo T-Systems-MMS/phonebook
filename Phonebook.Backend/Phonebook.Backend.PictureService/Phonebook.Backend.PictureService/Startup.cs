@@ -39,9 +39,12 @@ namespace Phonebook.Backend.PictureService
             this.AppSettings = configuration.Get<PictureServiceConfiguration>();
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summer>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summer>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
             // Validation of the appsettings on Startup
             services.AddSingleton<PictureServiceConfiguration>(AppSettings);
             services.UseConfigurationValidation();
@@ -69,18 +72,18 @@ namespace Phonebook.Backend.PictureService
             });
 
             //Enable IIS Integration            
-            services.AddAuthentication(IISDefaults.AuthenticationScheme);
-            services.Configure<IISOptions>(options =>
-            {
-                options.AutomaticAuthentication = true;
-            });
-            services.AddCors(o => o.AddPolicy(CorsPolicy, builder =>
-            {
-                // Add some CORS allowed origins here
-                builder.WithOrigins(this.AppSettings.AllowedCORSDomains).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
-            }));
+            //services.AddAuthentication(IISDefaults.AuthenticationScheme);
+            //services.Configure<IISOptions>(options =>
+            //{
+            //    options.AutomaticAuthentication = true;
+            //});
+            //services.AddCors(o => o.AddPolicy(CorsPolicy, builder =>
+            //{
+            //    // Add some CORS allowed origins here
+            //    builder.WithOrigins(this.AppSettings.AllowedCORSDomains).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+            //}));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
 
 
@@ -89,7 +92,7 @@ namespace Phonebook.Backend.PictureService
             // Scheduled Tasks
             services.AddSingleton<IScheduledTaskOptions<PurgeTask>>(
                 new ScheduledTaskOptions<PurgeTask>
-                {                    
+                {
                     Schedule = AppSettings.PurgeSchedule
                 }
             );
@@ -103,17 +106,19 @@ namespace Phonebook.Backend.PictureService
             {
                 // add a custom operation filter which sets default values
                 c.OperationFilter<SwaggerDefaultValues>();
-                
+
 
                 c.IncludeXmlComments(XmlCommentsFilePath);
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        ///<summary>
+        ///This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        ///The order should be like this: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-3.1#middleware-order
+        ///</summary>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApiVersionDescriptionProvider provider)
         {
-            // Should stay on Top
-            app.UseCors(CorsPolicy);
+            //Should stay on Top
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -123,8 +128,7 @@ namespace Phonebook.Backend.PictureService
                 app.UseHsts();
             }
 
-            app.UseAuthentication();
-
+            app.UseHttpsRedirection();
 
             // Show all Pictures in wwwroot
             app.UseDirectoryBrowser(new DirectoryBrowserOptions
@@ -132,6 +136,16 @@ namespace Phonebook.Backend.PictureService
                 FileProvider = new PhysicalFileProvider(
                 Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
                 RequestPath = ""
+            });
+            // Image Processing Stuff
+            app.UseImageProcessing();
+            app.UseStaticFiles();
+
+            app.UseRouting();
+            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
             });
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
@@ -145,12 +159,7 @@ namespace Phonebook.Backend.PictureService
                 }
             });
 
-            // Image Processing Stuff
-            app.UseImageProcessing();
-            app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
         }
 
         static string XmlCommentsFilePath

@@ -12,8 +12,7 @@ namespace Phonebook.Backend.PictureService.Controllers.V1
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize]
-    [EnableCors("AllowDomainList")]
+    //[Authorize]    
     [ApiVersion("1.0")]
     public class UserController : ControllerBase
     {

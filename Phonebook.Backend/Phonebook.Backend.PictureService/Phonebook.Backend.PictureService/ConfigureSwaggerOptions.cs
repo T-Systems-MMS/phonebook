@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using Phonebook.Backend.PictureService.Configuration;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -43,16 +44,16 @@ namespace Phonebook.Backend.PictureService
             }
         }
 
-        private Info CreateInfoForApiVersion(ApiVersionDescription description)
+        private OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
         {
-            var info = new Info()
+            var info = new OpenApiInfo()
             {
                 Title = "Picture Service API",
                 Version = description.ApiVersion.ToString(),
                 Description = "API for management of Phonebook Pictures",
-                Contact = new Contact() { Name = configuration.ContactInformation.Name, Email = configuration.ContactInformation.Email },
-                TermsOfService = "None",
-                License = new License() { Name = "MIT", Url = "https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE" }
+                Contact = new OpenApiContact() { Name = configuration.ContactInformation.Name, Email = configuration.ContactInformation.Email },
+                TermsOfService = new Uri("https://example.org/"),
+                License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE") }
             };
 
             if (description.IsDeprecated)
