@@ -1,67 +1,59 @@
 {
-	    "folders": [
-        {
-            "name": "Frontend",
-            "path": "./Phonebook.Frontend"
-        },
-        {
-            "name": "Backend",
-            "path": "./Phonebook.Backend"
-        },
-        {
-            "name": "Source.PeopleSoft",
-            "path": "./Phonebook.Source.PeopleSoft"
-        },
-        {
-            "name": "Phonebook (Helm)",
-            "path": "./Phonebook"
-        },
-        {
-            "name": "Documentation",
-            "path": "./docs"
-        },
-        {
-            "name": "Demo",
-            "path": "./demo"
-        },
-        {
-            "name": "Demo - Assets",
-            "path": "./demo/Assets"
-        },
-        {
-            "name": "Demo - Datasource",
-            "path": "./demo/source"
-        },
-        {
-            "name": "Azure Pipelines",
-            "path": "./.azure/pipelines"
-        },
-        {
-            "name": "root",
-            "path": "."
-        }
-    ],
-    "settings": {
-        "cSpell.words": [
-            "Kubernetes",
-            "Phonebook"
-        ],
-        "javascript.preferences.quoteStyle": "single",
-        "typescript.preferences.quoteStyle": "single",
-        "javascript.referencesCodeLens.enabled": true,
-        "typescript.referencesCodeLens.enabled": true,
-        "[html]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[javascript]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[typescript]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "files.associations": {
-            "**/assets/js/search-data.json": "plaintext"
-        }
+  "folders": [
+    {
+      "name": "Frontend",
+      "path": "./Phonebook.Frontend"
+    },
+    {
+      "name": "Source.PeopleSoft",
+      "path": "./Phonebook.Source.PeopleSoft"
+    },
+    {
+      "name": "Phonebook (Helm)",
+      "path": "./Phonebook"
+    },
+    {
+      "name": "Documentation",
+      "path": "./docs"
+    },
+    {
+      "name": "Demo",
+      "path": "./demo"
+    },
+    {
+      "name": "Demo - Assets",
+      "path": "./demo/Assets"
+    },
+    {
+      "name": "Demo - Datasource",
+      "path": "./demo/source"
+    },
+    {
+      "name": "Azure Pipelines",
+      "path": "./.azure/pipelines"
+    },
+    {
+      "name": "root",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "cSpell.words": ["Kubernetes", "Phonebook"],
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "javascript.referencesCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": true,
+    "prettier.disableLanguages": [],
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "extensions": {
         "recommendations": [
@@ -69,4 +61,8 @@
             "streetsidesoftware.code-spell-checker"
         ]
     }
+  },
+  "extensions": {
+    "recommendations": ["esbenp.prettier-vscode"]
+  }
 }

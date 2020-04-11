@@ -5,6 +5,23 @@
 @import 'src/app/modules/profile-picture/components/profile-picture/profile-picture.component.theme';
 @import 'src/styles/shadows.theme';
 
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(20px, 32px, 500),
+  $subheading-2: mat-typography-level(16px, 28px, 400),
+  $subheading-1: mat-typography-level(15px, 24px, 400),
+  $body-2: mat-typography-level(14px, 24px, 500),
+  $body-1: mat-typography-level(14px, 20px, 400),
+  $caption: mat-typography-level(12px, 20px, 400),
+  $button: mat-typography-level(14px, 14px, 500),
+  $input: mat-typography-level(inherit, 1.125, 400)
+);
+
 //Global Color Theme Mixin
 @mixin global-theme($theme) {
   $primary: map-get($theme, primary);
@@ -40,25 +57,68 @@
   @include profile-picture-component-theme($theme);
   @include shadow-theme($theme);
 }
+@import 'src/styles/themes/unicorn';
+.unicorn_theme {
+  @include mat-core($april-typography);
+  @include angular-material-theme($unicorn_theme);
+  @include custom-components-theme($unicorn_theme);
+  .mat-button {
+    font-size: 19px;
+  }
+  .mat-table,
+  .mat-card,
+  .mat-tab-group,
+  .mat-dialog-container {
+    background-color: $unicorn_mat-color;
+  }
+  .mat-button,
+  .mat-stroked-button.mat-primary,
+  .mat-option.mat-selected,
+  .mat-button.mat-primary,
+  .mat-snack-bar-container {
+    color: $unicorn_darkHighlight !important;
+  }
 
+  .search,
+  .mat-drawer-inner-container,
+  .mat-toolbar {
+    background-color: $unicorn_secondary;
+  }
+
+  .mat-snack-bar-container {
+    background-color: #a2edff;
+  }
+  a,
+  b {
+    color: $unicorn-primary-text;
+  }
+
+  .mat-card-subtitle {
+    color: black;
+  }
+}
 @import 'src/styles/themes/blue';
 .blue_light_theme {
   @include angular-material-theme($blue_light_theme);
   @include custom-components-theme($blue_light_theme);
+  @include mat-core($custom-typography);
 }
 
 .blue_dark_theme {
   @include angular-material-theme($blue_dark_theme);
   @include custom-components-theme($blue_dark_theme);
+  @include mat-core($custom-typography);
 }
 
 @import 'src/styles/themes/magenta';
 .magenta_light_theme {
   @include angular-material-theme($magenta_light_theme);
   @include custom-components-theme($magenta_light_theme);
+  @include mat-core($custom-typography);
 }
 
 .magenta_dark_theme {
   @include angular-material-theme($magenta_dark_theme);
   @include custom-components-theme($magenta_dark_theme);
+  @include mat-core($custom-typography);
 }

@@ -44,7 +44,7 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
     private profilePictureService: ProfilePictureService,
     private featureFlagService: FeatureFlagService,
     private httpClient: HttpClient
-  ) {}
+  ) { }
 
   public ngOnInit() {
     this.featureFlagService
@@ -53,19 +53,50 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
       .subscribe(flag => {
         this.useAprilEndpoint = flag;
         if (!flag) {
-          this.profilePictureService.reload.pipe(untilComponentDestroyed(this)).subscribe(id => {
-            this.imageLoaded = false;
-            if (this.USER.Id.toLowerCase() === id.toLowerCase()) {
-              this.RANDOM = Math.random().toString();
-              this.updateImageUrl();
-            }
-          });
+          this.profilePictureService.reload
+            .pipe(untilComponentDestroyed(this))
+            .subscribe(id => {
+              this.imageLoaded = false;
+              if (this.USER.Id.toLowerCase() === id.toLowerCase()) {
+                this.RANDOM = Math.random().toString();
+                this.updateImageUrl();
+              }
+            });
         } else {
           this.updateImageUrl();
         }
       });
   }
-
+  private getAprilProfilePictureUrl() {
+    var random = Math.floor(Math.random() * Math.floor(9));
+    switch (random) {
+      case 0:
+        return 'assets/img/firstApril/unicorn_1.png';
+      case 1:
+        return 'assets/img/firstApril/unicorn_2.png';
+      case 2:
+        return 'assets/img/firstApril/unicorn_3.png';
+      case 3:
+        return 'assets/img/firstApril/unicorn_4.png';
+      case 4:
+        return 'assets/img/firstApril/unicorn_5.png';
+      case 5:
+        return 'assets/img/firstApril/unicorn_6.png';
+      case 6:
+        return 'assets/img/firstApril/unicorn_7.png';
+      case 7:
+        return 'assets/img/firstApril/unicorn_8.png';
+      case 8:
+        return 'assets/img/firstApril/unicorn_9.png';
+      case 9:
+        return 'assets/img/firstApril/unicorn_10.png';
+      case 10:
+        return 'assets/img/firstApril/unicorn_11.png';
+      case 11:
+        return 'assets/img/firstApril/unicorn_12.png';
+      default: return 'assets/img/firstApril/unicorn_1.png';
+    }
+  }
   public updateImageUrl() {
     if (runtimeEnvironment.employeePicturesEndpoint !== undefined) {
       if (!this.useAprilEndpoint) {
@@ -75,30 +106,31 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
           this.imageUrl = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/${this.imageSize}.jpg`;
         }
       } else {
-        this.httpClient
-          .get('/api/april/pictures/' + this.user.Id, {
-            responseType: 'text'
-          })
-          .subscribe(text => {
-            this.imageUrl = text;
-          });
+        this.imageUrl = this.getAprilProfilePictureUrl();
       }
     }
   }
-
   public useImage(event: Event) {
     this.imageLoaded = true;
   }
 
   public onMouseenter(): void {
-    if (this.canEnlargeOnHover === false || this.dialogRef != null || this.imageLoaded === false) {
+    if (
+      this.canEnlargeOnHover === false ||
+      this.dialogRef != null ||
+      this.imageLoaded === false
+    ) {
       return;
     }
     this.openEnlarge();
   }
 
   public onClick() {
-    if (this.canEnlargeOnClick === false || this.dialogRef != null || this.imageLoaded === false) {
+    if (
+      this.canEnlargeOnClick === false ||
+      this.dialogRef != null ||
+      this.imageLoaded === false
+    ) {
       return;
     }
     this.openEnlarge(true);

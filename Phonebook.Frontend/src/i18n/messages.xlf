@@ -1,6 +1,16 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext">
     <body>
+      <trans-unit id="PageInformationApril" datatype="html">
+        <source> Happy Aprils Fools Day! You don&apos;t like the Theme? Change it.</source>
+        <note priority="1" from="description">Change Theme back from Unicorntheme</note>
+        <note priority="1" from="meaning">Change Theme back from Unicorntheme</note>
+      </trans-unit>
+      <trans-unit id="PageInformationUnicornTheme" datatype="html">
+        <source>Change Theme</source>
+        <note priority="1" from="description">Message for Change Theme</note>
+        <note priority="1" from="meaning">Change Theme</note>
+      </trans-unit>
       <trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
         <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won&apos;t get any information about updates or releases with the set url parameter.</source>
         <note priority="1" from="description">Message for just set no cookie url</note>
@@ -180,6 +190,11 @@
         <note priority="1" from="description">Button for closing something</note>
         <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit>
+      <trans-unit id="DashboardComponentTitleRecent" datatype="html">
+        <source> Recent People </source>
+        <note priority="1" from="description">Title of the recent people section</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit>
       <trans-unit id="DashboardComponentTitleBookmark" datatype="html">
         <source> Bookmarked People </source>
         <note priority="1" from="description">Title of the Bookmarked people section</note>
@@ -200,14 +215,14 @@
         <note priority="1" from="description">The alphabetical desc order of the favorite cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
-      <trans-unit id="DashboardComponentTitleRecent" datatype="html">
-        <source> Recent People </source>
-        <note priority="1" from="description">Title of the recent people section</note>
+      <trans-unit id="DashboardComponentButtonExpandTooltip" datatype="html">
+        <source>Expand or Collapse recently viewed people</source>
+        <note priority="1" from="description">Tooltip for expanding recently viewed people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
-      <trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
-        <source> You haven&apos;t bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </source>
-        <note priority="1" from="description">Message displayed if no people are bookmarked</note>
+      <trans-unit id="DashboardComponentButtonExpandArialLabel" datatype="html">
+        <source>Button expanding or collapsing the recently viewed people section</source>
+        <note priority="1" from="description">Aria Label for expanding recently viewed people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="GeneralUndoButton" datatype="html">
@@ -217,7 +232,13 @@
       </trans-unit>
       <trans-unit id="DashboardComponentDescriptionRecent" datatype="html">
         <source> Looks like you haven&apos;t searched for any colleagues yet. Search for somebody to see how it works! The most recent ones will be displayed here. </source>
-        <note priority="1" from="description">Message displayed if no people have been visited recently</note>
+        <note priority="1" from="description">Message displayed if no people have been visited
+              recently</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit>
+      <trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
+        <source> You haven&apos;t bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </source>
+        <note priority="1" from="description">Message displayed if no people are bookmarked</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentTitle" datatype="html">
@@ -253,6 +274,11 @@
       <trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
         <source>Blue Light Theme</source>
         <note priority="1" from="description">Color Theme Option - Blue Light</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit>
+      <trans-unit id="SettingsComponentColorThemeUnicorn" datatype="html">
+        <source>Unicorn Theme</source>
+        <note priority="1" from="description">Color Theme Option -  Unicorn</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">

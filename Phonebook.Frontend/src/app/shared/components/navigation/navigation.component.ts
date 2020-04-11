@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationEnd, Router } from '@angular/router';
-
 import { Select } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable } from 'rxjs';
@@ -12,11 +11,12 @@ import { ReleaseInfoService } from 'src/app/services/release-info.service';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { Person } from 'src/app/shared/models';
-import { TableState } from 'src/app/shared/states';
+import { TableState, AppState } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 import { Environment, EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { HASH_LONG, HASH_SHORT, VERSION } from 'src/environments/version';
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
 
 @Component({
   selector: 'app-navigation',
@@ -24,20 +24,25 @@ import { HASH_LONG, HASH_SHORT, VERSION } from 'src/environments/version';
   styleUrls: ['./navigation.component.scss'],
   host: { class: 'pb-expand' }
 })
+
 export class NavigationComponent implements OnInit, OnDestroy {
   public version: typeof VERSION = VERSION;
   public versionHashShort: typeof HASH_SHORT = HASH_SHORT;
   public versionHashLong: typeof HASH_LONG = HASH_LONG;
   public environment: EnvironmentInterface = environment;
   public Environment: typeof Environment = Environment;
+  public firstApril : boolean = false;
   public currentEnvironment: Environment = runtimeEnvironment.environment;
+
+  @Select(AppState.activeTheme)
+  public themeValue$: Observable<Theme>;
 
   @Select(TableState.resultCount)
   public tableResultCount$: Observable<number>;
   public displayTableSettings: boolean = false;
   public hasImage: boolean = false;
-
   public currentUser: Person | null = null;
+  public unicornActive: boolean = false;
   constructor(
     private currentUserService: CurrentUserService,
     private router: Router,
@@ -45,9 +50,22 @@ export class NavigationComponent implements OnInit, OnDestroy {
     public featureFlagService: FeatureFlagService,
     public badge: MatBadgeModule,
     public releaseInfoService: ReleaseInfoService
-  ) {}
+  ) { }
 
   public ngOnInit() {
+    this.featureFlagService
+      .get('firstApril')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(flag => {
+        this.firstApril = flag;
+      });
+        this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe(name => {
+          if (name === Theme.unicorn_theme) {
+            this.unicornActive = true;
+          }else {
+            this.unicornActive = false;
+          }});
+          
     this.currentUserService
       .getCurrentUser()
       .pipe(untilComponentDestroyed(this))
@@ -82,7 +100,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy() { }
 
   public getGreetingMessage(): Observable<string> {
     return this.featureFlagService.get('firstApril').pipe(
@@ -112,7 +130,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
       return runtimeEnvironment.environmentTag;
     }
   }
-
   public navigateToOwnProfile() {
     if (this.currentUser != null) {
       this.router.navigateByUrl(`/user/${this.currentUser.Id}`);

@@ -9,10 +9,6 @@ export class ThemeService {
     const bodyClassList = document.body.classList;
     this.removeThemesFromClassList(bodyClassList);
     bodyClassList.add(themeClass);
-
-    const overlayClassList = this.overlayContainer.getContainerElement().classList;
-    this.removeThemesFromClassList(overlayClassList);
-    overlayClassList.add(themeClass);
   }
 
   private removeThemesFromClassList(classList: DOMTokenList) {

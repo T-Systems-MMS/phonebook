@@ -55,7 +55,7 @@ export class RoomDetailComponent implements OnInit {
             this.room = this.node.data as Room;
           }
           this.personService
-            .getPersonsByRoom(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
+            .getPersonsByRoom(RoomHelpers.getParamsAsArray(params, ['roomId'])[0])
             .subscribe(person => {
               this.persons = person;
             });
