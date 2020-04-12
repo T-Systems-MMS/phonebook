@@ -33,6 +33,7 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            // Freeze Seed in order to make debugging easier (keeping the same user Id's
             Randomizer.Seed = new Random(8675309);
 
             var roomNumbers = new[] { "1A", "2A", "3A", "4A", "5A", "6A", "1B", "2B", "3B", "4B", "5B", "6B", "1.004785", "N100.45", "545", "0.0454a", "Apl", "F-54689", "F54689" };
