@@ -58,7 +58,7 @@
     "ng2-rx-componentdestroyed": "3.0.1",
     "ngx-clipboard": "12.3.1",
     "ngx-infinite-scroll": "8.0.1",
-    "ngx-propagation-stop": "2.0.2",
+    "ngx-propagation-stop": "2.0.3",
     "ngx-vcard": "2.0.1",
     "raven-js": "3.27.2",
     "rxjs": "6.5.5",
