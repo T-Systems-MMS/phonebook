@@ -1,3 +1,4 @@
+/* tslint:disable:no-invalid-template-strings */
 import { Environment, RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 
 declare const ENV: RuntimeEnvironmentInterface;

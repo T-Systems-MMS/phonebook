@@ -44,7 +44,7 @@
     "no-default-export": true,
     "no-duplicate-super": true,
     "no-duplicate-variable": true,
-    "no-empty": true,
+    "no-empty": [true, "allow-empty-functions"],
     "no-empty-interface": true,
     "no-empty-line-after-opening-brace": false,
     "no-eval": true,
@@ -108,7 +108,12 @@
       true,
       {
         "singleline": "never",
-        "multiline": "always"
+        "multiline": {
+          "objects": "always",
+          "arrays": "always",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        }
       }
     ],
     "triple-equals": [true, "allow-null-check"],

@@ -133,7 +133,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     if (
       DisplayNotificationDialog.version >
-      (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)
+      (this.store.selectSnapshot(AppState.displayedNotificationVersion) || 0)
     ) {
       this.matDialog.open(DisplayNotificationDialog, {
         height: '90vh',
