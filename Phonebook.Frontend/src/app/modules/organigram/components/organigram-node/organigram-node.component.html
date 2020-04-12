@@ -3,9 +3,8 @@
     <mat-card-header>
       <mat-card-title>
         <h1>
-          <mat-icon ngxClipboard [cbContent]="getLink()" (cbOnSuccess)="linkCopiedToast()" (cbOnError)="linkErrorToast()"
-            class="link pb-pointer">link</mat-icon>
-          <span>{{node.id + ': ' + node.name}}</span>
+          <mat-icon [cdkCopyToClipboard]="getLink()" (copied)="copiedToast($event)" class="link pb-pointer">link</mat-icon>
+          <span>{{ node.id + ': ' + node.name }}</span>
         </h1>
       </mat-card-title>
       <button mat-icon-button (click)="toggleExpand()" *ngIf="node.children.length != 0" i18n-matTooltip="OrganigramNodeComponent|Tooltip for expanding a Organigram Node@@OrganigramNodeComponentExpandTooltip"

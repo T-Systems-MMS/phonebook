@@ -65,25 +65,25 @@ export class OrganigramNodeComponent implements OnInit {
     return path;
   }
 
-  public linkCopiedToast() {
-    this.store.dispatch(new Navigate(this.generatePath(true)));
-    this.snackBar.open(
-      $localize`:OrganigramNodeComponent|First part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedFirstPart:Link to` +
-        ' "' +
-        this.node.name +
-        '" ' +
-        $localize`:OrganigramNodeComponent|Second part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedSecondPart:copied to clipboard!`,
-      '',
-      { duration: 2000 }
-    );
-  }
-
-  public linkErrorToast() {
-    this.snackBar.open(
-      $localize`:GeneralErrorMessageCopy|Message displayed when copying something went wrong@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
-      '',
-      { duration: 2000 }
-    );
+  public copiedToast(success: boolean) {
+    if (success) {
+      this.store.dispatch(new Navigate(this.generatePath(true)));
+      this.snackBar.open(
+        $localize`:OrganigramNodeComponent|First part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedFirstPart:Link to` +
+          ' "' +
+          this.node.name +
+          '" ' +
+          $localize`:OrganigramNodeComponent|Second part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedSecondPart:copied to clipboard!`,
+        '',
+        { duration: 2000 }
+      );
+    } else {
+      this.snackBar.open(
+        $localize`:GeneralErrorMessageCopy|Message displayed when copying something went wrong@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
+        '',
+        { duration: 2000 }
+      );
+    }
   }
 
   public getCurrentRouteAsArray(): string[] {

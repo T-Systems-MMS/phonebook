@@ -5,10 +5,8 @@
     <button
       mat-button
       propagationStop
-      ngxClipboard
-      [cbContent]="data.copy"
-      (cbOnSuccess)="copySuccessToast()"
-      (cbOnError)="copyErrorToast()"
+      [cdkCopyToClipboard]="data.copy"
+      (copied)="copiedToast($event)"
       (click)="closeBottomSheet()"
     >
       <span i18n="GeneralCopyButton|Copy to Clipboard button@@GeneralCopyButton">Copy to clipboard</span>

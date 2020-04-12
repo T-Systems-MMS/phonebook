@@ -2,7 +2,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { ClipboardService } from 'ngx-clipboard';
+import { Clipboard } from '@angular/cdk/clipboard';
 import { ActionDrawerSheetComponent } from 'src/app/shared/directives/action-drawer/action-drawer-sheet/action-drawer-sheet.component';
 
 @Directive({ selector: '[actionDrawer]' })
@@ -12,7 +12,7 @@ export class ActionDrawerDirective {
     event.stopPropagation();
     // Checks if only one of the actions is true
     if (this.copy && !this.tel && !this.mailto) {
-      this.clipboardService.copyFromContent(this.copy);
+      this.clipboard.copy(this.copy);
       this.snackBar.open(
         $localize`:SuccessMessageCopy|Message displayed if something was copied succesfully@@GeneralSuccessMessageCopy:Copied to clipboard!`,
         '',
@@ -29,7 +29,7 @@ export class ActionDrawerDirective {
   constructor(
     el: ElementRef,
     private bottomSheet: MatBottomSheet,
-    private clipboardService: ClipboardService,
+    private clipboard: Clipboard,
     private snackBar: MatSnackBar
   ) {}
 
