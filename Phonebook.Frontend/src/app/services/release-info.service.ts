@@ -55,7 +55,7 @@ export class ReleaseInfoService {
       .get('changelog.md', {
         responseType: 'text',
       })
-      .subscribe(success => {
+      .subscribe((success) => {
         import('markdown-it').then((markdownit) => {
           text = markdownit.default().render(success);
           this.dialog.open(ReleaseNotificationDialog, {

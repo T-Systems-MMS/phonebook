@@ -8,7 +8,7 @@ permalink: /pages/development-guides/frontend/getting-started
 nav_order: 100
 ---
 
-# :small_red_triangle: **Getting Started with _frontend_**
+# :small*red_triangle: \*\*Getting Started with \_frontend*\*\*
 
 We recommmend using [VSCode](https://code.visualstudio.com/) as IDE, however you can also use your favorite IDE.
 

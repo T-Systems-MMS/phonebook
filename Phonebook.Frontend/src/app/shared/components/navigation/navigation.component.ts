@@ -58,13 +58,14 @@ export class NavigationComponent implements OnInit, OnDestroy {
       .subscribe((flag) => {
         this.firstApril = flag;
       });
-        this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe(name => {
-          if (name === Theme.unicorn_theme) {
-            this.unicornActive = true;
-          }else {
-            this.unicornActive = false;
-          }});
-          
+    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe((name) => {
+      if (name === Theme.unicorn_theme) {
+        this.unicornActive = true;
+      } else {
+        this.unicornActive = false;
+      }
+    });
+
     this.currentUserService
       .getCurrentUser()
       .pipe(untilComponentDestroyed(this))
