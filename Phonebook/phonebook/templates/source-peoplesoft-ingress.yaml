@@ -3,15 +3,15 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName }}-peoplesoft
   labels:
-    app.kubernetes.io/name: {{ include "phonebook.name" . }}
+    app.kubernetes.io/name: {{ include "phonebook.name" . }}-peoplesoft
     helm.sh/chart: {{ include "phonebook.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.frontend.priority: '10'
+    traefik.frontend.priority: '50'
   {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
@@ -20,8 +20,8 @@ spec:
     - host: {{ .Values.host }}
       http:
         paths:
-          - path: /
+          - path: /api
             backend:
-              serviceName: {{ $fullName }}
+              serviceName: {{ $fullName }}-peoplesoft
               servicePort: http
 {{- end }}
