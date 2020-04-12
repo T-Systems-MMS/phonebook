@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Navigate, RouterState } from '@ngxs/router-plugin';
@@ -10,7 +17,7 @@ import { WindowRef } from 'src/app/services/windowRef.service';
   selector: 'app-organigram-node',
   templateUrl: './organigram-node.component.html',
   styleUrls: ['./organigram-node.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrganigramNodeComponent implements OnInit {
   @Input()
@@ -90,14 +97,14 @@ export class OrganigramNodeComponent implements OnInit {
     const navState = this.store.selectSnapshot(RouterState.state);
     return [
       navState!.root.firstChild!.url[0].path,
-      ...navState!.root.firstChild!.firstChild!.url.map(obj => {
+      ...navState!.root.firstChild!.firstChild!.url.map((obj) => {
         return obj.path;
-      })
+      }),
     ];
   }
 }
 
 enum Expanded {
   isExpanded = 'expand_less',
-  isNotExpanded = 'expand_more'
+  isNotExpanded = 'expand_more',
 }

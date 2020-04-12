@@ -8,6 +8,6 @@ import { AddFilterComponent } from 'src/app/shared/components/add-filter/add-fil
 @NgModule({
   imports: [CommonModule, MatTooltipModule, MatChipsModule, PropagationStopModule],
   declarations: [AddFilterComponent],
-  exports: [AddFilterComponent]
+  exports: [AddFilterComponent],
 })
 export class AddFilterModule {}

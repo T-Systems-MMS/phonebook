@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'release-notification-dialog',
   templateUrl: './release-notification.dialog.html',
-  styleUrls: ['./release-notification.dialog.scss']
+  styleUrls: ['./release-notification.dialog.scss'],
 })
 export class ReleaseNotificationDialog {
   constructor(

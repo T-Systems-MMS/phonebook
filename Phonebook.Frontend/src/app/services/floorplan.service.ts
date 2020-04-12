@@ -10,7 +10,7 @@ export class FloorplanService {
 
   public get(floorplan: string): Observable<string> {
     return this.httpClient.get(`${runtimeEnvironment.assetsEndpoint}/roomplan/${floorplan}.svg`, {
-      responseType: 'text'
+      responseType: 'text',
     });
   }
 }

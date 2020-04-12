@@ -1,5 +1,8 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { ColumnDefinitions, getColumnsAsStringArray } from 'src/app/shared/config/columnDefinitions';
+import {
+  ColumnDefinitions,
+  getColumnsAsStringArray,
+} from 'src/app/shared/config/columnDefinitions';
 import { Column } from 'src/app/shared/models';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { Injectable } from '@angular/core';
@@ -27,15 +30,15 @@ export interface TableStateModel {
   name: 'tablestate',
   defaults: {
     visibleColumns: getColumnsAsStringArray(ColumnDefinitions.getDefault()),
-    resultCount: 0
-  }
+    resultCount: 0,
+  },
 })
 @Injectable()
 export class TableState {
   @Selector()
   public static visibleColumns(state: TableStateModel): Column[] {
-    return state.visibleColumns.map(col => {
-      const tmp = ColumnDefinitions.getAll().find(c => {
+    return state.visibleColumns.map((col) => {
+      const tmp = ColumnDefinitions.getAll().find((c) => {
         return c.id === col;
       });
       if (tmp == null) {
@@ -51,9 +54,12 @@ export class TableState {
   }
 
   @Action(SetVisibleTableColumns)
-  public setVisibleTableColumns(ctx: StateContext<TableStateModel>, action: SetVisibleTableColumns) {
+  public setVisibleTableColumns(
+    ctx: StateContext<TableStateModel>,
+    action: SetVisibleTableColumns
+  ) {
     const state = ctx.getState();
-    ctx.setState({ ...state, visibleColumns: action.columns.map(col => col.id) });
+    ctx.setState({ ...state, visibleColumns: action.columns.map((col) => col.id) });
   }
 
   @Action(ResetTableSettings)

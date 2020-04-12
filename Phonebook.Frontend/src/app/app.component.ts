@@ -14,7 +14,7 @@ import {
   InitTheme,
   SetTheme,
   SetSendFeedback,
-  SetDisplayedNotificationVersion
+  SetDisplayedNotificationVersion,
 } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
@@ -26,18 +26,15 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
-  private urlParams: URLSearchParams = new URLSearchParams(
-    window.location.search
-  );
-  private skippedDialogs: boolean =
-    this.urlParams.get('skip_dialog') === 'true';
+  private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
+  private skippedDialogs: boolean = this.urlParams.get('skip_dialog') === 'true';
 
-    @Select(AppState.activeTheme)
-    public themeValue$: Observable<Theme>;
+  @Select(AppState.activeTheme)
+  public themeValue$: Observable<Theme>;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -57,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.featureFlagService
       .get('firstApril')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(flag => {
+      .subscribe((flag) => {
         if (flag) {
           this.store.dispatch(new SetTheme(Theme.unicorn_theme));
         }
@@ -105,14 +102,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
     //if skip_cookies is set, dont show dialogs
     if (this.skippedDialogs) {
-      this.store.dispatch(
-        new SetDisplayedNotificationVersion(DisplayNotificationDialog.version)
-      );
+      this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
     }
     //subscribe on query param changes, if changed open snackbar
     this.activatedRoute.queryParamMap
       .pipe(untilComponentDestroyed(this))
-      .subscribe(queryParamMap => {
+      .subscribe((queryParamMap) => {
         if (queryParamMap.get('skip_dialog') === 'true') {
           if (!this.skippedDialogs) {
             this.openJustSkippedDialogsSnackBar();
@@ -129,9 +124,9 @@ export class AppComponent implements OnInit, OnDestroy {
       !this.skippedDialogs
     ) {
       const matDialogRef = this.matDialog.open(BugReportConsentComponent, {
-        hasBackdrop: true
+        hasBackdrop: true,
       });
-      matDialogRef.afterClosed().subscribe(consent => {
+      matDialogRef.afterClosed().subscribe((consent) => {
         this.store.dispatch(new SetSendFeedback(consent));
       });
     }
@@ -142,7 +137,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ) {
       this.matDialog.open(DisplayNotificationDialog, {
         height: '90vh',
-        width: '90vw'
+        width: '90vw',
       });
     } else if (!this.skippedDialogs) {
       // Display the Release Dialog only if no notification Dialog is shown, in order to not overwhelm the user with dialogs.
@@ -152,16 +147,14 @@ export class AppComponent implements OnInit, OnDestroy {
     //IE Warning
     if (this.platform.TRIDENT === true) {
       this.matDialog.open(IeWarningComponent, {
-        panelClass: 'color-warn'
+        panelClass: 'color-warn',
       });
     }
 
     // Route Routes with failing Resolvers to the Main Page
-    this.router.events
-      .pipe(filter(e => e instanceof NavigationError))
-      .subscribe(e => {
-        this.router.navigateByUrl('/');
-      });
+    this.router.events.pipe(filter((e) => e instanceof NavigationError)).subscribe((e) => {
+      this.router.navigateByUrl('/');
+    });
   }
   public openJustSkippedDialogsSnackBar() {
     this.snackBar

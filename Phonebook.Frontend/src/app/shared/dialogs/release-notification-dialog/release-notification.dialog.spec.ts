@@ -3,7 +3,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MockComponent } from 'ng2-mock-component';
 import { ReleaseNotificationDialog } from './release-notification.dialog';
 
-
 // Deactivated, because MatDialogRef is not easily testable.
 xdescribe('ReleaseNotificationDialog', () => {
   let component: ReleaseNotificationDialog;
@@ -14,9 +13,9 @@ xdescribe('ReleaseNotificationDialog', () => {
       declarations: [
         ReleaseNotificationDialog,
         MockComponent({ selector: 'mat-list-item' }),
-        MockComponent({ selector: 'mat-list' })
+        MockComponent({ selector: 'mat-list' }),
       ],
-      imports: [MatCheckboxModule]
+      imports: [MatCheckboxModule],
     }).compileComponents();
   }));
 

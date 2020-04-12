@@ -9,6 +9,6 @@ import { RoomService } from 'src/app/services/api/room.service';
 @NgModule({
   declarations: [],
   imports: [HttpClientModule],
-  providers: [PersonService, RoomService, OrganigramService, BuildingService, CurrentUserService]
+  providers: [PersonService, RoomService, OrganigramService, BuildingService, CurrentUserService],
 })
 export class ApiModule {}

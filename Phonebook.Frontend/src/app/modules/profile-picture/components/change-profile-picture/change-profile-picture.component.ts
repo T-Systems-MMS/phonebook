@@ -10,7 +10,7 @@ import { CurrentUserService } from 'src/app/services/api/current-user.service';
 @Component({
   selector: 'app-change-profile-picture',
   templateUrl: './change-profile-picture.component.html',
-  styleUrls: ['./change-profile-picture.component.scss']
+  styleUrls: ['./change-profile-picture.component.scss'],
 })
 export class ChangeProfilePictureComponent implements OnInit {
   @Input()
@@ -27,10 +27,10 @@ export class ChangeProfilePictureComponent implements OnInit {
 
   public ngOnInit() {
     this.currentUserService.getCurrentUserId().subscribe(
-      id => {
+      (id) => {
         this.currentUserId = id;
       },
-      error => {
+      (error) => {
         // do nothing, as the id will never be ''
       }
     );
@@ -44,7 +44,7 @@ export class ChangeProfilePictureComponent implements OnInit {
     this.dialog
       .open(ChangeProfilePictureDialogComponent, {})
       .afterClosed()
-      .subscribe(upload => {
+      .subscribe((upload) => {
         if (upload) {
           this.uploading = true;
           // This is import because of firefox https://stackoverflow.com/questions/5301643/how-can-i-make-event-srcelement-work-in-firefox-and-what-does-it-mean
@@ -56,12 +56,12 @@ export class ChangeProfilePictureComponent implements OnInit {
             (eventElement as HTMLInputElement).value = '';
             if (fileSize <= 52428800) {
               this.profilePictureService.uploadUserPicture(file).subscribe(
-                success => {
+                (success) => {
                   this.snackBar.open(
                     $localize`:ChangeProfilePictureComponent|Success Message if profile picture was updated@@ChangeProfilePictureComponentSuccessUpdate:Updated your Profile Picture!`,
                     '',
                     {
-                      duration: 3000
+                      duration: 3000,
                     }
                   );
                   this.profilePictureService.reload.emit(this.userId);
@@ -74,12 +74,15 @@ export class ChangeProfilePictureComponent implements OnInit {
                         $localize`:ChangeProfilePictureComponent|Error Message if wrong File Type is supplied@@ChangeProfilePictureComponentErrorWrongFileType:The File Type is not supported.`,
                         $localize`:ChangeProfilePictureComponent|Button on Error Message if wrong File Type is supplied@@ChangeProfilePictureComponentErrorWrongFileTypeButton:I want to add more support!`,
                         {
-                          duration: 3000
+                          duration: 3000,
                         }
                       )
                       .onAction()
-                      .subscribe(clicked => {
-                        window.open('https://github.com/T-Systems-MMS/phonebook/issues/2', '_blank');
+                      .subscribe((clicked) => {
+                        window.open(
+                          'https://github.com/T-Systems-MMS/phonebook/issues/2',
+                          '_blank'
+                        );
                       });
                     return;
                   }
@@ -87,7 +90,7 @@ export class ChangeProfilePictureComponent implements OnInit {
                     $localize`:GeneralErrorMessage|A general Error message, that can be displayed everywhere@@GeneralErrorMessage:Something went wrong. Please try again.`,
                     '',
                     {
-                      duration: 3000
+                      duration: 3000,
                     }
                   );
                   this.uploading = false;
@@ -99,7 +102,7 @@ export class ChangeProfilePictureComponent implements OnInit {
                   ' 50MB.',
                 '',
                 {
-                  duration: 3000
+                  duration: 3000,
                 }
               );
             }
@@ -111,22 +114,22 @@ export class ChangeProfilePictureComponent implements OnInit {
 
   public deleteProfilePicture() {
     this.profilePictureService.deleteUserPicture().subscribe(
-      success => {
+      (success) => {
         this.snackBar.open(
           $localize`:ChangeProfilePictureComponent|Success Message if user deleted its profile picture@@ChangeProfilePictureComponentSuccessDelete:Your profile picture was deleted!`,
           '',
           {
-            duration: 3000
+            duration: 3000,
           }
         );
         this.profilePictureService.reload.emit(this.userId);
       },
-      error => {
+      (error) => {
         this.snackBar.open(
           $localize`:GeneralErrorMessage|Something went wrong, this is the message to be displayed@@GeneralErrorMessage:Something went wrong. Please try again.`,
           '',
           {
-            duration: 3000
+            duration: 3000,
           }
         );
       }

@@ -6,7 +6,7 @@ import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent implements OnInit {
   public cities: BuildingTreeNode[] = [];
@@ -14,7 +14,7 @@ export class OverviewComponent implements OnInit {
   constructor(private roomService: RoomService, private router: Router) {}
 
   public ngOnInit() {
-    this.roomService.getRoomTree().subscribe(rooms => {
+    this.roomService.getRoomTree().subscribe((rooms) => {
       this.cities = rooms;
     });
   }

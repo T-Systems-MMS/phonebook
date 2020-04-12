@@ -20,7 +20,7 @@ export interface IncorrectUserInformationDialogData {
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
@@ -47,14 +47,14 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
     private windowRef: WindowRef,
     private store: Store,
     private dialog: MatDialog
-  ) { }
+  ) {}
 
   public ngOnInit() {}
 
   public ngOnChanges(): void {
     this.rocketChatLink = this.getRocketChatLink();
-    this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
-      const index = bookmarks.findIndex(p => p.Id === this.person.Id);
+    this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe((bookmarks) => {
+      const index = bookmarks.findIndex((p) => p.Id === this.person.Id);
       if (index > -1) {
         this.bookmarked = Bookmarked.isBookmarked;
       } else {
@@ -65,7 +65,7 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
       name: {
         firstNames: this.person.Firstname,
         lastNames: this.person.Surname,
-        namePrefix: this.person.Title
+        namePrefix: this.person.Title,
       },
       kind: 'individual',
       uid: this.person.Id,
@@ -77,14 +77,14 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
       workFax: [this.person.Contacts.Fax],
       telephone: [
         { value: this.person.Contacts.Mobile, param: { type: 'cell' } },
-        { value: this.person.Contacts.Phone, param: { type: 'work' } }
+        { value: this.person.Contacts.Phone, param: { type: 'work' } },
       ],
       organization: {
         value: 'T-Systems Multimedia Solutions',
-        param: { type: ['work'] }
+        param: { type: ['work'] },
       },
       categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
-      nickname: this.person.Id
+      nickname: this.person.Id,
     };
     this.organigramLink = this.organigramLink.concat(this.person.Business.ShortOrgUnit);
   }
@@ -98,12 +98,12 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
 
   public openInformationIncorrectDialog(): void {
     const dialogData: IncorrectUserInformationDialogData = {
-      person: this.person
+      person: this.person,
     };
     const dialogConfig: MatDialogConfig = {
       autoFocus: true,
       hasBackdrop: true,
-      data: dialogData
+      data: dialogData,
     };
     this.dialog.open(IncorrectUserInformationComponent, dialogConfig);
   }
@@ -121,11 +121,10 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
       : null;
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 }
-
 
 enum Bookmarked {
   isBookmarked = 'bookmark',
-  isNotBookmarked = 'bookmark_border'
+  isNotBookmarked = 'bookmark_border',
 }

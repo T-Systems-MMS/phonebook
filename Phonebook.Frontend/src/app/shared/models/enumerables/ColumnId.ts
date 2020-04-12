@@ -11,5 +11,5 @@ export enum ColumnId {
   room = 'room',
   building = 'building',
   costcenter = 'costcenter',
-  status = 'status'
+  status = 'status',
 }

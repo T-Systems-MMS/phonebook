@@ -3,7 +3,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MockComponent } from 'ng2-mock-component';
 import { TableSettingsDialog } from './table-settings.dialog';
 
-
 // Deactivated, because MatDialogRef is not easily testable.
 xdescribe('TableSettingsDialog', () => {
   let component: TableSettingsDialog;
@@ -14,9 +13,9 @@ xdescribe('TableSettingsDialog', () => {
       declarations: [
         TableSettingsDialog,
         MockComponent({ selector: 'mat-list-item' }),
-        MockComponent({ selector: 'mat-list' })
+        MockComponent({ selector: 'mat-list' }),
       ],
-      imports: [MatCheckboxModule]
+      imports: [MatCheckboxModule],
     }).compileComponents();
   }));
 

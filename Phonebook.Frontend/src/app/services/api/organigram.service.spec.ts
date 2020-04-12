@@ -5,7 +5,7 @@ import { PersonService } from './person.service';
 describe('OrganigramService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [OrganigramService, { provide: PersonService, useValue: null }]
+      providers: [OrganigramService, { provide: PersonService, useValue: null }],
     });
   });
 

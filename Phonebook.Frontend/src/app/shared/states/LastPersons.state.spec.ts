@@ -1,18 +1,23 @@
 import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { Person } from 'src/app/shared/models';
-import { AddToLastPersons, LastPersonsState, RemoveFromLastPersons, ResetLastPersons } from 'src/app/shared/states/LastPersons.state';
+import {
+  AddToLastPersons,
+  LastPersonsState,
+  RemoveFromLastPersons,
+  ResetLastPersons,
+} from 'src/app/shared/states/LastPersons.state';
 
 describe('[States] Common Persons', () => {
   let store: Store;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([LastPersonsState])]
+      imports: [NgxsModule.forRoot([LastPersonsState])],
     }).compileComponents();
     store = TestBed.get(Store);
     store.reset({
-      lastpersons: []
+      lastpersons: [],
     });
   }));
   it('it adds LastPerson on Top', () => {
@@ -22,13 +27,20 @@ describe('[States] Common Persons', () => {
     person2.Id = 'test2';
     const person3: Person = Person.empty();
     person3.Id = 'test3';
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([]);
     store.dispatch(new AddToLastPersons(person1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person1]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([person1]);
     store.dispatch(new AddToLastPersons(person2));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person2, person1]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([
+      person2,
+      person1,
+    ]);
     store.dispatch(new AddToLastPersons(person3));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person3, person2, person1]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([
+      person3,
+      person2,
+      person1,
+    ]);
   });
 
   it('it pushes LastPerson to Top', () => {
@@ -38,35 +50,46 @@ describe('[States] Common Persons', () => {
     person2.Id = 'test2';
     const person3: Person = Person.empty();
     person3.Id = 'test3';
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([]);
     store.dispatch(new AddToLastPersons(person1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person1]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([person1]);
     store.dispatch(new AddToLastPersons(person2));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person2, person1]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([
+      person2,
+      person1,
+    ]);
     store.dispatch(new AddToLastPersons(person3));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person3, person2, person1]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([
+      person3,
+      person2,
+      person1,
+    ]);
     store.dispatch(new AddToLastPersons(person1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person1, person3, person2]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([
+      person1,
+      person3,
+      person2,
+    ]);
   });
 
   it('it resets LastPerson', () => {
     const person1: Person = Person.empty();
     person1.Id = 'test1';
     store.reset({
-      lastpersons: [person1]
+      lastpersons: [person1],
     });
     store.dispatch(new ResetLastPersons());
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([]);
   });
 
   it('it removes LastPerson', () => {
     const person1: Person = Person.empty();
     person1.Id = 'test1';
     store.reset({
-      lastpersons: [person1]
+      lastpersons: [person1],
     });
     store.dispatch(new RemoveFromLastPersons(person1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([]);
   });
 
   it('it removes LastPerson - independently', () => {
@@ -77,20 +100,23 @@ describe('[States] Common Persons', () => {
     const person3: Person = Person.empty();
     person3.Id = 'test3';
     store.reset({
-      lastpersons: [person1, person2, person3]
+      lastpersons: [person1, person2, person3],
     });
     store.dispatch(new RemoveFromLastPersons(person2));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person1, person3]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([
+      person1,
+      person3,
+    ]);
   });
 
   it('it removes LastPerson - no Person existing', () => {
     const person1: Person = Person.empty();
     person1.Id = 'test1';
     store.reset({
-      lastpersons: []
+      lastpersons: [],
     });
     store.dispatch(new RemoveFromLastPersons(person1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([]);
   });
 
   it('it removes LastPerson - Person not existing', () => {
@@ -101,9 +127,12 @@ describe('[States] Common Persons', () => {
     const person3: Person = Person.empty();
     person3.Id = 'test3';
     store.reset({
-      lastpersons: [person1, person3]
+      lastpersons: [person1, person3],
     });
     store.dispatch(new RemoveFromLastPersons(person2));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.lastpersons)).toEqual([person1, person3]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.lastpersons)).toEqual([
+      person1,
+      person3,
+    ]);
   });
 });

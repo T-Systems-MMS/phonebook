@@ -9,6 +9,6 @@ import { FeedbackDrawerDirective } from './feedback-drawer.directive';
   declarations: [FeedbackDrawerDirective, FeedbackDrawerSheetComponent],
   imports: [CommonModule, MatListModule, MatButtonModule],
   entryComponents: [FeedbackDrawerSheetComponent],
-  exports: [FeedbackDrawerDirective]
+  exports: [FeedbackDrawerDirective],
 })
 export class FeedbackDrawerModule {}

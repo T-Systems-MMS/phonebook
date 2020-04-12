@@ -4,7 +4,7 @@ import { Person } from 'src/app/shared/models';
 @Component({
   selector: 'app-user-small-card',
   templateUrl: './user-small-card.component.html',
-  styleUrls: ['./user-small-card.component.scss']
+  styleUrls: ['./user-small-card.component.scss'],
 })
 export class UserSmallCardComponent {
   @Input() public person: Person;

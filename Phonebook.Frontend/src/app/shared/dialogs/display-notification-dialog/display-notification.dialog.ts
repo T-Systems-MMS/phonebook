@@ -11,11 +11,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'display-notification-dialog',
   templateUrl: './display-notification.dialog.html',
-  styleUrls: ['./display-notification.dialog.scss']
+  styleUrls: ['./display-notification.dialog.scss'],
 })
 export class DisplayNotificationDialog implements OnInit, OnDestroy {
   public static version: number = 1;
-  constructor(public dialogRef: MatDialogRef<DisplayNotificationDialog>, store: Store, private router: Router) {
+  constructor(
+    public dialogRef: MatDialogRef<DisplayNotificationDialog>,
+    store: Store,
+    private router: Router
+  ) {
     store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
   }
   public skipStartDialogs() {

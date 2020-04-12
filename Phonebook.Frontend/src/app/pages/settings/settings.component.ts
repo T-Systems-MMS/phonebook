@@ -13,7 +13,7 @@ import { Theme } from 'src/app/shared/models/enumerables/Theme';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   public languageValue: Language = Language.en;
@@ -23,7 +23,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public languages: string[] = Object.keys(Language);
   public layoutValue: Layout = Layout.view_module;
   public layout: string[] = Object.values(Layout);
-  public featureFlags: Observable<{ name: string; value: boolean }[]> = this.featureFlagService.getAllDefaultDisabled();
+  public featureFlags: Observable<
+    { name: string; value: boolean }[]
+  > = this.featureFlagService.getAllDefaultDisabled();
 
   constructor(
     private store: Store,
@@ -95,5 +97,5 @@ export class SettingsComponent implements OnInit, OnDestroy {
 enum Layout {
   view_list = 'view_list',
   view_module = 'view_module',
-  view_stream = 'view_stream'
+  view_stream = 'view_stream',
 }

@@ -13,7 +13,7 @@ import { runtimeEnvironment } from 'src/environments/runtime-environment';
   selector: 'app-city',
   templateUrl: './city.component.html',
   styleUrls: ['./city.component.scss'],
-  host: { class: 'pb-height-expand' }
+  host: { class: 'pb-height-expand' },
 })
 export class CityComponent implements OnInit {
   public node: BuildingTreeNode;
@@ -30,10 +30,12 @@ export class CityComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.roomService
-        .getNodeByPath(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
-        .subscribe(node => {
+        .getNodeByPath(
+          RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId'])
+        )
+        .subscribe((node) => {
           if (node == null) {
             this.snackBar.open(
               $localize`:CityComponent|Error Message if City does not exist.@@CityComponentErrorNoCity:City does not exist.`,
@@ -43,7 +45,7 @@ export class CityComponent implements OnInit {
             this.router.navigate(['/rooms']);
           } else {
             this.node = node;
-            this.buildingService.getByCity(this.node.name).subscribe(locations => {
+            this.buildingService.getByCity(this.node.name).subscribe((locations) => {
               this.locations = locations;
             });
           }
@@ -52,6 +54,8 @@ export class CityComponent implements OnInit {
   }
 
   public navigateToBuilding(building: string) {
-    this.router.navigateByUrl(RoomHelpers.generateUrlStringFromParamArray([...this.node!.path, building]));
+    this.router.navigateByUrl(
+      RoomHelpers.generateUrlStringFromParamArray([...this.node!.path, building])
+    );
   }
 }

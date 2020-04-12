@@ -4,7 +4,15 @@ import { ConnectableObservable, Observable } from 'rxjs';
 import { map, publishReplay } from 'rxjs/operators';
 import { TableLogic } from 'src/app/modules/table/table-logic';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { Business, Contacts, Location, Messenger, Person, PhonebookSortDirection, Room } from 'src/app/shared/models';
+import {
+  Business,
+  Contacts,
+  Location,
+  Messenger,
+  Person,
+  PhonebookSortDirection,
+  Room,
+} from 'src/app/shared/models';
 
 @Injectable()
 export class PersonService {
@@ -17,7 +25,7 @@ export class PersonService {
    * (Javascript can be pretty bad... Why do we have Typesafety altogether if you can Map Objects to classes?)
    */
   private generateRealPersonArray(persons: Person[]): Person[] {
-    return persons.map(item => {
+    return persons.map((item) => {
       return new Person(
         item.Type,
         item.Id,
@@ -31,11 +39,11 @@ export class PersonService {
           item.Contacts.Fax,
           item.Contacts.Email,
           item.Contacts.Phone,
-          new Messenger("", null)
+          new Messenger('', null)
         ),
         new Location(
           item.Location.City,
-          item.Location.RoomCollection.map(room => {
+          item.Location.RoomCollection.map((room) => {
             return new Room(
               room.Building,
               room.BuildingId,
@@ -74,16 +82,15 @@ export class PersonService {
       return this.allPersonObservable;
     }
 
-    const observable = this.http.get<Person[]>('/api/people')
-      .pipe(
-        map(personArray => {
-          return TableLogic.sort(this.generateRealPersonArray(personArray), {
-            column: ColumnDefinitions.fullname,
-            direction: PhonebookSortDirection.asc
-          });
-        }),
-        publishReplay()
-      );
+    const observable = this.http.get<Person[]>('/api/people').pipe(
+      map((personArray) => {
+        return TableLogic.sort(this.generateRealPersonArray(personArray), {
+          column: ColumnDefinitions.fullname,
+          direction: PhonebookSortDirection.asc,
+        });
+      }),
+      publishReplay()
+    );
     (observable as ConnectableObservable<Person[]>).connect();
     this.allPersonObservable = observable;
     return this.allPersonObservable;
@@ -91,8 +98,8 @@ export class PersonService {
 
   public getById(id: string): Observable<Person | null> {
     return this.getAll().pipe(
-      map(personArray => {
-        const person = personArray.find(x => {
+      map((personArray) => {
+        const person = personArray.find((x) => {
           return x.Id === id.toUpperCase();
         });
         if (person === undefined) {
@@ -105,11 +112,9 @@ export class PersonService {
 
   public getPersonsByRoom(roomId: string): Observable<Person[]> {
     return this.getAll().pipe(
-      map(personArray => {
-        return personArray.filter(x => {
-          return (
-            x.Location.RoomCollection.some( x=> x.Number == roomId)
-          );
+      map((personArray) => {
+        return personArray.filter((x) => {
+          return x.Location.RoomCollection.some((x) => x.Number == roomId);
         });
       })
     );

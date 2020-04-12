@@ -30,13 +30,15 @@ function generateRoom() {
   return {
     Building: faker.random.arrayElement(addresses),
     BuildingId: faker.random.number(100),
-    Description: `${city}, ${faker.random.arrayElement(addresses)}, Raum ${faker.random.arrayElement(roomNumbers)}`,
+    Description: `${city}, ${faker.random.arrayElement(
+      addresses
+    )}, Raum ${faker.random.arrayElement(roomNumbers)}`,
     Floor: `${faker.random.number(6)}`,
     FloorPlan: faker.random.arrayElement(['sample_highlight', 'sample_static']),
     Id: faker.random.arrayElement(roomNumbers),
     Number: `${faker.random.arrayElement(roomNumbers)}`,
     Phone: '',
-    Place: city
+    Place: city,
   };
 }
 
@@ -64,7 +66,12 @@ function generatePerson() {
   ids.push(id);
 
   return {
-    Type: faker.random.arrayElement(['Externer_Lernender', 'Fremdkraft', 'Interner_Lernender', 'Interner_Mitarbeiter']),
+    Type: faker.random.arrayElement([
+      'Externer_Lernender',
+      'Fremdkraft',
+      'Interner_Lernender',
+      'Interner_Mitarbeiter',
+    ]),
     Id: id,
     Firstname: faker.name.firstName(),
     Surname: faker.name.lastName(),
@@ -76,7 +83,7 @@ function generatePerson() {
       Fax: faker.phone.phoneNumberFormat(1),
       Email: faker.internet.email(),
       Phone: faker.phone.phoneNumberFormat(2),
-      Messenger: { Text: '', State: 0 }
+      Messenger: { Text: '', State: 0 },
     },
     Location: {
       ContactPerson: null,
@@ -97,9 +104,9 @@ function generatePerson() {
           Number: room.Number,
           Id: room.Id,
           Place: room.Place,
-          FloorPlan: room.FloorPlan
-        }
-      ]
+          FloorPlan: room.FloorPlan,
+        },
+      ],
     },
     Business: {
       ShortBusinessunitTeamassistent: [faker.random.arrayElement(ids)],
@@ -107,17 +114,17 @@ function generatePerson() {
       ShortOrgUnit: [
         faker.random.arrayElement(shortOrgUnits1),
         faker.random.arrayElement(shortOrgUnits2),
-        faker.random.arrayElement(shortOrgUnits3)
+        faker.random.arrayElement(shortOrgUnits3),
       ],
       OrgUnit: [
         faker.random.arrayElement(longOrgUnits1),
         faker.random.arrayElement(longOrgUnits2),
-        faker.random.arrayElement(longOrgUnits3)
+        faker.random.arrayElement(longOrgUnits3),
       ],
       BusinessunitTeamassistent: [`${faker.name.firstName()} ${faker.name.lastName()}`],
       Supervisor: [`${faker.name.firstName()} ${faker.name.lastName()}`],
-      Costcenter: `${faker.random.number(500)}`
-    }
+      Costcenter: `${faker.random.number(500)}`,
+    },
   };
 }
 
@@ -138,20 +145,26 @@ function generateBranch() {
     LinkPicture: faker.random.arrayElement([
       '/images/sample_640.jpg',
       '/images/sample_1280.jpg',
-      '/images/sample_1920.jpg'
+      '/images/sample_1920.jpg',
     ]),
     LinkRoutingInfo: '/plans/description.pdf',
     City: {
       Name: city,
       Building: faker.random.arrayElement(addresses),
-      ZipCode: faker.address.zipCode()
+      ZipCode: faker.address.zipCode(),
     },
-    RoomCollection: rooms.filter(r => {
+    RoomCollection: rooms.filter((r) => {
       return r.Place === city;
-    })
+    }),
   };
 }
 
-fs.writeFileSync('./mocks/synthetic/persons.json', JSON.stringify(generateArray(1500, generatePerson)));
+fs.writeFileSync(
+  './mocks/synthetic/persons.json',
+  JSON.stringify(generateArray(1500, generatePerson))
+);
 fs.writeFileSync('./mocks/synthetic/rooms.json', JSON.stringify(rooms));
-fs.writeFileSync('./mocks/synthetic/branches.json', JSON.stringify(generateArray(cityCount * 2, generateBranch)));
+fs.writeFileSync(
+  './mocks/synthetic/branches.json',
+  JSON.stringify(generateArray(cityCount * 2, generateBranch))
+);

@@ -19,9 +19,9 @@ import { OrganigramComponent } from 'src/app/modules/organigram/pages/organigram
     MatIconModule,
     ClipboardModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   declarations: [OrganigramComponent, OrganigramNodeComponent],
-  exports: []
+  exports: [],
 })
 export class OrganigramModule {}

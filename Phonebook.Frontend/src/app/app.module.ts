@@ -46,7 +46,7 @@ import {
   CommonPersonsState,
   LastPersonsState,
   SearchState,
-  TableState
+  TableState,
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
@@ -57,7 +57,13 @@ import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToL
 declare const require;
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, DashboardComponent, NavigationComponent, OnlineBarComponent],
+  declarations: [
+    AppComponent,
+    SearchComponent,
+    DashboardComponent,
+    NavigationComponent,
+    OnlineBarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -73,12 +79,15 @@ declare const require;
     NotImplementedModule,
     FeedbackDrawerModule,
     MatBadgeModule,
-    NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState], {
-      // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
-      // developmentMode: !environment.production
-    }),
+    NgxsModule.forRoot(
+      [AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState],
+      {
+        // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
+        // developmentMode: !environment.production
+      }
+    ),
     NgxsStoragePluginModule.forRoot({
-      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
+      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate'],
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
@@ -93,7 +102,7 @@ declare const require;
     IeWarningModule,
     PlatformModule,
     // Pages
-    UserPagesModule
+    UserPagesModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRedirectToLogin, multi: true },
@@ -106,15 +115,18 @@ declare const require;
     //   },
     //   deps: [LOCALE_ID]
     // },
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { panelClass: ['mat-dialog-override', 'mat-typography'] } },
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: { panelClass: ['mat-dialog-override', 'mat-typography'] },
+    },
     WINDOW_PROVIDER,
     ServiceWorkerService,
     WindowRef,
     MailService,
     FloorplanService,
     ReleaseInfoService,
-    ThemeService
+    ThemeService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
