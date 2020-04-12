@@ -45,6 +45,9 @@
     "typescript.referencesCodeLens.enabled": true,
     "prettier.disableLanguages": [],
     "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.tslint": true
+    },
     "files.insertFinalNewline": true,
     "[html]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
