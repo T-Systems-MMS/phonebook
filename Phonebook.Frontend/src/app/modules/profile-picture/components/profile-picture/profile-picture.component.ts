@@ -66,7 +66,7 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
       });
   }
   private getAprilProfilePictureUrl() {
-    var random = Math.floor(Math.random() * Math.floor(9));
+    const random = Math.floor(Math.random() * Math.floor(9));
     switch (random) {
       case 0:
         return 'assets/img/firstApril/unicorn_1.png';

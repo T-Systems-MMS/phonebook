@@ -45,7 +45,13 @@
     "typescript.referencesCodeLens.enabled": true,
     "prettier.disableLanguages": [],
     "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.tslint": true
+    },
     "files.insertFinalNewline": true,
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[html]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -60,6 +66,6 @@
     }
   },
   "extensions": {
-    "recommendations": ["esbenp.prettier-vscode"]
+    "recommendations": ["esbenp.prettier-vscode", "ms-vscode.vscode-typescript-tslint-plugin"]
   }
 }

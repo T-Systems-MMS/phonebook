@@ -38,7 +38,7 @@ export class FeatureFlagService {
    * @param flag The name of the Flag specfied in the FeatureFlags.json
    */
   public get(flag: string): Observable<boolean> {
-    return combineLatest(this.getFlags(), this.flagOverwriteEmitter.pipe(startWith(0))).pipe(
+    return combineLatest([this.getFlags(), this.flagOverwriteEmitter.pipe(startWith(0))]).pipe(
       map(([flags, emitter]) => {
         return this.isEnabled(flag, flags[flag]);
       }),
@@ -113,6 +113,6 @@ export class FeatureFlagService {
 
   public static isFirstApril(date: Date): boolean {
     const firstApril = new Date('2020-04-01T00:00:00');
-    return date.getDate() == firstApril.getDate() && date.getMonth() == firstApril.getMonth();
+    return date.getDate() === firstApril.getDate() && date.getMonth() === firstApril.getMonth();
   }
 }

@@ -15,7 +15,5 @@ export class AddressComponent implements OnInit {
     return this.location.RoomCollection[0].Description.split(',');
   }
 
-  constructor() {}
-
   public ngOnInit() {}
 }
