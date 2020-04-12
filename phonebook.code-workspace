@@ -60,6 +60,6 @@
     }
   },
   "extensions": {
-    "recommendations": ["esbenp.prettier-vscode"]
+    "recommendations": ["esbenp.prettier-vscode", "ms-vscode.vscode-typescript-tslint-plugin"]
   }
 }
