@@ -52,5 +52,5 @@ export class mockCurrentUserService {
   template: '<app-change-profile-picture [userId]="id"></app-change-profile-picture>',
 })
 class TestComponentWrapper {
-  public id = 'test';
+  public id: string = 'test';
 }

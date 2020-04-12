@@ -25,7 +25,7 @@
     "jsdoc-format": false,
     "label-position": true,
     "linebreak-style": [true, "LF"],
-    "max-classes-per-file": [false],
+    "max-classes-per-file": [false, 1],
     "max-file-line-count": [false],
     "max-line-length": [true, 140],
     "member-access": true,

@@ -16,7 +16,7 @@ export class ChangeProfilePictureComponent implements OnInit {
   @Input()
   public userId: string;
   public currentUserId: string = '';
-  public uploading = false;
+  public uploading: boolean = false;
 
   constructor(
     private profilePictureService: ProfilePictureService,
@@ -47,7 +47,9 @@ export class ChangeProfilePictureComponent implements OnInit {
       .subscribe((upload) => {
         if (upload) {
           this.uploading = true;
-          // This is import because of firefox https://stackoverflow.com/questions/5301643/how-can-i-make-event-srcelement-work-in-firefox-and-what-does-it-mean
+          // This is important because of firefox
+          // https://stackoverflow.com/questions/5301643/how-can-i-make-event-srcelement-work-in-firefox-and-what-does-it-mean
+          // tslint:disable-next-line
           const eventElement = event.target || event.srcElement;
           const files = (eventElement as HTMLInputElement).files;
           if (files != null && files.length > 0) {
