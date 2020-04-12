@@ -39,7 +39,7 @@ export class PersonService {
           item.Contacts.Fax,
           item.Contacts.Email,
           item.Contacts.Phone,
-          new Messenger(item.Contacts.Messenger.Text, item.Contacts.Messenger.State)
+          new Messenger('', null)
         ),
         new Location(
           item.Location.City,
@@ -82,7 +82,7 @@ export class PersonService {
       return this.allPersonObservable;
     }
 
-    const observable = this.http.get<Person[]>('/api/persons').pipe(
+    const observable = this.http.get<Person[]>('/api/people').pipe(
       map((personArray) => {
         return TableLogic.sort(this.generateRealPersonArray(personArray), {
           column: ColumnDefinitions.fullname,
@@ -110,16 +110,11 @@ export class PersonService {
     );
   }
 
-  public getPersonsByRoom(positionArray: string[]): Observable<Person[]> {
+  public getPersonsByRoom(roomId: string): Observable<Person[]> {
     return this.getAll().pipe(
       map((personArray) => {
         return personArray.filter((x) => {
-          return (
-            x.Location.RoomCollection[0].Place === positionArray[0] &&
-            x.Location.RoomCollection[0].Building === positionArray[1] &&
-            x.Location.RoomCollection[0].Floor.toString() === positionArray[2] &&
-            x.Location.RoomCollection[0].Number === positionArray[3]
-          );
+          return x.Location.RoomCollection.some((x) => x.Number == roomId);
         });
       })
     );

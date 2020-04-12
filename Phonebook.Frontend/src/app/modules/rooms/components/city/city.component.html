@@ -32,7 +32,7 @@
           </mat-card-header>
           <img
             mat-card-image
-            [src]="runtimeEnvironment.assetsEndpoint + location.LinkPicture"
+            [src]="runtimeEnvironment.assetsEndpoint + '/locations/' + location.LinkPicture"
             [alt]="location.LinkRoutingInfo"
           />
           <mat-card-content>
@@ -82,8 +82,8 @@
                   <button mat-button actionDrawer [copy]="location.ReceptionFax">
                     {{ location.ReceptionFax }}
                   </button>
-                </p></mat-list-item
-              >
+                </p>
+              </mat-list-item>
 
               <mat-list-item *ngIf="location.ContactPerson != '' && location.ContactPerson != null">
                 <mat-icon mat-list-icon>person</mat-icon>
@@ -98,8 +98,8 @@
                   >
                     {{ location.ContactPerson }}
                   </button>
-                </p></mat-list-item
-              >
+                </p>
+              </mat-list-item>
             </mat-list>
           </mat-card-content>
         </mat-card>

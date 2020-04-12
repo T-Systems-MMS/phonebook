@@ -4,10 +4,8 @@
       <mat-card-title>
         <h1>
           <mat-icon
-            ngxClipboard
-            [cbContent]="getLink()"
-            (cbOnSuccess)="linkCopiedToast()"
-            (cbOnError)="linkErrorToast()"
+            [cdkCopyToClipboard]="getLink()"
+            (copied)="copiedToast($event)"
             class="link pb-pointer"
             >link</mat-icon
           >

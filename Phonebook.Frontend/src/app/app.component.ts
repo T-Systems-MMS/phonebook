@@ -57,7 +57,6 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((flag) => {
         if (flag) {
           this.store.dispatch(new SetTheme(Theme.unicorn_theme));
-          this.isUnicornThemeActive();
         }
       });
     // Commented as long as serviceWorker is reinstalled
@@ -155,21 +154,6 @@ export class AppComponent implements OnInit, OnDestroy {
     // Route Routes with failing Resolvers to the Main Page
     this.router.events.pipe(filter((e) => e instanceof NavigationError)).subscribe((e) => {
       this.router.navigateByUrl('/');
-    });
-  }
-  public isUnicornThemeActive() {
-    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe((name) => {
-      if (name === Theme.unicorn_theme) {
-        this.snackBar
-          .open(
-            $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
-            $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
-          )
-          .onAction()
-          .subscribe(() => {
-            this.router.navigateByUrl('/settings');
-          });
-      }
     });
   }
   public openJustSkippedDialogsSnackBar() {

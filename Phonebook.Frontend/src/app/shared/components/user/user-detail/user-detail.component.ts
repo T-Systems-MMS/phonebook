@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, OnInit, OnChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Select, Store } from '@ngxs/store';
@@ -22,7 +22,7 @@ export interface IncorrectUserInformationDialogData {
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss'],
 })
-export class UserDetailComponent implements OnInit, OnDestroy {
+export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   public person: Person;
   public bookmarked: Bookmarked = Bookmarked.isNotBookmarked;
@@ -40,6 +40,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   @Input()
   public previewView: boolean = false;
   public rocketChatLink: string | null = null;
+  public organigramLink: string[] = ['/organigram'];
   constructor(
     private snackBar: MatSnackBar,
     private mailService: MailService,
@@ -48,7 +49,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private dialog: MatDialog
   ) {}
 
-  public ngOnInit() {
+  public ngOnInit() {}
+
+  public ngOnChanges(): void {
     this.rocketChatLink = this.getRocketChatLink();
     this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe((bookmarks) => {
       const index = bookmarks.findIndex((p) => p.Id === this.person.Id);
@@ -83,6 +86,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
       nickname: this.person.Id,
     };
+    this.organigramLink = this.organigramLink.concat(this.person.Business.ShortOrgUnit);
   }
 
   public sendMail() {
