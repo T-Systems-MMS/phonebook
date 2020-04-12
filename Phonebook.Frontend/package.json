@@ -15,7 +15,7 @@
     "test:dev-chrome": "ng test --watch=true --browsers Chrome",
     "test-docker": "npm run docker-build && docker run --rm build_phonebook npm run test",
     "test-compose": "npm run compose-build && docker-compose run --rm --service-ports angular npm run test",
-    "e2e": "ng e2e",
+    "e2e": "webdriver-manager update --versions.chrome=80.0.3987.106 --gecko false --standalone false && ng e2e --webdriverUpdate false",
     "e2e-docker": "npm run docker-build && docker run --rm build_phonebook npm run e2e",
     "pre-build": "locl convert -s=src/i18n/messages.de.xlf -f=json -o=dist/i18n/de.json && locl convert -s=src/i18n/messages.en.xlf -f=json -o=dist/i18n/en.json",
     "build": "npm run build:prod",
