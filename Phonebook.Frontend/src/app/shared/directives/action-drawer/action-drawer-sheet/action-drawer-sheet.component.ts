@@ -7,7 +7,7 @@ import { ActionButtonInterface } from 'src/app/shared/directives/action-drawer/a
 @Component({
   selector: 'app-drawer-button-sheet',
   templateUrl: './action-drawer-sheet.component.html',
-  styleUrls: ['./action-drawer-sheet.component.scss']
+  styleUrls: ['./action-drawer-sheet.component.scss'],
 })
 export class ActionDrawerSheetComponent {
   constructor(
@@ -20,19 +20,19 @@ export class ActionDrawerSheetComponent {
     this.bottomSheetRef.dismiss();
   }
 
-  public copySuccessToast() {
-    this.snackBar.open(
-      $localize`:GeneralSuccessMessageCopy|Message displayed when copying a link is successfully@@GeneralSuccessMessageCopy:Copied to clipboard!`,
-      '',
-      { duration: 2000 }
-    );
-  }
-
-  public copyErrorToast() {
-    this.snackBar.open(
-      $localize`:ErrorMessageCopy|Message displayed if something was not copied succesfully@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
-      '',
-      { duration: 2000 }
-    );
+  public copiedToast(success: boolean) {
+    if (success) {
+      this.snackBar.open(
+        $localize`:GeneralSuccessMessageCopy|Message displayed when copying a link is successfully@@GeneralSuccessMessageCopy:Copied to clipboard!`,
+        '',
+        { duration: 2000 }
+      );
+    } else {
+      this.snackBar.open(
+        $localize`:ErrorMessageCopy|Message displayed if something was not copied succesfully@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
+        '',
+        { duration: 2000 }
+      );
+    }
   }
 }

@@ -15,27 +15,27 @@ const routes: Routes = [
       { path: '', component: OverviewComponent, pathMatch: 'full' },
       {
         path: ':cityId',
-        component: CityComponent
+        component: CityComponent,
       },
       {
         path: ':cityId/:buildingId',
-        component: BuildingComponent
+        component: BuildingComponent,
       },
       {
         path: ':cityId/:buildingId/:floorId',
-        component: FloorComponent
+        component: FloorComponent,
       },
       {
         path: ':cityId/:buildingId/:floorId/:roomId',
-        component: RoomDetailComponent
-      }
-    ]
+        component: RoomDetailComponent,
+      },
+    ],
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class RoomsRoutingModule {}

@@ -8,11 +8,11 @@ const routes: Routes = [
   { path: ':first/:second', component: OrganigramComponent },
   { path: ':first/:second/:third', component: OrganigramComponent },
   { path: ':first/:second/:third/:fourth', component: OrganigramComponent },
-  { path: ':first/:second/:third/:fourth/:fifth', component: OrganigramComponent }
+  { path: ':first/:second/:third/:fourth/:fifth', component: OrganigramComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class OrganigramRoutingModule {}

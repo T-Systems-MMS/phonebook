@@ -54,12 +54,14 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
     sort: TableSort
   ): Observable<Person[]> {
     this.loadingSubject.next(true);
-    return new Observable<Person[]>(observer => {
+    return new Observable<Person[]>((observer) => {
       let preResult = this.dataSource;
 
       // Filtering
-      searchFilters.forEach(searchFilter => {
-        preResult = TableLogic.filter(preResult, searchFilter.filterValue, [searchFilter.filterColumn]);
+      searchFilters.forEach((searchFilter) => {
+        preResult = TableLogic.filter(preResult, searchFilter.filterValue, [
+          searchFilter.filterColumn,
+        ]);
       });
 
       // Searching

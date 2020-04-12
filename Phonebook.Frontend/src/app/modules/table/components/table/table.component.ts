@@ -16,11 +16,11 @@ import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  host: { class: 'pb-fill-parent' }
+  host: { class: 'pb-fill-parent' },
 })
 export class TableComponent implements OnInit, OnDestroy {
   public get displayedColumns(): string[] {
-    return this.store.selectSnapshot(TableState.visibleColumns).map(col => col.id);
+    return this.store.selectSnapshot(TableState.visibleColumns).map((col) => col.id);
   }
 
   public dataSource: PersonsDataSource = new PersonsDataSource([]);
@@ -36,7 +36,7 @@ export class TableComponent implements OnInit, OnDestroy {
   public sort: MatSort;
   public table: Element;
   public get tableSort(): TableSort {
-    const col = ColumnDefinitions.getAll().find(column => {
+    const col = ColumnDefinitions.getAll().find((column) => {
       return this.sort.active === column.id;
     });
     return { column: col || null, direction: this.sort.direction as PhonebookSortDirection };
@@ -52,7 +52,7 @@ export class TableComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit() {
-    this.personService.getAll().subscribe(persons => {
+    this.personService.getAll().subscribe((persons) => {
       this.dataSource = new PersonsDataSource(persons);
 
       // Defer until Data is loaded.
@@ -65,13 +65,13 @@ export class TableComponent implements OnInit, OnDestroy {
           // where all three fire as they are initialized.
           debounceTime(50)
         )
-        .subscribe(val => {
+        .subscribe((val) => {
           this.refreshTable();
           this.dataSource.pageSize = this.initialPageSize;
         });
     });
 
-    this.route.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe(queryParams => {
+    this.route.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe((queryParams) => {
       // Table Sort
       const sortDirection = queryParams.get('sortDirection');
       const sortColumn = queryParams.get('sortColumn');
@@ -85,7 +85,7 @@ export class TableComponent implements OnInit, OnDestroy {
     this.sort.sortChange.subscribe((ev: { active: string; direction: string }) => {
       this.store.dispatch(
         new UpdateUrl({
-          tableSort: this.tableSort
+          tableSort: this.tableSort,
         })
       );
       this.refreshTable();
@@ -100,18 +100,15 @@ export class TableComponent implements OnInit, OnDestroy {
         this.store.selectSnapshot(TableState.visibleColumns),
         this.tableSort
       )
-      .subscribe(results => {
+      .subscribe((results) => {
         this.store.dispatch(new SetTableResultCount(results.length));
         if (results.length === 1) {
           this.router.navigate(['/user', results[0].Id]);
         } else {
           const test = results.filter(
-            x =>
+            (x) =>
               x.Id.toLowerCase() ===
-              this.store
-                .selectSnapshot(SearchState.searchTerm)
-                .trim()
-                .toLowerCase()
+              this.store.selectSnapshot(SearchState.searchTerm).trim().toLowerCase()
           );
           if (test.length === 1) {
             this.previewPerson = test[0];

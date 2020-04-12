@@ -8,19 +8,19 @@ describe('[States] Bookmarks', () => {
   const person: Person = Person.empty();
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([BookmarksState])]
+      imports: [NgxsModule.forRoot([BookmarksState])],
     }).compileComponents();
     store = TestBed.get(Store);
     store.reset({
-      bookmarks: []
+      bookmarks: [],
     });
   }));
   it('it toggles Bookmarks', () => {
     person.Id = 'test';
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.bookmarks)).toEqual([]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.bookmarks)).toEqual([]);
     store.dispatch(new ToggleBookmark(person));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.bookmarks)).toEqual([person]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.bookmarks)).toEqual([person]);
     store.dispatch(new ToggleBookmark(person));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.bookmarks)).toEqual([]);
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.bookmarks)).toEqual([]);
   });
 });

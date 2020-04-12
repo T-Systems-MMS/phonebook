@@ -7,14 +7,18 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { of } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
-import { BuildingTreeNode, getNodeFromTreeSync, RoomService } from 'src/app/services/api/room.service';
+import {
+  BuildingTreeNode,
+  getNodeFromTreeSync,
+  RoomService,
+} from 'src/app/services/api/room.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Component({
   selector: 'app-room-tree',
   templateUrl: './room-tree.component.html',
   styleUrls: ['./room-tree.component.scss'],
-  host: { class: 'pb-fill-parent pb-flex-column' }
+  host: { class: 'pb-fill-parent pb-flex-column' },
 })
 export class RoomTreeComponent implements OnInit, OnDestroy {
   public params: string[] = [];
@@ -31,7 +35,7 @@ export class RoomTreeComponent implements OnInit, OnDestroy {
   ) {
     this.treeControl = new NestedTreeControl<BuildingTreeNode>(this._getChildren);
     this.dataSource = new MatTreeNestedDataSource();
-    this.roomService.getRoomTree().subscribe(tree => {
+    this.roomService.getRoomTree().subscribe((tree) => {
       this.dataSource.data = tree;
     });
   }
@@ -44,19 +48,29 @@ export class RoomTreeComponent implements OnInit, OnDestroy {
     if (this.route.firstChild == null) {
       return;
     }
-    this.route.firstChild.paramMap.subscribe(paramMap => {
-      this.params = RoomHelpers.getParamsAsArray(paramMap, ['cityId', 'buildingId', 'floorId', 'roomId']);
+    this.route.firstChild.paramMap.subscribe((paramMap) => {
+      this.params = RoomHelpers.getParamsAsArray(paramMap, [
+        'cityId',
+        'buildingId',
+        'floorId',
+        'roomId',
+      ]);
       this.updateTreeExtendedState();
     });
     this.router.events
       .pipe(
         untilComponentDestroyed(this),
-        filter(event => event instanceof NavigationEnd && event.url.includes('rooms')),
+        filter((event) => event instanceof NavigationEnd && event.url.includes('rooms')),
         switchMap(() => (this.route.firstChild ? this.route.firstChild.paramMap : of(null)))
       )
-      .subscribe(params => {
+      .subscribe((params) => {
         if (params != null) {
-          this.params = RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']);
+          this.params = RoomHelpers.getParamsAsArray(params, [
+            'cityId',
+            'buildingId',
+            'floorId',
+            'roomId',
+          ]);
           this.updateTreeExtendedState();
         }
       });

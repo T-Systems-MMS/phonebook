@@ -5,7 +5,6 @@ import { UserDetailComponent } from 'src/app/shared/components/user/user-detail/
 import { mockPerson } from 'src/app/shared/mocks/person';
 import { Person } from 'src/app/shared/models';
 
-
 class MockPersonService {
   public getById(id: String): Person {
     return mockPerson;
@@ -20,7 +19,7 @@ xdescribe('UserDetailComponent', () => {
     TestBed.configureTestingModule({
       declarations: [UserDetailComponent],
       imports: [RouterTestingModule],
-      providers: [{ provide: PersonService, useClass: MockPersonService }]
+      providers: [{ provide: PersonService, useClass: MockPersonService }],
     }).compileComponents();
   }));
 

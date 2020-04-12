@@ -20,7 +20,7 @@ xdescribe('OrganigramNodeComponent', () => {
       imports: [MatTooltipModule, NgxsModule.forRoot([AppState]), NgxsRouterPluginModule.forRoot()],
       declarations: [TestComponentWrapper, OrganigramNodeComponent],
       providers: [{ provide: MatSnackBar, useValue: null }, WindowRef],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
     store = TestBed.get(Store);
   }));
@@ -38,7 +38,7 @@ xdescribe('OrganigramNodeComponent', () => {
 
 @Component({
   selector: 'test-component-wrapper',
-  template: '<app-organigram-node [node]="node" [(activePath)]="activePath"></app-organigram-node>'
+  template: '<app-organigram-node [node]="node" [(activePath)]="activePath"></app-organigram-node>',
 })
 class TestComponentWrapper {
   public node: UnitTreeNode = new UnitTreeNode('', '', 0);
