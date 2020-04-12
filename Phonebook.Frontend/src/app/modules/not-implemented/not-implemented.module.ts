@@ -7,6 +7,6 @@ import { NotImplementedService } from 'src/app/modules/not-implemented/not-imple
   imports: [CommonModule],
   providers: [NotImplementedService],
   declarations: [NotImplementedDirective],
-  exports: [NotImplementedDirective]
+  exports: [NotImplementedDirective],
 })
 export class NotImplementedModule {}

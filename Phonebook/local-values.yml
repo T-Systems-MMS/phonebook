@@ -1,13 +1,13 @@
-host: &host "demo-phonebook.local"
-contactUrl: "https://github.com/T-Systems-MMS/phonebook/issues"
+host: &host 'demo-phonebook.local'
+contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
 roomPlanningToolUrl: null
-contactEmail: &contactEmail "phonebook-t-systems-mms@mg.telekom.de"
+contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
 ravenUrl: null
 employeePictureEndpoint: null
-assetsEndpoint: "https://demo-phonebook.local/assets"
-environment: "development"
-environmentTag: "dev"
-rocketChatUrl: "https://open.rocket.chat"
+assetsEndpoint: 'https://demo-phonebook.local/assets'
+environment: 'development'
+environmentTag: 'dev'
+rocketChatUrl: 'https://open.rocket.chat'
 
 frontend:
   replicaCount: 1
@@ -20,13 +20,13 @@ source:
 traefik:
   enabled: true
   startupArguments:
-    - ""
+    - ''
   dashboard:
     enabled: true
     domain: board.demo-phonebook.local
     ingress:
       annotations:
-        traefik.frontend.priority: "100"
+        traefik.frontend.priority: '100'
 
   ssl:
     enabled: true

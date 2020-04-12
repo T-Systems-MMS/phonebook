@@ -4,13 +4,13 @@ import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.se
 
 @NgModule({
   declarations: [FeatureFlagDirective],
-  exports: [FeatureFlagDirective]
+  exports: [FeatureFlagDirective],
 })
 export class FeatureFlagModule {
   public static forRoot(): ModuleWithProviders<FeatureFlagModule> {
     return {
       ngModule: FeatureFlagModule,
-      providers: [FeatureFlagService]
+      providers: [FeatureFlagService],
     };
   }
 }

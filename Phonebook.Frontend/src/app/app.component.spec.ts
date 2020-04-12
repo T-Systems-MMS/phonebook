@@ -31,9 +31,9 @@ describe('AppComponent', () => {
         { provide: ServiceWorkerService, useValue: null },
         { provide: FeatureFlagService, useValue: null },
         { provide: MatDialog, useValue: null },
-        { provide: ThemeService, useValue: null }
+        { provide: ThemeService, useValue: null },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 

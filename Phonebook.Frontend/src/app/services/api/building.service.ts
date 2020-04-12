@@ -14,8 +14,8 @@ export class BuildingService {
 
   public getByCity(city: string): Observable<Location[]> {
     return this.getAll().pipe(
-      map(buildings => {
-        return buildings.filter(x => {
+      map((buildings) => {
+        return buildings.filter((x) => {
           if (x.Description != null) {
             return x.Description.includes(city);
           }
@@ -27,8 +27,8 @@ export class BuildingService {
 
   public getByBuilding(building: string): Observable<Location | null> {
     return this.getAll().pipe(
-      map(buildings => {
-        return buildings.find(x => x.City.Building === building) || null;
+      map((buildings) => {
+        return buildings.find((x) => x.City.Building === building) || null;
       })
     );
   }

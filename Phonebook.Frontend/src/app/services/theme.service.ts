@@ -17,7 +17,7 @@ export class ThemeService {
   }
 
   private getThemeClassesFromClassList(classList: DOMTokenList): string[] {
-    return Array.from(classList).filter(item => {
+    return Array.from(classList).filter((item) => {
       return item.includes('_theme');
     });
   }

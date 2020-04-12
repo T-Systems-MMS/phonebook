@@ -7,7 +7,7 @@ import { ActionButtonInterface } from 'src/app/shared/directives/action-drawer/a
 @Component({
   selector: 'app-drawer-button-sheet',
   templateUrl: './action-drawer-sheet.component.html',
-  styleUrls: ['./action-drawer-sheet.component.scss']
+  styleUrls: ['./action-drawer-sheet.component.scss'],
 })
 export class ActionDrawerSheetComponent {
   constructor(

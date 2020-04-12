@@ -16,11 +16,15 @@ xdescribe('ChangeProfilePictureComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [MatSnackBarModule],
-      declarations: [MockComponent({ selector: 'mat-icon' }), ChangeProfilePictureComponent, TestComponentWrapper],
+      declarations: [
+        MockComponent({ selector: 'mat-icon' }),
+        ChangeProfilePictureComponent,
+        TestComponentWrapper,
+      ],
       providers: [
         { provide: CurrentUserService, useClass: mockCurrentUserService },
-        { provide: ProfilePictureService, useClass: MockProfilePictureService }
-      ]
+        { provide: ProfilePictureService, useClass: MockProfilePictureService },
+      ],
     }).compileComponents();
     injector = getTestBed();
   }));
@@ -45,7 +49,7 @@ export class mockCurrentUserService {
 
 @Component({
   selector: 'test-component-wrapper',
-  template: '<app-change-profile-picture [userId]="id"></app-change-profile-picture>'
+  template: '<app-change-profile-picture [userId]="id"></app-change-profile-picture>',
 })
 class TestComponentWrapper {
   public id = 'test';

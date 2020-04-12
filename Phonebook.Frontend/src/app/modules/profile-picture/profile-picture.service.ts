@@ -5,7 +5,7 @@ import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 /**
  * Service for changing the User Picture
@@ -28,24 +28,24 @@ export class ProfilePictureService {
     const formData: FormData = new FormData();
     formData.append('file', file);
 
-    return new Observable<any>(observer => {
+    return new Observable<any>((observer) => {
       this.currentUserService.getCurrentUserId().subscribe(
-        userName => {
+        (userName) => {
           this.httpClient
             .post(this.endpoint + '/' + userName, formData, {
-              withCredentials: true
+              withCredentials: true,
             })
             .subscribe(
-              success => {
+              (success) => {
                 observer.next();
                 observer.complete();
               },
-              error => {
+              (error) => {
                 observer.error(error);
               }
             );
         },
-        error => {
+        (error) => {
           observer.error(error);
         }
       );
@@ -58,24 +58,24 @@ export class ProfilePictureService {
         'The runtime variable "EMPLOYEE_PICTURES_ENDPOINT" is not defined. (You can define the variable in the docker container)'
       );
     }
-    return new Observable<any>(observer => {
+    return new Observable<any>((observer) => {
       this.currentUserService.getCurrentUserId().subscribe(
-        userName => {
+        (userName) => {
           this.httpClient
             .delete(this.endpoint + '/' + userName, {
-              withCredentials: true
+              withCredentials: true,
             })
             .subscribe(
-              success => {
+              (success) => {
                 observer.next();
                 observer.complete();
               },
-              error => {
+              (error) => {
                 observer.error(error);
               }
             );
         },
-        error => {
+        (error) => {
           observer.error(error);
         }
       );

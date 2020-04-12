@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockComponent } from 'ng2-mock-component';
 import { BugReportConsentComponent } from './bug-report-consent.component';
 
-
 // Deactivated, because MatDialogRef is not easily testable.
 xdescribe('BugReportConsentComponent', () => {
   let component: BugReportConsentComponent;
@@ -13,8 +12,8 @@ xdescribe('BugReportConsentComponent', () => {
       declarations: [
         BugReportConsentComponent,
         MockComponent({ selector: 'mat-list-item' }),
-        MockComponent({ selector: 'mat-list' })
-      ]
+        MockComponent({ selector: 'mat-list' }),
+      ],
     }).compileComponents();
   }));
 

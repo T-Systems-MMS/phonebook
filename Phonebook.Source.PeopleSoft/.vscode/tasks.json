@@ -5,16 +5,19 @@
       "label": "build",
       "command": "dotnet",
       "type": "process",
-      "args": ["build", "${workspaceFolder}/src/Phonebook.Source.PeopleSoft/Phonebook.Source.PeopleSoft.csproj"],
+      "args": [
+        "build",
+        "${workspaceFolder}/src/Phonebook.Source.PeopleSoft/Phonebook.Source.PeopleSoft.csproj"
+      ],
       "problemMatcher": "$msCompile"
     },
     {
-        "label": "run",
-        "command": "dotnet",
-        "type": "process",
-        "args": ["run", "-p", "${workspaceFolder}/src/Phonebook.Source.PeopleSoft/"],
-        "problemMatcher": "$msCompile"
-      }
+      "label": "run",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["run", "-p", "${workspaceFolder}/src/Phonebook.Source.PeopleSoft/"],
+      "problemMatcher": "$msCompile"
+    },
     {
       "label": "watch",
       "command": "dotnet",

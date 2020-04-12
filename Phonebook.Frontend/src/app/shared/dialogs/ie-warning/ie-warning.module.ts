@@ -8,6 +8,6 @@ import { IeWarningComponent } from './ie-warning.component';
   declarations: [IeWarningComponent],
   imports: [CommonModule, MatDialogModule, MatButtonModule],
   entryComponents: [IeWarningComponent],
-  exports: [IeWarningComponent]
+  exports: [IeWarningComponent],
 })
 export class IeWarningModule {}
