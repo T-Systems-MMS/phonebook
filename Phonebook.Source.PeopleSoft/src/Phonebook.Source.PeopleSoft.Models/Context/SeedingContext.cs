@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -32,6 +33,9 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // Freeze Seed in order to make debugging easier (keeping the same user Id's
+            Randomizer.Seed = new Random(8675309);
 
             var roomNumbers = new[] { "1A", "2A", "3A", "4A", "5A", "6A", "1B", "2B", "3B", "4B", "5B", "6B", "1.004785", "N100.45", "545", "0.0454a", "Apl", "F-54689", "F54689" };
 
@@ -196,7 +200,7 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
 
             #region Person
 
-            var maxPersons = 5000;
+            var maxPersons = 1500;
             var PersonFaker = new Faker<Person>()
                     .StrictMode(false)
                     .Rules((f, b) =>
