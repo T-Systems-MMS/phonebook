@@ -10,8 +10,9 @@ import { FeedbackDrawerSheetComponent } from 'src/app/shared/directives/feedback
 import { DisplayNotificationDialog } from 'src/app/shared/dialogs/display-notification-dialog/display-notification.dialog';
 import { Store } from '@ngxs/store';
 import { SetSendFeedback } from 'src/app/shared/states/App.state';
+import { ProfilePictureEnlargeDialog } from 'src/app/modules/profile-picture/components/profile-picture/enlarge-dialog/profile-picture-enlarge.dialog';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DialogService {
   constructor(
@@ -20,56 +21,65 @@ export class DialogService {
     private httpClient: HttpClient,
     private store: Store
   ) {}
-  public displayDialog(item: string) {
+  public displayDialog(item: string, data?: any) {
     switch (item) {
       case 'release-notes':
         this.dialog.open(DialogsComponent, {
           data: {
             title: "We've updated to a newer Version!",
-            content: new DialogItem(ReleaseNotificationDialog),
+            content: new DialogItem(ReleaseNotificationDialog)
           },
           maxHeight: '90vh',
           maxWidth: '120vh',
-          hasBackdrop: true,
+          hasBackdrop: true
         });
         break;
       case 'feedback':
         this.dialog.open(DialogsComponent, {
           data: {
             title: 'Leave Feedback, report a Bug or suggest a new Idea',
-            content: new DialogItem(FeedbackDrawerSheetComponent),
+            content: new DialogItem(FeedbackDrawerSheetComponent)
           },
           maxHeight: '90vh',
           maxWidth: '120vh',
-          hasBackdrop: true,
+          hasBackdrop: true
         });
         break;
       case 'notification':
         this.dialog.open(DialogsComponent, {
           data: {
             title: 'Welcome to the new Phonebook!',
-            content: new DialogItem(DisplayNotificationDialog),
+            content: new DialogItem(DisplayNotificationDialog)
           },
           maxHeight: '90vh',
           maxWidth: '120vh',
-          hasBackdrop: true,
+          hasBackdrop: true
         });
         break;
       case 'bug-report-consent':
         const matDialogRef = this.dialog.open(DialogsComponent, {
           data: {
             title: 'Leave Feedback, report a Bug or suggest a new Idea',
-            content: new DialogItem(BugReportConsentComponent),
+            content: new DialogItem(BugReportConsentComponent)
           },
           maxHeight: '90vh',
           maxWidth: '120vh',
-          hasBackdrop: true,
+          hasBackdrop: true
         });
         matDialogRef.afterClosed().subscribe((consent) => {
           this.store.dispatch(new SetSendFeedback(consent));
         });
-
         break;
+      case 'profile-picture':
+        this.dialog.open(ProfilePictureEnlargeDialog, {
+          data: {
+            imageUrl: data[0],
+            text: data[1]
+          }
+        });
     }
+  }
+  public closeDialog() {
+    this.dialog.closeAll();
   }
 }

@@ -7,6 +7,7 @@ import { Person } from 'src/app/shared/models';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { ProfilePictureService } from '../../profile-picture.service';
 import { ProfilePictureEnlargeDialog } from './enlarge-dialog/profile-picture-enlarge.dialog';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-profile-picture',
@@ -43,25 +44,24 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private profilePictureService: ProfilePictureService,
     private featureFlagService: FeatureFlagService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private dialogService: DialogService
   ) {}
 
   public ngOnInit() {
     this.featureFlagService
       .get('firstApril')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(flag => {
+      .subscribe((flag) => {
         this.useAprilEndpoint = flag;
         if (!flag) {
-          this.profilePictureService.reload
-            .pipe(untilComponentDestroyed(this))
-            .subscribe(id => {
-              this.imageLoaded = false;
-              if (this.USER.Id.toLowerCase() === id.toLowerCase()) {
-                this.RANDOM = Math.random().toString();
-                this.updateImageUrl();
-              }
-            });
+          this.profilePictureService.reload.pipe(untilComponentDestroyed(this)).subscribe((id) => {
+            this.imageLoaded = false;
+            if (this.USER.Id.toLowerCase() === id.toLowerCase()) {
+              this.RANDOM = Math.random().toString();
+              this.updateImageUrl();
+            }
+          });
         } else {
           this.updateImageUrl();
         }
@@ -112,58 +112,29 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
   }
 
   public onMouseenter(): void {
-    if (
-      this.canEnlargeOnHover === false ||
-      this.dialogRef != null ||
-      this.imageLoaded === false
-    ) {
+    if (this.canEnlargeOnHover === false || this.dialogRef != null || this.imageLoaded === false) {
       return;
     }
     this.openEnlarge();
   }
 
   public onClick() {
-    if (
-      this.canEnlargeOnClick === false ||
-      this.dialogRef != null ||
-      this.imageLoaded === false
-    ) {
+    if (this.canEnlargeOnClick === false || this.dialogRef != null || this.imageLoaded === false) {
       return;
     }
-    this.openEnlarge(true);
+    this.openEnlarge();
   }
 
-  public onMouseleave() {
-    if (this.canEnlargeOnHover === false) {
-      return;
-    }
-    this.closeEnlarge();
-  }
-
-  public openEnlarge(backdrop: boolean = false) {
+  public openEnlarge() {
     let url = this.imageUrl;
     if (!this.useAprilEndpoint) {
       url = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/900.jpg`;
     }
-    this.dialogRef = this.dialog.open(ProfilePictureEnlargeDialog, {
-      hasBackdrop: backdrop,
-      data: {
-        imageUrl: url,
-        text: this.altText
-      }
-    });
-    this.dialogRef.afterClosed().subscribe(closed => {
-      this.dialogRef = null;
-    });
+    let data: {
+      url;
+      altText;
+    };
+    this.dialogService.displayDialog('profile-picture', data);
   }
-
-  public closeEnlarge(): void {
-    if (this.dialogRef != null) {
-      this.dialogRef.close();
-    }
-  }
-
-  public ngOnDestroy() {
-    this.closeEnlarge();
-  }
+  public ngOnDestroy() {}
 }
