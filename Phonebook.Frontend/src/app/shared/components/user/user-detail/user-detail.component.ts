@@ -13,6 +13,7 @@ import { BookmarksState, ToggleBookmark } from 'src/app/shared/states';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
+import { DialogService } from 'src/app/services/dialog.service';
 
 export interface IncorrectUserInformationDialogData {
   person: Person;
@@ -46,14 +47,15 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     private mailService: MailService,
     private windowRef: WindowRef,
     private store: Store,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public dialogService: DialogService
   ) {}
 
   public ngOnInit() {
     this.getRandomMoney();
     this.rocketChatLink = this.getRocketChatLink();
-    this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe(bookmarks => {
-      const index = bookmarks.findIndex(p => p.Id === this.person.Id);
+    this.bookmarks$.pipe(untilComponentDestroyed(this)).subscribe((bookmarks) => {
+      const index = bookmarks.findIndex((p) => p.Id === this.person.Id);
       if (index > -1) {
         this.bookmarked = Bookmarked.isBookmarked;
       } else {
@@ -98,12 +100,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     const dialogData: IncorrectUserInformationDialogData = {
       person: this.person
     };
-    const dialogConfig: MatDialogConfig = {
-      autoFocus: true,
-      hasBackdrop: true,
-      data: dialogData
-    };
-    this.dialog.open(IncorrectUserInformationComponent, dialogConfig);
+    this.dialogService.displayDialog('incorrect-user-information', dialogData);
   }
   public getLink() {
     return this.windowRef.getCurrentUrl();

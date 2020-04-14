@@ -12,6 +12,7 @@ import { Store } from '@ngxs/store';
 import { SetSendFeedback } from 'src/app/shared/states/App.state';
 import { ProfilePictureEnlargeDialog } from 'src/app/modules/profile-picture/components/profile-picture/enlarge-dialog/profile-picture-enlarge.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
+import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -83,6 +84,12 @@ export class DialogService {
         this.dialog.open(IeWarningComponent, {
           panelClass: 'color-warn'
         });
+        break;
+      case 'incorrect-user-information':
+        this.dialog.open(IncorrectUserInformationComponent, {
+          data: data
+        });
+        break;
     }
   }
   public closeDialog() {
