@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostBinding } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -7,9 +7,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./profile-picture-enlarge.dialog.scss']
 })
 export class ProfilePictureEnlargeDialog implements OnInit {
+  @HostBinding() inputData: any;
+
   public data: { imageUrl: string; text: string };
-  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-    this.data = data;
+  constructor() {
+    this.data = this.inputData;
   }
 
   public ngOnInit() {}

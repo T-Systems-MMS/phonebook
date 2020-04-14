@@ -38,7 +38,6 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public vCard: VCard = {};
-
   @Input()
   public previewView: boolean = false;
   public rocketChatLink: string | null = null;
