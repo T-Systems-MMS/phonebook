@@ -23,7 +23,7 @@ export class DialogService {
     private httpClient: HttpClient,
     private store: Store
   ) {}
-  public displayDialog(item: string, data?: any) {
+  public displayDialog(item: string, inputData?: any) {
     switch (item) {
       case 'release-notes':
         this.dialog.open(DialogsComponent, {
@@ -73,21 +73,36 @@ export class DialogService {
         });
         break;
       case 'profile-picture':
-        this.dialog.open(ProfilePictureEnlargeDialog, {
+        this.dialog.open(DialogsComponent, {
           data: {
-            imageUrl: data[0],
-            text: data[1]
+            title: inputData[1],
+            content: new DialogItem(ProfilePictureEnlargeDialog),
+            inputData: {
+              imageUrl: inputData[0],
+              text: inputData[1]
+            }
           }
         });
         break;
       case 'ie-warning':
-        this.dialog.open(IeWarningComponent, {
+        this.dialog.open(DialogsComponent, {
+          data: {
+            title: 'This Website may not function properly in Internet Explorer',
+            content: new DialogItem(IeWarningComponent)
+          },
           panelClass: 'color-warn'
         });
         break;
       case 'incorrect-user-information':
-        this.dialog.open(IncorrectUserInformationComponent, {
-          data: data
+        this.dialog.open(DialogsComponent, {
+          data: {
+            title: 'Incorrect User Information',
+            content: new DialogItem(IncorrectUserInformationComponent),
+            inputData: inputData
+          },
+          maxHeight: '90vh',
+          maxWidth: '120vh',
+          hasBackdrop: true
         });
         break;
     }

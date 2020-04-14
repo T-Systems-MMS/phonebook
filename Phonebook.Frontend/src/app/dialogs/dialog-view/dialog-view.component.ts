@@ -7,18 +7,19 @@ import {
   ComponentRef,
   ComponentFactoryResolver,
   ComponentFactory,
-  ChangeDetectorRef,
+  ChangeDetectorRef
 } from '@angular/core';
 import { DialogItem } from 'src/app/dialogs/dialog-item';
 
 @Component({
   selector: 'app-dialog-view',
   templateUrl: './dialog-view.component.html',
-  styleUrls: ['./dialog-view.component.scss'],
+  styleUrls: ['./dialog-view.component.scss']
 })
 export class DialogViewComponent {
   @Input() title: string;
   @Input() content: DialogItem;
+  @Input() data: any;
   @ViewChild('componentContainer', { read: ViewContainerRef }) container;
   componentRef: ComponentRef<any>;
 
@@ -28,6 +29,7 @@ export class DialogViewComponent {
     //Add 'implements AfterViewInit' to the class.
     const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(this.content.component);
     this.componentRef = this.container.createComponent(factory);
+    this.componentRef.instance.data = this.data;
     this.cdRef.detectChanges();
   }
   public createComponent() {}
