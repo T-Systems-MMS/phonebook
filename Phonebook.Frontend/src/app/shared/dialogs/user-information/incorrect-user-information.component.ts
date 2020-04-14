@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostBinding } from '@angular/core';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IncorrectUserInformationDialogData } from 'src/app/shared/components/user/user-detail/user-detail.component';
@@ -11,22 +11,22 @@ import { MailService } from 'src/app/services/mail.service';
   styleUrls: ['./incorrect-user-information.component.scss']
 })
 export class IncorrectUserInformationComponent implements OnInit {
+  @HostBinding() data: any;
   public currentUserId: string = '';
   public mailBody: string = '';
   constructor(
     private mailService: MailService,
     public windowRef: WindowRef,
     public currentUserService: CurrentUserService,
-    public dialogRef: MatDialogRef<IncorrectUserInformationComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IncorrectUserInformationDialogData | any
+    public dialogRef: MatDialogRef<IncorrectUserInformationComponent>
   ) {}
 
   public ngOnInit() {
     this.currentUserService.getCurrentUserId().subscribe(
-      id => {
+      (id) => {
         this.currentUserId = id;
       },
-      error => {
+      (error) => {
         // do nothing, as the id will never be ''
       }
     );
