@@ -127,14 +127,12 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
 
   public openEnlarge() {
     let url = this.imageUrl;
+    const altText = this.altText;
     if (!this.useAprilEndpoint) {
       url = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/900.jpg`;
     }
-    let data: {
-      url;
-      altText;
-    };
-    this.dialogService.displayDialog('profile-picture', data);
+
+    this.dialogService.displayDialog('profile-picture', { url, altText });
   }
   public ngOnDestroy() {}
 }
