@@ -36,7 +36,6 @@ import { UserModule } from 'src/app/shared/components/user/user.module';
 import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
 import { DialogsModule } from 'src/app/shared/dialogs/dialogs.module';
 import { IeWarningModule } from 'src/app/shared/dialogs/ie-warning/ie-warning.module';
-import { FeedbackDrawerModule } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.module';
 import { ErrorHandlerModule } from 'src/app/shared/error/error.module';
 // Modules
 import { MaterialModule } from 'src/app/shared/material.module';
@@ -81,7 +80,6 @@ declare const require;
     UserModule,
     FeatureFlagModule.forRoot(),
     NotImplementedModule,
-    FeedbackDrawerModule,
     MatBadgeModule,
     NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState], {
       // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
@@ -97,7 +95,6 @@ declare const require;
     TableModule,
     ApiModule,
     // Has to be included here because of https://stackoverflow.com/a/41519512/9277073
-    FeedbackDrawerModule,
     DragDropModule,
     ApiModule,
     IeWarningModule,

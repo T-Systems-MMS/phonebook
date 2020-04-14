@@ -40,7 +40,7 @@
             i18n="Page-informationComponent|Feedback Button@@PageInformationComponentSectionFeedbackButton"
             mat-stroked-button
             color="primary"
-            feedbackDrawer
+            (click)="dialogService.displayDialog('feedback')"
             >Contact us</a
           >
         </span>

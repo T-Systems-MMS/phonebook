@@ -14,7 +14,7 @@ import {
   InitTheme,
   SetTheme,
   SetSendFeedback,
-  SetDisplayedNotificationVersion
+  SetDisplayedNotificationVersion,
 } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
@@ -22,19 +22,17 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
 import { Observable } from 'rxjs';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
-  private urlParams: URLSearchParams = new URLSearchParams(
-    window.location.search
-  );
-  private skippedDialogs: boolean =
-    this.urlParams.get('skip_dialog') === 'true';
+  private urlParams: URLSearchParams = new URLSearchParams(window.location.search);
+  private skippedDialogs: boolean = this.urlParams.get('skip_dialog') === 'true';
 
   @Select(AppState.activeTheme)
   public themeValue$: Observable<Theme>;
@@ -50,14 +48,15 @@ export class AppComponent implements OnInit, OnDestroy {
     private platform: Platform,
     private router: Router,
     public featureFlagService: FeatureFlagService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dialogService: DialogService
   ) {}
   public ngOnInit() {
     this.store.dispatch(new InitTheme());
     this.featureFlagService
       .get('firstApril')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(flag => {
+      .subscribe((flag) => {
         if (flag) {
           this.store.dispatch(new SetTheme(Theme.unicorn_theme));
           this.isUnicornThemeActive();
@@ -106,22 +105,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
     //if skip_cookies is set, dont show dialogs
     if (this.skippedDialogs) {
-      this.store.dispatch(
-        new SetDisplayedNotificationVersion(DisplayNotificationDialog.version)
-      );
+      this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
     }
     //subscribe on query param changes, if changed open snackbar
-    this.activatedRoute.queryParamMap
-      .pipe(untilComponentDestroyed(this))
-      .subscribe(queryParamMap => {
-        if (queryParamMap.get('skip_dialog') === 'true') {
-          if (!this.skippedDialogs) {
-            this.openJustSkippedDialogsSnackBar();
-          } else {
-            this.openSkippedDialogsSnackBar();
-          }
+    this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe((queryParamMap) => {
+      if (queryParamMap.get('skip_dialog') === 'true') {
+        if (!this.skippedDialogs) {
+          this.openJustSkippedDialogsSnackBar();
+        } else {
+          this.openSkippedDialogsSnackBar();
         }
-      });
+      }
+    });
 
     // Ask for Permission to send Bug reports, don't show dialog if dialogs should be skipped
     if (
@@ -129,22 +124,11 @@ export class AppComponent implements OnInit, OnDestroy {
       runtimeEnvironment.ravenURL != null &&
       !this.skippedDialogs
     ) {
-      const matDialogRef = this.matDialog.open(BugReportConsentComponent, {
-        hasBackdrop: true
-      });
-      matDialogRef.afterClosed().subscribe(consent => {
-        this.store.dispatch(new SetSendFeedback(consent));
-      });
+      this.dialogService.displayDialog('bug-report-consent');
     }
 
-    if (
-      DisplayNotificationDialog.version >
-      (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)
-    ) {
-      this.matDialog.open(DisplayNotificationDialog, {
-        height: '90vh',
-        width: '90vw'
-      });
+    if (DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)) {
+      this.dialogService.displayDialog('notification');
     } else if (!this.skippedDialogs) {
       // Display the Release Dialog only if no notification Dialog is shown, in order to not overwhelm the user with dialogs.
       this.releaseMigrationService.checkForUpdate();
@@ -153,19 +137,17 @@ export class AppComponent implements OnInit, OnDestroy {
     //IE Warning
     if (this.platform.TRIDENT === true) {
       this.matDialog.open(IeWarningComponent, {
-        panelClass: 'color-warn'
+        panelClass: 'color-warn',
       });
     }
 
     // Route Routes with failing Resolvers to the Main Page
-    this.router.events
-      .pipe(filter(e => e instanceof NavigationError))
-      .subscribe(e => {
-        this.router.navigateByUrl('/');
-      });
+    this.router.events.pipe(filter((e) => e instanceof NavigationError)).subscribe((e) => {
+      this.router.navigateByUrl('/');
+    });
   }
   public isUnicornThemeActive() {
-    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe(name => {
+    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe((name) => {
       if (name === Theme.unicorn_theme) {
         this.snackBar
           .open(

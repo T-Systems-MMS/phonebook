@@ -6,7 +6,7 @@
       target="_blank"
       rel="noopener"
       [href]="'mailto:' + runtimeEnvironment.contactEmail"
-      (click)="close()"
+      mat-dialog-close
     >
       <span
         i18n="
@@ -23,7 +23,7 @@
       target="_blank"
       rel="noopener"
       href="{{ runtimeEnvironment.contactUrl }}"
-      (click)="close()"
+      mat-dialog-close
     >
       <span
         i18n="
@@ -40,7 +40,7 @@
       target="_blank"
       rel="noopener"
       href="https://github.com/T-Systems-MMS/phonebook/issues/new?assignees=&labels=feature&template=feature_request.md"
-      (click)="close()"
+      mat-dialog-close
     >
       <img class="github-icon" alt="github" src="assets/img/GitHub-Mark-32px.png" />
       <span
@@ -57,7 +57,7 @@
       target="_blank"
       rel="noopener"
       href="https://github.com/T-Systems-MMS/phonebook/issues/new?assignees=&labels=bug&template=bug_report.md"
-      (click)="close()"
+      mat-dialog-close
     >
       <img class="github-icon" alt="github" src="assets/img/GitHub-Mark-32px.png" />
       <span
