@@ -28,7 +28,7 @@ export class HttpRedirectToLogin implements HttpInterceptor {
         }
       }),
       catchError((err, d) => {
-        if (err instanceof HttpErrorResponse && err.status == 401) {
+        if (err instanceof HttpErrorResponse && err.status == 401 && d.headers.has('Location')) {
           const location = err.headers.get('Location') as string;
           window.location.replace(location);
         }
