@@ -14,7 +14,7 @@ import {
   InitTheme,
   SetTheme,
   SetSendFeedback,
-  SetDisplayedNotificationVersion,
+  SetDisplayedNotificationVersion
 } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
@@ -27,7 +27,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
@@ -136,9 +136,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     //IE Warning
     if (this.platform.TRIDENT === true) {
-      this.matDialog.open(IeWarningComponent, {
-        panelClass: 'color-warn',
-      });
+      this.dialogService.displayDialog('ie-warning');
     }
 
     // Route Routes with failing Resolvers to the Main Page
