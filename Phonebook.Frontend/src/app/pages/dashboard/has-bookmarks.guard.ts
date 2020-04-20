@@ -11,10 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class HasBookmarksGuard implements CanActivate {
   constructor(private store: Store, private currentUserService: CurrentUserService, private router: Router) {}
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.currentUserService.getCurrentUser().pipe(
       map((user) => {
         if (user != null && !this.store.selectSnapshot(BookmarksState.hasBookmarks)) {

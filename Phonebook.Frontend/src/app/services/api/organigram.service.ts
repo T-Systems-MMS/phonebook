@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
@@ -11,9 +11,9 @@ export class OrganigramService {
 
   public getOrganigram(): Observable<UnitTreeNode[]> {
     return this.personService.getAll().pipe(
-      map(users => {
+      map((users) => {
         const tree: UnitTreeNode[] = [];
-        users.forEach(person => {
+        users.forEach((person) => {
           if (person.Business.ShortOrgUnit.length === 0) {
             return;
           }
@@ -31,7 +31,7 @@ export class OrganigramService {
    * @param depth The depth of the Tree (to map the Persons Array of Units to the Tree structure)
    */
   public findNodeForPerson(person: Person, nodeChilds: UnitTreeNode[], depth: number) {
-    const firstnode = nodeChilds.find(node => {
+    const firstnode = nodeChilds.find((node) => {
       return node.id === person.Business.ShortOrgUnit[depth];
     });
     if (firstnode === undefined) {
@@ -68,9 +68,9 @@ export class OrganigramService {
     return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigram()]).pipe(
       map(([user, organigram]) => {
         if (user === null) {
-        return null;
+          return null;
         }
-        return this.getNodeForUser(user, organigram,  0);
+        return this.getNodeForUser(user, organigram, 0);
       })
     );
   }
@@ -78,15 +78,19 @@ export class OrganigramService {
   public getNodeForUser(user: Person, nodeChilds: UnitTreeNode[], depth: number) {
     if (user.Business.OrgUnit.length !== 0) {
       for (let node of nodeChilds) {
-            if (node.name === user.Business.OrgUnit[depth] && depth > user.Business.OrgUnit.length) {
-            return null;
-          } else if (node.name === user.Business.OrgUnit[depth] && depth < user.Business.OrgUnit.length - 1) {
-            this.getNodeForUser(user, node.children, depth + 1);
-          } else if (node.name === user.Business.OrgUnit[depth] && depth === user.Business.OrgUnit.length - 1 ) {
-            return this.team = node;
-          } else { continue; }
+        if (node.name === user.Business.OrgUnit[depth] && depth > user.Business.OrgUnit.length) {
+          return null;
+        } else if (node.name === user.Business.OrgUnit[depth] && depth < user.Business.OrgUnit.length - 1) {
+          this.getNodeForUser(user, node.children, depth + 1);
+        } else if (node.name === user.Business.OrgUnit[depth] && depth === user.Business.OrgUnit.length - 1) {
+          return (this.team = node);
+        } else {
+          continue;
         }
-    } else { return null; }
+      }
+    } else {
+      return null;
+    }
     return this.team;
   }
 }

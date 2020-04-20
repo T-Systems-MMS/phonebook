@@ -83,7 +83,12 @@
       </div>
       <router-outlet></router-outlet>
       <div class="different-cards bottom-button" *ngIf="router.url === '/dashboard/team'">
-        <button class="navigation-button" mat-button [routerLink]="['/dashboard/bookmarks']">
+        <button
+          class="navigation-button"
+          mat-button
+          [routerLink]="['/dashboard/bookmarks']"
+          [disabled]="bookmarkedPersons.length === 0"
+        >
           <div class="card-navigation">
             <mat-icon>keyboard_arrow_up</mat-icon>
             <span
