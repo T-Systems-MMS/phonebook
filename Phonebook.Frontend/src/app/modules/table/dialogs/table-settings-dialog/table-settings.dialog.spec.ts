@@ -4,7 +4,6 @@ import { Store } from '@ngxs/store';
 import { MockComponent } from 'ng2-mock-component';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 
-
 // Deactivated, because MatDialogRef is not easily testable.
 xdescribe('TableSettingsDialog', () => {
   let store: Store;
@@ -16,9 +15,9 @@ xdescribe('TableSettingsDialog', () => {
       declarations: [
         TableSettingsDialog,
         MockComponent({ selector: 'mat-list-item' }),
-        MockComponent({ selector: 'mat-list' })
+        MockComponent({ selector: 'mat-list' }),
       ],
-      imports: [MatCheckboxModule]
+      imports: [MatCheckboxModule],
     }).compileComponents();
   }));
 

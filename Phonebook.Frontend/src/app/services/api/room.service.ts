@@ -13,9 +13,9 @@ export class RoomService {
 
   public getById(buildingId: string, number: String | null): Observable<Room | null> {
     return this.getAll().pipe(
-      map(rooms => {
+      map((rooms) => {
         return (
-          rooms.find(x => {
+          rooms.find((x) => {
             return x.Number === number && x.BuildingId.toString() === buildingId;
           }) || null
         );
@@ -39,21 +39,21 @@ export class RoomService {
       return of(this.roomTreeCache);
     }
     return this.getAll().pipe(
-      flatMap(rooms => {
+      flatMap((rooms) => {
         const roomTree: BuildingTreeNode[] = new Array<BuildingTreeNode>();
-        rooms.forEach(room => {
+        rooms.forEach((room) => {
           // Check if Location already exists
-          const locationNode = roomTree.find(node => {
+          const locationNode = roomTree.find((node) => {
             return node.id === room.Place;
           });
           if (locationNode !== undefined) {
             // If Location does exist, check if Building does exist
-            const buildingNode = locationNode.children.find(node => {
+            const buildingNode = locationNode.children.find((node) => {
               return node.id === room.Building;
             });
             if (buildingNode !== undefined) {
               // If Building does exist, check if Floor does exist
-              const floorNode = buildingNode.children.find(node => {
+              const floorNode = buildingNode.children.find((node) => {
                 return node.id === room.Floor.toString();
               });
               if (floorNode !== undefined) {
@@ -64,7 +64,7 @@ export class RoomService {
                   type: BuildingPart.room,
                   data: room,
                   children: [],
-                  path: [locationNode.id, buildingNode.id, floorNode.id, room.Number]
+                  path: [locationNode.id, buildingNode.id, floorNode.id, room.Number],
                 });
               } else {
                 // Floor does not exist, gets created underneath the Building, with Room inside
@@ -79,11 +79,11 @@ export class RoomService {
                       type: BuildingPart.room,
                       children: [],
                       data: room,
-                      path: [locationNode.id, buildingNode.id, room.Floor.toString(), room.Number]
-                    }
+                      path: [locationNode.id, buildingNode.id, room.Floor.toString(), room.Number],
+                    },
                   ],
                   data: null,
-                  path: [locationNode.id, buildingNode.id, room.Floor.toString()]
+                  path: [locationNode.id, buildingNode.id, room.Floor.toString()],
                 });
               }
             } else {
@@ -106,13 +106,13 @@ export class RoomService {
                         type: BuildingPart.room,
                         data: room,
                         children: [],
-                        path: [locationNode.id, room.Building, room.Floor.toString(), room.Number]
-                      }
+                        path: [locationNode.id, room.Building, room.Floor.toString(), room.Number],
+                      },
                     ],
-                    path: [locationNode.id, room.Building, room.Floor.toString()]
-                  }
+                    path: [locationNode.id, room.Building, room.Floor.toString()],
+                  },
                 ],
-                path: [locationNode.id, room.Building]
+                path: [locationNode.id, room.Building],
               });
             }
           } else {
@@ -141,22 +141,22 @@ export class RoomService {
                           type: BuildingPart.room,
                           data: room,
                           children: [],
-                          path: [room.Place, room.Building, room.Floor.toString(), room.Number]
-                        }
+                          path: [room.Place, room.Building, room.Floor.toString(), room.Number],
+                        },
                       ],
-                      path: [room.Place, room.Building, room.Floor.toString()]
-                    }
+                      path: [room.Place, room.Building, room.Floor.toString()],
+                    },
                   ],
-                  path: [room.Place, room.Building]
-                }
+                  path: [room.Place, room.Building],
+                },
               ],
-              path: [room.Place]
+              path: [room.Place],
             });
           }
         });
         // Sort Floors from low to high
-        roomTree.forEach(location => {
-          location.children.forEach(building => {
+        roomTree.forEach((location) => {
+          location.children.forEach((building) => {
             building.children = building.children.sort((floorA, floorB) => {
               return Number(floorB.id) - Number(floorA.id);
             });
@@ -168,9 +168,12 @@ export class RoomService {
     );
   }
 
-  public getNodeByPath(pathArray: string[], level: number = 0): Observable<BuildingTreeNode | null> {
+  public getNodeByPath(
+    pathArray: string[],
+    level: number = 0
+  ): Observable<BuildingTreeNode | null> {
     return this.getRoomTree().pipe(
-      flatMap(tree => {
+      flatMap((tree) => {
         return of(getNodeFromTreeSync(pathArray, tree, level));
       })
     );
@@ -184,18 +187,22 @@ export function getNodeFromTreeSync(
 ): BuildingTreeNode | null {
   if (paramArray.length === 1) {
     return (
-      tree.find(node => {
+      tree.find((node) => {
         return node.path[level].toString() === paramArray[0];
       }) || null
     );
   } else {
-    const nextNode = tree.find(node => {
+    const nextNode = tree.find((node) => {
       return node.path[level].toString() === paramArray[0];
     });
     if (nextNode == null || nextNode.children.length === 0) {
       return null;
     }
-    return getNodeFromTreeSync(paramArray.slice(1, paramArray.length), nextNode.children, level + 1);
+    return getNodeFromTreeSync(
+      paramArray.slice(1, paramArray.length),
+      nextNode.children,
+      level + 1
+    );
   }
 }
 

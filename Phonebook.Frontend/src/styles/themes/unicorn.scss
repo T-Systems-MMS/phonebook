@@ -16,7 +16,7 @@ $april-typography: mat-typography-config(
   $button: mat-typography-level(18px, 14px, 500),
   $input: mat-typography-level(inherit, 1.125, 400),
   $body-1: mat-typography-level(18px, 32px, 500),
-  $body-2: mat-typography-level(18px, 32px, 600)
+  $body-2: mat-typography-level(18px, 32px, 600),
 );
 
 $unicorn-primary-text: rgba(#a71b57, 0.87);
@@ -59,8 +59,8 @@ $unicorn: (
     A100: $unicorn-primary-text,
     A200: $unicorn-primary-text,
     A400: $unicorn-primary-text,
-    A700: $unicorn-primary-text
-  )
+    A700: $unicorn-primary-text,
+  ),
 );
 
 $unicornBlue: (
@@ -92,8 +92,8 @@ $unicornBlue: (
     A100: $unicorn-primary-text,
     A200: $unicorn-primary-text,
     A400: $unicorn-primary-text,
-    A700: $unicorn-primary-text
-  )
+    A700: $unicorn-primary-text,
+  ),
 );
 
 $unicornRed: (
@@ -125,8 +125,8 @@ $unicornRed: (
     A100: $unicorn-primary-text,
     A200: $unicorn-primary-text,
     A400: $unicorn-primary-text,
-    A700: $unicorn-primary-text
-  )
+    A700: $unicorn-primary-text,
+  ),
 );
 
 // Specifies the color that should be used as mat-palette($color-palette, normal, light, light)
@@ -139,12 +139,12 @@ $background: map-get($unicorn_theme, background);
 $background: map_merge(
   $background,
   (
-    background: $unicorn_background-color
+    background: $unicorn_background-color,
   )
 );
 $unicorn_theme: map_merge(
   $unicorn_theme,
   (
-    background: $background
+    background: $background,
   )
 );

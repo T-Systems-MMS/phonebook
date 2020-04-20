@@ -23,9 +23,9 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     InfiniteScrollModule,
     UserModule,
     PipesModule,
-    MatChipsModule
+    MatChipsModule,
   ],
   declarations: [TableComponent, TableSettingsDialog],
-  entryComponents: [TableSettingsDialog]
+  entryComponents: [TableSettingsDialog],
 })
 export class TableModule {}

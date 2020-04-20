@@ -1,4 +1,4 @@
-# Default values for phonebook.
+# Demo values for phonebook.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -16,6 +16,11 @@ rocketChatUrl: 'https://open.rocket.chat'
 
 frontend:
   replicaCount: 1
+
+source:
+  peoplesoft:
+    replicaCount: 1
+    environment: Development
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious

@@ -10,7 +10,8 @@ import { runtimeEnvironment } from 'src/environments/runtime-environment';
   providedIn: 'root',
 })
 export class CurrentUserService {
-  private readonly currentUserApiUrl = runtimeEnvironment.employeePicturesEndpoint + '/user/whoami?version=2';
+  private readonly currentUserApiUrl =
+    runtimeEnvironment.employeePicturesEndpoint + '/user/whoami?version=2';
 
   private currentUserObjectObservable: Observable<WhoAmIResponse> | null = null;
 

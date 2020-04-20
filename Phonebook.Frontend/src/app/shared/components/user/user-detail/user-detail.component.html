@@ -23,7 +23,11 @@
               ></app-add-filter>
               <span *ngFor="let orgUnit of person.Business.ShortOrgUnit.slice(1)">
                 |
-                <app-add-filter [filterColumn]="columns.orgUnit" [filterValue]="orgUnit" [resetSearchTerm]="true">
+                <app-add-filter
+                  [filterColumn]="columns.orgUnit"
+                  [filterValue]="orgUnit"
+                  [resetSearchTerm]="true"
+                >
                 </app-add-filter>
               </span>
             </ng-container>
@@ -34,10 +38,18 @@
         </mat-card-title>
         <mat-card-subtitle>
           <p *ngIf="!person.isOfStatus(status.Fremdkraft)">
-            <app-add-filter [filterColumn]="columns.role" [filterValue]="person.Role" [resetSearchTerm]="true">
+            <app-add-filter
+              [filterColumn]="columns.role"
+              [filterValue]="person.Role"
+              [resetSearchTerm]="true"
+            >
             </app-add-filter>
             |
-            <app-add-filter [filterColumn]="columns.status" [filterValue]="person.Type" [resetSearchTerm]="true">
+            <app-add-filter
+              [filterColumn]="columns.status"
+              [filterValue]="person.Type"
+              [resetSearchTerm]="true"
+            >
             </app-add-filter>
           </p>
         </mat-card-subtitle>
@@ -48,7 +60,8 @@
           <button
             mat-icon-button
             matTooltip="Found Incorrect Data? Report them!"
-            i18n-matTooltip="User-detailComponent|Tooltip Incorrect Data@@UserDetailComponentTooltipDataChange"
+            i18n-matTooltip="
+              User-detailComponent|Tooltip Incorrect Data@@UserDetailComponentTooltipDataChange"
             (click)="openInformationIncorrectDialog()"
           >
             <mat-icon>report_problem</mat-icon>
@@ -56,7 +69,9 @@
           <button
             mat-icon-button
             (click)="toggleBookmark()"
-            i18n-matTooltip="User-detailComponent|Tooltip for saving a person as favourite@@UserDetailComponentTooltipBookmark"
+            i18n-matTooltip="
+              User-detailComponent|Tooltip for saving a person as
+              favourite@@UserDetailComponentTooltipBookmark"
             matTooltip="Bookmark this person"
           >
             <mat-icon>{{ bookmarked }}</mat-icon>
@@ -66,7 +81,8 @@
           id="view_toggle"
           mat-icon-button
           [matMenuTriggerFor]="menu"
-          i18n-matTooltip="User-detailComponent|Tooltip for opening the share menu@@UserDetailComponentTooltipShare"
+          i18n-matTooltip="
+            User-detailComponent|Tooltip for opening the share menu@@UserDetailComponentTooltipShare"
           matTooltip="Share"
         >
           <mat-icon>share</mat-icon>
@@ -75,23 +91,38 @@
           <button mat-menu-item [vcdDownloadVCard]="vCard" [encoding]="vCardEncoding.utf8">
             <mat-icon>perm_contact_calendar</mat-icon>
             <span
-              i18n="User-detailComponent|Share Menu: Donwload Contact Option@@UserDetailComponentShareDownloadContact"
+              i18n="
+                User-detailComponent|Share Menu: Donwload Contact
+                Option@@UserDetailComponentShareDownloadContact"
               >Download Contact</span
             >
           </button>
-          <a *ngIf="rocketChatLink" mat-menu-item target="_blank" rel="noopener" [href]="rocketChatLink">
+          <a
+            *ngIf="rocketChatLink"
+            mat-menu-item
+            target="_blank"
+            rel="noopener"
+            [href]="rocketChatLink"
+          >
             <mat-icon>chat</mat-icon>
-            <span i18n="User-detailComponent|Share Menu: Rocket Chat Option@@UserDetailComponentShareRocketChat"
+            <span
+              i18n="
+                User-detailComponent|Share Menu: Rocket Chat
+                Option@@UserDetailComponentShareRocketChat"
               >Rocket Chat</span
             >
           </a>
           <button mat-menu-item actionDrawer [copy]="getLink()">
             <mat-icon>link</mat-icon>
-            <span i18n="User-detailComponent|Share Menu: Link Option@@UserDetailComponentShareLink">Link</span>
+            <span i18n="User-detailComponent|Share Menu: Link Option@@UserDetailComponentShareLink"
+              >Link</span
+            >
           </button>
           <button mat-menu-item (click)="sendMail()">
             <mat-icon>email</mat-icon>
-            <span i18n="User-detailComponent|Share Menu: Mail Option@@UserDetailComponentShareMail">Share by mail</span>
+            <span i18n="User-detailComponent|Share Menu: Mail Option@@UserDetailComponentShareMail"
+              >Share by mail</span
+            >
           </button>
         </mat-menu>
       </div>
@@ -102,7 +133,9 @@
         <mat-list>
           <h3
             mat-subheader
-            i18n="User-detailComponent|Subtitle for Contact Details@@UserDetailComponentSubTitleContactDetails"
+            i18n="
+              User-detailComponent|Subtitle for Contact
+              Details@@UserDetailComponentSubTitleContactDetails"
           >
             Contact Details
           </h3>
@@ -136,20 +169,29 @@
               Fax
             </h4>
             <p mat-line>
-              <app-interactive-attribute-field [value]="person.Contacts.Fax"></app-interactive-attribute-field>
+              <app-interactive-attribute-field
+                [value]="person.Contacts.Fax"
+              ></app-interactive-attribute-field>
             </p>
           </mat-list-item>
         </mat-list>
         <mat-list *ngIf="!person.isOfStatus(status.Fremdkraft)">
           <h3
             mat-subheader
-            i18n="User-detailComponent|Subtitle for Further Information@@UserDetailComponentSubTitleFurtherInformation"
+            i18n="
+              User-detailComponent|Subtitle for Further
+              Information@@UserDetailComponentSubTitleFurtherInformation"
           >
             Further Information
           </h3>
           <mat-list-item>
             <mat-icon mat-list-icon>supervisor_account</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.Supervisor (direct supervisor) @@DataPersonDirectSupervisor">
+            <h4
+              mat-line
+              i18n="
+                Datapoint|Label for Person.Supervisor (direct supervisor)
+                @@DataPersonDirectSupervisor"
+            >
               Direct Supervisor
             </h4>
             <p mat-line>
@@ -165,10 +207,19 @@
             </h4>
             <div mat-line>
               <div class="pb-flex-row">
-                <ng-container *ngFor="let assistent of person.Business.BusinessunitTeamassistent; let index = index">
-                  <a mat-button [routerLink]="['/user/' + person.Business.ShortBusinessunitTeamassistent[index]]">{{
-                    assistent
-                  }}</a>
+                <ng-container
+                  *ngFor="
+                    let assistent of person.Business.BusinessunitTeamassistent;
+                    let index = index
+                  "
+                >
+                  <a
+                    mat-button
+                    [routerLink]="[
+                      '/user/' + person.Business.ShortBusinessunitTeamassistent[index]
+                    ]"
+                    >{{ assistent }}</a
+                  >
                 </ng-container>
               </div>
             </div>
@@ -204,18 +255,12 @@
               <ng-container i18n="@@ColumnTitleOrgUnit">
                 Organization Unit
               </ng-container>
-              <a
-                mat-button
-                [routerLink]="[
-                  '/organigram',
-                  person.Business.ShortOrgUnit[0],
-                  person.Business.ShortOrgUnit[1],
-                  person.Business.ShortOrgUnit[2]
-                ]"
-              >
+              <a mat-button [routerLink]="organigramLink">
                 <span
                   class="mat-small"
-                  i18n="User-detailComponent|Button to show the persons position in the organigram@@UserDetailComponentButtonShowInOrganigram"
+                  i18n="
+                    User-detailComponent|Button to show the persons position in the
+                    organigram@@UserDetailComponentButtonShowInOrganigram"
                   >Show in Organigram</span
                 >
               </a>
@@ -228,7 +273,8 @@
                   [filterValue]="shortOrgUnit"
                   [displayText]="person.Business.OrgUnit[index] + ' (' + shortOrgUnit + ')'"
                   [resetSearchTerm]="true"
-                ></app-add-filter>
+                >
+                </app-add-filter>
               </mat-chip-list>
             </p>
           </mat-list-item>
@@ -236,7 +282,9 @@
             <mat-icon mat-list-icon>location_on</mat-icon>
             <h4 mat-line>
               <ng-container
-                i18n="User-detailComponent|Combined location of the person (city, building, floor, room)@@UserDetailComponentLabelLocation"
+                i18n="
+                  User-detailComponent|Combined location of the person (city, building, floor,
+                  room)@@UserDetailComponentLabelLocation"
               >
                 Location
               </ng-container>
@@ -256,13 +304,19 @@
               >
                 <span
                   class="mat-small"
-                  i18n="User-detailComponent|Button to show the persons room@@UserDetailComponentButtonShowRoom"
+                  i18n="
+                    User-detailComponent|Button to show the persons
+                    room@@UserDetailComponentButtonShowRoom"
                 >
                   Show Room
                 </span>
               </a>
             </h4>
-            <app-address mat-line [location]="person.Location" class="pb-flex pb-margin-top-20"></app-address>
+            <app-address
+              mat-line
+              [location]="person.Location"
+              class="pb-flex pb-margin-top-20"
+            ></app-address>
           </mat-list-item>
         </mat-list>
       </div>
@@ -271,7 +325,8 @@
         <mat-tab-group mat-stretch-tabs headerPosition="above">
           <mat-tab
             label="Roomplan"
-            i18n-label="UserDetailComponent|Tab Headline for Roomplan@@UserDetailComponentTabHeadlineRoomplan"
+            i18n-label="
+              UserDetailComponent|Tab Headline for Roomplan@@UserDetailComponentTabHeadlineRoomplan"
           >
             <div class="pb-roomplan" *ngIf="person.Location.RoomCollection[0].Description != null">
               <ng-container *ngIf="!person.isOfStatus(status.Fremdkraft)">
@@ -284,14 +339,17 @@
           </mat-tab>
           <mat-tab
             label="Skills"
-            i18n-label="UserDetailComponent|Tab Headline for Skills@@UserDetailComponentTabHeadlineSkills"
+            i18n-label="
+              UserDetailComponent|Tab Headline for Skills@@UserDetailComponentTabHeadlineSkills"
           >
             <div
               class="pb-flex pb-skills"
-              i18n="User-detailComponent|Text for the upcoming skill tag feature@@UserDetailComponenMessageContributeSkills"
+              i18n="
+                User-detailComponent|Text for the upcoming skill tag
+                feature@@UserDetailComponenMessageContributeSkills"
             >
-              This is where a coworkers skills would be shown. But this is still work in Progress, you can make it
-              happen faster!
+              This is where a coworkers skills would be shown. But this is still work in Progress,
+              you can make it happen faster!
               <a
                 mat-raised-button
                 color="primary"

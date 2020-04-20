@@ -6,6 +6,6 @@ import { UserDetailPageComponent } from './user-detail-page.component';
 @NgModule({
   declarations: [UserDetailPageComponent],
   imports: [CommonModule, UserModule],
-  exports: [UserDetailPageComponent]
+  exports: [UserDetailPageComponent],
 })
 export class UserDetailPageModule {}

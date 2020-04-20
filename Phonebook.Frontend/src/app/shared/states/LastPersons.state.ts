@@ -23,14 +23,14 @@ export class RemoveFromLastPersons {
 
 @State<Person[]>({
   name: 'lastpersons',
-  defaults: []
+  defaults: [],
 })
 @Injectable()
 export class LastPersonsState {
   @Action(AddToLastPersons)
   public incrementPerson(ctx: StateContext<Person[]>, action: AddToLastPersons) {
     const state = ctx.getState();
-    const index = state.findIndex(p => {
+    const index = state.findIndex((p) => {
       return p.Id === action.person.Id;
     });
     if (index > -1) {
@@ -49,7 +49,7 @@ export class LastPersonsState {
   @Action(RemoveFromLastPersons)
   public removeCommonPerson(ctx: StateContext<Person[]>, action: RemoveFromLastPersons) {
     const state = ctx.getState();
-    const index = state.findIndex(p => {
+    const index = state.findIndex((p) => {
       return p.Id === action.person.Id;
     });
     if (index > -1) {

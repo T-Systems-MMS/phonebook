@@ -124,5 +124,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.store.dispatch(new SetRecentPeopleDrawer(this.drawerOpen));
     }
   }
-  ngOnDestroy(): void {}
+  public ngOnDestroy(): void {}
 }

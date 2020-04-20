@@ -11,10 +11,10 @@ export const migration3: Migration = {
       if (appState.activeTheme === undefined) {
         const newAppState = {
           ...appState,
-          activeTheme: 'magenta_light_theme'
+          activeTheme: 'magenta_light_theme',
         };
         localStorage.setItem(APPSTATE_KEY, JSON.stringify(newAppState));
       }
     }
-  }
+  },
 };

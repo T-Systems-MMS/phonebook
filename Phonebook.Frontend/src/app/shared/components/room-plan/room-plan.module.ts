@@ -7,6 +7,6 @@ import { RoomPlanComponent } from 'src/app/shared/components/room-plan/room-plan
 @NgModule({
   imports: [CommonModule, MatIconModule, MatButtonModule],
   declarations: [RoomPlanComponent],
-  exports: [RoomPlanComponent]
+  exports: [RoomPlanComponent],
 })
 export class RoomPlanModule {}

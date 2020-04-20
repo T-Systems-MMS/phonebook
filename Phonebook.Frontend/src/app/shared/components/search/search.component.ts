@@ -11,13 +11,13 @@ import {
   RemoveSearchFilter,
   ResetSearch,
   SearchState,
-  UpdateUrl
+  UpdateUrl,
 } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
   public focused: boolean = false;
@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   constructor(private snackBar: MatSnackBar, private store: Store) {}
 
   public ngOnInit() {
-    this.searchTerm$.pipe(untilComponentDestroyed(this)).subscribe(val => {
+    this.searchTerm$.pipe(untilComponentDestroyed(this)).subscribe((val) => {
       setTimeout(() => {
         this.previousSearchTerm = val;
       }, 100);
@@ -82,7 +82,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (this.containsFilterMarker.test(filterString)) {
       event.preventDefault();
       const keyvalue = filterString.split(':');
-      const col = ColumnDefinitions.getAll().find(col => {
+      const col = ColumnDefinitions.getAll().find((col) => {
         return keyvalue[0].toLowerCase() === col.title.trim().toLowerCase();
       });
       if (col != null) {
@@ -90,7 +90,9 @@ export class SearchComponent implements OnInit, OnDestroy {
         (event.target as HTMLInputElement).value = '';
       } else {
         this.snackBar
-          .open('The Column you want to filter does not exist: "' + keyvalue[0] + '"', '', { duration: 4000 })
+          .open('The Column you want to filter does not exist: "' + keyvalue[0] + '"', '', {
+            duration: 4000,
+          })
           .afterDismissed()
           .subscribe(() => {});
       }

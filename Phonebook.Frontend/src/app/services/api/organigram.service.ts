@@ -35,7 +35,11 @@ export class OrganigramService {
       return node.id === person.Business.ShortOrgUnit[depth];
     });
     if (firstnode === undefined) {
-      const newNode = new UnitTreeNode(person.Business.ShortOrgUnit[depth], person.Business.OrgUnit[depth], depth);
+      const newNode = new UnitTreeNode(
+        person.Business.ShortOrgUnit[depth],
+        person.Business.OrgUnit[depth],
+        depth
+      );
       if (depth === person.Business.ShortOrgUnit.length - 1) {
         this.pushToSpecificGroup(newNode, person);
       } else if (person.Business.ShortOrgUnit.length - 1 > depth) {

@@ -1,6 +1,16 @@
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { mockPerson } from 'src/app/shared/mocks/person';
-import { Business, City, Contacts, Location, Messenger, Person, PersonStatus, PhonebookSortDirection, Room } from 'src/app/shared/models';
+import {
+  Business,
+  City,
+  Contacts,
+  Location,
+  Messenger,
+  Person,
+  PersonStatus,
+  PhonebookSortDirection,
+  Room,
+} from 'src/app/shared/models';
 
 const personA = new Person(
   PersonStatus.Interner_Lernender,
@@ -39,7 +49,9 @@ describe('Column Filter Functions: ', () => {
   });
 
   it('fullname', () => {
-    expect(ColumnDefinitions.fullname.filterFunction(/Dr\. Max Mustermann/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.fullname.filterFunction(/Dr\. Max Mustermann/i, mockPerson)).toBe(
+      true
+    );
     expect(ColumnDefinitions.fullname.filterFunction(/Max Mustermann/i, mockPerson)).toBe(true);
     expect(ColumnDefinitions.fullname.filterFunction(/Mustermann Max/i, mockPerson)).toBe(true);
     expect(ColumnDefinitions.fullname.filterFunction(/Max/i, mockPerson)).toBe(true);
@@ -48,7 +60,9 @@ describe('Column Filter Functions: ', () => {
   });
 
   it('email', () => {
-    expect(ColumnDefinitions.email.filterFunction(/Max.Mustermann@example.com/i, mockPerson)).toBe(true);
+    expect(ColumnDefinitions.email.filterFunction(/Max.Mustermann@example.com/i, mockPerson)).toBe(
+      true
+    );
   });
 
   it('phone', () => {
@@ -62,6 +76,8 @@ describe('Column Filter Functions: ', () => {
 
 describe('Column Sort Functions: ', () => {
   it('fullname', () => {
-    expect(ColumnDefinitions.fullname.sortFunction(personA, personB, PhonebookSortDirection.asc)).toBeLessThan(0);
+    expect(
+      ColumnDefinitions.fullname.sortFunction(personA, personB, PhonebookSortDirection.asc)
+    ).toBeLessThan(0);
   });
 });

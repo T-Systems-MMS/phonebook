@@ -10,9 +10,24 @@ import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-i
 import { UserModule } from 'src/app/shared/components/user/user.module';
 
 @NgModule({
-  declarations: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent, IncorrectUserInformationComponent],
+  declarations: [
+    ReleaseNotificationDialog,
+    DisplayNotificationDialog,
+    BugReportConsentComponent,
+    IncorrectUserInformationComponent,
+  ],
   imports: [CommonModule, RouterModule, MaterialModule, ContributorsModule, UserModule],
-  exports: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent, IncorrectUserInformationComponent],
-  entryComponents: [ReleaseNotificationDialog, DisplayNotificationDialog, BugReportConsentComponent, IncorrectUserInformationComponent]
+  exports: [
+    ReleaseNotificationDialog,
+    DisplayNotificationDialog,
+    BugReportConsentComponent,
+    IncorrectUserInformationComponent,
+  ],
+  entryComponents: [
+    ReleaseNotificationDialog,
+    DisplayNotificationDialog,
+    BugReportConsentComponent,
+    IncorrectUserInformationComponent,
+  ],
 })
 export class DialogsModule {}

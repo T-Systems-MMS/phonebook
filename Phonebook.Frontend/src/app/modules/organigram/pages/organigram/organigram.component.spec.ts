@@ -15,10 +15,10 @@ describe('OrganigramComponent', () => {
       declarations: [OrganigramComponent],
       providers: [
         { provide: OrganigramService, useClass: MockOrganigramService },
-        { provide: Location, useValue: null }
+        { provide: Location, useValue: null },
       ],
       imports: [RouterTestingModule],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 

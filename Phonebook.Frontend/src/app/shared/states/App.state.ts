@@ -56,8 +56,8 @@ export interface AppStateModel {
     displayedNotificationVersion: 0,
     sendFeedback: null,
     activeTheme: Theme.magenta_light_theme,
-    recentPeopleDrawer: true
-  }
+    recentPeopleDrawer: true,
+  },
 })
 @Injectable()
 export class AppState {
@@ -94,7 +94,7 @@ export class AppState {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      serviceWorkerNotificationDisplayed: true
+      serviceWorkerNotificationDisplayed: true,
     });
   }
 
@@ -103,16 +103,19 @@ export class AppState {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      version: action.version
+      version: action.version,
     });
   }
 
   @Action(SetDisplayedNotificationVersion)
-  public setDisplayedNotificationVersion(ctx: StateContext<AppStateModel>, action: SetDisplayedNotificationVersion) {
+  public setDisplayedNotificationVersion(
+    ctx: StateContext<AppStateModel>,
+    action: SetDisplayedNotificationVersion
+  ) {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      displayedNotificationVersion: action.version
+      displayedNotificationVersion: action.version,
     });
   }
   @Action(SetSendFeedback)
@@ -120,7 +123,7 @@ export class AppState {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      sendFeedback: action.sendFeedback
+      sendFeedback: action.sendFeedback,
     });
   }
 
@@ -130,7 +133,7 @@ export class AppState {
     this.themeService.setTheme(action.activeTheme);
     ctx.setState({
       ...state,
-      activeTheme: action.activeTheme
+      activeTheme: action.activeTheme,
     });
   }
 
@@ -145,7 +148,7 @@ export class AppState {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      recentPeopleDrawer: action.active
+      recentPeopleDrawer: action.active,
     });
   }
 }

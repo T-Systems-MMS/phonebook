@@ -8,7 +8,7 @@ import { ResetTableSettings, SetVisibleTableColumns, TableState } from 'src/app/
 @Component({
   selector: 'app-table-settings-dialog',
   templateUrl: './table-settings.dialog.html',
-  styleUrls: ['./table-settings.dialog.scss']
+  styleUrls: ['./table-settings.dialog.scss'],
 })
 export class TableSettingsDialog implements OnInit {
   public notDisplayedColumns: Column[] = [];
@@ -21,8 +21,8 @@ export class TableSettingsDialog implements OnInit {
   }
 
   private updateNotDisplayedColumns() {
-    this.notDisplayedColumns = ColumnDefinitions.getAll().filter(col => {
-      return !this.displayedColumns.some(column => {
+    this.notDisplayedColumns = ColumnDefinitions.getAll().filter((col) => {
+      return !this.displayedColumns.some((column) => {
         return col.id === column.id;
       });
     });
@@ -38,7 +38,12 @@ export class TableSettingsDialog implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
     this.store.dispatch(new SetVisibleTableColumns(this.displayedColumns));
   }

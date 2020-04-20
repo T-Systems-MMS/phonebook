@@ -12,15 +12,22 @@ import { ProfilePictureComponent } from './components/profile-picture/profile-pi
 import { ProfilePictureService } from './profile-picture.service';
 
 @NgModule({
-  imports: [CommonModule, MatIconModule, MatSnackBarModule, MatButtonModule, MatDialogModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+  ],
   declarations: [
     ChangeProfilePictureComponent,
     ProfilePictureComponent,
     ProfilePictureEnlargeDialog,
-    ChangeProfilePictureDialogComponent
+    ChangeProfilePictureDialogComponent,
   ],
   providers: [ProfilePictureService],
   exports: [ChangeProfilePictureComponent, ProfilePictureComponent, ProfilePictureEnlargeDialog],
-  entryComponents: [ProfilePictureEnlargeDialog, ChangeProfilePictureDialogComponent]
+  entryComponents: [ProfilePictureEnlargeDialog, ChangeProfilePictureDialogComponent],
 })
 export class ProfilePictureModule {}

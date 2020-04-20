@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-contributors',
   templateUrl: './contributors.component.html',
-  styleUrls: ['./contributors.component.scss']
+  styleUrls: ['./contributors.component.scss'],
 })
 export class ContributorsComponent implements OnInit {
   public contributorsLoaded: boolean = false;
@@ -20,19 +20,19 @@ export class ContributorsComponent implements OnInit {
   public loadContributors(): void {
     this.httpClient
       .get('assets/CONTRIBUTORS.md', {
-        responseType: 'text'
+        responseType: 'text',
       })
       .subscribe(
-        success => {
+        (success) => {
           this.contributorsLoaded = true;
           this.contributorsHTML = success;
         },
-        error => {
+        (error) => {
           this.snackBar.open(
             $localize`:ContributorsErrorMessage|Contributors error Message@@ContributorsErrorMessage:Contributors could not be loaded.`,
             '',
             {
-              duration: 5000
+              duration: 5000,
             }
           );
         }

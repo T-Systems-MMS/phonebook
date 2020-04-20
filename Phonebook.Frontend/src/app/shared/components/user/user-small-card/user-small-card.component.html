@@ -1,7 +1,12 @@
 <mat-card [routerLink]="['/user', person.Id]" mat-ripple>
   <mat-card-header>
     <div class="pb-right-top-action">
-      <button propagationStop mat-icon-button [ngClass]="actionButtonClasses" (click)="buttonClicked()">
+      <button
+        propagationStop
+        mat-icon-button
+        [ngClass]="actionButtonClasses"
+        (click)="buttonClicked()"
+      >
         <mat-icon>{{ actionButtonIcon }}</mat-icon>
       </button>
     </div>
@@ -9,7 +14,11 @@
   <mat-card-content>
     <div>
       <div class="centered">
-        <app-profile-picture class="pb-self-centered circle square-img100" [user]="person" [altText]="person.Id">
+        <app-profile-picture
+          class="pb-self-centered circle square-img100"
+          [user]="person"
+          [altText]="person.Id"
+        >
         </app-profile-picture>
       </div>
     </div>
@@ -48,7 +57,13 @@
           {{ person.Contacts.Mobile }}
         </div>
       </button>
-      <button mat-button actionDrawer color="primary" [copy]="person.Contacts.Email" [mailto]="person.Contacts.Email">
+      <button
+        mat-button
+        actionDrawer
+        color="primary"
+        [copy]="person.Contacts.Email"
+        [mailto]="person.Contacts.Email"
+      >
         <div>
           <mat-icon>mail</mat-icon>
           <span class="pb-text-overflow">

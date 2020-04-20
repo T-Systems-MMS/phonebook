@@ -34,7 +34,7 @@ Configure RBAC by running `kubectl apply -f helm-rbac.yml`.
 
 ## Uninstall
 
-1. Delete the Mocks: 
+1. Delete the Mocks:
    - Assets - `kubectl delete -f .\Phonebook.Assets.yml`
    - Backend - `kubectl delete -f .\Phonebook.MockBackend.yml`
-2. Uninstall the Phonebook Application as described  [here](./../Phonebook/readme.md) (under "Uninstall").
+2. Uninstall the Phonebook Application as described [here](./../Phonebook/readme.md) (under "Uninstall").

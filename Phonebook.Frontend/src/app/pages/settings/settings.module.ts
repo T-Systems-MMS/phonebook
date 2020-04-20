@@ -18,10 +18,10 @@ import { SettingsComponent } from './settings.component';
     FeatureFlagModule,
     MatListModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
   ],
   declarations: [SettingsComponent],
   entryComponents: [],
-  exports: [SettingsComponent]
+  exports: [SettingsComponent],
 })
 export class SettingsModule {}

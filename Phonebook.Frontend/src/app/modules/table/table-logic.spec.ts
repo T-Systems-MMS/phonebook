@@ -1,5 +1,14 @@
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { Business, City, Contacts, Location, Messenger, Person, PersonStatus, PhonebookSortDirection } from 'src/app/shared/models';
+import {
+  Business,
+  City,
+  Contacts,
+  Location,
+  Messenger,
+  Person,
+  PersonStatus,
+  PhonebookSortDirection,
+} from 'src/app/shared/models';
 import { TableLogic } from './table-logic';
 
 describe('Table Logic - Sort', () => {
@@ -28,12 +37,12 @@ describe('Table Logic - Sort', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ];
     expect(
       TableLogic.sort(unsortedPersonsArray, {
         column: ColumnDefinitions.fullname,
-        direction: PhonebookSortDirection.asc
+        direction: PhonebookSortDirection.asc,
       })
     ).toEqual([
       new Person(
@@ -59,7 +68,7 @@ describe('Table Logic - Sort', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ]);
   });
   it('"Zarathustra" before "Axel"', () => {
@@ -87,13 +96,13 @@ describe('Table Logic - Sort', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ];
 
     expect(
       TableLogic.sort(unsortedPersonsArray, {
         column: ColumnDefinitions.fullname,
-        direction: PhonebookSortDirection.desc
+        direction: PhonebookSortDirection.desc,
       })
     ).toEqual([
       new Person(
@@ -119,7 +128,7 @@ describe('Table Logic - Sort', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ]);
   });
 });
@@ -138,9 +147,11 @@ describe('Table Logic - Filter', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ];
-    expect(TableLogic.filter(unsortedPersonsArray, 'Mustermann', [ColumnDefinitions.fullname])).toEqual([
+    expect(
+      TableLogic.filter(unsortedPersonsArray, 'Mustermann', [ColumnDefinitions.fullname])
+    ).toEqual([
       new Person(
         PersonStatus.Interner_Mitarbeiter,
         '',
@@ -152,7 +163,7 @@ describe('Table Logic - Filter', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ]);
   });
 
@@ -169,9 +180,11 @@ describe('Table Logic - Filter', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ];
-    expect(TableLogic.filter(unsortedPersonsArray, 'Otherman', [ColumnDefinitions.fullname])).toEqual([]);
+    expect(
+      TableLogic.filter(unsortedPersonsArray, 'Otherman', [ColumnDefinitions.fullname])
+    ).toEqual([]);
   });
 
   it('Find Person with Diarectics', () => {
@@ -187,12 +200,14 @@ describe('Table Logic - Filter', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ];
     expect(
-      TableLogic.filter(unsortedPersonsArray, 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž', [
-        ColumnDefinitions.fullname
-      ])
+      TableLogic.filter(
+        unsortedPersonsArray,
+        'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖòóôõöÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž',
+        [ColumnDefinitions.fullname]
+      )
     ).toEqual([
       new Person(
         PersonStatus.Interner_Mitarbeiter,
@@ -205,7 +220,7 @@ describe('Table Logic - Filter', () => {
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
         new Business([], [], [], [], [], [], '')
-      )
+      ),
     ]);
   });
 });

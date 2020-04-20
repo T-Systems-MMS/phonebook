@@ -1,11 +1,19 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { FloorplanService } from 'src/app/services/floorplan.service';
 import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 @Component({
   selector: 'app-room-plan',
   templateUrl: './room-plan.component.html',
-  styleUrls: ['./room-plan.component.scss']
+  styleUrls: ['./room-plan.component.scss'],
 })
 export class RoomPlanComponent implements OnInit, OnChanges {
   @Input()
@@ -50,10 +58,14 @@ export class RoomPlanComponent implements OnInit, OnChanges {
       }
       let roomElement: HTMLElement | null = null;
       // QuerySelector throws an exception if id begins with a number
-      roomElement = svgContainer.querySelector('[id=\'' + this.room + '\']');
+      roomElement = svgContainer.querySelector("[id='" + this.room + "']");
       if (roomElement != null && roomElement.firstElementChild != null) {
-        Array.from(roomElement.childNodes).forEach(element => {
-          if (element.nodeName === 'rect' || element.nodeName === 'path' || element.nodeName === 'polygon') {
+        Array.from(roomElement.childNodes).forEach((element) => {
+          if (
+            element.nodeName === 'rect' ||
+            element.nodeName === 'path' ||
+            element.nodeName === 'polygon'
+          ) {
             (element as HTMLElement).setAttribute('style', 'fill: #E20074;');
           }
         });

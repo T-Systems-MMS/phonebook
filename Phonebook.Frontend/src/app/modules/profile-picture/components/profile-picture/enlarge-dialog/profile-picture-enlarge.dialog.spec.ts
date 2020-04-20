@@ -10,7 +10,7 @@ describe('ProfilePictureEnlargeDialog', () => {
     TestBed.configureTestingModule({
       providers: [{ provide: MAT_DIALOG_DATA, useValue: MAT_DIALOG_DATA }],
       imports: [MatDialogModule],
-      declarations: [ProfilePictureEnlargeDialog]
+      declarations: [ProfilePictureEnlargeDialog],
     }).compileComponents();
   }));
 

@@ -1,0 +1,6 @@
+Phonebook/**/*.yaml
+Phonebook/demo/*.yaml
+docs/assets/js/search-data.json
+docs/**/*.html
+docs/**/*.js
+**/dist/*

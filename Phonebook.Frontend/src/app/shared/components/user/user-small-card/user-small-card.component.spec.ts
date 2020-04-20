@@ -5,16 +5,18 @@ import { UserSmallCardComponent } from 'src/app/shared/components/user/user-smal
 import { Person } from 'src/app/shared/models';
 import { TelephonePipe } from 'src/app/shared/pipes/telephone.pipe';
 
-
-
 describe('UserSmallCardComponent', () => {
   let component: UserSmallCardComponent;
   let fixture: ComponentFixture<TestComponentWrapper>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponentWrapper, UserSmallCardComponent, MockPipe(TelephonePipe, (...args) => args[0])],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [
+        TestComponentWrapper,
+        UserSmallCardComponent,
+        MockPipe(TelephonePipe, (...args) => args[0]),
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 
@@ -63,7 +65,7 @@ describe('UserSmallCardComponent', () => {
 
 @Component({
   selector: 'test-component-wrapper',
-  template: '<app-user-small-card [person]="person"></app-user-small-card>'
+  template: '<app-user-small-card [person]="person"></app-user-small-card>',
 })
 class TestComponentWrapper {
   public person: Person = Person.empty();

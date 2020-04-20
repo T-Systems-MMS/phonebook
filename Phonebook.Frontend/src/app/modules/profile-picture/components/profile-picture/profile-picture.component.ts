@@ -11,7 +11,7 @@ import { ProfilePictureEnlargeDialog } from './enlarge-dialog/profile-picture-en
 @Component({
   selector: 'app-profile-picture',
   templateUrl: './profile-picture.component.html',
-  styleUrls: ['./profile-picture.component.scss']
+  styleUrls: ['./profile-picture.component.scss'],
 })
 export class ProfilePictureComponent implements OnInit, OnDestroy {
   @Input()
@@ -44,31 +44,29 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
     private profilePictureService: ProfilePictureService,
     private featureFlagService: FeatureFlagService,
     private httpClient: HttpClient
-  ) { }
+  ) {}
 
   public ngOnInit() {
     this.featureFlagService
       .get('firstApril')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(flag => {
+      .subscribe((flag) => {
         this.useAprilEndpoint = flag;
         if (!flag) {
-          this.profilePictureService.reload
-            .pipe(untilComponentDestroyed(this))
-            .subscribe(id => {
-              this.imageLoaded = false;
-              if (this.USER.Id.toLowerCase() === id.toLowerCase()) {
-                this.RANDOM = Math.random().toString();
-                this.updateImageUrl();
-              }
-            });
+          this.profilePictureService.reload.pipe(untilComponentDestroyed(this)).subscribe((id) => {
+            this.imageLoaded = false;
+            if (this.USER.Id.toLowerCase() === id.toLowerCase()) {
+              this.RANDOM = Math.random().toString();
+              this.updateImageUrl();
+            }
+          });
         } else {
           this.updateImageUrl();
         }
       });
   }
   private getAprilProfilePictureUrl() {
-    var random = Math.floor(Math.random() * Math.floor(9));
+    const random = Math.floor(Math.random() * Math.floor(9));
     switch (random) {
       case 0:
         return 'assets/img/firstApril/unicorn_1.png';
@@ -94,7 +92,8 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
         return 'assets/img/firstApril/unicorn_11.png';
       case 11:
         return 'assets/img/firstApril/unicorn_12.png';
-      default: return 'assets/img/firstApril/unicorn_1.png';
+      default:
+        return 'assets/img/firstApril/unicorn_1.png';
     }
   }
   public updateImageUrl() {
@@ -115,22 +114,14 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
   }
 
   public onMouseenter(): void {
-    if (
-      this.canEnlargeOnHover === false ||
-      this.dialogRef != null ||
-      this.imageLoaded === false
-    ) {
+    if (this.canEnlargeOnHover === false || this.dialogRef != null || this.imageLoaded === false) {
       return;
     }
     this.openEnlarge();
   }
 
   public onClick() {
-    if (
-      this.canEnlargeOnClick === false ||
-      this.dialogRef != null ||
-      this.imageLoaded === false
-    ) {
+    if (this.canEnlargeOnClick === false || this.dialogRef != null || this.imageLoaded === false) {
       return;
     }
     this.openEnlarge(true);
@@ -152,10 +143,10 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
       hasBackdrop: backdrop,
       data: {
         imageUrl: url,
-        text: this.altText
-      }
+        text: this.altText,
+      },
     });
-    this.dialogRef.afterClosed().subscribe(closed => {
+    this.dialogRef.afterClosed().subscribe((closed) => {
       this.dialogRef = null;
     });
   }
