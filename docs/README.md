@@ -106,6 +106,7 @@ The project makes use of the following noteworthy frameworks:
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 And a big thanks to all other contributors of [T-Systems MMS](https://github.com/T-Systems-MMS).
