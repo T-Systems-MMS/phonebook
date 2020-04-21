@@ -4,8 +4,8 @@ about: Add a Contributor to the project with the allcontributors-Bot
 title: 'docs: add contributor'
 labels: 'docs'
 assignees: ''
-
 ---
+
 <!-- ---------------------- Important ---------------------- -->
 <!-- IT'S NOT NECESSARY TO OPEN A NEW ISSUE. YOU CAN ALSO CALL THE BOT IN A PULL REQUEST-->
 <!-- Only add one person per comment -->

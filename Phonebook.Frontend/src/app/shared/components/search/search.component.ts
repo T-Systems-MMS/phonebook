@@ -4,14 +4,20 @@ import { Select, Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable } from 'rxjs';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
 import { SearchFilter } from 'src/app/shared/models';
-import { AddSearchFilter, RemoveLastSearchFilter, RemoveSearchFilter, ResetSearch, SearchState, UpdateUrl } from 'src/app/shared/states';
+import {
+  AddSearchFilter,
+  RemoveLastSearchFilter,
+  RemoveSearchFilter,
+  ResetSearch,
+  SearchState,
+  UpdateUrl,
+} from 'src/app/shared/states';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
   public focused: boolean = false;
@@ -26,10 +32,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   @ViewChild('input', { static: true })
   public input: ElementRef;
-  constructor(private snackBar: MatSnackBar, private store: Store, public columnTranslate: ColumnTranslate) {}
+  constructor(private snackBar: MatSnackBar, private store: Store) {}
 
   public ngOnInit() {
-    this.searchTerm$.pipe(untilComponentDestroyed(this)).subscribe(val => {
+    this.searchTerm$.pipe(untilComponentDestroyed(this)).subscribe((val) => {
       setTimeout(() => {
         this.previousSearchTerm = val;
       }, 100);
@@ -76,15 +82,17 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (this.containsFilterMarker.test(filterString)) {
       event.preventDefault();
       const keyvalue = filterString.split(':');
-      const col = ColumnDefinitions.getAll().find(col => {
-        return keyvalue[0].toLowerCase() === this.columnTranslate.getTranslation(col.id).toLowerCase();
+      const col = ColumnDefinitions.getAll().find((col) => {
+        return keyvalue[0].toLowerCase() === col.title.trim().toLowerCase();
       });
       if (col != null) {
         this.store.dispatch(new AddSearchFilter({ filterColumn: col, filterValue: keyvalue[1] }));
         (event.target as HTMLInputElement).value = '';
       } else {
         this.snackBar
-          .open('The Column you want to filter does not exist: "' + keyvalue[0] + '"', '', { duration: 4000 })
+          .open('The Column you want to filter does not exist: "' + keyvalue[0] + '"', '', {
+            duration: 4000,
+          })
           .afterDismissed()
           .subscribe(() => {});
       }

@@ -13,7 +13,7 @@ describe('FeatureFlagService', () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       imports: [HttpClientTestingModule],
-      providers: [FeatureFlagService, { provide: Location, useClass: LocationMock }]
+      providers: [FeatureFlagService, { provide: Location, useClass: LocationMock }],
     }).compileComponents();
     httpMock = TestBed.get(HttpTestingController);
     featureFlagServiceTest = TestBed.get(FeatureFlagService);
@@ -29,7 +29,7 @@ describe('FeatureFlagService', () => {
 
   it(' - Feature should be activated', () => {
     const featureFlag = 'test';
-    featureFlagServiceTest.get(featureFlag).subscribe(value => {
+    featureFlagServiceTest.get(featureFlag).subscribe((value) => {
       expect(value).toBeTruthy();
     });
     const featureFlagRequest = httpMock.expectOne(url);
@@ -38,7 +38,7 @@ describe('FeatureFlagService', () => {
 
   it(' - Feature should be deactivated', () => {
     const featureFlag = 'test';
-    featureFlagServiceTest.get(featureFlag).subscribe(value => {
+    featureFlagServiceTest.get(featureFlag).subscribe((value) => {
       expect(value).toBeFalsy();
     });
     const featureFlagRequest = httpMock.expectOne(url);
@@ -47,7 +47,7 @@ describe('FeatureFlagService', () => {
 
   it(' - Feature should be deactivated by default but turned on by user', () => {
     const featureFlag = 'test';
-    featureFlagServiceTest.get(featureFlag).subscribe(value => {
+    featureFlagServiceTest.get(featureFlag).subscribe((value) => {
       expect(value).toBeFalsy();
     });
     const featureFlagRequest = httpMock.expectOne(url);
@@ -56,7 +56,7 @@ describe('FeatureFlagService', () => {
 
   it(' - not specified Flag is deactivated', () => {
     const featureFlag = 'test';
-    featureFlagServiceTest.get(featureFlag).subscribe(value => {
+    featureFlagServiceTest.get(featureFlag).subscribe((value) => {
       expect(value).toBeFalsy();
     });
     const featureFlagRequest = httpMock.expectOne(url);
@@ -65,7 +65,7 @@ describe('FeatureFlagService', () => {
 
   it(' - FeatureFlag.json not found', () => {
     const featureFlag = 'test';
-    featureFlagServiceTest.get(featureFlag).subscribe(value => {
+    featureFlagServiceTest.get(featureFlag).subscribe((value) => {
       expect(value).toBeFalsy();
     });
     const featureFlagRequest = httpMock.expectOne(url);

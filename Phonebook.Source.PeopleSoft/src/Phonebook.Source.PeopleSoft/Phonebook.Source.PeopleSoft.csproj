@@ -1,14 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Phonebook.Source.PeopleSoft</RootNamespace>
+    <UserSecretsId>87c803aa-de8f-4eaf-a14b-0f59d53083cf</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <NullableContextOptions>enable</NullableContextOptions>
+    <RuntimeIdentifiers>win10-x64;linux-x64;</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.50" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.WsFederation" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.60" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Phonebook.Source.PeopleSoft.Models\Phonebook.Source.PeopleSoft.Models.csproj" />
   </ItemGroup>
 
 </Project>

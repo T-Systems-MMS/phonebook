@@ -17,7 +17,7 @@ import { from } from 'rxjs';
     ReleaseNotificationDialog,
     DisplayNotificationDialog,
     BugReportConsentComponent,
-    IncorrectUserInformationComponent,
+    IncorrectUserInformationComponent
   ],
   imports: [CommonModule, RouterModule, MaterialModule, ContributorsModule, UserModule],
   exports: [
@@ -25,14 +25,14 @@ import { from } from 'rxjs';
     ReleaseNotificationDialog,
     DisplayNotificationDialog,
     BugReportConsentComponent,
-    IncorrectUserInformationComponent,
+    IncorrectUserInformationComponent
   ],
   entryComponents: [
     FeedbackDrawerSheetComponent,
     ReleaseNotificationDialog,
     DisplayNotificationDialog,
     BugReportConsentComponent,
-    IncorrectUserInformationComponent,
-  ],
+    IncorrectUserInformationComponent
+  ]
 })
 export class DialogsModule {}

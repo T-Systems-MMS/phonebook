@@ -10,9 +10,9 @@ export class OrganigramService {
 
   public getOrganigram(): Observable<UnitTreeNode[]> {
     return this.personService.getAll().pipe(
-      map(users => {
+      map((users) => {
         const tree: UnitTreeNode[] = [];
-        users.forEach(person => {
+        users.forEach((person) => {
           if (person.Business.ShortOrgUnit.length === 0) {
             return;
           }
@@ -30,11 +30,15 @@ export class OrganigramService {
    * @param depth The depth of the Tree (to map the Persons Array of Units to the Tree structure)
    */
   public findNodeForPerson(person: Person, nodeChilds: UnitTreeNode[], depth: number) {
-    const firstnode = nodeChilds.find(node => {
+    const firstnode = nodeChilds.find((node) => {
       return node.id === person.Business.ShortOrgUnit[depth];
     });
     if (firstnode === undefined) {
-      const newNode = new UnitTreeNode(person.Business.ShortOrgUnit[depth], person.Business.OrgUnit[depth], depth);
+      const newNode = new UnitTreeNode(
+        person.Business.ShortOrgUnit[depth],
+        person.Business.OrgUnit[depth],
+        depth
+      );
       if (depth === person.Business.ShortOrgUnit.length - 1) {
         this.pushToSpecificGroup(newNode, person);
       } else if (person.Business.ShortOrgUnit.length - 1 > depth) {

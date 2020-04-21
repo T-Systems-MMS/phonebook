@@ -5,7 +5,9 @@
     "types": ["node"],
     "strict": true,
     "strictNullChecks": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

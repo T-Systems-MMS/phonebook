@@ -20,14 +20,14 @@ export class RemoveCommonPerson {
 
 @State<ClicksPerPerson[]>({
   name: 'commonpersons',
-  defaults: []
+  defaults: [],
 })
 @Injectable()
 export class CommonPersonsState {
   @Action(IncrementCommonPerson)
   public incrementPerson(ctx: StateContext<ClicksPerPerson[]>, action: IncrementCommonPerson) {
     const state = ctx.getState();
-    const index = state.findIndex(p => {
+    const index = state.findIndex((p) => {
       return p.person.Id === action.person.Id;
     });
     if (index === -1) {
@@ -46,7 +46,7 @@ export class CommonPersonsState {
   @Action(RemoveCommonPerson)
   public removeCommonPerson(ctx: StateContext<ClicksPerPerson[]>, action: RemoveCommonPerson) {
     const state = ctx.getState();
-    const index = state.findIndex(p => {
+    const index = state.findIndex((p) => {
       return p.person.Id === action.person.Id;
     });
     if (index === -1) {

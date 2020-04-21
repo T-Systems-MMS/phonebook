@@ -14,7 +14,7 @@ import {
   InitTheme,
   SetTheme,
   SetSendFeedback,
-  SetDisplayedNotificationVersion
+  SetDisplayedNotificationVersion,
 } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
@@ -27,7 +27,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
@@ -59,7 +59,6 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((flag) => {
         if (flag) {
           this.store.dispatch(new SetTheme(Theme.unicorn_theme));
-          this.isUnicornThemeActive();
         }
       });
     // Commented as long as serviceWorker is reinstalled
@@ -108,21 +107,24 @@ export class AppComponent implements OnInit, OnDestroy {
       this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
     }
     //subscribe on query param changes, if changed open snackbar
-    this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe((queryParamMap) => {
-      if (queryParamMap.get('skip_dialog') === 'true') {
-        if (!this.skippedDialogs) {
-          this.openJustSkippedDialogsSnackBar();
-        } else {
-          this.openSkippedDialogsSnackBar();
+    this.activatedRoute.queryParamMap
+      .pipe(untilComponentDestroyed(this))
+      .subscribe((queryParamMap) => {
+        if (queryParamMap.get('skip_dialog') === 'true') {
+          if (!this.skippedDialogs) {
+            this.openJustSkippedDialogsSnackBar();
+          } else {
+            this.openSkippedDialogsSnackBar();
+          }
         }
-      }
-    });
+      };
+    })
 
     // Ask for Permission to send Bug reports, don't show dialog if dialogs should be skipped
-    if (
+    public if (
       this.store.selectSnapshot(AppState.sendFeedback) == null &&
       runtimeEnvironment.ravenURL != null &&
-      !this.skippedDialogs
+      !this.skippedDialogs;
     ) {
       this.dialogService.displayDialog('bug-report-consent');
     }
@@ -144,22 +146,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('/');
     });
   }
-  public isUnicornThemeActive() {
-    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe((name) => {
-      if (name === Theme.unicorn_theme) {
-        this.snackBar
-          .open(
-            $localize`:Change Theme back from Unicorntheme|Change Theme back from Unicorntheme@@PageInformationApril: Happy Aprils Fools Day! You don't like the Theme? Change it.`,
-            $localize`:Change Theme|Message for Change Theme@@PageInformationUnicornTheme:Change Theme`
-          )
-          .onAction()
-          .subscribe(() => {
-            this.router.navigateByUrl('/settings');
-          });
-      }
-    });
-  }
-  public openJustSkippedDialogsSnackBar() {
+  public openJustSkippedDialogsSnackBar(); {
     this.snackBar
       .open(
         $localize`:Display advice to new url|Message for just set no cookie url@@PageInformationNewUrlNoCookies:Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won't get any information about updates or releases with the set url parameter.`,
@@ -172,7 +159,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/');
       });
   }
-  public openSkippedDialogsSnackBar() {
+  public openSkippedDialogsSnackBar(); {
     this.snackBar
       .open(
         $localize`:Warning no dialogs are shown|Message to inform user that no dialogs will be shown@@PageInformationNoDialogs:Startup-Dialogs are deactivated. Please notice: You won't get any information about updates or releases.`,
@@ -185,5 +172,5 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/');
       });
   }
-  public ngOnDestroy() {}
+  public ngOnDestroy(); {}
 }

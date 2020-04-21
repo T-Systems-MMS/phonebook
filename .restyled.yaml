@@ -1,0 +1,15 @@
+---
+enabled: true
+restylers:
+  - prettier:
+      image: restyled/restyler-prettier:v2.0.2-1
+      include:
+        - '**/*.js'
+        - '**/*.ts'
+        - '**/*.html'
+        - '**/*.md'
+        - '**/*.yml'
+        - '**/*.yaml'
+        - '**/*.json'
+        - '**/*.css'
+        - '**/*.scss'

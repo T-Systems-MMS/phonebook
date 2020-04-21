@@ -1,10 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'telephone'
+  name: 'telephone',
 })
 export class TelephonePipe implements PipeTransform {
-  public transform(telephoneNumber: string): string {
-    return telephoneNumber.replace(/[^+0-9]/g, '');
+  // TODO: #579
+  public transform(telephoneNumber: null | string): string {
+    return telephoneNumber == null ? '' : telephoneNumber.replace(/[^+0-9]/g, '');
   }
 }

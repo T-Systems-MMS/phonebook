@@ -11,18 +11,19 @@ import { ReleaseInfoService } from 'src/app/services/release-info.service';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { Person } from 'src/app/shared/models';
-import { TableState } from 'src/app/shared/states';
+import { TableState, AppState } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 import { Environment, EnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { HASH_LONG, HASH_SHORT, VERSION } from 'src/environments/version';
 import { DialogService } from 'src/app/services/dialog.service';
+import { Theme } from 'src/app/shared/models/enumerables/Theme';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
-  host: { class: 'pb-expand' },
+  host: { class: 'pb-expand' }
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   public version: typeof VERSION = VERSION;
@@ -33,11 +34,15 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public firstApril: boolean = false;
   public currentEnvironment: Environment = runtimeEnvironment.environment;
 
+  @Select(AppState.activeTheme)
+  public themeValue$: Observable<Theme>;
+
   @Select(TableState.resultCount)
   public tableResultCount$: Observable<number>;
   public displayTableSettings: boolean = false;
   public hasImage: boolean = false;
   public currentUser: Person | null = null;
+  public unicornActive: boolean = false;
   constructor(
     private currentUserService: CurrentUserService,
     private router: Router,
@@ -55,6 +60,13 @@ export class NavigationComponent implements OnInit, OnDestroy {
       .subscribe((flag) => {
         this.firstApril = flag;
       });
+    this.themeValue$.pipe(untilComponentDestroyed(this)).subscribe((name) => {
+      if (name === Theme.unicorn_theme) {
+        this.unicornActive = true;
+      } else {
+        this.unicornActive = false;
+      }
+    });
 
     this.currentUserService
       .getCurrentUser()
@@ -85,7 +97,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     if (this.dialog.openDialogs.length === 0) {
       this.dialog.open(TableSettingsDialog, {
         height: '90vh',
-        width: '90vw',
+        width: '90vw'
       });
     }
   }

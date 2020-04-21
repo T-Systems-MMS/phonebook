@@ -2,28 +2,27 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
-import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
 import { Column } from 'src/app/shared/models';
 import { ResetTableSettings, SetVisibleTableColumns, TableState } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-table-settings-dialog',
   templateUrl: './table-settings.dialog.html',
-  styleUrls: ['./table-settings.dialog.scss']
+  styleUrls: ['./table-settings.dialog.scss'],
 })
 export class TableSettingsDialog implements OnInit {
   public notDisplayedColumns: Column[] = [];
   public displayedColumns: Column[] = this.store.selectSnapshot(TableState.visibleColumns);
 
-  constructor(public store: Store, public columnTranslate: ColumnTranslate) {}
+  constructor(public store: Store) {}
 
   public ngOnInit() {
     this.updateNotDisplayedColumns();
   }
 
   private updateNotDisplayedColumns() {
-    this.notDisplayedColumns = ColumnDefinitions.getAll().filter(col => {
-      return !this.displayedColumns.some(column => {
+    this.notDisplayedColumns = ColumnDefinitions.getAll().filter((col) => {
+      return !this.displayedColumns.some((column) => {
         return col.id === column.id;
       });
     });
@@ -39,7 +38,12 @@ export class TableSettingsDialog implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
     this.store.dispatch(new SetVisibleTableColumns(this.displayedColumns));
   }

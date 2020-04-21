@@ -7,7 +7,9 @@
           mat-button
           propagationStop
           *ngIf="
-            building.LinkRoutingWebsite && building.LinkRoutingWebsite != undefined && building.LinkRoutingWebsite != ''
+            building.LinkRoutingWebsite &&
+            building.LinkRoutingWebsite != undefined &&
+            building.LinkRoutingWebsite != ''
           "
           [href]="building.LinkRoutingWebsite"
           target="_blank"
@@ -15,7 +17,9 @@
           class="mat-small"
         >
           <mat-icon>open_in_new</mat-icon>
-          <span i18n="General|Button label for showing the location on google maps@@GeneralShowOnMapButton"
+          <span
+            i18n="
+              General|Button label for showing the location on google maps@@GeneralShowOnMapButton"
             >Show on Google-Maps</span
           >
         </a>
@@ -89,10 +93,15 @@
           (keyup.enter)="navigateToFloor(floor)"
           tabindex="0"
         >
-          <mat-card-header> {{ floor.name }}. <span i18n="@@DataPersonFloor">Floor</span> </mat-card-header>
+          <mat-card-header>
+            {{ floor.name }}. <span i18n="@@DataPersonFloor">Floor</span>
+          </mat-card-header>
           <mat-card-content>
             <div class="pb-flex pb-wrap">
-              <app-room-plan class="pb-roomplan" [floorplan]="floor.children[0].data.FloorPlan"></app-room-plan>
+              <app-room-plan
+                class="pb-roomplan"
+                [floorplan]="floor.children[0].data.FloorPlan"
+              ></app-room-plan>
             </div>
           </mat-card-content>
         </mat-card>

@@ -4,9 +4,16 @@
   </button>
   <button mat-button [routerLink]="['/rooms']" *ngIf="params.length == 0">
     <mat-icon>location_on</mat-icon>
-    <span i18n="Room-treeComponent|Root of the Navigation Tree@@RoomTreeComponentRootNavigationTitle">Overview</span>
+    <span
+      i18n="Room-treeComponent|Root of the Navigation Tree@@RoomTreeComponentRootNavigationTitle"
+      >Overview</span
+    >
   </button>
-  <button mat-button *ngFor="let param of params; let i = index" (click)="navigateToNodePath(params.slice(0, i + 1))">
+  <button
+    mat-button
+    *ngFor="let param of params; let i = index"
+    (click)="navigateToNodePath(params.slice(0, i + 1))"
+  >
     <mat-icon>chevron_right</mat-icon>
     {{ param }}
     <ng-container *ngIf="i === 2" i18n="@@DataPersonFloor">Floor</ng-container>
@@ -20,7 +27,11 @@
     [href]="roomPlanningToolUrl"
   >
     <mat-icon>meeting_room</mat-icon>
-    <span i18n="RoomTreeComponent|Button for changing to the booking tool@@RoomTreeComponentButtonBookingTool">
+    <span
+      i18n="
+        RoomTreeComponent|Button for changing to the booking
+        tool@@RoomTreeComponentButtonBookingTool"
+    >
       Booking Tool
     </span>
   </a>
@@ -73,8 +84,12 @@
       <button
         mat-icon-button
         (click)="drawer.toggle()"
-        i18n-matTooltip="RoomTreeComponent|Tooltip for expanding the tree view@@RoomTreeComponentButtonExpandTooltip"
-        i18n-aria-label="RoomTreeComponent|Aria Label for expanding the tree view@@RoomTreeComponentButtonExpandAriaLabel"
+        i18n-matTooltip="
+          RoomTreeComponent|Tooltip for expanding the tree
+          view@@RoomTreeComponentButtonExpandTooltip"
+        i18n-aria-label="
+          RoomTreeComponent|Aria Label for expanding the tree
+          view@@RoomTreeComponentButtonExpandAriaLabel"
         aria-label="Button expanding or collapsing the tree view on the left."
         matTooltip="Expand or Collapse the tree view."
       >

@@ -8,7 +8,7 @@ import { MailService } from 'src/app/services/mail.service';
 @Component({
   selector: 'app-user-information',
   templateUrl: './incorrect-user-information.component.html',
-  styleUrls: ['./incorrect-user-information.component.scss']
+  styleUrls: ['./incorrect-user-information.component.scss'],
 })
 export class IncorrectUserInformationComponent implements OnInit {
   @HostBinding() data: any;

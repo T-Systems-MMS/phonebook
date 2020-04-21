@@ -5,7 +5,7 @@ import { LanguageService } from './language.service';
 describe('LanguageService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      providers: []
+      providers: [],
     })
   );
 

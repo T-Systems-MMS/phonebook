@@ -68,30 +68,34 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
       });
   }
   private getAprilProfilePictureUrl() {
-    var random = Math.floor(Math.random() * Math.floor(9));
+    const random = Math.floor(Math.random() * Math.floor(9));
     switch (random) {
       case 0:
-        return 'https://cdn.pixabay.com/photo/2020/02/15/17/51/drawing-4851591_960_720.png';
+        return 'assets/img/firstApril/unicorn_1.png';
       case 1:
-        return 'https://cdn.pixabay.com/photo/2019/01/30/16/55/unicorn-3964925_960_720.png';
+        return 'assets/img/firstApril/unicorn_2.png';
       case 2:
-        return 'https://cdn.pixabay.com/photo/2017/02/01/11/32/characters-2029814_960_720.png';
+        return 'assets/img/firstApril/unicorn_3.png';
       case 3:
-        return 'https://cdn.pixabay.com/photo/2019/06/06/14/58/unicorn-4256141_960_720.png';
+        return 'assets/img/firstApril/unicorn_4.png';
       case 4:
-        return 'https://cdn.pixabay.com/photo/2018/04/09/20/40/unicorn-3305462_960_720.jpg';
+        return 'assets/img/firstApril/unicorn_5.png';
       case 5:
-        return 'https://cdn.pixabay.com/photo/2019/06/22/07/50/unicorn-4291012_960_720.png';
+        return 'assets/img/firstApril/unicorn_6.png';
       case 6:
-        return 'https://cdn.pixabay.com/photo/2019/12/20/22/29/unicorn-4709426_960_720.jpg';
+        return 'assets/img/firstApril/unicorn_7.png';
       case 7:
-        return 'https://cdn.pixabay.com/photo/2018/04/27/12/58/unicorn-3354612_960_720.png';
+        return 'assets/img/firstApril/unicorn_8.png';
       case 8:
-        return 'https://cdn.pixabay.com/photo/2018/09/27/11/58/unicorn-3706878_960_720.png';
+        return 'assets/img/firstApril/unicorn_9.png';
       case 9:
-        return 'https://cdn.pixabay.com/photo/2018/12/03/11/23/unicorn-3853216_960_720.png';
+        return 'assets/img/firstApril/unicorn_10.png';
+      case 10:
+        return 'assets/img/firstApril/unicorn_11.png';
+      case 11:
+        return 'assets/img/firstApril/unicorn_12.png';
       default:
-        return 'https://cdn.pixabay.com/photo/2019/01/30/16/55/unicorn-3964925_960_720.png';
+        return 'assets/img/firstApril/unicorn_1.png';
     }
   }
   public updateImageUrl() {

@@ -10,7 +10,7 @@ export function migrate(): number | undefined {
   }
   let migrationLevel = getMigrationLevel();
 
-  MIGRATIONS.forEach(migration => {
+  MIGRATIONS.forEach((migration) => {
     if (migration.id > migrationLevel) {
       migration.script();
       migrationLevel = migration.id;

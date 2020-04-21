@@ -1,6 +1,6 @@
 @import 'media-queries';
 
-@include below-med  {
+@include below-med {
   .cardcontainer {
     flex-wrap: wrap;
     flex-direction: column;

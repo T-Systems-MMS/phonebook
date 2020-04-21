@@ -22,14 +22,16 @@ describe('AddFilterComponent', () => {
         AddFilterModule,
         RouterTestingModule,
         NgxsModule.forRoot([SearchState]),
-        NgxsRouterPluginModule.forRoot()
-      ]
+        NgxsRouterPluginModule.forRoot(),
+      ],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     // Without Display Input Binding
-    cWrapperWithoutDisplayTextFixture = TestBed.createComponent(TestComponentWrapperWithoutDisplayText);
+    cWrapperWithoutDisplayTextFixture = TestBed.createComponent(
+      TestComponentWrapperWithoutDisplayText
+    );
     cWrapperWithoutDisplayText = cWrapperWithoutDisplayTextFixture.componentInstance;
     cWrapperWithoutDisplayTextFixture.detectChanges();
     // With All Input Output Bindings
@@ -64,7 +66,7 @@ describe('AddFilterComponent', () => {
 
 @Component({
   selector: 'test-component-wrapper',
-  template: '<app-add-filter [filterColumn]="column" [filterValue]="filterValue"></app-add-filter>'
+  template: '<app-add-filter [filterColumn]="column" [filterValue]="filterValue"></app-add-filter>',
 })
 class TestComponentWrapperWithoutDisplayText {
   @ViewChild(AddFilterComponent)
@@ -76,7 +78,7 @@ class TestComponentWrapperWithoutDisplayText {
 @Component({
   selector: 'test-component-wrapper',
   template:
-    '<app-add-filter [filterColumn]="column" [filterValue]="filterValue" [displayText]="displayText"></app-add-filter>'
+    '<app-add-filter [filterColumn]="column" [filterValue]="filterValue" [displayText]="displayText"></app-add-filter>',
 })
 class TestComponentWrapperFullIO {
   @ViewChild(AddFilterComponent)

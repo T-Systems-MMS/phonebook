@@ -41,9 +41,7 @@
             ],
             "scripts": [],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles"
-              ]
+              "includePaths": ["src/styles"]
             },
             "showCircularDependencies": true,
             "aot": true
@@ -79,14 +77,10 @@
               ]
             },
             "en": {
-              "localize": [
-                "en"
-              ]
+              "localize": ["en"]
             },
             "de": {
-              "localize": [
-                "de"
-              ]
+              "localize": ["de"]
             },
             "debug": {
               "fileReplacements": [
@@ -135,15 +129,9 @@
               "src/fonts/fonts.css",
               "src/fonts/materialicons/material-icons.css"
             ],
-            "assets": [
-              "src/assets",
-              "src/favicon.ico",
-              "src/manifest.webmanifest"
-            ],
+            "assets": ["src/assets", "src/favicon.ico", "src/manifest.webmanifest"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles"
-              ]
+              "includePaths": ["src/styles"]
             },
             "scripts": []
           }
@@ -151,14 +139,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

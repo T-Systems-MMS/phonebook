@@ -43,7 +43,9 @@ export class Person {
   }
 
   public isLearner(): boolean {
-    return this.Type === PersonStatus.Interner_Lernender || this.Type === PersonStatus.Externer_Lernender;
+    return (
+      this.Type === PersonStatus.Interner_Lernender || this.Type === PersonStatus.Externer_Lernender
+    );
   }
   public isSupervisor(): boolean {
     return this.Role.indexOf('Leiter') >= 0;

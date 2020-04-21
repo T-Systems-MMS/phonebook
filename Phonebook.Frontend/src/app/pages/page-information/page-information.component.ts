@@ -6,7 +6,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-page-information',
   templateUrl: './page-information.component.html',
-  styleUrls: ['./page-information.component.scss']
+  styleUrls: ['./page-information.component.scss'],
 })
 export class PageInformationComponent implements OnInit {
   public isPreview: boolean = true;

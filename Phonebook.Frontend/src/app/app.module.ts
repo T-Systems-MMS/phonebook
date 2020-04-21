@@ -1,7 +1,7 @@
 //Angular Imports
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlatformModule } from '@angular/cdk/platform';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
@@ -33,7 +33,6 @@ import { AddFilterModule } from 'src/app/shared/components/add-filter/add-filter
 import { NavigationComponent } from 'src/app/shared/components/navigation/navigation.component';
 import { OnlineBarComponent } from 'src/app/shared/components/online-bar/online-bar.component';
 import { UserModule } from 'src/app/shared/components/user/user.module';
-import { ColumnTranslate } from 'src/app/shared/config/columnTranslate';
 import { DialogsModule } from 'src/app/shared/dialogs/dialogs.module';
 import { IeWarningModule } from 'src/app/shared/dialogs/ie-warning/ie-warning.module';
 import { ErrorHandlerModule } from 'src/app/shared/error/error.module';
@@ -46,7 +45,7 @@ import {
   CommonPersonsState,
   LastPersonsState,
   SearchState,
-  TableState,
+  TableState
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
@@ -54,6 +53,7 @@ import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import { DialogsComponent } from './dialogs/dialogs.component';
 import { DialogViewComponent } from './dialogs/dialog-view/dialog-view.component';
+import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToLogin';
 
 declare const require;
 
@@ -65,7 +65,7 @@ declare const require;
     NavigationComponent,
     OnlineBarComponent,
     DialogsComponent,
-    DialogViewComponent,
+    DialogViewComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +86,7 @@ declare const require;
       // developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({
-      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate'],
+      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
@@ -100,9 +100,10 @@ declare const require;
     IeWarningModule,
     PlatformModule,
     // Pages
-    UserPagesModule,
+    UserPagesModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRedirectToLogin, multi: true },
     // {
     //   provide: TRANSLATIONS,
     //   useFactory: (locale: string) => {
@@ -112,16 +113,18 @@ declare const require;
     //   },
     //   deps: [LOCALE_ID]
     // },
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { panelClass: ['mat-dialog-override', 'mat-typography'] } },
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: { panelClass: ['mat-dialog-override', 'mat-typography'] }
+    },
     WINDOW_PROVIDER,
     ServiceWorkerService,
     WindowRef,
     MailService,
     FloorplanService,
     ReleaseInfoService,
-    ThemeService,
-    ColumnTranslate,
+    ThemeService
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

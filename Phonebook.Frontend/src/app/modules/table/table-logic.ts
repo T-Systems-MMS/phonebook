@@ -21,7 +21,7 @@ export class TableLogic {
     }
     const searchString = TableLogic.prepareSearchString(filterString);
 
-    return persons.filter(person => {
+    return persons.filter((person) => {
       for (let i = 0; i < searchColumns.length; i++) {
         if (searchColumns[i].filterFunction(searchString, person)) {
           return true;
@@ -48,7 +48,7 @@ export class TableLogic {
    * @param columns Column enum with set Flags for each Column you want to search in.
    */
   public static rankedSort(list: Person[], rankString: string, columns: Column[]): Person[] {
-    const rankedList: RankedListItem<Person>[] = list.map(person => {
+    const rankedList: RankedListItem<Person>[] = list.map((person) => {
       return new RankedListItem<Person>(person);
     });
 
@@ -59,7 +59,7 @@ export class TableLogic {
       const x = rankedList[i];
 
       // Calculate the rank for all items.
-      columns.forEach(col => {
+      columns.forEach((col) => {
         if (col.filterFunction(searchString, x.item)) {
           x.rank += col.rank;
         }
@@ -71,12 +71,16 @@ export class TableLogic {
         // Compare Rank
         const x = b.rank - a.rank;
         if (x === 0) {
-          return ColumnDefinitions.fullname.sortFunction(a.item, b.item, PhonebookSortDirection.asc);
+          return ColumnDefinitions.fullname.sortFunction(
+            a.item,
+            b.item,
+            PhonebookSortDirection.asc
+          );
         } else {
           return x;
         }
       })
-      .map(item => {
+      .map((item) => {
         return item.item;
       });
   }

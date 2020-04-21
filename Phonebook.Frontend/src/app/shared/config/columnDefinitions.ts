@@ -27,6 +27,7 @@ export const ColumnDefinitions: {
 } = {
   picture: {
     id: ColumnId.picture,
+    title: $localize`:TableComponent|Title of Table Column "Picture"@@ColumnTitlePicture:Picture`,
     rank: 0,
     filterable: false,
     sortable: false,
@@ -36,10 +37,11 @@ export const ColumnDefinitions: {
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       return 0;
-    }
+    },
   },
   id: {
     id: ColumnId.id,
+    title: $localize`:TableComponent|Title of Table Column "Id"@@ColumnTitleId:Id`,
     rank: 100,
     filterable: true,
     sortable: true,
@@ -49,10 +51,11 @@ export const ColumnDefinitions: {
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       return Helpers.stringCompare(a.Id, b.Id) * Helpers.sortDirection(sortDirection);
-    }
+    },
   },
   fullname: {
     id: ColumnId.fullname,
+    title: $localize`:TableComponent|Title of Table Column "Name"@@ColumnTitleFullName:Name`,
     rank: 50,
     filterable: true,
     sortable: true,
@@ -60,20 +63,30 @@ export const ColumnDefinitions: {
     filterFunction: (filterString: RegExp, person: Person) => {
       return (
         filterString.test(
-          person.Title + ' ' + Helpers.removeAccents(person.Firstname) + ' ' + Helpers.removeAccents(person.Surname)
-        ) || filterString.test(Helpers.removeAccents(person.Surname) + ' ' + Helpers.removeAccents(person.Firstname))
+          person.Title +
+            ' ' +
+            Helpers.removeAccents(person.Firstname) +
+            ' ' +
+            Helpers.removeAccents(person.Surname)
+        ) ||
+        filterString.test(
+          Helpers.removeAccents(person.Surname) + ' ' + Helpers.removeAccents(person.Firstname)
+        )
       );
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       const x = Helpers.stringCompare(a.Surname, b.Surname) * Helpers.sortDirection(sortDirection);
       if (x === 0) {
-        return Helpers.stringCompare(a.Firstname, b.Firstname) * Helpers.sortDirection(sortDirection);
+        return (
+          Helpers.stringCompare(a.Firstname, b.Firstname) * Helpers.sortDirection(sortDirection)
+        );
       }
       return x;
-    }
+    },
   },
   email: {
     id: ColumnId.email,
+    title: $localize`:TableComponent|Title of Table Column "Email"@@ColumnEmailName:Email`,
     rank: 30,
     filterable: true,
     sortable: false,
@@ -82,11 +95,15 @@ export const ColumnDefinitions: {
       return filterString.test(person.Contacts.Email);
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
-      return Helpers.stringCompare(a.Contacts.Email, b.Contacts.Email) * Helpers.sortDirection(sortDirection);
-    }
+      return (
+        Helpers.stringCompare(a.Contacts.Email, b.Contacts.Email) *
+        Helpers.sortDirection(sortDirection)
+      );
+    },
   },
   phone: {
     id: ColumnId.phone,
+    title: $localize`:TableComponent|Title of Table Column "Phone"@@ColumnTitlePhone:Phone`,
     rank: 1,
     filterable: true,
     sortable: true,
@@ -100,11 +117,15 @@ export const ColumnDefinitions: {
       return false;
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
-      return Helpers.phoneNumberCompare(a.Contacts.Phone, b.Contacts.Phone) * Helpers.sortDirection(sortDirection);
-    }
+      return (
+        Helpers.phoneNumberCompare(a.Contacts.Phone, b.Contacts.Phone) *
+        Helpers.sortDirection(sortDirection)
+      );
+    },
   },
   mobile: {
     id: ColumnId.mobile,
+    title: $localize`:TableComponent|Title of Table Column "Mobile"@@ColumnTitleMobile:Mobile`,
     rank: 1,
     filterable: true,
     sortable: true,
@@ -118,11 +139,15 @@ export const ColumnDefinitions: {
       return false;
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
-      return Helpers.phoneNumberCompare(a.Contacts.Mobile, b.Contacts.Mobile) * Helpers.sortDirection(sortDirection);
-    }
+      return (
+        Helpers.phoneNumberCompare(a.Contacts.Mobile, b.Contacts.Mobile) *
+        Helpers.sortDirection(sortDirection)
+      );
+    },
   },
   role: {
     id: ColumnId.role,
+    title: $localize`:TableComponent|Title of Table Column "Role"@@ColumnTitleRole:Role`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -132,10 +157,11 @@ export const ColumnDefinitions: {
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       return Helpers.stringCompare(a.Role, b.Role) * Helpers.sortDirection(sortDirection);
-    }
+    },
   },
   city: {
     id: ColumnId.city,
+    title: $localize`:TableComponent|Title of Table Column "City"@@ColumnTitleCity:City`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -144,11 +170,15 @@ export const ColumnDefinitions: {
       return filterString.test(Helpers.removeAccents(person.Location.City.Name));
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
-      return Helpers.stringCompare(a.Location.City.Name, b.Location.City.Name) * Helpers.sortDirection(sortDirection);
-    }
+      return (
+        Helpers.stringCompare(a.Location.City.Name, b.Location.City.Name) *
+        Helpers.sortDirection(sortDirection)
+      );
+    },
   },
   orgUnit: {
     id: ColumnId.orgUnit,
+    title: $localize`:TableComponent|Title of Table Column "Organization Unit"@@ColumnTitleOrgUnit:Organization Unit`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -169,11 +199,16 @@ export const ColumnDefinitions: {
       return false;
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
-      return Helpers.stringArrayCompare(a.Business.ShortOrgUnit, b.Business.ShortOrgUnit, sortDirection);
-    }
+      return Helpers.stringArrayCompare(
+        a.Business.ShortOrgUnit,
+        b.Business.ShortOrgUnit,
+        sortDirection
+      );
+    },
   },
   room: {
     id: ColumnId.room,
+    title: $localize`:TableComponent|Title of Table Column "Room"@@ColumnTitleRoom:Room`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -186,13 +221,16 @@ export const ColumnDefinitions: {
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       return (
-        Helpers.stringCompare(a.Location.RoomCollection[0].Number, b.Location.RoomCollection[0].Number) *
-        Helpers.sortDirection(sortDirection)
+        Helpers.stringCompare(
+          a.Location.RoomCollection[0].Number,
+          b.Location.RoomCollection[0].Number
+        ) * Helpers.sortDirection(sortDirection)
       );
-    }
+    },
   },
   building: {
     id: ColumnId.building,
+    title: $localize`:TableComponent|Title of Table Column "Building"@@ColumnTitleBuilding:Building`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -205,13 +243,16 @@ export const ColumnDefinitions: {
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       return (
-        Helpers.stringCompare(a.Location.RoomCollection[0].Building, b.Location.RoomCollection[0].Building) *
-        Helpers.sortDirection(sortDirection)
+        Helpers.stringCompare(
+          a.Location.RoomCollection[0].Building,
+          b.Location.RoomCollection[0].Building
+        ) * Helpers.sortDirection(sortDirection)
       );
-    }
+    },
   },
   costcenter: {
     id: ColumnId.costcenter,
+    title: $localize`:TableComponent|Title of Table Column "Profitcenter" once Costcenter@@ColumnTitleCostcenter:Profitcenter`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -220,11 +261,15 @@ export const ColumnDefinitions: {
       return filterString.test(person.Business.Costcenter);
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
-      return Helpers.stringCompare(a.Business.Costcenter, b.Business.Costcenter) * Helpers.sortDirection(sortDirection);
-    }
+      return (
+        Helpers.stringCompare(a.Business.Costcenter, b.Business.Costcenter) *
+        Helpers.sortDirection(sortDirection)
+      );
+    },
   },
   status: {
     id: ColumnId.status,
+    title: $localize`:TableComponent|Title of Table Column "Status"@@DataPersonStatus:Status`,
     rank: 10,
     filterable: true,
     sortable: true,
@@ -234,7 +279,7 @@ export const ColumnDefinitions: {
     },
     sortFunction: (a: Person, b: Person, sortDirection: PhonebookSortDirection) => {
       return Helpers.stringCompare(a.Type, b.Type) * Helpers.sortDirection(sortDirection);
-    }
+    },
   },
   getAll: () => {
     return [
@@ -250,7 +295,7 @@ export const ColumnDefinitions: {
       ColumnDefinitions.room,
       ColumnDefinitions.building,
       ColumnDefinitions.costcenter,
-      ColumnDefinitions.status
+      ColumnDefinitions.status,
     ];
   },
   getDefault: () => {
@@ -264,23 +309,23 @@ export const ColumnDefinitions: {
       ColumnDefinitions.orgUnit,
       ColumnDefinitions.room,
       ColumnDefinitions.city,
-      ColumnDefinitions.role
+      ColumnDefinitions.role,
     ];
   },
   getAllFilterableColumns: () => {
-    return ColumnDefinitions.getAll().filter(col => {
+    return ColumnDefinitions.getAll().filter((col) => {
       return col.filterable === true;
     });
   },
 
   getAllSortableColumns: () => {
-    return ColumnDefinitions.getAll().filter(col => {
+    return ColumnDefinitions.getAll().filter((col) => {
       return col.sortable === true;
     });
   },
 
   getAllFullMatchFilterableColumns: () => {
-    return ColumnDefinitions.getAll().filter(col => {
+    return ColumnDefinitions.getAll().filter((col) => {
       return col.fullMatchFilter === true;
     });
   },
@@ -289,17 +334,17 @@ export const ColumnDefinitions: {
    * @param columnId Id of the Column
    */
   getColumnById: (columnId: string): Column | undefined => {
-    return ColumnDefinitions.getAll().find(col => {
+    return ColumnDefinitions.getAll().find((col) => {
       return col.id === columnId;
     });
-  }
+  },
 };
 
 /**
  * Returns all an Array<string> with the id of the Columns
  */
 export function getColumnsAsStringArray(columns: Column[]): ColumnId[] {
-  return columns.map(col => {
+  return columns.map((col) => {
     return col.id;
   });
 }

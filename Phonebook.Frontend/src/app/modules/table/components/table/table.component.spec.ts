@@ -38,9 +38,9 @@ xdescribe('ListComponent', () => {
         MatTableModule,
         MatSortModule,
         InfiniteScrollModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
       ],
-      providers: [{ provide: PersonService, useClass: MockPersonService }]
+      providers: [{ provide: PersonService, useClass: MockPersonService }],
     }).compileComponents();
   }));
 

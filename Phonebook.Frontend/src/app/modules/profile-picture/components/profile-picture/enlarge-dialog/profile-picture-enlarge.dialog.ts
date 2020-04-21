@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-profile-picture-enlarge-dialog',
   templateUrl: './profile-picture-enlarge.dialog.html',
-  styleUrls: ['./profile-picture-enlarge.dialog.scss']
+  styleUrls: ['./profile-picture-enlarge.dialog.scss'],
 })
 export class ProfilePictureEnlargeDialog implements OnInit {
   @HostBinding() inputData: any;
