@@ -14,7 +14,7 @@ import { ProfilePictureEnlargeDialog } from 'src/app/modules/profile-picture/com
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DialogService {
   constructor(
@@ -35,7 +35,7 @@ export class DialogService {
       case 'release-notes':
         dialogConfig.data = {
           title: "We've updated to a newer Version!",
-          content: new DialogItem(ReleaseNotificationDialog),
+          content: new DialogItem(ReleaseNotificationDialog)
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
@@ -43,7 +43,7 @@ export class DialogService {
       case 'feedback':
         dialogConfig.data = {
           title: 'Leave Feedback, report a Bug or suggest a new Idea',
-          content: new DialogItem(FeedbackDrawerSheetComponent),
+          content: new DialogItem(FeedbackDrawerSheetComponent)
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
@@ -51,15 +51,15 @@ export class DialogService {
       case 'notification':
         dialogConfig.data = {
           title: 'Welcome to the new Phonebook!',
-          content: new DialogItem(DisplayNotificationDialog),
+          content: new DialogItem(DisplayNotificationDialog)
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
 
       case 'bug-report-consent':
         dialogConfig.data = {
-          title: 'Leave Feedback, report a Bug or suggest a new Idea',
-          content: new DialogItem(BugReportConsentComponent),
+          title: 'We need your help!',
+          content: new DialogItem(BugReportConsentComponent)
         };
         const matDialogRef = this.dialog.open(DialogsComponent, dialogConfig);
         matDialogRef.afterClosed().subscribe((consent) => {
@@ -73,8 +73,8 @@ export class DialogService {
           content: new DialogItem(ProfilePictureEnlargeDialog),
           inputData: {
             imageUrl: inputData[0],
-            text: inputData[1],
-          },
+            text: inputData[1]
+          }
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
@@ -82,7 +82,7 @@ export class DialogService {
       case 'ie-warning':
         dialogConfig.data = {
           title: 'This Website may not function properly in Internet Explorer',
-          content: new DialogItem(IeWarningComponent),
+          content: new DialogItem(IeWarningComponent)
         };
         dialogConfig.panelClass = 'color-warn';
         this.dialog.open(DialogsComponent, dialogConfig);
@@ -92,7 +92,7 @@ export class DialogService {
         dialogConfig.data = {
           title: 'Incorrect User Information',
           content: new DialogItem(IncorrectUserInformationComponent),
-          inputData: inputData,
+          inputData: inputData
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
