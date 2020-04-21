@@ -20,10 +20,10 @@ xdescribe('PageInformationComponent', () => {
         MockComponent({ selector: 'mat-card-title' }),
         MockComponent({ selector: 'mat-card-header' }),
         MockComponent({ selector: 'mat-card-content' }),
-        MockComponent({ selector: 'mat-card-subtitle' })
+        MockComponent({ selector: 'mat-card-subtitle' }),
       ],
       providers: [WINDOW_PROVIDER],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 
