@@ -13,7 +13,7 @@ xdescribe('SettingsComponent', () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [SettingsComponent, MockDirective(FeatureFlagDirective)],
-      providers: [{ provide: ThemeService, useClass: MockThemeService }]
+      providers: [{ provide: ThemeService, useClass: MockThemeService }],
     }).compileComponents();
   }));
 

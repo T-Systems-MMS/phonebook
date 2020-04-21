@@ -23,7 +23,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
   @Select(AppState.activeLayout)
   public layoutValue$: Observable<Layout>;
   public layouts: string[] = Object.values(Layout);
-  public featureFlags: Observable<{ name: string; value: boolean }[]> = this.featureFlagService.getAllDefaultDisabled();
+  public featureFlags: Observable<
+    { name: string; value: boolean }[]
+  > = this.featureFlagService.getAllDefaultDisabled();
 
   constructor(
     private store: Store,

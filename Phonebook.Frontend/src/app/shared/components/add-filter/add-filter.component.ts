@@ -7,7 +7,7 @@ import { AddSearchFilter, UpdateUrl } from 'src/app/shared/states';
 @Component({
   selector: 'app-add-filter',
   templateUrl: './add-filter.component.html',
-  styleUrls: ['./add-filter.component.scss']
+  styleUrls: ['./add-filter.component.scss'],
 })
 export class AddFilterComponent {
   constructor(private store: Store) {}
@@ -38,6 +38,8 @@ export class AddFilterComponent {
     if (this.resetSearchTerm) {
       this.store.dispatch(new UpdateUrl({ searchTerm: '' }));
     }
-    this.store.dispatch(new AddSearchFilter({ filterColumn: this.filterColumn, filterValue: this.filterValue }));
+    this.store.dispatch(
+      new AddSearchFilter({ filterColumn: this.filterColumn, filterValue: this.filterValue })
+    );
   }
 }

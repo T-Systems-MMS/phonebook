@@ -18,12 +18,12 @@ export const migration2: Migration = {
           const newTableState: {
             visibleColumns: ColumnId[];
           } = {
-            visibleColumns: []
+            visibleColumns: [],
           };
-          newTableState.visibleColumns = tableState.visibleColumns.map(col => col.id);
+          newTableState.visibleColumns = tableState.visibleColumns.map((col) => col.id);
           localStorage.setItem(TABLESTATE_KEY, JSON.stringify(newTableState));
         }
       }
     }
-  }
+  },
 };

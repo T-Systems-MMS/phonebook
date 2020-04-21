@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActionDrawerSheetComponent } from './action-drawer-sheet.component';
 
-
 // Deactivated, because MatBottomSheetRef is not easily testable.
 xdescribe('ActionDrawerSheetComponent', () => {
   let component: ActionDrawerSheetComponent;
@@ -9,7 +8,7 @@ xdescribe('ActionDrawerSheetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ActionDrawerSheetComponent]
+      declarations: [ActionDrawerSheetComponent],
     }).compileComponents();
   }));
 

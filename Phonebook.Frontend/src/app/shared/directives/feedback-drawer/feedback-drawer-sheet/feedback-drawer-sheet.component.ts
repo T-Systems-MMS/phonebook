@@ -6,7 +6,7 @@ import { runtimeEnvironment } from 'src/environments/runtime-environment';
 @Component({
   selector: 'app-feedback-drawer-sheet',
   templateUrl: './feedback-drawer-sheet.component.html',
-  styleUrls: ['./feedback-drawer-sheet.component.scss']
+  styleUrls: ['./feedback-drawer-sheet.component.scss'],
 })
 export class FeedbackDrawerSheetComponent implements OnInit {
   public runtimeEnvironment: RuntimeEnvironmentInterface = runtimeEnvironment;

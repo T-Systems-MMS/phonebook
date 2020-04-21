@@ -1,13 +1,13 @@
 [
-    {
-        "Building": "Riesaer Straße 5",
-        "BuildingId": 1,
-        "Description": "Dresden, Riesaer Straße 5, Raum 123a",
-        "Floor": "1",
-        "FloorPlan": "sample",
-        "Id": 1234,
-        "Number": "123A",
-        "Phone": "",
-        "Place": "Dresden"
-    }
+  {
+    "Building": "Riesaer Straße 5",
+    "BuildingId": 1,
+    "Description": "Dresden, Riesaer Straße 5, Raum 123a",
+    "Floor": "1",
+    "FloorPlan": "sample",
+    "Id": 1234,
+    "Number": "123A",
+    "Phone": "",
+    "Place": "Dresden"
+  }
 ]

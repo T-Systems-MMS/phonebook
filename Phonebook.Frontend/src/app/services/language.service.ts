@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Language } from 'src/app/shared/models/enumerables/Language';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LanguageService {
   constructor() {}

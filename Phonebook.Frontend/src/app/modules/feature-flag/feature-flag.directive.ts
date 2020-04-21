@@ -14,7 +14,7 @@ export class FeatureFlagDirective implements OnDestroy {
     this.featureFlagService
       .get(flag)
       .pipe(untilComponentDestroyed(this))
-      .subscribe(val => {
+      .subscribe((val) => {
         if (val) {
           // If condition is true add template to DOM
           this.viewContainer.clear();

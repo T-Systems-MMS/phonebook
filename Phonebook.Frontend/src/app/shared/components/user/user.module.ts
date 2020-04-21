@@ -9,7 +9,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { ClipboardModule } from 'ngx-clipboard';
 import { PropagationStopModule } from 'ngx-propagation-stop';
 import { NgxVcardModule } from 'ngx-vcard';
 import { FeatureFlagModule } from 'src/app/modules/feature-flag/feature-flag.module';
@@ -34,7 +33,6 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     AddFilterModule,
     RouterModule,
     ActionDrawerModule,
-    ClipboardModule,
     ProfilePictureModule,
     FeatureFlagModule,
     AddressModule,
@@ -49,9 +47,19 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     MatTooltipModule,
     NotImplementedModule,
     InteractiveAttributeFieldModule,
-    PipesModule
+    PipesModule,
   ],
-  declarations: [UserDetailComponent, UserListCardComponent, UserSmallCardComponent, UserTinyCardComponent],
-  exports: [UserDetailComponent, UserListCardComponent, UserSmallCardComponent, UserTinyCardComponent]
+  declarations: [
+    UserDetailComponent,
+    UserListCardComponent,
+    UserSmallCardComponent,
+    UserTinyCardComponent,
+  ],
+  exports: [
+    UserDetailComponent,
+    UserListCardComponent,
+    UserSmallCardComponent,
+    UserTinyCardComponent,
+  ],
 })
 export class UserModule {}

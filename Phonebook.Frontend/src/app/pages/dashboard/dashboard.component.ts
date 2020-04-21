@@ -45,7 +45,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public layout: typeof Layout = Layout;
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;
-  constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private store: Store,
+    private cd: ChangeDetectorRef,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   public ngOnInit() {
     this.changeOrder();

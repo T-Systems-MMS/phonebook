@@ -9,5 +9,5 @@ describe('TestPipe', () => {
   it('transforms number', () => {
     const pipe = new TelephonePipe();
     expect(pipe.transform('+49 32432 234234')).toBe('+4932432234234');
-  })
+  });
 });

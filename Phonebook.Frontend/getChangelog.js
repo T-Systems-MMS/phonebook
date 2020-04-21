@@ -15,10 +15,10 @@ getChangelogFromUrl(url);
 
 function getChangelogFromUrl(url) {
   https
-    .get(url, res => {
+    .get(url, (res) => {
       let data = '';
 
-      res.on('data', chunk => {
+      res.on('data', (chunk) => {
         data += chunk;
       });
 
@@ -36,14 +36,12 @@ function getChangelogFromUrl(url) {
           console.log(`Fetched Changelog from: ${url}`);
         } else {
           throw new Error(
-            `File in remote location does not seem to exist. Error Code: ${res.statusCode} ${
-              res.statusMessage
-            } (${url})`
+            `File in remote location does not seem to exist. Error Code: ${res.statusCode} ${res.statusMessage} (${url})`
           );
         }
       });
     })
-    .on('error', err => {
+    .on('error', (err) => {
       throw new Error('Failed to fetch Changelog!', err);
     });
 }

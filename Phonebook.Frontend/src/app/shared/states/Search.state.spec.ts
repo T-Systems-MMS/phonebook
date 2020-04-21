@@ -10,7 +10,7 @@ import {
   RemoveSearchFilter,
   ResetSearch,
   SearchState,
-  SetSearchFiltersAndSearchTerm
+  SetSearchFiltersAndSearchTerm,
 } from 'src/app/shared/states/Search.state';
 
 const ROUTER_STATE = {
@@ -25,7 +25,7 @@ const ROUTER_STATE = {
       firstChild: {
         url: [
           { path: 'user', parameters: {} },
-          { path: 'JAAB', parameters: {} }
+          { path: 'JAAB', parameters: {} },
         ],
         params: { id: 'JAAB' },
         queryParams: {},
@@ -34,13 +34,13 @@ const ROUTER_STATE = {
         routeConfig: null,
         children: [],
         paramMap: { params: { id: 'JAAB' } },
-        queryParamMap: { params: {} }
+        queryParamMap: { params: {} },
       },
       children: [
         {
           url: [
             { path: 'user', parameters: {} },
-            { path: 'JAAB', parameters: {} }
+            { path: 'JAAB', parameters: {} },
           ],
           params: { id: 'JAAB' },
           queryParams: {},
@@ -49,15 +49,15 @@ const ROUTER_STATE = {
           routeConfig: null,
           children: [],
           paramMap: { params: { id: 'JAAB' } },
-          queryParamMap: { params: {} }
-        }
+          queryParamMap: { params: {} },
+        },
       ],
       paramMap: { params: {} },
-      queryParamMap: { params: {} }
+      queryParamMap: { params: {} },
     },
-    url: '/user/JAAB'
+    url: '/user/JAAB',
   },
-  navigationId: 2
+  navigationId: 2,
 };
 
 describe('[States] Search', () => {
@@ -69,20 +69,20 @@ describe('[States] Search', () => {
         RouterTestingModule.withRoutes([
           {
             path: '**',
-            component: SimpleComponent
-          }
+            component: SimpleComponent,
+          },
         ]),
         NgxsModule.forRoot([SearchState]),
-        NgxsRouterPluginModule.forRoot()
-      ]
+        NgxsRouterPluginModule.forRoot(),
+      ],
     }).compileComponents();
     store = TestBed.get(Store);
     store.reset({
       searchstate: {
         searchTerm: '',
-        searchFilters: []
+        searchFilters: [],
       },
-      router: ROUTER_STATE
+      router: ROUTER_STATE,
     });
   });
 
@@ -91,13 +91,13 @@ describe('[States] Search', () => {
     expect(
       SearchState.searchTerm({
         searchTerm: '',
-        searchFilters: []
+        searchFilters: [],
       })
     ).toEqual('');
     expect(
       SearchState.searchTerm({
         searchTerm: 'testString',
-        searchFilters: []
+        searchFilters: [],
       })
     ).toEqual('testString');
   });
@@ -106,7 +106,7 @@ describe('[States] Search', () => {
     expect(
       SearchState.searchFilters({
         searchTerm: '',
-        searchFilters: []
+        searchFilters: [],
       })
     ).toEqual([]);
     expect(
@@ -114,34 +114,49 @@ describe('[States] Search', () => {
         searchTerm: '',
         searchFilters: [
           { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' },
-          { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' }
-        ]
+          { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' },
+        ],
       })
     ).toEqual([
       { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' },
-      { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' }
+      { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' },
     ]);
   });
 
   it('it adds Search Filter', () => {
     const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
     const filter2 = { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' };
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([]);
     store.dispatch(new AddSearchFilter(filter1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([filter1]);
     store.dispatch(new AddSearchFilter(filter1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([filter1]);
     store.dispatch(new AddSearchFilter(filter2));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1, filter2]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([filter1, filter2]);
   });
 
   it('it adds Search Filter - update if different', () => {
     const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
-    const filter1derivate = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCityDerivate' };
+    const filter1derivate = {
+      filterColumn: ColumnDefinitions.city,
+      filterValue: 'testValueCityDerivate',
+    };
     store.dispatch(new AddSearchFilter(filter1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([filter1]);
     store.dispatch(new AddSearchFilter(filter1derivate));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1derivate]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([filter1derivate]);
   });
 
   it('it removes Search Filter', () => {
@@ -149,27 +164,34 @@ describe('[States] Search', () => {
     store.reset({
       searchstate: {
         searchTerm: '',
-        searchFilters: [filter1]
+        searchFilters: [filter1],
       },
-      router: ROUTER_STATE
+      router: ROUTER_STATE,
     });
     store.dispatch(new RemoveSearchFilter(filter1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([]);
   });
 
   it('it removes Search Filter - independently', () => {
     const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
     const filter2 = { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' };
-    const filter3 = { filterColumn: ColumnDefinitions.costcenter, filterValue: 'testValueCostcenter' };
+    const filter3 = {
+      filterColumn: ColumnDefinitions.costcenter,
+      filterValue: 'testValueCostcenter',
+    };
     store.reset({
       searchstate: {
         searchTerm: '',
-        searchFilters: [filter1, filter2, filter3]
+        searchFilters: [filter1, filter2, filter3],
       },
-      router: ROUTER_STATE
+      router: ROUTER_STATE,
     });
     store.dispatch(new RemoveSearchFilter(filter2));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1, filter3]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([filter1, filter3]);
   });
 
   it('it removes Search Filter - no Filter existing', () => {
@@ -177,42 +199,54 @@ describe('[States] Search', () => {
     store.reset({
       searchstate: {
         searchTerm: '',
-        searchFilters: []
+        searchFilters: [],
       },
-      router: ROUTER_STATE
+      router: ROUTER_STATE,
     });
     store.dispatch(new RemoveSearchFilter(filter1));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([]);
   });
 
   it('it removes Search Filter - Filter not existing', () => {
     const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
     const filter2 = { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' };
-    const filter3 = { filterColumn: ColumnDefinitions.costcenter, filterValue: 'testValueCostcenter' };
+    const filter3 = {
+      filterColumn: ColumnDefinitions.costcenter,
+      filterValue: 'testValueCostcenter',
+    };
     store.reset({
       searchstate: {
         searchTerm: '',
-        searchFilters: [filter1, filter3]
+        searchFilters: [filter1, filter3],
       },
-      router: ROUTER_STATE
+      router: ROUTER_STATE,
     });
     store.dispatch(new RemoveSearchFilter(filter2));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1, filter3]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([filter1, filter3]);
   });
 
   it('it remove last Search Filter', () => {
     const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
     const filter2 = { filterColumn: ColumnDefinitions.email, filterValue: 'testValueEmail' };
-    const filter3 = { filterColumn: ColumnDefinitions.costcenter, filterValue: 'testValueCostcenter' };
+    const filter3 = {
+      filterColumn: ColumnDefinitions.costcenter,
+      filterValue: 'testValueCostcenter',
+    };
     store.reset({
       searchstate: {
         searchTerm: '',
-        searchFilters: [filter1, filter2, filter3]
+        searchFilters: [filter1, filter2, filter3],
       },
-      router: ROUTER_STATE
+      router: ROUTER_STATE,
     });
     store.dispatch(new RemoveLastSearchFilter());
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate.searchFilters)).toEqual([filter1, filter2]);
+    expect(
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate.searchFilters)
+    ).toEqual([filter1, filter2]);
   });
 
   it('it resets Search', () => {
@@ -220,34 +254,34 @@ describe('[States] Search', () => {
     store.reset({
       searchstate: {
         searchTerm: 'helloTest',
-        searchFilters: [filter1]
+        searchFilters: [filter1],
       },
-      router: ROUTER_STATE
+      router: ROUTER_STATE,
     });
     store.dispatch(new ResetSearch());
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate)).toEqual({
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate)).toEqual({
       searchTerm: '',
-      searchFilters: []
+      searchFilters: [],
     });
   });
 
   it('it sets SearchFilters and SearchTerm', () => {
     const filter1 = { filterColumn: ColumnDefinitions.city, filterValue: 'testValueCity' };
     store.dispatch(new SetSearchFiltersAndSearchTerm([filter1], 'helloTest'));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate)).toEqual({
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate)).toEqual({
       searchTerm: 'helloTest',
-      searchFilters: [filter1]
+      searchFilters: [filter1],
     });
     store.dispatch(new SetSearchFiltersAndSearchTerm([], ''));
-    expect(store.selectSnapshot(storeSnapshot => storeSnapshot.searchstate)).toEqual({
+    expect(store.selectSnapshot((storeSnapshot) => storeSnapshot.searchstate)).toEqual({
       searchTerm: '',
-      searchFilters: []
+      searchFilters: [],
     });
   });
 });
 
 @Component({
   selector: 'cmp',
-  template: ''
+  template: '',
 })
 class SimpleComponent {}

@@ -8,7 +8,10 @@
   >
     <div class="pb-recent-people">
       <h1>
-        <ng-container i18n="DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent">
+        <ng-container
+          i18n="
+            DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent"
+        >
           Recent People
         </ng-container>
         <button
@@ -21,7 +24,9 @@
         </button>
         <button mat-button *ngIf="removedLastPersons != null" (click)="undoLastPersons()">
           <mat-icon>undo</mat-icon>
-          <span i18n="GeneralUndoButton|Button for undoing something@@GeneralUndoButton"> Undo </span>
+          <span i18n="GeneralUndoButton|Button for undoing something@@GeneralUndoButton">
+            Undo
+          </span>
         </button>
       </h1>
       <cdk-virtual-scroll-viewport itemSize="148" class="pb-recent-people-list">
@@ -40,8 +45,8 @@
               DashboardComponent|Message displayed if no people have been visited
               recently@@DashboardComponentDescriptionRecent"
           >
-            Looks like you haven't searched for any colleagues yet. Search for somebody to see how it works! The most
-            recent ones will be displayed here.
+            Looks like you haven't searched for any colleagues yet. Search for somebody to see how
+            it works! The most recent ones will be displayed here.
           </div>
         </div>
       </cdk-virtual-scroll-viewport>
@@ -50,7 +55,11 @@
   <mat-drawer-content class="content">
     <div class="pb-bookmarked">
       <div class="pb-bookmarked-title">
-        <h1 i18n="DashboardComponent|Title of the Bookmarked people section@@DashboardComponentTitleBookmark">
+        <h1
+          i18n="
+            DashboardComponent|Title of the Bookmarked people
+            section@@DashboardComponentTitleBookmark"
+        >
           Bookmarked People
         </h1>
         <mat-form-field>
@@ -58,19 +67,24 @@
             <mat-option
               value=""
               i18n="
-                DashboardComponent|The standard (customizable) order of the favorite cards@@DashboardComponentOrderNone"
+                DashboardComponent|The standard (customizable) order of the favorite
+                cards@@DashboardComponentOrderNone"
             >
               Custom Order</mat-option
             >
             <mat-option
               value="asc"
-              i18n="DashboardComponent|The alphabetical asc order of the favorite cards@@DashboardComponentOrderAsc"
+              i18n="
+                DashboardComponent|The alphabetical asc order of the favorite
+                cards@@DashboardComponentOrderAsc"
             >
               Alphabetical asc</mat-option
             >
             <mat-option
               value="desc"
-              i18n="DashboardComponent|The alphabetical desc order of the favorite cards@@DashboardComponentOrderDesc"
+              i18n="
+                DashboardComponent|The alphabetical desc order of the favorite
+                cards@@DashboardComponentOrderDesc"
             >
               Alphabetical desc</mat-option
             >
@@ -99,7 +113,11 @@
         </button>
       </div>
       <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
-      <div cdkDropListGroup class="pb-flex-row pb-bookmarks-list" [ngSwitch]="activeLayout$ | async">
+      <div
+        cdkDropListGroup
+        class="pb-flex-row pb-bookmarks-list"
+        [ngSwitch]="activeLayout$ | async"
+      >
         <ng-container *ngSwitchCase="layout.view_list">
           <div
             *ngFor="let person of bookmarkedPersons; index as i"
@@ -169,7 +187,9 @@
       </div>
       <div
         *ngIf="bookmarkedPersons.length === 0"
-        i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
+        i18n="
+          DashboardComponent|Message displayed if no people are
+          bookmarked@@DashboardComponentDescriptionBookmark"
       >
         You haven't bookmarked anybody yet, look for the button
         <button mat-icon-button>
@@ -183,15 +203,19 @@
         mat-icon-button
         (click)="toggleDrawer()"
         i18n-matTooltip="
-          DashboardComponent|Tooltip for expanding recently viewed people@@DashboardComponentButtonExpandTooltip"
+          DashboardComponent|Tooltip for expanding recently viewed
+          people@@DashboardComponentButtonExpandTooltip"
         i18n-aria-label="
-          DashboardComponent|Aria Label for expanding recently viewed people@@DashboardComponentButtonExpandArialLabel"
+          DashboardComponent|Aria Label for expanding recently viewed
+          people@@DashboardComponentButtonExpandArialLabel"
         matTooltip="Expand or Collapse recently viewed people"
         aria-label="Button expanding or collapsing the recently viewed people section"
       >
         <span>
           <mat-icon>{{ drawer.opened ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }} </mat-icon>
-          <span i18n="DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent"
+          <span
+            i18n="
+              DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent"
             >Recent People</span
           >
         </span>

@@ -48,7 +48,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTreeModule,
     MatBottomSheetModule,
     ScrollingModule,
-    DragDropModule
+    DragDropModule,
   ],
   providers: [],
   exports: [
@@ -74,7 +74,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTreeModule,
     MatBottomSheetModule,
     ScrollingModule,
-    DragDropModule
-  ]
+    DragDropModule,
+  ],
 })
 export class MaterialModule {}

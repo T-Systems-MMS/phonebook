@@ -16,7 +16,7 @@ Here you can find the structure of `Phonebook.Frontend`.
 ```bash
  * Phonebook.Frontend (Root)
  |-- e2e: End to End Tests
- |-- nginx: Configurations for the Nginx Docker Container 
+ |-- nginx: Configurations for the Nginx Docker Container
  |-- node_modules: Contains libraries downloaded from npm; is created automatically based on package.json
  |-- src: The complete Angular app
  |   |-- app: The Angular sources
@@ -35,13 +35,16 @@ Here you can find the structure of `Phonebook.Frontend`.
 ## **:triangular_ruler: Code scaffolding**
 
 To generate a new component run:
+
 ```bash
 ng generate module component-name
 ng generate component component-name
 ```
+
 > This will generate a new module and a new component. Be sure that you're in the directory where you want to generate
 
 You can also use:
+
 ```bash
 ng generate directive|pipe|service|class|guard|interface|enum|module
 ```
@@ -66,7 +69,7 @@ There are several states:
 100 - Enabled
 ```
 
-[Here you can edit](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/assets/defaultFeatureFlags.json) the Feature Flags of the Phonebook. 
+[Here you can edit](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/assets/defaultFeatureFlags.json) the Feature Flags of the Phonebook.
 
 To use them InCode you can either subscribe to the [feature-flag.service](https://github.com/T-Systems-MMS/phonebook/blob/master/Phonebook.Frontend/src/app/modules/feature-flag/feature-flag.service.ts):
 
@@ -75,7 +78,7 @@ To use them InCode you can either subscribe to the [feature-flag.service](https:
 featureFlagService
   .get('flagname')
   .pipe(first())
-  .subscribe(isFlagActivated => {
+  .subscribe((isFlagActivated) => {
     if (isFlagActivated) {
       // Code that will be executed if the Feature Flag 'flagname' is enabled.
     }
@@ -102,7 +105,7 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 @Component({
   selector: 'app-example',
   templateUrl: './example.component.html',
-  styleUrls: ['./example.component.scss']
+  styleUrls: ['./example.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
   public ngOnInit() {

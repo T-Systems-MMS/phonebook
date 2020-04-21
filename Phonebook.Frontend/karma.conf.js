@@ -4,7 +4,7 @@
 // Use pupeteer
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -13,16 +13,16 @@ module.exports = function(config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
     ],
     customLaunchers: {
       ChromeHeadlessCustom: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox', '--disable-gpu', '--remote-debugging-port=9222']
-      }
+        flags: ['--no-sandbox', '--disable-gpu', '--remote-debugging-port=9222'],
+      },
     },
     client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false, // leave Jasmine Spec Runner output visible in browser
       // Activate only for debugging purposes
       // jasmine: {
       //   random: false
@@ -31,10 +31,10 @@ module.exports = function(config) {
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, 'coverage'),
       reports: ['html', 'lcovonly'],
-      fixWebpackSourcePaths: true
+      fixWebpackSourcePaths: true,
     },
     angularCli: {
-      environment: 'dev'
+      environment: 'dev',
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
@@ -43,6 +43,6 @@ module.exports = function(config) {
     autoWatch: true,
     browsers: ['ChromeHeadlessCustom'],
     singleRun: true,
-    files: ['globals.js']
+    files: ['globals.js'],
   });
 };

@@ -8,6 +8,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [ContributorsComponent],
   imports: [CommonModule, MatIconModule, MatCardModule, MatSnackBarModule],
-  exports: [ContributorsComponent]
+  exports: [ContributorsComponent],
 })
 export class ContributorsModule {}

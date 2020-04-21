@@ -5,7 +5,7 @@ import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram
   selector: 'app-organigram',
   templateUrl: './organigram.component.html',
   styleUrls: ['./organigram.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-expand' },
 })
 export class OrganigramComponent implements OnInit {
   public nodes: UnitTreeNode[] = [];
@@ -13,7 +13,7 @@ export class OrganigramComponent implements OnInit {
   constructor(private organigramService: OrganigramService) {}
 
   public ngOnInit() {
-    this.organigramService.getOrganigram().subscribe(organigram => {
+    this.organigramService.getOrganigram().subscribe((organigram) => {
       this.nodes = organigram;
     });
   }

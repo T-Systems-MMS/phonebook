@@ -70,5 +70,5 @@ export enum Environment {
    * An Environment that is stable.
    * Preview features can be enabled by the user himself.
    */
-  production = 'production'
+  production = 'production',
 }

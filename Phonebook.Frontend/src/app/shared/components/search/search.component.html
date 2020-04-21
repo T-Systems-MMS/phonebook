@@ -3,7 +3,11 @@
     <mat-icon class="search-bar-icon">search</mat-icon>
   </button>
   <mat-chip-list>
-    <mat-chip *ngFor="let filter of searchFilters$ | async" [removable]="true" (removed)="removeFilter(filter)">
+    <mat-chip
+      *ngFor="let filter of searchFilters$ | async"
+      [removable]="true"
+      (removed)="removeFilter(filter)"
+    >
       {{ filter.filterColumn.title }}: {{ filter.filterValue }}
       <mat-icon matChipRemove class="pb-chip-remove">cancel</mat-icon>
     </mat-chip>

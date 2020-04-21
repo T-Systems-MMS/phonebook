@@ -11,7 +11,9 @@
     <div>
       <h3
         mat-subheader
-        i18n="CityComponent|Subheader for all building locations in the city@@CityComponentSubHeaderLocation"
+        i18n="
+          CityComponent|Subheader for all building locations in the
+          city@@CityComponentSubHeaderLocation"
       >
         Buildings
       </h3>
@@ -56,7 +58,9 @@
                 </div>
               </mat-list-item>
               <h3 mat-subheader i18n="@@DataLocationContact">Contact</h3>
-              <mat-list-item *ngIf="location.ReceptionPhone != '' && location.ReceptionPhone != null">
+              <mat-list-item
+                *ngIf="location.ReceptionPhone != '' && location.ReceptionPhone != null"
+              >
                 <mat-icon mat-list-icon>call</mat-icon>
                 <h4 mat-line i18n="@@ColumnTitlePhone">Phone</h4>
                 <p mat-line>
@@ -87,7 +91,11 @@
                   Contact Person
                 </h4>
                 <p mat-line>
-                  <button mat-button stopPropagation [routerLink]="['/search/' + location.ContactPerson]">
+                  <button
+                    mat-button
+                    stopPropagation
+                    [routerLink]="['/search/' + location.ContactPerson]"
+                  >
                     {{ location.ContactPerson }}
                   </button>
                 </p>

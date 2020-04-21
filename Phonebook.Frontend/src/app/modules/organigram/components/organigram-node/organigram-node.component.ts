@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Navigate, RouterState } from '@ngxs/router-plugin';
@@ -10,7 +17,7 @@ import { WindowRef } from 'src/app/services/windowRef.service';
   selector: 'app-organigram-node',
   templateUrl: './organigram-node.component.html',
   styleUrls: ['./organigram-node.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrganigramNodeComponent implements OnInit {
   @Input()
@@ -65,39 +72,39 @@ export class OrganigramNodeComponent implements OnInit {
     return path;
   }
 
-  public linkCopiedToast() {
-    this.store.dispatch(new Navigate(this.generatePath(true)));
-    this.snackBar.open(
-      $localize`:OrganigramNodeComponent|First part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedFirstPart:Link to` +
-        ' "' +
-        this.node.name +
-        '" ' +
-        $localize`:OrganigramNodeComponent|Second part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedSecondPart:copied to clipboard!`,
-      '',
-      { duration: 2000 }
-    );
-  }
-
-  public linkErrorToast() {
-    this.snackBar.open(
-      $localize`:GeneralErrorMessageCopy|Message displayed when copying something went wrong@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
-      '',
-      { duration: 2000 }
-    );
+  public copiedToast(success: boolean) {
+    if (success) {
+      this.store.dispatch(new Navigate(this.generatePath(true)));
+      this.snackBar.open(
+        $localize`:OrganigramNodeComponent|First part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedFirstPart:Link to` +
+          ' "' +
+          this.node.name +
+          '" ' +
+          $localize`:OrganigramNodeComponent|Second part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedSecondPart:copied to clipboard!`,
+        '',
+        { duration: 2000 }
+      );
+    } else {
+      this.snackBar.open(
+        $localize`:GeneralErrorMessageCopy|Message displayed when copying something went wrong@@GeneralErrorMessageCopy:Couldn't copy to the clipboard, something went wrong. Try again.`,
+        '',
+        { duration: 2000 }
+      );
+    }
   }
 
   public getCurrentRouteAsArray(): string[] {
     const navState = this.store.selectSnapshot(RouterState.state);
     return [
       navState!.root.firstChild!.url[0].path,
-      ...navState!.root.firstChild!.firstChild!.url.map(obj => {
+      ...navState!.root.firstChild!.firstChild!.url.map((obj) => {
         return obj.path;
-      })
+      }),
     ];
   }
 }
 
 enum Expanded {
   isExpanded = 'expand_less',
-  isNotExpanded = 'expand_more'
+  isNotExpanded = 'expand_more',
 }
