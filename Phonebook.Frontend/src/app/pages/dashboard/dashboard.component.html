@@ -76,6 +76,27 @@
             >
           </mat-select>
         </mat-form-field>
+        <button
+          matTooltip="Language"
+          (click)="select.open()"
+          mat-icon-button
+          class="changeLayoutButton"
+          [ngSwitch]="activeLayout$ | async"
+        >
+          <mat-icon *ngSwitchCase="layout.view_list">view_list</mat-icon>
+          <mat-icon *ngSwitchCase="layout.view_stream">view_stream</mat-icon>
+          <mat-icon *ngSwitchCase="layout.view_module">view_module</mat-icon>
+          <mat-select
+            #select
+            class="selectLayout"
+            [ngModel]="activeLayout$ | async"
+            (ngModelChange)="changeLayout($event)"
+          >
+            <mat-option *ngFor="let view of layouts" [value]="view">
+              <span>{{ getLayoutName(view) }}</span>
+            </mat-option>
+          </mat-select>
+        </button>
       </div>
       <!-- This is a workaround for https://github.com/angular/material2/issues/13372 -->
       <div cdkDropListGroup class="pb-flex-row pb-bookmarks-list" [ngSwitch]="activeLayout$ | async">

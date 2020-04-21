@@ -46,13 +46,14 @@ import {
   CommonPersonsState,
   LastPersonsState,
   SearchState,
-  TableState
+  TableState,
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToLogin';
+import { FormsModule } from '@angular/forms';
 
 declare const require;
 
@@ -65,6 +66,7 @@ declare const require;
     HttpClientModule,
     ErrorHandlerModule.forRoot(),
     MaterialModule,
+    FormsModule,
     DialogsModule,
     ProfilePictureModule,
     SettingsModule,
@@ -78,7 +80,7 @@ declare const require;
       // developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({
-      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
+      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate'],
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
@@ -93,7 +95,7 @@ declare const require;
     IeWarningModule,
     PlatformModule,
     // Pages
-    UserPagesModule
+    UserPagesModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRedirectToLogin, multi: true },
@@ -113,8 +115,8 @@ declare const require;
     MailService,
     FloorplanService,
     ReleaseInfoService,
-    ThemeService
+    ThemeService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -40,6 +40,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public removedLastPersons: Person[] | null = null;
   @Select(AppState.activeLayout)
   public activeLayout$: Observable<Layout>;
+  public layouts: string[] = Object.values(Layout);
+
   public layout: typeof Layout = Layout;
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;
@@ -121,6 +123,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public changeLayout(layoutClass: Layout) {
     this.store.dispatch(new SetLayout(layoutClass));
+  }
+
+  public getLayoutName(layout: Layout): string {
+    switch (layout) {
+      case Layout.view_list: {
+        return $localize`:NavigationComponent|View Mode - List@@NavigationComponentViewModeList:List View`;
+      }
+      case Layout.view_module: {
+        return $localize`:NavigationComponent|View Mode - MediumCards@@NavigationComponentViewModeMediumCards:Medium Cards`;
+      }
+      case Layout.view_stream: {
+        return $localize`:NavigationComponent|View Mode - SmallCards@@NavigationComponentViewModeSmallCards:Small Cards`;
+      }
+      default:
+        throw Error(`Translation for layout ${layout} does not exist.`);
+    }
   }
 
   public toggleDrawer() {
