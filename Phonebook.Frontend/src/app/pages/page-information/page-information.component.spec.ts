@@ -4,7 +4,6 @@ import { MatListModule } from '@angular/material/list';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockDirective } from 'ng-mocks';
 import { MockComponent } from 'ng2-mock-component';
-import { FeedbackDrawerDirective } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.directive';
 import { WINDOW_PROVIDER } from 'src/app/shared/providers/window.provider';
 import { PageInformationComponent } from './page-information.component';
 
@@ -21,11 +20,10 @@ xdescribe('PageInformationComponent', () => {
         MockComponent({ selector: 'mat-card-title' }),
         MockComponent({ selector: 'mat-card-header' }),
         MockComponent({ selector: 'mat-card-content' }),
-        MockComponent({ selector: 'mat-card-subtitle' }),
-        MockDirective(FeedbackDrawerDirective),
+        MockComponent({ selector: 'mat-card-subtitle' })
       ],
       providers: [WINDOW_PROVIDER],
-      schemas: [NO_ERRORS_SCHEMA],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
