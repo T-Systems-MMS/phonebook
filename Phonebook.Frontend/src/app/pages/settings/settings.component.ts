@@ -20,9 +20,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
   public themeValue$: Observable<Theme>;
   public themes: string[] = Object.values(Theme);
   public languages: string[] = Object.keys(Language);
-  @Select(AppState.activeLayout)
-  public layoutValue$: Observable<Layout>;
-  public layouts: string[] = Object.values(Layout);
   public featureFlags: Observable<
     { name: string; value: boolean }[]
   > = this.featureFlagService.getAllDefaultDisabled();
@@ -45,10 +42,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.languageService.setLanguage(lang);
   }
 
-  public changeLayout(layoutClass: Layout) {
-    this.store.dispatch(new SetLayout(layoutClass));
-  }
-
   public getThemeName(theme: Theme) {
     switch (theme) {
       case Theme.blue_light_theme: {
@@ -68,22 +61,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
       }
       default:
         throw Error(`Translation for theme ${theme} does not exists.`);
-    }
-  }
-
-  public getLayoutName(layout: Layout): string {
-    switch (layout) {
-      case Layout.view_list: {
-        return $localize`:NavigationComponent|View Mode - List@@NavigationComponentViewModeList:List View`;
-      }
-      case Layout.view_module: {
-        return $localize`:NavigationComponent|View Mode - MediumCards@@NavigationComponentViewModeMediumCards:Medium Cards`;
-      }
-      case Layout.view_stream: {
-        return $localize`:NavigationComponent|View Mode - SmallCards@@NavigationComponentViewModeSmallCards:Small Cards`;
-      }
-      default:
-        throw Error(`Translation for layout ${layout} does not exist.`);
     }
   }
 
