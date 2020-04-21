@@ -12,7 +12,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-profile-picture',
   templateUrl: './profile-picture.component.html',
-  styleUrls: ['./profile-picture.component.scss']
+  styleUrls: ['./profile-picture.component.scss'],
 })
 export class ProfilePictureComponent implements OnInit, OnDestroy {
   @Input()

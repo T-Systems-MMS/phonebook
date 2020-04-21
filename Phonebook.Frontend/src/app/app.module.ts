@@ -45,7 +45,7 @@ import {
   CommonPersonsState,
   LastPersonsState,
   SearchState,
-  TableState
+  TableState,
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
@@ -65,7 +65,7 @@ declare const require;
     NavigationComponent,
     OnlineBarComponent,
     DialogsComponent,
-    DialogViewComponent
+    DialogViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,12 +81,15 @@ declare const require;
     FeatureFlagModule.forRoot(),
     NotImplementedModule,
     MatBadgeModule,
-    NgxsModule.forRoot([AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState], {
-      // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
-      // developmentMode: !environment.production
-    }),
+    NgxsModule.forRoot(
+      [AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState],
+      {
+        // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
+        // developmentMode: !environment.production
+      }
+    ),
     NgxsStoragePluginModule.forRoot({
-      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate']
+      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate'],
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
@@ -100,7 +103,7 @@ declare const require;
     IeWarningModule,
     PlatformModule,
     // Pages
-    UserPagesModule
+    UserPagesModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRedirectToLogin, multi: true },
@@ -115,7 +118,7 @@ declare const require;
     // },
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: { panelClass: ['mat-dialog-override', 'mat-typography'] }
+      useValue: { panelClass: ['mat-dialog-override', 'mat-typography'] },
     },
     WINDOW_PROVIDER,
     ServiceWorkerService,
@@ -123,8 +126,8 @@ declare const require;
     MailService,
     FloorplanService,
     ReleaseInfoService,
-    ThemeService
+    ThemeService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
