@@ -14,7 +14,7 @@ import {
   InitTheme,
   SetTheme,
   SetSendFeedback,
-  SetDisplayedNotificationVersion
+  SetDisplayedNotificationVersion,
 } from 'src/app/shared/states/App.state';
 import { ReleaseInfoService } from './services/release-info.service';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
@@ -27,7 +27,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   //get url params
@@ -107,15 +107,17 @@ export class AppComponent implements OnInit, OnDestroy {
       this.store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
     }
     //subscribe on query param changes, if changed open snackbar
-    this.activatedRoute.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe((queryParamMap) => {
-      if (queryParamMap.get('skip_dialog') === 'true') {
-        if (!this.skippedDialogs) {
-          this.openJustSkippedDialogsSnackBar();
-        } else {
-          this.openSkippedDialogsSnackBar();
+    this.activatedRoute.queryParamMap
+      .pipe(untilComponentDestroyed(this))
+      .subscribe((queryParamMap) => {
+        if (queryParamMap.get('skip_dialog') === 'true') {
+          if (!this.skippedDialogs) {
+            this.openJustSkippedDialogsSnackBar();
+          } else {
+            this.openSkippedDialogsSnackBar();
+          }
         }
-      }
-    });
+      });
 
     // Ask for Permission to send Bug reports, don't show dialog if dialogs should be skipped
     if (
@@ -126,7 +128,10 @@ export class AppComponent implements OnInit, OnDestroy {
       this.dialogService.displayDialog('bug-report-consent');
     }
 
-    if (DisplayNotificationDialog.version > (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)) {
+    if (
+      DisplayNotificationDialog.version >
+      (this.store.selectSnapshot(AppState.displayedNotificationVersion) | 0)
+    ) {
       this.dialogService.displayDialog('notification');
     } else if (!this.skippedDialogs) {
       // Display the Release Dialog only if no notification Dialog is shown, in order to not overwhelm the user with dialogs.

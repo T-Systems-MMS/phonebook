@@ -13,7 +13,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReleaseNotificationDialog {
   text: string;
-  constructor(private http: HttpClient, public dialogRef: MatDialogRef<ReleaseNotificationDialog>) {}
+  constructor(
+    private http: HttpClient,
+    public dialogRef: MatDialogRef<ReleaseNotificationDialog>
+  ) {}
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.

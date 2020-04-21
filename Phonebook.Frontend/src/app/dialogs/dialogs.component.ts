@@ -6,7 +6,7 @@ import { DialogItem } from 'src/app/dialogs/dialog-item';
 @Component({
   selector: 'app-dialogs',
   templateUrl: './dialogs.component.html',
-  styleUrls: ['./dialogs.component.scss']
+  styleUrls: ['./dialogs.component.scss'],
 })
 export class DialogsComponent implements OnInit {
   title: string;
