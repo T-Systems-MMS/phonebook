@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogsComponent } from 'src/app/dialogs/dialogs.component';
 import { DialogItem } from 'src/app/dialogs/dialog-item';
@@ -24,86 +24,77 @@ export class DialogService {
     private store: Store
   ) {}
   public displayDialog(item: string, inputData?: any) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.maxHeight = '90vh';
+    dialogConfig.maxWidth = '120vh';
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.panelClass = ['mat-dialog-overwrite', 'mat-typography'];
+
     switch (item) {
       case 'release-notes':
-        this.dialog.open(DialogsComponent, {
-          data: {
-            title: "We've updated to a newer Version!",
-            content: new DialogItem(ReleaseNotificationDialog)
-          },
-          maxHeight: '90vh',
-          maxWidth: '120vh',
-          hasBackdrop: true
-        });
+        dialogConfig.data = {
+          title: "We've updated to a newer Version!",
+          content: new DialogItem(ReleaseNotificationDialog)
+        };
+        this.dialog.open(DialogsComponent, dialogConfig);
         break;
+
       case 'feedback':
-        this.dialog.open(DialogsComponent, {
-          data: {
-            title: 'Leave Feedback, report a Bug or suggest a new Idea',
-            content: new DialogItem(FeedbackDrawerSheetComponent)
-          },
-          maxHeight: '90vh',
-          maxWidth: '120vh',
-          hasBackdrop: true
-        });
+        dialogConfig.data = {
+          title: 'Leave Feedback, report a Bug or suggest a new Idea',
+          content: new DialogItem(FeedbackDrawerSheetComponent)
+        };
+        this.dialog.open(DialogsComponent, dialogConfig);
         break;
+
       case 'notification':
-        this.dialog.open(DialogsComponent, {
-          data: {
-            title: 'Welcome to the new Phonebook!',
-            content: new DialogItem(DisplayNotificationDialog)
-          },
-          maxHeight: '90vh',
-          maxWidth: '120vh',
-          hasBackdrop: true
-        });
+        dialogConfig.data = {
+          title: 'Welcome to the new Phonebook!',
+          content: new DialogItem(DisplayNotificationDialog)
+        };
+        this.dialog.open(DialogsComponent, dialogConfig);
         break;
+
       case 'bug-report-consent':
-        const matDialogRef = this.dialog.open(DialogsComponent, {
-          data: {
-            title: 'Leave Feedback, report a Bug or suggest a new Idea',
-            content: new DialogItem(BugReportConsentComponent)
-          },
-          maxHeight: '90vh',
-          maxWidth: '120vh',
-          hasBackdrop: true
-        });
+        dialogConfig.data = {
+          title: 'Leave Feedback, report a Bug or suggest a new Idea',
+          content: new DialogItem(BugReportConsentComponent)
+        };
+        const matDialogRef = this.dialog.open(DialogsComponent, dialogConfig);
         matDialogRef.afterClosed().subscribe((consent) => {
           this.store.dispatch(new SetSendFeedback(consent));
         });
         break;
+
       case 'profile-picture':
-        this.dialog.open(DialogsComponent, {
-          data: {
-            title: inputData[1],
-            content: new DialogItem(ProfilePictureEnlargeDialog),
-            inputData: {
-              imageUrl: inputData[0],
-              text: inputData[1]
-            }
+        dialogConfig.data = {
+          title: inputData[1],
+          content: new DialogItem(ProfilePictureEnlargeDialog),
+          inputData: {
+            imageUrl: inputData[0],
+            text: inputData[1]
           }
-        });
+        };
+        this.dialog.open(DialogsComponent, dialogConfig);
         break;
+
       case 'ie-warning':
-        this.dialog.open(DialogsComponent, {
-          data: {
-            title: 'This Website may not function properly in Internet Explorer',
-            content: new DialogItem(IeWarningComponent)
-          },
-          panelClass: 'color-warn'
-        });
+        dialogConfig.data = {
+          title: 'This Website may not function properly in Internet Explorer',
+          content: new DialogItem(IeWarningComponent)
+        };
+        dialogConfig.panelClass = 'color-warn';
+        this.dialog.open(DialogsComponent, dialogConfig);
         break;
+
       case 'incorrect-user-information':
-        this.dialog.open(DialogsComponent, {
-          data: {
-            title: 'Incorrect User Information',
-            content: new DialogItem(IncorrectUserInformationComponent),
-            inputData: inputData
-          },
-          maxHeight: '90vh',
-          maxWidth: '120vh',
-          hasBackdrop: true
-        });
+        dialogConfig.data = {
+          title: 'Incorrect User Information',
+          content: new DialogItem(IncorrectUserInformationComponent),
+          inputData: inputData
+        };
+        this.dialog.open(DialogsComponent, dialogConfig);
         break;
     }
   }
