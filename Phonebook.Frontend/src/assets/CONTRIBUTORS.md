@@ -23,6 +23,7 @@
   <tr>
     <td align="center"><a href="https://github.com/BrunoZirnstein"><img src="https://avatars3.githubusercontent.com/u/56590240?v=4" width="100px;" alt=""/><br /><sub><b>BrunoZirnstein</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=BrunoZirnstein" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/friedaxvictoria"><img src="https://avatars2.githubusercontent.com/u/61278471?v=4" width="100px;" alt=""/><br /><sub><b>friedaxvictoria</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=friedaxvictoria" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/tomfrenzel"><img src="https://avatars1.githubusercontent.com/u/40773830?v=4" width="100px;" alt=""/><br /><sub><b>Tom Frenzel</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=tomfrenzel" title="Code">💻</a></td>
   </tr>
 </table>
 
