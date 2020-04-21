@@ -1,18 +1,13 @@
 <div>
-  <div class="header">
-    <button class="close-button" mat-button mat-dialog-close cdkFocusInitial>
-      <span>x</span>
+  <h1 mat-dialog-title>
+    {{ title }}
+  </h1>
+  <mat-dialog-content>
+    <app-dialog-view #appdialogview [title]="title" [content]="content" [data]="data"></app-dialog-view>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="mat-dialog-actions">
+    <button mat-button mat-dialog-close cdkFocusInitial>
+      <span i18n="GeneralCloseButton|Button for closing something@@GeneralCloseButton">Close</span>
     </button>
-    <h1 mat-dialog-title>
-      {{ title }}
-    </h1>
-  </div>
-  <div mat-dialog-content>
-    <app-dialog-view
-      #appdialogview
-      [title]="title"
-      [content]="content"
-      [data]="data"
-    ></app-dialog-view>
-  </div>
+  </mat-dialog-actions>
 </div>
