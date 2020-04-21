@@ -1,0 +1,5 @@
+feature: ['feature/*', 'feat/*']
+restyled: ['restyled/*]
+demo: ['demo/*']
+fix: ['fix/*']
+docs: ['docs/*', 'docu/*']
