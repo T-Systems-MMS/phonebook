@@ -3,7 +3,12 @@
     {{ title }}
   </h1>
   <mat-dialog-content>
-    <app-dialog-view #appdialogview [title]="title" [content]="content" [data]="data"></app-dialog-view>
+    <app-dialog-view
+      #appdialogview
+      [title]="title"
+      [content]="content"
+      [data]="data"
+    ></app-dialog-view>
   </mat-dialog-content>
   <mat-dialog-actions align="end" class="mat-dialog-actions">
     <button mat-button mat-dialog-close cdkFocusInitial>
