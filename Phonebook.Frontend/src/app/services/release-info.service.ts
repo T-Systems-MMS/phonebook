@@ -11,7 +11,7 @@ import { VERSION } from 'src/environments/version';
 import { DialogService } from 'src/app/services/dialog.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReleaseInfoService {
   public newUpdate: boolean = false; //shows that the application was updated
@@ -59,7 +59,7 @@ export class ReleaseInfoService {
         $localize`:ReleaseInfoService|Snack Bar display for a feature update@@ReleaseInfoServiceSnackBarUpdateTitle:We've fixed some Bugs and added some new Features for you, with ❤`,
         $localize`:ReleaseInfoService|Snack Bar display Action Button for a feature update@@ReleaseInfoServiceSnackBarUpdateButton:Fixed what?`,
         {
-          duration: 8000
+          duration: 8000,
         }
       )
       .onAction()
@@ -73,7 +73,10 @@ export class ReleaseInfoService {
    * @param previousVersion
    * @param nextVersion
    */
-  public static whatVersionIncrement(previousVersion: string, nextVersion: string): VersionIncrement {
+  public static whatVersionIncrement(
+    previousVersion: string,
+    nextVersion: string
+  ): VersionIncrement {
     const versionRegex = new RegExp('^(\\d*)\\.(\\d*)\\.(\\d*)$');
     const matchedPreviousVersion = versionRegex.exec(previousVersion);
     const matchedNextVersion = versionRegex.exec(nextVersion);

@@ -23,7 +23,7 @@ import { Theme } from 'src/app/shared/models/enumerables/Theme';
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-expand' },
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   public version: typeof VERSION = VERSION;
@@ -87,9 +87,11 @@ export class NavigationComponent implements OnInit, OnDestroy {
       .subscribe((hasImage) => {
         this.hasImage = hasImage;
       });
-    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((route) => {
-      this.displayTableSettings = this.router.url.includes('search');
-    });
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((route) => {
+        this.displayTableSettings = this.router.url.includes('search');
+      });
   }
 
   public openSettings() {
@@ -97,7 +99,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     if (this.dialog.openDialogs.length === 0) {
       this.dialog.open(TableSettingsDialog, {
         height: '90vh',
-        width: '90vw'
+        width: '90vw',
       });
     }
   }
