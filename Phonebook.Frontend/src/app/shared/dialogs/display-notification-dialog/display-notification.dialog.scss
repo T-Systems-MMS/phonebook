@@ -26,6 +26,7 @@ mat-card {
   @include below-big {
     min-width: 40%;
   }
+
   @include below-med {
     min-width: 80%;
   }
@@ -33,4 +34,8 @@ mat-card {
 
 .border-1 {
   border: 1px solid;
+}
+
+.pb-center-element {
+  text-align: center;
 }
