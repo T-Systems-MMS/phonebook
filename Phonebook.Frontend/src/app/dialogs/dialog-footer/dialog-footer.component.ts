@@ -25,15 +25,19 @@ export class DialogFooterComponent {
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(
-      this.footer.component
-    );
-    this.componentRef = this.container.createComponent(factory);
-    this.cdRef.detectChanges();
+    if (this.footer != null) {
+      const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(
+        this.footer.component
+      );
+      this.componentRef = this.container.createComponent(factory);
+      this.cdRef.detectChanges();
+    }
   }
   public createComponent() {}
 
   ngOnDestroy() {
-    this.componentRef.destroy();
+    if (this.footer != null) {
+      this.componentRef.destroy();
+    }
   }
 }
