@@ -97,7 +97,6 @@
           class="changeLayoutButton"
           [ngSwitch]="activeLayout$ | async"
         >
-          <mat-icon *ngSwitchCase="layout.view_list">view_list</mat-icon>
           <mat-icon *ngSwitchCase="layout.view_stream">view_stream</mat-icon>
           <mat-icon *ngSwitchCase="layout.view_module">view_module</mat-icon>
           <mat-select
@@ -118,28 +117,6 @@
         class="pb-flex-row pb-bookmarks-list"
         [ngSwitch]="activeLayout$ | async"
       >
-        <ng-container *ngSwitchCase="layout.view_list">
-          <div
-            *ngFor="let person of bookmarkedPersons; index as i"
-            cdkDropList
-            [cdkDropListData]="i"
-            cdkDropListOrientation="horizontal"
-            class="card-container pb-w-100"
-          >
-            <app-user-list-card
-              [person]="person"
-              [actionButtonIcon]="'close'"
-              [actionButtonClasses]="'white'"
-              (actionButtonClicked)="removeFromBookmarkedPersons(person)"
-              class="pb-list-card pb-card"
-              cdkDrag
-              (cdkDragEntered)="entered($event)"
-              (cdkDragEnded)="ended($event)"
-              [cdkDragData]="i"
-              [cdkDragDisabled]="favoriteSort != ''"
-            ></app-user-list-card>
-          </div>
-        </ng-container>
         <ng-container *ngSwitchCase="layout.view_module">
           <div
             *ngFor="let person of bookmarkedPersons; index as i"

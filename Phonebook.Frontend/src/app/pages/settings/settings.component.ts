@@ -5,9 +5,8 @@ import { Observable } from 'rxjs';
 import { FeatureFlagService } from 'src/app/modules/feature-flag/feature-flag.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { Language } from 'src/app/shared/models/enumerables/Language';
-import { Layout } from 'src/app/shared/models/enumerables/Layout';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
-import { AppState, SetLayout, SetTheme } from 'src/app/shared/states';
+import { AppState, SetTheme } from 'src/app/shared/states';
 
 @Component({
   selector: 'app-settings',

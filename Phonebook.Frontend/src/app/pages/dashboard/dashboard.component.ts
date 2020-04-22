@@ -131,9 +131,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public getLayoutName(layout: Layout): string {
     switch (layout) {
-      case Layout.view_list: {
-        return $localize`:NavigationComponent|View Mode - List@@NavigationComponentViewModeList:List View`;
-      }
       case Layout.view_module: {
         return $localize`:NavigationComponent|View Mode - MediumCards@@NavigationComponentViewModeMediumCards:Medium Cards`;
       }
@@ -151,5 +148,5 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.store.dispatch(new SetRecentPeopleDrawer(this.drawerOpen));
     }
   }
-  ngOnDestroy(): void {}
+  public ngOnDestroy(): void {}
 }

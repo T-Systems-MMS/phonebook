@@ -112,7 +112,7 @@
         <note priority="1" from="description">Title of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentTitleDescription" datatype="html">
-      <source> Change the theme, language or layout of this application. </source><target state="final"> Change the theme, language or layout of this application. </target>        
+      <source> Change the theme or language of this application. </source><target state="final"> Change the theme or language of this application. </target>        
         <note priority="1" from="description">Title description of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubtitleGeneral" datatype="html">
@@ -284,14 +284,6 @@
         <target state="final">Here you can change the color theme of the app.</target>
         <note priority="1" from="description">Color Change Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
-      </trans-unit><trans-unit id="SettingsComponentSubtitleDashboard" datatype="html">
-        <source> Dashboard</source><target state="final"> Dashboard</target>
-        <note priority="1" from="description">Dashboard Subheading</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
-      </trans-unit><trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
-        <source>Layout for Bookmarks</source><target state="final">Layout for Bookmarks</target>
-        <note priority="1" from="description">Layout Subtitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SearchComponentPlaceholder" datatype="html">
         <source>Search for names, shorthands, phone numbers and more...</source><target state="final">Search for names, shorthands, phone numbers and more...</target>
         <note priority="1" from="description">Placholder for search</note>
