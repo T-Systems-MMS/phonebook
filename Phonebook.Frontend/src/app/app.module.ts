@@ -55,6 +55,7 @@ import { DialogsComponent } from './dialogs/dialogs.component';
 import { DialogViewComponent } from './dialogs/dialog-view/dialog-view.component';
 import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToLogin';
 import { DialogFooterComponent } from './dialogs/dialog-footer/dialog-footer.component';
+import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 
 declare const require;
 
@@ -129,6 +130,7 @@ declare const require;
     FloorplanService,
     ReleaseInfoService,
     ThemeService,
+    TableSettingsDialog,
   ],
   bootstrap: [AppComponent],
 })

@@ -1,25 +1,24 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { TableSettingsFooterComponent } from './table-settings-footer.component';
+import { TableSettingsFooterComponent } from './table-settings-footer.component';
 
-// describe('TableSettingsFooterComponent', () => {
-//   let component: TableSettingsFooterComponent;
-//   let fixture: ComponentFixture<TableSettingsFooterComponent>;
+describe('TableSettingsFooterComponent', () => {
+  let component: TableSettingsFooterComponent;
+  let fixture: ComponentFixture<TableSettingsFooterComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ TableSettingsFooterComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [TableSettingsFooterComponent],
+    }).compileComponents();
+  }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(TableSettingsFooterComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TableSettingsFooterComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
