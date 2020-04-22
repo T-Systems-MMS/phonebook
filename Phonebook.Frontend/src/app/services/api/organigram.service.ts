@@ -7,7 +7,10 @@ import { CurrentUserService } from 'src/app/services/api/current-user.service';
 @Injectable()
 export class OrganigramService {
   public team: UnitTreeNode;
-  constructor(private personService: PersonService, private currentUserService: CurrentUserService) {}
+  constructor(
+    private personService: PersonService,
+    private currentUserService: CurrentUserService
+  ) {}
 
   public getOrganigram(): Observable<UnitTreeNode[]> {
     return this.personService.getAll().pipe(
@@ -81,12 +84,18 @@ export class OrganigramService {
 
   public getNodeForUser(user: Person, nodeChilds: UnitTreeNode[], depth: number) {
     if (user.Business.OrgUnit.length !== 0) {
-      for (let node of nodeChilds) {
+      for (const node of nodeChilds) {
         if (node.name === user.Business.OrgUnit[depth] && depth > user.Business.OrgUnit.length) {
           return null;
-        } else if (node.name === user.Business.OrgUnit[depth] && depth < user.Business.OrgUnit.length - 1) {
+        } else if (
+          node.name === user.Business.OrgUnit[depth] &&
+          depth < user.Business.OrgUnit.length - 1
+        ) {
           this.getNodeForUser(user, node.children, depth + 1);
-        } else if (node.name === user.Business.OrgUnit[depth] && depth === user.Business.OrgUnit.length - 1) {
+        } else if (
+          node.name === user.Business.OrgUnit[depth] &&
+          depth === user.Business.OrgUnit.length - 1
+        ) {
           return (this.team = node);
         } else {
           continue;
