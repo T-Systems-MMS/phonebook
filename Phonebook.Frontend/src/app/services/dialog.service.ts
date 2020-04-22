@@ -16,6 +16,7 @@ import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-i
 import { config } from 'rxjs';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 import { NotificationDialogFooterComponent } from 'src/app/shared/dialogs/display-notification-dialog/notification-dialog-footer/notification-dialog-footer.component';
+import { TableSettingsFooterComponent } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings-footer/table-settings-footer.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -105,6 +106,7 @@ export class DialogService {
           title: $localize`:Title of the Table Settings Dialog@@TableSettingsDialogTitle:Table Settings`,
           content: new DialogItem(TableSettingsDialog),
           inputData: inputData,
+          footer: new DialogItem(TableSettingsFooterComponent),
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
