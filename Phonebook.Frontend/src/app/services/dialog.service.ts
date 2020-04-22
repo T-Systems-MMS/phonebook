@@ -13,6 +13,7 @@ import { SetSendFeedback } from 'src/app/shared/states/App.state';
 import { ProfilePictureEnlargeDialog } from 'src/app/modules/profile-picture/components/profile-picture/enlarge-dialog/profile-picture-enlarge.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
+import { LOCALE_ID, Inject } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,43 +22,64 @@ export class DialogService {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private httpClient: HttpClient,
-    private store: Store
+    private store: Store,
+    @Inject(LOCALE_ID) public locale: string
   ) {}
   public displayDialog(item: string, inputData?: any) {
     const dialogConfig = new MatDialogConfig();
-
+    let translatedTitle: string;
     dialogConfig.maxWidth = '90%';
     dialogConfig.hasBackdrop = true;
     dialogConfig.panelClass = ['mat-dialog-overwrite', 'mat-typography'];
 
     switch (item) {
       case 'release-notes':
+        if ((this.locale = 'de')) {
+          translatedTitle = 'Wir haben zu einer neuen Version geupdated!';
+        } else {
+          translatedTitle = "We've updated to a newer Version!";
+        }
         dialogConfig.data = {
-          title: "We've updated to a newer Version!",
+          title: translatedTitle,
           content: new DialogItem(ReleaseNotificationDialog),
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
 
       case 'feedback':
+        if ((this.locale = 'de')) {
+          translatedTitle = 'Sage deine Meinung, melde einen Fehler oder erzähle von deiner Idee';
+        } else {
+          translatedTitle = 'Leave Feedback, report a Bug or suggest a new Idea';
+        }
         dialogConfig.data = {
-          title: 'Leave Feedback, report a Bug or suggest a new Idea',
+          title: translatedTitle,
           content: new DialogItem(FeedbackDrawerSheetComponent),
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
 
       case 'notification':
+        if ((this.locale = 'de')) {
+          translatedTitle = 'Willkommen beim neuen Phonebook!';
+        } else {
+          translatedTitle = 'Welcome to the new Phonebook!';
+        }
         dialogConfig.data = {
-          title: 'Welcome to the new Phonebook!',
+          title: translatedTitle,
           content: new DialogItem(DisplayNotificationDialog),
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
 
       case 'bug-report-consent':
+        if ((this.locale = 'de')) {
+          translatedTitle = 'Wir brauchen deine Hilfe!';
+        } else {
+          translatedTitle = 'We need your help!';
+        }
         dialogConfig.data = {
-          title: 'We need your help!',
+          title: translatedTitle,
           content: new DialogItem(BugReportConsentComponent),
         };
         const matDialogRef = this.dialog.open(DialogsComponent, dialogConfig);
@@ -79,8 +101,14 @@ export class DialogService {
         break;
 
       case 'ie-warning':
+        if ((this.locale = 'de')) {
+          translatedTitle =
+            'Diese Website funktioniert eventuell nicht richtig im Internet Explorer';
+        } else {
+          translatedTitle = 'This Website may not function properly in Internet Explorer';
+        }
         dialogConfig.data = {
-          title: 'This Website may not function properly in Internet Explorer',
+          title: translatedTitle,
           content: new DialogItem(IeWarningComponent),
         };
         dialogConfig.panelClass = 'color-warn';
@@ -88,8 +116,13 @@ export class DialogService {
         break;
 
       case 'incorrect-user-information':
+        if ((this.locale = 'de')) {
+          translatedTitle = 'Benutzerinformation';
+        } else {
+          translatedTitle = 'Incorrect User Information';
+        }
         dialogConfig.data = {
-          title: 'Incorrect User Information',
+          title: translatedTitle,
           content: new DialogItem(IncorrectUserInformationComponent),
           inputData: inputData,
         };
