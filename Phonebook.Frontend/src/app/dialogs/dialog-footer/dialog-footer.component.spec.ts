@@ -8,9 +8,8 @@ describe('DialogFooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DialogFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [DialogFooterComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
