@@ -26,8 +26,7 @@ export class DialogService {
   public displayDialog(item: string, inputData?: any) {
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.maxHeight = '90vh';
-    dialogConfig.maxWidth = '120vh';
+    dialogConfig.maxWidth = '90%';
     dialogConfig.hasBackdrop = true;
     dialogConfig.panelClass = ['mat-dialog-overwrite', 'mat-typography'];
 
