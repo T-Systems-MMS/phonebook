@@ -174,20 +174,6 @@
               ></app-interactive-attribute-field>
             </p>
           </mat-list-item>
-          <mat-list-item
-            *featureFlag="'firstApril'"
-            matTooltip="Happy April Fools' Day."
-            matTooltipPosition="below"
-            i18n-matTooltip="
-              Datapoint|Tooltip for april fools' day information
-              Information@@UserDetailComponentAprilFoolDayTooltip"
-          >
-            <mat-icon mat-list-icon>attach_money</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.Money data@@DataPersonMoney">
-              Salary
-            </h4>
-            <p mat-line>{{ randomMoney }} €</p>
-          </mat-list-item>
         </mat-list>
         <mat-list *ngIf="!person.isOfStatus(status.Fremdkraft)">
           <h3

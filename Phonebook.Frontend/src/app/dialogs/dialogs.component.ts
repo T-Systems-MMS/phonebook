@@ -9,18 +9,18 @@ import { DialogItem } from 'src/app/dialogs/dialog-item';
   styleUrls: ['./dialogs.component.scss'],
 })
 export class DialogsComponent implements OnInit {
-  title: string;
-  content: DialogItem;
-  data: any;
+  public title: string;
+  public content: DialogItem;
+  public data: any;
   @ViewChild('appdialogview', { read: ViewContainerRef }) container;
-  constructor(public dialogRef: MatDialogRef<DialogsComponent>, @Inject(MAT_DIALOG_DATA) data) {
-    this.content = data.content;
-    this.title = data.title;
-    this.data = data.inputData;
+  constructor(public dialogRef: MatDialogRef<DialogsComponent>, @Inject(MAT_DIALOG_DATA) matData) {
+    this.content = matData.content;
+    this.title = matData.title;
+    this.data = matData.inputData;
   }
 
-  close() {
+  public close() {
     this.dialogRef.close();
   }
-  ngOnInit() {}
+  public ngOnInit() {}
 }

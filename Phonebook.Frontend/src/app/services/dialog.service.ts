@@ -13,6 +13,8 @@ import { SetSendFeedback } from 'src/app/shared/states/App.state';
 import { ProfilePictureEnlargeDialog } from 'src/app/modules/profile-picture/components/profile-picture/enlarge-dialog/profile-picture-enlarge.dialog';
 import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning.component';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
+import { config } from 'rxjs';
+import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,10 +26,11 @@ export class DialogService {
     private store: Store
   ) {}
   public displayDialog(item: string, inputData?: any) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.maxWidth = '90%';
-    dialogConfig.hasBackdrop = true;
-    dialogConfig.panelClass = ['mat-dialog-overwrite', 'mat-typography'];
+    const dialogConfig: MatDialogConfig = {
+      maxWidth: '90%',
+      hasBackdrop: true,
+      panelClass: ['mat-dialog-overwrite', 'mat-typography'],
+    };
 
     switch (item) {
       case 'release-notes':
@@ -90,6 +93,15 @@ export class DialogService {
         dialogConfig.data = {
           title: $localize`:Title of the Incorrect User Information Dialog@@IncorrectUserInformationDialogTitle:Incorrect User Information`,
           content: new DialogItem(IncorrectUserInformationComponent),
+          inputData: inputData,
+        };
+        this.dialog.open(DialogsComponent, dialogConfig);
+        break;
+
+      case 'table-settings':
+        dialogConfig.data = {
+          title: $localize`:Title of the Table Settings Dialog@@TableSettingsDialogTitle:Table Settings`,
+          content: new DialogItem(TableSettingsDialog),
           inputData: inputData,
         };
         this.dialog.open(DialogsComponent, dialogConfig);

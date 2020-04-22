@@ -9,7 +9,6 @@ import { ContributorsModule } from 'src/app/shared/components/contributors/contr
 import { CommonModule } from '@angular/common';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 import { UserModule } from 'src/app/shared/components/user/user.module';
-import { from } from 'rxjs';
 
 @NgModule({
   declarations: [

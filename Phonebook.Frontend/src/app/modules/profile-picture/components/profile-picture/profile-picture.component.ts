@@ -67,6 +67,17 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
         }
       });
   }
+  public onMouseleave() {
+    if (this.canEnlargeOnHover === false) {
+      return;
+    }
+    this.closeEnlarge();
+  }
+  public closeEnlarge(): void {
+    if (this.dialogRef != null) {
+      this.dialogRef.close();
+    }
+  }
   private getAprilProfilePictureUrl() {
     const random = Math.floor(Math.random() * Math.floor(9));
     switch (random) {

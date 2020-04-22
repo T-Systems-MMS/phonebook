@@ -1,6 +1,7 @@
 <div
   id="image-container"
   (mouseenter)="onMouseenter()"
+  (mouseleave)="onMouseleave()"
   (click)="onClick()"
   [class.no-hover]="!canEnlargeOnClick || !imageLoaded"
 >

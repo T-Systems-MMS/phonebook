@@ -30,7 +30,7 @@ export class ReleaseInfoService {
     );
     switch (versionIncrement) {
       case VersionIncrement.breaking:
-        this.displayReleaseDialog();
+        this.dialogService.displayDialog('release-notes');
         this.newUpdate = true;
         this.store.dispatch(new SetVersion(VERSION));
         break;
@@ -49,10 +49,6 @@ export class ReleaseInfoService {
     }
   }
 
-  public displayReleaseDialog() {
-    this.dialogService.displayDialog('release-notes');
-  }
-
   private displayReleaseNotification() {
     this.snackBar
       .open(
@@ -64,7 +60,7 @@ export class ReleaseInfoService {
       )
       .onAction()
       .subscribe((clicked) => {
-        this.displayReleaseDialog();
+        this.dialogService.displayDialog('release-notes');
       });
   }
 

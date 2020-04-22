@@ -41,7 +41,6 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
   public previewView: boolean = false;
   public rocketChatLink: string | null = null;
   public organigramLink: string[] = ['/organigram'];
-  public randomMoney: any;
   constructor(
     private snackBar: MatSnackBar,
     private mailService: MailService,
