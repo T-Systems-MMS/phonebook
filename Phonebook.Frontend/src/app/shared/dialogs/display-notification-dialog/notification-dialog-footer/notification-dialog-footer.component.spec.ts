@@ -8,9 +8,8 @@ describe('NotificationDialogFooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationDialogFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [NotificationDialogFooterComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
