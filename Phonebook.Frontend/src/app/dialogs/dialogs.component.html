@@ -1,3 +1,6 @@
+<button style="float: right;" mat-button mat-dialog-close cdkFocusInitial>
+  <span i18n="GeneralCloseButton|Button for closing something@@GeneralCloseButton">Close</span>
+</button>
 <h1 mat-dialog-title>
   {{ title }}
 </h1>
@@ -6,11 +9,9 @@
     #appdialogview
     [title]="title"
     [content]="content"
-    [data]="data"
+    [data]="componentData"
   ></app-dialog-view>
 </mat-dialog-content>
-<mat-dialog-actions align="end" class="mat-dialog-actions">
-  <button mat-button mat-dialog-close cdkFocusInitial>
-    <span i18n="GeneralCloseButton|Button for closing something@@GeneralCloseButton">Close</span>
-  </button>
+<mat-dialog-actions class="mat-dialog-actions">
+  <app-dialog-footer #appdialogfooter [footer]="footer"> </app-dialog-footer>
 </mat-dialog-actions>

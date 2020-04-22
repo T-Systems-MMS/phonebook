@@ -11,12 +11,14 @@ import { DialogItem } from 'src/app/dialogs/dialog-item';
 export class DialogsComponent implements OnInit {
   public title: string;
   public content: DialogItem;
-  public data: any;
+  public componentData: any;
+  public footer: HtmlParser;
   @ViewChild('appdialogview', { read: ViewContainerRef }) container;
   constructor(public dialogRef: MatDialogRef<DialogsComponent>, @Inject(MAT_DIALOG_DATA) matData) {
     this.content = matData.content;
     this.title = matData.title;
-    this.data = matData.inputData;
+    this.componentData = matData.inputData;
+    this.footer = matData.footer;
   }
 
   public close() {

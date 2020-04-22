@@ -54,6 +54,7 @@ import { SearchComponent } from './shared/components/search/search.component';
 import { DialogsComponent } from './dialogs/dialogs.component';
 import { DialogViewComponent } from './dialogs/dialog-view/dialog-view.component';
 import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToLogin';
+import { DialogFooterComponent } from './dialogs/dialog-footer/dialog-footer.component';
 
 declare const require;
 
@@ -66,6 +67,7 @@ declare const require;
     OnlineBarComponent,
     DialogsComponent,
     DialogViewComponent,
+    DialogFooterComponent,
   ],
   imports: [
     BrowserModule,

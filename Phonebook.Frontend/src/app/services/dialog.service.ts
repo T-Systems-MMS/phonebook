@@ -15,6 +15,7 @@ import { IeWarningComponent } from 'src/app/shared/dialogs/ie-warning/ie-warning
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 import { config } from 'rxjs';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
+import { NotificationDialogFooterComponent } from 'src/app/shared/dialogs/display-notification-dialog/notification-dialog-footer/notification-dialog-footer.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -53,6 +54,7 @@ export class DialogService {
         dialogConfig.data = {
           title: $localize`:Title of the Notification Dialog@@NotificationDialogTitle:Welcome to the new Phonebook!`,
           content: new DialogItem(DisplayNotificationDialog),
+          footer: new DialogItem(NotificationDialogFooterComponent),
         };
         this.dialog.open(DialogsComponent, dialogConfig);
         break;

@@ -9,6 +9,7 @@ import { ContributorsModule } from 'src/app/shared/components/contributors/contr
 import { CommonModule } from '@angular/common';
 import { IncorrectUserInformationComponent } from 'src/app/shared/dialogs/user-information/incorrect-user-information.component';
 import { UserModule } from 'src/app/shared/components/user/user.module';
+import { NotificationDialogFooterComponent } from './display-notification-dialog/notification-dialog-footer/notification-dialog-footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { UserModule } from 'src/app/shared/components/user/user.module';
     DisplayNotificationDialog,
     BugReportConsentComponent,
     IncorrectUserInformationComponent,
+    NotificationDialogFooterComponent,
   ],
   imports: [CommonModule, RouterModule, MaterialModule, ContributorsModule, UserModule],
   exports: [

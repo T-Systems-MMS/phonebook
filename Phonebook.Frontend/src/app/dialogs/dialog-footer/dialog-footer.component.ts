@@ -6,21 +6,19 @@ import {
   ViewContainerRef,
   ComponentRef,
   ComponentFactoryResolver,
-  ComponentFactory,
   ChangeDetectorRef,
+  ComponentFactory,
 } from '@angular/core';
 import { DialogItem } from 'src/app/dialogs/dialog-item';
 
 @Component({
-  selector: 'app-dialog-view',
-  templateUrl: './dialog-view.component.html',
-  styleUrls: ['./dialog-view.component.scss'],
+  selector: 'app-dialog-footer',
+  templateUrl: './dialog-footer.component.html',
+  styleUrls: ['./dialog-footer.component.scss'],
 })
-export class DialogViewComponent {
-  @Input() public title: string;
-  @Input() public content: DialogItem;
-  @Input() public data: any;
-  @ViewChild('componentContainer', { read: ViewContainerRef }) container;
+export class DialogFooterComponent {
+  @Input() public footer: DialogItem;
+  @ViewChild('footerContainer', { read: ViewContainerRef }) container;
   public componentRef: ComponentRef<any>;
 
   constructor(private resolver: ComponentFactoryResolver, private cdRef: ChangeDetectorRef) {}
@@ -28,10 +26,9 @@ export class DialogViewComponent {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(
-      this.content.component
+      this.footer.component
     );
     this.componentRef = this.container.createComponent(factory);
-    this.componentRef.instance.data = this.data;
     this.cdRef.detectChanges();
   }
   public createComponent() {}

@@ -22,10 +22,6 @@ export class DisplayNotificationDialog implements OnInit, OnDestroy {
   ) {
     store.dispatch(new SetDisplayedNotificationVersion(DisplayNotificationDialog.version));
   }
-  public skipStartDialogs() {
-    this.router.navigateByUrl('/?skip_dialog=true');
-    this.dialogRef.close();
-  }
   public ngOnInit() {}
 
   public ngOnDestroy() {}
