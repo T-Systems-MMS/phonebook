@@ -11,6 +11,7 @@ import { UserModule } from 'src/app/shared/components/user/user.module';
 import { ActionDrawerModule } from 'src/app/shared/directives/action-drawer/action-drawer.module';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { TableSettingsFooterComponent } from './dialogs/table-settings-dialog/table-settings-footer/table-settings-footer.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     PipesModule,
     MatChipsModule,
   ],
-  declarations: [TableComponent, TableSettingsDialog],
+  declarations: [TableComponent, TableSettingsDialog, TableSettingsFooterComponent],
   entryComponents: [TableSettingsDialog],
 })
 export class TableModule {}
