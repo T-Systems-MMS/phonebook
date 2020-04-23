@@ -95,10 +95,8 @@
           (click)="select.open()"
           mat-icon-button
           class="changeLayoutButton"
-          [ngSwitch]="activeLayout$ | async"
         >
-          <mat-icon *ngSwitchCase="layout.view_stream">view_stream</mat-icon>
-          <mat-icon *ngSwitchCase="layout.view_module">view_module</mat-icon>
+          <mat-icon>{{activeLayout$ | async}}</mat-icon>
           <mat-select
             #select
             class="selectLayout"
