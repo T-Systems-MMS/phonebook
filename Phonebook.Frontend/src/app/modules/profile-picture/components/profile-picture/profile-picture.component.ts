@@ -146,8 +146,8 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
     if (!this.useAprilEndpoint) {
       url = `${runtimeEnvironment.employeePicturesEndpoint}/generated/${this.user.Id}/900.jpg`;
     }
-
-    this.dialogService.displayDialog('profile-picture', { url, altText });
+    const outputData = [url, altText];
+    this.dialogService.displayDialog('profile-picture', outputData);
   }
   public ngOnDestroy() {}
 }
