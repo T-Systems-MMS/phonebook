@@ -1,20 +1,20 @@
-  .pb-team {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding-right: 10px;
+.pb-team {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 10px;
 
-    .pb-team-list {
-      flex-grow: 1;
-    }
- }
- .pb-small-card {
-    width: 320px;
-    height: 275px;
+  .pb-team-list {
+    flex-grow: 1;
   }
-  
-  .pb-card {
-    margin: 5px;
-    display: flex;
-  }
+}
+.pb-small-card {
+  width: 320px;
+  height: 275px;
+}
+
+.pb-card {
+  margin: 5px;
+  display: flex;
+}

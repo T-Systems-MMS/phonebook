@@ -10,17 +10,14 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    TeamComponent,
-    BookmarkedComponent],
+  declarations: [DashboardComponent, TeamComponent, BookmarkedComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
     DragDropModule,
     PipesModule,
-    UserModule
-  ]
+    UserModule,
+  ],
 })
 export class DashboardModule {}

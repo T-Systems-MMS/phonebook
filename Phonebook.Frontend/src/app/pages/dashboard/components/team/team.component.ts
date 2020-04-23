@@ -30,7 +30,12 @@ export class TeamComponent implements OnInit, OnDestroy {
   public ngOnInit() {
     this.organigramService.getNodeForCurrentUser().subscribe((node) => {
       if (node != null) {
-        this.teamPersons = [...node.supervisors, ...node.assistents, ...node.employees, ...node.learners];
+        this.teamPersons = [
+          ...node.supervisors,
+          ...node.assistents,
+          ...node.employees,
+          ...node.learners,
+        ];
       }
     });
   }
