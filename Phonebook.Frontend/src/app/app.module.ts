@@ -56,6 +56,7 @@ import { DialogViewComponent } from './dialogs/dialog-view/dialog-view.component
 import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToLogin';
 import { DialogFooterComponent } from './dialogs/dialog-footer/dialog-footer.component';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
+import { FeedbackDrawerModule } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.module';
 
 declare const require;
 
@@ -83,6 +84,7 @@ declare const require;
     UserModule,
     FeatureFlagModule.forRoot(),
     NotImplementedModule,
+    FeedbackDrawerModule,
     MatBadgeModule,
     NgxsModule.forRoot(
       [AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState],
@@ -101,6 +103,7 @@ declare const require;
     TableModule,
     ApiModule,
     // Has to be included here because of https://stackoverflow.com/a/41519512/9277073
+    FeedbackDrawerModule,
     DragDropModule,
     ApiModule,
     IeWarningModule,

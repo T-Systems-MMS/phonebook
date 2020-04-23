@@ -83,9 +83,10 @@
         <mat-list-item>
           <button
             mat-menu-item
+            feedbackDrawer
             i18n-matTooltip="navigationBar|Bug Button Tooltip@@navigationBarBugTooltip"
             matTooltip="Found a Bug? Than that`s the right place to click."
-            (click)="sidenav.close(); dialogService.displayDialog('feedback')"
+            (click)="sidenav.close()"
           >
             <mat-icon>bug_report</mat-icon>
             <span i18n="NavigationComponent|Link to Bug page@@NavigationComponentFeedback"
@@ -218,7 +219,7 @@
                     >Release Notes</span
                   >
                 </button>
-                <button mat-menu-item (click)="dialogService.displayDialog('feedback')">
+                <button mat-menu-item feedbackDrawer>
                   <mat-icon>bug_report</mat-icon>
                   <span i18n="@@NavigationComponentFeedback">Submit Feedback</span>
                 </button>

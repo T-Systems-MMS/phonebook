@@ -8,6 +8,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponent } from 'ng2-mock-component';
 import { MailService } from 'src/app/services/mail.service';
 import { NavigationComponent } from 'src/app/shared/components/navigation/navigation.component';
+import { FeedbackDrawerDirective } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.directive';
+import { MockDirective } from 'ng-mocks';
 
 // Deactivated because there is currently no way to mock environment.ts Version
 xdescribe('NavigationComponent', () => {
@@ -30,6 +32,7 @@ xdescribe('NavigationComponent', () => {
         MockComponent({ selector: 'mat-sidenav-container' }),
         MockComponent({ selector: 'mat-sidenav-content' }),
         MockComponent({ selector: 'mat-sidenav', inputs: ['mode'] }),
+        MockDirective(FeedbackDrawerDirective),
       ],
       providers: [
         { provide: MailService, useValue: null },
