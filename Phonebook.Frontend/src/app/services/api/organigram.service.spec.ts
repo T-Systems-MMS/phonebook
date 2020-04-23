@@ -1,8 +1,8 @@
-import { inject, TestBed, getTestBed } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { OrganigramService, UnitTreeNode } from './organigram.service';
 import { PersonService } from './person.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Person, PersonStatus, Contacts, Messenger, City, Business } from 'src/app/shared/models';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Person, Business } from 'src/app/shared/models';
 
 describe('OrganigramService', () => {
   beforeEach(() => {
@@ -14,87 +14,102 @@ describe('OrganigramService', () => {
   it('should be created', inject([OrganigramService], (service: OrganigramService) => {
     expect(service).toBeTruthy();
   }));
-  it('should return users OrgUnit', inject([OrganigramService], (service: OrganigramService) => {
-    const user: Person = {
-      Type: PersonStatus.Interner_Mitarbeiter,
-      Id: '9305',
-      Firstname: 'Coy',
-      Surname: 'Abbott',
-      Title: 'Prof.',
-      Role: 'head of',
-      Picture: false,
-      Contacts: {
-        Mobile: '(932) 318-4833',
-        Fax: '(640) 504-4249',
-        Email: 'Elbert.Stiedemann95@hotmail.com',
-        Phone: '1-539-650-4239',
-        Messenger: null,
-      },
-      Location: {
-        ContactPerson: null,
-        LinkRoutingWebsite: null,
-        ReceptionFax: null,
-        Description: null,
-        ReceptionPhone: null,
-        LinkPicture: null,
-        LinkRoutingInfo: null,
-        City: {
-          Name: 'Pfannerstillmouth',
-          Building: 'Willms Burgs',
-          ZipCode: '2435 Erdman Fords, South Ebbaborough, New Zealand',
-        },
-        RoomCollection: [
-          {
-            Building: 'Willms Burgs 881',
-            BuildingId: '10',
-            Floor: 14,
-            Description: '57254 Rickey Burg, Calliestad, Aruba',
-            Phone: '',
-            Number: 'Apl',
-            Id: '162',
-            Place: 'Langton',
-            FloorPlan: 'sample_static',
-          },
-        ],
-      },
-      Business: {
-        ShortBusinessunitTeamassistent: [],
-        ShortSupervisor: ['1999'],
-        ShortOrgUnit: ['42'],
-        OrgUnit: ['Sports & Kids'],
-        BusinessunitTeamassistent: [],
-        Supervisor: ['Berneice Goldner'],
-        Costcenter: '0195',
-      },
-      isLearner(): boolean {
-        return (
-          this.Type === PersonStatus.Interner_Lernender ||
-          this.Type === PersonStatus.Externer_Lernender
-        );
-      },
-      isSupervisor(): boolean {
-        return this.Role.indexOf('Leiter') >= 0;
-      },
-      isAssistent() {
-        return this.Role.indexOf('Management & Team Support') >= 0;
-      },
-      isOfStatus(status: PersonStatus) {
-        return this.Type === status;
-      },
-    };
-    const organigram: UnitTreeNode[] = [
-      {
-        id: 'SK',
-        name: 'Sports & Kids',
-        depth: 0,
-        children: [],
-        supervisors: [],
-        assistents: [],
-        employees: [],
-        learners: [],
-      },
-    ];
 
-    expect(service.getNodeForUser(user, organigram, 0).name).toEqual('Sports & Kids');
-  }));
+  const ORG_UNIT_ID: string = 'targetOrgUnit';
+  const nodeOfUser: UnitTreeNode = {
+    id: ORG_UNIT_ID,
+    name: 'bla',
+    depth: 0,
+    children: [],
+    supervisors: [],
+    assistents: [],
+    employees: [],
+    learners: [],
+  };
+  it('should return users OrgUnit (first level)', inject(
+    [OrganigramService],
+    (service: OrganigramService) => {
+      const user: Partial<Person> = {
+        Business: {
+          ShortOrgUnit: [ORG_UNIT_ID],
+          OrgUnit: [ORG_UNIT_ID],
+        } as Business,
+      };
+
+      const organigram: UnitTreeNode[] = [nodeOfUser];
+
+      expect(service.getNodeForUser(user as Person, organigram, 0)).toEqual(nodeOfUser);
+    }
+  ));
+
+  it('should return users OrgUnit (second level)', inject(
+    [OrganigramService],
+    (service: OrganigramService) => {
+      const user: Partial<Person> = {
+        Business: {
+          ShortOrgUnit: ['firstLevel', ORG_UNIT_ID],
+          OrgUnit: ['firstLevelName', ORG_UNIT_ID],
+        } as Business,
+      };
+      const organigram: UnitTreeNode[] = [
+        {
+          id: 'firstLevel',
+          name: 'firstLevelName',
+          children: [{ ...nodeOfUser, depth: 1 }],
+        } as UnitTreeNode,
+      ];
+
+      expect(service.getNodeForUser(user as Person, organigram, 0)).toEqual({
+        ...nodeOfUser,
+        depth: 1,
+      });
+    }
+  ));
+
+  it('should return users OrgUnit (third level)', inject(
+    [OrganigramService],
+    (service: OrganigramService) => {
+      const user: Partial<Person> = {
+        Business: {
+          ShortOrgUnit: ['firstLevel', 'secondLevel', ORG_UNIT_ID],
+          OrgUnit: ['firstLevelName', 'secondLevelName', ORG_UNIT_ID],
+        } as Business,
+      };
+
+      const organigram: UnitTreeNode[] = [
+        {
+          id: 'firstLevel',
+          name: 'firstLevelName',
+          children: [
+            {
+              id: 'secondLevel',
+              name: 'secondLevelName',
+              children: [{ ...nodeOfUser, depth: 2 }],
+            },
+          ],
+        } as UnitTreeNode,
+      ];
+
+      expect(service.getNodeForUser(user as Person, organigram, 0)).toEqual({
+        ...nodeOfUser,
+        depth: 2,
+      });
+    }
+  ));
+
+  it('should return null if OrgUnit not found', inject(
+    [OrganigramService],
+    (service: OrganigramService) => {
+      const user: Partial<Person> = {
+        Business: {
+          ShortOrgUnit: [ORG_UNIT_ID],
+          OrgUnit: [ORG_UNIT_ID],
+        } as Business,
+      };
+
+      const organigram: UnitTreeNode[] = [];
+
+      expect(service.getNodeForUser(user as Person, organigram, 0)).toEqual(null);
+    }
+  ));
 });

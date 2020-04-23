@@ -82,29 +82,21 @@ export class OrganigramService {
     );
   }
 
-  public getNodeForUser(user: Person, nodeChilds: UnitTreeNode[], depth: number) {
-    if (user.Business.OrgUnit.length !== 0) {
+  public getNodeForUser(
+    user: Person,
+    nodeChilds: UnitTreeNode[],
+    depth: number
+  ): UnitTreeNode | null {
+    if (user.Business.ShortOrgUnit.length > depth) {
       for (const node of nodeChilds) {
-        if (node.name === user.Business.OrgUnit[depth] && depth > user.Business.OrgUnit.length) {
-          return null;
-        } else if (
-          node.name === user.Business.OrgUnit[depth] &&
-          depth < user.Business.OrgUnit.length - 1
-        ) {
-          this.getNodeForUser(user, node.children, depth + 1);
-        } else if (
-          node.name === user.Business.OrgUnit[depth] &&
-          depth === user.Business.OrgUnit.length - 1
-        ) {
-          return (this.team = node);
+        if (node.id === user.Business.ShortOrgUnit[depth] && node.depth === depth) {
+          return node;
         } else {
-          continue;
+          return this.getNodeForUser(user, node.children, depth + 1);
         }
       }
-    } else {
-      return null;
     }
-    return this.team;
+    return null;
   }
 }
 
