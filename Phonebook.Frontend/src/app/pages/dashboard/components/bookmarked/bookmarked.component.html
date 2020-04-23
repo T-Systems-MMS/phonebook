@@ -6,7 +6,9 @@
           <mat-icon>bookmark</mat-icon>
           <span
             class="navigation-name"
-            i18n="DashboardComponent|Title of the Bookmarked people section@@DashboardComponentTitleBookmark"
+            i18n="
+              DashboardComponent|Title of the Bookmarked people
+              section@@DashboardComponentTitleBookmark"
           >
             Bookmarked People
           </span>
@@ -17,19 +19,25 @@
       <mat-select [(value)]="favoriteSort" (valueChange)="changeOrder()">
         <mat-option
           value=""
-          i18n="DashboardComponent|The standard (customizable) order of the favorite cards@@DashboardComponentOrderNone"
+          i18n="
+            DashboardComponent|The standard (customizable) order of the favorite
+            cards@@DashboardComponentOrderNone"
         >
           Custom Order</mat-option
         >
         <mat-option
           value="asc"
-          i18n="DashboardComponent|The alphabetical asc order of the favorite cards@@DashboardComponentOrderAsc"
+          i18n="
+            DashboardComponent|The alphabetical asc order of the favorite
+            cards@@DashboardComponentOrderAsc"
         >
           Alphabetical asc</mat-option
         >
         <mat-option
           value="desc"
-          i18n="DashboardComponent|The alphabetical desc order of the favorite cards@@DashboardComponentOrderDesc"
+          i18n="
+            DashboardComponent|The alphabetical desc order of the favorite
+            cards@@DashboardComponentOrderDesc"
         >
           Alphabetical desc</mat-option
         >
@@ -60,7 +68,9 @@
     </div>
     <div
       *ngIf="bookmarkedPersons.length === 0"
-      i18n="DashboardComponent|Message displayed if no people are bookmarked@@DashboardComponentDescriptionBookmark"
+      i18n="
+        DashboardComponent|Message displayed if no people are
+        bookmarked@@DashboardComponentDescriptionBookmark"
     >
       You haven't bookmarked anybody yet, look for the button
       <button mat-icon-button>

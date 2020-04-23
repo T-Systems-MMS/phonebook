@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+  Router,
+} from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { Store } from '@ngxs/store';
@@ -11,7 +17,11 @@ import { catchError, map } from 'rxjs/operators';
 export class IsAuthenticatedGuard implements CanActivate {
   public defaultPath: string = '/';
 
-  constructor(private store: Store, private currentUserService: CurrentUserService, private router: Router) {}
+  constructor(
+    private store: Store,
+    private currentUserService: CurrentUserService,
+    private router: Router
+  ) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
