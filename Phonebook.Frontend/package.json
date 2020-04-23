@@ -96,7 +96,7 @@
     "protractor": "5.4.3",
     "protractor-console-plugin": "0.1.1",
     "puppeteer": "2.1.1",
-    "semantic-release": "17.0.4",
+    "semantic-release": "17.0.7",
     "semantic-release-docker-test": "1.0.2",
     "ts-node": "8.6.2",
     "tslint": "6.1.1",
