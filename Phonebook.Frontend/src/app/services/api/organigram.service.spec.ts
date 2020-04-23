@@ -66,9 +66,35 @@ describe('OrganigramService', () => {
         Supervisor: ['Berneice Goldner'],
         Costcenter: '0195',
       },
+      isLearner(): boolean {
+        return (
+          this.Type === PersonStatus.Interner_Lernender ||
+          this.Type === PersonStatus.Externer_Lernender
+        );
+      },
+      isSupervisor(): boolean {
+        return this.Role.indexOf('Leiter') >= 0;
+      },
+      isAssistent() {
+        return this.Role.indexOf('Management & Team Support') >= 0;
+      },
+      isOfStatus(status: PersonStatus) {
+        return this.Type === status;
+      },
     };
-    const organigram: UnitTreeNode[] = {};
+    const organigram: UnitTreeNode[] = [
+      {
+        id: 'SK',
+        name: 'Sports & Kids',
+        depth: 0,
+        children: [],
+        supervisors: [],
+        assistents: [],
+        employees: [],
+        learners: [],
+      },
+    ];
 
-    expect(service.getNodeForUser(user, organigram, 0).id).toEqual(['Sports & Kids']);
+    expect(service.getNodeForUser(user, organigram, 0).name).toEqual('Sports & Kids');
   }));
 });
