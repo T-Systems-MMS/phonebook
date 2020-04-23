@@ -91,12 +91,14 @@
           </mat-select>
         </mat-form-field>
         <button
-          matTooltip="Language"
+          i18n-matTooltip="
+            DashboardComponent|Layout Change Button Tooltip@@dashboardComponentLayoutChangeTooltip"
+          matTooltip="Here you can change the layout of your dashboard."
           (click)="select.open()"
           mat-icon-button
           class="changeLayoutButton"
         >
-          <mat-icon>{{activeLayout$ | async}}</mat-icon>
+          <mat-icon>{{ activeLayout$ | async }}</mat-icon>
           <mat-select
             #select
             class="selectLayout"

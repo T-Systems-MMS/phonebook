@@ -1,5 +1,5 @@
 <mat-card class="pb-margin-20">
-  <div>
+  <mat-card-header>
     <mat-card-title>
       <h1 i18n="SettingsComponent|Title of the settings page@@SettingsComponentTitle">Settings</h1>
     </mat-card-title>
@@ -9,7 +9,7 @@
     >
       Change the theme or language of this application.
     </mat-card-subtitle>
-  </div>
+  </mat-card-header>
 
   <mat-card-content class="settings">
     <div class="pb-flex-1">
@@ -20,9 +20,8 @@
       >
         General
       </h2>
-      <mat-card-subtitle
-        i18n="SettingsComponent|Language SubTitle@@SettingsComponentSubTitleLanguage"
-        >Language</mat-card-subtitle
+      <h4 i18n="SettingsComponent|Language SubTitle@@SettingsComponentSubTitleLanguage"
+        >Language</h4
       >
       <mat-list>
         <mat-list-item>
@@ -36,9 +35,8 @@
           </mat-form-field>
         </mat-list-item>
       </mat-list>
-      <mat-card-subtitle
-        i18n="SettingsComponent|Color Theme SubTitle@@SettingsComponentSubTitleColorTheme"
-        >Color Theme</mat-card-subtitle
+      <h4 i18n="SettingsComponent|Color Theme SubTitle@@SettingsComponentSubTitleColorTheme"
+        >Color Theme</h4
       >
       <mat-list>
         <mat-list-item>
