@@ -255,15 +255,7 @@
               <ng-container i18n="@@ColumnTitleOrgUnit">
                 Organization Unit
               </ng-container>
-              <a
-                mat-button
-                [routerLink]="[
-                  '/organigram',
-                  person.Business.ShortOrgUnit[0],
-                  person.Business.ShortOrgUnit[1],
-                  person.Business.ShortOrgUnit[2]
-                ]"
-              >
+              <a mat-button [routerLink]="organigramLink">
                 <span
                   class="mat-small"
                   i18n="
