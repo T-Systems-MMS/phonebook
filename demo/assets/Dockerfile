@@ -1,4 +1,4 @@
-FROM nginx:1.17.9-alpine@sha256:ef2b6cd6fdfc6d0502b77710b27f7928a5e29ab5cfae398824e5dcfbbb7a75e2
+FROM nginx:1.17.10-alpine@sha256:62a9ebe5ddcb7e60ebb3318db58b327035796086536aa770b0f196ac22873767
 WORKDIR /etc/nginx
 
 RUN rm -r ./*
