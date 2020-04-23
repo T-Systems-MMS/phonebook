@@ -43,14 +43,6 @@ export class DialogService {
         this.dialog.open(DialogsComponent, dialogConfig);
         break;
 
-      case 'feedback':
-        dialogConfig.data = {
-          title: $localize`:Title of the Feedback Dialog@@FeedbackDialogTitle:Leave Feedback, report a Bug or suggest a new Idea`,
-          content: new DialogItem(FeedbackDrawerSheetComponent),
-        };
-        this.dialog.open(DialogsComponent, dialogConfig);
-        break;
-
       case 'notification':
         dialogConfig.data = {
           title: $localize`:Title of the Notification Dialog@@NotificationDialogTitle:Welcome to the new Phonebook!`,

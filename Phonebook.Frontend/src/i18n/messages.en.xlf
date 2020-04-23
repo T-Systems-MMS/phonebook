@@ -513,12 +513,14 @@
         <note priority="1" from="meaning">FloorComponent</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogTitle" datatype="html">
-        <source> Configure Table Columns </source>
-        <target state="final"> Configure Table Columns </target>
-        <note priority="1" from="description">Title for Table Column Settings</note>
-        <note priority="1" from="meaning">TableSettingsDialog</note>
+        <source>Table Settings</source>
+        <target state="final">Table Settings</target>
+        <note priority="1" from="description">Title of the Table Settings Dialog</note>
+        
       </trans-unit><trans-unit id="GeneralResetButton" datatype="html">
-        <source> Reset </source><target state="final"> Reset </target>
+        <source> Reset
+</source><target state="final"> Reset
+</target>
       <note from="description" priority="1">Button for resetting something</note><note from="meaning" priority="1">GeneralResetButton</note></trans-unit><trans-unit id="GeneralUndoButton" datatype="html">
         <source> Undo </source><target state="final"> Undo </target>
       <note from="description" priority="1">Button for undoing something</note><note from="meaning" priority="1">GeneralUndoButton</note></trans-unit><trans-unit id="DashboardComponentDescriptionRecent" datatype="html">
@@ -629,15 +631,21 @@
         <note priority="1" from="description">Room Plan description</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="WelcomeCookieNotice" datatype="html">
-        <source> This site uses cookies to ensure the basic functionality of the app. </source><target state="final"> This site uses cookies to ensure the basic functionality of the app. </target>
+        <source> This site uses cookies to ensure the basic functionality of the app.
+</source><target state="final"> This site uses cookies to ensure the basic functionality of the app.
+</target>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
-        <source> You deactivated cookies and keep getting those dialogs? </source><target state="final"> You deactivated cookies and keep getting those dialogs? </target>
+        <source> You deactivated cookies and keep getting those dialogs?
+</source><target state="final"> You deactivated cookies and keep getting those dialogs?
+</target>
         <note priority="1" from="description">Annoyed by cookies notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
-        <source> Deactivate startup-dialogs! </source><target state="final"> Deactivate startup-dialogs! </target>
+        <source> Deactivate startup-dialogs!
+</source><target state="final"> Deactivate startup-dialogs!
+</target>
         <note priority="1" from="description">Deactivate Startup Dialogs</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationComponentSectionCookies" datatype="html">
@@ -661,12 +669,16 @@
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogDescription" datatype="html">
-        <source> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right. </source>
-        <target state="final"> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right. </target>
+        <source> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right.
+</source>
+        <target state="final"> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right.
+</target>
         <note priority="1" from="description">Description for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit><trans-unit id="TableSettingsDialogNote" datatype="html">
-        <source> Note: You can only search for displayed columns. </source><target state="final"> Note: You can only search for displayed columns. </target>
+        <source> Note: You can only search for displayed columns.
+</source><target state="final"> Note: You can only search for displayed columns.
+</target>
         <note priority="1" from="description">Note for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
@@ -681,10 +693,6 @@
         <target state="final"> Not displayed Columns: </target>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
-      </trans-unit><trans-unit id="GeneralCloseButton" datatype="html">
-        <source>Close</source><target state="final">Close</target>
-        <note priority="1" from="description">Button for closing something</note>
-        <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source> <x id="INTERPOLATION"/> Results </source><target state="final"> <x id="INTERPOLATION"/> Results </target>
         <note priority="1" from="description">Result Count</note>
@@ -742,15 +750,6 @@
       </trans-unit><trans-unit id="DataPersonFax" datatype="html">
         <source> Fax </source><target state="final"> Fax </target>
         <note priority="1" from="description">Label for Person.Fax data</note>
-        <note priority="1" from="meaning">Datapoint</note>
-      </trans-unit><trans-unit id="DataPersonMoney" datatype="html">
-        <source> Salary </source><target state="final"> Salary </target>
-        <note priority="1" from="description">Label for Person.Money data</note>
-        <note priority="1" from="meaning">Datapoint</note>
-      </trans-unit><trans-unit id="UserDetailComponentAprilFoolDayTooltip" datatype="html">
-        <source>Happy April Fools' Day.</source><target state="final">Happy April Fools' Day.</target>
-        <note priority="1" from="description">Tooltip for april fools' day information
-              Information</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="UserDetailComponentSubTitleFurtherInformation" datatype="html">
         <source> Further Information </source><target state="final"> Further Information </target>
@@ -960,6 +959,10 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <target state="final">Couldn't copy to the clipboard, something went wrong. Try again.</target>
         <note priority="1" from="description">Message displayed if something was not copied succesfully</note>
         <note priority="1" from="meaning">ErrorMessageCopy</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
+        <source> Leave Feedback, report a Bug or suggest a new Idea </source><target state="final"> Leave Feedback, report a Bug or suggest a new Idea </target>
+        <note priority="1" from="description">Title of the Feedback Drawer</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentErrorWrongFileType" datatype="html">
         <source>The File Type is not supported.</source>

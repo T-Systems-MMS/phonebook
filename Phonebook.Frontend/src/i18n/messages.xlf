@@ -16,11 +16,6 @@
         <note priority="1" from="description">Message to inform user that no dialogs will be shown</note>
         <note priority="1" from="meaning">Warning no dialogs are shown</note>
       </trans-unit>
-      <trans-unit id="GeneralCloseButton" datatype="html">
-        <source>Close</source>
-        <note priority="1" from="description">Button for closing something</note>
-        <note priority="1" from="meaning">GeneralCloseButton</note>
-      </trans-unit>
       <trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">
         <source> Change Profile Picture
 </source>
@@ -158,18 +153,21 @@
       results</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
-      <trans-unit id="TableSettingsDialogTitle" datatype="html">
-        <source> Configure Table Columns </source>
-        <note priority="1" from="description">Title for Table Column Settings</note>
-        <note priority="1" from="meaning">TableSettingsDialog</note>
+      <trans-unit id="GeneralResetButton" datatype="html">
+        <source> Reset
+</source>
+        <note priority="1" from="description">Button for resetting something</note>
+        <note priority="1" from="meaning">GeneralResetButton</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogDescription" datatype="html">
-        <source> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right. </source>
+        <source> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right.
+</source>
         <note priority="1" from="description">Description for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogNote" datatype="html">
-        <source> Note: You can only search for displayed columns. </source>
+        <source> Note: You can only search for displayed columns.
+</source>
         <note priority="1" from="description">Note for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
@@ -182,11 +180,6 @@
         <source> Not displayed Columns: </source>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
-      </trans-unit>
-      <trans-unit id="GeneralResetButton" datatype="html">
-        <source> Reset </source>
-        <note priority="1" from="description">Button for resetting something</note>
-        <note priority="1" from="meaning">GeneralResetButton</note>
       </trans-unit>
       <trans-unit id="DashboardComponentTitleRecent" datatype="html">
         <source> Recent People </source>
@@ -349,6 +342,10 @@
       <trans-unit id="IncorrectUserInformationDialogTitle" datatype="html">
         <source>Incorrect User Information</source>
         <note priority="1" from="description">Title of the Incorrect User Information Dialog</note>
+      </trans-unit>
+      <trans-unit id="TableSettingsDialogTitle" datatype="html">
+        <source>Table Settings</source>
+        <note priority="1" from="description">Title of the Table Settings Dialog</note>
       </trans-unit>
       <trans-unit id="GeneralLanguageGerman" datatype="html">
         <source>German</source>
@@ -572,17 +569,6 @@
         <note priority="1" from="description">Label for Person.Fax data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
-      <trans-unit id="UserDetailComponentAprilFoolDayTooltip" datatype="html">
-        <source>Happy April Fools&apos; Day.</source>
-        <note priority="1" from="description">Tooltip for april fools&apos; day information
-              Information</note>
-        <note priority="1" from="meaning">Datapoint</note>
-      </trans-unit>
-      <trans-unit id="DataPersonMoney" datatype="html">
-        <source> Salary </source>
-        <note priority="1" from="description">Label for Person.Money data</note>
-        <note priority="1" from="meaning">Datapoint</note>
-      </trans-unit>
       <trans-unit id="UserDetailComponentSubTitleFurtherInformation" datatype="html">
         <source> Further Information </source>
         <note priority="1" from="description">Subtitle for Further
@@ -758,17 +744,20 @@
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeCookieNotice" datatype="html">
-        <source> This site uses cookies to ensure the basic functionality of the app. </source>
+        <source> This site uses cookies to ensure the basic functionality of the app.
+</source>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
-        <source> You deactivated cookies and keep getting those dialogs? </source>
+        <source> You deactivated cookies and keep getting those dialogs?
+</source>
         <note priority="1" from="description">Annoyed by cookies notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
-        <source> Deactivate startup-dialogs! </source>
+        <source> Deactivate startup-dialogs!
+</source>
         <note priority="1" from="description">Deactivate Startup Dialogs</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
@@ -843,6 +832,11 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </source>
         <source>Couldn&apos;t copy to the clipboard, something went wrong. Try again.</source>
         <note priority="1" from="description">Message displayed if something was not copied succesfully</note>
         <note priority="1" from="meaning">ErrorMessageCopy</note>
+      </trans-unit>
+      <trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
+        <source> Leave Feedback, report a Bug or suggest a new Idea </source>
+        <note priority="1" from="description">Title of the Feedback Drawer</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit>
       <trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubFeature" datatype="html">
         <source>Suggest an idea or a new feature</source>

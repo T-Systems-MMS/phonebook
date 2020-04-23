@@ -601,13 +601,14 @@
         <note priority="1" from="meaning">FloorComponent</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogTitle" datatype="html">
-        <source> Configure Table Columns </source>
+        <source>Table Settings</source>
         <target state="translated">Tabellenspalten konfigurieren</target>
-        <note priority="1" from="description">Title for Table Column Settings</note>
-        <note priority="1" from="meaning">TableSettingsDialog</note>
+        <note priority="1" from="description">Title of the Table Settings Dialog</note>
+        
       </trans-unit>
       <trans-unit id="GeneralResetButton" datatype="html">
-        <source> Reset </source>
+        <source> Reset
+</source>
         <target state="translated">Zurücksetzen</target>
       <note from="description" priority="1">Button for resetting something</note><note from="meaning" priority="1">GeneralResetButton</note></trans-unit><trans-unit id="GeneralUndoButton" datatype="html">
         <source> Undo </source><target state="translated"> Rückgängig </target>
@@ -792,19 +793,22 @@
         <note priority="1" from="description">Room Plan description</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="WelcomeCookieNotice" datatype="html">
-        <source> This site uses cookies to ensure the basic functionality of the app. </source><target state="translation">
+        <source> This site uses cookies to ensure the basic functionality of the app.
+</source><target state="translation">
       Diese Seite nutzt Cookies um die Grundfunktionalität der App sicherzustellen.
     </target>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
-        <source> You deactivated cookies and keep getting those dialogs? </source><target state="translated">
+        <source> You deactivated cookies and keep getting those dialogs?
+</source><target state="translated">
         Du hast Cookies deaktiviert und dir werden diese Dialoge ständig angezeigt?
       </target>
         <note priority="1" from="description">Annoyed by cookies notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit><trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
-        <source> Deactivate startup-dialogs! </source><target state="translated">
+        <source> Deactivate startup-dialogs!
+</source><target state="translated">
         Start-Dialoge deaktivieren!
       </target>
         <note priority="1" from="description">Deactivate Startup Dialogs</note>
@@ -843,13 +847,15 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogDescription" datatype="html">
-        <source> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right. </source>
+        <source> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right.
+</source>
         <target state="translated">Ziehe und lege die Spalten in der Reihenfolge ab die dir gefällt. Du kannst sie auch ausblenden indem du sie auf die rechte Seite ziehst.
         </target>
         <note priority="1" from="description">Description for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit><trans-unit id="TableSettingsDialogNote" datatype="html">
-        <source> Note: You can only search for displayed columns. </source><target state="translated">
+        <source> Note: You can only search for displayed columns.
+</source><target state="translated">
     Notiz: Du kannst nur nach sichtbaren Spalten suchen.
   </target>
         <note priority="1" from="description">Note for Table Column Settings</note>
@@ -866,12 +872,6 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         <target state="translated">Ausgeblendete Spalten:</target>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
-      </trans-unit><trans-unit id="GeneralCloseButton" datatype="html">
-        <source>Close</source><target state="translated">
-    Schließen
-  </target>
-        <note priority="1" from="description">Button for closing something</note>
-        <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source> <x id="INTERPOLATION"/> Results </source><target state="translated">
       <x id="INTERPOLATION" equiv-text="{{dataSource.allData.length}}"/> Ergebnisse
@@ -931,15 +931,6 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
       </trans-unit><trans-unit id="DataPersonFax" datatype="html">
         <source> Fax </source><target state="translated">Fax</target>
         <note priority="1" from="description">Label for Person.Fax data</note>
-        <note priority="1" from="meaning">Datapoint</note>
-      </trans-unit><trans-unit id="DataPersonMoney" datatype="html">
-        <source> Salary </source><target state="translated">Gehalt</target>
-        <note priority="1" from="description">Label for Person.Money data</note>
-        <note priority="1" from="meaning">Datapoint</note>
-      </trans-unit><trans-unit id="UserDetailComponentAprilFoolDayTooltip" datatype="html">
-        <source>Happy April Fools' Day.</source><target state="translated">Einen schönen ersten April.</target>
-        <note priority="1" from="description">Tooltip for april fools' day information
-              Information</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit><trans-unit id="UserDetailComponentSubTitleFurtherInformation" datatype="html">
         <source> Further Information </source><target state="translated">Weitere Informationen</target>
@@ -1171,6 +1162,10 @@ Link zu deinem Profil: </target>
         <target state="translated">Es konnte nichts in die Zwischenablage kopiert werden. Probier es noch einmal.</target>
         <note priority="1" from="description">Message displayed if something was not copied succesfully</note>
         <note priority="1" from="meaning">ErrorMessageCopy</note>
+      </trans-unit><trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
+        <source> Leave Feedback, report a Bug or suggest a new Idea </source><target state="new"> Leave Feedback, report a Bug or suggest a new Idea </target>
+        <note priority="1" from="description">Title of the Feedback Drawer</note>
+        <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentErrorWrongFileType" datatype="html">
         <source>The File Type is not supported.</source>
