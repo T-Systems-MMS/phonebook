@@ -20,6 +20,7 @@ export const ColumnDefinitions: {
   status: Readonly<Column>;
   getAll(): Readonly<Column>[];
   getDefault(): Readonly<Column>[];
+  getSmall(): Readonly<Column>[];
   getAllFilterableColumns(): Readonly<Column>[];
   getAllSortableColumns(): Readonly<Column>[];
   getAllFullMatchFilterableColumns(): Readonly<Column>[];
@@ -309,6 +310,16 @@ export const ColumnDefinitions: {
       ColumnDefinitions.orgUnit,
       ColumnDefinitions.room,
       ColumnDefinitions.city,
+      ColumnDefinitions.role,
+    ];
+  },
+  getSmall: () => {
+    return [
+      ColumnDefinitions.picture,
+      ColumnDefinitions.id,
+      ColumnDefinitions.fullname,
+      ColumnDefinitions.email,
+      ColumnDefinitions.room,
       ColumnDefinitions.role,
     ];
   },

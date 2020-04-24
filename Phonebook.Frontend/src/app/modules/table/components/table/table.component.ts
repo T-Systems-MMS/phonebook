@@ -10,7 +10,14 @@ import { PersonsDataSource } from 'src/app/modules/table/PersonsDataSource';
 import { PersonService } from 'src/app/services/api/person.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PhonebookSortDirection, TableSort } from 'src/app/shared/models';
-import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app/shared/states';
+import {
+  SearchState,
+  SetTableResultCount,
+  TableState,
+  UpdateUrl,
+  SmallTableState,
+} from 'src/app/shared/states';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-table',
@@ -19,10 +26,14 @@ import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app
   host: { class: 'pb-fill-parent' },
 })
 export class TableComponent implements OnInit, OnDestroy {
+  public sizeSmall: boolean = false;
   public get displayedColumns(): string[] {
-    return this.store.selectSnapshot(TableState.visibleColumns).map((col) => col.id);
+    if (this.sizeSmall === true) {
+      return this.store.selectSnapshot(SmallTableState.visibleColumns).map((col) => col.id);
+    } else {
+      return this.store.selectSnapshot(TableState.visibleColumns).map((col) => col.id);
+    }
   }
-
   public dataSource: PersonsDataSource = new PersonsDataSource([]);
   public onTop: boolean = true;
   public columns: typeof ColumnDefinitions = ColumnDefinitions;
@@ -48,10 +59,22 @@ export class TableComponent implements OnInit, OnDestroy {
     private router: Router,
     private personService: PersonService,
     public dialog: MatDialog,
-    public store: Store
+    public store: Store,
+    public breakpointObserver: BreakpointObserver
   ) {}
 
   public ngOnInit() {
+    this.breakpointObserver
+      .observe('(max-width: 900px)')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe((result) => {
+        this.sizeSmall = result.matches;
+        if (this.sizeSmall) {
+          return this.sizeSmall === true;
+        } else {
+          return this.sizeSmall === false;
+        }
+      });
     this.personService.getAll().subscribe((persons) => {
       this.dataSource = new PersonsDataSource(persons);
 

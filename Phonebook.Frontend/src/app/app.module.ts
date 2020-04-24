@@ -47,6 +47,7 @@ import {
   LastPersonsState,
   SearchState,
   TableState,
+  SmallTableState,
 } from 'src/app/shared/states';
 import { environment } from 'src/environments/environment';
 // Services
@@ -80,14 +81,29 @@ declare const require;
     FeedbackDrawerModule,
     MatBadgeModule,
     NgxsModule.forRoot(
-      [AppState, BookmarksState, LastPersonsState, CommonPersonsState, SearchState, TableState],
+      [
+        AppState,
+        BookmarksState,
+        LastPersonsState,
+        CommonPersonsState,
+        SearchState,
+        TableState,
+        SmallTableState,
+      ],
       {
         // TODO: Fix https://github.com/T-Systems-MMS/phonebook/issues/95 first.
         // developmentMode: !environment.production
       }
     ),
     NgxsStoragePluginModule.forRoot({
-      key: ['appstate', 'bookmarks', 'commonpersons', 'lastpersons', 'tablestate'],
+      key: [
+        'appstate',
+        'bookmarks',
+        'commonpersons',
+        'lastpersons',
+        'tablestate',
+        'smalltablestate',
+      ],
     }),
     NgxsRouterPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),

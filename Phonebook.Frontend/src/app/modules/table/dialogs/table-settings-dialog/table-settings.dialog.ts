@@ -1,9 +1,17 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Column } from 'src/app/shared/models';
-import { ResetTableSettings, SetVisibleTableColumns, TableState } from 'src/app/shared/states';
+import {
+  ResetTableSettings,
+  SetVisibleTableColumns,
+  SetVisibleSmallTableColumns,
+  TableState,
+  SmallTableState,
+} from 'src/app/shared/states';
+import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-table-settings-dialog',
@@ -11,16 +19,30 @@ import { ResetTableSettings, SetVisibleTableColumns, TableState } from 'src/app/
   styleUrls: ['./table-settings.dialog.scss'],
 })
 export class TableSettingsDialog implements OnInit {
+  public sizeSmall: boolean;
   public notDisplayedColumns: Column[] = [];
-  public displayedColumns: Column[] = this.store.selectSnapshot(TableState.visibleColumns);
+  public displayedColumns: Column[] = [];
 
-  constructor(public store: Store) {}
+  constructor(public store: Store, public breakpointObserver: BreakpointObserver) {}
 
   public ngOnInit() {
+    this.breakpointObserver
+      .observe('(max-width: 900px)')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe((result) => {
+        this.sizeSmall = result.matches;
+        if (this.sizeSmall) {
+          this.displayedColumns = this.store.selectSnapshot(SmallTableState.visibleColumns);
+          return this.sizeSmall === true;
+        } else {
+          this.displayedColumns = this.store.selectSnapshot(TableState.visibleColumns);
+          return this.sizeSmall === false;
+        }
+      });
     this.updateNotDisplayedColumns();
   }
 
-  private updateNotDisplayedColumns() {
+  public updateNotDisplayedColumns() {
     this.notDisplayedColumns = ColumnDefinitions.getAll().filter((col) => {
       return !this.displayedColumns.some((column) => {
         return col.id === column.id;
@@ -30,7 +52,11 @@ export class TableSettingsDialog implements OnInit {
 
   public resetTableSettings() {
     this.store.dispatch(new ResetTableSettings());
-    this.displayedColumns = this.store.selectSnapshot(TableState.visibleColumns);
+    if (this.sizeSmall === true) {
+      this.displayedColumns = this.store.selectSnapshot(SmallTableState.visibleColumns);
+    } else {
+      this.displayedColumns = this.store.selectSnapshot(TableState.visibleColumns);
+    }
     this.updateNotDisplayedColumns();
   }
 
@@ -45,6 +71,11 @@ export class TableSettingsDialog implements OnInit {
         event.currentIndex
       );
     }
-    this.store.dispatch(new SetVisibleTableColumns(this.displayedColumns));
+    if (this.sizeSmall === true) {
+      return this.store.dispatch(new SetVisibleSmallTableColumns(this.displayedColumns));
+    } else {
+      return this.store.dispatch(new SetVisibleTableColumns(this.displayedColumns));
+    }
   }
+  public ngOnDestroy() {}
 }
