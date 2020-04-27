@@ -131,10 +131,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public getLayoutName(layout: Layout): string {
     switch (layout) {
-      case Layout.view_module: {
+      case Layout.medium_cards: {
         return $localize`:NavigationComponent|View Mode - MediumCards@@NavigationComponentViewModeMediumCards:Medium Cards`;
       }
-      case Layout.view_stream: {
+      case Layout.small_cards: {
         return $localize`:NavigationComponent|View Mode - SmallCards@@NavigationComponentViewModeSmallCards:Small Cards`;
       }
       default:

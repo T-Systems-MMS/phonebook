@@ -117,7 +117,7 @@
         class="pb-flex-row pb-bookmarks-list"
         [ngSwitch]="activeLayout$ | async"
       >
-        <ng-container *ngSwitchCase="layout.view_module">
+        <ng-container *ngSwitchCase="layout.medium_cards">
           <div
             *ngFor="let person of bookmarkedPersons; index as i"
             cdkDropList
@@ -139,7 +139,7 @@
             ></app-user-small-card>
           </div>
         </ng-container>
-        <ng-container *ngSwitchCase="layout.view_stream">
+        <ng-container *ngSwitchCase="layout.small_cards">
           <div
             *ngFor="let person of bookmarkedPersons; index as i"
             cdkDropList

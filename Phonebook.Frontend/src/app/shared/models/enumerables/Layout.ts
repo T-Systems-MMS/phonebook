@@ -1,4 +1,4 @@
 export enum Layout {
-  view_stream = 'view_stream',
-  view_module = 'view_module',
+  medium_cards = 'view_stream',
+  small_cards = 'view_module',
 }

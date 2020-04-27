@@ -63,7 +63,7 @@ export interface AppStateModel {
     displayedNotificationVersion: 0,
     sendFeedback: null,
     activeTheme: Theme.magenta_light_theme,
-    activeLayout: Layout.view_module,
+    activeLayout: Layout.medium_cards,
     recentPeopleDrawer: true,
   },
 })
