@@ -5,10 +5,9 @@ import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Column } from 'src/app/shared/models';
 import {
   ResetTableSettings,
-  SetVisibleTableColumns,
+  SetVisibleBigTableColumns,
   SetVisibleSmallTableColumns,
   TableState,
-  SmallTableState,
 } from 'src/app/shared/states';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -32,14 +31,14 @@ export class TableSettingsDialog implements OnInit {
       .subscribe((result) => {
         this.sizeSmall = result.matches;
         if (this.sizeSmall) {
-          this.displayedColumns = this.store.selectSnapshot(SmallTableState.visibleColumns);
-          return this.sizeSmall === true;
+          this.displayedColumns = this.store.selectSnapshot(TableState.visibleSmallColumns);
+          this.sizeSmall === true;
         } else {
-          this.displayedColumns = this.store.selectSnapshot(TableState.visibleColumns);
-          return this.sizeSmall === false;
+          this.displayedColumns = this.store.selectSnapshot(TableState.visibleBigColumns);
+          this.sizeSmall === false;
         }
+        this.updateNotDisplayedColumns();
       });
-    this.updateNotDisplayedColumns();
   }
 
   public updateNotDisplayedColumns() {
@@ -53,9 +52,9 @@ export class TableSettingsDialog implements OnInit {
   public resetTableSettings() {
     this.store.dispatch(new ResetTableSettings());
     if (this.sizeSmall === true) {
-      this.displayedColumns = this.store.selectSnapshot(SmallTableState.visibleColumns);
+      this.displayedColumns = this.store.selectSnapshot(TableState.visibleSmallColumns);
     } else {
-      this.displayedColumns = this.store.selectSnapshot(TableState.visibleColumns);
+      this.displayedColumns = this.store.selectSnapshot(TableState.visibleBigColumns);
     }
     this.updateNotDisplayedColumns();
   }
@@ -74,7 +73,7 @@ export class TableSettingsDialog implements OnInit {
     if (this.sizeSmall === true) {
       return this.store.dispatch(new SetVisibleSmallTableColumns(this.displayedColumns));
     } else {
-      return this.store.dispatch(new SetVisibleTableColumns(this.displayedColumns));
+      return this.store.dispatch(new SetVisibleBigTableColumns(this.displayedColumns));
     }
   }
   public ngOnDestroy() {}

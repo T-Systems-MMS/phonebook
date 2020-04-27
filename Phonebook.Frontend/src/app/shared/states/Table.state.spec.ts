@@ -2,7 +2,7 @@ import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
-import { SetVisibleTableColumns, TableState } from 'src/app/shared/states';
+import { SetVisibleBigTableColumns, TableState } from 'src/app/shared/states';
 import { SetTableResultCount } from 'src/app/shared/states/Table.state';
 
 describe('[States] Table', () => {
@@ -18,14 +18,16 @@ describe('[States] Table', () => {
   // Selectors
   it('it should return search Filters', () => {
     expect(
-      TableState.visibleColumns({
-        visibleColumns: [],
+      TableState.visibleBigColumns({
+        visibleBigColumns: [],
+        visibleSmallColumns: [],
         resultCount: 0,
       })
     ).toEqual([]);
     expect(
-      TableState.visibleColumns({
-        visibleColumns: [ColumnId.building],
+      TableState.visibleBigColumns({
+        visibleBigColumns: [ColumnId.building],
+        visibleSmallColumns: [ColumnId.building],
         resultCount: 0,
       })
     ).toEqual([ColumnDefinitions.building]);
@@ -34,13 +36,15 @@ describe('[States] Table', () => {
   it('it should return search Table Result Count', () => {
     expect(
       TableState.resultCount({
-        visibleColumns: [],
+        visibleBigColumns: [],
+        visibleSmallColumns: [],
         resultCount: 0,
       })
     ).toEqual(0);
     expect(
       TableState.resultCount({
-        visibleColumns: [ColumnId.building],
+        visibleBigColumns: [ColumnId.building],
+        visibleSmallColumns: [ColumnId.building],
         resultCount: 15,
       })
     ).toEqual(15);
@@ -49,7 +53,7 @@ describe('[States] Table', () => {
   // Actions
   it('it sets Visible Tables Columns', () => {
     expect(
-      store.selectSnapshot((storeSnapshot) => storeSnapshot.tablestate.visibleColumns)
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.tablestate.visibleBigColumns)
     ).toEqual([
       ColumnId.picture,
       ColumnId.id,
@@ -62,13 +66,15 @@ describe('[States] Table', () => {
       ColumnId.city,
       ColumnId.role,
     ]);
-    store.dispatch(new SetVisibleTableColumns([ColumnDefinitions.building]));
+    store.dispatch(new SetVisibleBigTableColumns([ColumnDefinitions.building]));
     expect(
-      store.selectSnapshot((storeSnapshot) => storeSnapshot.tablestate.visibleColumns)
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.tablestate.visibleBigColumns)
     ).toEqual([ColumnId.building]);
-    store.dispatch(new SetVisibleTableColumns([ColumnDefinitions.role, ColumnDefinitions.picture]));
+    store.dispatch(
+      new SetVisibleBigTableColumns([ColumnDefinitions.role, ColumnDefinitions.picture])
+    );
     expect(
-      store.selectSnapshot((storeSnapshot) => storeSnapshot.tablestate.visibleColumns)
+      store.selectSnapshot((storeSnapshot) => storeSnapshot.tablestate.visibleBigColumns)
     ).toEqual([ColumnId.role, ColumnId.picture]);
   });
 
