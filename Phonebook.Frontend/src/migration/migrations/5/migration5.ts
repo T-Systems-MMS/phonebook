@@ -32,6 +32,8 @@ export const migration5: Migration = {
       }
       if (tableState.visibleColumns) {
         const updatedTableState = {
+          ...tableState,
+          visibleColumns: undefined,
           visibleBigColumns: tableState.visibleColumns,
           visibleSmallColumns: ['picture', 'id', 'fullname', 'email', 'room', 'role'],
         };
