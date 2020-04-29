@@ -25,13 +25,14 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
             this.orgUnitStructur = orgUnitStructur;
             if (forOwners)
             {
+                var newHeadOf = orgUnitStructur.ElementAt(orgUnitStructur.Count - 2).HeadOfOrgUnit;
                 var changeOwner = orgUnitStructur.Last();
-                changeOwner.HeadOfOrgUnit = new Models.Person();
-
+                changeOwner.HeadOfOrgUnit = newHeadOf;
+                changeOwner.HeadOfOrgUnitId = newHeadOf?.Id;
             }
         }
         public IEnumerable<string?>? ShortBusinessunitTeamassistent { get { return orgUnit?.OrgUnitToFunctions?.Where(d => d.RoleName == "TA")?.Select(d => d?.Person?.ShortName); } }
-        public IEnumerable<string?>? ShortSupervisor { get { return new string[] { orgUnitStructur?.Where(d => d?.Id != 110 && !string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.ShortName)).Select(d => d?.HeadOfOrgUnit?.ShortName).LastOrDefault() }; } }
+        public IEnumerable<string?>? ShortSupervisor { get { return new string?[] { orgUnitStructur?.Where(d => d?.Id != 110 && !string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.ShortName)).Select(d => d?.HeadOfOrgUnit?.ShortName).LastOrDefault() }; } }
         public IEnumerable<string?>? ShortOrgUnit { get { return orgUnitStructur?.Where(d => d?.Id != 110 && string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.ShortName) == false).Select(d => d?.ShortName); } }
         public IEnumerable<string?>? OrgUnit { get { return orgUnitStructur?.Where(d => d?.Id != 110 && d?.HeadOfOrgUnit != null).Select(d => d?.Name); } }
         public IEnumerable<string> BusinessunitTeamassistent { get { return orgUnit.OrgUnitToFunctions.Where(d => d.RoleName == "TA").Select(d => $"{d.Person.FirstName} {d.Person.LastName}"); } }

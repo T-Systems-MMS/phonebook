@@ -11,7 +11,7 @@ xdescribe('RoomTreeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [RoomTreeComponent],
       providers: [{ provide: RoomService, useClass: MockRoomService }],
-      imports: []
+      imports: [],
     }).compileComponents();
   }));
 
@@ -35,8 +35,8 @@ class MockRoomService {
         type: BuildingPart.building,
         data: new Room('', '', 0, '', '', '', '', '', ''),
         children: [],
-        path: []
-      }
+        path: [],
+      },
     ];
   }
 }

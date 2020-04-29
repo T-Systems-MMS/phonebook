@@ -11,6 +11,7 @@ mat-drawer-container {
 
 .pb-bookmarked {
   height: 100%;
+  margin-right: 50px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -92,4 +93,18 @@ mat-drawer-container {
 
 .cdk-drag-animating {
   transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+::ng-deep .selectLayout div.mat-select-arrow-wrapper {
+  display: none;
+}
+
+::ng-deep .selectLayout.mat-select {
+  display: inline;
+}
+
+.changeLayoutButton {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
 }

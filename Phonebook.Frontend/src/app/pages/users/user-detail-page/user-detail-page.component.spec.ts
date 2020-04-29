@@ -3,14 +3,13 @@ import { MockComponent } from 'ng-mocks';
 import { UserDetailComponent } from 'src/app/shared/components/user/user-detail/user-detail.component';
 import { UserDetailPageComponent } from './user-detail-page.component';
 
-
 xdescribe('UserDetailPageComponent', () => {
   let component: UserDetailPageComponent;
   let fixture: ComponentFixture<UserDetailPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserDetailPageComponent, MockComponent(UserDetailComponent)]
+      declarations: [UserDetailPageComponent, MockComponent(UserDetailComponent)],
     }).compileComponents();
   }));
 

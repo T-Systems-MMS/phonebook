@@ -4,7 +4,6 @@ import { FloorplanService } from 'src/app/services/floorplan.service';
 import { RoomPlanModule } from 'src/app/shared/components/room-plan/room-plan.module';
 import { RoomPlanComponent } from './room-plan.component';
 
-
 describe('RoomPlanComponent', () => {
   let component: RoomPlanComponent;
   let fixture: ComponentFixture<RoomPlanComponent>;
@@ -12,7 +11,7 @@ describe('RoomPlanComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RoomPlanModule],
-      providers: [{ provide: FloorplanService, useClass: MockFloorplanService }]
+      providers: [{ provide: FloorplanService, useClass: MockFloorplanService }],
     }).compileComponents();
   }));
 

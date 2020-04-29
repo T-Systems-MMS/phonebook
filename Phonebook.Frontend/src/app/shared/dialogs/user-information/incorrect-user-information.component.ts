@@ -8,7 +8,7 @@ import { MailService } from 'src/app/services/mail.service';
 @Component({
   selector: 'app-user-information',
   templateUrl: './incorrect-user-information.component.html',
-  styleUrls: ['./incorrect-user-information.component.scss']
+  styleUrls: ['./incorrect-user-information.component.scss'],
 })
 export class IncorrectUserInformationComponent implements OnInit {
   public currentUserId: string = '';
@@ -23,10 +23,10 @@ export class IncorrectUserInformationComponent implements OnInit {
 
   public ngOnInit() {
     this.currentUserService.getCurrentUserId().subscribe(
-      id => {
+      (id) => {
         this.currentUserId = id;
       },
-      error => {
+      (error) => {
         // do nothing, as the id will never be ''
       }
     );

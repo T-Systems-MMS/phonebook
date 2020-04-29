@@ -22,10 +22,10 @@ xdescribe('PageInformationComponent', () => {
         MockComponent({ selector: 'mat-card-header' }),
         MockComponent({ selector: 'mat-card-content' }),
         MockComponent({ selector: 'mat-card-subtitle' }),
-        MockDirective(FeedbackDrawerDirective)
+        MockDirective(FeedbackDrawerDirective),
       ],
       providers: [WINDOW_PROVIDER],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
 

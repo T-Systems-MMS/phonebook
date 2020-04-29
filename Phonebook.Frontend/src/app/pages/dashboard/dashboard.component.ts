@@ -6,24 +6,26 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 import {
   AppState,
   BookmarksState,
+  SetLayout,
   SetRecentPeopleDrawer,
   ToggleBookmark,
-  UpdateBookmarkOrder
+  UpdateBookmarkOrder,
 } from 'src/app/shared/states';
 import {
   LastPersonsState,
   RemoveFromLastPersons,
   ResetLastPersons,
-  SetLastPersons
+  SetLastPersons,
 } from 'src/app/shared/states/LastPersons.state';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  host: { class: 'pb-expand' }
+  host: { class: 'pb-expand' },
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   @Select(LastPersonsState)
@@ -36,22 +38,31 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
+  @Select(AppState.activeLayout)
+  public activeLayout$: Observable<Layout>;
+  public layouts: string[] = Object.values(Layout);
+
+  public layout: typeof Layout = Layout;
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;
-  constructor(private store: Store, private cd: ChangeDetectorRef, private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private store: Store,
+    private cd: ChangeDetectorRef,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   public ngOnInit() {
     this.changeOrder();
     this.store
       .select(AppState.recentPeopleDrawer)
       .pipe(untilComponentDestroyed(this))
-      .subscribe(open => {
+      .subscribe((open) => {
         this.drawerOpen = open;
       });
     this.breakpointObserver
       .observe('(max-width: 768px)')
       .pipe(untilComponentDestroyed(this))
-      .subscribe(result => {
+      .subscribe((result) => {
         this.smallScreen = result.matches;
         if (this.smallScreen) {
           this.drawerOpen = false;
@@ -67,8 +78,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
     this.bookmarkedPersonsSubscriptions = this.store
       .select(BookmarksState.sortedBookmarks)
-      .pipe(map(filterFn => filterFn(this.favoriteSort)))
-      .subscribe(persons => {
+      .pipe(map((filterFn) => filterFn(this.favoriteSort)))
+      .subscribe((persons) => {
         this.bookmarkedPersons = persons;
       });
   }
@@ -114,11 +125,28 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ToggleBookmark(person));
   }
 
+  public changeLayout(layoutClass: Layout) {
+    this.store.dispatch(new SetLayout(layoutClass));
+  }
+
+  public getLayoutName(layout: Layout): string {
+    switch (layout) {
+      case Layout.medium_cards: {
+        return $localize`:NavigationComponent|View Mode - MediumCards@@NavigationComponentViewModeMediumCards:Medium Cards`;
+      }
+      case Layout.small_cards: {
+        return $localize`:NavigationComponent|View Mode - SmallCards@@NavigationComponentViewModeSmallCards:Small Cards`;
+      }
+      default:
+        throw Error(`Translation for layout ${layout} does not exist.`);
+    }
+  }
+
   public toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
     if (!this.smallScreen) {
       this.store.dispatch(new SetRecentPeopleDrawer(this.drawerOpen));
     }
   }
-  ngOnDestroy(): void {}
+  public ngOnDestroy(): void {}
 }

@@ -6,11 +6,12 @@ parent: Frontend
 grand_parent: Development Guides
 permalink: /pages/development-guides/frontend/getting-started
 nav_order: 100
----  
+---
 
-# :small_red_triangle: **Getting Started with *frontend***
+# Getting Started with frontend
 
 We recommmend using [VSCode](https://code.visualstudio.com/) as IDE, however you can also use your favorite IDE.
+
 <details>
 <summary>Mandatory Plugins for VSCode</summary>
 This plugins are part of the <a href="https://github.com/T-Systems-MMS/phonebook/blob/master/phonebook.code-workspace" target="_blank">phonebook.code-workspace</a>-File
@@ -30,11 +31,9 @@ This plugins are part of the <a href="https://github.com/T-Systems-MMS/phonebook
 </ul>
 </details>
 <br>
-At this time only the frontend is full Open Source. In the following steps do you learn how to setup the frontend of the Phonebook. 
+At this time only the frontend is full Open Source. In the following steps do you learn how to setup the frontend of the Phonebook.
 
 > To contribute to the backend please contact one of the {{site.contributors}}.
-
-
 
 <details>
   <summary>If you do not have much experience about the named techniques you can find more resources here:</summary>
@@ -46,20 +45,21 @@ At this time only the frontend is full Open Source. In the following steps do yo
 </ul>
 </details>
 
-
 ### **Quickstart with Node :green_book:**
 
- 1. Install the current Version of 
-	 - [Node LTS](https://nodejs.org/en/download/) and
-	 - [GIT](https://git-scm.com/downloads)
-2.  **Optional:** If you need to setup Proxies follow the steps below. 
-		*(You only need to setup proxies if you're behind a corporate proxy.)*
+1.  Install the current Version of
+    - [Node LTS](https://nodejs.org/en/download/) and
+    - [GIT](https://git-scm.com/downloads)
+2.  **Optional:** If you need to setup Proxies follow the steps below.
+    _(You only need to setup proxies if you're behind a corporate proxy.)_
+
 ```bash
 npm config set proxy http://proxy.example.de:8080
 npm config set https-proxy http://proxy.example.de:8080
 git config --global http.proxy http://proxy.example.de:8080
 git config --global https.proxy http://proxy.example.de:8080
 ```
+
 3. Setup the Project:
 
 ```bash
@@ -81,6 +81,7 @@ docker pull tsystemsmms/phonebook-build:mock-backend
 # Run the project
 npm run start -- --open
 ```
+
 > If you are behind a corporate proxy you also need to set the proxy in your docker settings to pull the mock-backend. A tutorial can be found on the internal page.
 
 > If you want to use a different backend server edit the Angular Proxy in the [proxy.conf.json](../../../proxy.conf.json).

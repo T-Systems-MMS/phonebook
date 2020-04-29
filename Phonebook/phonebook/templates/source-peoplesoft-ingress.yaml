@@ -1,0 +1,27 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "phonebook.fullname" . -}}
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}-peoplesoft
+  labels:
+    app.kubernetes.io/name: {{ include "phonebook.name" . }}-peoplesoft
+    helm.sh/chart: {{ include "phonebook.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.priority: '50'
+  {{- with .Values.ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  rules:
+    - host: {{ .Values.host }}
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: {{ $fullName }}-peoplesoft
+              servicePort: http
+{{- end }}

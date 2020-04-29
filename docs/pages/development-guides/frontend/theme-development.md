@@ -50,6 +50,7 @@ Now you must insert your new Theme in `\src\app\shared\models\enumerables\Theme.
 You also must edit the `src/app/pages/settings/settings.component.ts`.
 
 There you need to add your theme like the code here:
+
 ```js
       case Theme.magenta_light_theme: {
         return this.i18n({

@@ -13,8 +13,8 @@ exports.config = {
     browserName: 'chrome',
     chromeOptions: {
       binary: process.env.CHROME_BIN,
-      args: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222']
-    }
+      args: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222'],
+    },
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
@@ -22,11 +22,11 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () {},
   },
   onPrepare() {
     require('ts-node').register({
-      project: require('path').join(__dirname, './tsconfig.json')
+      project: require('path').join(__dirname, './tsconfig.json'),
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   },
@@ -36,7 +36,7 @@ exports.config = {
       package: 'protractor-console-plugin',
       failOnWarning: false,
       failOnError: false,
-      logWarnings: true
-    }
-  ]
+      logWarnings: true,
+    },
+  ],
 };

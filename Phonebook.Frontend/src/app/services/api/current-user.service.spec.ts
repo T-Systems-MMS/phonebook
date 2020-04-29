@@ -10,7 +10,7 @@ describe('CurrentUserService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{ provide: PersonService, useClass: MockPersonService }, CurrentUserService]
+      providers: [{ provide: PersonService, useClass: MockPersonService }, CurrentUserService],
     });
     injector = getTestBed();
     httpMock = injector.get(HttpTestingController);
@@ -23,10 +23,10 @@ describe('CurrentUserService', () => {
   it('should return Username', inject([CurrentUserService], (service: CurrentUserService) => {
     const response = {
       user: 'DOMAIN\\username',
-      hasPicture: true
+      hasPicture: true,
     };
 
-    service.getCurrentUserId().subscribe(user => {
+    service.getCurrentUserId().subscribe((user) => {
       expect(user).toBe('username');
     });
 
@@ -38,10 +38,10 @@ describe('CurrentUserService', () => {
   it('should return hasPicture', inject([CurrentUserService], (service: CurrentUserService) => {
     const response = {
       user: 'DOMAIN\\username',
-      hasPicture: true
+      hasPicture: true,
     };
 
-    service.doesUserHasImage().subscribe(hasImage => {
+    service.doesUserHasImage().subscribe((hasImage) => {
       expect(hasImage).toBe(true);
     });
 

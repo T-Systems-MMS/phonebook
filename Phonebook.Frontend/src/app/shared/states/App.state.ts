@@ -2,9 +2,15 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ThemeService } from 'src/app/services/theme.service';
 import { Theme } from 'src/app/shared/models/enumerables/Theme';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 
 export class ServiceWorkerNotificationDisplayed {
   public static readonly type: string = '[App State] Service Worker Notification displayed';
+}
+
+export class SetLayout {
+  public static readonly type: string = '[App State] Set activeLayout';
+  constructor(public activeLayout: Layout) {}
 }
 
 export class SetVersion {
@@ -45,6 +51,7 @@ export interface AppStateModel {
    */
   sendFeedback: boolean | null;
   activeTheme: Theme;
+  activeLayout: Layout;
   recentPeopleDrawer: boolean;
 }
 
@@ -56,8 +63,9 @@ export interface AppStateModel {
     displayedNotificationVersion: 0,
     sendFeedback: null,
     activeTheme: Theme.magenta_light_theme,
-    recentPeopleDrawer: true
-  }
+    activeLayout: Layout.medium_cards,
+    recentPeopleDrawer: true,
+  },
 })
 @Injectable()
 export class AppState {
@@ -74,6 +82,10 @@ export class AppState {
   @Selector()
   public static activeTheme(state: AppStateModel): Theme {
     return state.activeTheme;
+  }
+  @Selector()
+  public static activeLayout(state: AppStateModel): Layout {
+    return state.activeLayout;
   }
 
   @Selector()
@@ -94,7 +106,7 @@ export class AppState {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      serviceWorkerNotificationDisplayed: true
+      serviceWorkerNotificationDisplayed: true,
     });
   }
 
@@ -103,16 +115,19 @@ export class AppState {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      version: action.version
+      version: action.version,
     });
   }
 
   @Action(SetDisplayedNotificationVersion)
-  public setDisplayedNotificationVersion(ctx: StateContext<AppStateModel>, action: SetDisplayedNotificationVersion) {
+  public setDisplayedNotificationVersion(
+    ctx: StateContext<AppStateModel>,
+    action: SetDisplayedNotificationVersion
+  ) {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      displayedNotificationVersion: action.version
+      displayedNotificationVersion: action.version,
     });
   }
   @Action(SetSendFeedback)
@@ -120,7 +135,7 @@ export class AppState {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      sendFeedback: action.sendFeedback
+      sendFeedback: action.sendFeedback,
     });
   }
 
@@ -130,7 +145,7 @@ export class AppState {
     this.themeService.setTheme(action.activeTheme);
     ctx.setState({
       ...state,
-      activeTheme: action.activeTheme
+      activeTheme: action.activeTheme,
     });
   }
 
@@ -140,12 +155,21 @@ export class AppState {
     this.themeService.setTheme(state.activeTheme);
   }
 
+  @Action(SetLayout)
+  public setLayout(ctx: StateContext<AppStateModel>, action: SetLayout) {
+    const state = ctx.getState();
+    ctx.setState({
+      ...state,
+      activeLayout: action.activeLayout,
+    });
+  }
+
   @Action(SetRecentPeopleDrawer)
   public setDrawer(ctx: StateContext<AppStateModel>, action: SetRecentPeopleDrawer) {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      recentPeopleDrawer: action.active
+      recentPeopleDrawer: action.active,
     });
   }
 }
