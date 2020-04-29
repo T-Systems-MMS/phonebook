@@ -21,7 +21,7 @@ RUN npm run build
 ### production ###
 ##################
 
-FROM nginx:1.17.10@sha256:6b3b6c113f98e901a8b1473dee4c268cf37e93d72bc0a01e57c65b4ab99e58ee
+FROM nginx:1.18.0@sha256:391d37e78da03e16d35ffcd2b9764995978610b727e2ce17a9b5c2cf9b8e5398
 WORKDIR /etc/nginx
 
 ARG BASE_URL
