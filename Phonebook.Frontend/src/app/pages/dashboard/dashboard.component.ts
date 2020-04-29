@@ -6,9 +6,11 @@ import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 import {
   AppState,
   BookmarksState,
+  SetLayout,
   SetRecentPeopleDrawer,
   ToggleBookmark,
   UpdateBookmarkOrder,
@@ -36,6 +38,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
+  @Select(AppState.activeLayout)
+  public activeLayout$: Observable<Layout>;
+  public layouts: string[] = Object.values(Layout);
+
+  public layout: typeof Layout = Layout;
   public drawerOpen: boolean = false;
   public smallScreen: boolean = false;
   constructor(
@@ -118,11 +125,28 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ToggleBookmark(person));
   }
 
+  public changeLayout(layoutClass: Layout) {
+    this.store.dispatch(new SetLayout(layoutClass));
+  }
+
+  public getLayoutName(layout: Layout): string {
+    switch (layout) {
+      case Layout.medium_cards: {
+        return $localize`:NavigationComponent|View Mode - MediumCards@@NavigationComponentViewModeMediumCards:Medium Cards`;
+      }
+      case Layout.small_cards: {
+        return $localize`:NavigationComponent|View Mode - SmallCards@@NavigationComponentViewModeSmallCards:Small Cards`;
+      }
+      default:
+        throw Error(`Translation for layout ${layout} does not exist.`);
+    }
+  }
+
   public toggleDrawer() {
     this.drawerOpen = !this.drawerOpen;
     if (!this.smallScreen) {
       this.store.dispatch(new SetRecentPeopleDrawer(this.drawerOpen));
     }
   }
-  ngOnDestroy(): void {}
+  public ngOnDestroy(): void {}
 }

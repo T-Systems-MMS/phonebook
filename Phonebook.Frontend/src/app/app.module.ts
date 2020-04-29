@@ -53,6 +53,7 @@ import { environment } from 'src/environments/environment';
 import { FloorplanService } from './services/floorplan.service';
 import { SearchComponent } from './shared/components/search/search.component';
 import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToLogin';
+import { FormsModule } from '@angular/forms';
 
 declare const require;
 
@@ -71,6 +72,7 @@ declare const require;
     HttpClientModule,
     ErrorHandlerModule.forRoot(),
     MaterialModule,
+    FormsModule,
     DialogsModule,
     ProfilePictureModule,
     SettingsModule,
