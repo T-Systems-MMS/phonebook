@@ -103,9 +103,18 @@
           actionDrawer
           [copy]="person.Contacts.Phone"
           [tel]="person.Contacts.Phone | telephone"
-          *ngIf="person.Contacts.Phone != ''"
+          *ngIf="person.Contacts.Phone != '' && sizeSmall === false"
         >
           {{ person.Contacts.Phone }}
+        </button>
+        <button
+          mat-icon-button
+          actionDrawer
+          [copy]="person.Contacts.Phone"
+          [tel]="person.Contacts.Phone | telephone"
+          *ngIf="person.Contacts.Phone != '' && sizeSmall === true"
+        >
+          <mat-icon>call</mat-icon>
         </button>
       </mat-cell>
     </ng-container>
