@@ -1,4 +1,10 @@
-import { migration1, migration2, migration3, migration4, migration5 } from 'src/migration/migrations/';
+import {
+  migration1,
+  migration2,
+  migration3,
+  migration4,
+  migration5,
+} from 'src/migration/migrations/';
 
 const MIGRATIONS: Migration[] = [migration1, migration2, migration3, migration4, migration5];
 
