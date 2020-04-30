@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Primitives;
 using Phonebook.Source.PeopleSoft.Models.Context;
+using Phonebook.Source.PeopleSoft.HealthChecks;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -31,6 +32,16 @@ namespace Phonebook.Source.PeopleSoft
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHealthChecks()
+                .AddCheck<HealthCheckIdentityMetadata>("IdentityProvider")
+                .AddCheck<HealthCheckPersonData>("PersonsData")
+                .AddCheck<HealthCheckOrgUnit>("OrgUnitsData")
+                .AddCheck<HealthCheckLocation>("LocationsData")
+                .AddCheck<HealthCheckBuilding>("BuildingsData")
+                .AddCheck<HealthCheckBuildingPart>("BuildingPartsData")
+                .AddCheck<HealthCheckFloor>("FloorsData")
+                .AddCheck<HealthCheckRoom>("RoomsData");
+            services.AddHttpClient();
             services.AddResponseCompression(o => o.Providers
             .Add(new GzipCompressionProvider(new GzipCompressionProviderOptions()
             {
@@ -59,7 +70,7 @@ namespace Phonebook.Source.PeopleSoft
 #if DEBUG
             Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 #endif
-            if (Configuration.GetValue<bool>("useAnonymos"))
+            if (Configuration.GetValue<bool>("useAnonymous"))
             {
                 if (!Configuration.GetValue<bool>("useSeeding"))
                 {
@@ -180,6 +191,7 @@ namespace Phonebook.Source.PeopleSoft
 
             app.UseEndpoints(endpoints =>
              {
+                 endpoints.MapHealthChecks("/health");
                  endpoints.MapControllers();
              });
         }

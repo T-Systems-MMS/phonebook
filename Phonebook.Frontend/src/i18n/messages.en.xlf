@@ -47,12 +47,21 @@
         
       </trans-unit><trans-unit id="BugReportConsentComponentSubTitle" datatype="html">
         <source> Sending automatic Bug reports </source><target state="final"> Sending automatic Bug reports </target>
-        <note priority="1" from="description">Sub title of bug report consent
-      dialog</note>
+        <note priority="1" from="description">Sub title of bug report consent dialog</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit><trans-unit id="BugReportConsentComponentText" datatype="html">
         <source><x id="START_PARAGRAPH"/> If an error occurs while the application is running, an anonymous error report is automatically generated. In exceptional cases - since this is a preview - the following personal data can still be found in one of the reports: <x id="CLOSE_PARAGRAPH"/><x id="START_TAG_MAT_LIST"/><x id="START_TAG_MAT_LIST_ITEM"/> Username (short and full name) <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="START_TAG_MAT_LIST_ITEM"/> Bookmarks and Last seen people <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="START_TAG_MAT_LIST_ITEM"/> The Last 20 Actions performed in the app <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="CLOSE_TAG_MAT_LIST"/><x id="START_PARAGRAPH"/> The data from the error report is used exclusively for the purpose of analysis and correction of the error by our core development team. The data will not be passed on to third parties. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/><x id="START_TAG_STRONG"/>TL;DR With your permission, you agree that bug reports that may contain your personal data can be sent to our core development team and be used for error analysis and resolution. <x id="CLOSE_TAG_STRONG"/><x id="CLOSE_PARAGRAPH"/></source><target state="final"><x id="START_PARAGRAPH"/> If an error occurs while the application is running, an anonymous error report is automatically generated. In exceptional cases - since this is a preview - the following personal data can still be found in one of the reports: <x id="CLOSE_PARAGRAPH"/><x id="START_TAG_MAT_LIST"/><x id="START_TAG_MAT_LIST_ITEM"/> Username (short and full name) <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="START_TAG_MAT_LIST_ITEM"/> Bookmarks and Last seen people <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="START_TAG_MAT_LIST_ITEM"/> The Last 20 Actions performed in the app <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="CLOSE_TAG_MAT_LIST"/><x id="START_PARAGRAPH"/> The data from the error report is used exclusively for the purpose of analysis and correction of the error by our core development team. The data will not be passed on to third parties. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/><x id="START_TAG_STRONG"/>TL;DR With your permission, you agree that bug reports that may contain your personal data can be sent to our core development team and be used for error analysis and resolution. <x id="CLOSE_TAG_STRONG"/><x id="CLOSE_PARAGRAPH"/></target>
         <note priority="1" from="description">Text of Bug Report consent dialog</note>
+        <note priority="1" from="meaning">Bug-report-consentComponent</note>
+      </trans-unit><trans-unit id="BugReportConsentComponentButtonDecline" datatype="html">
+        <source> Do not send Bug Reports </source><target state="final"> Do not send Bug Reports </target>
+        <note priority="1" from="description">Button to decline sending bug
+          reports</note>
+        <note priority="1" from="meaning">Bug-report-consentComponent</note>
+      </trans-unit><trans-unit id="BugReportConsentComponentButtonConsent" datatype="html">
+        <source> Consent </source><target state="final"> Consent </target>
+        <note priority="1" from="description">Button to consent sending bug
+          reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit><trans-unit id="UserDetailComponentTooltipDataChange" datatype="html">
         <source>Found Incorrect Data? Report them!</source><target state="final">Found Incorrect Data? Report them!</target>
@@ -91,8 +100,12 @@
         <note priority="1" from="description">Title of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentTitleDescription" datatype="html">
-        <source> Change the theme or language of this application. </source><target state="final"> Change the theme or language of this application. </target>
+      <source> Change the theme or language of this application. </source><target state="final"> Change the theme or language of this application. </target>        
         <note priority="1" from="description">Title description of the settings page</note>
+        <note priority="1" from="meaning">SettingsComponent</note>
+      </trans-unit><trans-unit id="SettingsComponentSubtitleGeneral" datatype="html">
+        <source> General </source><target state="final"> General </target>
+        <note priority="1" from="description">Subtitle General of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SettingsComponentSubTitleLanguage" datatype="html">
         <source>Language</source><target state="final">Language</target>
@@ -185,17 +198,13 @@
         <target state="final">Have a nice day</target>
         <note priority="1" from="description">Greetings Message</note>
         <note priority="1" from="meaning">NavigationBar</note>
-      </trans-unit><trans-unit id="NavigationComponentViewModeList" datatype="html">
-        <source>List View</source><target state="final">List View</target>
-        <note priority="1" from="description">View Mode - List</note>
+      </trans-unit><trans-unit id="NavigationComponentViewModeMediumCards" datatype="html">
+        <source>Medium Cards</source><target state="final">Medium Cards</target>
+        <note priority="1" from="description">View Mode - MediumCards</note>
         <note priority="1" from="meaning">NavigationComponent</note>
-      </trans-unit><trans-unit id="NavigationComponentViewModeModule" datatype="html">
-        <source>Module View</source><target state="final">Module View</target>
-        <note priority="1" from="description">View Mode - Module</note>
-        <note priority="1" from="meaning">NavigationComponent</note>
-      </trans-unit><trans-unit id="NavigationComponentViewModeStream" datatype="html">
-        <source>Stream View</source><target state="final">Stream View</target>
-        <note priority="1" from="description">View Mode - Stream</note>
+      </trans-unit><trans-unit id="NavigationComponentViewModeSmallCards" datatype="html">
+        <source>Small Cards</source><target state="final">Small Cards</target>
+        <note priority="1" from="description">View Mode - SmallCards</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit><trans-unit id="UserDetailPageResolverNotFoundFirstPart" datatype="html">
         <source>User with Id</source><target state="final">User with Id</target>
@@ -279,10 +288,6 @@
         <target state="final">Here you can change the color theme of the app.</target>
         <note priority="1" from="description">Color Change Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
-      </trans-unit><trans-unit id="SettingsComponentSubTitleLayout" datatype="html">
-        <source>Layout</source><target state="final">Layout</target>
-        <note priority="1" from="description">Layout Subtitle</note>
-        <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit><trans-unit id="SearchComponentPlaceholder" datatype="html">
         <source>Search for names, shorthands, phone numbers and more...</source><target state="final">Search for names, shorthands, phone numbers and more...</target>
         <note priority="1" from="description">Placholder for search</note>
@@ -340,6 +345,10 @@
         <source> Alphabetical desc</source><target state="final"> Alphabetical desc</target>
         <note priority="1" from="description">The alphabetical desc order of the favorite
                 cards</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit><trans-unit id="dashboardComponentLayoutChangeTooltip" datatype="html">
+        <source>Here you can change the layout of your dashboard.</source><target state="final">Here you can change the layout of your dashboard.</target>
+        <note priority="1" from="description">Layout Change Button Tooltip</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit><trans-unit id="DashboardComponentButtonExpandTooltip" datatype="html">
         <source>Expand or Collapse recently viewed people</source><target state="final">Expand or Collapse recently viewed people</target>

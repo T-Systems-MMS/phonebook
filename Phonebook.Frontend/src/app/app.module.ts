@@ -57,6 +57,7 @@ import { HttpRedirectToLogin } from 'src/app/shared/interceptors/HttpRedirectToL
 import { DialogFooterComponent } from './dialogs/dialog-footer/dialog-footer.component';
 import { TableSettingsDialog } from 'src/app/modules/table/dialogs/table-settings-dialog/table-settings.dialog';
 import { FeedbackDrawerModule } from 'src/app/shared/directives/feedback-drawer/feedback-drawer.module';
+import { FormsModule } from '@angular/forms';
 
 declare const require;
 
@@ -78,6 +79,7 @@ declare const require;
     HttpClientModule,
     ErrorHandlerModule.forRoot(),
     MaterialModule,
+    FormsModule,
     DialogsModule,
     ProfilePictureModule,
     SettingsModule,
