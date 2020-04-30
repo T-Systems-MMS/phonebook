@@ -43,6 +43,7 @@ export class TableComponent implements OnInit, OnDestroy {
   }
   public sortDirection: SortDirection = '';
   public sortActive: string = '';
+  public loaded: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -68,6 +69,7 @@ export class TableComponent implements OnInit, OnDestroy {
         .subscribe((val) => {
           this.refreshTable();
           this.dataSource.pageSize = this.initialPageSize;
+          this.loaded = true;
         });
     });
 
