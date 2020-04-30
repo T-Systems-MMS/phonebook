@@ -1,0 +1,7 @@
+feature: ['feature/*', 'feat/*']
+restyled: ['restyled/*']
+demo: ['demo/*']
+fix: ['fix/*', 'bug/*']
+chore: ['chore/*']
+test: ['test/*']
+docs: ['docs/*', 'docu/*']
