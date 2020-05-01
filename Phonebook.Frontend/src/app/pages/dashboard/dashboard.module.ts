@@ -8,6 +8,7 @@ import { TeamComponent } from 'src/app/pages/dashboard/components/team/team.comp
 import { DashboardRoutingModule } from 'src/app/pages/dashboard/dashboard-routing.module';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardComponent, TeamComponent, BookmarkedComponent],
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
     DragDropModule,
     PipesModule,
     UserModule,
+    FormsModule,
   ],
 })
 export class DashboardModule {}

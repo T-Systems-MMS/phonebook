@@ -1,4 +1,15 @@
 <div class="pb-team">
+  <div class="pb-team-title">
+    <h1>
+      <mat-icon>people</mat-icon>
+      <span
+        class="mat-headline pb-margin-0"
+        i18n="DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam"
+      >
+        My Team
+      </span>
+    </h1>
+  </div>
   <div cdkDropListGroup class="pb-team-list pb-flex-row pb-overflow-auto">
     <div *ngFor="let teamPerson of teamPersons" class="card-container">
       <app-user-small-card

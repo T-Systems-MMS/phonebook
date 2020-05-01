@@ -5,16 +5,22 @@ import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
-import { BookmarksState, ToggleBookmark, UpdateBookmarkOrder } from 'src/app/shared/states';
+import {
+  BookmarksState,
+  ToggleBookmark,
+  UpdateBookmarkOrder,
+  AppState,
+} from 'src/app/shared/states';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Router } from '@angular/router';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 
 @Component({
   selector: 'app-bookmarked',
   templateUrl: './bookmarked.component.html',
   styleUrls: ['./bookmarked.component.scss'],
-  host: { class: 'pb-dashboard' },
+  host: { class: 'pb-dashboard-component' },
 })
 export class BookmarkedComponent implements OnInit, OnDestroy {
   public bookmarkedPersons: Person[];
@@ -25,6 +31,10 @@ export class BookmarkedComponent implements OnInit, OnDestroy {
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public currentUser: Person | null = null;
+  @Select(AppState.activeLayout)
+  public activeLayout$: Observable<Layout>;
+  public layouts: string[] = Object.values(Layout);
+  public layout: typeof Layout = Layout;
   constructor(
     private store: Store,
     private cd: ChangeDetectorRef,
@@ -87,5 +97,5 @@ export class BookmarkedComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ToggleBookmark(person));
   }
 
-  ngOnDestroy(): void {}
+  public ngOnDestroy(): void {}
 }

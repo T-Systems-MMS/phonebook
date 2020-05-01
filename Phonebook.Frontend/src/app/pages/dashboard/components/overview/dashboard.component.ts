@@ -34,11 +34,6 @@ import { BookmarkedComponent } from 'src/app/pages/dashboard/components/bookmark
 export class DashboardComponent implements OnInit, OnDestroy {
   @Select(LastPersonsState)
   public lastPersons$: Observable<Person[]>;
-  public bookmarkedPersons: Person[];
-  public bookmarkedPersonsSubscriptions: Subscription | null = null;
-  public favoriteSort: PhonebookSortDirection = PhonebookSortDirection.none;
-  public lastFrom: number;
-  public lastTo: number;
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
@@ -60,7 +55,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit() {
-    this.changeOrder();
     this.store
       .select(AppState.recentPeopleDrawer)
       .pipe(untilComponentDestroyed(this))
@@ -91,18 +85,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
           this.currentUser = null;
         }
       );
-  }
-
-  public changeOrder() {
-    if (this.bookmarkedPersonsSubscriptions) {
-      this.bookmarkedPersonsSubscriptions.unsubscribe();
-    }
-    this.bookmarkedPersonsSubscriptions = this.store
-      .select(BookmarksState.sortedBookmarks)
-      .pipe(map((filterFn) => filterFn(this.favoriteSort)))
-      .subscribe((persons) => {
-        this.bookmarkedPersons = persons;
-      });
   }
 
   public resetLastPersons() {

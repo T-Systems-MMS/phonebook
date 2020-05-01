@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
-  host: { class: 'pb-dashboard' },
+  host: { class: 'pb-dashboard-component' },
 })
 export class TeamComponent implements OnInit, OnDestroy {
   public currentUser: Person | null = null;

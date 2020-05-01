@@ -14,7 +14,26 @@
   height: 275px;
 }
 
-.pb-card {
-  margin: 5px;
+.card-container {
   display: flex;
+}
+
+.pb-team-title {
+  display: flex;
+  flex-direction: row;
+  mat-icon {
+    display: inline-flex;
+    vertical-align: middle;
+    height: 29px;
+    width: 29px;
+  }
+  h1 {
+    margin: 0;
+  }
+  mat-form-field {
+    margin-left: 16px;
+  }
+  ::ng-deep .mat-form-field-infix {
+    border: none;
+  }
 }

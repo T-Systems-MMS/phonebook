@@ -53,6 +53,26 @@
     </div>
   </mat-drawer>
   <mat-drawer-content class="content">
+    <button
+      i18n-matTooltip="
+        DashboardComponent|Layout Change Button Tooltip@@dashboardComponentLayoutChangeTooltip"
+      matTooltip="Here you can change the layout of your dashboard."
+      (click)="select.open()"
+      mat-icon-button
+      class="changeLayoutButton"
+    >
+      <mat-icon>{{ activeLayout$ | async }}</mat-icon>
+      <mat-select
+        #select
+        class="selectLayout"
+        [ngModel]="activeLayout$ | async"
+        (ngModelChange)="changeLayout($event)"
+      >
+        <mat-option *ngFor="let view of layouts" [value]="view">
+          <span>{{ getLayoutName(view) }}</span>
+        </mat-option>
+      </mat-select>
+    </button>
     <div class="toggle-drawer">
       <button
         mat-icon-button
@@ -77,32 +97,19 @@
       </button>
     </div>
     <div class="pb-expand">
-      <div class="different-cards" *ngIf="router.url === '/dashboard/team'">
-        <button class="navigation-button" mat-button [routerLink]="['/dashboard/team']">
-          <div class="card-navigation">
-            <mat-icon>people</mat-icon>
-            <span
-              class="navigation-name"
-              i18n="
-                DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam"
-            >
-              My Team
-            </span>
-          </div>
-        </button>
-      </div>
       <router-outlet></router-outlet>
-      <div class="different-cards bottom-button" *ngIf="router.url === '/dashboard/team'">
+      <div class="bottom-button" *ngIf="router.url === '/dashboard/team'">
         <button
           class="navigation-button"
           mat-button
           [routerLink]="['/dashboard/bookmarks']"
-          [disabled]="bookmarkedPersons.length === 0"
+          [disabled]="(bookmarkedPersons$ | async)!.length === 0"
         >
-          <div class="card-navigation">
+          <!-- Extra Div is important for a centered Icon See: overrides.scss -->
+          <div>
             <mat-icon>keyboard_arrow_up</mat-icon>
             <span
-              class="navigation-name"
+              class="mat-headline pb-margin-0"
               i18n="
                 DashboardComponent|Title of the Bookmarked people
                 section@@DashboardComponentTitleBookmark"
@@ -112,7 +119,7 @@
           </div>
         </button>
         <div
-          *ngIf="bookmarkedPersons.length === 0"
+          *ngIf="(bookmarkedPersons$ | async)!.length === 0"
           i18n="
             DashboardComponent|Message displayed if no people are
             bookmarked@@DashboardComponentDescriptionBookmark"
@@ -125,14 +132,15 @@
         </div>
       </div>
       <div
-        class="different-cards bottom-button"
+        class="bottom-button"
         *ngIf="currentUser != null && router.url === '/dashboard/bookmarks'"
       >
         <button class="navigation-button" mat-button [routerLink]="['/dashboard/team']">
-          <div class="card-navigation">
+          <!-- Extra Div is important for a centered Icon See: overrides.scss -->
+          <div>
             <mat-icon>keyboard_arrow_up</mat-icon>
             <span
-              class="navigation-name"
+              class="mat-headline pb-margin-0"
               i18n="
                 DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam"
             >
