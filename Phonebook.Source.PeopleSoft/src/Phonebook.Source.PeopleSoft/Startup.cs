@@ -9,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Primitives;
+using Phonebook.Source.PeopleSoft.Models;
 using Phonebook.Source.PeopleSoft.Models.Context;
+using Phonebook.Source.PeopleSoft.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -56,6 +58,11 @@ namespace Phonebook.Source.PeopleSoft
                );
             }
 
+            // Repository registration
+            services.AddScoped<IRepository<OrgUnit>, OrgUnitRepository>();
+
+
+
 #if DEBUG
             Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 #endif
@@ -94,7 +101,7 @@ namespace Phonebook.Source.PeopleSoft
 
 
                               // Wtrealm is the app's identifier in the Active Directory instance.
-                              // For ADFS, use the relying party's identifier, its WS-Federation Passive protocol URL:							  
+                              // For ADFS, use the relying party's identifier, its WS-Federation Passive protocol URL:
                               options.Wtrealm = $"{appId}";
 
                               // maybe the following is requiered for azure. check this alter.

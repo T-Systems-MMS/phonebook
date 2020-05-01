@@ -16,11 +16,11 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
             var currentOrgUnit = orgUnit;
             var orgUnitStructur = new List<OrgUnit>();
             orgUnitStructur.Add(orgUnit);
-            while (currentOrgUnit.Parent != null)
+            do
             {
                 orgUnitStructur.Add(currentOrgUnit.Parent);
                 currentOrgUnit = currentOrgUnit.Parent;
-            }
+            } while (currentOrgUnit.Parent != null);
             orgUnitStructur.Reverse();
             this.orgUnitStructur = orgUnitStructur;
             if (forOwners)
@@ -31,12 +31,13 @@ namespace Phonebook.Source.PeopleSoft.Models.Old
                 changeOwner.HeadOfOrgUnitId = newHeadOf?.Id;
             }
         }
+        public int Id { get { return orgUnit.Id; } }
         public IEnumerable<string?>? ShortBusinessunitTeamassistent { get { return orgUnit?.OrgUnitToFunctions?.Where(d => d.RoleName == "TA")?.Select(d => d?.Person?.ShortName); } }
-        public IEnumerable<string?>? ShortSupervisor { get { return new string?[] { orgUnitStructur?.Where(d => d?.Id != 110 && !string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.ShortName)).Select(d => d?.HeadOfOrgUnit?.ShortName).LastOrDefault() }; } }
-        public IEnumerable<string?>? ShortOrgUnit { get { return orgUnitStructur?.Where(d => d?.Id != 110 && string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.ShortName) == false).Select(d => d?.ShortName); } }
-        public IEnumerable<string?>? OrgUnit { get { return orgUnitStructur?.Where(d => d?.Id != 110 && d?.HeadOfOrgUnit != null).Select(d => d?.Name); } }
+        public IEnumerable<string?>? ShortSupervisor { get { yield return orgUnitStructur?.Where(d => !string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.ShortName)).Select(d => d?.HeadOfOrgUnit?.ShortName).LastOrDefault(); } }
+        public IEnumerable<string?>? ShortOrgUnit { get { return orgUnitStructur?.Where(d => d?.HeadOfOrgUnit != null).Select(d => d?.ShortName); } }
+        public IEnumerable<string?>? OrgUnit { get { return orgUnitStructur?.Where(d => d?.HeadOfOrgUnit != null).Select(d => d?.Name); } }
         public IEnumerable<string> BusinessunitTeamassistent { get { return orgUnit.OrgUnitToFunctions.Where(d => d.RoleName == "TA").Select(d => $"{d.Person.FirstName} {d.Person.LastName}"); } }
-        public IEnumerable<string> Supervisor { get { return new string[] { orgUnitStructur.Where(d => d.Id != 110 && string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.FirstName) == false && string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.LastName) == false).Select(d => $"{d?.HeadOfOrgUnit?.FirstName} {d?.HeadOfOrgUnit?.LastName}").LastOrDefault() }; } }
+        public IEnumerable<string> Supervisor { get { yield return orgUnitStructur.Where(d => string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.FirstName) == false && string.IsNullOrWhiteSpace(d?.HeadOfOrgUnit?.LastName) == false).Select(d => $"{d?.HeadOfOrgUnit?.FirstName} {d?.HeadOfOrgUnit?.LastName}").LastOrDefault(); } }
         public string? Costcenter { get { return orgUnit?.CostCenter; } }
     }
 }
