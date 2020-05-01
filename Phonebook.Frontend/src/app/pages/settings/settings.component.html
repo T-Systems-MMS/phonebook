@@ -13,8 +13,15 @@
 
   <mat-card-content class="settings">
     <div class="pb-flex-1">
-      <h2 i18n="SettingsComponent|Language SubTitle@@SettingsComponentSubTitleLanguage"
-        >Language</h2
+      <h2
+        class="subheading"
+        i18n="
+          SettingsComponent|Subtitle General of the settings page@@SettingsComponentSubtitleGeneral"
+      >
+        General
+      </h2>
+      <h4 i18n="SettingsComponent|Language SubTitle@@SettingsComponentSubTitleLanguage"
+        >Language</h4
       >
       <mat-list>
         <mat-list-item>
@@ -28,8 +35,8 @@
           </mat-form-field>
         </mat-list-item>
       </mat-list>
-      <h2 i18n="SettingsComponent|Color Theme SubTitle@@SettingsComponentSubTitleColorTheme"
-        >Color Theme</h2
+      <h4 i18n="SettingsComponent|Color Theme SubTitle@@SettingsComponentSubTitleColorTheme"
+        >Color Theme</h4
       >
       <mat-list>
         <mat-list-item>
@@ -42,23 +49,6 @@
             <mat-select [value]="themeValue$ | async" (valueChange)="changeTheme($event)">
               <mat-option *ngFor="let theme of themes" [value]="theme">
                 <span>{{ getThemeName(theme) }}</span>
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-list-item>
-      </mat-list>
-      <h2 i18n="SettingsComponent|Layout Subtitle@@SettingsComponentSubTitleLayout">Layout</h2>
-      <mat-list>
-        <mat-list-item>
-          <mat-icon class="pb-margin-20">{{ layoutValue }}</mat-icon>
-          <mat-form-field>
-            <mat-select [(ngModel)]="layoutValue" (ngModelChange)="changeLayout(layoutValue)">
-              <mat-select-trigger>
-                <span>{{ getLayoutName(layoutValue) }}</span>
-              </mat-select-trigger>
-              <mat-option *ngFor="let view of layout" [value]="view">
-                <mat-icon>{{ view }}</mat-icon>
-                <span>{{ getLayoutName(view) }}</span>
               </mat-option>
             </mat-select>
           </mat-form-field>
