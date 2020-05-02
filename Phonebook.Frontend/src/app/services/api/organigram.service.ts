@@ -90,7 +90,7 @@ export class UnitTreeNode {
   }
 }
 
-export class OrgUnit {
+class OrgUnit {
   public Id: number;
 
   public Name?: string;
