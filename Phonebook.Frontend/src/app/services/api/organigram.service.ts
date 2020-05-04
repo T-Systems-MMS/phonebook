@@ -91,6 +91,9 @@ export class OrganigramService {
       for (const node of nodeChilds) {
         if (node.id === user.Business.ShortOrgUnit[depth] && node.depth === depth) {
           return node;
+        }
+        if (node.id !== user.Business.ShortOrgUnit[depth] && node.depth === depth) {
+          continue;
         } else {
           return this.getNodeForUser(user, node.children, depth + 1);
         }

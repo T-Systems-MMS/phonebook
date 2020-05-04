@@ -10,13 +10,40 @@
       </span>
     </h1>
   </div>
-  <div cdkDropListGroup class="pb-team-list pb-flex-row pb-overflow-auto">
-    <div *ngFor="let teamPerson of teamPersons" class="card-container">
-      <app-user-small-card
-        [person]="teamPerson"
-        [actionButtonClasses]="'white'"
-        class="pb-small-card pb-card"
-      ></app-user-small-card>
-    </div>
+  <div
+    cdkDropListGroup
+    class="pb-team-list pb-flex-row pb-overflow-auto"
+    [ngSwitch]="activeLayout$ | async"
+  >
+    <ng-container *ngSwitchCase="layout.medium_cards">
+      <div
+        *ngFor="let teamperson of teamPersons; index as i"
+        cdkDropList
+        [cdkDropListData]="i"
+        cdkDropListOrientation="horizontal"
+        class="card-container"
+      >
+        <app-user-small-card
+          [person]="teamperson"
+          [actionButtonClasses]="'white'"
+          class="pb-small-card pb-card"
+        ></app-user-small-card>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="layout.small_cards">
+      <div
+        *ngFor="let teamperson of teamPersons; index as i"
+        cdkDropList
+        [cdkDropListData]="i"
+        cdkDropListOrientation="horizontal"
+        class="card-container"
+      >
+        <app-user-tiny-card
+          [person]="teamperson"
+          [actionButtonClasses]="'white'"
+          class="pb-card"
+        ></app-user-tiny-card>
+      </div>
+    </ng-container>
   </div>
 </div>

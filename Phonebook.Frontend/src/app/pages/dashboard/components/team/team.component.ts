@@ -3,11 +3,12 @@ import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Person, PhonebookSortDirection } from 'src/app/shared/models';
-import { BookmarksState } from 'src/app/shared/states';
+import { BookmarksState, AppState } from 'src/app/shared/states';
 import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Router } from '@angular/router';
+import { Layout } from 'src/app/shared/models/enumerables/Layout';
 
 @Component({
   selector: 'app-team',
@@ -19,6 +20,10 @@ export class TeamComponent implements OnInit, OnDestroy {
   public currentUser: Person | null = null;
   public teamPersons: Person[];
   public person: Person;
+  @Select(AppState.activeLayout)
+  public activeLayout$: Observable<Layout>;
+  public layouts: string[] = Object.values(Layout);
+  public layout: typeof Layout = Layout;
 
   constructor(
     private store: Store,
