@@ -44,6 +44,8 @@ export class TableComponent implements OnInit, OnDestroy {
   public sortDirection: SortDirection = '';
   public sortActive: string = '';
   public loaded: boolean = false;
+
+  public error: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -106,6 +108,9 @@ export class TableComponent implements OnInit, OnDestroy {
         this.store.dispatch(new SetTableResultCount(results.length));
         if (results.length === 1) {
           this.router.navigate(['/user', results[0].Id]);
+        }
+        if (results.length === undefined) {
+          this.error === true;
         } else {
           const test = results.filter(
             (x) =>
