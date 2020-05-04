@@ -316,9 +316,9 @@ export const ColumnDefinitions: {
   getSmall: () => {
     return [
       ColumnDefinitions.picture,
+      ColumnDefinitions.id,
       ColumnDefinitions.fullname,
       ColumnDefinitions.email,
-      ColumnDefinitions.phone,
       ColumnDefinitions.room,
       ColumnDefinitions.role,
     ];

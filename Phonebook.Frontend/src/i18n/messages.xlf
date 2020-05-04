@@ -1,816 +1,995 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext">
+  <file source-language="en" target-language="en" datatype="plaintext">
     <body>
       <trans-unit id="PageInformationNewUrlNoCookies" datatype="html">
         <source>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won&apos;t get any information about updates or releases with the set url parameter.</source>
+        <target>Save the site URL as a favourite now in order to not get any more startup-dialogs. Please notice: You won&apos;t get any information about updates or releases with the set url parameter.</target>
         <note priority="1" from="description">Message for just set no cookie url</note>
         <note priority="1" from="meaning">Display advice to new url</note>
       </trans-unit>
       <trans-unit id="PageInformationNewUrlNoCookiesUrl" datatype="html">
         <source>Reset</source>
+        <target>Reset</target>
         <note priority="1" from="description">Message for following no cookie url</note>
         <note priority="1" from="meaning">Restore Url</note>
       </trans-unit>
       <trans-unit id="PageInformationNoDialogs" datatype="html">
         <source>Startup-Dialogs are deactivated. Please notice: You won&apos;t get any information about updates or releases.</source>
+        <target>Startup-Dialogs are deactivated. Please notice: You won&apos;t get any information about updates or releases.</target>
         <note priority="1" from="description">Message to inform user that no dialogs will be shown</note>
         <note priority="1" from="meaning">Warning no dialogs are shown</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureDialogComponentTitle" datatype="html">
         <source> Change Profile Picture
 </source>
+        <target> Change Profile Picture
+</target>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureDialogComponentContent" datatype="html">
         <source><x id="START_PARAGRAPH"/> You&apos;re changing your profile picture? Nice! But please notice: <x id="CLOSE_PARAGRAPH"/><x id="START_UNORDERED_LIST"/><x id="START_LIST_ITEM"/> The picture is used only by the Phonebook Application. <x id="CLOSE_LIST_ITEM"/><x id="START_LIST_ITEM"/> To upload a profile picture is your free choice. <x id="CLOSE_LIST_ITEM"/><x id="START_LIST_ITEM"/> You can change or delete your picture at any time. (Just click the Button right next to the upload Button.) <x id="CLOSE_LIST_ITEM"/><x id="START_LIST_ITEM"/> Your profile picture will deleted if you choose to leave the company. <x id="CLOSE_LIST_ITEM"/><x id="CLOSE_UNORDERED_LIST"/></source>
+        <target><x id="START_PARAGRAPH"/> You&apos;re changing your profile picture? Nice! But please notice: <x id="CLOSE_PARAGRAPH"/><x id="START_UNORDERED_LIST"/><x id="START_LIST_ITEM"/> The picture is used only by the Phonebook Application. <x id="CLOSE_LIST_ITEM"/><x id="START_LIST_ITEM"/> To upload a profile picture is your free choice. <x id="CLOSE_LIST_ITEM"/><x id="START_LIST_ITEM"/> You can change or delete your picture at any time. (Just click the Button right next to the upload Button.) <x id="CLOSE_LIST_ITEM"/><x id="START_LIST_ITEM"/> Your profile picture will deleted if you choose to leave the company. <x id="CLOSE_LIST_ITEM"/><x id="CLOSE_UNORDERED_LIST"/></target>
         <note priority="1" from="description">Content</note>
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit>
       <trans-unit id="GeneralCancelButton" datatype="html">
         <source>Cancel</source>
+        <target>Cancel</target>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureDialogComponentButtonChangePicture" datatype="html">
         <source> Change my Picture! </source>
+        <target> Change my Picture! </target>
         <note priority="1" from="description">Button to consent sending bug
       reports</note>
         <note priority="1" from="meaning">ChangeProfilePictureDialogComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentChangeButtonAriaLabel" datatype="html">
         <source>This opens up a dialog to select a profile picture from you file system.</source>
+        <target>This opens up a dialog to select a profile picture from you file system.</target>
         <note priority="1" from="description">Aria Label for the &apos;Change Picture&apos;
         Button</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentChangeButton" datatype="html">
         <source> Change Picture</source>
+        <target> Change Picture</target>
         <note priority="1" from="description">Button for changing the Profile
           Picture</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentDeleteButtonTooltip" datatype="html">
         <source>Delete your Profile Picture</source>
+        <target>Delete your Profile Picture</target>
         <note priority="1" from="description">Tooltip for deleting the Profile
       picture</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentDeleteButtonAriaLabel" datatype="html">
         <source>Button for deleting your Profile Picture.</source>
+        <target>Button for deleting your Profile Picture.</target>
         <note priority="1" from="description">Aria Label for deleting the Profile
       Picture</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentSuccessUpdate" datatype="html">
         <source>Updated your Profile Picture!</source>
+        <target>Updated your Profile Picture!</target>
         <note priority="1" from="description">Success Message if profile picture was updated</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentErrorWrongFileType" datatype="html">
         <source>The File Type is not supported.</source>
+        <target>The File Type is not supported.</target>
         <note priority="1" from="description">Error Message if wrong File Type is supplied</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentErrorWrongFileTypeButton" datatype="html">
         <source>I want to add more support!</source>
+        <target>I want to add more support!</target>
         <note priority="1" from="description">Button on Error Message if wrong File Type is supplied</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="GeneralErrorMessage" datatype="html">
         <source>Something went wrong. Please try again.</source>
+        <target>Something went wrong. Please try again.</target>
         <note priority="1" from="description">A general Error message, that can be displayed everywhere</note>
         <note priority="1" from="meaning">GeneralErrorMessage</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentErrorFileSize" datatype="html">
         <source>Your file is too big! It should be smaller than</source>
+        <target>Your file is too big! It should be smaller than</target>
         <note priority="1" from="description">Error Message if supplied file size is to big (without size and unit)</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="ChangeProfilePictureComponentSuccessDelete" datatype="html">
         <source>Your profile picture was deleted!</source>
+        <target>Your profile picture was deleted!</target>
         <note priority="1" from="description">Success Message if user deleted its profile picture</note>
         <note priority="1" from="meaning">ChangeProfilePictureComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnIdLabel" datatype="html">
         <source>Change sorting for column Id</source>
+        <target>Change sorting for column Id</target>
         <note priority="1" from="description">Label for sorting the column &apos;Id&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnNameLabel" datatype="html">
         <source>Change sorting for column Name</source>
+        <target>Change sorting for column Name</target>
         <note priority="1" from="description">Label for sorting the column &apos;Name&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnPhoneLabel" datatype="html">
         <source>Change sorting for column Phone</source>
+        <target>Change sorting for column Phone</target>
         <note priority="1" from="description">Label for sorting the column &apos;Phone&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnMobileLabel" datatype="html">
         <source>Change sorting for column Mobile</source>
+        <target>Change sorting for column Mobile</target>
         <note priority="1" from="description">Label for sorting the column &apos;Mobile&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnRoleLabel" datatype="html">
         <source>Change sorting for column Role</source>
+        <target>Change sorting for column Role</target>
         <note priority="1" from="description">Label for sorting the column &apos;Role&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnCityLabel" datatype="html">
         <source>Change sorting for column City</source>
+        <target>Change sorting for column City</target>
         <note priority="1" from="description">Label for sorting the column &apos;City&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnOrgUnitLabel" datatype="html">
         <source>Change sorting for column Organization Unit</source>
+        <target>Change sorting for column Organization Unit</target>
         <note priority="1" from="description">Label for sorting the column &apos;Organization
           Unit&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnRoomLabel" datatype="html">
         <source>Change sorting for column Room</source>
+        <target>Change sorting for column Room</target>
         <note priority="1" from="description">Label for sorting the column &apos;Room&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnBuildingLabel" datatype="html">
         <source>Change sorting for column Building</source>
+        <target>Change sorting for column Building</target>
         <note priority="1" from="description">Label for sorting the column &apos;Building&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnCostcenterLabel" datatype="html">
         <source>Change sorting for column Profitcenter</source>
+        <target>Change sorting for column Profitcenter</target>
         <note priority="1" from="description">Label for sorting the column &apos;Profitcenter&apos; once
           Costcenter</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentColumnStatusLabel" datatype="html">
         <source>Change sorting for column status</source>
+        <target>Change sorting for column status</target>
         <note priority="1" from="description">Label for sorting the column &apos;Status&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source> Your search returned no results. </source>
+        <target> Your search returned no results. </target>
         <note priority="1" from="description">Sentence displayed if search did not return any
       results</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogTitle" datatype="html">
         <source> Configure Table Columns </source>
+        <target> Configure Table Columns </target>
         <note priority="1" from="description">Title for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogDescription" datatype="html">
         <source> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right. </source>
+        <target> Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as well by dragging them to the right. </target>
         <note priority="1" from="description">Description for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit>
+      <trans-unit id="TableSettingsDialogDescriptionWhichSize" datatype="html">
+        <source>Choose which Columns should be displayed on your Big Screen and your Small Screen. Check above which state you are currently changing.</source>
+        <target>Choose which Columns should be displayed on your Big Screen and your Small Screen. Check above which state you are currently changing.</target>
+        <note priority="1" from="description">Description Which Size for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogNote" datatype="html">
         <source> Note: You can only search for displayed columns. </source>
+        <target> Note: You can only search for displayed columns. </target>
         <note priority="1" from="description">Note for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogSubTitleDisplayedColumns" datatype="html">
         <source> Displayed Columns: </source>
+        <target> Displayed Columns: </target>
         <note priority="1" from="description">Title of displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="TableSettingsDialogSubTitleNotDisplayedColumns" datatype="html">
         <source> Not displayed Columns: </source>
+        <target> Not displayed Columns: </target>
         <note priority="1" from="description">Title of not displayed table columns</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="GeneralResetButton" datatype="html">
         <source> Reset </source>
+        <target> Reset </target>
         <note priority="1" from="description">Button for resetting something</note>
         <note priority="1" from="meaning">GeneralResetButton</note>
       </trans-unit>
       <trans-unit id="GeneralCloseButton" datatype="html">
         <source> Close </source>
+        <target> Close </target>
         <note priority="1" from="description">Button for closing something</note>
         <note priority="1" from="meaning">GeneralCloseButton</note>
       </trans-unit>
+      <trans-unit id="TableSettingsDialogSubtitleSmallScreen" datatype="html">
+        <source>for the Small Screen</source>
+        <target>for the Small Screen</target>
+        <note priority="1" from="description">Subtitle Small Screen for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit>
+      <trans-unit id="TableSettingsDialogSubtiteBigScreen" datatype="html">
+        <source>for the Big Screen</source>
+        <target>for the Big Screen</target>
+        <note priority="1" from="description">Subtitle Big Screen for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit>
       <trans-unit id="DashboardComponentTitleRecent" datatype="html">
         <source> Recent People </source>
+        <target> Recent People </target>
         <note priority="1" from="description">Title of the recent people section</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="DashboardComponentTitleBookmark" datatype="html">
         <source> Bookmarked People </source>
+        <target> Bookmarked People </target>
         <note priority="1" from="description">Title of the Bookmarked people
             section</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="DashboardComponentOrderNone" datatype="html">
         <source> Custom Order</source>
+        <target> Custom Order</target>
         <note priority="1" from="description">The standard (customizable) order of the favorite
                 cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="DashboardComponentOrderAsc" datatype="html">
         <source> Alphabetical asc</source>
+        <target> Alphabetical asc</target>
         <note priority="1" from="description">The alphabetical asc order of the favorite
                 cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="DashboardComponentOrderDesc" datatype="html">
         <source> Alphabetical desc</source>
+        <target> Alphabetical desc</target>
         <note priority="1" from="description">The alphabetical desc order of the favorite
                 cards</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="dashboardComponentLayoutChangeTooltip" datatype="html">
         <source>Here you can change the layout of your dashboard.</source>
+        <target>Here you can change the layout of your dashboard.</target>
         <note priority="1" from="description">Layout Change Button Tooltip</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="DashboardComponentButtonExpandTooltip" datatype="html">
         <source>Expand or Collapse recently viewed people</source>
+        <target>Expand or Collapse recently viewed people</target>
         <note priority="1" from="description">Tooltip for expanding recently viewed
           people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="DashboardComponentButtonExpandArialLabel" datatype="html">
         <source>Button expanding or collapsing the recently viewed people section</source>
+        <target>Button expanding or collapsing the recently viewed people section</target>
         <note priority="1" from="description">Aria Label for expanding recently viewed
           people</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="GeneralUndoButton" datatype="html">
         <source> Undo </source>
+        <target> Undo </target>
         <note priority="1" from="description">Button for undoing something</note>
         <note priority="1" from="meaning">GeneralUndoButton</note>
       </trans-unit>
       <trans-unit id="DashboardComponentDescriptionRecent" datatype="html">
         <source> Looks like you haven&apos;t searched for any colleagues yet. Search for somebody to see how it works! The most recent ones will be displayed here. </source>
+        <target> Looks like you haven&apos;t searched for any colleagues yet. Search for somebody to see how it works! The most recent ones will be displayed here. </target>
         <note priority="1" from="description">Message displayed if no people have been visited
               recently</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="DashboardComponentDescriptionBookmark" datatype="html">
         <source> You haven&apos;t bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </source>
+        <target> You haven&apos;t bookmarked anybody yet, look for the button <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> on a workmates page. </target>
         <note priority="1" from="description">Message displayed if no people are
           bookmarked</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="NavigationComponentViewModeMediumCards" datatype="html">
         <source>Medium Cards</source>
+        <target>Medium Cards</target>
         <note priority="1" from="description">View Mode - MediumCards</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="NavigationComponentViewModeSmallCards" datatype="html">
         <source>Small Cards</source>
+        <target>Small Cards</target>
         <note priority="1" from="description">View Mode - SmallCards</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentTitle" datatype="html">
         <source>Settings</source>
+        <target>Settings</target>
         <note priority="1" from="description">Title of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentTitleDescription" datatype="html">
         <source> Change the theme or language of this application. </source>
+        <target> Change the theme or language of this application. </target>
         <note priority="1" from="description">Title description of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentSubtitleGeneral" datatype="html">
         <source> General </source>
+        <target> General </target>
         <note priority="1" from="description">Subtitle General of the settings page</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentSubTitleLanguage" datatype="html">
         <source>Language</source>
+        <target>Language</target>
         <note priority="1" from="description">Language SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentSubTitleColorTheme" datatype="html">
         <source>Color Theme</source>
+        <target>Color Theme</target>
         <note priority="1" from="description">Color Theme SubTitle</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="navigationBarColorChangerTooltip" datatype="html">
         <source>Here you can change the color theme of the app.</source>
+        <target>Here you can change the color theme of the app.</target>
         <note priority="1" from="description">Color Change Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
       </trans-unit>
       <trans-unit id="SettingsComponentColorThemeBlueLight" datatype="html">
         <source>Blue Light Theme</source>
+        <target>Blue Light Theme</target>
         <note priority="1" from="description">Color Theme Option - Blue Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentColorThemeUnicorn" datatype="html">
         <source>Unicorn Theme</source>
+        <target>Unicorn Theme</target>
         <note priority="1" from="description">Color Theme Option -  Unicorn</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentColorThemeBlueDark" datatype="html">
         <source>Blue Dark Theme</source>
+        <target>Blue Dark Theme</target>
         <note priority="1" from="description">Color Theme Option -  Blue Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentColorThemeMagentaLight" datatype="html">
         <source>Magenta Light Theme</source>
+        <target>Magenta Light Theme</target>
         <note priority="1" from="description">Color Theme Option - Magenta Light</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="SettingsComponentColorThemeMagentaDark" datatype="html">
         <source>Magenta Dark Theme</source>
+        <target>Magenta Dark Theme</target>
         <note priority="1" from="description">Color Theme Option - Magenta Dark</note>
         <note priority="1" from="meaning">SettingsComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailPageResolverNotFoundFirstPart" datatype="html">
         <source>User with Id</source>
+        <target>User with Id</target>
         <note priority="1" from="description">First part of the message displayed when a user is not found</note>
         <note priority="1" from="meaning">UserDetailPageResolver</note>
       </trans-unit>
       <trans-unit id="UserDetailPageResolverNotFoundSecondPart" datatype="html">
         <source>not found.</source>
+        <target>not found.</target>
         <note priority="1" from="description">Second part of the message displayed when a user is not found</note>
         <note priority="1" from="meaning">UserDetailPageResolver</note>
       </trans-unit>
       <trans-unit id="GeneralLanguageGerman" datatype="html">
         <source>German</source>
+        <target>German</target>
         <note priority="1" from="description">GeneralLanguageGerman</note>
         <note priority="1" from="meaning">GeneralLanguageGerman</note>
       </trans-unit>
       <trans-unit id="GeneralLanguageEnglish" datatype="html">
         <source>English</source>
+        <target>English</target>
         <note priority="1" from="description">GeneralLanguageEnglish</note>
         <note priority="1" from="meaning">GeneralLanguageEnglish</note>
       </trans-unit>
       <trans-unit id="ReleaseInfoServiceSnackBarUpdateTitle" datatype="html">
         <source>We&apos;ve fixed some Bugs and added some new Features for you, with ❤</source>
+        <target>We&apos;ve fixed some Bugs and added some new Features for you, with ❤</target>
         <note priority="1" from="description">Snack Bar display for a feature update</note>
         <note priority="1" from="meaning">ReleaseInfoService</note>
       </trans-unit>
       <trans-unit id="ReleaseInfoServiceSnackBarUpdateButton" datatype="html">
         <source>Fixed what?</source>
+        <target>Fixed what?</target>
         <note priority="1" from="description">Snack Bar display Action Button for a feature update</note>
         <note priority="1" from="meaning">ReleaseInfoService</note>
       </trans-unit>
       <trans-unit id="AddFilterComponentTooltip" datatype="html">
         <source>Add this as a filter</source>
+        <target>Add this as a filter</target>
         <note priority="1" from="description">Tooltip for adding a filter to the search</note>
         <note priority="1" from="meaning">AddFilterComponent</note>
       </trans-unit>
       <trans-unit id="AddFilterComponentAriaLabel" datatype="html">
         <source>Refines the Search by adding this as a Filter.</source>
+        <target>Refines the Search by adding this as a Filter.</target>
         <note priority="1" from="description">Aria Label for adding a filter to the search</note>
         <note priority="1" from="meaning">AddFilterComponent</note>
       </trans-unit>
       <trans-unit id="ColumnTitleRoom" datatype="html">
         <source> Room </source>
+        <target> Room </target>
       </trans-unit>
       <trans-unit id="DataPersonFloor" datatype="html">
         <source>Floor</source>
+        <target>Floor</target>
         <note priority="1" from="description">Label for Person.Floor data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentMessageNoLocation" datatype="html">
         <source> No Location provided. </source>
+        <target> No Location provided. </target>
         <note priority="1" from="description">Message displayed if the location of the user could not be
       determined</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSubTitleContribute" datatype="html">
         <source> Call for Contributors! </source>
+        <target> Call for Contributors! </target>
         <note priority="1" from="description">Subtitle Contributes</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSectionContribute" datatype="html">
         <source><x id="START_TAG_SPAN"/> The Phonebook is an Open Source Project and lives from his active contributors. There are many different topics where you can work on. You can help with solving an <x id="START_LINK"/>Issue<x id="CLOSE_LINK"/>, work out an User-Guide or document new <x id="START_LINK_1"/>Bugs<x id="CLOSE_LINK"/>. <x id="CLOSE_TAG_SPAN"/><x id="START_TAG_SPAN"/> You can get in touch with us <x id="START_LINK_2"/>in our official Repository<x id="CLOSE_LINK"/> or you take a look at our <x id="START_LINK_3"/>Documentation<x id="CLOSE_LINK"/>. <x id="START_TAG_DIV"/><x id="START_BOLD_TEXT"/>To be a part of this community it is not required to have programming skills.<x id="CLOSE_BOLD_TEXT"/><x id="CLOSE_TAG_DIV"/><x id="CLOSE_TAG_SPAN"/><x id="START_TAG_DIV_2"/><x id="START_HEADING_LEVEL2"/>Thanks to our Contributors!<x id="CLOSE_HEADING_LEVEL2"/><x id="START_TAG_DIV_1"/><x id="CLOSE_TAG_DIV"/><x id="CLOSE_TAG_DIV"/></source>
+        <target><x id="START_TAG_SPAN"/> The Phonebook is an Open Source Project and lives from his active contributors. There are many different topics where you can work on. You can help with solving an <x id="START_LINK"/>Issue<x id="CLOSE_LINK"/>, work out an User-Guide or document new <x id="START_LINK_1"/>Bugs<x id="CLOSE_LINK"/>. <x id="CLOSE_TAG_SPAN"/><x id="START_TAG_SPAN"/> You can get in touch with us <x id="START_LINK_2"/>in our official Repository<x id="CLOSE_LINK"/> or you take a look at our <x id="START_LINK_3"/>Documentation<x id="CLOSE_LINK"/>. <x id="START_TAG_DIV"/><x id="START_BOLD_TEXT"/>To be a part of this community it is not required to have programming skills.<x id="CLOSE_BOLD_TEXT"/><x id="CLOSE_TAG_DIV"/><x id="CLOSE_TAG_SPAN"/><x id="START_TAG_DIV_2"/><x id="START_HEADING_LEVEL2"/>Thanks to our Contributors!<x id="CLOSE_HEADING_LEVEL2"/><x id="START_TAG_DIV_1"/><x id="CLOSE_TAG_DIV"/><x id="CLOSE_TAG_DIV"/></target>
         <note priority="1" from="description">Text for Contribute</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="ContributorsErrorMessage" datatype="html">
         <source>Contributors could not be loaded.</source>
+        <target>Contributors could not be loaded.</target>
         <note priority="1" from="description">Contributors error Message</note>
         <note priority="1" from="meaning">ContributorsErrorMessage</note>
       </trans-unit>
       <trans-unit id="navigationDashboard" datatype="html">
         <source> Dashboard </source>
+        <target> Dashboard </target>
         <note priority="1" from="description">Link to Dashboard</note>
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit>
       <trans-unit id="navigationOrganigram" datatype="html">
         <source> Organigram </source>
+        <target> Organigram </target>
         <note priority="1" from="description">Link to Organigram</note>
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit>
       <trans-unit id="navigationRooms" datatype="html">
         <source> Rooms </source>
+        <target> Rooms </target>
         <note priority="1" from="description">Link to Rooms</note>
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit>
       <trans-unit id="NavigationComponentMyProfile" datatype="html">
         <source>My profile</source>
+        <target>My profile</target>
         <note priority="1" from="description">Link to the users profile</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="navigationBarInfoTooltip" datatype="html">
         <source>Got Feedback? Than that`s the right place to click.</source>
+        <target>Got Feedback? Than that`s the right place to click.</target>
         <note priority="1" from="description">Info Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
       </trans-unit>
       <trans-unit id="NavigationComponentInformation" datatype="html">
         <source>Information</source>
+        <target>Information</target>
         <note priority="1" from="description">Link to Information page</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="NavigationComponentReleaseNotes" datatype="html">
         <source>Release Notes</source>
+        <target>Release Notes</target>
         <note priority="1" from="description">Release Notes Menu Item</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="navigationBarBugTooltip" datatype="html">
         <source>Found a Bug? Than that`s the right place to click.</source>
+        <target>Found a Bug? Than that`s the right place to click.</target>
         <note priority="1" from="description">Bug Button Tooltip</note>
         <note priority="1" from="meaning">navigationBar</note>
       </trans-unit>
       <trans-unit id="NavigationComponentFeedback" datatype="html">
         <source>Submit Feedback</source>
+        <target>Submit Feedback</target>
         <note priority="1" from="description">Link to Bug page</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="navigationBarApplicationName" datatype="html">
         <source>Phonebook</source>
+        <target>Phonebook</target>
         <note priority="1" from="description">Application Name</note>
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit>
       <trans-unit id="MissingUserImageTooltip" datatype="html">
         <source>If you upload a picture it will be easier for your colleagues to find and contact you!</source>
+        <target>If you upload a picture it will be easier for your colleagues to find and contact you!</target>
         <note priority="1" from="description">Tooltip for MissingUserImage</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="MissingUserImageAriaLabel" datatype="html">
         <source>Button which greets and asks for picture uploading.</source>
+        <target>Button which greets and asks for picture uploading.</target>
         <note priority="1" from="description">Aria label for MissingUserImage</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="MissingUserImageGreeting" datatype="html">
         <source>Hey</source>
+        <target>Hey</target>
         <note priority="1" from="description">Greeting</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="MissingUserImageMessage" datatype="html">
         <source>you haven&apos;t uploaded a picture yet. Want to upload one?</source>
+        <target>you haven&apos;t uploaded a picture yet. Want to upload one?</target>
         <note priority="1" from="description">Message</note>
         <note priority="1" from="meaning">NavigationComponent</note>
       </trans-unit>
       <trans-unit id="TableComponentResultCount" datatype="html">
         <source> <x id="INTERPOLATION"/> Results </source>
+        <target> <x id="INTERPOLATION"/> Results </target>
         <note priority="1" from="description">Result Count</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="navigationBarGreetingsMessageFirstApril" datatype="html">
         <source>Happy April Fools&apos; Day</source>
+        <target>Happy April Fools&apos; Day</target>
         <note priority="1" from="description">Greetings Message on first April</note>
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit>
       <trans-unit id="navigationBarGreetingsMessage" datatype="html">
         <source>Have a nice day</source>
+        <target>Have a nice day</target>
         <note priority="1" from="description">Greetings Message</note>
         <note priority="1" from="meaning">NavigationBar</note>
       </trans-unit>
       <trans-unit id="OnlineBarComponentOnline" datatype="html">
         <source>The green bar indicates that you are online.</source>
+        <target>The green bar indicates that you are online.</target>
         <note priority="1" from="description">Tooltip for bar indicating the user is online</note>
         <note priority="1" from="meaning">Online-barComponent</note>
       </trans-unit>
       <trans-unit id="OnlineBarComponentOffline" datatype="html">
         <source>The red bar indicates that you are offline.</source>
+        <target>The red bar indicates that you are offline.</target>
         <note priority="1" from="description">Tooltip for bar indicating the user is offline</note>
         <note priority="1" from="meaning">Online-barComponent</note>
       </trans-unit>
       <trans-unit id="RoomPlanComponentNoPlan" datatype="html">
         <source><x id="START_PARAGRAPH"/> Unfortunately there is no plan for this floor. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/> Do you know who can make one or want to help us fix this? <x id="CLOSE_PARAGRAPH"/><x id="START_LINK"/><x id="START_TAG_MAT_ICON"/>code<x id="CLOSE_TAG_MAT_ICON"/> Contribute <x id="CLOSE_LINK"/></source>
+        <target><x id="START_PARAGRAPH"/> Unfortunately there is no plan for this floor. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/> Do you know who can make one or want to help us fix this? <x id="CLOSE_PARAGRAPH"/><x id="START_LINK"/><x id="START_TAG_MAT_ICON"/>code<x id="CLOSE_TAG_MAT_ICON"/> Contribute <x id="CLOSE_LINK"/></target>
         <note priority="1" from="description">Message displayed if there is no room plan</note>
         <note priority="1" from="meaning">RoomPlanComponent</note>
       </trans-unit>
       <trans-unit id="SearchComponentPlaceholder" datatype="html">
         <source>Search for names, shorthands, phone numbers and more...</source>
+        <target>Search for names, shorthands, phone numbers and more...</target>
         <note priority="1" from="description">Placholder for search</note>
         <note priority="1" from="meaning">SearchComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentTooltipDataChange" datatype="html">
         <source>Found Incorrect Data? Report them!</source>
+        <target>Found Incorrect Data? Report them!</target>
         <note priority="1" from="description">Tooltip Incorrect Data</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentTooltipBookmark" datatype="html">
         <source>Bookmark this person</source>
+        <target>Bookmark this person</target>
         <note priority="1" from="description">Tooltip for saving a person as
               favourite</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentTooltipShare" datatype="html">
         <source>Share</source>
+        <target>Share</target>
         <note priority="1" from="description">Tooltip for opening the share menu</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentShareDownloadContact" datatype="html">
         <source>Download Contact</source>
+        <target>Download Contact</target>
         <note priority="1" from="description">Share Menu: Donwload Contact
                 Option</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentShareLink" datatype="html">
         <source>Link</source>
+        <target>Link</target>
         <note priority="1" from="description">Share Menu: Link Option</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentShareMail" datatype="html">
         <source>Share by mail</source>
+        <target>Share by mail</target>
         <note priority="1" from="description">Share Menu: Mail Option</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentSubTitleContactDetails" datatype="html">
         <source> Contact Details </source>
+        <target> Contact Details </target>
         <note priority="1" from="description">Subtitle for Contact
               Details</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentShareRocketChat" datatype="html">
         <source>Rocket Chat</source>
+        <target>Rocket Chat</target>
         <note priority="1" from="description">Share Menu: Rocket Chat
                 Option</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="ColumnTitleEmail" datatype="html">
         <source>Email</source>
+        <target>Email</target>
       </trans-unit>
       <trans-unit id="ColumnTitlePhone" datatype="html">
         <source>Phone</source>
+        <target>Phone</target>
       </trans-unit>
       <trans-unit id="ColumnTitleMobile" datatype="html">
         <source>Mobile</source>
+        <target>Mobile</target>
       </trans-unit>
       <trans-unit id="DataPersonFax" datatype="html">
         <source> Fax </source>
+        <target> Fax </target>
         <note priority="1" from="description">Label for Person.Fax data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentSubTitleFurtherInformation" datatype="html">
         <source> Further Information </source>
+        <target> Further Information </target>
         <note priority="1" from="description">Subtitle for Further
               Information</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="DataPersonDirectSupervisor" datatype="html">
         <source> Direct Supervisor </source>
+        <target> Direct Supervisor </target>
         <note priority="1" from="description">Label for Person.Supervisor (direct supervisor)
                 </note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="DataPersonTeamAssistant" datatype="html">
         <source> Team Assistants </source>
+        <target> Team Assistants </target>
         <note priority="1" from="description">Label for Person.TeamAssistant </note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="ColumnTitleCostcenter" datatype="html">
         <source>Profitcenter</source>
+        <target>Profitcenter</target>
       </trans-unit>
       <trans-unit id="DataPersonStatus" datatype="html">
         <source> Status </source>
+        <target> Status </target>
         <note priority="1" from="description">Label for Person.Status data</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="ColumnTitleOrgUnit" datatype="html">
         <source> Organization Unit </source>
+        <target> Organization Unit </target>
       </trans-unit>
       <trans-unit id="UserDetailComponentButtonShowInOrganigram" datatype="html">
         <source>Show in Organigram</source>
+        <target>Show in Organigram</target>
         <note priority="1" from="description">Button to show the persons position in the
                     organigram</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentLabelLocation" datatype="html">
         <source> Location </source>
+        <target> Location </target>
         <note priority="1" from="description">Combined location of the person (city, building, floor,
                   room)</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentButtonShowRoom" datatype="html">
         <source> Show Room </source>
+        <target> Show Room </target>
         <note priority="1" from="description">Button to show the persons
                     room</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentTabHeadlineRoomplan" datatype="html">
         <source>Roomplan</source>
+        <target>Roomplan</target>
         <note priority="1" from="description">Tab Headline for Roomplan</note>
         <note priority="1" from="meaning">UserDetailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponentTabHeadlineSkills" datatype="html">
         <source>Skills</source>
+        <target>Skills</target>
         <note priority="1" from="description">Tab Headline for Skills</note>
         <note priority="1" from="meaning">UserDetailComponent</note>
       </trans-unit>
       <trans-unit id="UserDetailComponenMessageContributeSkills" datatype="html">
         <source> This is where a coworkers skills would be shown. But this is still work in Progress, you can make it happen faster! <x id="START_LINK"/><x id="START_TAG_MAT_ICON"/>code<x id="CLOSE_TAG_MAT_ICON"/> Contribute <x id="CLOSE_LINK"/><x id="START_TAG_SPAN"/><x id="CLOSE_TAG_SPAN"/></source>
+        <target> This is where a coworkers skills would be shown. But this is still work in Progress, you can make it happen faster! <x id="START_LINK"/><x id="START_TAG_MAT_ICON"/>code<x id="CLOSE_TAG_MAT_ICON"/> Contribute <x id="CLOSE_LINK"/><x id="START_TAG_SPAN"/><x id="CLOSE_TAG_SPAN"/></target>
         <note priority="1" from="description">Text for the upcoming skill tag
                 feature</note>
         <note priority="1" from="meaning">User-detailComponent</note>
       </trans-unit>
       <trans-unit id="ColumnTitlePicture" datatype="html">
         <source>Picture</source>
+        <target>Picture</target>
         <note priority="1" from="description">Title of Table Column &quot;Picture&quot;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="ColumnTitleId" datatype="html">
         <source>Id</source>
+        <target>Id</target>
         <note priority="1" from="description">Title of Table Column &quot;Id&quot;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="ColumnTitleFullName" datatype="html">
         <source>Name</source>
+        <target>Name</target>
         <note priority="1" from="description">Title of Table Column &quot;Name&quot;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="ColumnEmailName" datatype="html">
         <source>Email</source>
+        <target>Email</target>
         <note priority="1" from="description">Title of Table Column &quot;Email&quot;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="ColumnTitleRole" datatype="html">
         <source>Role</source>
+        <target>Role</target>
         <note priority="1" from="description">Title of Table Column &quot;Role&quot;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="ColumnTitleCity" datatype="html">
         <source>City</source>
+        <target>City</target>
         <note priority="1" from="description">Title of Table Column &quot;City&quot;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="ColumnTitleBuilding" datatype="html">
         <source>Building</source>
+        <target>Building</target>
         <note priority="1" from="description">Title of Table Column &quot;Building&quot;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
       <trans-unit id="BugReportConsentComponentTitle" datatype="html">
         <source> We need your help! </source>
+        <target> We need your help! </target>
         <note priority="1" from="description">Title of Bug Report Consent Dialog</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit>
       <trans-unit id="BugReportConsentComponentSubTitle" datatype="html">
         <source> Sending automatic Bug reports </source>
+        <target> Sending automatic Bug reports </target>
         <note priority="1" from="description">Sub title of bug report consent
         dialog</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit>
       <trans-unit id="BugReportConsentComponentText" datatype="html">
         <source><x id="START_PARAGRAPH"/> If an error occurs while the application is running, an anonymous error report is automatically generated. In exceptional cases - since this is a preview - the following personal data can still be found in one of the reports: <x id="CLOSE_PARAGRAPH"/><x id="START_TAG_MAT_LIST"/><x id="START_TAG_MAT_LIST_ITEM"/> Username (short and full name) <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="START_TAG_MAT_LIST_ITEM"/> Bookmarks and Last seen people <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="START_TAG_MAT_LIST_ITEM"/> The Last 20 Actions performed in the app <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="CLOSE_TAG_MAT_LIST"/><x id="START_PARAGRAPH"/> The data from the error report is used exclusively for the purpose of analysis and correction of the error by our core development team. The data will not be passed on to third parties. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/><x id="START_TAG_STRONG"/>TL;DR With your permission, you agree that bug reports that may contain your personal data can be sent to our core development team and be used for error analysis and resolution. <x id="CLOSE_TAG_STRONG"/><x id="CLOSE_PARAGRAPH"/></source>
+        <target><x id="START_PARAGRAPH"/> If an error occurs while the application is running, an anonymous error report is automatically generated. In exceptional cases - since this is a preview - the following personal data can still be found in one of the reports: <x id="CLOSE_PARAGRAPH"/><x id="START_TAG_MAT_LIST"/><x id="START_TAG_MAT_LIST_ITEM"/> Username (short and full name) <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="START_TAG_MAT_LIST_ITEM"/> Bookmarks and Last seen people <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="START_TAG_MAT_LIST_ITEM"/> The Last 20 Actions performed in the app <x id="CLOSE_TAG_MAT_LIST_ITEM"/><x id="CLOSE_TAG_MAT_LIST"/><x id="START_PARAGRAPH"/> The data from the error report is used exclusively for the purpose of analysis and correction of the error by our core development team. The data will not be passed on to third parties. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/><x id="START_TAG_STRONG"/>TL;DR With your permission, you agree that bug reports that may contain your personal data can be sent to our core development team and be used for error analysis and resolution. <x id="CLOSE_TAG_STRONG"/><x id="CLOSE_PARAGRAPH"/></target>
         <note priority="1" from="description">Text of Bug Report consent dialog</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit>
       <trans-unit id="BugReportConsentComponentButtonDecline" datatype="html">
         <source> Do not send Bug Reports </source>
+        <target> Do not send Bug Reports </target>
         <note priority="1" from="description">Button to decline sending bug
           reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit>
       <trans-unit id="BugReportConsentComponentButtonConsent" datatype="html">
         <source> Consent </source>
+        <target> Consent </target>
         <note priority="1" from="description">Button to consent sending bug
           reports</note>
         <note priority="1" from="meaning">Bug-report-consentComponent</note>
       </trans-unit>
       <trans-unit id="WelcomeHeadline" datatype="html">
         <source> Welcome to the new Phonebook! </source>
+        <target> Welcome to the new Phonebook! </target>
         <note priority="1" from="description">Welcome Headline</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeIntroduction" datatype="html">
         <source>The new Phonebook not only offers you a new design, but also numerous features that make it better than its predecessor. </source>
+        <target>The new Phonebook not only offers you a new design, but also numerous features that make it better than its predecessor. </target>
         <note priority="1" from="description">Welcome Introduction</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureProfilePictureHeadline" datatype="html">
         <source> You can set a profile picture by yourself </source>
+        <target> You can set a profile picture by yourself </target>
         <note priority="1" from="description">Profile Image Feature Headline</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureProfilePictureDescription" datatype="html">
         <source> Simply click on the <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>person<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> icon in the upper right corner and then on &quot;My Profile&quot;. </source>
+        <target> Simply click on the <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>person<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> icon in the upper right corner and then on &quot;My Profile&quot;. </target>
         <note priority="1" from="description">Profile Image Feature Description</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureBookmarkHeadline" datatype="html">
         <source> Colleagues can be saved as a favorite </source>
+        <target> Colleagues can be saved as a favorite </target>
         <note priority="1" from="description">Bookmark Feature Headline</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureBookmarkDescription" datatype="html">
         <source> Just click on the <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> icon at one of your colleagues. </source>
+        <target> Just click on the <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>bookmark_border<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> icon at one of your colleagues. </target>
         <note priority="1" from="description">Bookmark Feature Description</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureTableSettingsHeadline" datatype="html">
         <source> Table columns can be sorted and customized </source>
+        <target> Table columns can be sorted and customized </target>
         <note priority="1" from="description">Table Settings Headlin</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureTableSettingsDescription" datatype="html">
         <source> The settings <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>settings<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> can be found at the search page in the upper right corner. </source>
+        <target> The settings <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>settings<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> can be found at the search page in the upper right corner. </target>
         <note priority="1" from="description">Table Settings Description</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureShareHeadline" datatype="html">
         <source> People can be shared via links </source>
+        <target> People can be shared via links </target>
         <note priority="1" from="description">Share Headline</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureShareDescription" datatype="html">
         <source> The different ways to share a profile can be found by clicking on the <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>share<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> icon. </source>
+        <target> The different ways to share a profile can be found by clicking on the <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>share<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> icon. </target>
         <note priority="1" from="description">Share description</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureLanguageHeadline" datatype="html">
         <source> The Phonebook is available in German and English </source>
+        <target> The Phonebook is available in German and English </target>
         <note priority="1" from="description">Language Headline</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureLanguageDescription" datatype="html">
         <source> Simply click on the <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>person<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> icon in the top right corner and go to the settings. </source>
+        <target> Simply click on the <x id="START_TAG_BUTTON"/><x id="START_TAG_MAT_ICON"/>person<x id="CLOSE_TAG_MAT_ICON"/><x id="CLOSE_TAG_BUTTON"/> icon in the top right corner and go to the settings. </target>
         <note priority="1" from="description">Language description</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureRoomplanHeadline" datatype="html">
         <source> You can view a roomplan for each employee </source>
+        <target> You can view a roomplan for each employee </target>
         <note priority="1" from="description">Room Plan Headline</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeFeatureRoomplanDescription" datatype="html">
         <source> Just go to the profile of a colleague and scroll down. </source>
+        <target> Just go to the profile of a colleague and scroll down. </target>
         <note priority="1" from="description">Room Plan description</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="WelcomeCookieNotice" datatype="html">
         <source> This site uses cookies to ensure the basic functionality of the app. </source>
+        <target> This site uses cookies to ensure the basic functionality of the app. </target>
         <note priority="1" from="description">Cookie notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="PageInformationNewUrlNoCookiesText" datatype="html">
         <source> You deactivated cookies and keep getting those dialogs? </source>
+        <target> You deactivated cookies and keep getting those dialogs? </target>
         <note priority="1" from="description">Annoyed by cookies notice</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="PageInformationNewUrlNoCookiesButton" datatype="html">
         <source> Deactivate startup-dialogs! </source>
+        <target> Deactivate startup-dialogs! </target>
         <note priority="1" from="description">Deactivate Startup Dialogs</note>
         <note priority="1" from="meaning">Display-notificationDialog</note>
       </trans-unit>
       <trans-unit id="IeWarningComponentTitle" datatype="html">
         <source> This Website may not function properly in Internet Explorer
 </source>
+        <target> This Website may not function properly in Internet Explorer
+</target>
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">IeWarningComponent</note>
       </trans-unit>
       <trans-unit id="IeWarningComponentContent" datatype="html">
         <source><x id="START_PARAGRAPH"/> The support for older versions of Internet Explorer <x id="START_LINK"/>ended in 2016<x id="CLOSE_LINK"/>. It is not actively developed anymore and as such lags modern features. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/> Making a feature work in Internet Explorer takes up as much time as building the feature itself for all other browser. As we only have limited time we strive to develop features of the future instead of supporting the past. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/> Please change to a more modern browser: <x id="START_LINK_1"/>Chrome<x id="CLOSE_LINK"/>, <x id="START_LINK_2"/>Firefox<x id="CLOSE_LINK"/>, <x id="START_LINK_3"/>Edge<x id="CLOSE_LINK"/>, <x id="START_LINK_4"/>Safari<x id="CLOSE_LINK"/>. <x id="CLOSE_PARAGRAPH"/></source>
+        <target><x id="START_PARAGRAPH"/> The support for older versions of Internet Explorer <x id="START_LINK"/>ended in 2016<x id="CLOSE_LINK"/>. It is not actively developed anymore and as such lags modern features. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/> Making a feature work in Internet Explorer takes up as much time as building the feature itself for all other browser. As we only have limited time we strive to develop features of the future instead of supporting the past. <x id="CLOSE_PARAGRAPH"/><x id="START_PARAGRAPH"/> Please change to a more modern browser: <x id="START_LINK_1"/>Chrome<x id="CLOSE_LINK"/>, <x id="START_LINK_2"/>Firefox<x id="CLOSE_LINK"/>, <x id="START_LINK_3"/>Edge<x id="CLOSE_LINK"/>, <x id="START_LINK_4"/>Safari<x id="CLOSE_LINK"/>. <x id="CLOSE_PARAGRAPH"/></target>
         <note priority="1" from="description">Content</note>
         <note priority="1" from="meaning">IeWarningComponent</note>
       </trans-unit>
       <trans-unit id="IeWarningComponentButton" datatype="html">
         <source> I still want to use Internet Explorer! </source>
+        <target> I still want to use Internet Explorer! </target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">IeWarningComponent</note>
       </trans-unit>
       <trans-unit id="Headline" datatype="html">
         <source>Incorrect User Information</source>
+        <target>Incorrect User Information</target>
         <note priority="1" from="description">Headline</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
       <trans-unit id="GotItButton" datatype="html">
         <source> Got it! </source>
+        <target> Got it! </target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
       <trans-unit id="Your Profile" datatype="html">
         <source> Dear <x id="INTERPOLATION"/>,<x id="LINE_BREAK"/> unfortunately, you can&apos;t change your user information via the Phonebook interface. <x id="LINE_BREAK"/> If your data is incorrect, please contact your Human Resources department. </source>
+        <target> Dear <x id="INTERPOLATION"/>,<x id="LINE_BREAK"/> unfortunately, you can&apos;t change your user information via the Phonebook interface. <x id="LINE_BREAK"/> If your data is incorrect, please contact your Human Resources department. </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
       <trans-unit id="Colleague Profile" datatype="html">
         <source> Is there something wrong with the profile? <x id="LINE_BREAK"/> Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources department. </source>
+        <target> Is there something wrong with the profile? <x id="LINE_BREAK"/> Please let your colleague know that the data is incorrect and that it can be changed through your Human Resources department. </target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
       <trans-unit id="SendEmail" datatype="html">
         <source>Send your colleague a direct message</source>
+        <target>Send your colleague a direct message</target>
         <note priority="1" from="description">Button</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
       <trans-unit id="Notify" datatype="html">
         <source>Notify <x id="INTERPOLATION"/></source>
+        <target>Notify <x id="INTERPOLATION"/></target>
         <note priority="1" from="description">Profile</note>
         <note priority="1" from="meaning">User-InformationDialog</note>
       </trans-unit>
       <trans-unit id="User-InformationDialogSubject" datatype="html">
         <source>There is an Issue with your Phonebook-Profile</source>
+        <target>There is an Issue with your Phonebook-Profile</target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateSubject</note>
       </trans-unit>
       <trans-unit id="User-InformationDialogGreeting" datatype="html">
         <source>Hi </source>
+        <target>Hi </target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateGreeting</note>
       </trans-unit>
@@ -818,81 +997,98 @@
         <source>, 
 while browsing your profile I noticed that something is not right: 
 Please contact the HR Department to fix it.This is the Phonebook Link: </source>
+        <target>, 
+while browsing your profile I noticed that something is not right: 
+Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <note priority="1" from="description">Send a mail to your mate if there is something wrong on the profile </note>
         <note priority="1" from="meaning">MailToMateBody</note>
       </trans-unit>
       <trans-unit id="GeneralCopyButton" datatype="html">
         <source>Copy to clipboard</source>
+        <target>Copy to clipboard</target>
         <note priority="1" from="description">Copy to Clipboard button</note>
         <note priority="1" from="meaning">GeneralCopyButton</note>
       </trans-unit>
       <trans-unit id="GeneralMailButton" datatype="html">
         <source>Send an Email</source>
+        <target>Send an Email</target>
         <note priority="1" from="description">Send Mail button</note>
         <note priority="1" from="meaning">GeneralMailButton</note>
       </trans-unit>
       <trans-unit id="GeneralCallButton" datatype="html">
         <source>Call the Number</source>
+        <target>Call the Number</target>
         <note priority="1" from="description">call Number button</note>
         <note priority="1" from="meaning">GeneralCallButton</note>
       </trans-unit>
       <trans-unit id="GeneralSuccessMessageCopy" datatype="html">
         <source>Copied to clipboard!</source>
+        <target>Copied to clipboard!</target>
         <note priority="1" from="description">Message displayed when copying a link is successfully</note>
         <note priority="1" from="meaning">GeneralSuccessMessageCopy</note>
       </trans-unit>
       <trans-unit id="GeneralErrorMessageCopy" datatype="html">
         <source>Couldn&apos;t copy to the clipboard, something went wrong. Try again.</source>
+        <target>Couldn&apos;t copy to the clipboard, something went wrong. Try again.</target>
         <note priority="1" from="description">Message displayed if something was not copied succesfully</note>
         <note priority="1" from="meaning">ErrorMessageCopy</note>
       </trans-unit>
       <trans-unit id="FeedbackDrawerSheetComponentTitle" datatype="html">
         <source> Leave Feedback, report a Bug or suggest a new Idea </source>
+        <target> Leave Feedback, report a Bug or suggest a new Idea </target>
         <note priority="1" from="description">Title of the Feedback Drawer</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit>
       <trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubFeature" datatype="html">
         <source>Suggest an idea or a new feature</source>
+        <target>Suggest an idea or a new feature</target>
         <note priority="1" from="description">Button for suggesting a new feature on
           Github</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit>
       <trans-unit id="FeedbackDrawerSheetComponentButtonPublicGithubBug" datatype="html">
         <source>Report a bug</source>
+        <target>Report a bug</target>
         <note priority="1" from="description">Button for reporting a bug on
           Github</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit>
       <trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganizationMail" datatype="html">
         <source>Contact your private organization via email</source>
+        <target>Contact your private organization via email</target>
         <note priority="1" from="description">Button for contacting the private Organization via
           email</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit>
       <trans-unit id="FeedbackDrawerSheetComponentButtonPrivateOrganization" datatype="html">
         <source>Contact your private organization</source>
+        <target>Contact your private organization</target>
         <note priority="1" from="description">Button for contacting the private
           Organization</note>
         <note priority="1" from="meaning">FeedbackDrawerSheetComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentPropertySupervisor" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {No Supervisor } =1 {Supervisor: } other {Supervisors: }}</source>
+        <target>{VAR_PLURAL, plural, =0 {No Supervisor } =1 {Supervisor: } other {Supervisors: }}</target>
         <note priority="1" from="description">Supervisor Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentPropertyAssistant" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants: }}</source>
+        <target>{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants: }}</target>
         <note priority="1" from="description">Assistant Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentExpandAriaLabel" datatype="html">
         <source>Button expanding or collapsing this node. </source>
+        <target>Button expanding or collapsing this node. </target>
         <note priority="1" from="description">Aria Label for expand Button on Organigram
           Node</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentExpandTooltip" datatype="html">
         <source>Expand or Collapse this node.</source>
+        <target>Expand or Collapse this node.</target>
         <note priority="1" from="description">Tooltip for expanding a Organigram
           Node</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
@@ -900,237 +1096,282 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </source>
       <trans-unit id="OrganigramNodeComponentPropertyEmployee" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {No Employees } =1 {Employee: } other {Employees:
             }}</source>
+        <target>{VAR_PLURAL, plural, =0 {No Employees } =1 {Employee: } other {Employees:
+            }}</target>
         <note priority="1" from="description">Employee Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentPropertyLearner" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {No Learners } =1 {Learner: } other {Learners:
             }}</source>
+        <target>{VAR_PLURAL, plural, =0 {No Learners } =1 {Learner: } other {Learners:
+            }}</target>
         <note priority="1" from="description">Learners Property</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentCopiedFirstPart" datatype="html">
         <source>Link to</source>
+        <target>Link to</target>
         <note priority="1" from="description">First part of the message displayed when copying a link to the node</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramNodeComponentCopiedSecondPart" datatype="html">
         <source>copied to clipboard!</source>
+        <target>copied to clipboard!</target>
         <note priority="1" from="description">Second part of the message displayed when copying a link to the node</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
       </trans-unit>
       <trans-unit id="DataLocationAddress" datatype="html">
         <source> Address </source>
+        <target> Address </target>
         <note priority="1" from="description">Label for address</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="DataLocationContact" datatype="html">
         <source> Contact </source>
+        <target> Contact </target>
         <note priority="1" from="description">Label for contact information</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="DataPersonFloorPlural" datatype="html">
         <source> Floors </source>
+        <target> Floors </target>
         <note priority="1" from="description">Floor plural</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="GeneralShowOnMapButton" datatype="html">
         <source>Show on Google-Maps</source>
+        <target>Show on Google-Maps</target>
         <note priority="1" from="description">Button label for showing the location on google maps</note>
         <note priority="1" from="meaning">General</note>
       </trans-unit>
       <trans-unit id="DataLocationContactPerson" datatype="html">
         <source> Contact Person </source>
+        <target> Contact Person </target>
         <note priority="1" from="description">Label for Location.ContactPerson</note>
         <note priority="1" from="meaning">Datapoint</note>
       </trans-unit>
       <trans-unit id="BuildingComponentErrorNoBuilding" datatype="html">
         <source>Building does not exist.</source>
+        <target>Building does not exist.</target>
         <note priority="1" from="description">Error Message if Building does not exist.</note>
         <note priority="1" from="meaning">BuildingComponent</note>
       </trans-unit>
       <trans-unit id="CityComponentSubHeaderLocation" datatype="html">
         <source> Buildings </source>
+        <target> Buildings </target>
         <note priority="1" from="description">Subheader for all building locations in the
           city</note>
         <note priority="1" from="meaning">CityComponent</note>
       </trans-unit>
       <trans-unit id="CityComponentErrorNoCity" datatype="html">
         <source>City does not exist.</source>
+        <target>City does not exist.</target>
         <note priority="1" from="description">Error Message if City does not exist.</note>
         <note priority="1" from="meaning">CityComponent</note>
       </trans-unit>
       <trans-unit id="FloorComponentSubHeaderRooms" datatype="html">
         <source> Rooms </source>
+        <target> Rooms </target>
         <note priority="1" from="description">SubHeader for all Rooms in the floor</note>
         <note priority="1" from="meaning">FloorComponent</note>
       </trans-unit>
       <trans-unit id="FloorComponentErrorNoFloor" datatype="html">
         <source>Floor does not exist.</source>
+        <target>Floor does not exist.</target>
         <note priority="1" from="description">Error Message if Floor does not exist.</note>
         <note priority="1" from="meaning">FloorComponent</note>
       </trans-unit>
       <trans-unit id="RoomTreeComponentButtonExpandAriaLabel" datatype="html">
         <source>Button expanding or collapsing the tree view on the left.</source>
+        <target>Button expanding or collapsing the tree view on the left.</target>
         <note priority="1" from="description">Aria Label for expanding the tree
           view</note>
         <note priority="1" from="meaning">RoomTreeComponent</note>
       </trans-unit>
       <trans-unit id="RoomTreeComponentButtonExpandTooltip" datatype="html">
         <source>Expand or Collapse the tree view.</source>
+        <target>Expand or Collapse the tree view.</target>
         <note priority="1" from="description">Tooltip for expanding the tree
           view</note>
         <note priority="1" from="meaning">RoomTreeComponent</note>
       </trans-unit>
       <trans-unit id="RoomTreeComponentRootNavigationTitle" datatype="html">
         <source>Overview</source>
+        <target>Overview</target>
         <note priority="1" from="description">Root of the Navigation Tree</note>
         <note priority="1" from="meaning">Room-treeComponent</note>
       </trans-unit>
       <trans-unit id="RoomTreeComponentButtonBookingTool" datatype="html">
         <source> Booking Tool </source>
+        <target> Booking Tool </target>
         <note priority="1" from="description">Button for changing to the booking
         tool</note>
         <note priority="1" from="meaning">RoomTreeComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentShareButtonTooltip" datatype="html">
         <source>Share this room.</source>
+        <target>Share this room.</target>
         <note priority="1" from="description">Tooltip for the Room sharing
           button</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentShareButtonAriaLabel" datatype="html">
         <source>Button for sharing this room.</source>
+        <target>Button for sharing this room.</target>
         <note priority="1" from="description">Aria Label for sharing the
           room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentShareButtonLinkOption" datatype="html">
         <source>Link</source>
+        <target>Link</target>
         <note priority="1" from="description">Option for getting a Link to the
               Room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentShareButtonMailOption" datatype="html">
         <source>Share by mail</source>
+        <target>Share by mail</target>
         <note priority="1" from="description">Option for sharing the room by
               Mail</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentMainTitle" datatype="html">
         <source> Information </source>
+        <target> Information </target>
         <note priority="1" from="description">Title for the main information of the
             room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentSubTitleLocation" datatype="html">
         <source> Location </source>
+        <target> Location </target>
         <note priority="1" from="description">Subtitle for the location information of the
               room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomComponentSubTitleInThisRoom" datatype="html">
         <source> In this Room </source>
+        <target> In this Room </target>
         <note priority="1" from="description">Title for the subtitle about the people in this
             room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentSubTitleCommunication" datatype="html">
         <source> Phone Number </source>
+        <target> Phone Number </target>
         <note priority="1" from="description">Subtitle for the communication information of the
               room</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomComponentDescriptionNoPersons" datatype="html">
         <source> Nobody works in this room. </source>
+        <target> Nobody works in this room. </target>
         <note priority="1" from="description">Message displayed if no people are in the
               room</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
       <trans-unit id="RoomComponentErrorNoRoom" datatype="html">
         <source>Room does not exist.</source>
+        <target>Room does not exist.</target>
         <note priority="1" from="description">Error Message if Room does not exist.</note>
         <note priority="1" from="meaning">RoomComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentMailSubject" datatype="html">
         <source>Information about the room: </source>
+        <target>Information about the room: </target>
         <note priority="1" from="description">subject of the email message that is preset when clicking &quot;Share by mail&quot;. The room is applied after this sentence.</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="RoomDetailComponentMailBodyPart1" datatype="html">
         <source>Here is the Link: </source>
+        <target>Here is the Link: </target>
         <note priority="1" from="description">the body of the email that is preset when clicking &quot;Share by mail&quot;. The link to the room is applied after this sentence.</note>
         <note priority="1" from="meaning">RoomDetailComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentTitle" datatype="html">
         <source> Phonebook </source>
+        <target> Phonebook </target>
         <note priority="1" from="description">Title of the page information</note>
         <note priority="1" from="meaning">PageInformationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSubTitleFeedback" datatype="html">
         <source> Contact &amp; Feedback </source>
+        <target> Contact &amp; Feedback </target>
         <note priority="1" from="description">Subtitle for Contact and
               Feedback</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSectionFeedbackButton" datatype="html">
         <source>Contact us</source>
+        <target>Contact us</target>
         <note priority="1" from="description">Feedback
               Button</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSubTitleUserGuide" datatype="html">
         <source> User Guide </source>
+        <target> User Guide </target>
         <note priority="1" from="description">Subtitle for User
               Guide</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSectionUserGuide" datatype="html">
         <source><x id="START_TAG_SPAN"/> Are you new to the Phonebook? Do you have any questions? Then visit the Phonebook&apos;s User Guide. It explains all its features and possibilities. <x id="CLOSE_TAG_SPAN"/></source>
+        <target><x id="START_TAG_SPAN"/> Are you new to the Phonebook? Do you have any questions? Then visit the Phonebook&apos;s User Guide. It explains all its features and possibilities. <x id="CLOSE_TAG_SPAN"/></target>
         <note priority="1" from="description">User Guide Section</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSectionUserGuideButton" datatype="html">
         <source>Open User Guide</source>
+        <target>Open User Guide</target>
         <note priority="1" from="description">User Guide
               Button</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSubTitleCookie" datatype="html">
         <source> Cookie Notice </source>
+        <target> Cookie Notice </target>
         <note priority="1" from="description">Subtitle for Cookie</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSectionCookies" datatype="html">
         <source> This site uses cookies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the language you want to use. </source>
+        <target> This site uses cookies, to enhance your experience. Cookies are only used for necessary tasks, e.g. saving the language you want to use. </target>
         <note priority="1" from="description">CookiesSection</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSubTitleLicenses" datatype="html">
         <source> Licenses </source>
+        <target> Licenses </target>
         <note priority="1" from="description">Subtitle for
               Licenses</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSubTitleLicensesText" datatype="html">
         <source> This Project is licensed under the <x id="START_LINK"/>MIT License<x id="CLOSE_LINK"/>. Other licenses from modules and packets may apply. </source>
+        <target> This Project is licensed under the <x id="START_LINK"/>MIT License<x id="CLOSE_LINK"/>. Other licenses from modules and packets may apply. </target>
         <note priority="1" from="description">Text for Licenses
             SubTitle</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSubTitleAttributions" datatype="html">
         <source> Icon of the Phonebook made by <x id="START_LINK"/>Gregor Cresnar<x id="CLOSE_LINK"/> from <x id="START_LINK_1"/>www.flaticon.com<x id="CLOSE_LINK"/> is licensed by <x id="START_LINK_2"/>CC 3.0 BY<x id="CLOSE_LINK"/></source>
+        <target> Icon of the Phonebook made by <x id="START_LINK"/>Gregor Cresnar<x id="CLOSE_LINK"/> from <x id="START_LINK_1"/>www.flaticon.com<x id="CLOSE_LINK"/> is licensed by <x id="START_LINK_2"/>CC 3.0 BY<x id="CLOSE_LINK"/></target>
         <note priority="1" from="description">Attributions
             SubTitle</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentDisclaimer" datatype="html">
         <source> This is a Preview application. We are doing our best not to break anything, but we can&apos;t guarantee. Thats why all Features are still subject to change without further notice and your data may get lost. </source>
+        <target> This is a Preview application. We are doing our best not to break anything, but we can&apos;t guarantee. Thats why all Features are still subject to change without further notice and your data may get lost. </target>
         <note priority="1" from="description">Disclaimer beneath title</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
       <trans-unit id="PageInformationComponentSectionFeedback" datatype="html">
         <source><x id="START_TAG_SPAN"/> This is an Installation of the Open Source Phonebook. <x id="CLOSE_TAG_SPAN"/><x id="START_TAG_SPAN_1"/> You can contact your own support at <x id="START_LINK"/><x id="INTERPOLATION"/><x id="CLOSE_LINK"/> regarding this installation. <x id="CLOSE_TAG_SPAN"/><x id="START_TAG_SPAN"/> You&apos;ve found a bug or have an idea for a new feature? <x id="CLOSE_TAG_SPAN"/></source>
+        <target><x id="START_TAG_SPAN"/> This is an Installation of the Open Source Phonebook. <x id="CLOSE_TAG_SPAN"/><x id="START_TAG_SPAN_1"/> You can contact your own support at <x id="START_LINK"/><x id="INTERPOLATION"/><x id="CLOSE_LINK"/> regarding this installation. <x id="CLOSE_TAG_SPAN"/><x id="START_TAG_SPAN"/> You&apos;ve found a bug or have an idea for a new feature? <x id="CLOSE_TAG_SPAN"/></target>
         <note priority="1" from="description">Feedback Section</note>
         <note priority="1" from="meaning">Page-informationComponent</note>
       </trans-unit>
