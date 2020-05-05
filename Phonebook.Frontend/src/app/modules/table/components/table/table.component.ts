@@ -11,6 +11,7 @@ import { PersonService } from 'src/app/services/api/person.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PhonebookSortDirection, TableSort } from 'src/app/shared/models';
 import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app/shared/states';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-table',
@@ -68,11 +69,18 @@ export class TableComponent implements OnInit, OnDestroy {
           // where all three fire as they are initialized.
           debounceTime(50)
         )
-        .subscribe((val) => {
-          this.refreshTable();
-          this.dataSource.pageSize = this.initialPageSize;
-          this.loaded = true;
-        });
+        .subscribe(
+          (val) => {
+            this.refreshTable();
+            this.dataSource.pageSize = this.initialPageSize;
+            this.loaded = true;
+          },
+          (err: HttpErrorResponse) => {
+            if (err.status === 500) {
+              this.error = true;
+            }
+          }
+        );
     });
 
     this.route.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe((queryParams) => {
@@ -108,9 +116,6 @@ export class TableComponent implements OnInit, OnDestroy {
         this.store.dispatch(new SetTableResultCount(results.length));
         if (results.length === 1) {
           this.router.navigate(['/user', results[0].Id]);
-        }
-        if (results.length === undefined) {
-          this.error === true;
         } else {
           const test = results.filter(
             (x) =>
