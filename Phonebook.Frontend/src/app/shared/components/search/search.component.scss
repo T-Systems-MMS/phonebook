@@ -16,6 +16,7 @@ input {
   box-shadow: none;
   box-sizing: content-box;
   transition: all 0.3s;
+  min-width: 0px;
 
   &:focus {
     border-bottom: none !important;
