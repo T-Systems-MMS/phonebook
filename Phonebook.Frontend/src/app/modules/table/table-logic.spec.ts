@@ -24,7 +24,7 @@ describe('Table Logic - Sort', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
       new Person(
         PersonStatus.Interner_Mitarbeiter,
@@ -36,7 +36,7 @@ describe('Table Logic - Sort', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ];
     expect(
@@ -55,7 +55,7 @@ describe('Table Logic - Sort', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
       new Person(
         PersonStatus.Interner_Mitarbeiter,
@@ -67,7 +67,7 @@ describe('Table Logic - Sort', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ]);
   });
@@ -83,7 +83,7 @@ describe('Table Logic - Sort', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
       new Person(
         PersonStatus.Interner_Mitarbeiter,
@@ -95,7 +95,7 @@ describe('Table Logic - Sort', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ];
 
@@ -115,7 +115,7 @@ describe('Table Logic - Sort', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
       new Person(
         PersonStatus.Interner_Mitarbeiter,
@@ -127,7 +127,7 @@ describe('Table Logic - Sort', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ]);
   });
@@ -146,7 +146,7 @@ describe('Table Logic - Filter', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ];
     expect(
@@ -162,7 +162,7 @@ describe('Table Logic - Filter', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ]);
   });
@@ -179,7 +179,7 @@ describe('Table Logic - Filter', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ];
     expect(
@@ -199,7 +199,7 @@ describe('Table Logic - Filter', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ];
     expect(
@@ -219,7 +219,7 @@ describe('Table Logic - Filter', () => {
         false,
         new Contacts('', '', '', '', new Messenger('', 0)),
         new Location(new City('', ''), []),
-        new Business([], [], [], [], [], [], '')
+        new Business(null, [], [], [], [], [], [], '')
       ),
     ]);
   });
