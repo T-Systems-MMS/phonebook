@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster@sha256:d81d9ab0253c2c578578b2032955984562684c182e3a15dacc3bbdb31260d4e4 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster@sha256:d706e0545b75615ecd864c6af237cc1fc2ca9001ed25cdd84b83fdb3923e9e54 AS build
 WORKDIR /src
 COPY ["src/Phonebook.Source.PeopleSoft/Phonebook.Source.PeopleSoft.csproj", "src/Phonebook.Source.PeopleSoft/"]
 COPY ["src/Phonebook.Source.PeopleSoft.Models/Phonebook.Source.PeopleSoft.Models.csproj", "src/Phonebook.Source.PeopleSoft.Models/"]
