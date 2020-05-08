@@ -176,6 +176,12 @@
         <note priority="1" from="description">Label for sorting the column &apos;Status&apos;</note>
         <note priority="1" from="meaning">TableComponent</note>
       </trans-unit>
+      <trans-unit id="GeneralInfoMessageLoading" datatype="html">
+        <source>Loading</source>
+        <target>Loading</target>
+        <note priority="1" from="description">General Message if somthing currently loads</note>
+        <note priority="1" from="meaning">General</note>
+      </trans-unit>
       <trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source> Your search returned no results. </source>
         <target> Your search returned no results. </target>
@@ -187,8 +193,15 @@
         <source>We couldn&apos;t reach the data service. Are you connected to the internet?</source>
         <target>We couldn&apos;t reach the data service. Are you connected to the internet?</target>
         <note priority="1" from="description">Sentence displayed if data service was not
-      reached</note>
+        reached</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit>
+      <trans-unit id="GeneralRetryButton" datatype="html">
+        <source>Retry</source>
+        <target>Retry</target>
+        <note priority="1" from="description">General Retry Button for trying something that has previously
+        failed</note>
+        <note priority="1" from="meaning">General</note>
       </trans-unit>
       <trans-unit id="TableComponentDisplayedColumnsError" datatype="html">
         <source>There are currently no Columns being displayed. Update your displayed Columns in the Table Settings.</source>

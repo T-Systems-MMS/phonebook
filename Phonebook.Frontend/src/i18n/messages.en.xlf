@@ -935,6 +935,11 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <source>Change sorting for column status</source><target state="final">Change sorting for column status</target>
         <note priority="1" from="description">Label for sorting the column 'Status'</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="GeneralInfoMessageLoading" datatype="html">
+        <source>Loading</source>
+        <target state="final">Loading</target>
+        <note priority="1" from="description">General Message if somthing currently loads</note>
+        <note priority="1" from="meaning">General</note>
       </trans-unit>
       <trans-unit id="TableComponentSearchNoResult" datatype="html">
         <source> Your search returned no results. </source>
@@ -946,8 +951,14 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <source>We couldn't reach the data service. Are you connected to the internet?</source>
         <target state="final">We couldn't reach the data service. Are you connected to the internet?</target>
         <note priority="1" from="description">Sentence displayed if data service was not
-      reached</note>
+        reached</note>
         <note priority="1" from="meaning">TableComponent</note>
+      </trans-unit><trans-unit id="GeneralRetryButton" datatype="html">
+        <source>Retry</source>
+        <target state="final">Retry</target>
+        <note priority="1" from="description">General Retry Button for trying something that has previously
+        failed</note>
+        <note priority="1" from="meaning">General</note>
       </trans-unit><trans-unit id="TableComponentDisplayedColumnsError" datatype="html">
         <source>There are currently no Columns being displayed. Update your displayed Columns in the Table Settings.</source>
         <target state="final">There are currently no Columns being displayed. Update your displayed Columns in the Table Settings.</target>
