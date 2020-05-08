@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConnectableObservable, Observable } from 'rxjs';
-import { map, publishReplay } from 'rxjs/operators';
+import { map, publishReplay, publishLast, refCount, catchError, share, tap } from 'rxjs/operators';
 import { TableLogic } from 'src/app/modules/table/table-logic';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import {
@@ -77,8 +77,8 @@ export class PersonService {
     });
   }
 
-  public getAll(): Observable<Person[]> {
-    if (this.allPersonObservable != null) {
+  public getAll(ignoreCache: boolean = false): Observable<Person[]> {
+    if (this.allPersonObservable != null && !ignoreCache) {
       return this.allPersonObservable;
     }
 

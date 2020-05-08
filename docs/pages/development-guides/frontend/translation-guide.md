@@ -36,12 +36,14 @@ For **General Messages** (with Action) use following IDs:
 | GeneralErrorMessage       |             Something went wrong. Please try again.              |
 | GeneralErrorMessageCopy   | Couldn't copy to the clipboard, something went wrong. Try again. |
 | GeneralSuccessMessageCopy |                       Copied to clipboard!                       |
+| GeneralInfoMessageLoading |                             Loading                              |
 | GeneralResetButton        |                              Reset                               |
 | GeneralNotYetImplemented  |                    Sry, not yet implemented!                     |
 | GeneralCancelButton       |                              Cancel                              |
 | GeneralShowOnMapButton    |                       Show on Google-Maps                        |
 | GeneralUndoButton         |                               Undo                               |
 | GeneralCloseButton        |                              Close                               |
+| GeneralRetryButton        |                              Retry                               |
 
 For **Language** use:
 
