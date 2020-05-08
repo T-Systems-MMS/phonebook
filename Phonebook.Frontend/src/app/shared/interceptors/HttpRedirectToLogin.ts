@@ -9,7 +9,7 @@ import {
   HttpClient,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, empty } from 'rxjs';
+import { Observable, empty, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -32,7 +32,7 @@ export class HttpRedirectToLogin implements HttpInterceptor {
           const location = err.headers.get('Location') as string;
           window.location.replace(location);
         }
-        return empty();
+        return throwError(err);
       })
     );
   }
