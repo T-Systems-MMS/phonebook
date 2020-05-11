@@ -38,9 +38,6 @@ mat-sidenav-container {
       }
 
       .table-settings {
-        position: absolute;
-        right: 0;
-        margin-right: 16px;
         vertical-align: middle;
       }
 
@@ -52,7 +49,7 @@ mat-sidenav-container {
       }
 
       #search {
-        margin: auto;
+        margin-left: 16px;
         height: 3rem;
       }
 
@@ -90,7 +87,7 @@ mat-sidenav-container {
 
 @include smaller {
   #search {
-    width: 70%;
+    width: 100%;
   }
 }
 
