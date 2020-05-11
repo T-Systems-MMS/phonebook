@@ -311,7 +311,7 @@
     ></ng-container
   >
   <ng-container
-    *ngIf="displayedColumns.length === 0"
+    *ngIf="displayedColumns.length === 0 && !this.inErrorState"
     i18n="
       TableComponent|Sentence displayed if no Columns are
       displayed@@TableComponentDisplayedColumnsError"
