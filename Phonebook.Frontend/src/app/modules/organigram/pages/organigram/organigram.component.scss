@@ -1,10 +1,28 @@
-.node {
-  margin: 20px 40px;
+.tree-drawer {
+  width: 400px;
+  height: 100%;
 }
 
-#pb-organigram {
-  width: 100%;
-  display: flex;
+.toggle-drawer {
   height: 100%;
-  flex-direction: column;
+  display: flex;
+  position: absolute;
+  z-index: 1;
+
+  button {
+    align-self: center;
+  }
+}
+
+.btn-booking {
+  margin-left: auto;
+}
+
+.location-tree {
+  ul,
+  li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
 }

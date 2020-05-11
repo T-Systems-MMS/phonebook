@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrganigramComponent } from 'src/app/modules/organigram/pages/organigram/organigram.component';
+import { OrganigramOverviewComponent } from 'src/app/modules/organigram/overview/organigram-overview.component';
 
 const routes: Routes = [
-  { path: '', component: OrganigramComponent, pathMatch: 'full' },
-  { path: ':first', component: OrganigramComponent },
-  { path: ':first/:second', component: OrganigramComponent },
-  { path: ':first/:second/:third', component: OrganigramComponent },
-  { path: ':first/:second/:third/:fourth', component: OrganigramComponent },
-  { path: ':first/:second/:third/:fourth/:fifth', component: OrganigramComponent },
+  {
+    path: '',
+    component: OrganigramComponent,
+    children: [{ path: '', component: OrganigramOverviewComponent, pathMatch: 'full' }],
+  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

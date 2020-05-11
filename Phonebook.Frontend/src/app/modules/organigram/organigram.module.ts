@@ -9,7 +9,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { OrganigramNodeComponent } from 'src/app/modules/organigram/components/organigram-node/organigram-node.component';
 import { OrganigramRoutingModule } from 'src/app/modules/organigram/organigram-routing.module';
 import { OrganigramComponent } from 'src/app/modules/organigram/pages/organigram/organigram.component';
-
+import { MaterialModule } from 'src/app/shared/material.module';
+import { OrganigramOverviewComponent } from 'src/app/modules/organigram/overview/organigram-overview.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,8 +21,9 @@ import { OrganigramComponent } from 'src/app/modules/organigram/pages/organigram
     ClipboardModule,
     MatButtonModule,
     MatTooltipModule,
+    MaterialModule,
   ],
-  declarations: [OrganigramComponent, OrganigramNodeComponent],
+  declarations: [OrganigramComponent, OrganigramNodeComponent, OrganigramOverviewComponent],
   exports: [],
 })
 export class OrganigramModule {}
