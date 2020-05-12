@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
 import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
 import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
+import { OrganigramHelpers } from 'src/app/modules/organigram/helpers';
 
 @Component({
   selector: 'app-organigram-overview',
@@ -20,7 +21,7 @@ export class OrganigramOverviewComponent implements OnInit {
     });
   }
 
-  public navigateToCity(city: BuildingTreeNode) {
-    this.router.navigateByUrl(RoomHelpers.generateUrlStringFromParamArray([city.name]));
+  public navigateToFirstNode(node1: UnitTreeNode) {
+    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([node1.name]));
   }
 }

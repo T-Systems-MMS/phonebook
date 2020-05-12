@@ -1,0 +1,29 @@
+mat-card-title {
+  display: flex;
+
+  .link {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover .link {
+    opacity: 1;
+  }
+}
+
+button {
+  margin-left: auto;
+}
+
+mat-card-subtitle,
+mat-card-content {
+  margin-left: 24px;
+}
+
+.persons {
+  display: flex;
+  flex-flow: row;
+  > div {
+    flex: 1;
+  }
+}

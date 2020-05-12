@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, flatMap } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
 
@@ -65,6 +65,39 @@ export class OrganigramService {
     } else {
       node.employees.push(person);
     }
+  }
+  public getNodeByPath(pathArray: string[], level: number = 0): Observable<UnitTreeNode | null> {
+    return this.getOrganigram().pipe(
+      flatMap((tree) => {
+        return of(getNodeFromTreeSync(pathArray, tree, level));
+      })
+    );
+  }
+}
+
+export function getNodeFromTreeSync(
+  paramArray: string[],
+  tree: UnitTreeNode[],
+  level: number = 0
+): UnitTreeNode | null {
+  if (paramArray.length === 1) {
+    return (
+      tree.find((node) => {
+        return node.name === paramArray[0];
+      }) || null
+    );
+  } else {
+    const nextNode = tree.find((node) => {
+      return node.name === paramArray[0];
+    });
+    if (nextNode == null || nextNode.children.length === 0) {
+      return null;
+    }
+    return getNodeFromTreeSync(
+      paramArray.slice(1, paramArray.length),
+      nextNode.children,
+      level + 1
+    );
   }
 }
 

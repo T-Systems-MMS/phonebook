@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { of } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
+import {
+  OrganigramService,
+  UnitTreeNode,
+  getNodeFromTreeSync,
+} from 'src/app/services/api/organigram.service';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -21,6 +25,7 @@ export class OrganigramComponent implements OnInit {
   public drawerOpenByDefault: boolean = false;
   public dataSource: MatTreeNestedDataSource<UnitTreeNode>;
   public treeControl: NestedTreeControl<UnitTreeNode>;
+  public myOrganigramUrl: string[] = [];
 
   constructor(
     private organigramService: OrganigramService,
@@ -44,7 +49,7 @@ export class OrganigramComponent implements OnInit {
     }
     this.route.firstChild.paramMap.subscribe((paramMap) => {
       this.params = OrganigramHelpers.getParamsAsArray(paramMap, [
-        'cityId',
+        'node1Id',
         'buildingId',
         'floorId',
         'roomId',
@@ -54,13 +59,13 @@ export class OrganigramComponent implements OnInit {
     this.router.events
       .pipe(
         untilComponentDestroyed(this),
-        filter((event) => event instanceof NavigationEnd && event.url.includes('rooms')),
+        filter((event) => event instanceof NavigationEnd && event.url.includes('organigram')),
         switchMap(() => (this.route.firstChild ? this.route.firstChild.paramMap : of(null)))
       )
       .subscribe((params) => {
         if (params != null) {
           this.params = OrganigramHelpers.getParamsAsArray(params, [
-            'cityId',
+            'node1Id',
             'buildingId',
             'floorId',
             'roomId',
@@ -74,14 +79,14 @@ export class OrganigramComponent implements OnInit {
   public updateTreeExtendedState() {
     this.treeControl.collapseAll();
     this.params.forEach((x, i) => {
-      const node = UnitTreeNode;
-
+      const node = getNodeFromTreeSync(this.params.slice(0, i + 1), this.dataSource.data);
       if (node != null) {
         return;
       }
     });
   }
-  public navigateToNodePath(nodePath: string[]) {
-    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray(nodePath));
+  public ngOnDestroy() {}
+  public navigateToNodePath(nodePath: UnitTreeNode) {
+    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([nodePath.name]));
   }
 }

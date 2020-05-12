@@ -14,7 +14,7 @@
   }
 }
 
-.btn-booking {
+.btn-whereAmI {
   margin-left: auto;
 }
 
@@ -25,4 +25,8 @@
     margin-bottom: 0;
     list-style-type: none;
   }
+}
+
+.router-outlet {
+  margin-left: 20px;
 }

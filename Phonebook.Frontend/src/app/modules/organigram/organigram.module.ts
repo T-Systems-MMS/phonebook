@@ -11,6 +11,9 @@ import { OrganigramRoutingModule } from 'src/app/modules/organigram/organigram-r
 import { OrganigramComponent } from 'src/app/modules/organigram/pages/organigram/organigram.component';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { OrganigramOverviewComponent } from 'src/app/modules/organigram/overview/organigram-overview.component';
+import { Node1Component } from 'src/app/modules/organigram/node1/node1.component';
+import { AddressModule } from 'src/app/shared/components/address/address.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,8 +25,14 @@ import { OrganigramOverviewComponent } from 'src/app/modules/organigram/overview
     MatButtonModule,
     MatTooltipModule,
     MaterialModule,
+    AddressModule,
   ],
-  declarations: [OrganigramComponent, OrganigramNodeComponent, OrganigramOverviewComponent],
+  declarations: [
+    OrganigramComponent,
+    OrganigramNodeComponent,
+    OrganigramOverviewComponent,
+    Node1Component,
+  ],
   exports: [],
 })
 export class OrganigramModule {}

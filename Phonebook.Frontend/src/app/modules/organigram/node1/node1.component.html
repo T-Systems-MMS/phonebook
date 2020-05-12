@@ -1,0 +1,81 @@
+<mat-card class="pb-margin-20">
+  <mat-card-title>
+    <h1>
+      <mat-icon
+        [cdkCopyToClipboard]="getLink()"
+        (copied)="copiedToast($event)"
+        class="link pb-pointer"
+        >link</mat-icon
+      >
+      <span>{{ node?.id + ': ' + node?.name }}</span>
+    </h1>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <div>
+      <span
+        i18n="
+          OrganigramNodeComponent|Supervisor Property@@OrganigramNodeComponentPropertySupervisor"
+        >{node?.supervisors.length, plural, =0 { No Supervisor } =1 { Supervisor: } other {
+        Supervisors: }}</span
+      >
+      <a *ngFor="let person of node?.supervisors" [routerLink]="['/user', person.Id]">
+        {{ person.Firstname + ' ' + person.Surname }}
+      </a>
+    </div>
+    <div>
+      <span
+        i18n="OrganigramNodeComponent|Assistant Property@@OrganigramNodeComponentPropertyAssistant"
+        >{node?.assistents.length, plural, =0 { No Assistant } =1 { Assistant: } other { Assistants:
+        }}</span
+      >
+      <a *ngFor="let person of node?.assistents" [routerLink]="['/user', person.Id]">
+        {{ person.Firstname + ' ' + person.Surname }}
+      </a>
+    </div>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="persons">
+      <div *ngIf="node?.employees.length > 0">
+        <h2
+          i18n="OrganigramNodeComponent|Employee Property@@OrganigramNodeComponentPropertyEmployee"
+          >{node?.employees.length, plural, =0 { No Employees } =1 { Employee: } other { Employees:
+          }}</h2
+        >
+        <li *ngFor="let person of node?.employees">
+          <a [routerLink]="['/user', person.Id]">
+            {{ person.Firstname + ' ' + person.Surname }}
+          </a>
+        </li>
+      </div>
+      <div *ngIf="node?.learners.length > 0">
+        <h2 i18n="OrganigramNodeComponent|Learners Property@@OrganigramNodeComponentPropertyLearner"
+          >{node?.learners.length, plural, =0 { No Learners } =1 { Learner: } other { Learners:
+          }}</h2
+        >
+        <li *ngFor="let person of node?.learners">
+          <a [routerLink]="['/user', person.Id]">
+            {{ person.Firstname + ' ' + person.Surname }}
+          </a>
+        </li>
+      </div>
+    </div>
+    <div *ngIf="node?.children.length != 0">
+      <mat-divider></mat-divider>
+      <h2>Children:</h2>
+      <div class="pb-margin-20">
+        <div class="pb-flex-row pb-expand">
+          <mat-card
+            *ngFor="let child of node?.children"
+            class="pb-card pb-normal-shadow pb-margin-20"
+            tabindex="0"
+          >
+            <mat-card-header>
+              <mat-card-title> {{ child.id + ': ' + child.name }} </mat-card-title>
+            </mat-card-header>
+            <mat-card-content> </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
