@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoomHelpers } from 'src/app/modules/rooms/helpers';
-import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
 import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
 import { OrganigramHelpers } from 'src/app/modules/organigram/helpers';
 

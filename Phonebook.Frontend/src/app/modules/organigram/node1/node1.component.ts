@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { RoomHelpers } from 'src/app/modules/rooms/helpers';
 import { BuildingService } from 'src/app/services/api/building.service';
-import { BuildingTreeNode, RoomService } from 'src/app/services/api/room.service';
 import { Location } from 'src/app/shared/models';
 import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
