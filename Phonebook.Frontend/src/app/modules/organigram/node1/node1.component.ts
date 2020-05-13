@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { RoomHelpers } from 'src/app/modules/rooms/helpers';
-import { BuildingService } from 'src/app/services/api/building.service';
-import { Location } from 'src/app/shared/models';
 import { RuntimeEnvironmentInterface } from 'src/environments/EnvironmentInterfaces';
 import { runtimeEnvironment } from 'src/environments/runtime-environment';
 import { OrganigramHelpers } from 'src/app/modules/organigram/helpers';
@@ -21,7 +18,6 @@ import { Store } from '@ngxs/store';
 })
 export class Node1Component implements OnInit {
   public node: UnitTreeNode;
-  public locations: Location[];
   public runtimeEnvironment: RuntimeEnvironmentInterface = runtimeEnvironment;
 
   constructor(
@@ -30,29 +26,25 @@ export class Node1Component implements OnInit {
     private router: Router,
     private windowRef: WindowRef,
     private snackBar: MatSnackBar,
-    private store: Store,
-    private buildingService: BuildingService
+    private store: Store
   ) {}
 
   public ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.organigramService
         .getNodeByPath(
-          OrganigramHelpers.getParamsAsArray(params, ['node1Id', 'buildingId', 'floorId', 'roomId'])
+          OrganigramHelpers.getParamsAsArray(params, ['node1Id', 'node2Id', 'node3Id'])
         )
         .subscribe((node) => {
           if (node == null) {
             this.snackBar.open(
-              $localize`:CityComponent|Error Message if City does not exist.@@CityComponentErrorNoCity:City does not exist.`,
+              $localize`:NodeComponent|Error Message if Node does not exist.@@NodeComponentErrorNoNode:Organisation does not exist.`,
               '',
               { duration: 5000 }
             );
             this.router.navigate(['/organigram']);
           } else {
             this.node = node;
-            this.buildingService.getByCity(this.node.name).subscribe((locations) => {
-              this.locations = locations;
-            });
           }
         });
     });
@@ -75,11 +67,11 @@ export class Node1Component implements OnInit {
     if (success) {
       this.store.dispatch(new Navigate(this.generatePath(true)));
       this.snackBar.open(
-        $localize`:OrganigramNodeComponent|First part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedFirstPart:Link to` +
+        $localize`:NodeComponent|First part of the message displayed when copying a link to the node@@NodeComponentCopiedFirstPart:Link to` +
           ' "' +
           this.node.name +
           '" ' +
-          $localize`:OrganigramNodeComponent|Second part of the message displayed when copying a link to the node@@OrganigramNodeComponentCopiedSecondPart:copied to clipboard!`,
+          $localize`:NodeComponent|Second part of the message displayed when copying a link to the node@@NodeComponentCopiedSecondPart:copied to clipboard!`,
         '',
         { duration: 2000 }
       );
@@ -101,9 +93,9 @@ export class Node1Component implements OnInit {
     ];
   }
 
-  public navigateToBuilding(building: string) {
+  public navigateToChildNode(child: UnitTreeNode) {
     this.router.navigateByUrl(
-      RoomHelpers.generateUrlStringFromParamArray([...this.node!.name, building])
+      OrganigramHelpers.generateUrlStringFromParamArray([...this.node!.name, child.name])
     );
   }
 }

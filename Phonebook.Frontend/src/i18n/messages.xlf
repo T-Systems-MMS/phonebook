@@ -1133,11 +1133,23 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <note priority="1" from="description">Learners Property</note>
         <note priority="1" from="meaning">NodeComponent</note>
       </trans-unit>
-      <trans-unit id="CityComponentErrorNoCity" datatype="html">
-        <source>City does not exist.</source>
-        <target>City does not exist.</target>
-        <note priority="1" from="description">Error Message if City does not exist.</note>
-        <note priority="1" from="meaning">CityComponent</note>
+      <trans-unit id="NodeComponentErrorNoNode" datatype="html">
+        <source>Organisation does not exist.</source>
+        <target>Organisation does not exist.</target>
+        <note priority="1" from="description">Error Message if Node does not exist.</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit>
+      <trans-unit id="NodeComponentCopiedFirstPart" datatype="html">
+        <source>Link to</source>
+        <target>Link to</target>
+        <note priority="1" from="description">First part of the message displayed when copying a link to the node</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit>
+      <trans-unit id="NodeComponentCopiedSecondPart" datatype="html">
+        <source>copied to clipboard!</source>
+        <target>copied to clipboard!</target>
+        <note priority="1" from="description">Second part of the message displayed when copying a link to the node</note>
+        <note priority="1" from="meaning">NodeComponent</note>
       </trans-unit>
       <trans-unit id="OrganigramComponentButtonExpandAriaLabel" datatype="html">
         <source>Button expanding or collapsing the tree view on the left.</source>
@@ -1206,6 +1218,12 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <target> Buildings </target>
         <note priority="1" from="description">Subheader for all building locations in the
           city</note>
+        <note priority="1" from="meaning">CityComponent</note>
+      </trans-unit>
+      <trans-unit id="CityComponentErrorNoCity" datatype="html">
+        <source>City does not exist.</source>
+        <target>City does not exist.</target>
+        <note priority="1" from="description">Error Message if City does not exist.</note>
         <note priority="1" from="meaning">CityComponent</note>
       </trans-unit>
       <trans-unit id="FloorComponentSubHeaderRooms" datatype="html">

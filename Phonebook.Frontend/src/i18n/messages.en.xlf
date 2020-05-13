@@ -980,6 +980,21 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
           }}</target>
         <note priority="1" from="description">Learners Property</note>
         <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentErrorNoNode" datatype="html">
+        <source>Organisation does not exist.</source>
+        <target state="final">Organisation does not exist.</target>
+        <note priority="1" from="description">Error Message if Node does not exist.</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentCopiedFirstPart" datatype="html">
+        <source>Link to</source>
+        <target state="final">Link to</target>
+        <note priority="1" from="description">First part of the message displayed when copying a link to the node</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentCopiedSecondPart" datatype="html">
+        <source>copied to clipboard!</source>
+        <target state="final">copied to clipboard!</target>
+        <note priority="1" from="description">Second part of the message displayed when copying a link to the node</note>
+        <note priority="1" from="meaning">NodeComponent</note>
       </trans-unit>
       <trans-unit id="GeneralSuccessMessageCopy" datatype="html">
         <source>Copied to clipboard!</source>

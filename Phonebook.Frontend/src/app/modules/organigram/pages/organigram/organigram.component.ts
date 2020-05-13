@@ -48,12 +48,7 @@ export class OrganigramComponent implements OnInit {
       return;
     }
     this.route.firstChild.paramMap.subscribe((paramMap) => {
-      this.params = OrganigramHelpers.getParamsAsArray(paramMap, [
-        'node1Id',
-        'buildingId',
-        'floorId',
-        'roomId',
-      ]);
+      this.params = OrganigramHelpers.getParamsAsArray(paramMap, ['node1Id', 'node2Id', 'node3Id']);
       this.updateTreeExtendedState();
     });
     this.router.events
@@ -66,9 +61,8 @@ export class OrganigramComponent implements OnInit {
         if (params != null) {
           this.params = OrganigramHelpers.getParamsAsArray(params, [
             'node1Id',
-            'buildingId',
-            'floorId',
-            'roomId',
+            'node2Id',
+            'node3Id',
           ]);
           this.updateTreeExtendedState();
         }

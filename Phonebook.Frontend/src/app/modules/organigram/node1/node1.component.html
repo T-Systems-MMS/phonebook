@@ -63,6 +63,8 @@
           <mat-card
             *ngFor="let child of node?.children"
             class="pb-card pb-normal-shadow pb-margin-20"
+            (click)="navigateToChildNode(child)"
+            (keyup.enter)="navigateToChildNode(child)"
             tabindex="0"
           >
             <mat-card-header>
