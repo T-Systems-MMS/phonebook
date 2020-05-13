@@ -12,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', component: OrganigramOverviewComponent, pathMatch: 'full' },
       { path: ':node1Id', component: Node1Component },
+      { path: ':node1Id/:node2Id', component: Node1Component },
     ],
   },
   { path: '**', redirectTo: '' },
