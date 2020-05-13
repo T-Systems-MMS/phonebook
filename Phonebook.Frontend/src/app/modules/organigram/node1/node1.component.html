@@ -12,9 +12,7 @@
   </mat-card-title>
   <mat-card-subtitle>
     <div>
-      <span
-        i18n="
-          OrganigramNodeComponent|Supervisor Property@@OrganigramNodeComponentPropertySupervisor"
+      <span i18n="NodeComponent|Supervisor Property@@NodeComponentPropertySupervisor"
         >{node?.supervisors.length, plural, =0 { No Supervisor } =1 { Supervisor: } other {
         Supervisors: }}</span
       >
@@ -23,8 +21,7 @@
       </a>
     </div>
     <div>
-      <span
-        i18n="OrganigramNodeComponent|Assistant Property@@OrganigramNodeComponentPropertyAssistant"
+      <span i18n="NodeComponent|Assistant Property@@NodeComponentPropertyAssistant"
         >{node?.assistents.length, plural, =0 { No Assistant } =1 { Assistant: } other { Assistants:
         }}</span
       >
@@ -36,8 +33,7 @@
   <mat-card-content>
     <div class="persons">
       <div *ngIf="node?.employees.length > 0">
-        <h2
-          i18n="OrganigramNodeComponent|Employee Property@@OrganigramNodeComponentPropertyEmployee"
+        <h2 i18n="NodeComponent|Employee Property@@NodeComponentPropertyEmployee"
           >{node?.employees.length, plural, =0 { No Employees } =1 { Employee: } other { Employees:
           }}</h2
         >
@@ -48,7 +44,7 @@
         </li>
       </div>
       <div *ngIf="node?.learners.length > 0">
-        <h2 i18n="OrganigramNodeComponent|Learners Property@@OrganigramNodeComponentPropertyLearner"
+        <h2 i18n="NodeComponent|Learners Property@@NodeComponentPropertyLearner"
           >{node?.learners.length, plural, =0 { No Learners } =1 { Learner: } other { Learners:
           }}</h2
         >

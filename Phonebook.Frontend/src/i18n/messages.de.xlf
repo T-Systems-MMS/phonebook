@@ -1171,6 +1171,32 @@ Link zu deinem Profil: </target>
         <target state="translated">wurde in die Zwischenablage kopiert!</target>
         <note priority="1" from="description">Second part of the message displayed when copying a link to the node</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertySupervisor" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Supervisor } =1 {Supervisor: } other {Supervisors: }}</source>
+        <target state="translated">{VAR_PLURAL, plural, =0 {Kein Leiter } =1 {Leiter: } other {Leiter: }}</target>
+        <note priority="1" from="description">Supervisor Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertyAssistant" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants:
+        }}</source>
+        <target state="translated">{VAR_PLURAL, plural, =0 {Kein Assistent } =1 {Assistent: } other {Assistenten:
+        }}</target>
+        <note priority="1" from="description">Assistant Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertyEmployee" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Employees } =1 {Employee: } other {Employees:
+          }}</source>
+        <target state="translated">{VAR_PLURAL, plural, =0 {Keine Mitarbeiter } =1 {Mitarbeiter: } other {Mitarbeiter:
+          }}</target>
+        <note priority="1" from="description">Employee Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertyLearner" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Learners } =1 {Learner: } other {Learners:
+          }}</source>
+        <target state="translated">{VAR_PLURAL, plural, =0 {Keine Lernenden } =1 {Lernende: } other {Lernende:
+          }}</target>
+        <note priority="1" from="description">Learners Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
       </trans-unit>
       <trans-unit id="GeneralSuccessMessageCopy" datatype="html">
         <source>Copied to clipboard!</source>
@@ -1227,6 +1253,28 @@ Link zu deinem Profil: </target>
         <source>City does not exist.</source><target state="translated">Diese Stadt existiert nicht.</target>
         <note priority="1" from="description">Error Message if City does not exist.</note>
         <note priority="1" from="meaning">CityComponent</note>
+      </trans-unit><trans-unit id="OrganigramComponentButtonExpandAriaLabel" datatype="html">
+        <source>Button expanding or collapsing the tree view on the left.</source>
+        <target state="translated">Knopf zum ein und ausfahren des Menüs auf der linken Seite.</target>
+        <note priority="1" from="description">Aria Label for expanding the tree
+          view</note>
+        <note priority="1" from="meaning">OrganigramComponent</note>
+      </trans-unit><trans-unit id="OrganigramComponentButtonExpandTooltip" datatype="html">
+        <source>Expand or Collapse the tree view.</source>
+        <target state="translated">Baumansicht ein oder ausfahren.</target>
+        <note priority="1" from="description">Tooltip for expanding the tree
+          view</note>
+        <note priority="1" from="meaning">OrganigramComponent</note>
+      </trans-unit><trans-unit id="OrganigramComponentRootNavigationTitle" datatype="html">
+        <source>Overview</source>
+        <target state="translated">Übersicht</target>
+        <note priority="1" from="description">Root of the Organigram Tree</note>
+        <note priority="1" from="meaning">OrganigramComponent</note>
+      </trans-unit><trans-unit id="OrganigramComponentWhoAmI" datatype="html">
+        <source> Where am I? </source>
+        <target state="translated"> Wo bin ich? </target>
+        <note priority="1" from="description">Button for going to user's organigram</note>
+        <note priority="1" from="meaning">OrganigramComponent</note>
       </trans-unit><trans-unit id="FloorComponentErrorNoFloor" datatype="html">
         <source>Floor does not exist.</source><target state="translated">Dieser Flur existiert nicht.</target>
         <note priority="1" from="description">Error Message if Floor does not exist.</note>

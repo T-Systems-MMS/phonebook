@@ -954,6 +954,32 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <target state="final">copied to clipboard!</target>
         <note priority="1" from="description">Second part of the message displayed when copying a link to the node</note>
         <note priority="1" from="meaning">OrganigramNodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertySupervisor" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Supervisor } =1 {Supervisor: } other {Supervisors: }}</source>
+        <target state="final">{VAR_PLURAL, plural, =0 {No Supervisor } =1 {Supervisor: } other {Supervisors: }}</target>
+        <note priority="1" from="description">Supervisor Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertyAssistant" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants:
+        }}</source>
+        <target state="final">{VAR_PLURAL, plural, =0 {No Assistant } =1 {Assistant: } other {Assistants:
+        }}</target>
+        <note priority="1" from="description">Assistant Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertyEmployee" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Employees } =1 {Employee: } other {Employees:
+          }}</source>
+        <target state="final">{VAR_PLURAL, plural, =0 {No Employees } =1 {Employee: } other {Employees:
+          }}</target>
+        <note priority="1" from="description">Employee Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertyLearner" datatype="html">
+        <source>{VAR_PLURAL, plural, =0 {No Learners } =1 {Learner: } other {Learners:
+          }}</source>
+        <target state="final">{VAR_PLURAL, plural, =0 {No Learners } =1 {Learner: } other {Learners:
+          }}</target>
+        <note priority="1" from="description">Learners Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
       </trans-unit>
       <trans-unit id="GeneralSuccessMessageCopy" datatype="html">
         <source>Copied to clipboard!</source>
@@ -1010,6 +1036,28 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <source>City does not exist.</source><target state="final">City does not exist.</target>
         <note priority="1" from="description">Error Message if City does not exist.</note>
         <note priority="1" from="meaning">CityComponent</note>
+      </trans-unit><trans-unit id="OrganigramComponentButtonExpandAriaLabel" datatype="html">
+        <source>Button expanding or collapsing the tree view on the left.</source>
+        <target state="final">Button expanding or collapsing the tree view on the left.</target>
+        <note priority="1" from="description">Aria Label for expanding the tree
+          view</note>
+        <note priority="1" from="meaning">OrganigramComponent</note>
+      </trans-unit><trans-unit id="OrganigramComponentButtonExpandTooltip" datatype="html">
+        <source>Expand or Collapse the tree view.</source>
+        <target state="final">Expand or Collapse the tree view.</target>
+        <note priority="1" from="description">Tooltip for expanding the tree
+          view</note>
+        <note priority="1" from="meaning">OrganigramComponent</note>
+      </trans-unit><trans-unit id="OrganigramComponentRootNavigationTitle" datatype="html">
+        <source>Overview</source>
+        <target state="final">Overview</target>
+        <note priority="1" from="description">Root of the Organigram Tree</note>
+        <note priority="1" from="meaning">OrganigramComponent</note>
+      </trans-unit><trans-unit id="OrganigramComponentWhoAmI" datatype="html">
+        <source> Where am I? </source>
+        <target state="final"> Where am I? </target>
+        <note priority="1" from="description">Button for going to user's organigram</note>
+        <note priority="1" from="meaning">OrganigramComponent</note>
       </trans-unit><trans-unit id="FloorComponentErrorNoFloor" datatype="html">
         <source>Floor does not exist.</source><target state="final">Floor does not exist.</target>
         <note priority="1" from="description">Error Message if Floor does not exist.</note>
