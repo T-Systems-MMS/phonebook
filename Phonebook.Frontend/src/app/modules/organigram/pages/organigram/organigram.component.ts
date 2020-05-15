@@ -12,6 +12,8 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { OrganigramHelpers } from 'src/app/modules/organigram/helpers';
 import { filter, switchMap } from 'rxjs/operators';
+import { CurrentUserService } from 'src/app/services/api/current-user.service';
+import { Person } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-organigram',
@@ -21,17 +23,17 @@ import { filter, switchMap } from 'rxjs/operators';
 })
 export class OrganigramComponent implements OnInit {
   public params: string[] = [];
-  public nodes: UnitTreeNode[] = [];
+  public currentUser: Person | null = null;
   public drawerOpenByDefault: boolean = false;
   public dataSource: MatTreeNestedDataSource<UnitTreeNode>;
   public treeControl: NestedTreeControl<UnitTreeNode>;
-  public myOrganigramUrl: string[] = [];
-
+  public whereAmI: string[] = ['/organigram'];
   constructor(
     private organigramService: OrganigramService,
     private route: ActivatedRoute,
     private router: Router,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private currentUserService: CurrentUserService
   ) {
     this.treeControl = new NestedTreeControl<UnitTreeNode>(this._getChildren);
     this.dataSource = new MatTreeNestedDataSource();
@@ -44,6 +46,19 @@ export class OrganigramComponent implements OnInit {
   private _getChildren = (node: UnitTreeNode) => node.children;
 
   public ngOnInit() {
+    this.currentUserService
+      .getCurrentUser()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(
+        (user) => {
+          if (user != null) {
+            this.currentUser = user;
+          }
+        },
+        (error) => {
+          this.currentUser = null;
+        }
+      );
     if (this.route.firstChild == null) {
       return;
     }
@@ -82,5 +97,11 @@ export class OrganigramComponent implements OnInit {
   public ngOnDestroy() {}
   public navigateToNodePath(nodePath: UnitTreeNode) {
     this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([nodePath.name]));
+  }
+  public navigateToUsersOrganigram() {
+    if (this.currentUser != null) {
+      this.whereAmI = this.whereAmI.concat(this.currentUser.Business.OrgUnit);
+      this.router.navigate(this.whereAmI);
+    }
   }
 }

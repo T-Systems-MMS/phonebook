@@ -14,16 +14,14 @@
     {{ node }}
   </button>
   <a
+    *ngIf="currentUser != null"
     mat-button
-    *ngIf="myOrganigramUrl"
     class="btn-whereAmI"
-    target="_blank"
-    rel="noopener"
-    [href]="myOrganigramUrl"
+    (click)="navigateToUsersOrganigram()"
   >
-    <mat-icon>people</mat-icon>
+    <mat-icon>business</mat-icon>
     <span
-      i18n="OrganigramComponent|Button for going to user's organigram@@OrganigramComponentWhoAmI"
+      i18n="OrganigramComponent|Button for going to user's organigram@@OrganigramComponentWhereAmI"
     >
       Where am I?
     </span>
@@ -39,8 +37,7 @@
           tabindex="0"
           (click)="navigateToNodePath(node)"
           (keyup.enter)="navigateToNodePath(node)"
-          ><button mat-icon-button disabled matTreeNodeToggle
-            ><mat-icon>desktop_mac</mat-icon></button
+          ><button mat-icon-button disabled matTreeNodeToggle><mat-icon>business</mat-icon></button
           ><div>{{ node.id + ': ' + node.name }}</div></li
         ></mat-tree-node
       ><mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
@@ -77,7 +74,7 @@
         <mat-icon>{{ drawer.opened ? 'chevron_left' : 'chevron_right' }} </mat-icon>
       </button>
     </div>
-    <div class="pb-expand pb-overflow-auto router-outlet">
+    <div class="pb-expand pb-overflow-auto">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>

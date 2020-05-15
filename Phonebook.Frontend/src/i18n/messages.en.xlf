@@ -980,6 +980,11 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
           }}</target>
         <note priority="1" from="description">Learners Property</note>
         <note priority="1" from="meaning">NodeComponent</note>
+      </trans-unit><trans-unit id="NodeComponentPropertySubGroup" datatype="html">
+        <source>Sub-Groups:</source>
+        <target state="final">Sub-Groups:</target>
+        <note priority="1" from="description">SubGroups Property</note>
+        <note priority="1" from="meaning">NodeComponent</note>
       </trans-unit><trans-unit id="NodeComponentErrorNoNode" datatype="html">
         <source>Organisation does not exist.</source>
         <target state="final">Organisation does not exist.</target>
@@ -1068,7 +1073,7 @@ Please contact the HR Department to fix it.This is the Phonebook Link: </target>
         <target state="final">Overview</target>
         <note priority="1" from="description">Root of the Organigram Tree</note>
         <note priority="1" from="meaning">OrganigramComponent</note>
-      </trans-unit><trans-unit id="OrganigramComponentWhoAmI" datatype="html">
+      </trans-unit><trans-unit id="OrganigramComponentWhereAmI" datatype="html">
         <source> Where am I? </source>
         <target state="final"> Where am I? </target>
         <note priority="1" from="description">Button for going to user's organigram</note>

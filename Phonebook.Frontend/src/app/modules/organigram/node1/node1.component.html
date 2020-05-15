@@ -1,4 +1,4 @@
-<mat-card class="pb-margin-20">
+<mat-card class="pb-margin-20 node">
   <mat-card-title>
     <h1>
       <mat-icon
@@ -57,7 +57,7 @@
     </div>
     <div *ngIf="node?.children.length != 0">
       <mat-divider></mat-divider>
-      <h2>Children:</h2>
+      <h2 i18n="NodeComponent|SubGroups Property@@NodeComponentPropertySubGroup">Sub-Groups:</h2>
       <div class="pb-margin-20">
         <div class="pb-flex-row pb-expand">
           <mat-card
