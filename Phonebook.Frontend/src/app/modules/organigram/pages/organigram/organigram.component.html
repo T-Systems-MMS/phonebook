@@ -13,12 +13,7 @@
     <mat-icon>chevron_right</mat-icon>
     {{ node }}
   </button>
-  <a
-    *ngIf="currentUser != null"
-    mat-button
-    class="btn-whereAmI"
-    (click)="navigateToUsersOrganigram()"
-  >
+  <a *ngIf="currentUser != null" mat-button class="btn-whereAmI" [routerLink]="this.whereAmI">
     <mat-icon>business</mat-icon>
     <span
       i18n="OrganigramComponent|Button for going to user's organigram@@OrganigramComponentWhereAmI"

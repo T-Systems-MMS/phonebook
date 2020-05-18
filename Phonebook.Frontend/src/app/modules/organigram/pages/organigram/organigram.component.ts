@@ -53,6 +53,7 @@ export class OrganigramComponent implements OnInit {
         (user) => {
           if (user != null) {
             this.currentUser = user;
+            this.whereAmI = this.whereAmI.concat(this.currentUser.Business.OrgUnit);
           }
         },
         (error) => {
@@ -83,9 +84,6 @@ export class OrganigramComponent implements OnInit {
         }
       });
     this.drawerOpenByDefault = this.breakpointObserver.isMatched('(min-width: 1500px)');
-    if (this.currentUser != null) {
-      this.whereAmI = this.whereAmI.concat(this.currentUser.Business.OrgUnit);
-    }
   }
 
   public updateTreeExtendedState() {
@@ -100,8 +98,5 @@ export class OrganigramComponent implements OnInit {
   public ngOnDestroy() {}
   public navigateToNodePath(nodePath: UnitTreeNode) {
     this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([nodePath.name]));
-  }
-  public navigateToUsersOrganigram() {
-    this.router.navigate(this.whereAmI);
   }
 }
