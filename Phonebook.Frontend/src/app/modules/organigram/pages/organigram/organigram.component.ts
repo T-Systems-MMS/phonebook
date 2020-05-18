@@ -83,6 +83,9 @@ export class OrganigramComponent implements OnInit {
         }
       });
     this.drawerOpenByDefault = this.breakpointObserver.isMatched('(min-width: 1500px)');
+    if (this.currentUser != null) {
+      this.whereAmI = this.whereAmI.concat(this.currentUser.Business.OrgUnit);
+    }
   }
 
   public updateTreeExtendedState() {
@@ -99,9 +102,6 @@ export class OrganigramComponent implements OnInit {
     this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([nodePath.name]));
   }
   public navigateToUsersOrganigram() {
-    if (this.currentUser != null) {
-      this.whereAmI = this.whereAmI.concat(this.currentUser.Business.OrgUnit);
-      this.router.navigate(this.whereAmI);
-    }
+    this.router.navigate(this.whereAmI);
   }
 }
