@@ -14,6 +14,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         [Column(name:"VATER")]
         public int? ParentId { get; set; }        
         public virtual OrgUnit? Parent { get; set; }
+        public virtual IEnumerable<OrgUnit>? ChildOrgUnits { get; set; }
         [Column(name: "LEITER_ORG_EINHEIT")]
         public int? HeadOfOrgUnitId { get; set; }
         

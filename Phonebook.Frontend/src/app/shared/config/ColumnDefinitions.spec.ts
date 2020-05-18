@@ -22,7 +22,7 @@ const personA = new Person(
   false,
   new Contacts('', '', '', '', new Messenger('', 0)),
   new Location(new City('', '', ''), [new Room('', '', 0, '', '', '', '', '', '')]),
-  new Business([], [], [], [], [], [], '')
+  new Business(null, [], [], [], [], [], [], '')
 );
 
 const personB = new Person(
@@ -35,7 +35,7 @@ const personB = new Person(
   false,
   new Contacts('', '', '', '', new Messenger('', 0)),
   new Location(new City('', '', ''), [new Room('', '', 0, '', '', '', '', '', '')]),
-  new Business([], [], [], [], [], [], '')
+  new Business(null, [], [], [], [], [], [], '')
 );
 
 describe('Column Filter Functions: ', () => {
