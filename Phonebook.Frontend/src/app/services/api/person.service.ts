@@ -65,6 +65,7 @@ export class PersonService {
           item.Location.LinkRoutingInfo
         ),
         new Business(
+          item.Business.Id,
           item.Business.ShortBusinessunitTeamassistent,
           item.Business.ShortSupervisor,
           item.Business.ShortOrgUnit,
@@ -106,6 +107,17 @@ export class PersonService {
           return null;
         }
         return person;
+      })
+    );
+  }
+
+  public getByOrgUnit(name: string): Observable<Person[]> {
+    return this.getAll().pipe(
+      map((personArray) => {
+        return personArray.filter((p) => {
+          var personOrgUnit = p.Business.ShortOrgUnit[p.Business.ShortOrgUnit.length - 1];
+          return personOrgUnit == name;
+        });
       })
     );
   }

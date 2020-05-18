@@ -14,7 +14,7 @@ namespace Phonebook.Source.PeopleSoft.Models
         public virtual Person Person { get; set; }
         [Column(name: "ORG_EINHEIT_ID")]
         public int? OrgUnitId { get; set; }
-        public virtual OrgUnit OrgUnit { get; set; }
+        public virtual OrgUnit? OrgUnit { get; set; }
         [Column(name: "FUNKTIONSROLLE_ID")]
         public int? FunctionId { get; set; }
         public virtual Function? Function { get; set; }
