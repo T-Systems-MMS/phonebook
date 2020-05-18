@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run start:en",
-    "start:en": "concurrently -n mock-backend,assets,angular \"docker run --rm -p 8080:80 --name phonebook-source-mock -e ASPNETCORE_ENVIRONMENT=Development tsystemsmms/phonebook-build:source-peoplesoft\" \"docker run --rm -p 8081:80 --name phonebook-assets tsystemsmms/phonebook-build:assets\" \"ng serve --ssl --proxy-config proxy.conf.json --configuration en\"",
-    "start:de": "concurrently -n mock-backend,assets,angular \"docker run --rm -p 8080:80 --name phonebook-source-mock -e ASPNETCORE_ENVIRONMENT=Development tsystemsmms/phonebook-build:source-peoplesoft\" \"docker run --rm -p 8081:80 --name phonebook-assets tsystemsmms/phonebook-build:assets\" \"ng serve --ssl --proxy-config proxy.conf.json --configuration de\"",
+    "start:en": "concurrently -n mock-backend,assets,angular \"docker run --rm -p 8080:80 --name phonebook-source-mock -e ASPNETCORE_ENVIRONMENT=Development tsystemsmms/phonebook-source-peoplesoft\" \"docker run --rm -p 8081:80 --name phonebook-assets tsystemsmms/phonebook-build:assets\" \"ng serve --ssl --proxy-config proxy.conf.json --configuration en\"",
+    "start:de": "concurrently -n mock-backend,assets,angular \"docker run --rm -p 8080:80 --name phonebook-source-mock -e ASPNETCORE_ENVIRONMENT=Development tsystemsmms/phonebook-source-peoplesoft\" \"docker run --rm -p 8081:80 --name phonebook-assets tsystemsmms/phonebook-build:assets\" \"ng serve --ssl --proxy-config proxy.conf.json --configuration de\"",
     "start:debug": "ng serve --ssl --proxy-config=proxy.conf.json --configuration debug",
     "start-compose": "npm run compose-build && docker-compose run --rm --service-ports angular npm run start:en",
     "start-compose:debug": "npm run compose-build && docker-compose run --rm --service-ports angular npm run start:debug",
