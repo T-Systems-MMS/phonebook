@@ -1,4 +1,4 @@
-FROM node:13.14@sha256:ca5a05fb52581aa6c5ed33b55e0955acda83b4d0322c664e5ca260d569772a27
+FROM node:13.14@sha256:1e8d7127072cdbaae1935656444c3ec2bef8882c8c14d459e3a92ca1dd313c28
 
 # install chrome for protractor tests
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
