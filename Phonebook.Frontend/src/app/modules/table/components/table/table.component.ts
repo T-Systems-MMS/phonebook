@@ -99,10 +99,7 @@ export class TableComponent implements OnInit, OnDestroy {
           });
       },
       (err: HttpErrorResponse) => {
-        // All 5xx errors
-        if (err.status.toString().match(/5../)) {
-          this.inErrorState = true;
-        }
+        this.inErrorState = true;
       }
     );
   }
