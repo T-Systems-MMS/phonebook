@@ -23,6 +23,7 @@ mat-card-content {
 .persons {
   display: flex;
   flex-flow: row;
+  margin-bottom: 20px;
   > div {
     flex: 1;
   }
@@ -30,4 +31,10 @@ mat-card-content {
 
 .node {
   margin-left: 40px;
+}
+
+.child-card {
+  width: 250px;
+  height: 70px;
+  padding: 16px 30px;
 }

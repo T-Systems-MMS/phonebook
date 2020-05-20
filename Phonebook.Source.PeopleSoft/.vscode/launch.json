@@ -9,13 +9,13 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/Phonebook.Source.PeopleSoft/bin/Debug/netcoreapp2.2/Phonebook.Source.PeopleSoft.dll",
+      "program": "${workspaceFolder}/src/Phonebook.Source.PeopleSoft/bin/Debug/netcoreapp3.1/Phonebook.Source.PeopleSoft.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/Phonebook.Source.PeopleSoft",
       "stopAtEntry": false,
       "internalConsoleOptions": "openOnSessionStart",
       "launchBrowser": {
-        "enabled": true,
+        "enabled": false,
         "args": "${auto-detect-url}/api/peoples",
         "windows": {
           "command": "cmd.exe",

@@ -56,23 +56,20 @@
       </div>
     </div>
     <div *ngIf="node?.children.length != 0">
-      <mat-divider></mat-divider>
       <h2 i18n="NodeComponent|SubGroups Property@@NodeComponentPropertySubGroup">Sub-Groups:</h2>
-      <div class="pb-margin-20">
-        <div class="pb-flex-row pb-expand">
-          <mat-card
-            *ngFor="let child of node?.children"
-            class="pb-card pb-normal-shadow pb-margin-20"
-            (click)="navigateToChildNode(child)"
-            (keyup.enter)="navigateToChildNode(child)"
-            tabindex="0"
-          >
-            <mat-card-header>
-              <mat-card-title> {{ child.id + ': ' + child.name }} </mat-card-title>
-            </mat-card-header>
-            <mat-card-content> </mat-card-content>
-          </mat-card>
-        </div>
+      <div class="pb-flex-row pb-expand">
+        <mat-card
+          *ngFor="let child of node?.children"
+          class="pb-card pb-normal-shadow pb-margin-20 child-card"
+          (click)="navigateToChildNode(child)"
+          (keyup.enter)="navigateToChildNode(child)"
+          tabindex="0"
+        >
+          <mat-card-title>
+            <h2> {{ child.id + ': ' + child.name }} </h2>
+          </mat-card-title>
+          <mat-card-content> </mat-card-content>
+        </mat-card>
       </div>
     </div>
   </mat-card-content>

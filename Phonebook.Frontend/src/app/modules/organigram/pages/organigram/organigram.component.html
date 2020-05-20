@@ -46,7 +46,7 @@
               ><mat-icon>
                 {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}</mat-icon
               ></button
-            ><div> {{ node.name }}</div></div
+            ><div> {{ node.id + ': ' + node.name }}</div></div
           ><ul *ngIf="treeControl.isExpanded(node)"
             ><ng-container matTreeNodeOutlet></ng-container
           ></ul>
