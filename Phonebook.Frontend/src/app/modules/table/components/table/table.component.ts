@@ -110,11 +110,15 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   public refreshTable() {
+    const whichColumns = TableState.visibleBigColumns;
+    if (this.isSizeSmall === true) {
+      return whichColumns === TableState.visibleSmallColumns;
+    }
     this.dataSource
       .refresh(
         this.store.selectSnapshot(SearchState.searchTerm).trim(),
         this.store.selectSnapshot(SearchState.searchFilters),
-        this.store.selectSnapshot(TableState.visibleBigColumns),
+        this.store.selectSnapshot(whichColumns),
         this.tableSort
       )
       .subscribe((results) => {
