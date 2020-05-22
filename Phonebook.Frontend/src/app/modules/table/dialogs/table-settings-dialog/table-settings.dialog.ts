@@ -18,7 +18,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./table-settings.dialog.scss'],
 })
 export class TableSettingsDialog implements OnInit {
-  public sizeSmall: boolean;
+  public isSizeSmall: boolean;
   public notDisplayedColumns: Column[] = [];
   public displayedColumns: Column[] = [];
 
@@ -29,19 +29,19 @@ export class TableSettingsDialog implements OnInit {
       .observe('(max-width: 900px)')
       .pipe(untilComponentDestroyed(this))
       .subscribe((result) => {
-        this.sizeSmall = result.matches;
-        if (this.sizeSmall) {
+        this.isSizeSmall = result.matches;
+        if (this.isSizeSmall) {
           this.displayedColumns = this.store.selectSnapshot(TableState.visibleSmallColumns);
-          this.sizeSmall === true;
+          this.isSizeSmall === true;
         } else {
           this.displayedColumns = this.store.selectSnapshot(TableState.visibleBigColumns);
-          this.sizeSmall === false;
+          this.isSizeSmall === false;
         }
         this.updateNotDisplayedColumns();
       });
   }
 
-  public updateNotDisplayedColumns() {
+  private updateNotDisplayedColumns() {
     this.notDisplayedColumns = ColumnDefinitions.getAll().filter((col) => {
       return !this.displayedColumns.some((column) => {
         return col.id === column.id;
@@ -51,7 +51,7 @@ export class TableSettingsDialog implements OnInit {
 
   public resetTableSettings() {
     this.store.dispatch(new ResetTableSettings());
-    if (this.sizeSmall === true) {
+    if (this.isSizeSmall === true) {
       this.displayedColumns = this.store.selectSnapshot(TableState.visibleSmallColumns);
     } else {
       this.displayedColumns = this.store.selectSnapshot(TableState.visibleBigColumns);
@@ -70,7 +70,7 @@ export class TableSettingsDialog implements OnInit {
         event.currentIndex
       );
     }
-    if (this.sizeSmall === true) {
+    if (this.isSizeSmall === true) {
       return this.store.dispatch(new SetVisibleSmallTableColumns(this.displayedColumns));
     } else {
       return this.store.dispatch(new SetVisibleBigTableColumns(this.displayedColumns));

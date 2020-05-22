@@ -20,9 +20,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   host: { class: 'pb-fill-parent' },
 })
 export class TableComponent implements OnInit, OnDestroy {
-  public sizeSmall: boolean = false;
+  public isSizeSmall: boolean = false;
   public get displayedColumns(): string[] {
-    if (this.sizeSmall === true) {
+    if (this.isSizeSmall === true) {
       return this.store.selectSnapshot(TableState.visibleSmallColumns).map((col) => col.id);
     } else {
       return this.store.selectSnapshot(TableState.visibleBigColumns).map((col) => col.id);
@@ -62,11 +62,11 @@ export class TableComponent implements OnInit, OnDestroy {
       .observe('(max-width: 900px)')
       .pipe(untilComponentDestroyed(this))
       .subscribe((result) => {
-        this.sizeSmall = result.matches;
-        if (this.sizeSmall) {
-          return this.sizeSmall === true;
+        this.isSizeSmall = result.matches;
+        if (this.isSizeSmall) {
+          return this.isSizeSmall === true;
         } else {
-          return this.sizeSmall === false;
+          return this.isSizeSmall === false;
         }
       });
     this.personService.getAll().subscribe((persons) => {

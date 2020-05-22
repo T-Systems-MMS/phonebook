@@ -34,8 +34,8 @@ export interface TableStateModel {
 @State<TableStateModel>({
   name: 'tablestate',
   defaults: {
-    visibleBigColumns: getColumnsAsStringArray(ColumnDefinitions.getDefault()),
-    visibleSmallColumns: getColumnsAsStringArray(ColumnDefinitions.getSmall()),
+    visibleBigColumns: getColumnsAsStringArray(ColumnDefinitions.getBigDefault()),
+    visibleSmallColumns: getColumnsAsStringArray(ColumnDefinitions.getSmallDefault()),
     resultCount: 0,
   },
 })
@@ -92,8 +92,8 @@ export class TableState {
   @Action(ResetTableSettings)
   public resetTableSettings(ctx: StateContext<TableStateModel>) {
     const state = ctx.getState();
-    state.visibleBigColumns = getColumnsAsStringArray(ColumnDefinitions.getDefault());
-    state.visibleSmallColumns = getColumnsAsStringArray(ColumnDefinitions.getSmall());
+    state.visibleBigColumns = getColumnsAsStringArray(ColumnDefinitions.getBigDefault());
+    state.visibleSmallColumns = getColumnsAsStringArray(ColumnDefinitions.getSmallDefault());
     ctx.setState({ ...state });
   }
 

@@ -299,7 +299,7 @@ export const ColumnDefinitions: {
       ColumnDefinitions.status,
     ];
   },
-  getDefault: () => {
+  getBigDefault: () => {
     return [
       ColumnDefinitions.picture,
       ColumnDefinitions.id,
@@ -313,7 +313,7 @@ export const ColumnDefinitions: {
       ColumnDefinitions.role,
     ];
   },
-  getSmall: () => {
+  getSmallDefault: () => {
     return [
       ColumnDefinitions.picture,
       ColumnDefinitions.id,
