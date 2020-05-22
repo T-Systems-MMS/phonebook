@@ -3,12 +3,17 @@ import { OrganigramService, UnitTreeNode } from './organigram.service';
 import { PersonService } from './person.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Person, Business } from 'src/app/shared/models';
+import { HttpClient } from '@angular/common/http';
 
 describe('OrganigramService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [OrganigramService, { provide: PersonService, useValue: null }],
+      providers: [
+        OrganigramService,
+        { provide: PersonService, useValue: null },
+        { provide: HttpClient, useValue: null },
+      ],
     });
   });
   it('should be created', inject([OrganigramService], (service: OrganigramService) => {

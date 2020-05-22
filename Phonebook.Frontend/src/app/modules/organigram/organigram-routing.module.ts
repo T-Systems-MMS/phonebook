@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: ':first/:second/:third', component: OrganigramComponent },
   { path: ':first/:second/:third/:fourth', component: OrganigramComponent },
   { path: ':first/:second/:third/:fourth/:fifth', component: OrganigramComponent },
+  { path: ':first/:second/:third/:fourth/:fifth/:sixth', component: OrganigramComponent },
 ];
 
 @NgModule({

@@ -45,6 +45,7 @@ export const mockPerson: Person = new Person(
     ],
   },
   {
+    Id: null,
     ShortBusinessunitTeamassistent: ['ABC'],
     ShortSupervisor: ['ABC'],
     ShortOrgUnit: ['AB_1', 'AD CD', 'AB CD'],

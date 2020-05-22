@@ -1,74 +1,69 @@
-import { Injectable, Input } from '@angular/core';
-import { Observable, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Observable, forkJoin, of, combineLatest } from 'rxjs';
+import { map, flatMap, publishReplay, refCount } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
+import { HttpClient } from '@angular/common/http';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
+
 @Injectable()
 export class OrganigramService {
-  public team: UnitTreeNode;
   constructor(
+    private http: HttpClient,
     private personService: PersonService,
     private currentUserService: CurrentUserService
   ) {}
+  public organigram: Observable<UnitTreeNode[]>;
+  public team: UnitTreeNode;
 
   public getOrganigram(): Observable<UnitTreeNode[]> {
-    return this.personService.getAll().pipe(
-      map((users) => {
-        const tree: UnitTreeNode[] = [];
-        users.forEach((person) => {
-          if (person.Business.ShortOrgUnit.length === 0) {
-            return;
-          }
-          this.findNodeForPerson(person, tree, 0);
-        });
-        return tree;
+    if (this.organigram != null) {
+      return this.organigram;
+    }
+    this.organigram = this.http.get<OrgUnit[]>('/api/OrgUnit').pipe(
+      flatMap((d) => this.ConvertOrgUnitsToUnitTree(d)),
+      publishReplay(1), // this tells Rx to cache the latest emitted
+      refCount()
+    );
+    return this.organigram;
+  }
+  private ConvertOrgUnitsToUnitTree(
+    orgUnits: OrgUnit[],
+    depth: number = 0
+  ): Observable<UnitTreeNode[]> {
+    return forkJoin(
+      orgUnits.map((o) => {
+        let TaShortNames = o.OrgUnitToFunctions.filter((f) => f.RoleName == 'TA').map(
+          (t) => t.Person.ShortName
+        );
+        return forkJoin(
+          o.ChildOrgUnits == null || o.ChildOrgUnits.length == 0
+            ? of([])
+            : this.ConvertOrgUnitsToUnitTree(o.ChildOrgUnits, depth + 1),
+          o.HeadOfOrgUnit == null
+            ? of(null)
+            : this.personService.getById(o.HeadOfOrgUnit.ShortName),
+          TaShortNames.length == 0
+            ? of([])
+            : forkJoin(TaShortNames.map((shortName) => this.personService.getById(shortName))),
+          o.ShortName == null ? of([]) : this.personService.getByOrgUnit(o.ShortName)
+        ).pipe(
+          map(([childs, headofOrgUnit, assistents, members]) => {
+            let tree = new UnitTreeNode(
+              o.ShortName == null ? '' : o.ShortName,
+              o.Name == null ? '' : o.Name,
+              depth,
+              o.ChildOrgUnits == null ? [] : childs,
+              headofOrgUnit == null ? [] : [headofOrgUnit],
+              assistents.filter((a) => a != null) as Person[],
+              members.filter((p) => p.isLearner() == false),
+              members.filter((p) => p.isLearner())
+            );
+            return tree;
+          })
+        );
       })
     );
-  }
-
-  /**
-   * Finds the Person's Node in the Hierarchical Structure of Units (generates the Units along its way.)
-   * @param person  The person for whom you like to find the node
-   * @param nodeChilds The Childs of the node your are currently searching in.
-   * @param depth The depth of the Tree (to map the Persons Array of Units to the Tree structure)
-   */
-  public findNodeForPerson(person: Person, nodeChilds: UnitTreeNode[], depth: number) {
-    const firstnode = nodeChilds.find((node) => {
-      return node.id === person.Business.ShortOrgUnit[depth];
-    });
-    if (firstnode === undefined) {
-      const newNode = new UnitTreeNode(
-        person.Business.ShortOrgUnit[depth],
-        person.Business.OrgUnit[depth],
-        depth
-      );
-      if (depth === person.Business.ShortOrgUnit.length - 1) {
-        this.pushToSpecificGroup(newNode, person);
-      } else if (person.Business.ShortOrgUnit.length - 1 > depth) {
-        this.findNodeForPerson(person, newNode.children, depth + 1);
-      }
-      nodeChilds.push(newNode);
-    } else {
-      if (depth === person.Business.ShortOrgUnit.length - 1) {
-        this.pushToSpecificGroup(firstnode, person);
-        return;
-      } else {
-        this.findNodeForPerson(person, firstnode.children, depth + 1);
-      }
-    }
-  }
-
-  public pushToSpecificGroup(node: UnitTreeNode, person: Person) {
-    if (person.isLearner()) {
-      node.learners.push(person);
-    } else if (person.isSupervisor()) {
-      node.supervisors.push(person);
-    } else if (person.isAssistent()) {
-      node.assistents.push(person);
-    } else {
-      node.employees.push(person);
-    }
   }
 
   public getNodeForCurrentUser(): Observable<UnitTreeNode | null> {
@@ -131,4 +126,31 @@ export class UnitTreeNode {
     this.employees = employees;
     this.learners = learners;
   }
+}
+
+class OrgUnit {
+  public Id: number;
+
+  public Name?: string;
+
+  public ShortName?: string;
+
+  public ParentId?: number;
+  public Parent?: OrgUnit;
+  public ChildOrgUnits?: OrgUnit[];
+
+  public HeadOfOrgUnitId?: number;
+
+  public HeadOfOrgUnit?: {
+    ShortName: string;
+  };
+
+  public CostCenter?: string;
+  public OrgUnitToFunctions: {
+    PersonId?: number;
+    Person: {
+      ShortName: string;
+    };
+    RoleName: string;
+  }[];
 }
