@@ -19,8 +19,8 @@ export const ColumnDefinitions: {
   costcenter: Readonly<Column>;
   status: Readonly<Column>;
   getAll(): Readonly<Column>[];
-  getDefault(): Readonly<Column>[];
-  getSmall(): Readonly<Column>[];
+  getBigDefault(): Readonly<Column>[];
+  getSmallDefault(): Readonly<Column>[];
   getAllFilterableColumns(): Readonly<Column>[];
   getAllSortableColumns(): Readonly<Column>[];
   getAllFullMatchFilterableColumns(): Readonly<Column>[];
