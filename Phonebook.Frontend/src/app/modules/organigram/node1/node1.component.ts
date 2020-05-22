@@ -95,7 +95,7 @@ export class Node1Component implements OnInit {
 
   public navigateToChildNode(child: UnitTreeNode) {
     this.router.navigateByUrl(
-      OrganigramHelpers.generateUrlStringFromParamArray([this.node!.name, child.name])
+      OrganigramHelpers.generateUrlStringFromParamArray([this.node!.id, child.id])
     );
   }
 }

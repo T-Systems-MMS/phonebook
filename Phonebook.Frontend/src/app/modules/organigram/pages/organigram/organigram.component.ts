@@ -53,7 +53,7 @@ export class OrganigramComponent implements OnInit {
         (user) => {
           if (user != null) {
             this.currentUser = user;
-            this.whereAmI = this.whereAmI.concat(this.currentUser.Business.OrgUnit);
+            this.whereAmI = this.whereAmI.concat(this.currentUser.Business.ShortOrgUnit);
           }
         },
         (error) => {
@@ -97,6 +97,6 @@ export class OrganigramComponent implements OnInit {
   }
   public ngOnDestroy() {}
   public navigateToNodePath(nodePath: UnitTreeNode) {
-    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([nodePath.name]));
+    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([nodePath.id]));
   }
 }

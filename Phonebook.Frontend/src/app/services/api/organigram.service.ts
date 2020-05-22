@@ -42,7 +42,7 @@ export class OrganigramService {
           o.ShortName == null ? of([]) : this.personService.getByOrgUnit(o.ShortName)
         ).pipe(
           map(([childs, headofOrgUnit, assistents, members]) => {
-            let tree = new UnitTreeNode(
+            const tree = new UnitTreeNode(
               o.ShortName == null ? '' : o.ShortName,
               o.Name == null ? '' : o.Name,
               depth,
@@ -75,12 +75,12 @@ export function getNodeFromTreeSync(
   if (paramArray.length === 1) {
     return (
       tree.find((node) => {
-        return node.name === paramArray[0];
+        return node.id === paramArray[0];
       }) || null
     );
   } else {
     const nextNode = tree.find((node) => {
-      return node.name === paramArray[0];
+      return node.id === paramArray[0];
     });
     if (nextNode == null || nextNode.children.length === 0) {
       return null;

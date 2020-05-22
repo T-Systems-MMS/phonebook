@@ -20,6 +20,6 @@ export class OrganigramOverviewComponent implements OnInit {
   }
 
   public navigateToFirstNode(node1: UnitTreeNode) {
-    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([node1.name]));
+    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([node1.id]));
   }
 }
