@@ -181,8 +181,24 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
                     .Select(_ => ChildOrgUnitFaker.Generate())
                     .ToList();
 
+            var ChildTwoOrgUnitFaker = new Faker<OrgUnit>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        b.Id = f.IndexVariable++ + 1 + ChildOrgUnitList.Count + OrgUnitList.Count;
+                        b.Name = f.Commerce.Department();
+                        b.ShortName = new Bogus.Randomizer().Replace("**");
+                        b.ParentId = f.PickRandom(ChildOrgUnitList).Id;
+                        b.CostCenter = new Bogus.Randomizer().Replace("####");
+                    });
+
+            var ChildTwoOrgUnitList = Enumerable.Range(101, maxOrgUnits)
+                    .Select(_ => ChildTwoOrgUnitFaker.Generate())
+                    .ToList();
+
             var boolRandomizer = new Bogus.Randomizer();
             var randomPicker = new Faker();
+            ChildOrgUnitList.AddRange(ChildTwoOrgUnitList);
             OrgUnitList.AddRange(ChildOrgUnitList);
             // ToArray() is important. Otherwise, it doesn't work. 
             // https://github.com/dotnet/efcore/issues/12003

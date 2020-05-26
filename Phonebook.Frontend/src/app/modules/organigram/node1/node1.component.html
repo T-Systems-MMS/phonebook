@@ -56,7 +56,10 @@
       </div>
     </div>
     <div *ngIf="node?.children.length != 0">
-      <h2 i18n="NodeComponent|SubGroups Property@@NodeComponentPropertySubGroup">Sub-Groups:</h2>
+      <h2
+        i18n="NodeComponent|SubOrganization Unit Property@@NodeComponentPropertySubOrganizationUnit"
+        >Sub-Organization Unit:</h2
+      >
       <div class="pb-flex-row pb-expand">
         <mat-card
           *ngFor="let child of node?.children"

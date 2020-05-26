@@ -1197,10 +1197,10 @@ Link zu deinem Profil: </target>
           }}</target>
         <note priority="1" from="description">Learners Property</note>
         <note priority="1" from="meaning">NodeComponent</note>
-      </trans-unit><trans-unit id="NodeComponentPropertySubGroup" datatype="html">
-        <source>Sub-Groups:</source>
-        <target state="translated">Untergruppen:</target>
-        <note priority="1" from="description">SubGroups Property</note>
+      </trans-unit><trans-unit id="NodeComponentPropertySubOrganizationUnit" datatype="html">
+        <source>Sub-Organization Unit:</source>
+        <target state="translated">Unterorganisationseinheit:</target>
+        <note priority="1" from="description">SubOrganization Unit Property</note>
         <note priority="1" from="meaning">NodeComponent</note>
       </trans-unit><trans-unit id="NodeComponentErrorNoNode" datatype="html">
         <source>Organisation does not exist.</source>
