@@ -12,6 +12,7 @@ import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PhonebookSortDirection, TableSort } from 'src/app/shared/models';
 import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app/shared/states';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-table',
@@ -48,6 +49,8 @@ export class TableComponent implements OnInit, OnDestroy {
   }
   public sortDirection: SortDirection = '';
   public sortActive: string = '';
+
+  public inErrorState: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -83,6 +86,7 @@ export class TableComponent implements OnInit, OnDestroy {
         });
     });
 
+    this.loadPersonData();
     this.route.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe((queryParams) => {
       // Table Sort
       const sortDirection = queryParams.get('sortDirection');
@@ -102,6 +106,33 @@ export class TableComponent implements OnInit, OnDestroy {
       );
       this.refreshTable();
     });
+  }
+
+  public loadPersonData(ignoreCache: boolean = false) {
+    this.inErrorState = false;
+    this.personService.getAll(ignoreCache).subscribe(
+      (persons) => {
+        this.dataSource = new PersonsDataSource(persons);
+
+        // Defer until Data is loaded.
+        this.refreshTableSubscription = merge(
+          this.store.select(SearchState.searchTerm),
+          this.store.select(SearchState.searchFilters)
+        )
+          .pipe(
+            // Debounce Time is this low, as it just aims to bundle all Observables above, especially at first page load,
+            // where all three fire as they are initialized.
+            debounceTime(50)
+          )
+          .subscribe((val) => {
+            this.refreshTable();
+            this.dataSource.pageSize = this.initialPageSize;
+          });
+      },
+      (err: HttpErrorResponse) => {
+        this.inErrorState = true;
+      }
+    );
   }
 
   public refreshTable() {
@@ -138,7 +169,9 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.refreshTableSubscription.unsubscribe();
+    if (this.refreshTableSubscription) {
+      this.refreshTableSubscription.unsubscribe();
+    }
   }
 
   public ngAfterViewInit() {
