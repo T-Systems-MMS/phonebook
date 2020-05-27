@@ -118,7 +118,9 @@ export class TableComponent implements OnInit, OnDestroy {
       .refresh(
         this.store.selectSnapshot(SearchState.searchTerm).trim(),
         this.store.selectSnapshot(SearchState.searchFilters),
-        this.store.selectSnapshot(this.isSizeSmall ? TableState.visibleSmallColumns : TableState.visibleBigColumns),
+        this.store.selectSnapshot(
+          this.isSizeSmall ? TableState.visibleSmallColumns : TableState.visibleBigColumns
+        ),
         this.tableSort
       )
       .subscribe((results) => {
