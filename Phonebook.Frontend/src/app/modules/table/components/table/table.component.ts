@@ -63,11 +63,6 @@ export class TableComponent implements OnInit, OnDestroy {
       .pipe(untilComponentDestroyed(this))
       .subscribe((result) => {
         this.isSizeSmall = result.matches;
-        if (this.isSizeSmall) {
-          return this.isSizeSmall === true;
-        } else {
-          return this.isSizeSmall === false;
-        }
       });
     this.personService.getAll().subscribe((persons) => {
       this.dataSource = new PersonsDataSource(persons);
@@ -118,7 +113,9 @@ export class TableComponent implements OnInit, OnDestroy {
       .refresh(
         this.store.selectSnapshot(SearchState.searchTerm).trim(),
         this.store.selectSnapshot(SearchState.searchFilters),
-        this.store.selectSnapshot(this.isSizeSmall ? TableState.visibleSmallColumns : TableState.visibleBigColumns),
+        this.store.selectSnapshot(
+          this.isSizeSmall ? TableState.visibleSmallColumns : TableState.visibleBigColumns
+        ),
         this.tableSort
       )
       .subscribe((results) => {
