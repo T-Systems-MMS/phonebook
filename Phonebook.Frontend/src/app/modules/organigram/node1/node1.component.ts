@@ -87,7 +87,7 @@ export class Node1Component implements OnInit {
     const navState = this.store.selectSnapshot(RouterState.state);
     return [
       navState!.root.firstChild!.url[0].path,
-      ...navState!.root.firstChild!.firstChild!.url.map((obj) => {
+      ...navState!.root.firstChild!.firstChild!.firstChild!.url.map((obj) => {
         return obj.path;
       }),
     ];
@@ -95,7 +95,7 @@ export class Node1Component implements OnInit {
 
   public navigateToChildNode(child: UnitTreeNode) {
     this.router.navigateByUrl(
-      OrganigramHelpers.generateUrlStringFromParamArray([this.node!.id, child.id])
+      this.router.url + '/' + OrganigramHelpers.generateUrlSingleStringFromParamArray([child.id])
     );
   }
 }

@@ -6,6 +6,7 @@ import {
   OrganigramService,
   UnitTreeNode,
   getNodeFromTreeSync,
+  OrgUnit,
 } from 'src/app/services/api/organigram.service';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -28,6 +29,7 @@ export class OrganigramComponent implements OnInit {
   public dataSource: MatTreeNestedDataSource<UnitTreeNode>;
   public treeControl: NestedTreeControl<UnitTreeNode>;
   public whereAmI: string[] = ['/organigram'];
+  public names: string | null;
   constructor(
     private organigramService: OrganigramService,
     private route: ActivatedRoute,
@@ -37,7 +39,7 @@ export class OrganigramComponent implements OnInit {
   ) {
     this.treeControl = new NestedTreeControl<UnitTreeNode>(this._getChildren);
     this.dataSource = new MatTreeNestedDataSource();
-    this.organigramService.getOrganigram().subscribe((organigram) => {
+    this.organigramService.getOrganigramTree().subscribe((organigram) => {
       this.dataSource.data = organigram;
     });
   }
@@ -91,9 +93,16 @@ export class OrganigramComponent implements OnInit {
     this.params.forEach((x, i) => {
       const node = getNodeFromTreeSync(this.params.slice(0, i + 1), this.dataSource.data);
       if (node != null) {
-        return;
+        this.treeControl.expand(node);
       }
     });
+  }
+
+  public getNames() {
+    this.params.forEach((x) => {
+      this.organigramService.getOrgUnitById(x).subscribe((unit) => this.names === unit.Name);
+    });
+    this.dataSource.data;
   }
   public ngOnDestroy() {}
   public navigateToNodePath(nodePath: UnitTreeNode) {

@@ -14,12 +14,14 @@ export class OrganigramOverviewComponent implements OnInit {
   constructor(private organigramService: OrganigramService, private router: Router) {}
 
   public ngOnInit() {
-    this.organigramService.getOrganigram().subscribe((organigram) => {
+    this.organigramService.getOrganigramTree().subscribe((organigram) => {
       this.nodes = organigram;
     });
   }
 
   public navigateToFirstNode(node1: UnitTreeNode) {
-    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([node1.id]));
+    this.router.navigateByUrl(
+      this.router.url + '/' + OrganigramHelpers.generateUrlSingleStringFromParamArray([node1.id])
+    );
   }
 }
