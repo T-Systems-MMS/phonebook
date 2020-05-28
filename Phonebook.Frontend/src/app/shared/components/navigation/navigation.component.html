@@ -239,9 +239,12 @@
           </mat-toolbar-row>
           <mat-toolbar-row>
             <div class="row-toolbar">
-              <app-search id="search"></app-search>
+              <app-search id="search"> </app-search>
               <div class="table-settings" *ngIf="displayTableSettings">
-                <span class="mat-h4" i18n="TableComponent|Result Count@@TableComponentResultCount">
+                <span
+                  class="mat-h4 pb-hide-below-med"
+                  i18n="TableComponent|Result Count@@TableComponentResultCount"
+                >
                   {{ tableResultCount$ | async }} Results
                 </span>
                 <button mat-icon-button (click)="openSettings()">

@@ -38,9 +38,6 @@ mat-sidenav-container {
       }
 
       .table-settings {
-        position: absolute;
-        right: 0;
-        margin-right: 16px;
         vertical-align: middle;
       }
 
@@ -52,8 +49,9 @@ mat-sidenav-container {
       }
 
       #search {
-        margin: auto;
+        margin: 0 16px;
         height: 3rem;
+        width: 100%;
       }
 
       .pb-missing-userimage-info {
@@ -85,29 +83,4 @@ mat-sidenav-container {
   height: 28px;
   margin-right: 16px;
   vertical-align: middle;
-}
-// Dynamic Search Bar Width
-
-@include smaller {
-  #search {
-    width: 100%;
-  }
-}
-
-@include small-med {
-  #search {
-    width: 85%;
-  }
-}
-
-@include med-big {
-  #search {
-    width: 70%;
-  }
-}
-
-@include bigger {
-  #search {
-    width: 63%;
-  }
 }
