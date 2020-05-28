@@ -11,11 +11,4 @@ export class OrganigramHelpers {
     });
     return paramArray;
   }
-
-  public static generateUrlStringFromParamArray(paramArray: string[]): string {
-    return '/organigram/' + paramArray.map((x) => x.toString().replace('/', '%2F')).join('/');
-  }
-  public static generateUrlSingleStringFromParamArray(paramArray: string[]): string {
-    return paramArray.map((x) => x.toString().replace('/', '%2F')).join('/');
-  }
 }

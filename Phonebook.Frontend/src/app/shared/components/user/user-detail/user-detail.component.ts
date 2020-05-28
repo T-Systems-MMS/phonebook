@@ -86,7 +86,7 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
       categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],
       nickname: this.person.Id,
     };
-    this.organigramLink = this.organigramLink.concat(this.person.Business.OrgUnit);
+    this.organigramLink = this.organigramLink.concat(this.person.Business.ShortOrgUnit);
   }
 
   public sendMail() {

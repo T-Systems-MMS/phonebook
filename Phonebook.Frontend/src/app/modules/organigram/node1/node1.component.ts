@@ -83,6 +83,12 @@ export class Node1Component implements OnInit {
       );
     }
   }
+
+  public navigateToChildNode(nodePath: UnitTreeNode) {
+    let tree = this.getCurrentRouteAsArray().slice(0, nodePath.depth + 1);
+    tree = [...tree, nodePath.id];
+    this.store.dispatch(new Navigate(tree));
+  }
   public getCurrentRouteAsArray(): string[] {
     const navState = this.store.selectSnapshot(RouterState.state);
     return [
@@ -91,11 +97,5 @@ export class Node1Component implements OnInit {
         return obj.path;
       }),
     ];
-  }
-
-  public navigateToChildNode(child: UnitTreeNode) {
-    this.router.navigateByUrl(
-      this.router.url + '/' + OrganigramHelpers.generateUrlSingleStringFromParamArray([child.id])
-    );
   }
 }

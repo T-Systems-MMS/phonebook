@@ -15,6 +15,9 @@ import { OrganigramHelpers } from 'src/app/modules/organigram/helpers';
 import { filter, switchMap } from 'rxjs/operators';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
 import { Person } from 'src/app/shared/models';
+import { Navigate, RouterState } from '@ngxs/router-plugin';
+import { Store } from '@ngxs/store';
+import { isDefined } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-organigram',
@@ -35,7 +38,8 @@ export class OrganigramComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private breakpointObserver: BreakpointObserver,
-    private currentUserService: CurrentUserService
+    private currentUserService: CurrentUserService,
+    private store: Store
   ) {
     this.treeControl = new NestedTreeControl<UnitTreeNode>(this._getChildren);
     this.dataSource = new MatTreeNestedDataSource();
@@ -102,10 +106,20 @@ export class OrganigramComponent implements OnInit {
     this.params.forEach((x) => {
       this.organigramService.getOrgUnitById(x).subscribe((unit) => this.names === unit.Name);
     });
-    this.dataSource.data;
   }
   public ngOnDestroy() {}
   public navigateToNodePath(nodePath: UnitTreeNode) {
-    this.router.navigateByUrl(OrganigramHelpers.generateUrlStringFromParamArray([nodePath.id]));
+    let tree = this.getCurrentRouteAsArray().slice(0, nodePath.depth + 1);
+    tree = [...tree, nodePath.id];
+    this.store.dispatch(new Navigate(tree));
+  }
+  public getCurrentRouteAsArray(): string[] {
+    const navState = this.store.selectSnapshot(RouterState.state);
+    return [
+      navState!.root.firstChild!.url[0].path,
+      ...navState!.root.firstChild!.firstChild!.firstChild!.url.map((obj) => {
+        return obj.path;
+      }),
+    ];
   }
 }
