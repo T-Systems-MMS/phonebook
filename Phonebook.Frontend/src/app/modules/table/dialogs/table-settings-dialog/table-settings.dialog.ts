@@ -32,10 +32,8 @@ export class TableSettingsDialog implements OnInit {
         this.isSizeSmall = result.matches;
         if (this.isSizeSmall) {
           this.displayedColumns = this.store.selectSnapshot(TableState.visibleSmallColumns);
-          this.isSizeSmall === true;
         } else {
           this.displayedColumns = this.store.selectSnapshot(TableState.visibleBigColumns);
-          this.isSizeSmall === false;
         }
         this.updateNotDisplayedColumns();
       });
