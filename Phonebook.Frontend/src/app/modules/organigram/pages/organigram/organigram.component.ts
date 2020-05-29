@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   OrganigramService,
@@ -32,7 +32,8 @@ export class OrganigramComponent implements OnInit {
   public dataSource: MatTreeNestedDataSource<UnitTreeNode>;
   public treeControl: NestedTreeControl<UnitTreeNode>;
   public whereAmI: string[] = ['/organigram'];
-  public names: string | null;
+  public nodeName: string[] = [];
+  public currentNode: UnitTreeNode;
   constructor(
     private organigramService: OrganigramService,
     private route: ActivatedRoute,
@@ -95,16 +96,11 @@ export class OrganigramComponent implements OnInit {
   public updateTreeExtendedState() {
     this.treeControl.collapseAll();
     this.params.forEach((x, i) => {
-      const node = getNodeFromTreeSync(this.params.slice(0, i + 1), this.dataSource.data);
-      if (node != null) {
-        this.treeControl.expand(node);
+      this.currentNode = getNodeFromTreeSync(this.params.slice(0, i + 1), this.dataSource.data);
+      if (this.currentNode != null) {
+        this.treeControl.expand(this.currentNode);
+        this.nodeName.push(this.currentNode.name);
       }
-    });
-  }
-
-  public getNames() {
-    this.params.forEach((x) => {
-      this.organigramService.getOrgUnitById(x).subscribe((unit) => this.names === unit.Name);
     });
   }
   public ngOnDestroy() {}

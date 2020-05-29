@@ -9,7 +9,11 @@
       >Overview</span
     >
   </button>
-  <button mat-button *ngFor="let node of params; let i = index" (click)="navigateToNodePath(node)">
+  <button
+    mat-button
+    *ngFor="let node of nodeName; let i = index"
+    (click)="navigateToNodePath(node)"
+  >
     <mat-icon>chevron_right</mat-icon>
     {{ node }}
   </button>
