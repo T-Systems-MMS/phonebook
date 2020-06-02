@@ -1,6 +1,6 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
-import { DashboardComponent } from 'src/app/pages/dashboard/components/overview/dashboard.component';
+import { DashboardComponent } from 'src/app/pages/dashboard/components/dashboard/dashboard.component';
 import { UserModule } from 'src/app/shared/components/user/user.module';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { BookmarkedComponent } from 'src/app/pages/dashboard/components/bookmarked/bookmarked.component';

@@ -14,18 +14,43 @@ export class OrganigramService {
     private currentUserService: CurrentUserService
   ) {}
   public organigram: Observable<UnitTreeNode[]>;
+  public orgUnits: Observable<OrgUnit[]>;
   public team: UnitTreeNode;
 
-  public getOrganigram(): Observable<UnitTreeNode[]> {
+  public getOrgUnits(): Observable<OrgUnit[]> {
+    if (this.orgUnits != null) {
+      return this.orgUnits;
+    }
+    this.orgUnits = this.http.get<OrgUnit[]>('/api/OrgUnit').pipe(
+      publishReplay(1), // this tells Rx to cache the latest emitted
+      refCount()
+    );
+    return this.orgUnits;
+  }
+
+  public getOrganigramTree(): Observable<UnitTreeNode[]> {
     if (this.organigram != null) {
       return this.organigram;
     }
-    this.organigram = this.http.get<OrgUnit[]>('/api/OrgUnit').pipe(
+    this.organigram = this.getOrgUnits().pipe(
       flatMap((d) => this.ConvertOrgUnitsToUnitTree(d)),
       publishReplay(1), // this tells Rx to cache the latest emitted
       refCount()
     );
     return this.organigram;
+  }
+  public getOrganigramById(id: string): Observable<UnitTreeNode | null> {
+    return this.getOrganigramTree().pipe(
+      map((orgUnitArray) => {
+        const orgUnit = orgUnitArray.find((x) => {
+          return x.id === id;
+        });
+        if (orgUnit === undefined) {
+          return null;
+        }
+        return orgUnit;
+      })
+    );
   }
   private ConvertOrgUnitsToUnitTree(
     orgUnits: OrgUnit[],
@@ -67,7 +92,7 @@ export class OrganigramService {
   }
 
   public getNodeForCurrentUser(): Observable<UnitTreeNode | null> {
-    return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigram()]).pipe(
+    return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigramTree()]).pipe(
       map(([user, organigram]) => {
         if (user === null) {
           return null;

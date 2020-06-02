@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Person, PhonebookSortDirection } from 'src/app/shared/models';
-import { BookmarksState, AppState } from 'src/app/shared/states';
-import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
+import { Observable } from 'rxjs';
+import { Person } from 'src/app/shared/models';
+import { AppState } from 'src/app/shared/states';
+import { OrganigramService } from 'src/app/services/api/organigram.service';
 import { CurrentUserService } from 'src/app/services/api/current-user.service';
-import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Router } from '@angular/router';
 import { Layout } from 'src/app/shared/models/enumerables/Layout';
 
@@ -26,14 +24,12 @@ export class TeamComponent implements OnInit, OnDestroy {
   public layout: typeof Layout = Layout;
 
   constructor(
-    private store: Store,
-    private organigramService: OrganigramService,
-    private currentUserService: CurrentUserService,
-    private router: Router
+    private organigramService: OrganigramService
   ) {}
 
   public ngOnInit() {
-    this.organigramService.getNodeForCurrentUser().subscribe((node) => {
+    if (this.currentUser != null) {
+    this.organigramService.getOrganigramById(this.currentUser.Id).subscribe((node) => {
       if (node != null) {
         this.teamPersons = [
           ...node.supervisors,
@@ -43,6 +39,7 @@ export class TeamComponent implements OnInit, OnDestroy {
         ];
       }
     });
+  }
   }
 
   public ngOnDestroy(): void {}
