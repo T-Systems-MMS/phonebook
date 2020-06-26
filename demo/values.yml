@@ -3,13 +3,13 @@
 # Declare variables to be passed into your templates.
 
 # General Variables
-host: &host 'demo-phonebook.me'
+host: &host 'phonebook.aquiver.de'
 contactUrl: 'https://github.com/T-Systems-MMS/phonebook/issues'
 roomPlanningToolUrl: null
 contactEmail: &contactEmail 'phonebook-t-systems-mms@mg.telekom.de'
 ravenUrl: null
 employeePictureEndpoint: null
-assetsEndpoint: 'https://demo-phonebook.me/assets'
+assetsEndpoint: 'https://phonebook.aquiver.de/assets'
 environment: 'preview'
 environmentTag: 'demo'
 rocketChatUrl: 'https://open.rocket.chat'
@@ -47,7 +47,7 @@ traefik:
     - ''
   dashboard:
     enabled: true
-    domain: board.demo-phonebook.me
+    domain: board.phonebook.aquiver.de
     ingress:
       annotations:
         traefik.frontend.priority: '100'
