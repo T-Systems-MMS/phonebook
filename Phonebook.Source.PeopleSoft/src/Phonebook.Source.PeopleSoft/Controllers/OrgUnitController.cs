@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,17 +23,17 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         }
         // GET: api/OrgUnit
         [HttpGet]
-        public IEnumerable<OrgUnit> Get()
+        public async Task<IEnumerable<OrgUnit>> Get()
         {
-            return Context.Get();
+            return await Context.Get();
 
         }
 
         // GET: api/OrgUnit/5
         [HttpGet("{id}")]
-        public OrgUnit Get(int id)
+        public async Task<OrgUnit> Get(int id)
         {
-            return Context.Get(id);
+            return await Context.Get(id);
         }        
     }
 }

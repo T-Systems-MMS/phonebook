@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Oracle.EntityFrameworkCore.Storage.Internal;
 using Phonebook.Source.PeopleSoft.Models;
 using Phonebook.Source.PeopleSoft.Models.Context;
@@ -14,64 +16,80 @@ namespace Phonebook.Source.PeopleSoft.Controllers
     [Authorize]
     public class PeopleController : ControllerBase
     {
+        private readonly IMemoryCache memoryCache;
+
         public ModelContext Context { get; }
 
-        public PeopleController(ModelContext context)
+        public PeopleController(ModelContext context, IMemoryCache memoryCache)
         {
             Context = context;
+            this.memoryCache = memoryCache;
         }
         // GET: api/People
         [HttpGet]
-        public IEnumerable<Phonebook.Source.PeopleSoft.Models.Old.Person> Get()
+        public async Task<IEnumerable<Phonebook.Source.PeopleSoft.Models.Old.Person>> Get()
         {
-            _ =Context.Peoples.ToList();
-            return this.InlcudeDependencies(Context.Peoples).ToList().Select(d => new Phonebook.Source.PeopleSoft.Models.Old.Person(d));
+            if (this.memoryCache.TryGetValue(this.GetType().Name, out IEnumerable<Phonebook.Source.PeopleSoft.Models.Old.Person> cachedPersons))
+            {
+                return cachedPersons;
+            }
+            var persons = (await this.InlcudeDependencies(Context.Peoples)).ToList().Select(d => new Phonebook.Source.PeopleSoft.Models.Old.Person(d));
+            this.memoryCache.Set(this.GetType().Name, persons);
+            return persons;
         }
 
         // GET: api/People/5
         [HttpGet("{id}")]
-        public Person Get(int id)
+        public async Task<Person> Get(int id)
         {
-            return this.InlcudeDependencies(Context.Peoples).First(p => p.Id == id);
+            if (this.memoryCache.TryGetValue($"{this.GetType().Name}/{id}", out Person cachedPerson))
+            {
+                return cachedPerson;
+            }
+            var person = (await this.InlcudeDependencies(Context.Peoples)).First(p => p.Id == id);
+            this.memoryCache.Set($"{this.GetType().Name}/{id}", person);
+            return person;
         }
 
-        private IEnumerable<Person> InlcudeDependencies(IQueryable<Person> query)
+        private async Task<IEnumerable<Person>> InlcudeDependencies(IQueryable<Person> query)
         {
-            return query
-                    .AsNoTracking()
-                    .Include(p => p.Status)
-                    .Include(p => p.Function)
-                    .Include(p => p.OrgUnit)
-                        .ThenInclude(o => o.Parent)
-                    .Include(p => p.OrgUnit)
-                        .ThenInclude(o => o.HeadOfOrgUnit)
-                    .Include(p => p.OrgUnit)
-                        .ThenInclude(o => o.OrgUnitToFunctions)
-                            .ThenInclude(o => o.Person)
-                    .Include(p => p.Room)
-                        .ThenInclude(r => r.BuildingPart)
-                            .ThenInclude(b => b.Building)
-                                .ThenInclude(b => b.Location)
-                    .Include(p => p.Room)
-                        .ThenInclude(r => r.Floor)
-                            .ThenInclude(f => f.Building) // we must import also here the building because sometimes a room hasn't a buildingpart....
-                                .ThenInclude(b => b.Location)
-                    .Include(p => p.Room)
-                    .Where(p => p.ShortName != null)
-                    .OrderBy(p => p.Id)
-                    .ToList()
+            return (
+                    await query
+                        .AsNoTracking()
+                        .Include(p => p.Status)
+                        .Include(p => p.Function)
+                        .Include(p => p.OrgUnit)
+                            .ThenInclude(o => o.Parent)
+                        .Include(p => p.OrgUnit)
+                            .ThenInclude(o => o.HeadOfOrgUnit)
+                        .Include(p => p.OrgUnit)
+                            .ThenInclude(o => o.OrgUnitToFunctions)
+                                .ThenInclude(o => o.Person)
+                        .Include(p => p.Room)
+                            .ThenInclude(r => r.BuildingPart)
+                                .ThenInclude(b => b.Building)
+                                    .ThenInclude(b => b.Location)
+                        .Include(p => p.Room)
+                            .ThenInclude(r => r.Floor)
+                                .ThenInclude(f => f.Building) // we must import also here the building because sometimes a room hasn't a buildingpart....
+                                    .ThenInclude(b => b.Location)
+                        .Include(p => p.Room)
+                        .Where(p => p.ShortName != null)
+                        .OrderBy(p => p.Id)
+                        .ToListAsync()
+                    )
                     // the following select will remove cicle references
                     .Select(p =>
 
                     new Person()
                     {
                         Id = p.Id,
-                        EMail = p.EMail == null? string.Empty: p.EMail,
+                        EMail = p.EMail == null ? string.Empty : p.EMail,
                         FAX = p.FAX == null ? string.Empty : p.FAX,
-                        FirstName = p.FirstName == null? string.Empty : p.FirstName,
+                        FirstName = p.FirstName == null ? string.Empty : p.FirstName,
                         FunctionId = p.FunctionId,
                         Function = p.Function != null ? new Function() { Id = p.Function.Id, Label = p.Function.Label, Code = p.Function.Code } : null,
-                        LastName = p.LastName == null? string.Empty : p.LastName,
+                        LastName = p.LastName == null ? string.Empty : p.LastName,
                         MobilPhone = p.MobilPhone == null ? string.Empty : p.MobilPhone,
                         OrgUnit = p.OrgUnit != null ? CreateOrgUnitTree(p.OrgUnit) : new OrgUnit(),
                         //OrgUnitId = p.OrgUnitId,
@@ -101,7 +119,7 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                     Name = room.BuildingPart.Building.Name,
                     ShortName = room.BuildingPart.Building.ShortName,
                     Number = room.BuildingPart.Building.Number,
-                    LocationId = room.BuildingPart.Building.LocationId,                    
+                    LocationId = room.BuildingPart.Building.LocationId,
                     Location = room.BuildingPart.Building.Location != null ? new Location()
                     {
                         ShortName = room.BuildingPart.Building.Location.ShortName,
@@ -168,17 +186,20 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         {
             foreach (var item in orgUnitToFunctions)
             {
-                yield return new OrgUnitToFunction() {
+                yield return new OrgUnitToFunction()
+                {
                     FunctionId = item.FunctionId,
                     OrgUnitId = item.OrgUnitId,
                     PersonId = item.PersonId,
-                    Person = new Person() {
+                    Person = new Person()
+                    {
                         ShortName = item.Person.ShortName,
                         FirstName = item.Person.FirstName,
                         LastName = item.Person.LastName
 
                     },
-                    RoleName = item.RoleName };
+                    RoleName = item.RoleName
+                };
             }
         }
     }

@@ -7,8 +7,8 @@ namespace Phonebook.Source.PeopleSoft.Repositories
 {
     public interface IRepository<T> where T: class
     {
-        IEnumerable<T> Get();
-        T Get(int id);
+        Task<IEnumerable<T>> Get();
+        Task<T> Get(int id);
 
     }
 }
