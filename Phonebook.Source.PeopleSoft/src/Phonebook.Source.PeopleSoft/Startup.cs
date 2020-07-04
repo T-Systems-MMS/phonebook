@@ -34,6 +34,7 @@ namespace Phonebook.Source.PeopleSoft
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddResponseCaching();
             services.AddHealthChecks()
                 .AddCheck<HealthCheckIdentityMetadata>("IdentityProvider")
                 .AddCheck<HealthCheckPersonData>("PersonsData")
@@ -195,6 +196,7 @@ namespace Phonebook.Source.PeopleSoft
             app.UseAuthorization();
 
             app.UseResponseCompression();
+            app.UseResponseCaching();
 
             app.UseEndpoints(endpoints =>
              {
