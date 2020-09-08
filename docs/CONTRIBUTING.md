@@ -16,9 +16,7 @@ Unsure where to begin contributing to Phonebook? You can start by looking for th
 If you have questions about the issue or do not know where to start you can just ask under the issue.
 
 ### Open Pull Requests
-If you want to open a pull request please use our [template](will be added soon).
-
-### Reviewing a pull request
+If you want to open a pull request please use our [template](will be added soon). Please also note the issue which get resolved and stuff the reviewers need to know before reviewing your code.
 
 ## What should I know before I get started?
 Before you start contributing be sure that you have already taken a look at our [Documentation](https://t-systems-mms.github.io/phonebook/). There you can find all things you need to know before work with the project.
@@ -31,14 +29,11 @@ To provide good code quality we are using prettier to format all files the same 
 Because of we are using [semantic release](https://github.com/semantic-release/semantic-release) it is important that the git messages, especially the merge messages, follow the [Angular commit Message Convention](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines).
 The messages should have the following format: `type(scope): subject`
 
-> *type* -> feat, fix, chore and docs\
-> *scope* -> The part of the program which will be affected \
-> *subject* -> Description of what has been changed\
+- *type* -> feat, fix, chore and docs\
+- *scope* -> The part of the program which will be affected \
+- *subject* -> Description of what has been changed\
 
 ## Additional Notes
 ### Issue and Pull request labels
-tbd..
-
-### Explanation of label "prio"
-We have 5 different labels to show the importance of an issue.
-tbd..
+qualified: You can find additional information of what you need to do to solve this issue.
+good-first-issue: This Label represents problems with a lower complexity and a good way to start into the project.
