@@ -36,4 +36,5 @@ The messages should have the following format: `type(scope): subject`
 ## Additional Notes
 ### Issue and Pull request labels
 qualified: You can find additional information of what you need to do to solve this issue.
+
 good-first-issue: This Label represents problems with a lower complexity and a good way to start into the project.
