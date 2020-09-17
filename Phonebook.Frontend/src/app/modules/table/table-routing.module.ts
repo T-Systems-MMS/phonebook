@@ -4,11 +4,11 @@ import { TableComponent } from 'src/app/modules/table/components/table/table.com
 
 const routes: Routes = [
   { path: '', component: TableComponent, pathMatch: 'full' },
-  { path: ':keyword', component: TableComponent }
+  { path: ':keyword', component: TableComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class TableRoutingModule {}

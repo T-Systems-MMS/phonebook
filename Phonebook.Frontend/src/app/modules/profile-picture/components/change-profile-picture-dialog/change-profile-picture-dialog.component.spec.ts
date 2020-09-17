@@ -1,14 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChangeProfilePictureDialogComponent } from './change-profile-picture-dialog.component';
 
-
 xdescribe('ChangeProfilePictureDialogComponent', () => {
   let component: ChangeProfilePictureDialogComponent;
   let fixture: ComponentFixture<ChangeProfilePictureDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ChangeProfilePictureDialogComponent]
+      declarations: [ChangeProfilePictureDialogComponent],
     }).compileComponents();
   }));
 

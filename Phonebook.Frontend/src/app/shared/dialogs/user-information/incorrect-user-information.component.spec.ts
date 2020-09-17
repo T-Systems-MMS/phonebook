@@ -8,9 +8,8 @@ xdescribe('IncorrectUserInformationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IncorrectUserInformationComponent ]
-    })
-    .compileComponents();
+      declarations: [IncorrectUserInformationComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

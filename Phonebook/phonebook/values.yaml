@@ -2,7 +2,7 @@
 
 # General Variables
 host: &host 'localhost'
-environment: 'development'
+environment: 'production'
 
 # Frontend Variables
 frontend:
@@ -52,6 +52,9 @@ traefik:
     loglevel: warn
   globalArguments:
     - ''    
+  # Old
+  # startupArguments:
+  #   - ""
   ssl:
     enabled: true
     enforced: true

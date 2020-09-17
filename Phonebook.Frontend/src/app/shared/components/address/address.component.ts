@@ -5,7 +5,7 @@ import { Location } from 'src/app/shared/models';
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
-  styleUrls: ['./address.component.scss']
+  styleUrls: ['./address.component.scss'],
 })
 export class AddressComponent implements OnInit {
   @Input()
@@ -14,8 +14,6 @@ export class AddressComponent implements OnInit {
   public get address(): string[] {
     return this.location.RoomCollection[0].Description.split(',');
   }
-
-  constructor() {}
 
   public ngOnInit() {}
 }

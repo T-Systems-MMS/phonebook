@@ -12,8 +12,8 @@ import { ContributorsModule } from 'src/app/shared/components/contributors/contr
 const routes: Routes = [
   {
     path: '**',
-    component: PageInformationComponent
-  }
+    component: PageInformationComponent,
+  },
 ];
 
 @NgModule({
@@ -26,8 +26,8 @@ const routes: Routes = [
     MatListModule,
     FeedbackDrawerModule,
     MatIconModule,
-    ContributorsModule
+    ContributorsModule,
   ],
-  providers: []
+  providers: [],
 })
 export class PageInformationModule {}

@@ -10,7 +10,7 @@ import { Room } from 'src/app/shared/models';
   selector: 'app-floor',
   templateUrl: './floor.component.html',
   styleUrls: ['./floor.component.scss'],
-  host: { class: 'pb-height-expand' }
+  host: { class: 'pb-height-expand' },
 })
 export class FloorComponent implements OnInit {
   public node: BuildingTreeNode;
@@ -24,10 +24,12 @@ export class FloorComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.roomService
-        .getNodeByPath(RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId']))
-        .subscribe(node => {
+        .getNodeByPath(
+          RoomHelpers.getParamsAsArray(params, ['cityId', 'buildingId', 'floorId', 'roomId'])
+        )
+        .subscribe((node) => {
           if (node == null) {
             this.snackBar.open(
               $localize`:FloorComponent|Error Message if Floor does not exist.@@FloorComponentErrorNoFloor:Floor does not exist.`,
@@ -49,6 +51,8 @@ export class FloorComponent implements OnInit {
     return null;
   }
   public navigateToRoom(room: BuildingTreeNode) {
-    this.router.navigateByUrl(RoomHelpers.generateUrlStringFromParamArray([...this.node!.path, room.name]));
+    this.router.navigateByUrl(
+      RoomHelpers.generateUrlStringFromParamArray([...this.node!.path, room.name])
+    );
   }
 }

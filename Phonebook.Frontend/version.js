@@ -26,4 +26,9 @@ export const HASH_LONG = '${hash_long}';
   { encoding: 'utf-8' }
 );
 
-console.log(`Wrote version info ${version} with hash ${hash_short} to ${relative(resolve(__dirname, '..'), file)}`);
+console.log(
+  `Wrote version info ${version} with hash ${hash_short} to ${relative(
+    resolve(__dirname, '..'),
+    file
+  )}`
+);

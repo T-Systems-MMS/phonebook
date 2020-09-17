@@ -13,7 +13,7 @@ describe('ContributorsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ContributorsComponent],
       imports: [HttpClientTestingModule, MatIconModule, MatCardModule, MatSnackBarModule],
-      providers: []
+      providers: [],
     }).compileComponents();
   }));
 

@@ -11,7 +11,11 @@ describe('ProfilePictureService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [{ provide: PersonService, useClass: mockPersonService }, CurrentUserService, ProfilePictureService]
+      providers: [
+        { provide: PersonService, useClass: mockPersonService },
+        CurrentUserService,
+        ProfilePictureService,
+      ],
     });
     injector = getTestBed();
     httpMock = injector.get(HttpTestingController);

@@ -16,6 +16,7 @@ If you want to setup the project locally, to view the changes and do other stuff
 ## :small_red_triangle: **Getting Started**
 
 Just launch `docker-compose up` in the directory `docs` and visit [http://localhost:4000](http://localhost:4000).
+
 > If you are behind a corporate proxy you will need to start the docker antiproxy.
 
 ## :open_file_folder: **Structure**
@@ -25,7 +26,7 @@ Just launch `docker-compose up` in the directory `docs` and visit [http://localh
  |-- pages: All documents
  |   |-- development-guides
  |   |   |-- frontend: All frontend related docs
- |   |   |-- backend: All backend related docs 
+ |   |   |-- backend: All backend related docs
  |   |   |-- media: Media files for docs in this directory
  |   |   |-- general-guide.md: General Guide for development
  |   |-- infrastructure-guides
@@ -35,7 +36,7 @@ Just launch `docker-compose up` in the directory `docs` and visit [http://localh
  |   |-- 404 Page
  |-- assets/js: Data to use the search bar
  |-- _sass/custom: Custom css files
- |-- index.md: Start page for GitHub Pages 
+ |-- index.md: Start page for GitHub Pages
  |-- gemfile: Includes all necessary gems
  |-- _config.yml: Config file for Jekyll
 ```
@@ -47,11 +48,11 @@ Jekyll gives us the chance to save variables in the `_config.yml` file and use t
 ### **How to use?**
 
 - Define a Variable in your `_config.yml`
-    e.g.:
+  e.g.:
 
-    ```yml
-    coming_soon: "> :gear: Coming soon.."
-    ```
+  ```yml
+  coming_soon: '> :gear: Coming soon..'
+  ```
 
 - You can call the variable like this `{% raw %}{{site.coming_soon}}{% endraw %}`.
 

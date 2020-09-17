@@ -5,7 +5,7 @@ import { ServiceWorkerService } from 'src/app/services/service-worker.service';
 @Component({
   selector: 'app-online-bar',
   templateUrl: './online-bar.component.html',
-  styleUrls: ['./online-bar.component.scss']
+  styleUrls: ['./online-bar.component.scss'],
 })
 export class OnlineBarComponent implements OnInit, OnDestroy {
   public online: Boolean = true;
@@ -13,9 +13,11 @@ export class OnlineBarComponent implements OnInit, OnDestroy {
   constructor(private serviceWorkerService: ServiceWorkerService) {}
 
   public ngOnInit() {
-    this.serviceWorkerService.onlineStatusEmitter.pipe(untilComponentDestroyed(this)).subscribe((status: Boolean) => {
-      this.online = status;
-    });
+    this.serviceWorkerService.onlineStatusEmitter
+      .pipe(untilComponentDestroyed(this))
+      .subscribe((status: Boolean) => {
+        this.online = status;
+      });
   }
   public ngOnDestroy() {}
 }

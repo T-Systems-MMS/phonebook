@@ -11,10 +11,10 @@ if (runtimeEnvironment.ravenURL) {
       environment: runtimeEnvironment.environment.toString(),
       release: VERSION,
       sanitizeKeys: ['currentUserName', 'userName'],
-      shouldSendCallback: function(data) {
+      shouldSendCallback: function (data) {
         return JSON.parse(localStorage.getItem('appstate') || '').sendFeedback || false;
       },
-      ignoreUrls: ['localhost:4200']
+      ignoreUrls: ['localhost:4200'],
     }).install();
   } catch (err) {
     console.error(err);
@@ -49,13 +49,13 @@ export class GlobalErrorHandler implements ErrorHandler {
 }
 
 @NgModule({
-  providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }]
+  providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }],
 })
 export class ErrorHandlerModule {
   public static forRoot(): ModuleWithProviders<ErrorHandlerModule> {
     return {
       ngModule: ErrorHandlerModule,
-      providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }]
+      providers: [{ provide: ErrorHandler, useClass: GlobalErrorHandler }],
     };
   }
 }

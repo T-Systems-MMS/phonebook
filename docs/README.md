@@ -1,8 +1,8 @@
 # **Phonebook**
+
 by [T-Systems Multimedia Solutions GmbH](https://www.t-systems-mms.com/)
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![GitHub issues](https://img.shields.io/github/issues/T-Systems-MMS/phonebook.svg?style=popout)](https://github.com/T-Systems-MMS/phonebook/issues) [![GitHub](https://img.shields.io/github/license/T-Systems-MMS/phonebook.svg)](https://github.com/T-Systems-MMS/phonebook/blob/master/LICENSE) [![GitHub](https://img.shields.io/badge/Documentation-GitHub--Pages-blueviolet.svg)](https://t-systems-mms.github.io/phonebook/)
-  
 
 ## **:question: What is the Phonebook?**
 
@@ -12,6 +12,7 @@ This Single-Page-Application is able to display People, Rooms and the organizati
 :arrow_forward: View the live demo on [https://demo-phonebook.me/](https://demo-phonebook.me/).
 
 ## **:wave: New to the Phonebook?**
+
 We are always searching for new contributors who want to be a part of a growing community. The contribution benefits are huge. You can learn a lot about the technologies displayed below, bring new ideas into the project, connect with new people from different departments and learn how it is to be an OpenSource-Developer.
 
 You're not interested in developing and just want to know more about how to use the software? [:beginner: Right this way](https://t-systems-mms.github.io/phonebook/pages/user-docs/)
@@ -23,9 +24,10 @@ You can contribute with any skill or use this project to evolve your techniques.
 If you're **not interested in developing** but want to help you can [submit new issues](https://github.com/T-Systems-MMS/phonebook/issues/new/choose) or contact one of the {{site.contributors}}.
 
 If you're **interested in developing** check out the following links.
-  * [Current Issues](https://github.com/T-Systems-MMS/phonebook/issues/)
-  * [Milestones](https://github.com/T-Systems-MMS/phonebook/milestones) 
-  * [Development Guides](https://t-systems-mms.github.io/phonebook/pages/development-guides/)
+
+- [Current Issues](https://github.com/T-Systems-MMS/phonebook/issues/)
+- [Milestones](https://github.com/T-Systems-MMS/phonebook/milestones)
+- [Development Guides](https://t-systems-mms.github.io/phonebook/pages/development-guides/)
 
 <details>
   <summary><b>View some other examples to contribute</b></summary>
@@ -44,6 +46,7 @@ Note that you also can keep an eye on our <a class="d-inline-block v-align-text-
 > If you're a part of T-Systems MMS you can also take a look at the internal get-started page.
 
 ## **:electric_plug: Technologie overview**
+
 The project makes use of the following noteworthy frameworks:
 
 <details>
@@ -65,12 +68,12 @@ The project makes use of the following noteworthy frameworks:
 
 ## :earth_americas: **The Community**
 
-| :pencil2: [Contributors ](https://github.com/T-Systems-MMS/phonebook/graphs/contributors ) | :gear: [Maintainer ](https://github.com/T-Systems-MMS/phonebook/blob/master/.github/CODEOWNERS ) |
-| :----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
-|                    Anyone who participates in any way to the community                     |        Voluntarily takes over the coordination of a work package, a milestone or a topic         |
-| This can be: develop new features, fix bugs, write documentation or review pull requests.  |                      Controls the contributors and supports the onboarding                       |
-|                                                                                            |                  Is responsible for the quality of the respective work package                   |
-|                                                                                            |                                   Becomes visible as an expert                                   |
+| :pencil2: [Contributors ](https://github.com/T-Systems-MMS/phonebook/graphs/contributors) | :gear: [Maintainer ](https://github.com/T-Systems-MMS/phonebook/blob/master/.github/CODEOWNERS) |
+| :---------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: |
+|                    Anyone who participates in any way to the community                    |        Voluntarily takes over the coordination of a work package, a milestone or a topic        |
+| This can be: develop new features, fix bugs, write documentation or review pull requests. |                      Controls the contributors and supports the onboarding                      |
+|                                                                                           |                  Is responsible for the quality of the respective work package                  |
+|                                                                                           |                                  Becomes visible as an expert                                   |
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -97,17 +100,21 @@ The project makes use of the following noteworthy frameworks:
   <tr>
     <td align="center"><a href="https://github.com/BrunoZirnstein"><img src="https://avatars3.githubusercontent.com/u/56590240?v=4" width="100px;" alt=""/><br /><sub><b>BrunoZirnstein</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=BrunoZirnstein" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/friedaxvictoria"><img src="https://avatars2.githubusercontent.com/u/61278471?v=4" width="100px;" alt=""/><br /><sub><b>friedaxvictoria</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=friedaxvictoria" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/tomfrenzel"><img src="https://avatars1.githubusercontent.com/u/40773830?v=4" width="100px;" alt=""/><br /><sub><b>Tom Frenzel</b></sub></a><br /><a href="https://github.com/T-Systems-MMS/phonebook/commits?author=tomfrenzel" title="Code">💻</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
 And a big thanks to all other contributors of [T-Systems MMS](https://github.com/T-Systems-MMS).
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 ## **:sparkles: Need Help?**
+
 If you still have questions feel free to contact us under [phonebook-t-systems-mms@mg.telekom.de](mailto:phonebook-t-systems-mms@mg.telekom.de).
 
 ## **:computer: Supported Browsers**

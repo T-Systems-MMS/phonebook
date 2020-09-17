@@ -37,6 +37,15 @@ traefik:
     loglevel: debug
   globalArguments:
     - ''
+  # Old
+  # startupArguments:
+  #   - ''
+  # dashboard:
+  #   enabled: true
+  #   domain: board.demo-phonebook.local
+  #   ingress:
+  #     annotations:
+  #       traefik.frontend.priority: '100'
 
   ssl:
     enabled: true

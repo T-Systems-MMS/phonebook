@@ -9,11 +9,12 @@ metadata:
     helm.sh/chart: {{ include "phonebook.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  {{- with .Values.ingress.annotations }}
   annotations:
     traefik.ingress.kubernetes.io/router.pathmatcher: PathPrefix
     traefik.ingress.kubernetes.io/router.priority: "50"
     traefik.ingress.kubernetes.io/router.tls: "true"
+    kubernetes.io/ingress.class: traefik
+  {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
@@ -21,7 +22,7 @@ spec:
     - host: {{ .Values.host }}
       http:
         paths:
-          - path: /bla
+          - path: /api
             backend:
               serviceName: {{ $fullName }}-peoplesoft
               servicePort: http

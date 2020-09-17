@@ -8,15 +8,15 @@ const routes: Routes = [
     path: ':id',
     component: UserDetailPageComponent,
     resolve: {
-      user: UserDetailPageResolver
-    }
+      user: UserDetailPageResolver,
+    },
   },
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   providers: [UserDetailPageResolver],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class UserPagesRoutingModule {}

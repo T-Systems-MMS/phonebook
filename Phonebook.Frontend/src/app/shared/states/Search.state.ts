@@ -1,6 +1,14 @@
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { Navigate, RouterNavigation, RouterState } from '@ngxs/router-plugin';
-import { Action, Actions, ofActionSuccessful, Selector, State, StateContext, Store } from '@ngxs/store';
+import {
+  Action,
+  Actions,
+  ofActionSuccessful,
+  Selector,
+  State,
+  StateContext,
+  Store,
+} from '@ngxs/store';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { PhonebookSortDirection, SearchFilter, TableSort } from 'src/app/shared/models';
 import { Injectable } from '@angular/core';
@@ -18,7 +26,9 @@ export class RemoveLastSearchFilter {
 }
 export class UpdateUrl {
   public static readonly type: string = '[Search State] Update Url';
-  constructor(public update: { searchTerm?: string; searchFilter?: SearchFilter[]; tableSort?: TableSort }) {}
+  constructor(
+    public update: { searchTerm?: string; searchFilter?: SearchFilter[]; tableSort?: TableSort }
+  ) {}
 }
 /**
  * This is for setting both variables simultaneously
@@ -26,7 +36,11 @@ export class UpdateUrl {
  */
 export class SetSearchFiltersAndSearchTerm {
   public static readonly type: string = '[Search State] Set Search Term and Filter';
-  constructor(public searchFilters: SearchFilter[], public searchTerm: string, public updateUrl: boolean = true) {}
+  constructor(
+    public searchFilters: SearchFilter[],
+    public searchTerm: string,
+    public updateUrl: boolean = true
+  ) {}
 }
 export class ResetSearch {
   public static readonly type: string = '[Search State] Reset';
@@ -42,13 +56,13 @@ export interface SearchStateModel {
   name: 'searchstate',
   defaults: {
     searchTerm: '',
-    searchFilters: []
-  }
+    searchFilters: [],
+  },
 })
 @Injectable()
 export class SearchState {
   constructor(private store: Store, private actions$: Actions) {
-    this.actions$.pipe(ofActionSuccessful(RouterNavigation)).subscribe(routeInfo => {
+    this.actions$.pipe(ofActionSuccessful(RouterNavigation)).subscribe((routeInfo) => {
       const routeSnapshot: ActivatedRouteSnapshot = routeInfo.routerState.root;
       // Check if on Path 'search'
       if (
@@ -74,7 +88,7 @@ export class SearchState {
         const searchTerm = pathSegment.paramMap.get('keyword') || '';
         // Get SearchFilters
         let searchFilter: SearchFilter[] = [];
-        Object.keys(pathSegment.queryParams).forEach(key => {
+        Object.keys(pathSegment.queryParams).forEach((key) => {
           // Ignore sortDirection and sortColumn
           if (isSortKey(key)) {
             return;
@@ -83,7 +97,7 @@ export class SearchState {
           if (col != null) {
             searchFilter.push({
               filterColumn: col,
-              filterValue: pathSegment.queryParamMap.get(key) || ''
+              filterValue: pathSegment.queryParamMap.get(key) || '',
             });
           }
         });
@@ -108,8 +122,8 @@ export class SearchState {
 
   @Selector()
   public static searchFilters(state: SearchStateModel): SearchFilter[] {
-    return state.searchFilters.map(filter => {
-      const tmp = ColumnDefinitions.getAll().find(c => {
+    return state.searchFilters.map((filter) => {
+      const tmp = ColumnDefinitions.getAll().find((c) => {
         return c.id === filter.filterColumn.id;
       });
       if (tmp == null) {
@@ -123,7 +137,9 @@ export class SearchState {
   @Action(AddSearchFilter)
   public addSearchFilter(ctx: StateContext<SearchStateModel>, action: AddSearchFilter) {
     const state = ctx.getState();
-    const index = state.searchFilters.findIndex(f => f.filterColumn.id === action.searchFilter.filterColumn.id);
+    const index = state.searchFilters.findIndex(
+      (f) => f.filterColumn.id === action.searchFilter.filterColumn.id
+    );
     if (index >= 0) {
       state.searchFilters[index] = action.searchFilter;
     } else {
@@ -157,20 +173,25 @@ export class SearchState {
   public resetSearch(ctx: StateContext<SearchStateModel>, action: ResetSearch) {
     ctx.patchState({
       searchTerm: '',
-      searchFilters: []
+      searchFilters: [],
     });
     if (action.shouldNavigate) {
       return ctx.dispatch(new UpdateUrl({ searchFilter: [], searchTerm: '' }));
     }
   }
   @Action(SetSearchFiltersAndSearchTerm)
-  public setSearchFilterAndSearchTerm(ctx: StateContext<SearchStateModel>, action: SetSearchFiltersAndSearchTerm) {
+  public setSearchFilterAndSearchTerm(
+    ctx: StateContext<SearchStateModel>,
+    action: SetSearchFiltersAndSearchTerm
+  ) {
     const state = ctx.getState();
     state.searchFilters = action.searchFilters;
     state.searchTerm = action.searchTerm != null ? action.searchTerm : '';
     ctx.setState({ ...state });
     if (action.updateUrl) {
-      return ctx.dispatch(new UpdateUrl({ searchFilter: state.searchFilters, searchTerm: state.searchTerm }));
+      return ctx.dispatch(
+        new UpdateUrl({ searchFilter: state.searchFilters, searchTerm: state.searchTerm })
+      );
     }
   }
 
@@ -186,13 +207,13 @@ export class SearchState {
     }
     const routeSnapshot: ActivatedRouteSnapshot = routeState.root;
     if (update.searchFilter != null) {
-      update.searchFilter.forEach(filter => {
+      update.searchFilter.forEach((filter) => {
         params[filter.filterColumn.id] = filter.filterValue;
       });
       // Remove Query Params that are not used anymore by setting them 'null' explicitly
       if (routeSnapshot.firstChild != null && routeSnapshot.firstChild.firstChild != null) {
         const queryParams = routeSnapshot.firstChild.firstChild.queryParams;
-        Object.keys(queryParams).forEach(queryParamKey => {
+        Object.keys(queryParams).forEach((queryParamKey) => {
           if (params[queryParamKey] == null) {
             if (!isSortKey(queryParamKey)) {
               params[queryParamKey] = null;
@@ -210,13 +231,17 @@ export class SearchState {
         params.sortDirection = null;
       }
     }
-    if (update.searchTerm == null && routeSnapshot.firstChild != null && routeSnapshot.firstChild.firstChild != null) {
+    if (
+      update.searchTerm == null &&
+      routeSnapshot.firstChild != null &&
+      routeSnapshot.firstChild.firstChild != null
+    ) {
       update.searchTerm = routeSnapshot.firstChild.firstChild.params.keyword;
     }
 
     return this.store.dispatch(
       new Navigate(['search', update.searchTerm || ''], params, {
-        queryParamsHandling: 'merge'
+        queryParamsHandling: 'merge',
       })
     );
   }
