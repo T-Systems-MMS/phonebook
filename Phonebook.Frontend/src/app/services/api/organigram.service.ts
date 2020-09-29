@@ -12,7 +12,7 @@ export class OrganigramService {
     private http: HttpClient,
     private personService: PersonService,
     private currentUserService: CurrentUserService
-  ) {}
+  ) { }
   public organigram: Observable<UnitTreeNode[]>;
   public orgUnits: Observable<OrgUnit[]>;
   public team: UnitTreeNode;
@@ -110,7 +110,10 @@ export class OrganigramService {
     if (user.Business.ShortOrgUnit.length > depth) {
       for (const node of nodeChilds) {
         if (node.id === user.Business.ShortOrgUnit[depth] && node.depth === depth) {
-          return node;
+          if (user.Business.ShortOrgUnit.length == depth + 1) {
+            return node;
+          }
+          return this.getNodeForUser(user, node.children, depth + 1);
         }
         if (node.id !== user.Business.ShortOrgUnit[depth] && node.depth === depth) {
           continue;

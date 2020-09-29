@@ -26,22 +26,17 @@ export class TeamComponent implements OnInit, OnDestroy {
   constructor(private organigramService: OrganigramService) { }
 
   public ngOnInit() {
-    if (this.currentUser != null) {
-      this.organigramService.getOrganigramTree()
-        .subscribe(organigram => {
-          if (this.currentUser != null) {
-            let orgUnitOfUser = this.organigramService.getNodeForUser(this.currentUser, organigram, 0)
-            if (orgUnitOfUser != null) {
-              this.teamPersons = [
-                ...orgUnitOfUser.supervisors,
-                ...orgUnitOfUser.assistents,
-                ...orgUnitOfUser.employees,
-                ...orgUnitOfUser.learners,
-              ];
-            }
-          }
-        });
-    }
+    this.organigramService.getNodeForCurrentUser()
+      .subscribe(orgUnitOfUser => {
+        if (orgUnitOfUser != null) {
+          this.teamPersons = [
+            ...orgUnitOfUser.supervisors,
+            ...orgUnitOfUser.assistents,
+            ...orgUnitOfUser.employees,
+            ...orgUnitOfUser.learners,
+          ];
+        }
+      });
   }
 
   public ngOnDestroy(): void { }
