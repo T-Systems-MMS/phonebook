@@ -43,7 +43,7 @@ export class CurrentUserService {
 
   public getCurrentUserId(): Observable<string> {
     // User for demonstration purposes. Take out before merging!
-    return of('9305');
+    // return of('9305');
     return this.getCurrentUserObject().pipe(
       map((str) => {
         // Userstring Layout is "Domain\\user"
