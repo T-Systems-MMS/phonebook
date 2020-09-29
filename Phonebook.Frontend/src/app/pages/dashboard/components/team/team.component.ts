@@ -29,14 +29,16 @@ export class TeamComponent implements OnInit, OnDestroy {
     if (this.currentUser != null) {
       this.organigramService.getOrganigramTree()
         .subscribe(organigram => {
-          let orgUnitOfUser = this.organigramService.getNodeForUser(this.currentUser, organigram, 0)
-          if (orgUnitOfUser != null) {
-            this.teamPersons = [
-              ...orgUnitOfUser.supervisors,
-              ...orgUnitOfUser.assistents,
-              ...orgUnitOfUser.employees,
-              ...orgUnitOfUser.learners,
-            ];
+          if (this.currentUser != null) {
+            let orgUnitOfUser = this.organigramService.getNodeForUser(this.currentUser, organigram, 0)
+            if (orgUnitOfUser != null) {
+              this.teamPersons = [
+                ...orgUnitOfUser.supervisors,
+                ...orgUnitOfUser.assistents,
+                ...orgUnitOfUser.employees,
+                ...orgUnitOfUser.learners,
+              ];
+            }
           }
         });
     }
