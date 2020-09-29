@@ -12,7 +12,7 @@ export class OrganigramService {
     private http: HttpClient,
     private personService: PersonService,
     private currentUserService: CurrentUserService
-  ) { }
+  ) {}
   public organigram: Observable<UnitTreeNode[]>;
   public orgUnits: Observable<OrgUnit[]>;
   public team: UnitTreeNode;
