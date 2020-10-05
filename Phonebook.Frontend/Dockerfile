@@ -1,5 +1,5 @@
 # base image
-FROM node:13.14@sha256:1e8d7127072cdbaae1935656444c3ec2bef8882c8c14d459e3a92ca1dd313c28 as builder
+FROM node:14.13@sha256:103c180b9acb9572420690ac4912525d9ac178f9ef5046a4164a6a3f7a6b63f1 as builder
 
 # set working directory
 RUN  mkdir /usr/local/app
