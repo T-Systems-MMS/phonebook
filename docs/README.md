@@ -9,7 +9,7 @@ by [T-Systems Multimedia Solutions GmbH](https://www.t-systems-mms.com/)
 The Phonebook is a community project for us, from us and everybody is welcome to participate.
 This Single-Page-Application is able to display People, Rooms and the organization structure. It is perfect to search for people in a company, get information where they sit in your building and how to contact them.
 
-:arrow_forward: View the live demo on [https://demo-phonebook.me/](https://demo-phonebook.me/).
+:arrow_forward: View the live demo on [https://demo-phonebook.aquiver.de/](https://demo-phonebook.aquiver.de/).
 
 ## **:wave: New to the Phonebook?**
 
