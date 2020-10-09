@@ -1,6 +1,6 @@
 dependencies:
   - name: traefik
-    repository: https://kubernetes-charts.storage.googleapis.com
-    version: 1.86.2
-digest: sha256:6a6097b475625d15d6e156f79ec0950f5a850ae13b3dd7463c75e39526b6bc14
-generated: "2020-04-10T21:54:06.4266672+02:00"
+    repository: https://containous.github.io/traefik-helm-chart
+    version: 3.4.0
+digest: sha256:69f27dcbfa7eacbaa64365626276506c7050ab2c65d0db8780f4c2adc882d3d6
+generated: '2020-04-08T14:26:29.6008416+02:00'

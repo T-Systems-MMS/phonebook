@@ -42,15 +42,8 @@ affinity: {}
 
 # Traefik Configuration
 traefik:
-  enabled: true
-  startupArguments:
-    - ''
-  dashboard:
+  deployment:
     enabled: true
-    domain: board.demo-phonebook.aquiver.de
-    ingress:
-      annotations:
-        traefik.frontend.priority: '100'
   ssl:
     enabled: true
     enforced: true
@@ -64,5 +57,8 @@ traefik:
       enabled: true
   rbac:
     enabled: true
+
   kubernetes:
     namespaces:
+      - kube-public
+      - default
