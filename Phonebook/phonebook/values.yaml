@@ -38,28 +38,36 @@ ingress:
 
 # Traefik Configuration
 traefik:
-  enabled: true
-  additional:
-    checkNewVersion: false
-    sendAnonymousUsage: false
-  dashboard:
-    enable: false
-    ingressRoute: false
-  
-  additionalArguments: 
-  - "--providers.kubernetesingress"
+  deployment:
+    enabled: true
+
+  additionalArguments:
+    - --entryPoints.websecure.http.tls=true
+    - --entrypoints.web.http.redirections.entrypoint.to=:443
+    - --entrypoints.web.http.redirections.entrypoint.permanent=true
+    - --providers.kubernetesingress
+    - --providers.kubernetesingress.ingressclass=public
+    - --providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik-v2
+    - --providers.kubernetescrd.ingressclass=public
+    - --serverstransport.insecureskipverify
+    # - --entryPoints.metrics.address=:8082
+    # - --metrics.prometheus.entryPoint=metrics
+    # - --metrics.prometheus
+    # - --log.level=DEBUG
+    - --accesslog
+
   logs:
     loglevel: warn
+
   globalArguments:
-    - ''    
-  # Old
-  # startupArguments:
-  #   - ""
+    - ''
   ssl:
     enabled: true
     enforced: true
+
   rbac:
     enabled: true
+
   kubernetes:
     namespaces:
       - kube-public
