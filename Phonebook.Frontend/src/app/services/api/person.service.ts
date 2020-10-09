@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConnectableObservable, Observable } from 'rxjs';
-import { map, publishReplay } from 'rxjs/operators';
+import { map, publishReplay, publishLast, refCount, catchError, share, tap } from 'rxjs/operators';
 import { TableLogic } from 'src/app/modules/table/table-logic';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import {
@@ -65,6 +65,7 @@ export class PersonService {
           item.Location.LinkRoutingInfo
         ),
         new Business(
+          item.Business.Id,
           item.Business.ShortBusinessunitTeamassistent,
           item.Business.ShortSupervisor,
           item.Business.ShortOrgUnit,
@@ -77,8 +78,8 @@ export class PersonService {
     });
   }
 
-  public getAll(): Observable<Person[]> {
-    if (this.allPersonObservable != null) {
+  public getAll(ignoreCache: boolean = false): Observable<Person[]> {
+    if (this.allPersonObservable != null && !ignoreCache) {
       return this.allPersonObservable;
     }
 
@@ -106,6 +107,17 @@ export class PersonService {
           return null;
         }
         return person;
+      })
+    );
+  }
+
+  public getByOrgUnit(name: string): Observable<Person[]> {
+    return this.getAll().pipe(
+      map((personArray) => {
+        return personArray.filter((p) => {
+          var personOrgUnit = p.Business.ShortOrgUnit[p.Business.ShortOrgUnit.length - 1];
+          return personOrgUnit == name;
+        });
       })
     );
   }

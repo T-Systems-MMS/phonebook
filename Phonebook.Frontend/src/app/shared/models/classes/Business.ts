@@ -1,6 +1,7 @@
 /* tslint:disable:variable-name */
 
 export class Business {
+  public Id: number;
   public ShortBusinessunitTeamassistent: string[];
   public ShortSupervisor: string[];
   public ShortOrgUnit: string[];
@@ -10,6 +11,7 @@ export class Business {
   public Costcenter: string;
 
   constructor(
+    Id: number,
     shortBusinessunitTeamassistent: string[],
     shortSupervisor: string[],
     shortOrgUnit: string[],
@@ -18,6 +20,7 @@ export class Business {
     supervisor: string[],
     costcenter: string
   ) {
+    this.Id = Id;
     this.ShortBusinessunitTeamassistent = shortBusinessunitTeamassistent;
     this.ShortSupervisor = shortSupervisor;
     this.ShortOrgUnit = shortOrgUnit;

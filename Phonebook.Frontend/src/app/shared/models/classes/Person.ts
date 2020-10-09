@@ -69,7 +69,7 @@ export class Person {
       false,
       new Contacts('', '', '', '', new Messenger('', 0)),
       new Location(new City('', ''), [new Room('', '', 0, '', '', '', '', '', '')]),
-      new Business([], [], [], [], [], [], '')
+      new Business(NaN, [], [], [], [], [], [], '')
     );
   }
 }

@@ -15,7 +15,7 @@ export class PersonsDataSource extends MatTableDataSource<Person> {
     return this.PAGE_SIZE;
   }
 
-  private loadingSubject = new BehaviorSubject<boolean>(false);
+  public loadingSubject = new BehaviorSubject<boolean>(true);
   public loading$ = this.loadingSubject.asObservable();
 
   private ALL_DATA: Person[] = this.dataSource;

@@ -99,6 +99,11 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
             modelBuilder
                 .Entity<OrgUnit>()
                 .ToTable("V_ORGEINHEIT")
+                    .HasMany<OrgUnit>(o => o.ChildOrgUnits)
+                        .WithOne(p => p.Parent);
+            modelBuilder
+                .Entity<OrgUnit>()
+                .ToTable("V_ORGEINHEIT")
                     .HasOne<Person>(o => o.HeadOfOrgUnit)
                         .WithMany(p => p.OwnedOrgUnits)
                         .HasForeignKey(o => o.HeadOfOrgUnitId);
