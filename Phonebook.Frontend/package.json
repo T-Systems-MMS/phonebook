@@ -54,7 +54,7 @@
     "@ngxs/storage-plugin": "3.6.2",
     "@ngxs/store": "3.6.2",
     "classlist.js": "1.1.20150312",
-    "markdown-it": "10.0.0",
+    "markdown-it": "11.0.1",
     "ng2-rx-componentdestroyed": "3.0.1",
     "ngx-infinite-scroll": "9.0.0",
     "ngx-propagation-stop": "2.0.14",
