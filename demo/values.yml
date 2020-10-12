@@ -53,7 +53,7 @@ traefik:
     - --certificatesresolvers.default.acme.httpchallenge.entrypoint=web
     - --certificatesresolvers.default.acme.storage=tmp/acme.json
     - --certificatesresolvers.default.acme.email=phonebook-t-systems-mms@mg.telekom.de
-#    - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+    #    - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
     - --api.dashboard=true
     - --api=true
 
