@@ -57,9 +57,6 @@ traefik:
     - --api.dashboard=true
     - --api=true
 
-
-  
-
   logs:
     # Traefik logs concern everything that happens to Traefik itself (startup, configuration, events, shutdown, and so on).
     general:
