@@ -7,7 +7,7 @@ We use [traefik](https://traefik.io/) under the hood.
 
 ### Installation
 
-> Please make sure you have a running Kubernetes Cluster, with Tiller and Helm installed.
+> Please make sure you have a running Kubernetes Cluster and Helm installed.
 
 1. Create your `values.yml`. For settings look [here](#Settings).
 
@@ -19,6 +19,11 @@ We use [traefik](https://traefik.io/) under the hood.
    contactEmail: &contactEmail '<Your Contact Email>'
    employeePictureEndpoint: '<Url To you User Picture Endpoint>'
    assetsEndpoint: '<Url To you User Assets Endpoint>'
+
+   traefik:
+     # Only modify these do not touch "globalArguments"
+     additionalArguments:
+       - --entrypoints.web.http.redirections.entrypoint.to=:443
    ```
 
    For a more complete Example have a look at our demo [values.yml](../demo/values.yml).
@@ -67,6 +72,6 @@ You need `helm3` and a running kubernetes cluster.
 
 1. Add `phonebook-demo.local` to your hosts, pointing to `localhost` (127.0.0.1).
 2. cd into the `/Phonebook` Folder
-3. `helm install -f ./local-values.yml -n phonebook .\phonebook\`
+3. `helm upgrade --namespace default --install -values ./local-values.yml --set frontend.image.tag=1.43.7,source.peoplesoft.image.tag=4374 --wait phonebook .\phonebook\`
 
 Debug: `helm install --dry-run --debug -n phonebook .\phonebook\`

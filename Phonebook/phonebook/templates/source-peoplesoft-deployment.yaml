@@ -18,6 +18,8 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "phonebook.name" . }}-peoplesoft
         app.kubernetes.io/instance: {{ .Release.Name }}
+      annotations: 
+        rollme: "{{ now | unixEpoch }}"
     spec:
       nodeSelector:
         'beta.kubernetes.io/os': linux
@@ -32,17 +34,16 @@ spec:
             - name: https
               containerPort: 443
               protocol: TCP
-          # TODO: use when issue #594 is resolved
-          # livenessProbe:
-          #   httpGet:
-          #     path: /health
-          #     port: http
-          #   initialDelaySeconds: 6
-          # readinessProbe:
-          #   httpGet:
-          #     path: /health
-          #     port: http
-          #   initialDelaySeconds: 6
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 6
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 6
           env: 
             - name: ASPNETCORE_ENVIRONMENT
               value: "{{ .Values.source.peoplesoft.environment }}"

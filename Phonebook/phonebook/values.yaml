@@ -52,8 +52,6 @@ traefik:
     - --entrypoints.web.http.redirections.entrypoint.to=websecure
     - --entrypoints.web.http.redirections.entrypoint.scheme=https
     - --entrypoints.web.http.redirections.entrypoint.permanent=true
-    - --providers.kubernetesIngress=true
-    - --api.dashboard=false
     # PSA Settings
     - --serversTransport.forwardingTimeouts.responseHeaderTimeout=1s
     - --serversTransport.forwardingTimeouts.dialTimeout=1s
@@ -66,6 +64,16 @@ traefik:
     enabled: true
     namespaced: false
 
+  ingressRoute:
+    dashboard:
+      enabled: false
+
+  providers:
+    kubernetesCRD:
+      enabled: true
+    kubernetesIngress:
+      enabled: true
+
   logs:
     # Traefik logs concern everything that happens to Traefik itself (startup, configuration, events, shutdown, and so on).
     general:
@@ -77,4 +85,3 @@ traefik:
     access:
       # To enable access log
       enabled: false
-

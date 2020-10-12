@@ -6,7 +6,7 @@ metadata:
   name: {{ $fullName }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app.kubernetes.io/name: {{ include "phonebook.name" . }}
+    app.kubernetes.io/name: {{ include "phonebook.name" . }}-frontend
     helm.sh/chart: {{ include "phonebook.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -23,7 +23,7 @@ spec:
       namespace: {{ .Release.Namespace }}
     services:                       
     - kind: Service
-      name: {{ $fullName }}
+      name: {{ $fullName }}-frontend
       namespace: {{ .Release.Namespace }}
       passHostHeader: true
       port: 80
