@@ -22,7 +22,6 @@ source:
 traefik:
   deployment:
     enabled: true
-
   
   # Only modify these do not touch "globalArguments"
   additionalArguments:

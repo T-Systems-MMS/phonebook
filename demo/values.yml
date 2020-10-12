@@ -45,7 +45,6 @@ traefik:
   deployment:
     enabled: true
 
-  
   # Only modify these do not touch "globalArguments"
   additionalArguments:
     - --entrypoints.web.http.redirections.entrypoint.to=:443

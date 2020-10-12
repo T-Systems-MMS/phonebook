@@ -77,3 +77,4 @@ traefik:
     access:
       # To enable access log
       enabled: false
+
