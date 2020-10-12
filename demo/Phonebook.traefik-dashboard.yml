@@ -4,10 +4,10 @@ metadata:
   name: traefik-dashboard
 spec:
   routes:
-  - match: Host(`board.demo-phonebook.aquiver.de`)
-    kind: Rule
-    services:
-    - name: api@internal
-      kind: TraefikService
-    middlewares:                    
-    - name: https-redirectscheme        
+    - match: Host(`board.demo-phonebook.aquiver.de`)
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
+      middlewares:
+        - name: https-redirectscheme
