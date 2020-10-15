@@ -1,30 +1,37 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "phonebook.fullname" . -}}
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: {{ $fullName }}
+  namespace: {{ .Release.Namespace }}
   labels:
-    app.kubernetes.io/name: {{ include "phonebook.name" . }}
+    app.kubernetes.io/name: {{ include "phonebook.name" . }}-frontend
     helm.sh/chart: {{ include "phonebook.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: "web"
-    traefik.ingress.kubernetes.io/router.priority: "42"
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: http-01
-    kubernetes.io/ingress.class: traefik
-  {{- with .Values.ingress.annotations }}
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
 spec:
-  rules:
-    - host: {{ .Values.host }}
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: {{ $fullName }}
-              servicePort: http
+  entryPoints:
+    - web
+    - websecure
+  routes:                           
+  - kind: Rule
+    match: Host(`{{ .Values.host }}`)
+    priority: 40             
+    middlewares:                  
+    - name: ratelimit
+      namespace: {{ .Release.Namespace }}
+    services:                       
+    - kind: Service
+      name: {{ $fullName }}-frontend
+      namespace: {{ .Release.Namespace }}
+      passHostHeader: true
+      port: 80
+      strategy: RoundRobin
+      weight: 10
+  tls:
+    certResolver: default
+    options:                        
+      name: tlsoption
+      namespace: {{ .Release.Namespace }}                
 {{- end }}

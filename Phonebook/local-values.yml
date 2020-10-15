@@ -17,42 +17,31 @@ source:
     replicaCount: 1
     environment: Development
 
+# Traefik Configuration
 traefik:
-  enabled: true
-  additional:
-    checkNewVersion: false
-    sendAnonymousUsage: false
-  dashboard:
-    # Enable the dashboard on Traefik
-    enable: true
-    # Expose the dashboard and api through an ingress route at /dashboard
-    # and /api This is not secure and SHOULD NOT be enabled on production
-    # deployments
-    ingressRoute: true
+  deployment:
+    enabled: true
 
+  # Only modify these do not touch "globalArguments"
   additionalArguments:
-    - '--providers.kubernetesingress'
-    - '--api.insecure=true'
-  logs:
-    loglevel: debug
-  globalArguments:
-    - ''
-  # Old
-  # startupArguments:
-  #   - ''
-  # dashboard:
-  #   enabled: true
-  #   domain: board.demo-phonebook.local
-  #   ingress:
-  #     annotations:
-  #       traefik.frontend.priority: '100'
+    - --entrypoints.web.http.redirections.entrypoint.to=:443
+    - --entrypoints.websecure.http.tls.certResolver=default
+    - --certificatesresolvers.default.acme.httpchallenge=true
+    - --certificatesresolvers.default.acme.httpchallenge.entrypoint=web
+    - --certificatesresolvers.default.acme.storage=tmp/acme.json
+    - --certificatesresolvers.default.acme.email=phonebook-t-systems-mms@mg.telekom.de
+    - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+    - --api.dashboard=true
+    - --api=true
 
-  ssl:
-    enabled: true
-    enforced: true
-  rbac:
-    enabled: true
-  kubernetes:
-    namespaces:
-      - kube-public
-      - default
+  logs:
+    # Traefik logs concern everything that happens to Traefik itself (startup, configuration, events, shutdown, and so on).
+    general:
+      # By default, the logs use a text format (common), but you can
+      # also ask for the json format in the format option
+      # format: json
+      # By default, the level is set to ERROR. Alternative logging levels are DEBUG, PANIC, FATAL, ERROR, WARN, and INFO.
+      level: INFO
+    access:
+      # To enable access log
+      enabled: true

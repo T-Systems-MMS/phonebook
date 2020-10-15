@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "phonebook.fullname" . }}
+  name: {{ include "phonebook.fullname" . }}-frontend
   labels:
-    app.kubernetes.io/name: {{ include "phonebook.name" . }}
+    app.kubernetes.io/name: {{ include "phonebook.name" . }}-frontend
     helm.sh/chart: {{ include "phonebook.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -11,18 +11,20 @@ spec:
   replicas: {{ .Values.frontend.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "phonebook.name" . }}
+      app.kubernetes.io/name: {{ include "phonebook.name" . }}-frontend
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "phonebook.name" . }}
+        app.kubernetes.io/name: {{ include "phonebook.name" . }}-frontend
         app.kubernetes.io/instance: {{ .Release.Name }}
+      annotations: 
+        rollme: "{{ now | unixEpoch }}"
     spec:
       nodeSelector:
         'beta.kubernetes.io/os': linux
       containers:
-        - name: {{ .Chart.Name }}-{{ .Values.frontend.name }}
+        - name: {{ .Chart.Name }}-{{ .Values.frontend.name }}-frontend
           image: "{{ .Values.frontend.image.repository }}/{{ .Values.frontend.image.name}}:{{ .Values.frontend.image.tag }}"
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:

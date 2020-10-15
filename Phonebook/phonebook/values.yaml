@@ -34,40 +34,54 @@ source:
 
 ingress:
   enabled: true
-  annotations: {}
 
 # Traefik Configuration
 traefik:
   deployment:
     enabled: true
 
+  # Do not make changes here! They will be overridden.
   additionalArguments:
+
+  # Find all options here: https://doc.traefik.io/traefik/reference/static-configuration/cli/
+  globalArguments:
+    - '--global.checknewversion=false'
+    - '--global.sendanonymoususage=false'
     - --entryPoints.websecure.http.tls=true
     - --entrypoints.web.http.redirections.entrypoint.to=:443
+    - --entrypoints.web.http.redirections.entrypoint.to=websecure
+    - --entrypoints.web.http.redirections.entrypoint.scheme=https
     - --entrypoints.web.http.redirections.entrypoint.permanent=true
-    - --providers.kubernetesingress
-    - --providers.kubernetesingress.ingressclass=public
-    - --providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik-v2
-    - --providers.kubernetescrd.ingressclass=public
-    - --serverstransport.insecureskipverify
-    # - --entryPoints.metrics.address=:8082
-    # - --metrics.prometheus.entryPoint=metrics
-    # - --metrics.prometheus
-    # - --log.level=DEBUG
-    - --accesslog
-
-  logs:
-    loglevel: warn
-
-  globalArguments:
-    - ''
-  ssl:
-    enabled: true
-    enforced: true
+    # PSA Settings
+    - --serversTransport.forwardingTimeouts.responseHeaderTimeout=1s
+    - --serversTransport.forwardingTimeouts.dialTimeout=1s
+    - --serversTransport.maxIdleConnsPerHost=7
+    # For the future:
+    # - --certificatesresolvers.<name>.acme.preferredchain
+    # - --certificatesresolvers.<name>.acme.keytype
 
   rbac:
     enabled: true
+    namespaced: false
 
-  kubernetes:
-    namespaces:
-      - kube-public
+  ingressRoute:
+    dashboard:
+      enabled: false
+
+  providers:
+    kubernetesCRD:
+      enabled: true
+    kubernetesIngress:
+      enabled: true
+
+  logs:
+    # Traefik logs concern everything that happens to Traefik itself (startup, configuration, events, shutdown, and so on).
+    general:
+      # By default, the logs use a text format (common), but you can
+      # also ask for the json format in the format option
+      # format: json
+      # By default, the level is set to ERROR. Alternative logging levels are DEBUG, PANIC, FATAL, ERROR, WARN, and INFO.
+      level: ERROR
+    access:
+      # To enable access log
+      enabled: false
