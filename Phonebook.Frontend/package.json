@@ -57,7 +57,7 @@
     "markdown-it": "10.0.0",
     "ng2-rx-componentdestroyed": "3.0.1",
     "ngx-infinite-scroll": "9.0.0",
-    "ngx-propagation-stop": "2.0.14",
+    "ngx-propagation-stop": "2.0.25",
     "ngx-vcard": "2.0.2",
     "raven-js": "3.27.2",
     "rxjs": "6.5.5",
