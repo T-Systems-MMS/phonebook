@@ -859,6 +859,11 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
         </target>
         <note priority="1" from="description">Description for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="TableSettingsDialogDescriptionWhichSize" datatype="html">
+        <source>Choose which Columns should be displayed on your Big Screen and your Small Screen. Check above which state you are currently changing.</source>
+        <target state="translated">Bestimme welche Spalten auf deinem großen und deinem kleinen Bildschirm sichtbar sein sollen. Überprüfe oben, welchen Status du gerade veränderst.</target>
+        <note priority="1" from="description">Description Which Size for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit><trans-unit id="TableSettingsDialogNote" datatype="html">
         <source> Note: You can only search for displayed columns. </source><target state="translated">
     Notiz: Du kannst nur nach sichtbaren Spalten suchen.
@@ -883,6 +888,16 @@ Diese Seite nutzt Cookies, um die Bedienung der Seite zu verbessern. Cookies wer
   </target>
         <note priority="1" from="description">Button for closing something</note>
         <note priority="1" from="meaning">GeneralCloseButton</note>
+      </trans-unit><trans-unit id="TableSettingsDialogSubtitleSmallScreen" datatype="html">
+        <source>for the Small Screen</source>
+        <target state="translated">für den kleinen Bildschirm</target>
+        <note priority="1" from="description">Subtitle Small Screen for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit><trans-unit id="TableSettingsDialogSubtiteBigScreen" datatype="html">
+        <source>for the Big Screen</source>
+        <target state="translated">für den großen Bildschirm</target>
+        <note priority="1" from="description">Subtitle Big Screen for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit><trans-unit id="TableComponentResultCount" datatype="html">
         <source> <x id="INTERPOLATION"/> Results </source><target state="translated">
       <x id="INTERPOLATION" equiv-text="{{dataSource.allData.length}}"/> Ergebnisse

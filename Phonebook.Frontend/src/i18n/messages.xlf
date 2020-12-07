@@ -222,6 +222,12 @@
         <note priority="1" from="description">Description for Table Column Settings</note>
         <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
+      <trans-unit id="TableSettingsDialogDescriptionWhichSize" datatype="html">
+        <source>Choose which Columns should be displayed on your Big Screen and your Small Screen. Check above which state you are currently changing.</source>
+        <target>Choose which Columns should be displayed on your Big Screen and your Small Screen. Check above which state you are currently changing.</target>
+        <note priority="1" from="description">Description Which Size for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit>
       <trans-unit id="TableSettingsDialogNote" datatype="html">
         <source> Note: You can only search for displayed columns. </source>
         <target> Note: You can only search for displayed columns. </target>
@@ -251,6 +257,18 @@
         <target> Close </target>
         <note priority="1" from="description">Button for closing something</note>
         <note priority="1" from="meaning">GeneralCloseButton</note>
+      </trans-unit>
+      <trans-unit id="TableSettingsDialogSubtitleSmallScreen" datatype="html">
+        <source>for the Small Screen</source>
+        <target>for the Small Screen</target>
+        <note priority="1" from="description">Subtitle Small Screen for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
+      </trans-unit>
+      <trans-unit id="TableSettingsDialogSubtiteBigScreen" datatype="html">
+        <source>for the Big Screen</source>
+        <target>for the Big Screen</target>
+        <note priority="1" from="description">Subtitle Big Screen for Table Column Settings</note>
+        <note priority="1" from="meaning">TableSettingsDialog</note>
       </trans-unit>
       <trans-unit id="DashboardComponentTitleRecent" datatype="html">
         <source> Recent People </source>

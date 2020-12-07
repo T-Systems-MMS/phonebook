@@ -11,6 +11,7 @@ import { PersonService } from 'src/app/services/api/person.service';
 import { ColumnDefinitions } from 'src/app/shared/config/columnDefinitions';
 import { Person, PhonebookSortDirection, TableSort } from 'src/app/shared/models';
 import { SearchState, SetTableResultCount, TableState, UpdateUrl } from 'src/app/shared/states';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -20,10 +21,14 @@ import { HttpErrorResponse } from '@angular/common/http';
   host: { class: 'pb-fill-parent' },
 })
 export class TableComponent implements OnInit, OnDestroy {
+  public isSizeSmall: boolean = false;
   public get displayedColumns(): string[] {
-    return this.store.selectSnapshot(TableState.visibleColumns).map((col) => col.id);
+    if (this.isSizeSmall === true) {
+      return this.store.selectSnapshot(TableState.visibleSmallColumns).map((col) => col.id);
+    } else {
+      return this.store.selectSnapshot(TableState.visibleBigColumns).map((col) => col.id);
+    }
   }
-
   public dataSource: PersonsDataSource = new PersonsDataSource([]);
   public onTop: boolean = true;
   public columns: typeof ColumnDefinitions = ColumnDefinitions;
@@ -51,11 +56,18 @@ export class TableComponent implements OnInit, OnDestroy {
     private router: Router,
     private personService: PersonService,
     public dialog: MatDialog,
-    public store: Store
+    public store: Store,
+    public breakpointObserver: BreakpointObserver
   ) {}
 
   public ngOnInit() {
-    this.loadPersonData();
+    this.breakpointObserver
+      .observe('(max-width: 900px)')
+      .pipe(untilComponentDestroyed(this))
+      .subscribe((result) => {
+        this.isSizeSmall = result.matches;
+      });
+
     this.route.queryParamMap.pipe(untilComponentDestroyed(this)).subscribe((queryParams) => {
       // Table Sort
       const sortDirection = queryParams.get('sortDirection');
@@ -64,6 +76,7 @@ export class TableComponent implements OnInit, OnDestroy {
         this.sortActive = sortColumn;
         this.sortDirection = sortDirection;
       }
+      this.loadPersonData();
     });
 
     // Listens for changes of the Table Headers (Sorting)
@@ -76,7 +89,6 @@ export class TableComponent implements OnInit, OnDestroy {
       this.refreshTable();
     });
   }
-
   public loadPersonData(ignoreCache: boolean = false) {
     this.inErrorState = false;
     this.personService.getAll(ignoreCache).subscribe(
@@ -103,13 +115,14 @@ export class TableComponent implements OnInit, OnDestroy {
       }
     );
   }
-
   public refreshTable() {
     this.dataSource
       .refresh(
         this.store.selectSnapshot(SearchState.searchTerm).trim(),
         this.store.selectSnapshot(SearchState.searchFilters),
-        this.store.selectSnapshot(TableState.visibleColumns),
+        this.store.selectSnapshot(
+          this.isSizeSmall ? TableState.visibleSmallColumns : TableState.visibleBigColumns
+        ),
         this.tableSort
       )
       .subscribe((results) => {

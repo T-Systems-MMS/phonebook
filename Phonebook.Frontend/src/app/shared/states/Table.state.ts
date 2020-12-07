@@ -7,8 +7,12 @@ import { Column } from 'src/app/shared/models';
 import { ColumnId } from 'src/app/shared/models/enumerables/ColumnId';
 import { Injectable } from '@angular/core';
 
-export class SetVisibleTableColumns {
-  public static readonly type: string = '[Table State] Set visible Table Columns';
+export class SetVisibleBigTableColumns {
+  public static readonly type: string = '[Table State] Set visible Table Big Columns';
+  constructor(public columns: Column[]) {}
+}
+export class SetVisibleSmallTableColumns {
+  public static readonly type: string = '[Table State] Set visible Table Small Columns';
   constructor(public columns: Column[]) {}
 }
 
@@ -22,22 +26,36 @@ export class SetTableResultCount {
 }
 
 export interface TableStateModel {
-  visibleColumns: ColumnId[];
+  visibleBigColumns: ColumnId[];
+  visibleSmallColumns: ColumnId[];
   resultCount: number;
 }
 
 @State<TableStateModel>({
   name: 'tablestate',
   defaults: {
-    visibleColumns: getColumnsAsStringArray(ColumnDefinitions.getDefault()),
+    visibleBigColumns: getColumnsAsStringArray(ColumnDefinitions.getBigDefault()),
+    visibleSmallColumns: getColumnsAsStringArray(ColumnDefinitions.getSmallDefault()),
     resultCount: 0,
   },
 })
 @Injectable()
 export class TableState {
   @Selector()
-  public static visibleColumns(state: TableStateModel): Column[] {
-    return state.visibleColumns.map((col) => {
+  public static visibleBigColumns(state: TableStateModel): Column[] {
+    return state.visibleBigColumns.map((col) => {
+      const tmp = ColumnDefinitions.getAll().find((c) => {
+        return c.id === col;
+      });
+      if (tmp == null) {
+        throw Error('TableState: Column with ID:' + col + ') not found.');
+      }
+      return tmp;
+    });
+  }
+  @Selector()
+  public static visibleSmallColumns(state: TableStateModel): Column[] {
+    return state.visibleSmallColumns.map((col) => {
       const tmp = ColumnDefinitions.getAll().find((c) => {
         return c.id === col;
       });
@@ -53,19 +71,29 @@ export class TableState {
     return state.resultCount;
   }
 
-  @Action(SetVisibleTableColumns)
-  public setVisibleTableColumns(
+  @Action(SetVisibleBigTableColumns)
+  public setVisibleBigTableColumns(
     ctx: StateContext<TableStateModel>,
-    action: SetVisibleTableColumns
+    action: SetVisibleBigTableColumns
   ) {
     const state = ctx.getState();
-    ctx.setState({ ...state, visibleColumns: action.columns.map((col) => col.id) });
+    ctx.setState({ ...state, visibleBigColumns: action.columns.map((col) => col.id) });
+  }
+
+  @Action(SetVisibleSmallTableColumns)
+  public setVisibleSmallTableColumns(
+    ctx: StateContext<TableStateModel>,
+    action: SetVisibleSmallTableColumns
+  ) {
+    const state = ctx.getState();
+    ctx.setState({ ...state, visibleSmallColumns: action.columns.map((col) => col.id) });
   }
 
   @Action(ResetTableSettings)
   public resetTableSettings(ctx: StateContext<TableStateModel>) {
     const state = ctx.getState();
-    state.visibleColumns = getColumnsAsStringArray(ColumnDefinitions.getDefault());
+    state.visibleBigColumns = getColumnsAsStringArray(ColumnDefinitions.getBigDefault());
+    state.visibleSmallColumns = getColumnsAsStringArray(ColumnDefinitions.getSmallDefault());
     ctx.setState({ ...state });
   }
 

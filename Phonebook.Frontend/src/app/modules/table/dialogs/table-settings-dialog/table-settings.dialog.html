@@ -9,6 +9,18 @@
       ><mat-icon>clear</mat-icon></button
     >
   </h1>
+  <mat-card-subtitle>
+    <ng-container
+      *ngIf="isSizeSmall === true"
+      i18n="TableSettingsDialog|Subtitle Small Screen for Table Column Settings@@TableSettingsDialogSubtitleSmallScreen"
+      >for the Small Screen</ng-container
+    >
+    <ng-container
+      *ngIf="isSizeSmall === false"
+      i18n="TableSettingsDialog|Subtitle Big Screen for Table Column Settings@@TableSettingsDialogSubtiteBigScreen"
+      >for the Big Screen</ng-container
+    >
+  </mat-card-subtitle>
 </div>
 <mat-dialog-content>
   <p
@@ -17,6 +29,11 @@
     Drag and Drop the Columns in order to arrange them in an order you like. You can hide them as
     well by dragging them to the right.
   </p>
+  <p
+    i18n="TableSettingsDialog|Description Which Size for Table Column Settings@@TableSettingsDialogDescriptionWhichSize"
+    >Choose which Columns should be displayed on your Big Screen and your Small Screen. Check above
+    which state you are currently changing.</p
+  >
   <p
     class="mat-body-2"
     i18n="TableSettingsDialog|Note for Table Column Settings@@TableSettingsDialogNote"

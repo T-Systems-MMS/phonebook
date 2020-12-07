@@ -19,7 +19,8 @@ export const ColumnDefinitions: {
   costcenter: Readonly<Column>;
   status: Readonly<Column>;
   getAll(): Readonly<Column>[];
-  getDefault(): Readonly<Column>[];
+  getBigDefault(): Readonly<Column>[];
+  getSmallDefault(): Readonly<Column>[];
   getAllFilterableColumns(): Readonly<Column>[];
   getAllSortableColumns(): Readonly<Column>[];
   getAllFullMatchFilterableColumns(): Readonly<Column>[];
@@ -298,7 +299,7 @@ export const ColumnDefinitions: {
       ColumnDefinitions.status,
     ];
   },
-  getDefault: () => {
+  getBigDefault: () => {
     return [
       ColumnDefinitions.picture,
       ColumnDefinitions.id,
@@ -309,6 +310,16 @@ export const ColumnDefinitions: {
       ColumnDefinitions.orgUnit,
       ColumnDefinitions.room,
       ColumnDefinitions.city,
+      ColumnDefinitions.role,
+    ];
+  },
+  getSmallDefault: () => {
+    return [
+      ColumnDefinitions.picture,
+      ColumnDefinitions.id,
+      ColumnDefinitions.fullname,
+      ColumnDefinitions.email,
+      ColumnDefinitions.room,
       ColumnDefinitions.role,
     ];
   },
