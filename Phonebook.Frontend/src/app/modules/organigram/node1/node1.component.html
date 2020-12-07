@@ -1,0 +1,79 @@
+<mat-card class="pb-margin-20 node">
+  <mat-card-title>
+    <h1>
+      <mat-icon
+        [cdkCopyToClipboard]="getLink()"
+        (copied)="copiedToast($event)"
+        class="link pb-pointer"
+        >link</mat-icon
+      >
+      <span>{{ node?.id + ': ' + node?.name }}</span>
+    </h1>
+  </mat-card-title>
+  <mat-card-subtitle>
+    <div>
+      <span i18n="NodeComponent|Supervisor Property@@NodeComponentPropertySupervisor"
+        >{node?.supervisors.length, plural, =0 { No Supervisor } =1 { Supervisor: } other {
+        Supervisors: }}</span
+      >
+      <a *ngFor="let person of node?.supervisors" [routerLink]="['/user', person.Id]">
+        {{ person.Firstname + ' ' + person.Surname }}
+      </a>
+    </div>
+    <div>
+      <span i18n="NodeComponent|Assistant Property@@NodeComponentPropertyAssistant"
+        >{node?.assistents.length, plural, =0 { No Assistant } =1 { Assistant: } other { Assistants:
+        }}</span
+      >
+      <a *ngFor="let person of node?.assistents" [routerLink]="['/user', person.Id]">
+        {{ person.Firstname + ' ' + person.Surname }}
+      </a>
+    </div>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="persons">
+      <div *ngIf="node?.employees.length > 0">
+        <h2 i18n="NodeComponent|Employee Property@@NodeComponentPropertyEmployee"
+          >{node?.employees.length, plural, =0 { No Employees } =1 { Employee: } other { Employees:
+          }}</h2
+        >
+        <li *ngFor="let person of node?.employees">
+          <a [routerLink]="['/user', person.Id]">
+            {{ person.Firstname + ' ' + person.Surname }}
+          </a>
+        </li>
+      </div>
+      <div *ngIf="node?.learners.length > 0">
+        <h2 i18n="NodeComponent|Learners Property@@NodeComponentPropertyLearner"
+          >{node?.learners.length, plural, =0 { No Learners } =1 { Learner: } other { Learners:
+          }}</h2
+        >
+        <li *ngFor="let person of node?.learners">
+          <a [routerLink]="['/user', person.Id]">
+            {{ person.Firstname + ' ' + person.Surname }}
+          </a>
+        </li>
+      </div>
+    </div>
+    <div *ngIf="node?.children.length != 0">
+      <h2
+        i18n="NodeComponent|SubOrganization Unit Property@@NodeComponentPropertySubOrganizationUnit"
+        >Sub-Organization Unit:</h2
+      >
+      <div class="pb-flex-row pb-expand">
+        <mat-card
+          *ngFor="let child of node?.children"
+          class="pb-card pb-normal-shadow pb-margin-20 child-card"
+          (click)="navigateToChildNode(child)"
+          (keyup.enter)="navigateToChildNode(child)"
+          tabindex="0"
+        >
+          <mat-card-title>
+            <h2> {{ child.id + ': ' + child.name }} </h2>
+          </mat-card-title>
+          <mat-card-content> </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

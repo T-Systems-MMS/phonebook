@@ -5,6 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, of } from 'rxjs';
 import { OrganigramService, UnitTreeNode } from 'src/app/services/api/organigram.service';
 import { OrganigramComponent } from './organigram.component';
+import { HttpClient } from '@angular/common/http';
+import { PersonService } from 'src/app/services/api/person.service';
 
 describe('OrganigramComponent', () => {
   let component: OrganigramComponent;
@@ -16,6 +18,8 @@ describe('OrganigramComponent', () => {
       providers: [
         { provide: OrganigramService, useClass: MockOrganigramService },
         { provide: Location, useValue: null },
+        { provide: HttpClient, useValue: null },
+        { provide: PersonService, useValue: null },
       ],
       imports: [RouterTestingModule],
       schemas: [NO_ERRORS_SCHEMA],
