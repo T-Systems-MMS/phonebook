@@ -19,8 +19,8 @@ namespace Phonebook.Source.PeopleSoft.Repositories
 
         public IEnumerable<OrgUnit> Get()
         {
-            var orgUnits = this.inlcudeDependencies(context.OrgUnits).Where(o => o.ParentId == null);
-            return orgUnits.Select(o => GetCleanedOrgUnit(o));
+            var orgUnits = this.inlcudeDependencies(context.OrgUnits).ToList();
+            return orgUnits.Select(o => GetCleanedOrgUnit(o, orgUnits)).Where(d => d.ParentId == null);
                 //.Select(d => GetCleanedOrgUnit(d));
         }
 
@@ -28,21 +28,21 @@ namespace Phonebook.Source.PeopleSoft.Repositories
         {
             var orgunit = this.inlcudeDependencies(context.OrgUnits).Single(d => d.Id == id);
             //return orgunit;
-            return GetCleanedOrgUnit(orgunit);
+            return GetCleanedOrgUnit(orgunit, this.inlcudeDependencies(context.OrgUnits).ToList());
         }
 
-        private OrgUnit GetCleanedOrgUnit(OrgUnit orgUnit)
+        private OrgUnit GetCleanedOrgUnit(OrgUnit orgUnit, IEnumerable<OrgUnit> all)
         {
             //orgUnit.Members = orgUnit.Members.Select(d => GetCleanedPerson(d));
             orgUnit.HeadOfOrgUnit = orgUnit.HeadOfOrgUnit == null ? null : GetCleanedPerson(orgUnit.HeadOfOrgUnit);
-            orgUnit.OrgUnitToFunctions = orgUnit.OrgUnitToFunctions == null ? null :
+            orgUnit.OrgUnitToFunctions = orgUnit.OrgUnitToFunctions == null ? new List<OrgUnitToFunction>():
                 orgUnit.OrgUnitToFunctions.Select(f =>
                 {
                     f.OrgUnit = null;
                     f.Person = GetCleanedPerson(f.Person);
                     return f;
-                });
-            orgUnit.ChildOrgUnits = orgUnit.ChildOrgUnits.Select(o => GetCleanedOrgUnit(o));
+                });       
+            orgUnit.ChildOrgUnits = all.Where(d => d.ParentId == orgUnit.Id).Select(o => GetCleanedOrgUnit(o, all));            
             orgUnit.Parent = null;
             return orgUnit;
         }
@@ -60,6 +60,14 @@ namespace Phonebook.Source.PeopleSoft.Repositories
             return query
                     .AsNoTracking()
                     .Include(o => o.ChildOrgUnits)
+                        .ThenInclude(o => o.OrgUnitToFunctions)
+                            .ThenInclude(o => o.Person)
+                    .Include(o => o.ChildOrgUnits)
+                        .ThenInclude(o => o.HeadOfOrgUnit)
+                    .Include(o => o.ChildOrgUnits)
+                        .ThenInclude(o => o.ChildOrgUnits)
+                            .ThenInclude(o => o.ChildOrgUnits)
+                                .ThenInclude(o => o.ChildOrgUnits)
                     .Include(o => o.OrgUnitToFunctions)
                         .ThenInclude(o => o.Person)
                     .Include(o => o.HeadOfOrgUnit)

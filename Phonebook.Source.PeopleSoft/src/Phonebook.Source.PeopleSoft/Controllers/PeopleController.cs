@@ -1,11 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Oracle.EntityFrameworkCore.Storage.Internal;
 using Phonebook.Source.PeopleSoft.Models;
 using Phonebook.Source.PeopleSoft.Models.Context;
+using Phonebook.Source.PeopleSoft.Repositories;
 
 namespace Phonebook.Source.PeopleSoft.Controllers
 {
@@ -14,40 +20,38 @@ namespace Phonebook.Source.PeopleSoft.Controllers
     [Authorize]
     public class PeopleController : ControllerBase
     {
+        private readonly IServiceProvider services;
+        private readonly IRepository<OrgUnit> orgUnitRepository;
+
         public ModelContext Context { get; }
 
-        public PeopleController(ModelContext context)
+        public PeopleController(ModelContext context, IServiceProvider services, IRepository<OrgUnit> orgUnitRepository)
         {
             Context = context;
+            this.services = services;
+            this.orgUnitRepository = orgUnitRepository;
         }
         // GET: api/People
         [HttpGet]
-        public IEnumerable<Phonebook.Source.PeopleSoft.Models.Old.Person> Get()
+        public async Task<IEnumerable<Phonebook.Source.PeopleSoft.Models.Old.Person>> Get()
         {
             _ =Context.Peoples.ToList();
-            return this.InlcudeDependencies(Context.Peoples).ToList().Select(d => new Phonebook.Source.PeopleSoft.Models.Old.Person(d));
+            return (await this.InlcudeDependencies(Context.Peoples)).ToList().Select(d => new Phonebook.Source.PeopleSoft.Models.Old.Person(d));
         }
 
         // GET: api/People/5
         [HttpGet("{id}")]
-        public Person Get(int id)
+        public async Task<Person> Get(int id)
         {
-            return this.InlcudeDependencies(Context.Peoples).First(p => p.Id == id);
+            return (await this.InlcudeDependencies(Context.Peoples)).First(p => p.Id == id);
         }
 
-        private IEnumerable<Person> InlcudeDependencies(IQueryable<Person> query)
+        private async Task<IEnumerable<Person>> InlcudeDependencies(IQueryable<Person> query)
         {
-            return query
+            var result = query
                     .AsNoTracking()
                     .Include(p => p.Status)
                     .Include(p => p.Function)
-                    .Include(p => p.OrgUnit)
-                        .ThenInclude(o => o.Parent)
-                    .Include(p => p.OrgUnit)
-                        .ThenInclude(o => o.HeadOfOrgUnit)
-                    .Include(p => p.OrgUnit)
-                        .ThenInclude(o => o.OrgUnitToFunctions)
-                            .ThenInclude(o => o.Person)
                     .Include(p => p.Room)
                         .ThenInclude(r => r.BuildingPart)
                             .ThenInclude(b => b.Building)
@@ -73,8 +77,8 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                         Function = p.Function != null ? new Function() { Id = p.Function.Id, Label = p.Function.Label, Code = p.Function.Code } : null,
                         LastName = p.LastName == null? string.Empty : p.LastName,
                         MobilPhone = p.MobilPhone == null ? string.Empty : p.MobilPhone,
-                        OrgUnit = p.OrgUnit != null ? CreateOrgUnitTree(p.OrgUnit) : new OrgUnit(),
-                        //OrgUnitId = p.OrgUnitId,
+                        //OrgUnit = p.OrgUnit, // != null ? await CreateOrgUnitTree(p.OrgUnit) : new OrgUnit(),
+                        OrgUnitId = p.OrgUnitId,
                         Phone = p.Phone == null ? string.Empty : p.Phone,
                         Room = p.Room != null ? CreateRoomTree(p.Room) : new Room(),
                         ShortName = p.ShortName == null ? string.Empty : p.ShortName,
@@ -83,6 +87,23 @@ namespace Phonebook.Source.PeopleSoft.Controllers
                         Title = p.Title == null ? string.Empty : p.Title,
                         RoomId = p.RoomId
                     });
+            var orgunits = this.Context.Set<OrgUnit>()
+                .Include(o => o.ChildOrgUnits)
+                        .ThenInclude(o => o.ChildOrgUnits)
+                    .Include(o => o.OrgUnitToFunctions)
+                        .ThenInclude(o => o.Person)
+                    .Include(o => o.HeadOfOrgUnit)
+                .ToList();
+            var fullResult = result.Join(orgunits, p => p.OrgUnitId, o => o.Id, (p, o) =>
+            {
+                p.OrgUnit = CreateOrgUnitTree(o);
+                return p;
+            }).ToList();
+            return fullResult;
+        }
+
+        private void GetOrgUnits()
+        {
 
         }
 

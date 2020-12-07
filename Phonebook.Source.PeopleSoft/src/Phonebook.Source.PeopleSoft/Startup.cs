@@ -64,7 +64,11 @@ namespace Phonebook.Source.PeopleSoft
             {
                 services.AddDbContext<ModelContext>(options =>
                    options
-                       .UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction => oracleOptionsAction.UseRelationalNulls(false))
+                       .UseOracle(Configuration.GetConnectionString("PeopleSoftDatabase"), oracleOptionsAction =>
+                       {
+                           oracleOptionsAction.UseRelationalNulls(false);
+                           oracleOptionsAction.CommandTimeout(100);
+                       })
                        .ConfigureWarnings(w => w.Throw(RelationalEventId.QueryClientEvaluationWarning))
                );
             }
@@ -79,10 +83,10 @@ namespace Phonebook.Source.PeopleSoft
 #endif
             if (Configuration.GetValue<bool>("useAnonymous"))
             {
-                if (!Configuration.GetValue<bool>("useSeeding"))
-                {
-                    throw new NotSupportedException("It is not supported to use anonymos auth and real data! Please also enable 'useSeeding'!");
-                }
+                //if (!Configuration.GetValue<bool>("useSeeding"))
+                //{
+                //    throw new NotSupportedException("It is not supported to use anonymos auth and real data! Please also enable 'useSeeding'!");
+                //}
                 services
                     .AddAuthentication("noAuth")
                     .AddScheme<NoAuthOptions, NoAuthHandler>("noAuth", o => { });

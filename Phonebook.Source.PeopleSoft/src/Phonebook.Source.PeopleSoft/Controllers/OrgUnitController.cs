@@ -24,7 +24,8 @@ namespace Phonebook.Source.PeopleSoft.Controllers
         [HttpGet]
         public IEnumerable<OrgUnit> Get()
         {
-            return Context.Get();
+            var units = Context.Get().ToList();
+            return units;
 
         }
 
