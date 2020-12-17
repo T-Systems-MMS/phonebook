@@ -33,6 +33,11 @@ export class BookmarksState {
     };
   }
 
+  @Selector()
+  public static hasBookmarks(state: Person[]) {
+    return state.length > 0;
+  }
+
   @Action(ToggleBookmark)
   public toggleBookmark(ctx: StateContext<Person[]>, action: ToggleBookmark) {
     const state = ctx.getState();

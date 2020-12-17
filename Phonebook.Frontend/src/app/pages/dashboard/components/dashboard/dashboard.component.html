@@ -1,0 +1,154 @@
+<mat-drawer-container hasBackdrop="false" class="container" position="end">
+  <mat-drawer
+    #drawer
+    [mode]="smallScreen ? 'push' : 'side'"
+    [opened]="drawerOpen"
+    position="end"
+    class="pb-recent-people-drawer"
+  >
+    <div class="pb-recent-people">
+      <h1>
+        <ng-container
+          i18n="
+            DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent"
+        >
+          Recent People
+        </ng-container>
+        <button
+          mat-button
+          *ngIf="removedLastPersons == null && (lastPersons$ | async)?.length != 0"
+          (click)="resetLastPersons()"
+          i18n="@@GeneralResetButton"
+        >
+          Reset
+        </button>
+        <button mat-button *ngIf="removedLastPersons != null" (click)="undoLastPersons()">
+          <mat-icon>undo</mat-icon>
+          <span i18n="GeneralUndoButton|Button for undoing something@@GeneralUndoButton">
+            Undo
+          </span>
+        </button>
+      </h1>
+      <cdk-virtual-scroll-viewport itemSize="148" class="pb-recent-people-list">
+        <div class="pb-flex-row">
+          <ng-container *cdkVirtualFor="let person of lastPersons$ | async">
+            <app-user-tiny-card
+              [person]="person"
+              [actionButtonIcon]="'close'"
+              (actionButtonClicked)="removeFromLastPersons(person)"
+              class="pb-card"
+            ></app-user-tiny-card>
+          </ng-container>
+          <div
+            *ngIf="(lastPersons$ | async)?.length === 0"
+            i18n="
+              DashboardComponent|Message displayed if no people have been visited
+              recently@@DashboardComponentDescriptionRecent"
+          >
+            Looks like you haven't searched for any colleagues yet. Search for somebody to see how
+            it works! The most recent ones will be displayed here.
+          </div>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="content">
+    <button
+      i18n-matTooltip="
+        DashboardComponent|Layout Change Button Tooltip@@dashboardComponentLayoutChangeTooltip"
+      matTooltip="Here you can change the layout of your dashboard."
+      (click)="select.open()"
+      mat-icon-button
+      class="changeLayoutButton"
+    >
+      <mat-icon>{{ activeLayout$ | async }}</mat-icon>
+      <mat-select
+        #select
+        class="selectLayout"
+        [ngModel]="activeLayout$ | async"
+        (ngModelChange)="changeLayout($event)"
+      >
+        <mat-option *ngFor="let view of layouts" [value]="view">
+          <span>{{ getLayoutName(view) }}</span>
+        </mat-option>
+      </mat-select>
+    </button>
+    <div class="toggle-drawer">
+      <button
+        mat-icon-button
+        (click)="toggleDrawer()"
+        i18n-matTooltip="
+          DashboardComponent|Tooltip for expanding recently viewed
+          people@@DashboardComponentButtonExpandTooltip"
+        i18n-aria-label="
+          DashboardComponent|Aria Label for expanding recently viewed
+          people@@DashboardComponentButtonExpandArialLabel"
+        matTooltip="Expand or Collapse recently viewed people"
+        aria-label="Button expanding or collapsing the recently viewed people section"
+      >
+        <span>
+          <mat-icon>{{ drawer.opened ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }} </mat-icon>
+          <span
+            i18n="
+              DashboardComponent|Title of the recent people section@@DashboardComponentTitleRecent"
+            >Recent People</span
+          >
+        </span>
+      </button>
+    </div>
+    <div class="pb-expand">
+      <router-outlet></router-outlet>
+      <div class="bottom-button" *ngIf="router.url === '/dashboard/team'">
+        <button
+          class="navigation-button"
+          mat-button
+          [routerLink]="['/dashboard/bookmarks']"
+          [disabled]="(bookmarkedPersons$ | async)!.length === 0"
+        >
+          <!-- Extra Div is important for a centered Icon See: overrides.scss -->
+          <div>
+            <mat-icon>keyboard_arrow_up</mat-icon>
+            <span
+              class="mat-headline pb-margin-0"
+              i18n="
+                DashboardComponent|Title of the Bookmarked people
+                section@@DashboardComponentTitleBookmark"
+            >
+              Bookmarked People
+            </span>
+          </div>
+        </button>
+        <div
+          *ngIf="(bookmarkedPersons$ | async)!.length === 0"
+          i18n="
+            DashboardComponent|Message displayed if no people are
+            bookmarked@@DashboardComponentDescriptionBookmark"
+        >
+          You haven't bookmarked anybody yet, look for the button
+          <button mat-icon-button>
+            <mat-icon>bookmark_border</mat-icon>
+          </button>
+          on a workmates page.
+        </div>
+      </div>
+      <div
+        class="bottom-button"
+        *ngIf="currentUser != null && router.url === '/dashboard/bookmarks'"
+      >
+        <button class="navigation-button" mat-button [routerLink]="['/dashboard/team']">
+          <!-- Extra Div is important for a centered Icon See: overrides.scss -->
+          <div>
+            <mat-icon>keyboard_arrow_up</mat-icon>
+            <span
+              class="mat-headline pb-margin-0"
+              i18n="
+                DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam"
+            >
+              My Team
+            </span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

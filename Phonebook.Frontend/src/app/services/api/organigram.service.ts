@@ -1,24 +1,56 @@
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin, of } from 'rxjs';
+import { Observable, forkJoin, of, combineLatest } from 'rxjs';
 import { map, flatMap, publishReplay, refCount } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
 import { HttpClient } from '@angular/common/http';
+import { CurrentUserService } from 'src/app/services/api/current-user.service';
 
 @Injectable()
 export class OrganigramService {
-  constructor(private http: HttpClient, private personService: PersonService) {}
+  constructor(
+    private http: HttpClient,
+    private personService: PersonService,
+    private currentUserService: CurrentUserService
+  ) {}
   public organigram: Observable<UnitTreeNode[]>;
-  public getOrganigram(): Observable<UnitTreeNode[]> {
+  public orgUnits: Observable<OrgUnit[]>;
+  public team: UnitTreeNode;
+
+  public getOrgUnits(): Observable<OrgUnit[]> {
+    if (this.orgUnits != null) {
+      return this.orgUnits;
+    }
+    this.orgUnits = this.http.get<OrgUnit[]>('/api/OrgUnit').pipe(
+      publishReplay(1), // this tells Rx to cache the latest emitted
+      refCount()
+    );
+    return this.orgUnits;
+  }
+
+  public getOrganigramTree(): Observable<UnitTreeNode[]> {
     if (this.organigram != null) {
       return this.organigram;
     }
-    this.organigram = this.http.get<OrgUnit[]>('/api/OrgUnit').pipe(
+    this.organigram = this.getOrgUnits().pipe(
       flatMap((d) => this.ConvertOrgUnitsToUnitTree(d)),
       publishReplay(1), // this tells Rx to cache the latest emitted
       refCount()
     );
     return this.organigram;
+  }
+  public getOrganigramById(id: string): Observable<UnitTreeNode | null> {
+    return this.getOrganigramTree().pipe(
+      map((orgUnitArray) => {
+        const orgUnit = orgUnitArray.find((x) => {
+          return x.id === id;
+        });
+        if (orgUnit === undefined) {
+          return null;
+        }
+        return orgUnit;
+      })
+    );
   }
   private ConvertOrgUnitsToUnitTree(
     orgUnits: OrgUnit[],
@@ -26,7 +58,7 @@ export class OrganigramService {
   ): Observable<UnitTreeNode[]> {
     return forkJoin(
       orgUnits.map((o) => {
-        var TaShortNames = o.OrgUnitToFunctions.filter((f) => f.RoleName == 'TA').map(
+        let TaShortNames = o.OrgUnitToFunctions.filter((f) => f.RoleName == 'TA').map(
           (t) => t.Person.ShortName
         );
         return forkJoin(
@@ -42,7 +74,7 @@ export class OrganigramService {
           o.ShortName == null ? of([]) : this.personService.getByOrgUnit(o.ShortName)
         ).pipe(
           map(([childs, headofOrgUnit, assistents, members]) => {
-            var tree = new UnitTreeNode(
+            let tree = new UnitTreeNode(
               o.ShortName == null ? '' : o.ShortName,
               o.Name == null ? '' : o.Name,
               depth,
@@ -57,6 +89,40 @@ export class OrganigramService {
         );
       })
     );
+  }
+
+  public getNodeForCurrentUser(): Observable<UnitTreeNode | null> {
+    return combineLatest([this.currentUserService.getCurrentUser(), this.getOrganigramTree()]).pipe(
+      map(([user, organigram]) => {
+        if (user === null) {
+          return null;
+        }
+        return this.getNodeForUser(user, organigram, 0);
+      })
+    );
+  }
+
+  public getNodeForUser(
+    user: Person,
+    nodeChilds: UnitTreeNode[],
+    depth: number
+  ): UnitTreeNode | null {
+    if (user.Business.ShortOrgUnit.length > depth) {
+      for (const node of nodeChilds) {
+        if (node.id === user.Business.ShortOrgUnit[depth] && node.depth === depth) {
+          if (user.Business.ShortOrgUnit.length == depth + 1) {
+            return node;
+          }
+          return this.getNodeForUser(user, node.children, depth + 1);
+        }
+        if (node.id !== user.Business.ShortOrgUnit[depth] && node.depth === depth) {
+          continue;
+        } else {
+          return this.getNodeForUser(user, node.children, depth + 1);
+        }
+      }
+    }
+    return null;
   }
 }
 

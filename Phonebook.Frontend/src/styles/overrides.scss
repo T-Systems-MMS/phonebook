@@ -47,3 +47,14 @@ mat-card.mat-card {
     }
   }
 }
+
+// Centers icons in mat-button
+
+button[mat-button] {
+  div {
+    display: flex;
+    mat-icon {
+      margin: auto 15px auto 0;
+    }
+  }
+}

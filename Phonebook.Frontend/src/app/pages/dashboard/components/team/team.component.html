@@ -1,0 +1,49 @@
+<div class="pb-team">
+  <div class="pb-team-title">
+    <h1>
+      <mat-icon>people</mat-icon>
+      <span
+        class="mat-headline pb-margin-0"
+        i18n="DashboardComponent|Title of the Team people section@@DashboardComponentTitleTeam"
+      >
+        My Team
+      </span>
+    </h1>
+  </div>
+  <div
+    cdkDropListGroup
+    class="pb-team-list pb-flex-row pb-overflow-auto"
+    [ngSwitch]="activeLayout$ | async"
+  >
+    <ng-container *ngSwitchCase="layout.medium_cards">
+      <div
+        *ngFor="let teamperson of teamPersons; index as i"
+        cdkDropList
+        [cdkDropListData]="i"
+        cdkDropListOrientation="horizontal"
+        class="card-container"
+      >
+        <app-user-small-card
+          [person]="teamperson"
+          [actionButtonClasses]="'white'"
+          class="pb-small-card pb-card"
+        ></app-user-small-card>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="layout.small_cards">
+      <div
+        *ngFor="let teamperson of teamPersons; index as i"
+        cdkDropList
+        [cdkDropListData]="i"
+        cdkDropListOrientation="horizontal"
+        class="card-container"
+      >
+        <app-user-tiny-card
+          [person]="teamperson"
+          [actionButtonClasses]="'white'"
+          class="pb-card"
+        ></app-user-tiny-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
