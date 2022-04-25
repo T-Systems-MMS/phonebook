@@ -56,5 +56,5 @@ spec:
             backend:
               service:
                 name: phonebook-mock-backend-service
-                port: 
+                port:
                   name: http
