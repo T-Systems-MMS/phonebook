@@ -54,5 +54,7 @@ spec:
         paths:
           - path: /api
             backend:
-              serviceName: phonebook-mock-backend-service
-              servicePort: http
+              service:
+                name: phonebook-mock-backend-service
+                port: 
+                  name: http

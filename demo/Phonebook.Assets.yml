@@ -56,4 +56,5 @@ spec:
             backend:
               service:
                 name: phonebook-assets-service
-                port: http
+                port: 
+                  name: http
