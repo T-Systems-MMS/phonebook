@@ -54,5 +54,6 @@ spec:
         paths:
           - path: /assets
             backend:
-              serviceName: phonebook-assets-service
-              servicePort: http
+              service:
+                name: phonebook-assets-service
+                port: http
