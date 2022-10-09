@@ -1,0 +1,66 @@
+mat-drawer-container {
+  margin-top: 20px;
+  width: 100%;
+
+  mat-drawer-content,
+  mat-drawer {
+    padding-left: 10px;
+    overflow: hidden;
+  }
+}
+
+.pb-recent-people-drawer {
+  width: 370px;
+  background-color: unset;
+}
+
+.pb-recent-people {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .pb-recent-people-list {
+    flex: 1;
+  }
+}
+
+.toggle-drawer {
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 46%;
+  padding-right: 20px;
+
+  button {
+    align-self: center;
+    span {
+      writing-mode: tb-rl;
+    }
+  }
+}
+
+.bottom-button {
+  bottom: 0%;
+  margin: 10px 0;
+  display: flex;
+}
+
+.pb-expand {
+  flex-direction: column;
+}
+
+::ng-deep .selectLayout div.mat-select-arrow-wrapper {
+  display: none;
+}
+
+::ng-deep .selectLayout.mat-select {
+  display: inline;
+}
+
+.changeLayoutButton {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
