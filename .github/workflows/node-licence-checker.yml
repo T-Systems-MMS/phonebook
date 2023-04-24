@@ -1,0 +1,16 @@
+# https://github.com/cds-snc/github-actions/tree/master/node-license-checker
+name: Check for Licences
+
+on: [push]
+
+jobs:
+  check-licenses:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Check for Licenses
+      uses: docker://cdssnc/node-license-checker-github-action
+      with:
+        args: "/Phonebook.Frontend/ --onlyAllow 'MIT'"
+ 
