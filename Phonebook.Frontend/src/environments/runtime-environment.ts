@@ -18,4 +18,5 @@ export const runtimeEnvironment: RuntimeEnvironmentInterface = {
     ENV.roomPlanningToolUrl !== '${ROOMPLANNINGTOOL_URL}' ? ENV.roomPlanningToolUrl : undefined,
   contactUrl: ENV.contactUrl !== '${CONTACT_URL}' ? ENV.contactUrl : undefined,
   rocketChatUrl: ENV.rocketChatUrl !== '${ROCKETCHAT_URL}' ? ENV.rocketChatUrl : undefined,
+  organizationName: ENV.organizationName !== '${ORGANIZATION_NAME}' ? ENV.organizationName : '',
 };
