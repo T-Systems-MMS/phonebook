@@ -165,9 +165,7 @@
           </mat-list-item>
           <mat-list-item *ngIf="person.Contacts.Fax !== ''">
             <mat-icon mat-list-icon>print</mat-icon>
-            <h4 mat-line i18n="Datapoint|Label for Person.Fax data@@DataPersonFax">
-              Fax
-            </h4>
+            <h4 mat-line i18n="Datapoint|Label for Person.Fax data@@DataPersonFax"> Fax </h4>
             <p mat-line>
               <app-interactive-attribute-field
                 [value]="person.Contacts.Fax"
@@ -252,9 +250,7 @@
           <mat-list-item>
             <mat-icon mat-list-icon>business</mat-icon>
             <h4 mat-line>
-              <ng-container i18n="@@ColumnTitleOrgUnit">
-                Organization Unit
-              </ng-container>
+              <ng-container i18n="@@ColumnTitleOrgUnit"> Organization Unit </ng-container>
               <a mat-button [routerLink]="organigramLink">
                 <span
                   class="mat-small"

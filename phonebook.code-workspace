@@ -46,7 +46,7 @@
     "prettier.disableLanguages": [],
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.tslint": true
+      "source.fixAll.tslint": "explicit"
     },
     "files.insertFinalNewline": true,
     "[json]": {

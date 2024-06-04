@@ -80,7 +80,7 @@ export class UserDetailComponent implements OnInit, OnChanges, OnDestroy {
         { value: this.person.Contacts.Phone, param: { type: 'work' } },
       ],
       organization: {
-        value: 'T-Systems Multimedia Solutions',
+        value: runtimeEnvironment.organizationName,
         param: { type: ['work'] },
       },
       categories: [...this.person.Business.OrgUnit, ...this.person.Business.ShortOrgUnit],

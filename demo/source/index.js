@@ -160,11 +160,11 @@ function generateBranch() {
 }
 
 fs.writeFileSync(
-  './mocks/synthetic/persons.json',
+  './mocks/synthetic/api/people.json',
   JSON.stringify(generateArray(1500, generatePerson))
 );
-fs.writeFileSync('./mocks/synthetic/rooms.json', JSON.stringify(rooms));
+fs.writeFileSync('./mocks/synthetic/api/rooms.json', JSON.stringify(rooms));
 fs.writeFileSync(
-  './mocks/synthetic/branches.json',
+  './mocks/synthetic/api/OrgUnit.json',
   JSON.stringify(generateArray(cityCount * 2, generateBranch))
 );

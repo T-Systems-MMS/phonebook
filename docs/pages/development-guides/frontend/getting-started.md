@@ -75,8 +75,9 @@ npm install -g @angular/cli
 # Install the project dependencies
 npm install
 
-# Pull the docker image for backend mock
+# Pull the docker image for backend mock & run it
 docker pull tsystemsmms/phonebook-build:mock-backend
+docker run --rm -p 8080:80 -it tsystemsmms/phonebook-build:mock-backend
 
 # Run the project
 npm run start -- --open
@@ -89,3 +90,11 @@ npm run start -- --open
 :star: You're ready to develop the Phonebook-Frontend application! Start by reading the [General Guide](general-guide) to get an overview.
 
 > In order to circumvent Bugs coming from unsecured Websites please add the certificate used on the localhost page to your 'Trusted Root Certification Authorities'. (For Windows: In Chrome just click at the top 'Not secure' then click on Certificate, Details, Copy to File, save it anywhere and add the certificate to your 'Trusted Root Certification Authorities'. )
+
+### :bulb: General concept:
+There are two ways you can run the phonebook locally (from the "Frontend" folder), each serving a special purpose:
+
+1. **Running "npm run start":** This starts the regular Angular development server you should use primarily for development (you may wanna start the mock backend as well, see the quickstart above on that).
+2. **Running "docker compose up --build":** This is used to test if the environment variables work correctly. This is not intended to be used for normal development, as it won't find the mocked backend. However, if you need to test if the enviroment variables work correctly, this is the way to go. 
+   > Head over to [localhost:80](localhost:80) to see the result after starting the docker container.  
+   > You'll find the content of `index.html` with the replaced variables as a response in the API call to /api/people (after typing any letter into the search bar to trigger the API call.)

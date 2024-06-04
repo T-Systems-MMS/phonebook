@@ -54,6 +54,10 @@ export interface RuntimeEnvironmentInterface {
    * The Base Url of the RocketChat Messenger
    */
   readonly rocketChatUrl?: string;
+  /**
+   * The name of your company/organization. Empty string if not set.
+   */
+  readonly organizationName: string;
 }
 
 export enum Environment {

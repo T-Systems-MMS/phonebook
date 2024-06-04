@@ -29,11 +29,9 @@ services:
       EMPLOYEE_PICTURES_ENDPOINT: 'https://pictures.example.com/'
       ASSETS_ENDPOINT: 'https://localhost:8081/api/assets'
       ROOMPLANNINGTOOL_URL: 'http://example.com'
+      ORGANIZATION_NAME: 'Your very fancy Company'
     ports:
       - 80:80
-    volumes:
-      - ./nginx.conf /etc/nginx/nginx.conf
-      - ./conf.d /etc/nginx/conf.d
     restart: always
     # stdin_open: true
     # tty: true
