@@ -1,24 +1,51 @@
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, of } from 'rxjs';
-import { map, flatMap, publishReplay, refCount } from 'rxjs/operators';
+import { map, flatMap, publishReplay, refCount, filter } from 'rxjs/operators';
 import { Person } from 'src/app/shared/models';
 import { PersonService } from './person.service';
 import { HttpClient } from '@angular/common/http';
+import { stringify } from 'querystring';
+import { nameToState } from '@ngxs/store/src/internal/internals';
 
 @Injectable()
 export class OrganigramService {
   constructor(private http: HttpClient, private personService: PersonService) {}
+  public orgUnits: Observable<OrgUnit[]>;
   public organigram: Observable<UnitTreeNode[]>;
-  public getOrganigram(): Observable<UnitTreeNode[]> {
+  public getOrgUnits(): Observable<OrgUnit[]> {
+    if (this.orgUnits != null) {
+      return this.orgUnits;
+    }
+    this.orgUnits = this.http.get<OrgUnit[]>('/api/OrgUnit').pipe(
+      publishReplay(1), // this tells Rx to cache the latest emitted
+      refCount()
+    );
+    return this.orgUnits;
+  }
+  public getOrganigramTree(): Observable<UnitTreeNode[]> {
     if (this.organigram != null) {
       return this.organigram;
     }
-    this.organigram = this.http.get<OrgUnit[]>('/api/OrgUnit').pipe(
+    this.organigram = this.getOrgUnits().pipe(
       flatMap((d) => this.ConvertOrgUnitsToUnitTree(d)),
       publishReplay(1), // this tells Rx to cache the latest emitted
       refCount()
     );
     return this.organigram;
+  }
+
+  public getOrgUnitById(id: string): Observable<OrgUnit | null> {
+    return this.getOrgUnits().pipe(
+      map((orgUnitArray) => {
+        const orgUnit = orgUnitArray.find((x) => {
+          return x.ShortName === id;
+        });
+        if (orgUnit === undefined) {
+          return null;
+        }
+        return orgUnit;
+      })
+    );
   }
   private ConvertOrgUnitsToUnitTree(
     orgUnits: OrgUnit[],
@@ -26,7 +53,7 @@ export class OrganigramService {
   ): Observable<UnitTreeNode[]> {
     return forkJoin(
       orgUnits.map((o) => {
-        var TaShortNames = o.OrgUnitToFunctions.filter((f) => f.RoleName == 'TA').map(
+        let TaShortNames = o.OrgUnitToFunctions.filter((f) => f.RoleName == 'TA').map(
           (t) => t.Person.ShortName
         );
         return forkJoin(
@@ -42,7 +69,7 @@ export class OrganigramService {
           o.ShortName == null ? of([]) : this.personService.getByOrgUnit(o.ShortName)
         ).pipe(
           map(([childs, headofOrgUnit, assistents, members]) => {
-            var tree = new UnitTreeNode(
+            const tree = new UnitTreeNode(
               o.ShortName == null ? '' : o.ShortName,
               o.Name == null ? '' : o.Name,
               depth,
@@ -56,6 +83,39 @@ export class OrganigramService {
           })
         );
       })
+    );
+  }
+  public getNodeByPath(pathArray: string[], level: number = 0): Observable<UnitTreeNode | null> {
+    return this.getOrganigramTree().pipe(
+      flatMap((tree) => {
+        return of(getNodeFromTreeSync(pathArray, tree, level));
+      })
+    );
+  }
+}
+
+export function getNodeFromTreeSync(
+  paramArray: string[],
+  tree: UnitTreeNode[],
+  level: number = 0
+): UnitTreeNode | null {
+  if (paramArray.length === 1) {
+    return (
+      tree.find((node) => {
+        return node.id === paramArray[0];
+      }) || null
+    );
+  } else {
+    const nextNode = tree.find((node) => {
+      return node.id === paramArray[0];
+    });
+    if (nextNode == null || nextNode.children.length === 0) {
+      return null;
+    }
+    return getNodeFromTreeSync(
+      paramArray.slice(1, paramArray.length),
+      nextNode.children,
+      level + 1
     );
   }
 }
@@ -90,7 +150,7 @@ export class UnitTreeNode {
   }
 }
 
-class OrgUnit {
+export class OrgUnit {
   public Id: number;
 
   public Name?: string;

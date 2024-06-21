@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -149,7 +150,7 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
             #endregion Room
 
             #region OrgUnit
-            var maxOrgUnits = 500;
+            var maxOrgUnits = 200;
             var OrgUnitFaker = new Faker<OrgUnit>()
                     .StrictMode(false)
                     .Rules((f, b) =>
@@ -160,28 +161,49 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
                         b.ParentId = null;
                         b.CostCenter = new Bogus.Randomizer().Replace("####");
                     });
-            var OrgUnitList = Enumerable.Range(1, maxOrgUnits)
+
+            var OrgUnitList = Enumerable.Range(1, 20)
                     .Select(_ => OrgUnitFaker.Generate())
+                    .ToList();
+
+            var ChildOrgUnitFaker = new Faker<OrgUnit>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        b.Id = f.IndexVariable++ + 1 + OrgUnitList.Count;
+                        b.Name = f.Commerce.Department();
+                        b.ShortName = new Bogus.Randomizer().Replace("**");
+                        b.ParentId = f.PickRandom(OrgUnitList).Id;
+                        b.CostCenter = new Bogus.Randomizer().Replace("####");
+                    });
+
+            var ChildOrgUnitList = Enumerable.Range(21, 100)
+                    .Select(_ => ChildOrgUnitFaker.Generate())
+                    .ToList();
+
+            var ChildTwoOrgUnitFaker = new Faker<OrgUnit>()
+                    .StrictMode(false)
+                    .Rules((f, b) =>
+                    {
+                        b.Id = f.IndexVariable++ + 1 + ChildOrgUnitList.Count + OrgUnitList.Count;
+                        b.Name = f.Commerce.Department();
+                        b.ShortName = new Bogus.Randomizer().Replace("**");
+                        b.ParentId = f.PickRandom(ChildOrgUnitList).Id;
+                        b.CostCenter = new Bogus.Randomizer().Replace("####");
+                    });
+
+            var ChildTwoOrgUnitList = Enumerable.Range(101, maxOrgUnits)
+                    .Select(_ => ChildTwoOrgUnitFaker.Generate())
                     .ToList();
 
             var boolRandomizer = new Bogus.Randomizer();
             var randomPicker = new Faker();
-            foreach (var OrgUnit in OrgUnitList)
-            {
-                if (boolRandomizer.Bool())
-                {
-                    var maybeParent = randomPicker.PickRandom(OrgUnitList);
-                    while (
-                        maybeParent.Id == OrgUnit.Id ||
-                        maybeParent.ParentId == OrgUnit.Id)
-                    {
-                        maybeParent = randomPicker.PickRandom(OrgUnitList);
-                    }
+            ChildOrgUnitList.AddRange(ChildTwoOrgUnitList);
+            OrgUnitList.AddRange(ChildOrgUnitList);
+            // ToArray() is important. Otherwise, it doesn't work. 
+            // https://github.com/dotnet/efcore/issues/12003
+            modelBuilder.Entity<OrgUnit>().HasData(OrgUnitList.ToArray());
 
-                    OrgUnit.ParentId = maybeParent.ParentId;
-                }
-                modelBuilder.Entity<OrgUnit>().HasData(OrgUnit);
-            }
             #endregion OrgUnit
 
             #region Status
@@ -214,7 +236,7 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
                         b.MobilPhone = f.Phone.PhoneNumber();
                         b.Phone = f.Phone.PhoneNumber();
                         b.Title = f.PickRandom(new[] { "Dr.", string.Empty, string.Empty, "Prof." });
-                        b.StatusId = f.Random.Number(1,4);
+                        b.StatusId = f.Random.Number(1, 4);
                         b.FunctionId = f.Random.Number(1, 4);
                         b.OrgUnitId = f.PickRandom(OrgUnitList).Id;
                         b.RoomId = f.PickRandom(RoomList).Id;
@@ -227,7 +249,7 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
                 if (boolRandomizer.Bool())
                 {
                     var orgUnit = new Faker().PickRandom(OrgUnitList);
-                    if(orgUnit.Id != Person.OrgUnitId)
+                    if (orgUnit.Id != Person.OrgUnitId)
                     {
                         orgUnit.HeadOfOrgUnitId = Person.Id;
                     }
@@ -242,12 +264,13 @@ namespace Phonebook.Source.PeopleSoft.Models.Context
             var faker = new Faker();
             foreach (var person in PersonList)
             {
-                
+
                 modelBuilder.Entity<OrgUnitToFunction>().HasData(
-                    new OrgUnitToFunction { 
-                        FunctionId = faker.Random.Number(1,4), 
-                        OrgUnitId = faker.PickRandom(OrgUnitList).Id, 
-                        PersonId = person.Id, 
+                    new OrgUnitToFunction
+                    {
+                        FunctionId = faker.Random.Number(1, 4),
+                        OrgUnitId = faker.PickRandom(OrgUnitList).Id,
+                        PersonId = person.Id,
                         RoleName = faker.Random.Replace("###").ToUpper()
                     });
             }

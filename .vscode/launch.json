@@ -10,7 +10,7 @@
       "request": "launch",
       "preLaunchTask": "build",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/Phonebook.Source.PeopleSoft/src/Phonebook.Source.PeopleSoft/bin/Debug/netcoreapp2.2/Phonebook.Source.PeopleSoft.dll",
+      "program": "${workspaceFolder}/Phonebook.Source.PeopleSoft/src/Phonebook.Source.PeopleSoft/bin/Debug/netcoreapp3.1/Phonebook.Source.PeopleSoft.dll",
       "args": [],
       "cwd": "${workspaceFolder}/Phonebook.Source.PeopleSoft/src/Phonebook.Source.PeopleSoft",
       "stopAtEntry": false,

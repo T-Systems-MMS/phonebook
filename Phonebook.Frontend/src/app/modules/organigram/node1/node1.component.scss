@@ -1,0 +1,40 @@
+mat-card-title {
+  display: flex;
+
+  .link {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover .link {
+    opacity: 1;
+  }
+}
+
+button {
+  margin-left: auto;
+}
+
+mat-card-subtitle,
+mat-card-content {
+  margin-left: 24px;
+}
+
+.persons {
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 20px;
+  > div {
+    flex: 1;
+  }
+}
+
+.node {
+  margin-left: 40px;
+}
+
+.child-card {
+  width: 250px;
+  height: 70px;
+  padding: 16px 30px;
+}

@@ -1,0 +1,16 @@
+<div class="pb-margin-20">
+  <div class="pb-flex-row pb-expand">
+    <mat-card
+      *ngFor="let node of nodes"
+      class="pb-card pb-normal-shadow pb-margin-20 overview-card"
+      (click)="navigateToFirstNode(node)"
+      (keyup.enter)="navigateToFirstNode(node)"
+      tabindex="0"
+    >
+      <mat-card-title>
+        <h2> {{ node.id + ': ' + node.name }} </h2>
+      </mat-card-title>
+      <mat-card-content> </mat-card-content>
+    </mat-card>
+  </div>
+</div>
