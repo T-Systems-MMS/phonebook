@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component';
+import { DashboardComponent } from 'src/app/pages/dashboard/components/dashboard/dashboard.component';
 import { SettingsComponent } from 'src/app/pages/settings/settings.component';
 import { environment } from 'src/environments/environment';
+import { TeamComponent } from './pages/dashboard/components/team/team.component';
+import { BookmarkedComponent } from './pages/dashboard/components/bookmarked/bookmarked.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard/bookmarks', pathMatch: 'full' },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('src/app/pages/dashboard/dashboard.module').then((m) => m.DashboardModule),
+  },
   {
     path: 'search',
     loadChildren: () => import('src/app/modules/table/table.module').then((m) => m.TableModule),

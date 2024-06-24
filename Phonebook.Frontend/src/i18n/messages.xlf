@@ -283,6 +283,11 @@
             section</note>
         <note priority="1" from="meaning">DashboardComponent</note>
       </trans-unit>
+      <trans-unit id="DashboardComponentTitleTeam" datatype="html">
+        <source> My Team </source>
+        <note priority="1" from="description">Title of the Team people section</note>
+        <note priority="1" from="meaning">DashboardComponent</note>
+      </trans-unit>
       <trans-unit id="DashboardComponentOrderNone" datatype="html">
         <source> Custom Order</source>
         <target> Custom Order</target>

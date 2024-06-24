@@ -20,7 +20,7 @@ import { FeatureFlagModule } from 'src/app/modules/feature-flag/feature-flag.mod
 import { NotImplementedModule } from 'src/app/modules/not-implemented/not-implemented.module';
 import { ProfilePictureModule } from 'src/app/modules/profile-picture/profile-picture.module';
 import { TableModule } from 'src/app/modules/table/table.module';
-import { DashboardComponent } from 'src/app/pages/dashboard/dashboard.component';
+import { DashboardComponent } from 'src/app/pages/dashboard/components/dashboard/dashboard.component';
 import { SettingsModule } from 'src/app/pages/settings/settings.module';
 import { UserPagesModule } from 'src/app/pages/users/user-pages.module';
 import { ApiModule } from 'src/app/services/api/api.module';
@@ -58,13 +58,7 @@ import { FormsModule } from '@angular/forms';
 declare const require;
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchComponent,
-    DashboardComponent,
-    NavigationComponent,
-    OnlineBarComponent,
-  ],
+  declarations: [AppComponent, SearchComponent, NavigationComponent, OnlineBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

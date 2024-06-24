@@ -1,6 +1,7 @@
 import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { untilComponentDestroyed } from 'ng2-rx-componentdestroyed';
 import { Observable, Subscription } from 'rxjs';
@@ -21,6 +22,9 @@ import {
   ResetLastPersons,
   SetLastPersons,
 } from 'src/app/shared/states/LastPersons.state';
+import { CurrentUserService } from 'src/app/services/api/current-user.service';
+import { MatDrawerMode } from '@angular/material/sidenav';
+import { BookmarkedComponent } from 'src/app/pages/dashboard/components/bookmarked/bookmarked.component';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -30,11 +34,6 @@ import {
 export class DashboardComponent implements OnInit, OnDestroy {
   @Select(LastPersonsState)
   public lastPersons$: Observable<Person[]>;
-  public bookmarkedPersons: Person[];
-  public bookmarkedPersonsSubscriptions: Subscription | null = null;
-  public favoriteSort: PhonebookSortDirection = PhonebookSortDirection.none;
-  public lastFrom: number;
-  public lastTo: number;
   @Select(BookmarksState)
   public bookmarkedPersons$: Observable<Person[]>;
   public removedLastPersons: Person[] | null = null;
@@ -44,15 +43,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public layout: typeof Layout = Layout;
   public drawerOpen: boolean = false;
+  public drawerMode: MatDrawerMode = 'side';
   public smallScreen: boolean = false;
+  public currentUser: Person | null = null;
   constructor(
     private store: Store,
     private cd: ChangeDetectorRef,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    public router: Router,
+    private currentUserService: CurrentUserService
   ) {}
 
   public ngOnInit() {
-    this.changeOrder();
     this.store
       .select(AppState.recentPeopleDrawer)
       .pipe(untilComponentDestroyed(this))
@@ -70,39 +72,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
           this.drawerOpen = this.store.selectSnapshot(AppState.recentPeopleDrawer);
         }
       });
-  }
-
-  public changeOrder() {
-    if (this.bookmarkedPersonsSubscriptions) {
-      this.bookmarkedPersonsSubscriptions.unsubscribe();
-    }
-    this.bookmarkedPersonsSubscriptions = this.store
-      .select(BookmarksState.sortedBookmarks)
-      .pipe(map((filterFn) => filterFn(this.favoriteSort)))
-      .subscribe((persons) => {
-        this.bookmarkedPersons = persons;
-      });
-  }
-
-  public entered(e: CdkDragEnter) {
-    if (this.bookmarkedPersons && this.bookmarkedPersons.length === 1) {
-      return;
-    }
-
-    this.lastFrom = e.item.data;
-    this.lastTo = e.container.data;
-  }
-
-  public ended(e: CdkDragEnd) {
-    if (this.bookmarkedPersons && this.bookmarkedPersons.length === 1) {
-      return;
-    }
-    if (this.lastFrom === undefined || this.lastTo === undefined) {
-      return;
-    }
-    moveItemInArray(this.bookmarkedPersons, this.lastFrom, this.lastTo);
-    this.store.dispatch(new UpdateBookmarkOrder(this.bookmarkedPersons));
-    this.cd.detectChanges();
+    this.currentUserService
+      .getCurrentUser()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(
+        (user) => {
+          if (user != null) {
+            this.currentUser = user;
+          }
+        },
+        (error) => {
+          this.currentUser = null;
+        }
+      );
   }
 
   public resetLastPersons() {

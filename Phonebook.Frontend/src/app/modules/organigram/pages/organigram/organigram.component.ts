@@ -13,7 +13,7 @@ export class OrganigramComponent implements OnInit {
   constructor(private organigramService: OrganigramService) {}
 
   public ngOnInit() {
-    this.organigramService.getOrganigram().subscribe((organigram) => {
+    this.organigramService.getOrganigramTree().subscribe((organigram) => {
       this.nodes = organigram;
     });
   }
