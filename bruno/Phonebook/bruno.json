@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Phonebook",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

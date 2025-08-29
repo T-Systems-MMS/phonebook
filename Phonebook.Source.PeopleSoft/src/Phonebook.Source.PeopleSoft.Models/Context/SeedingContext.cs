@@ -1,7 +1,6 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.IO;
 using System.Linq;
 
 namespace Phonebook.Source.PeopleSoft.Models.Context

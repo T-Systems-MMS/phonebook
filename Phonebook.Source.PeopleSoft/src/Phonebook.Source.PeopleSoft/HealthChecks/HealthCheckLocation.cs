@@ -25,7 +25,7 @@ namespace Phonebook.Source.PeopleSoft.HealthChecks
             {
                 using (var scope = ScopeFactory.CreateScope())
                 {
-                    var result = await scope.ServiceProvider.GetService<ModelContext>().Locations.OrderBy(d => d.Id).FirstAsync();
+                    var result = await scope.ServiceProvider.GetService<ModelContext>().Locations.Where(d => d.Country == "DE").FirstAsync();
                     if (string.IsNullOrWhiteSpace(result.ShortName?.ToString()))
                     {
                         return HealthCheckResult.Unhealthy("Location data is not accessible! 💣");
